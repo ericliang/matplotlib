@@ -4,11 +4,9 @@
 Code meant to be used for learning/testing, not production.
 
 Fernando Perez <fperez@colorado.edu>
-
 March 2002, updated 2003."""
 
 from weave import inline,converters
-
 from Numeric import *
 
 #-----------------------------------------------------------------------------
