@@ -1,0 +1,202 @@
+
+FAQs = (
+    ('NUMARRAY',
+    'Does matplotlib work with numarray?',
+    """\
+matplotlib can work with numarray.  Currently, there is no conditional
+import of numarray versus numeric.  But if you recursively replace all
+occurances of 'from Numeric' with 'from numarray', and all occurances
+of 'typecode' with 'type', matplotlib will work.  In the not too
+distant future, I hope to automatically detect numarray or Numeric.
+"""),
+	
+    ('GTKPATH',
+    'I cannot import gtk / gdk / gobject',
+    """\
+95 times out of 100 this is a PATH issue.  Follow the instructions on
+this <a
+href=http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq21.012.htp>pygtk
+FAQ entry</a>.  There is a long thread on the pygtk mailing list where
+Cousing Stanley got his gtk corrupted by installing glade, which
+writes some older libgtk versions into the windows system dir.  Do a
+file search for libgtk and make sure nothing shows up outside of your
+GTK install tree.  Read <a
+href=http://www.mail-archive.com/pygtk@daa.com.au/msg07324.html>this
+thread</a>, which is filled with good advice.  """
+    ),
+    
+    ('BATCHMODE',
+     'Can I just generate images without having a window popup?',
+     """\
+The easiest way to do this is use an image backend, either <a
+href=backends.html#GD>GD</a> or <a href=backends.html#Paint>Paint</a>
+if you want to generate PNG images, eg, for use in a web page, or PS
+if you want publication quality, scalable images.  All of these
+backends run on all of the major platforms.  One additional option on
+an X windows platform is to run the GTK backend under an Xvfb, which
+works nicely and is not too hard to setup.  Contact
+jdhunter@ace.bsd.uchicago.edu for more information if you are
+interested setting this up."""),
+
+    ('APPSERVER',
+     'Can I just matplotlib in a web application server?',
+     """\
+Yes.  matplotlb can be used with any web application server that can
+call python.  It has been used with mod_python, xml_rpc, and other
+frameworks.  You'll want to use one of the image backends; <a
+href=faq.html#BATCHMODE>see batch mode</a>.  Also to make small images
+appropriate for use on a web page, you may want to consider the Agg or GD
+backends, since they renders small font rasters using freetype2 better
+than Paint, which currently use freetype1.  You can work around
+the problem of small raster sizes by making your fonts appear larger
+for a given by decreasing the figure size and increasing the dpi.  Eg,
+
+<pre>
+figure(figsize=(6,4))
+plot(blah, blah)
+savefig('myfile', dpi=75)
+</pre>
+
+See <a href=fonts.html#TTFFONTS>ttf fonts</a> for more information.
+"""
+
+     ),
+
+    ('SHOW',
+     "What's up with 'show'?  Do I have to use it?",
+     """\
+The use of show is probably the biggest source of confusion and
+vexation among new users of matplotlib.  First of all, you do not
+need this function with the image backends (Paint, GD, PS) but you do
+need it with the GUI (GTK, WX) backends (unless you are running
+matplotlib in <a href=interactive.html>interactive mode</a>).  <p>
+
+The GUIs have 'mainloops' which need to be entered to do event
+handling.  Unless you have threading enabled ala gui_thread (on the
+TODO list), entering the mainloop is the last command you execute.
+Because it is expensive to draw, I want to avoid redrawing the figure
+many times in a batch script such as the following<p>
+
+<pre>
+  plot([1,2,3])            # draw here ?
+  xlabel('time')           # and here ?
+  ylabel('volts')          # and here ?
+  title(''a simple plot')  # and here ?
+  show()            
+</pre>
+
+It is possible to force matplotlib to draw after every command, which
+is what you want in <a href=interactive.html>interactive mode</a>, but
+in a script you want to defer all drawing until the script has
+executed.  This is especially important for complex figures that take
+some time to draw.  'show' is designed to tell matplotlib that you're
+all done issuing commands and you want to draw the figure now.  """),
+ 
+    ('PSGUI',
+     'Can I save PS/EPS from a GUI backend?',
+     """\
+Yep.  Just choose a filename that contains ps in the extension, eg
+<tt>somefile.ps</tt> or <tt>somefile.eps</tt> and matplotlib will try
+and do the right thing.  That is, if it's an eps file, it will include
+a bounding box, if it's a ps file it will output plain postscript.  It
+is recommended you use matplotlib-0.50 or later for this feature to
+work properly."""),
+
+  ('TEXTOVERLAP',
+   'My title or ticklabel or whatever is overlapping some other figure element, what should I do?',
+   """
+The default subplots take up a lot of room.  If you need extra space
+for particularly large labels and titles, consider using custom <a
+href=matplotlib.matlab.html#-axes>axes</a>, eg, <tt>axes([0.3, 0.3, 0.6,
+0.6])</tt> gives you more room to the left and at the bottom than the
+standard axes.</p>
+
+Other things to consider.  With multiple subplots, eg, multiple rows,
+turn off the xticklabels for all but the lowest subplot if they are
+the same in all subplots <tt>set(gca(), 'xticklabels', [])</tt>.  You
+can make the fontsizes smaller, as in <tt>xlabel('time (s)',
+fontsize=8)</tt> or, for the tick labels
+
+<pre>
+t = gca().get_xticklabels()
+set(t, 'fontsize', 8)
+</pre>
+ """),
+
+    ('DYNAMIC',
+     'Can matplotlib do dynamic plots, like digital oscilloscopes or animations?', 
+    """\
+Absolutely.  See for example, <a href=examples/anim.py>anim.py</a> and <a
+href=examples/system_monitor.py>system_monitor.py</a>"""),
+
+    ('PERFORMANCE',
+     'Is matplotlib fast enough for very large data sets?',
+     """\
+The answer, of course, is "it depends".  I've worked hard to make
+matplotlib work well with very large data sets (100s of MB), because
+these are the kinds of data I need to handle at work.  It is very good
+at handling data sets where the x axis is contiguous (eg, time) and
+only a small portion of data in displayed in the viewport; see for
+example <a href=examples/stock_demo.py>stock_demo.py<a/> where you can
+scroll through 2 months of minute-by-minute stock quote data.  The
+performance with higher dimensional data, eg, pseudocolor plots with
+x, y, and intensity parameters, leaves sometime to be desired.  I'm
+looking into ways to improve these cases.  Several people with high
+bandwidth requirements have reported being happy with matplotlib's
+performance.  If you find areas that need improvement, let me know.
+"""),
+
+    ('IMAGES',
+    'Can matplotlib handle image data?',
+     """\
+Not currently, except as pcolor data.  It's in the works; stay tuned."""),
+
+    ('ROTATETICKS',
+     'How do I make vertical xticklabels',
+     """\
+You can set the rotation of any text instance to vertical
+
+<pre>
+    from matplotlib.matlab import *
+    plot([1,2,3,4], [1,4,9,16])
+    set(gca(), 'xticks', [1,2,3,4])
+    labels = set(gca(), 'xticklabels', ['Frogs', 'Hogs', 'Bogs', 'Slogs'])
+    set(labels, 'rotation', 'vertical')
+    show()
+</pre>
+"""),
+
+     ('WINFONTS',
+      "On windows with GTK, I'm getting lots of messages about not finding the  Times font",
+    """\
+Apparently GTK changed the default pango font file, because this is a new problem.  You can set font aliases in C:\GTK\etc\pango\pango.aliases.  Add a line like<pre>
+times = "times new roman,angsana new,mingliu,simsun,gulimche,ms gothic,latha,mangal,code2000"
+</pre>
+""" ),
+
+     ('FONTCACHE',
+      "On windows with GD/Agg/Paint, the first time I ran my script I got a bunch or error messages but don't anymore",
+    """\
+These modules use FontTools and TTFQuery to find freetype fonts.  The
+first time you import one of these backends, a font registry created
+in site-packages/ttfquery/font.cache.  As you system is scanned for
+fonts, some errors may be caught if a font file is not readable, etc.
+Generally, this is not a major problem, as long as most system fonts
+are found.  In subsequent runs, the font.cache is already built so you
+won't see the messages again.  If you want to see the error messages,
+remove font.cache and rerun your script, capturing them to a file.
+""" ),
+     
+     
+    
+     )
+@header@
+<h2> matplotlib FAQ </h2>
+
+ + for name,q,a, in FAQs:
+   <h4><a name=@name@>@q@</a></h4>
+     @a@
+   <p>
+ -
+
+@footer@

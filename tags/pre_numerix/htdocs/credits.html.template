@@ -1,0 +1,28 @@
+@header@
+
+<h2>Credits</h2>
+
+matplotlib was written by John D. Hunter<p>
+
+Special thanks to those who have made valuable contributions to
+matplotlib 
+
+<ul> 
+
+  <li>Jeremy O'Donoghue wrote the wx backend</li>
+
+  <li>Andrew Straw provided much of the log scaling architecture</li>
+
+  <li>Charles Twardy provided the impetus code for the legend class
+  and has made countless bug reports and suggestions for
+  improvement.</li>
+
+  <li>Gary Ruben made many enhancements to errorbar to support x and y
+  errorbar plots.
+  </li>
+
+  <li>John Gill wrote the table class and examples</li>
+
+  <li>David Moore wrote the paint backend</li>
+</ul>
+@footer@
