@@ -1,0 +1,5 @@
+*.pyc
+*html
+site.tar.gz
+drafts
+.cvsignore
