@@ -1,0 +1,61 @@
+
+# html pages
+scp index.html jdh2358@matplotlib.sf.net:/home/groups/m/ma/matplotlib/htdocs
+
+# project page
+http://sourceforge.net/projects/matplotlib
+
+# home page
+http://matplotlib.sourceforge.net
+
+### updating the website  
+  
+  # build the docs
+  mother> cd ~/python/projects/matplotlib
+  mother> make htmldocs
+  mother> cd htdocs
+  mother> python process_docs.py
+  mother> python convert.py
+  mother> tar cvfz site.tar.gz *.html screenshots tut examples
+  mother> scp htdocs/site.tar.gz jdh2358@matplotlib.sf.net:/home/groups/m/ma/matplotlib/htdocs/
+
+ mother> ssh -l jdh2358 shell.sf.net
+ sf> cd /home/groups/m/ma/matplotlib/htdocs
+ sf> tar xvfz site.tar.gz
+
+
+### Doing a release 
+
+0) when building the win installer, comment out the import ttfquery in
+   build_fonttools
+
+0) Run examples/batch_figs.py w/o errors; run the backend specific
+   demos (object_picker, anim , embedding*)
+
+0) Remove MANIFEST so it will be rebuilt by MANIFEST.in
+
+1) Comment out all the savefig commands in the examples dir
+  > rfr -f savefig -r '#savefig' *.py
+  > rfr -f '##savefig' -r '#savefig' *.py
+
+2) edit license.html.template and matplotlib.__init__ to the correct version number 
+   local> clearbak
+   local> make htmldocs
+   local> scp htdocs/site.tar.gz jdh2358@matplotlib.sf.net:/home/groups/m/ma/matplotlib/htdocs/
+   local> ssh -l jdh2358 shell.sf.net
+   sf> cd /home/groups/m/ma/matplotlib/htdocs
+   sf> tar xvfz site.tar.gz
+
+3) edit setup.py to the correct version number 
+  > make release
+
+4) anon ftp the tar.gz and exe file to SF
+  local> cd dist
+  local> ncftp upload.sourceforge.net
+  ncftp> cd incoming
+  ncftp> put tar.gz, zip exe
+
+5) go to https://sourceforge.net/project/admin/?group_id=80706 and do a
+#  file release
+
+Trove categorization is under Public info on the admin page

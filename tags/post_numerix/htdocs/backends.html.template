@@ -1,0 +1,286 @@
+@header@ 
+
+<h2>matplotlib backends</h2>
+
+The matplotlib core graphics routines interact with an abstract
+renderer and graphics context to allow device independent ouput.
+Currently, output to pygtk, wxpython, postscript, gdmodule,
+libart/paint and agg (antigrain geometry) are supported.  With not too
+much effort, you can port matplotlib to your favorite display; high on
+my list of priorities are SVG, PDF, Tkinter (coming soon) and PIL.  If
+you are interested in porting to one of these platforms, please
+contact me!<p>
+ 
+You can choose your backend renderer from the command line prompt.
+Most if not all matplotlib scripts can generate output to any of the
+backends without any alterations.  Following the lead of the matlab
+<tt>print</tt> command, the backend can be chosen from the command
+line with the <tt>-d</tt> flag, as in
+
+
+<pre>
+# the GUI backends
+> python subplot_demo.py -dGTK     # GTK backend
+> python subplot_demo.py -dTkAgg   # Tkinter GUI with antigrain rendering
+> python subplot_demo.py -dWX      # WX backend
+
+# The image backends, no window pops up; you must call savefig
+> python subplot_demo.py -dAgg     # antigrain geometry backend image
+> python subplot_demo.py -dPS      # postscript backend
+> python subplot_demo.py -dGD      # GD backend
+> python subplot_demo.py -dPaint   # Paint backend
+</pre>
+
+For backends that do not have a GUI, no output will be produced unless
+a call to <a href=matplotlib.matlab.html#-savefig>savefig</a> is made.
+The recommended way to use the savefig function is to not give an
+extension.  The backends will choose the proper extension.  This
+allows you to write a single script and select the output format from
+the command line.  So a script containing <tt>savefig('somefile')</tt>
+will create <tt>somefile.ps</tt> if called with <tt>-dPS</tt> and
+<tt>somefile.png</tt> if called with <tt>-dGD</tt>, and so on.<p>
+
+Alternatively, you can select the backend renderer in your script by
+calling the matplotlib <a href=matplotlib.matlab.html#-use>use</a>
+function.  At the top of your script (before you <tt>import
+matplotlib.matlab</tt>, just do, for example
+
+<pre>
+import matplotlib
+matplotlib.use('PS')
+</pre>
+
+The current backend strings that are supported are 
+<a
+href=matplotlib.backends.backend_gd.html>GD</a>, <a
+href=matplotlib.backends.backend_agg.html>Agg</a>, <a
+href=matplotlib.backends.backend_gtk.html>GTK</a>, <a
+href=matplotlib.backends.backend_ps.html>PS</a> <a
+href=matplotlib.backends.backend_tkagg.html>TkAgg</a> <a
+href=matplotlib.backends.backend_ps.html>WX</a> <a
+href=matplotlib.backends.backend_paint.html>Paint</a> and <a
+href=matplotlib.backends.backend_template.html>Template</a>.
+
+The default is GTK.  Template is a do nothing backend that serves as a
+template for backend writers (volunteers welcome!).<p>
+
+To get the most of your backend of choice, you may need to set an
+environment variable controlling the fonts; see <a
+href="fonts.html">fonts</a> for more information.<p>
+
+<h2>Backend requirements</h2>
+
+Each of the backends have a different set of requirements, listed
+below.  All require the <a
+href=http://sourceforge.net/projects/numpy>Numeric</a> module.  Note,
+matplotlib can also be made to work with numarray with minor changes;
+see the <a href=faq.html#NUMARRAY>FAQ</a>.<p>
+
+
+Specific information for installing the other backends can be found on
+this page below or by clicking
+<ul>
+<li><a href=backends.html#GTK>GTK</a></li>
+<li><a href=backends.html#Agg>Agg</a></li>
+<li><a href=backends.html#TkAgg>TkAgg</a></li>
+<li><a href=backends.html#WX>WX</a></li>
+<li><a href=backends.html#PS>PS</a></li>
+<li><a href=backends.html#Paint>Paint</a></li>
+<li><a href=backends.html#GD>GD</a></li>
+</ul>
+
+
+<a name=GTK><h3>GTK</h3></a>
+
+This is the default backend and the first one supported by matplotlib;
+it requires
+
+<ul> 
+
+  <li><a href=http://www.pfdubois.com/numpy>Numeric</a></li>
+
+  <li><a href=http://prdownloads.sourceforge.net/gtk-win>
+GTK runtime</a></li> 
+
+  <li><a href=http://www.daa.com.au/~james/software/pygtk>pygtk</a>
+  version 1.99.16 or later</li>
+
+</ul>
+
+<h4>Redhat Users</h4>
+
+  GTK2 became the default with the Redhat Linux 8 series.  If your
+  distro is older than that, you'll need to upgrade your desktop,
+  upgrade your gtk libs, or upgrade your distro.<p>
+
+  I am not sure what the status of GTK2 versus version number is with
+  the other distros, but I would be happy for answers, so if you know,
+  please email me @myemail@.  If you put matplotlib in the subject,
+  the email will be sure to get past my spam filters.<p>
+
+
+<h4>Windows Users</h4>
+
+   Windows users should consult <a
+   href=http://www.mapr.ucl.ac.be/~gustin/win32_ports>Cedric's pygtk
+   for win32 site</a> for information about pygtk for win32.
+   Basically, you need to install the <a
+   href=http://www.pcpm.ucl.ac.be/~gustin/win32_ports/>GTK 2.2.4
+   Runtime</a> and <a
+   href=http://www.pcpm.ucl.ac.be/~gustin/win32_ports/binaries/pygtk-2.0.0.win32-py2.3.exe>pygtk-2.0.0</a>
+   both of which have friendly windows installers.  After you install
+   the runtime, you need to add the bin and lib subdirs of your
+   install dir to your PATH.  Cedric's website also provides
+   pygtk-1.99.16 for python2.2 users which also works fine with
+   matplotlib.<p>
+
+  See the <a href=fonts.html>fonts</a> for more information about
+  getting the GTK backend setup for proper font rendering.  If you are
+  experiencing warnings about Times font not being found, see this <a
+  href=faq.html#WINFONTS>FAQ</a> entry <p>
+
+<a name=WX><h3>WX</h3></a>
+
+Requires <a href=http://www.wxpython.org>wxpython</a>.  Windows users
+may want to consider the <a
+href=http://www.enthought.com/python>enthought edition</a> of python,
+which comes with wxpython and Numeric built in, so matplotlib will
+work right out of the box.  matplotlib under WX has been tested on
+linux, win32 and OSX.<p>
+
+<a name=Agg><h3>Agg output</h3></a>
+
+The <a href=http://antigrain.com>antigrain geometry</a> library is a
+platform independent library that provides efficient antialiased
+rendering with a vector model.  This is a sophisticated libary that we
+hope will provide the basis for more sophisticated drawing and image
+handling in future versions of matplotlib.  Because is doesn't depend
+on a GUI framework, it is suitable for use in web application servers
+generating images for html inclusion or for generating images in batch
+scripts.  Agg can also be embedded in GUI applications, as in the
+GTKAgg backend -- see <tt>setup.py</tt><p>
+
+The windows installer comes with Agg prebuilt.  To compile Agg from
+src, set the <tt>BUILD_AGG</tt> flag in <tt>setup.py</tt>.  Like the
+other freetype image modules GD and Paint, Agg uses TTFQuery and
+fonttools for cross-platform font finding.  These modules, too, are
+included in the windows installer, and will be build automatically by
+setting BUILD_AGG.  See <a href=fonts.html#TTFFONTS>ttf fonts</a> for
+information about setting your paths to find your <tt>*.ttf</tt> font
+files.<p>
+
+<a name=TkAgg><h3>Tkinter GUI backend</h3></a>
+
+Todd Miller has written a backend for Tkinter that uses the agg
+backend for rendering.  To use Tkagg, you need to set the BUILD_TKAGG
+flag in setup.py.  The windows installer comes with TkAgg prebuilt.
+See <a href=backends.html#Agg>agg backend</a> for more information on
+agg rendering and fonts.
+
+<h3><a name=GD>GD output</a></h3>
+  
+The GD module can be used to create images with no X11 server, and is
+particularly useful for web application developers who want dynamic
+graphing capabilities.  There are a number of prerequisites but they
+are easy to install (Windows users should skip ahead to the win32
+section).<p>
+
+The GD backend depends on Numeric, gdmodule, gd, TTFQuery and
+fonttools.  To ease installation, the latter two packages now ship
+with matplotlib.  Set the flag <tt>BUILD_FONTTOOLS</tt> in setup.py to
+build both TTFQuery and fonttools with matplotlib.  Below are
+instructions for building gdmoule.
+	
+  <ul>
+
+  <li><a href=http://www.pfdubois.com/numpy>Numeric</a>  --
+  Numeric processing in python</li>
+
+  <li><a href=http://www.boutell.com/gd>GD lib</a> -- The GD library.
+  Note if you are using linux and have this installed in /usr/lib, you
+  will need to install the latest version over the existing install
+  unless you have gd-2.0.22 or later</li>
+
+  <li><a
+  href=http://newcenturycomputers.net/projects/gdmodule.html>gdmodule-0.52</a>
+  -- The python interface to the gd module.</li>
+
+  <li><a href="http://fonttools.sourceforge.net/">font tools</a> -- Base
+  library for handling TTF fonts -- required by TTF query.</li>  
+
+</ul>
+   <h4>Quick install guide for GD module: linux and friends</h4>
+ 
+   The latest snapshot of matplotlib requires a patch to
+   gdmodule-0.52.  
+
+   <pre>
+    cd /var/tmp
+    tar xvfz ~/src/gd-2.0.22.tar.gz
+    cd gd-2.0.22/
+    ./configure --prefix=/usr
+    sudo make install
+
+    cd /var/tmp
+    tar xvfz ~/python/src/gdmodule-0.52.tar.gz
+    cd gdmodule-0.52
+    sudo python2.3 Setup.py install
+
+   </pre>
+</ul>
+
+
+<h4><a name=GDWIN32>Quick install guide for GD output: Windows</a></h4>
+
+The windows installer for matplotlib comes with fonttools and TTFQuery
+built in.  In addition to that package and Numeric, you'll need
+
+<ul>
+
+<li> The GD DLL <a href=gd/bgd.dll>bgd.dll</a> somewhere in your
+PATH</li>
+
+<li> gdmodule for win32 and python2.3 <a href=gd/gdmodule-0.52a.win32-py2.3.exe >gdmodule-0.52a</a>.</li>
+
+</ul>
+
+See the <a href=fonts.html#TTFFONTS>fonts</a> for more information
+about getting the GD backend setup for proper font rendering.  Note
+the formerly named <tt>GDFONTPATH</tt> is now called
+<tt>TTFPATH</tt>.<p>
+
+<a name=PS><h3>Postscript</h3></a>
+
+The only requirement is <a
+href=http://sourceforge.net/projects/numpy>Numeric</a><p>
+
+See the <a href=fonts.html#PSFONTS>fonts page</a> for more information
+about getting the postscript backend setup for proper font rendering;
+notably, you must make sure there are some '*.afm' files in your
+<tt>AFMPATH</tt> if you want to use fonts other than the ones that
+ship with matplotlib.
+
+
+<a name=Paint><h3>Paint</h3></a>
+
+David Moore has written a paint backend for matplotlib.  paint is a <a
+href=http://www.levien.com/libart>libart</a> wrapper</a>. In a
+nutshell, libart is a svg oriented, high performance, 2D graphics
+engine that supports lots of nifty features.  The paint backend
+exposes some of them, and David has been extending it to expose more.<p>
+
+The paint backend requires <a
+href=http://sourceforge.net/projects/numpy>Numeric</a>, <a
+href=http://sourceforge.net/projects/pypaint>pypaint</a> version 0.3.
+If you want cross-platform freetype font selection support, you'll
+also need TTFQuery and fonttools - these now ship with matplotlib in
+both the src and windows binary distributions.  See <a
+href=fonts.html#TTFFONTS>freetype fonts</a> for more information.<p>
+
+libart is highly portable, and the paint backend has been confirmed to
+work on win32 and linux.  The pypaint web site has a src distribution
+and a windows installer.<p>
+
+@footer@
+
+
