@@ -1,6 +1,3 @@
-#!/usr/bin/env python
-# python
-
 from matplotlib.matlab import *
 
 dt = 0.01
@@ -16,8 +13,12 @@ subplot(211)
 plot(t,s)
 subplot(212)
 psd(s, 512, 1/dt)
+savefig('../figures/psd_py.eps')
+savefig('../figures/psd_py.png')
 
 show()
+
+
 """
 % compare with matlab
 dt = 0.01;
