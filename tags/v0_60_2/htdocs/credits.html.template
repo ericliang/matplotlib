@@ -1,0 +1,43 @@
+@header@
+
+<h2>Credits</h2>
+
+matplotlib was written by John Hunter<p>
+
+<h4>Special thanks to those who have made valuable contributions</h4>
+
+<ul> 
+
+  <li>Jeremy O'Donoghue wrote the wx backend</li>
+
+  <li>Andrew Straw provided much of the log scaling architecture and
+  the fill command</li>
+
+  <li>Charles Twardy provided the impetus code for the legend class
+  and has made countless bug reports and suggestions for
+  improvement.</li>
+
+  <li>Gary Ruben made many enhancements to errorbar to support x and y
+  errorbar plots, and added a number of new marker types to plot.
+  </li>
+
+  <li>John Gill wrote the table class and examples</li>
+
+  <li>David Moore wrote the paint backend</li>
+
+  <li>Todd Miller contributed the TkAgg backend and the numerix
+  module, which allows matplotlib to work with either numeric or
+  numarray.  He also ported image support to the postscript
+  backend.</li>
+
+  <li>Paul Barrett overhauled font management to provide an improved,
+  free-standing, platform independent font manager with a WC3 compliant
+  font finder and cache mechanism.</li>
+
+  <li>Perry Greenfield overhauled and modernized the goals and
+  priorities page, and has provided many suggestions and a lot of
+  insight to the overall design and organization of matplotlib.</li>
+
+</ul>
+
+@footer@
