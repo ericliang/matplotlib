@@ -20,7 +20,8 @@ poly = Polygon(verts, facecolor=0.8, edgecolor='k')
 ax.add_patch(poly)
 
 text(0.5 * (a + b), 30,
-     r"$\int_a^b f(x)\rm{d}x$", horizontalalignment='center',
+     r"$\int_a^b f(x)\rm{d}x$",
+     horizontalalignment='center',
      fontsize=20)
 
 axis([0,10, 0, 180])
@@ -29,5 +30,7 @@ figtext(0.1, 0.9, 'y')
 ax.set_xticks((a,b))
 ax.set_xticklabels(('a','b'))
 ax.set_yticks([])
-savefig('integral_demo')
+
+savefig('../figures/integral_demo.eps')
+savefig('../figures/integral_demo.eps.png')
 show()
