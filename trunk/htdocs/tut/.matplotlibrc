@@ -1,8 +1,8 @@
 #### MATPLOTLIBRC FORMAT 
 #
-# This is a sample matplotlib configuration file.   It should be placed
+# This is a sample matplotlib configuration file It should be placed
 # in your home dir (Linux and friends) or in the matplotlib data path,
-# ie, where matplotlib installs its data files (fonts, etc).  On
+# is, where matplotlib installs it's data files (fonts, etc).  On
 # windows, this would be, for example, C:\Python23\share\matplotlib
 #
 # By default, the installer will overwrite the existing file in the
@@ -24,33 +24,27 @@
 #  - a scalar grayscale intensity such as 0.75
 
 #### CONFIGURATION BEGINS HERE
-backend      : GTKAgg    # the default backend
+backend      : Agg    # the default backend
 numerix      : Numeric   # Numeric or numarray
 interactive  : False     # see http://matplotlib.sourceforge.net/interactive.html
-toolbar      : toolbar2   # None | classic | toolbar2   (experimental)
-
-# Where your matplotlib data lives if you installed to a non-default
-# location.  This is where the matplotlib fonts, bitmaps, etc reside
-#datapath : /home/jdhunter/mpldata
-
 
 ### LINES
 # See http://matplotlib.sourceforge.net/matplotlib.lines.html for more
 # information on line properties.  Note antialiased rendering looks
 # better, but can be slower.  If you want fast antialiased rendering,
-# use the Agg backend (or TkAgg, GTKAgg, WxAgg)
-lines.linewidth   : 0.5     # line width in points
+# use the agg backend (or TkAgg, or GTKAgg)
+lines.linewidth   : 1.0     # line width in points
 lines.linestyle   : -       # solid line
-lines.color       : b       # blue
+lines.color       : b       # blue; color format or hex string
 lines.marker      : None    # the default marker
-lines.markerfacecolor  : b       # blue
-lines.markeredgecolor  : k       # black
-lines.markeredgewidth  : 0.5     # the line width around the marker symbol
-lines.markersize  : 6            # markersize, in points
-lines.antialiased : True         # render lines in antialised (no jaggies)
-lines.data_clipping : False      # Use data clipping in addition to viewport
-                                 # clipping.  Useful if you plot long data
-                                 # sets with only a fraction in the viewport
+lines.markerfacecolor  : b       
+lines.markeredgecolor  : k
+lines.markeredgewidth  : 1.0
+lines.markersize  : 6        # markersize, in points
+lines.antialiased : True     # render lines in antialised (no jaggies)
+lines.data_clipping : False  # Use data clipping in addition to viewport
+                             # clipping.  Useful if you plot long data
+                             # sets with only a fraction in the viewport
 
 ### Patches 
 # Patches are graphical objects that fill 2D space, like polygons or
@@ -133,34 +127,35 @@ axes.labelcolor     : k       # black
 ### TICKS
 tick.major.size     : 4      # major tick size in points
 tick.minor.size     : 2      # minor tick size in points
-tick.major.pad      : 4      # distance to major tick label in points
-tick.minor.pad      : 4      # distance to the minor tick label in points
+tick.major.pad      : 4       # distance to major tick label in points
+tick.minor.pad      : 4       # distance to the minor tick label in points
 tick.color          : k      # color of the tick labels 
 tick.labelsize      : 10     # fontsize of the tick labels
 
 ### Grids
-grid.color       :   k       # grid color
-grid.linestyle   :   :       # dotted
+grid.color       :   0.75       # grid color
+grid.linestyle   :   -       # dotted
 grid.linewidth   :   0.5     # in points            
 
 ### FIGURE
-figure.figsize   : 8, 6    # figure size in inches
+figure.figsize   : 6, 4    # figure size in inches
 figure.dpi       : 80      # figure dots per inch
 figure.facecolor : 0.75    # figure facecolor; 0.75 is scalar gray
 figure.edgecolor : w       # figure edgecolor; w is white
 
+
 ### images
-image.aspect : free              # free | preserve
+image.aspect : free          # free | preserve
 image.interpolation  : bilinear  # see help(imshow) for options
-image.cmap   : jet               # gray | jet
-image.lut    : 256               # the size of the colormap lookup table
-image.origin : upper             # lower | upper
+image.cmap   : jet           # gray | jet
+image.lut    : 256           # the size of the colormap lookup table
+image.origin : upper         # lower | upper
  
 ### SAVING FIGURES
 # the default savefig params can be different for the GUI backends.
 # Eg, you may want a higher resolution, or to make the figure
 # background white
-savefig.dpi       : 100      # figure dots per inch
+savefig.dpi       : 72      # figure dots per inch
 savefig.facecolor : w        # figure facecolor; 0.75 is scalar gray
 savefig.edgecolor : w        # figure edgecolor; w is white
 
