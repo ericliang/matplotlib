@@ -112,13 +112,13 @@ vspace*{-5mm}
 
 \layout Title
 
-Interactive Environment Core
+Interactive Parallel Support
 \begin_inset OptArg
 collapsed true
 
 \layout Standard
 
-IDE Core
+IDE/Parallel
 \end_inset 
 
 
@@ -127,16 +127,6 @@ IDE Core
 BrainPy Project, Meeting Two
 \layout Author
 
-John Hunter
-\newline 
-
-\family typewriter 
-\size scriptsize 
-<jdhunter@nitace.bsd.uchicago.edu>
-\family default 
-\size default 
-
-\newline 
 Fernando\SpecialChar ~
 Pérez
 \newline 
@@ -146,13 +136,23 @@ Pérez
 <Fernando.Perez@colorado.edu>
 \family default 
 \size default 
- 
+
+\newline 
+Brian Granger
+\newline 
+
+\family typewriter 
+\size scriptsize 
+<bgranger@scu.edu>
+\family default 
+\size default 
+
 \begin_inset OptArg
 collapsed false
 
 \layout Standard
 
-JDH/FP
+FP/BG
 \begin_inset Note
 collapsed true
 
@@ -167,11 +167,10 @@ This is used by the 'split' footline theme on the left side of the page
 
 \layout Institute
 
-Pediatric Neurology, U.
- of Chicago
-\newline 
 Applied Mathematics, U.
- of Colorado at Boulder 
+ of Colorado at Boulder
+\newline 
+Physics, Santa Clara U.
 \begin_inset Note
 collapsed true
 
@@ -191,7 +190,7 @@ collapsed false
 
 \layout Standard
 
-UofC/CUB
+CUB/SCU
 \begin_inset Note
 collapsed true
 
@@ -377,34 +376,31 @@ IPython
 IPython
 \layout Subsection
 
-Matplotlib
+Parallel
 \layout BeginFrame
 
-Matplotlib
+Parallel
 \layout Section
 
 Proposal
 \layout Subsection
 
-IDE
+Parallel
 \layout BeginFrame
 
-IDE
+Parallel
 \layout Standard
 
-Not just another editor/debugger combo.
+Multiple backends
 \layout Standard
 
-Targeted at scientists
+Uniform (where possible) user frontend
 \layout Standard
 
-Plugin-based (extensible)
+Mostly a library, with a simple set of magics for interactive support
 \layout Standard
 
-Integrate code with text and graphics.
-\layout Standard
-
-Files remain valid python code (editable with any editor).
+IPython's threaded %bg and pyxgrid are a model.
 \layout EndFrame
 
 \layout Section*
@@ -430,12 +426,12 @@ IPython, an improved interactive shell
 
 \layout Itemize
 
-Matplotlib, 2d plotting with Matlab syntax
+PyXgrid
 \color blue
 :
 \newline 
 
-\begin_inset LatexCommand \htmlurl{http://matplotlib.sourceforge.net}
+\begin_inset LatexCommand \htmlurl{http://hammonds.scu.edu/~classes/computation.html}
 
 \end_inset 
 
