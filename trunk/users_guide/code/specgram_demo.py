@@ -3,10 +3,11 @@ from matplotlib.matlab import *
 
 dt = 0.0005
 t = arange(0.0, 20.0, dt)
+# a 100 Hz signal
 s1 = sin(2*pi*100*t)
-s2 = 2*sin(2*pi*400*t)
 
-# create a transient "chirp"
+# create a transient "chirp" at 400 Hz
+s2 = 2*sin(2*pi*400*t)
 mask = where(logical_and(t>10, t<12), 1.0, 0.0)
 s2 = s2 * mask
 
@@ -23,4 +24,6 @@ Fs = int(1.0/dt)  # the sampling frequency
 # instance
 Pxx, freqs, bins, im = specgram(x, NFFT=NFFT, Fs=Fs, noverlap=900)
 colorbar()
+savefig('../figures/specgram_demo.png')
+savefig('../figures/specgram_demo.eps')
 show()
