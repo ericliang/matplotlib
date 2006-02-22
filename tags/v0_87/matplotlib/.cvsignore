@@ -1,0 +1,6 @@
+build
+dist
+docs
+*.pyc
+.project
+matplotlibrc
