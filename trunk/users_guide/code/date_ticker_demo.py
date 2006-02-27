@@ -43,7 +43,7 @@ ax.autoscale_view()
 
 # rotate the x labels for nicer viewing
 labels = ax.get_xticklabels()
-set(labels, 'rotation', 45, fontsize=10)
+setp(labels, 'rotation', 45, fontsize=10)
 
 grid(True)
 

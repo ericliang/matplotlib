@@ -32,7 +32,8 @@ gc.set_dashes(0, [5, 10])
 gc.set_joinstyle('miter')
 gc.set_capstyle('butt')
 gc.set_linewidth(3.0)
-o.draw_lines( gc, (50, 100, 150, 200, 250), (400, 100, 300, 200, 250))
+#broken with new API
+#o.draw_lines( gc, (50, 100, 150, 200, 250), (400, 100, 300, 200, 250))
 
 # draw some text using the matplotlib font manager
 prop = FontProperties(size=40)
