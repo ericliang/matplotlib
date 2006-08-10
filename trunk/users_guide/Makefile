@@ -1,7 +1,7 @@
 # Makefile for matplotlib users_guide
-PYTHON = /usr/local/bin/python2.3
+#PYTHON = /usr/bin/python2.4
 # path to your matplotlib src tree
-MATPLOTLIB = /home/jdhunter/python/projects/matplotlib
+#MATPLOTLIB = /home/darren/src/matplotlib/matplotlib
 
 all:
 	make graphs figs dvi pdf
@@ -22,7 +22,9 @@ dvi:
 	latex users_guide
 
 graphs:
-	cd dot; ${PYTHON} makedot.py
+	cd dot; python makedot.py
+#        cd dot; ${PYTHON} makedot.py
 
 figs:
-	cd code; ${PYTHON} runall.py
+	cd code; python runall.py
+#        cd dot; ${PYTHON} runall.py

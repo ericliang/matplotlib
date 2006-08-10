@@ -10,7 +10,8 @@
 %\usepackage[dvips]{hyperref}
 
 \usepackage{ae,aecompl}
-\usepackage{hyperref}
+\usepackage[bookmarks,colorlinks=true]{hyperref}
+\usepackage{pslatex}
 %\usepackage{html}
 
 \title{The Matplotlib User's Guide}
@@ -228,27 +229,33 @@ Numeric is a python module for efficiently processing arrays of
 numeric data.  While highly optimized for performance and very stable,
 some limitations in the design made it inefficient for very large
 arrays, and developers decided it was better to start with a new array
-package to solve some of these design problems and numarray was born.
-matplotlib requires one of Numeric or numarray to operate.  If you
-have no experience with either, you are strongly advised to install
+package to solve some of these design problems and numarray was born. 
+In a sense, the numerical python community split into Numeric and 
+numarray camps, and eventually a third package was developed, based 
+on the Numeric code base, which incorporated the advances made in 
+numarray, and was called NumPy. NumPy is intended to be the successor 
+to both Numeric and numarray, and to reunite the numerical python 
+community. An array interface was developed in order to allow the three 
+array packages to play well together and to easy migration to NumPy.
+
+Matplotlib requires one of Numeric, numarray, or NumPy to operate.  If you
+have no experience with any of them, you are strongly advised to install
 one of the packages and read through some of the documentation before
 continuing, as this manual assumes you are familiar with one of them;
-see \url{http://www.pfdubois.com/numpy/} and
+see \url{http://www.numpy.scipy.org/} and
 \url{http://www.stsci.edu/resources/software_hardware/numarray}.
 
 Currently the python computing community is in a state of transition
-from Numeric to numarray, but this is happening slowly, in part
-because numarray is slower than Numeric for smallish arrays, and in
-part because a large code base is written around Numeric (notably
-scipy).  This latter concern should become less problematic with the
-numarray/Numeric compatibility layer.  For the near term, however,
-there will be users who want to use one package or the other.
+from Numeric and numarray to NumPy. SciPy, for example, is based on NumPy.
+The transition will take some time, in part because NumPy is rapidly maturing.
+Since the array packages all play well together, the intention is that matplotlib
+will depend on NumPy alone, once the package has matured.
 
-Fortunately, several numarray/Numeric developers are codevelopers of
-matplotlib, giving matplotlib full Numeric and numarray compatibility,
+Fortunately, several Numeric/numarray/NumPy developers are codevelopers of
+matplotlib, giving matplotlib full Numeric, numarray and NumPy compatibility,
 thanks in large part to Todd Miller's matplotlib.numerix module and
 the numarray compatibility layer for extension code.  This allows you
-to choose between Numeric or numarray at the prompt or in a config
+to choose between Numeric, numarray and NumPy at the prompt or in a config
 file.  Thus when you do
 
 \begin{lstlisting}
@@ -257,14 +264,14 @@ from pylab import *
 \end{lstlisting}
 
 \noindent you'll not only get all the matplotlib pylab interface
-commands, but most of the Numeric or numarray package as well
+commands, but most of the Numeric, numarray or NumPy package as well
 (depending on your numerix setting).  All of the array creation and
 manipulation functions are imported, such as \func{array},
 \func{arange}, \func{take}, \func{where}, etc.  The other modules,
 such as mlab, fft and linear\_algebra, are available under the numarray
 package structure.  To make your matplotlib scripts as portable as
 possible with respect to your choice of array packages, it is advised
-not to explicitly import Numeric or numarray.  Rather, you should use
+not to explicitly import Numeric, numarray or NumPy.  Rather, you should use
 matplotlib.numerix where possible, either by using the functions
 imported by \mpldoc{pylab}, or by explicitly importing the numerix
 module, as in
@@ -277,11 +284,11 @@ y = n.take(x, range(10,20))
 \end{lstlisting}
 
 For the remainder of this manual, the term \textit{numerix} is used to
-mean either the Numeric or numarray package.
+mean either the Numeric, numarray or NumPy package.
 
-\subsection{Choosing Numeric or numarray}
+\subsection{Choosing Numeric, numarray, or NumPy}
 
-To select numarray or Numeric from the prompt, run your matplotlib
+To select Numeric, numarray, or NumPy from the prompt, run your matplotlib
 script with
 
 \begin{verbatim}
@@ -291,29 +298,9 @@ script with
 
 
 \noindent  Typically, however, users will choose one or the other and
-make this setting in their rc file using either \rc{numerix : Numeric}
-or \rc{numerix : numarray}; see Section~\ref{sec:matplotlibrc}.
+make this setting in their rc file using either \rc{numerix : Numeric}, 
+\rc{numerix : numarray}, or \rc{numerix : numpy}; see Section~\ref{sec:matplotlibrc}.
 
-Some of the matplotlib extension code operates on Numeric or numarray
-arrays, eg the image and transforms modules.  To get optimum
-performance, you should compile matplotlib with the proper flag for
-the library you will be using most.  Set the \code{NUMERIX} variable
-in \fname{setup.py} before building.  Note that this is different from
-the \rc{numerix} variable in \fname{.matplotlibrc}.  The former
-affects the matplotlib at compile time, the latter at run time.  All
-of your matplotlib scripts should run without error regardless of
-these two settings, but to get optimum performance, they should agree.
-numarray builds for win32 are available on the download page.
-
-
-\textit{If your NUMERIX compile time setting and numerix rc file
-  setting do not agree, your performance can suffer 10-fold.  Before
-  compiling matplotlib, edit \fname{setup.py} and
-  \fname{.matplotlibrc} to make sure these settings agree.  If you are
-  using a precompiled version of matplotlib, eg a windows installer,
-  make sure you choose the installer that agrees with the array
-  package you use most.  The installer labelled 'numarray' is for
-  numarray users, whereas the unlabelled installer is for Numeric users.}
 
 \section{Backends}
 \label{sec:intro_backends}
@@ -344,7 +331,7 @@ In choosing your backend, the following considerations are important
   application from the shell (pycrust for wx, PyShell for gtk).  A
   notable exception is Tkinter, which can be controlled from a
   standard python shell or ipython.  Fernando Perez, the author of
-  ipython, has written a pylab mode that lets you use WX, GTK or Tk
+  ipython, has written a pylab mode that lets you use WX, GTK, Qt or Tk
   interactively from the python shell.  If you want to work
   interactively with matplotlib, this is the recommended approach.
 
@@ -358,7 +345,9 @@ In choosing your backend, the following considerations are important
   widgets.  wxpython has native widgets but can be difficult to
   install.  \textit{Windows users note: the enthought edition of
   python from \url{http://www.enthought.com/python} comes with Tkinter
-  and wxpython included}.
+  and wxpython included}. Now that Qt-4 has been released under the 
+ GPL for windows, the Qt backend is a new alternative with excellent 
+ looking widgets.
   
 \item What features do you need?  Some of the matplotlib features
   including alpha blending, antialiasing, images and mathtext are not
@@ -376,8 +365,8 @@ In choosing your backend, the following considerations are important
 
 Once you have decided on which backends you want to install, make sure
 you install the GUI required toolkits (and devel versions if you are
-using a package manager).  Then edit \fname{setup.py} and
-\fname{.matplotlibrc} files to reflect these choices as described
+using a package manager).  Then install matplotlib and edit your
+\fname{matplotlibrc} files to reflect these choices as described
 below.
 
 \section{Integrated development environments}
@@ -398,6 +387,7 @@ their matplotlib compatibility.\footnote{If you have experience with
   idle & Tkinter & Works best with TkAgg if idle is launched with -n\\
   pycrust & WX & Works best with WX/WXAgg\\
   Scintilla and SciTE & GTK & Should work with GTK/GTKAgg backends but untested\\
+  Eric3 & Qt & works with QtAgg, will work with Qt4Agg in the future\\
   pythonwin & MFC & Unknown\\\hline
 
   \end{tabular}
@@ -425,7 +415,7 @@ with all matplotlib backends because of GUI mainloop issues.  With a
 non-GUI python shell such as the standard python shell, ipython or
 pysh, the TkAgg backend is the best choice for interactive use.  Just
 set \rc{backend : TkAgg} and \rc{interactive : True} in your
-\fname{.matplotlibrc}file and fire up python.  Then
+\fname{matplotlibrc}file and fire up python.  Then
 
 \begin{lstlisting}
   # using matplotlib interactively from the python shell
@@ -446,7 +436,7 @@ GUI is a separate thread.
 
 The recommended way to use matplotlib interactively from a shell is
 with ipython, which has an pylab
-mode that detects your matplotlib .matplotlibrc file and makes the right settings
+mode that detects your matplotlib matplotlibrc file and makes the right settings
 to run matplotlib with your GUI of choice in interactive mode using
 threading.  gtk users will need to make sure that they have compiled
 gtk with threading for this to work.  Using ipython in pylab mode is
@@ -509,24 +499,24 @@ performance hit
 >>> plot(rand(20), mfc='g', mec='r', ms=40, mew=4, ls='--', lw=3)
 \end{lstlisting}
 
-\section{Customization using \fname{.matplotlibrc}}
+\section{Customization using \fname{matplotlibrc}}
 \label{sec:matplotlibrc}
 
 Almost all of the matplotlib settings and figure properties can be
-customized with a plain text file \fname{.matplotlibrc}.  This file is
+customized with a plain text file \fname{matplotlibrc}.  This file is
 installed with the rest of the matplotlib data (fonts, icons, etc)
 into a directory determined by distutils.  Before compiling
 matplotlib, it resides in the same dir as \fname{setup.py} and will be
 copied into your install path.  Typical locations for this file are
 
 \begin{verbatim}
-C:\Python23\share\matplotlib\.matplotlibrc  # windows
-/usr/local/share/matplotlib/.matplotlibrc   # linux and friends  
+C:\Python24\Lib\site-packages\matplotlib\mpl-data\matplotlibrc  # windows
+/usr/lib/python2.4/site-packages/matplotlib/mpl-data/matplotlibrc # linux and friends  
 \end{verbatim}
 
 \noindent By default, the installer will overwrite the existing file in
-the install path, so if you want to preserve your's, please move it to
-your HOME dir and set the environment variable if necessary.
+the install path, so if you want to preserve your's, please move it to the .matplotlib directory
+your HOME directory and set the environment variable if necessary.
 
 In the rc file, you can set your backend (Section~\ref{sec:intro_backends}),
 your numerix setting (Section~\ref{sec:numerix}), whether you'll be
@@ -583,7 +573,7 @@ matplotlib will search for an rc file in the following locations
   environment variable is set by default.  Windows users can set in
   the My Computer properties
   
-\item PATH/.matplotlibrc where PATH is the return value of
+\item PATH/matplotlibrc where PATH is the return value of
   \code{matplotlib.get\_data\_path()}.  This function looks where
   distutils would have installed the file - if it doesn't find it
   there, it checks for the environment variable MATPLOTLIBDATA and
@@ -600,9 +590,9 @@ matplotlib will search for an rc file in the following locations
 \section{Installing}
 \label{sec:installing}
 
-matplotlib requires at a minimum python 2.2+, Numeric or numarray and
-freetype.  To get the most out of matplotlib, you will want to build
-some of the optional GUI and image extensions, discussed below.
+matplotlib requires at a minimum python 2.3+, Numeric, numarray, or 
+NumPy and freetype.  To get the most out of matplotlib, you will want 
+to build some of the optional GUI and image extensions, discussed below.
 Matplotlib is known to work on linux, unix, win32 and OS~X platforms.
 
 \subsection{Compiling matplotlib}
@@ -613,14 +603,13 @@ and zlib installed on your system.  If you are using a package
 manager, also make sure the devel versions of these packages are also
 installed (eg freetype-devel).
   
-The top of \fname{setup.py} contains some flags controlling which
-backends will be built.  If you want to use a GUI backend, you will
-need either Tkinter, pygtk or wxpython installed on your system, from
-src or from a package manager including the devel packages.  You can
-choose which backends to enable by setting the flags in setup.py, but
-the 'auto' flags will work in most cases, as matplotlib tries to find
-a GUI and build the backend accordingly.  If you know you don't want a
-particular backend or extension, you can set that flag to \val{False}.
+If you want to use a GUI backend, you will need either Tkinter, pygtk or 
+wxpython installed on your system, from src or from a package manager 
+including the devel packages.  You can choose which backends to enable 
+by setting the flags in setup.py, but the 'auto' flags will work in most 
+cases, as matplotlib tries to find a GUI and build the backend accordingly.  
+If you know you don't want a particular backend or extension, you can set 
+that flag to \val{False}.
   
 Most users will want to set \code{BUILD\_AGG = 1} and one or more of
 the GUI backends to \val{True}.  Exceptions to this are if you know
@@ -634,13 +623,6 @@ the header to some required library is in
 \fname{/some/path/include/somheader.h}, put \fname{/some/path} in the
 basedir list for your platform.
   
-Note, matplotlib works with with Numeric or numarray, but it is
-important that you set \code{NUMERIX} in \fname{setup.py} to the array
-package you typically use, for efficiency reasons.  For performance, it
-is critical that the numerix settings in \fname{setup.py} and in your
-\fname{.matplotlibrc} file are the same, and are the same as the array
-package you typically use.
-  
 Note that if you install matplotlib anywhere other than the default
 location, you will need to set the \code{MATPLOTLIBDATA} environment
 variable to point to the install base dir.  Eg, if you install
@@ -652,26 +634,24 @@ then set \code{MATPLOTLIBDATA} to\\
 \subsection{Installing on windows}
 
 If you don't already have python installed, you may want to consider
-using the enthought edition of python, which has scipy, Numeric, and
-wxpython, plus a lot of other goodies, preinstalled -
+using the enthought edition of python, which has scipy, Numeric, numpy, 
+and wxpython, plus a lot of other goodies, preinstalled -
 \url{http://www.enthought.com/python} .  With the enthought edition of
 python + matplotlib installer, the following backends should work out
 of the box: agg, wx, wxagg, tkagg, ps and svg.
 
-For standard python installations, you will also need to install
-either Numeric or numarray in addition to the matplotlib installer.
-matplotlib provides installers for Numeric and numarray users.  It is
-important that you pick the matplotlib installer that corresponds to
-your array package.  Ie, if you mostly work with numarray arrays, use
-the matplotlib numarray installer.  matplotlib has a 'numerix' setting
-in the matplotlib rc file should make sure this setting corresponds to
-your preferred array package; Sections~\ref{sec:numerix} and
-\ref{sec:matplotlibrc}. With a standard python + Numeric/numarray +
-matplotlib, the following backends should work on windows: agg, tkagg,
-ps, svg.  If you want others, eg a wx, wxagg, gtk or gtkagg, you'll
+For standard python installations, you will also need to install either 
+Numeric, numarray, or NumPy in addition to the matplotlib installer.
+matplotlib has a 'numerix' setting in the matplotlib rc file should make 
+sure this setting corresponds to your preferred array package; 
+Sections~\ref{sec:numerix} and \ref{sec:matplotlibrc}. With a standard 
+python + Numeric/numarray/NumPy + matplotlib, the following 
+backends should work on windows: agg, tkagg, ps, svg.  If you want 
+others, eg a wx, wxagg, gtk, gtkagg, qtagg or qt4agg, you'll
 need to install the requisite GUI toolkits.  This is fairly easy, as
-both wxpython and pygtk come with windows friendly installers.  The
-latter includes an additional requirement of the GTK runtime.
+wxpython, pygtk, and PyQt4 come with windows friendly installers.  
+PyGTK includes an additional requirement of the GTK runtime. PyQt 
+requires the Qt library.
 
 All of the GUI backends run on windows, but TkAgg is probably the best
 for interactive use from the standard python shell or ipython.  The
@@ -682,7 +662,7 @@ many demos that come in the matplotlib src distribution, download the
 zip file and look in the examples subdir.
 
 \textbf{Important:} There are known conflicts with some of the
-backends with some python IDEs such as pycrust, idle.  If you want to
+backends with some python IDEs such as pycrust and idle.  If you want to
 use matplotlib from an IDE, please consult
 \url{http://matplotlib.sf.net/backends.html} for compatibility
 information.  You will have the greatest likelihood of success if you
@@ -815,7 +795,7 @@ needed to produce plots, the extra matlab compatible, non-plotting
 functions found in \mpldoc{matplotlib.mlab} and all of the
 matplotlib.numerix code needed to create and manipulate arrays.  The
 latter import depends on your \rc{numerix} setting in
-\fname{.matplotlibrc}, as described in Sections~\ref{sec:numerix} and
+\fname{matplotlibrc}, as described in Sections~\ref{sec:numerix} and
 \ref{sec:matplotlibrc}; ie, when you import
 \mpldoc{pylab}, you will either get all of Numeric or all
 of numarray depending on your \rc{numerix} setting.
@@ -835,12 +815,12 @@ canvas is redrawn after every command that affects the figure.  When
 working in script mode, this is inefficient.  In this case, you only
 want the figure to be drawn once, either to the GUI window or saved to
 a file.  To handle these two cases, matplotlib has an \rc{interactive}
-setting in \fname{.matplotlibrc}.  When \rc{interactive : True}, the
+setting in \fname{matplotlibrc}.  When \rc{interactive : True}, the
 figure will be redrawn with each command.  When \rc{interactive :
   False}, the figure will be drawn only when there is a call to
 \func{show} or \func{savefig}.  In the examples that follow, I'll
 assume you have set \rc{interactive : True} in your
-\fname{.matplotlibrc} file and are working from an interactive python
+\fname{matplotlibrc} file and are working from an interactive python
 shell using a compatible backend.  Please make sure you have read and
 understood Sections~\ref{sec:matplotlibrc}, \ref{sec:intro_backends}
 and \ref{sec:ides} before trying these examples.
@@ -902,7 +882,7 @@ plotting commands are superimposed over previous commands.  When hold
 is off, the plot is cleared with every plotting command.  This is
 controlled by the \func{hold} command, which can be called like
 \code{hold(True)} or \code{hold(False)}.  The default setting is in
-\fname{.matplotlibrc} as \rc{axes.hold : True}, which you can change
+\fname{matplotlibrc} as \rc{axes.hold : True}, which you can change
 according to your preferences.  To clear the previous plot and reissue
 the plot command for just the sine wave, you can use \func{cla} to
 clear the current axes and \func{clf} to clear the current figure, or
@@ -1746,7 +1726,7 @@ The following \carg{interpolation} schemes are available:
 \val{bicubic, bilinear, blackman100, blackman256, blackman64, nearest,
   sinc144, sinc256, sinc64, spline16, and spline36}.  The default
 interpolation method is given by the value of \rc{image.interpolation}
-in your \fname{.matplotlibrc} file.  \carg{aspect} can be either
+in your \fname{matplotlibrc} file.  \carg{aspect} can be either
 \val{preserve} or \val{free} which will constrain the aspect ratio of
 the image or not, respectively.  The default aspect setting is given
 by the value of the rc parameter \rc{image.aspect}.
@@ -2049,7 +2029,7 @@ interfaces: classic and toolbar2.  You can use these to change the
 view limits of the axes in the figure.  toolbar2 superceeds classic
 and was designed to overcome shortcomings of the classic toolbar.  The
 default toolbar is determined by the \rc{toolbar} parameter in
-\fname{.matplotlibrc}.
+\fname{matplotlibrc}.
 
 \subsection{Classic toolbar}
 \label{sec:toolbar_classic}
@@ -2241,7 +2221,7 @@ order of priority associated with them.  You describe which family you
 want by choosing, eg, \code{family='serif'}, and the font manager will
 search the font.serif list looking for one of the named fonts on your
 system.  The lists are user configurable, and reside in your
-\fname{.matplotlibrc}.
+\fname{matplotlibrc}.
 
 This allows you to choose your family in your matplotlib script and
 the font manager will try and find the best font no matter which
@@ -3074,9 +3054,9 @@ updated; see Figure~\ref{fig:show}.
 
 \appendix
 
-\chapter{A sample \fname{.matplotlibrc}}
+\chapter{A sample \fname{matplotlibrc}}
 \label{cha:rc}
-\lstinputlisting{code/.matplotlibrc}
+\lstinputlisting{code/matplotlibrc}
 
 \chapter{mathtext symbols}
 \label{cha:math_symbols}

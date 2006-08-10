@@ -31,8 +31,8 @@ plot(t, s1, markersize=15, marker='d', \
 
 clf()
 lines = plot(t, s1)
-set(lines, markersize=15, marker='d', \
-    markerfacecolor='g', markeredgecolor='r')
+setp(lines, markersize=15, marker='d', \
+     markerfacecolor='g', markeredgecolor='r')
 
 clf()
 line, = plot(t, s1)

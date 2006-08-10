@@ -8,7 +8,7 @@ s = sin(2*2*pi*t)
 # yellow circles with red edge color
 plot(t, s, 'yo', markeredgecolor='r')                     
 xlabel('time (s)', color='b')       # xlabel is blue
-ylabel('voltage (mV)', color=0.5)   # ylabel is light gray
+ylabel('voltage (mV)', color='0.5')   # ylabel is light gray
 title("Don't try this at home, folks", color='#afeeee')
 
 savefig('../figures/color_demo.eps')
