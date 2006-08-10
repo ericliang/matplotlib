@@ -8,7 +8,7 @@ all:
 
 clean: 	
 	find . \( -name "*~" -o -name "*.pyc" -o -name "#*" \) | xargs rm -f;\
-	rm -f *.log *.aux *.dvi *.bbl *.blg *.toc
+	rm -f *.log *.aux *.dvi *.bbl *.blg *.toc *.out *.backup
 
 
 pdf: 	
