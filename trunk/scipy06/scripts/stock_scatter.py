@@ -27,7 +27,7 @@ class DailyData:
             converters={0:datestr2num},
             skiprows=1, unpack=True)            
 
-if 0:  # pay the load only once in interactive mode
+if 1:  # pay the load only once in interactive mode
     tickerd = dict()
     for ticker in tickers:
         tickerd[ticker] = DailyData(ticker)
