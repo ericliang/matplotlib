@@ -3,6 +3,7 @@ Download the daily stock data for the NASDAQ 100 and put the results
 in CSV files
 """
 import datetime, urllib, os
+ 
 
 datadir = os.path.join('..', 'data')
 tickerfile = os.path.join(datadir, 'nasdaq100.dat')
