@@ -8,13 +8,13 @@ datadir = os.path.join('..', 'data')
 tickerfile = os.path.join(datadir, 'nasdaq100.dat')
 tickers = [line.strip() for line in file(tickerfile)]
 
-monthd = dict(Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6, Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12)
+months = dict(Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6, Jul=7, Aug=8, Sep=9,
+              Oct=10, Nov=11, Dec=12)
+
 def todatenum(s):
     #y, m, d = time.strptime(s, '%d-%b-%y')[:3]
     y,m,d = s.split('-')
-    y, d = map(int, (y, d))
-    m = monthd[m]
-    return date2num(datetime.date(y, m, d))
+    return date2num(datetime.date(int(y), months[m], int(d)))
 
 class StockDaily:
 
@@ -26,7 +26,7 @@ class StockDaily:
         #s = file(tickerfile).read()
         if 1:
             # datestr2num is slow but it's easy
-            (self.date, self.open, self.high, self.low,
+            (self.date, self.openr, self.high, self.low,
              self.close, self.volume, self.adjclose) = load(
                 tickerfile, delimiter=',',
                 converters={0:todatenum},            
