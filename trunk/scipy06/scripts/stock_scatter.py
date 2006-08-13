@@ -10,12 +10,10 @@ tickers = [line.strip() for line in file(tickerfile)]
 
 def todatenum(s):
     y, m, d = time.strptime(s, '%d-%b-%y')[:3]
-    #dt = datetime.date(y, m, d)
-    #n = date2num(dt)
-    return 1.
-
-def test(s):
-    return 1.
+    dt = datetime.date(y, m, d)
+    n = date2num(dt)
+    #return 1.
+    return n
 
 class StockDaily:
 
@@ -30,8 +28,8 @@ class StockDaily:
             (self.date, self.open, self.high, self.low,
              self.close, self.volume, self.adjclose) = load(
                 tickerfile, delimiter=',',
-                converters={0:todatenum},            
-                #converters={0:datestr2num},
+                #converters={0:todatenum},            
+                converters={0:datestr2num},
                 skiprows=1, unpack=True)            
 
 
