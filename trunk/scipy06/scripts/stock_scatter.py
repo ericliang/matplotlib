@@ -9,6 +9,15 @@ datadir = os.path.join('..', 'data')
 tickerfile = os.path.join(datadir, 'nasdaq100.dat')
 tickers = [line.strip() for line in file(tickerfile)]
 
+def autocorr(x, lag=1):
+    """Returns the autocorrelation x."""
+    x = nx.asarray(x)
+    mu = nx.mlab.mean(x)
+    sigma = nx.mlab.std(x)
+    return nx.dot(x[:-lag]-mu, x[lag:]-mu)/(sigma**2.)/(len(x) - lag)
+
+                
+
 # snippet 2 date converters
 
 class DailyData:
