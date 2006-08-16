@@ -16,6 +16,7 @@ OO resources:
   Tutorial: http://matplotlib.sourceforge.net/leftwich_tut.txt
   Examples:
     http://matplotlib.sourceforge.net/examples/pythonic_matplotlib.py
+    http://matplotlib.sourceforge.net/examples/agg_oo.py
   pylab: http://svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/lib/matplotlib/pylab.py?view=markup
 
 
