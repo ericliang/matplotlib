@@ -57,3 +57,21 @@ def to_datenum2(s):
             label.set_rotation(40)
 
         fig.subplots_adjust(bottom=0.15, hspace=0.05)        
+
+
+## snippet 4: button press handling
+
+def onpress(event):
+    if not event.inaxes: return 
+    if event.button!=1: return
+    # click location in screen coords
+    xy = nx.array((event.x, event.y))
+    for p in points:
+        # transform point center to screen coords
+        pxy = nx.array(event.inaxes.transData.xy_tup((p.x, p.y)))
+        d = dist(xy, pxy)
+        if d<5: # pixel space
+            print 'hit!'
+            fig = figure()
+            p.plotraw(fig)
+            draw()

@@ -1,7 +1,7 @@
 import os, sys, datetime, csv, time
 import matplotlib.numerix as nx
 from matplotlib.dates import date2num, datestr2num
-from matplotlib.mlab import load
+from matplotlib.mlab import load, dist
 from pylab import figure, show, draw
 import dateutil.parser
 
@@ -15,8 +15,6 @@ def autocorr(x, lag=1):
     mu = nx.mlab.mean(x)
     sigma = nx.mlab.std(x)
     return nx.dot(x[:-lag]-mu, x[lag:]-mu)/(sigma**2.)/(len(x) - lag)
-
-                
 
 # snippet 2 date converters
 
@@ -57,8 +55,8 @@ class ScatterPoint:
       color: the color of the marker; can be a colormappable scalar'
       """
 
-    def plotraw(self, fig):
-        'plot the raw time data in the Figure instance'
+    def plotraw(self):
+        'plot the raw data'
         pass
 
 
@@ -70,13 +68,15 @@ class DailyPoint(ScatterPoint):
 
         close = dailydata.close
 
+        mu, sigma = nx.mlab.mean, nx.mlab.std
+
         # compute some statistics of daily and total returns
-        self.dailyreturn = (close[1:]-close[:-1])/close[:-1]
+        self.dailyreturn = g = (close[1:]-close[:-1])/close[:-1]
         self.totalreturn = (close[-1] - close[0])/close[0]
-        self.mudaily = nx.mlab.mean(self.dailyreturn)
-        self.sigmadaily = nx.mlab.std(self.dailyreturn)
-        self.totalvolume = nx.mlab.mean(dailydata.volume)
-        self.lag1corr = nx.mlab.corrcoef(self.dailyreturn[1:], self.dailyreturn[:-1])[0,1]
+        self.mudaily = mu(g)
+        self.sigmadaily = sigma(g)
+        self.totalvolume = sigma(dailydata.volume)
+        self.lag1corr = autocorr(g, lag=1)
 
         # Assign the attributes needed for the scatter point interface
         self.x = self.lag1corr
@@ -84,31 +84,45 @@ class DailyPoint(ScatterPoint):
         self.size = nx.log(self.totalvolume)
         self.color = self.totalreturn
 
-    def plotraw(self, fig):
+    def plotraw(self):
+        fig = figure()
         dd = self.dailydata
         fig.clf()
         ax1 = fig.add_subplot(211)
         ax1.plot_date(dd.date, dd.close, '-')
         
-        ax2 = fig.add_subplot(212, sharex=ax1) # sharex
+        ax2 = fig.add_subplot(212) # sharex
         ax2.bar(dd.date, dd.volume)
         ax2.xaxis_date()
 
         ## snippet 3 customizations
 
+        draw()
+
+## snippet 4: button press handling
+def onpress(event):
+    if not event.inaxes: return 
+    if event.button!=1: return
+    # click location in screen coords
+    clickxy = nx.array((event.x, event.y))
+    transform = event.inaxes.transData.xy_tup
+    for p in points:
+        # transform point center to screen coords
+        pntxy = nx.array(transform((p.x, p.y)))
+        d = dist(clickxy, pntxy)
+        if d<5: # pixel space
+            print 'hit!'
+            p.plotraw()
+        
 if 1:
     points = [DailyPoint(dailydata) for dailydata in tickerd.values()]
     data = [(p.x, p.y, p.size, p.color) for p in points]
     x, y, size, color = zip(*data)
 
-if 0:
-    fig = figure()
+if 1:
+    fig = figure(1); fig.clf()
     ax = fig.add_subplot(111)
     ax.scatter(x, y, size, color, alpha=0.75)
+    fig.canvas.mpl_connect('button_press_event', onpress)
 
-if 1:
-    fig = figure(2)
-    p = points[0]
-    p.plotraw(fig)
-    draw()
 show()
