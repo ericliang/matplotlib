@@ -4,7 +4,6 @@ in CSV files
 """
 import datetime, urllib, os
  
-
 datadir = os.path.join('..', 'data')
 tickerfile = os.path.join(datadir, 'nasdaq100.dat')
 startdate = datetime.date(2005,1,1)
