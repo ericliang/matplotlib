@@ -178,7 +178,8 @@ class _process_plot_var_args:
         self.count = 0
 
     def __call__(self, *args, **kwargs):
-        ret =  self._grab_next_args(*args, **kwargs)
+        kwargs_copy = kwargs.copy()
+        ret =  self._grab_next_args(*args, **kwargs_copy)
         return ret
 
     def set_lineprops(self, line, **kwargs):
@@ -189,6 +190,8 @@ class _process_plot_var_args:
                 raise TypeError, 'There is no line property "%s"'%key
             func = getattr(line,funcName)
             func(val)
+        if 'xunits' in kwargs or 'yunits' in kwargs:
+            line.update_units()
 
     def set_patchprops(self, fill_poly, **kwargs):
         assert self.command == 'fill', 'set_patchprops only works with "fill"'
@@ -198,7 +201,6 @@ class _process_plot_var_args:
                 raise TypeError, 'There is no patch property "%s"'%key
             func = getattr(fill_poly,funcName)
             func(val)
-
 
     def is_filled(self, marker):
         filled = ('o', '^', 'v', '<', '>', 's',
@@ -215,6 +217,7 @@ class _process_plot_var_args:
             color = self.colors[int(self.count % self.Ncolors)]
 
         assert(iterable(y))
+
         try: N=max(y.shape)
         except AttributeError: N = len(y)
         ret =  Line2D(arange(N), y,
@@ -230,7 +233,9 @@ class _process_plot_var_args:
 
             assert self.command == 'plot', 'fill needs at least 2 non-string arguments'
             y, fmt = tup2
+      
             assert(iterable(y))
+
             linestyle, marker, color = _process_plot_format(fmt)
 
             if self.is_filled(marker): mec = None # use default
@@ -266,8 +271,10 @@ class _process_plot_var_args:
             return ret
 
     def _plot_3_args(self, tup3, **kwargs):
+        kwargs_copy = kwargs.copy()
         if self.command == 'plot':
             x, y, fmt = tup3
+
             assert(iterable(x))
             assert(iterable(y))
 
@@ -280,14 +287,14 @@ class _process_plot_var_args:
                          markerfacecolor=color,
                          markeredgecolor=mec,
                          )
-            self.set_lineprops(ret, **kwargs)
+            self.set_lineprops(ret, **kwargs_copy)
         if self.command == 'fill':
             x, y, facecolor = tup3
             ret = Polygon(zip(x,y),
                           facecolor = facecolor,
                           fill=True,
                           )
-            self.set_patchprops(ret, **kwargs)
+            self.set_patchprops(ret, **kwargs_copy)
         return ret
 
     def _grab_next_args(self, *args, **kwargs):
@@ -326,6 +333,12 @@ def makeValue(v):
     else:
         return Value(v)
 
+def units_conversion(x, units):
+    if (units and hasattr(x, 'convert_to')):
+        x = x.convert_to(units)
+    if (hasattr(x, 'get_value')):
+        x = x.get_value()
+    return x
 
 class Axes(Artist):
     """
@@ -350,6 +363,10 @@ class Axes(Artist):
         self.set_aspect('auto')
         self.set_adjustable('box')
         self.set_anchor('C')
+
+        # unit locator/formatter maps
+        self._unit_locator_map = None
+        self._unit_formatter_map = None
 
         # must be set before set_figure
         self._sharex = sharex
@@ -379,6 +396,11 @@ class Axes(Artist):
         self.fmt_xdata = None
         self.fmt_ydata = None
 
+        # unit information
+        self._xunits = None
+        self._yunits = None
+        self._pending_units_change = False
+
         self.set_cursor_props((1,'k')) # set the cursor properties for axes
 
         self._cachedRenderer = None
@@ -387,14 +409,142 @@ class Axes(Artist):
 
         if len(kwargs): setp(self, **kwargs)
 
-    def get_window_extent(self, *args, **kwargs):
-        'get the axes bounding box in display space'
-        return self.bbox
-    
     def _init_axis(self):
         "move this out of __init__ because non-separable axes don't use it"
         self.xaxis = XAxis(self)
         self.yaxis = YAxis(self)
+
+    _default_unit_locator_map = None
+    _default_unit_formatter_map = None
+
+    def _set_default_unit_to_locator_map(map_fn):
+        Axes._default_unit_locator_map = staticmethod(map_fn)
+    def _get_default_unit_to_locator_map():
+        return Axes._default_unit_locator_map
+    set_default_unit_to_locator_map = \
+        staticmethod(_set_default_unit_to_locator_map) 
+    get_default_unit_to_locator_map = \
+        staticmethod(_get_default_unit_to_locator_map)
+
+    def set_unit_to_locator_map(self, map_fn):
+        self._unit_locator_map = map_fn
+    def get_unit_to_locator_map(self):
+        return self._unit_locator_map
+
+    def _set_default_unit_to_formatter_map(map_fn):
+        Axes._default_unit_formatter_map = staticmethod(map_fn)
+    def _get_default_unit_to_formatter_map():
+        return Axes._default_unit_formatter_map
+    set_default_unit_to_formatter_map = \
+        staticmethod(_set_default_unit_to_formatter_map) 
+    get_default_unit_to_formatter_map = \
+        staticmethod(_get_default_unit_to_formatter_map)
+
+    def set_unit_to_formatter_map(self, map_fn):
+        self._unit_formatter_map = map_fn
+    def get_unit_to_formatter_map(self):
+        return self._unit_formatter_map
+
+    def _set_locators_for_units(self, units, axis):
+        fn = self.get_unit_to_locator_map()
+        if (not fn):
+            fn = Axes.get_default_unit_to_locator_map() 
+        set_locators = False
+        if (fn):
+            try:
+                locators = fn(units)
+                axis.set_major_locator(locators[0])
+                axis.set_minor_locator(locators[1])
+                set_locators = True
+            except: pass
+        if (not set_locators):
+            axis.set_major_locator(AutoLocator())
+            axis.set_minor_locator(NullLocator())
+        
+    def _set_formatters_for_units(self, units, axis):
+        fn = self.get_unit_to_formatter_map()
+        if (not fn):
+            fn = Axes.get_default_unit_to_formatter_map()
+        set_formatters = False
+        if (fn):
+            try: 
+                formatters = fn(units)
+                axis.set_major_formatter(formatters[0])
+                axis.set_minor_formatter(formatters[1])
+                set_formatters = True
+            except: pass
+        if (not set_formatters):
+            axis.set_major_formatter(ScalarFormatter())
+            axis.set_minor_formatter(NullFormatter())
+                 
+    def _update_units_args(self, kwarg_set):
+        "update a set of args to include the default x/y unit settings"
+        kwarg_set['xunits'] = kwarg_set.get('xunits', self._xunits)
+        kwarg_set['yunits'] = kwarg_set.get('yunits', self._yunits)
+        self.set_units(kwarg_set['xunits'], kwarg_set['yunits'])
+
+    def update_units_in_child_artists(self):
+        """update the xunits, yunits in child artists"""
+
+        if (not self._pending_units_change):
+            return
+
+        artists = [] 
+        artists.extend(self.collections)
+        artists.extend(self.patches)
+        artists.extend(self.lines)
+
+        for artist in artists:
+            try:
+                artist.set_xunits(self._xunits, update=False)
+                artist.set_yunits(self._yunits, update=False)
+                artist.update_units()
+            except:
+                pass
+        self._pending_units_change = False
+
+    def set_units(self, xunits, yunits):
+        """
+        Set the Axes unit for the x axis and for the y axis
+
+        ACCEPTS: a Unit instance for the x axis and a Unit instance
+                 for the y axis
+        """
+        self.set_xunits(xunits, update=False)
+        self.set_yunits(yunits, update=False)
+        self.update_units_in_child_artists()
+
+    def set_xunits(self, xunits, update=True):
+        """
+        Set the Axes unit for the x axis
+
+        ACCEPTS: a Unit instance
+        """
+        if (self._xunits == xunits):
+            return
+
+        self._xunits = xunits
+        self._set_locators_for_units(xunits, self.xaxis)
+        self._set_formatters_for_units(xunits, self.xaxis)
+        self._pending_units_change = True
+        if (update):
+            self.update_units_in_child_artists()
+
+    def set_yunits(self, yunits, update=True):
+        """
+        Set the Axes unit for the y axis
+      
+        ACCEPTS: a Unit instance
+        """
+        if (self._yunits == yunits):
+            return
+
+        self._yunits = yunits
+        self._set_locators_for_units(yunits, self.yaxis)
+        self._set_formatters_for_units(yunits, self.yaxis)
+        self._pending_units_change = True
+        if (update):
+            self.update_units_in_child_artists()
 
     def set_figure(self, fig):
         """
@@ -861,7 +1011,6 @@ class Axes(Artist):
 
     def add_artist(self, a):
         'Add any artist to the axes'
-        a.axes = self  # refer to parent
         self.artists.append(a)
         self._set_artist_props(a)
 
@@ -1207,12 +1356,15 @@ class Axes(Artist):
 
         ACCEPTS: len(2) sequence of floats
         """
+        # convert x axis units
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
 
         vmin, vmax = self.get_xlim()
 
-        xmin = popd(kwargs, 'xmin', None)
-        xmax = popd(kwargs, 'xmax', None)
-        emit = popd(kwargs, 'emit', False)
+        xmin = popd(kwargs_copy, 'xmin', None)
+        xmax = popd(kwargs_copy, 'xmax', None)
+        emit = popd(kwargs_copy, 'emit', False)
         if len(args)!=0 and (xmin is not None or xmax is not None):
             raise TypeError('You cannot pass args and xmin/xmax kwargs')
 
@@ -1225,6 +1377,9 @@ class Axes(Artist):
             vmin, vmax = args
         else:
             raise ValueError('args must be length 0, 1 or 2')
+
+        vmin = units_conversion(vmin, self._xunits)
+        vmax = units_conversion(vmax, self._xunits)
 
         if self.transData.get_funcx().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -1330,6 +1485,9 @@ class Axes(Artist):
 
         ACCEPTS: len(2) sequence of floats
         """
+        # convert x axis units
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
 
         vmin, vmax = self.get_ylim()
 
@@ -1348,6 +1506,9 @@ class Axes(Artist):
             vmin, vmax = args
         else:
             raise ValueError('args must be length 0, 1 or 2')
+
+        vmin = units_conversion(vmin, self._yunits)
+        vmax = units_conversion(vmax, self._yunits)
 
         if self.transData.get_funcy().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -1889,9 +2050,14 @@ class Axes(Artist):
             #extent of the axes
             axhspan(0.25, 0.75, facecolor='0.5', alpha=0.5)
         """
+        # convert y axis units
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
+        y = units_conversion(y, self._yunits)
+        
         trans = blend_xy_sep_transform( self.transAxes, self.transData  )
         verts = (xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)
-        p = Polygon(verts, **kwargs)
+        p = Polygon(verts, **kwargs_copy)
         p.set_transform(trans)
         self.add_patch(p)
         return p
@@ -1926,11 +2092,14 @@ class Axes(Artist):
             axvspan(1.25, 1.55, facecolor='g', alpha=0.5)
 
         """
-
+        # convert x axis units
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
+        x = units_conversion(x, self._xunits)
 
         trans = blend_xy_sep_transform( self.transData, self.transAxes   )
         verts = [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]
-        p = Polygon(verts, **kwargs)
+        p = Polxgon(verts, **kwargs_copy)
         p.set_transform(trans)
         self.add_patch(p)
 
@@ -1953,6 +2122,12 @@ class Axes(Artist):
         """
         linestyle, marker, color = _process_plot_format(fmt)
 
+        # convert, if necessary
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
+        xmin = units_conversion(xmin, self._xunits)
+        xmax = units_conversion(xmax, self._xunits)
+        y    = units_conversion(y, self._yunits)
 
         if not iterable(y): y = [y]
         if not iterable(xmin): xmin = [xmin]
@@ -2000,6 +2175,14 @@ class Axes(Artist):
         """
         linestyle, marker, color = _process_plot_format(fmt)
 
+        # convert, if necessary
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
+        xunits = kwargs_copy.pop('xunits', None)
+        yunits = kwargs_copy.pop('yunits', None)
+        ymin = units_conversion(ymin, self._yunits)
+        ymax = units_conversion(ymax, self._yunits)
+        x    = units_conversion(x, self._xunits)
 
         if not iterable(x): x = [x]
         if not iterable(ymin): ymin = [ymin]
@@ -2121,6 +2304,7 @@ class Axes(Artist):
         """
 
         d = kwargs.copy()
+        self._update_units_args(d)
         scalex = d.pop('scalex', True)
         scaley = d.pop('scaley', True)
         if not self._hold: self.cla()
@@ -2502,7 +2686,6 @@ class Axes(Artist):
             (iterable(edgecolor) and len(edgecolor)==3 and nbars!=3) or
             not iterable(edgecolor)):
             edgecolor = [edgecolor]*nbars
-
         if yerr is not None:
             if not iterable(yerr):
                 yerr = asarray([yerr]*nbars, Float) 
@@ -2524,7 +2707,6 @@ class Axes(Artist):
         assert len(bottom)==nbars, 'bar() argument \'bottom\' must be len(%s) or scalar' % lenarg
         assert len(color)==nbars, 'bar() argument \'color\' must be len(%s) or scalar' % lenarg
         assert len(edgecolor)==nbars, 'bar() argument \'edgecolor\' must be len(%s) or scalar' % lenarg
-
         if yerr is not None: assert len(yerr)==nbars, 'bar() argument \'yerr\' must be len(%s) or scalar' % lenarg
         if xerr is not None: assert len(xerr)==nbars, 'bar() argument \'xerr\' must be len(%s) or scalar' % lenarg
 
@@ -3160,6 +3342,9 @@ class Axes(Artist):
            markers.  If False, will set the edgecolors to be the same
            as the facecolors
            """
+        # convert, if necessary
+        kwargs_copy = kwargs.copy()
+        self._update_units_args(kwargs_copy)
 
         if not self._hold: self.cla()
 
@@ -3176,11 +3361,22 @@ class Axes(Artist):
             '8' : (8,0),             # octagon
             }
 
+        x_original, y_original = x, y
+        if (hasattr(x, 'get_value')):
+            x = x.get_value()
+        if (hasattr(y, 'get_value')):
+            y = y.get_value()
+
         x, y, s, c = delete_masked_points(x, y, s, c)
 
-        if kwargs.has_key('color'):
-            c = kwargs['color']
-            kwargs.pop('color')
+        if (hasattr(x_original, 'attach_unit_to_value')):
+            x = x_original.attach_unit_to_value(x)
+        if (hasattr(y_original, 'attach_unit_to_value')):
+            y = y_original.attach_unit_to_value(y)
+
+        if kwargs_copy.has_key('color'):
+            c = kwargs_copy['color']
+            kwargs_copy.pop('color')
         if not is_string_like(c) and iterable(c) and len(c)==len(x):
             colors = None
         else:
@@ -3230,7 +3426,7 @@ class Axes(Artist):
                 )
             collection.set_transform(identity_transform())
         collection.set_alpha(alpha)
-        collection.update(kwargs)
+        collection.update(kwargs_copy)
 
         if colors is None:
             if norm is not None: assert(isinstance(norm, normalize))
@@ -3503,9 +3699,11 @@ class Axes(Artist):
         property that has a set_* method).  You can use this to set edge
         color, face color, etc.
         """
+        d = kwargs.copy()
+        self._update_units_args(d)
         if not self._hold: self.cla()
         patches = []
-        for poly in self._get_patches_for_fill(*args, **kwargs):
+        for poly in self._get_patches_for_fill(*args, **d):
             self.add_patch( poly )
             patches.append( poly )
         self.autoscale_view()

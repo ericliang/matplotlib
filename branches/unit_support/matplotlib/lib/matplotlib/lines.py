@@ -139,6 +139,8 @@ class Line2D(Artist):
                  solid_capstyle = None,
                  dash_joinstyle = None,
                  solid_joinstyle = None,
+                 xunits          = None,
+                 yunits          = None,
                  **kwargs
                  ):
         """
@@ -187,6 +189,8 @@ class Line2D(Artist):
         self.set_solid_capstyle(solid_capstyle)
         self.set_solid_joinstyle(solid_joinstyle)
 
+        self.set_xunits(xunits)
+        self.set_yunits(yunits)
 
         self._linestyle = linestyle
         self._linewidth = linewidth
@@ -242,6 +246,28 @@ class Line2D(Artist):
             height += ms
         return lbwh_to_bbox( left, bottom, width, height)
 
+    def set_xunits(self, xunits):
+        """
+        Set the desired units for the x axis
+
+        ACCEPTS: (unit xunits)
+        """
+        self._xunits = xunits
+
+    def set_yunits(self, yunits):
+        """
+        Set the desired units for the y axis
+
+        ACCEPTS: (unit yunits)
+        """
+        self._yunits = yunits
+
+    def update_units(self):
+        """
+        Update original data for to account for new desired units.
+        """
+
+        self.set_data(self._x_orig, self._y_orig)
 
     def set_data(self, *args):
         """
@@ -257,6 +283,8 @@ class Line2D(Artist):
 
         self._x_orig = x
         self._y_orig = y
+
+        x, y = self._convert_units((x, self._xunits), (y, self._yunits))
 
         x = ma.ravel(x)
         y = ma.ravel(y)
@@ -484,7 +512,7 @@ class Line2D(Artist):
         try: del self._xsorted
         except AttributeError: pass
 
-        self.set_data(x, self.get_ydata())
+        self.set_data(x, self._y_orig)
 
     def set_ydata(self, y):
         """
@@ -493,7 +521,7 @@ class Line2D(Artist):
         ACCEPTS: array
         """
 
-        self.set_data(self.get_xdata(), y)
+        self.set_data(self._x_orig, y)
 
 
     def set_dashes(self, seq):

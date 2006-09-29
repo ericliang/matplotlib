@@ -106,8 +106,25 @@ class PatchCollection(Collection, ScalarMappable):
         self._linewidths  = linewidths
         self._antialiaseds = antialiaseds
         self._offsets = offsets
+        self._original_offsets = offsets
         self._transOffset = transOffset
+        self._xunits = self._yunits = None
 
+    def set_xunits(self, units, update=True):
+        self._xunits = units
+        if (update):
+            self.update_units()
+
+    def set_yunits(self, units, update=True):
+        self._yunits = units
+        if (update):
+            self.update_units()
+
+    def update_units(self):
+        # convert _original_offsets
+        self._offsets = \
+            [self._convert_units((x, self._xunits), (y, self._yunits)) 
+             for x,y in self._original_offsets]
 
     def set_linewidth(self, lw):
         """

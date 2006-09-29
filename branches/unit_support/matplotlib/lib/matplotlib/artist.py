@@ -44,7 +44,21 @@ class Artist:
         self._oid = 0  # an observer id
         self._propobservers = {} # a dict from oids to funcs
 
-
+    def _convert_units(self, *args):
+        """Useful conversion routine for performing many values
+           with corresponding units.
+           Parameters:
+             args - sequence of tuples (value, desired unit)
+           Returns:
+             tuple of converted arguments
+        """
+        def convert_one(value, unit):
+            if (unit and hasattr(value, 'convert_to')):
+                value = value.convert_to(unit)
+            if (hasattr(value, 'get_value')):
+                value = value.get_value()
+            return value
+        return tuple([convert_one(value, unit) for value, unit in args]) 
 
     def add_callback(self, func):
         oid = self._oid
