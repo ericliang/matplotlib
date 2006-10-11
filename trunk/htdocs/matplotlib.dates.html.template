@@ -85,12 +85,14 @@ Date&nbsp;formatters<br>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
-<a href="locale.html">locale</a><br>
+<a href="dateutil.html">dateutil</a><br>
+</td><td width="25%" valign=top><a href="locale.html">locale</a><br>
+<a href="math.html">math</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
 <a href="re.html">re</a><br>
 </td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 <a href="time.html">time</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -172,6 +174,8 @@ Data and other attributes defined here:<br>
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>
 <dl><dt><a name="DateFormatter-format_data"><strong>format_data</strong></a>(self, value)</dt></dl>
+
+<dl><dt><a name="DateFormatter-format_data_short"><strong>format_data_short</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;short&nbsp;string&nbsp;version</tt></dd></dl>
 
 <dl><dt><a name="DateFormatter-get_offset"><strong>get_offset</strong></a>(self)</dt></dl>
 
@@ -403,6 +407,8 @@ strftime&nbsp;format&nbsp;string</tt></dd></dl>
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>
 <dl><dt><a name="IndexDateFormatter-format_data"><strong>format_data</strong></a>(self, value)</dt></dl>
+
+<dl><dt><a name="IndexDateFormatter-format_data_short"><strong>format_data_short</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;short&nbsp;string&nbsp;version</tt></dd></dl>
 
 <dl><dt><a name="IndexDateFormatter-get_offset"><strong>get_offset</strong></a>(self)</dt></dl>
 
@@ -934,7 +940,7 @@ Methods inherited from <a href="dateutil.rrule.html#rrulebase">rrulebase</a>:<br
 
 <dl><dt><a name="rrule-between"><strong>between</strong></a>(self, after, before, inc<font color="#909090">=False</font>)</dt></dl>
 
-<dl><dt><a name="rrule-count"><strong>count</strong></a>(self)</dt></dl>
+<dl><dt><a name="rrule-count"><strong>count</strong></a>(self)</dt><dd><tt>#&nbsp;__len__()&nbsp;introduces&nbsp;a&nbsp;large&nbsp;performance&nbsp;penality.</tt></dd></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -952,6 +958,8 @@ minutes,&nbsp;seconds)&nbsp;since&nbsp;0001-01-01&nbsp;00:00:00&nbsp;UTC</tt></d
 are&nbsp;datetime&nbsp;instances.&nbsp;&nbsp;delta&nbsp;is&nbsp;a&nbsp;datetime.timedelta&nbsp;instance</tt></dd></dl>
  <dl><dt><a name="-epoch2num"><strong>epoch2num</strong></a>(e)</dt><dd><tt>convert&nbsp;an&nbsp;epoch&nbsp;or&nbsp;sequence&nbsp;of&nbsp;epochs&nbsp;to&nbsp;the&nbsp;new&nbsp;date&nbsp;format,<br>
 days&nbsp;since&nbsp;0001</tt></dd></dl>
+ <dl><dt><a name="-hours"><strong>hours</strong></a>(h)</dt><dd><tt>return&nbsp;hours&nbsp;as&nbsp;days</tt></dd></dl>
+ <dl><dt><a name="-minutes"><strong>minutes</strong></a>(m)</dt><dd><tt>return&nbsp;minutes&nbsp;as&nbsp;days</tt></dd></dl>
  <dl><dt><a name="-mx2num"><strong>mx2num</strong></a>(mxdates)</dt><dd><tt>Convert&nbsp;mx&nbsp;datetime&nbsp;instance&nbsp;(or&nbsp;sequence&nbsp;of&nbsp;mx&nbsp;instances)&nbsp;to&nbsp;the<br>
 new&nbsp;date&nbsp;format,</tt></dd></dl>
  <dl><dt><a name="-num2date"><strong>num2date</strong></a>(x, tz<font color="#909090">=None</font>)</dt><dd><tt>x&nbsp;is&nbsp;a&nbsp;float&nbsp;value&nbsp;which&nbsp;gives&nbsp;number&nbsp;of&nbsp;days&nbsp;(fraction&nbsp;part<br>
@@ -962,6 +970,8 @@ rcparams&nbsp;TZ&nbsp;value)<br>
 &nbsp;<br>
 if&nbsp;x&nbsp;is&nbsp;a&nbsp;sequence,&nbsp;a&nbsp;sequence&nbsp;of&nbsp;datetimes&nbsp;will&nbsp;be&nbsp;returned</tt></dd></dl>
  <dl><dt><a name="-num2epoch"><strong>num2epoch</strong></a>(d)</dt><dd><tt>convert&nbsp;days&nbsp;since&nbsp;0001&nbsp;to&nbsp;epoch.&nbsp;&nbsp;d&nbsp;can&nbsp;be&nbsp;a&nbsp;number&nbsp;or&nbsp;sequence</tt></dd></dl>
+ <dl><dt><a name="-seconds"><strong>seconds</strong></a>(s)</dt><dd><tt>return&nbsp;seconds&nbsp;as&nbsp;days</tt></dd></dl>
+ <dl><dt><a name="-weeks"><strong>weeks</strong></a>(w)</dt><dd><tt>return&nbsp;weeks&nbsp;as&nbsp;days</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">

@@ -23,46 +23,52 @@ Z1 = bivariate_normal(X, Y, 1.0, 1.0, 0.0, 0.0)
 Z2 = bivariate_normal(X, Y, 1.5, 0.5, 1, 1)
 Z = (Z1 - Z2) * 10
 
-levels = arange(-2.0,1.6,0.4)
+levels = arange(-2.0, 1.601, 0.4) # Boost the upper limit to avoid truncation
+                                  # errors.
 
 figure()
 
 
 subplot(2,2,1)
 
-levs1, colls = contourf(X, Y, Z, levels,
-                        cmap=cm.jet,
+cset1 = contourf(X, Y, Z, levels,
+                        cmap=cm.get_cmap('jet', len(levels)-1),
                         )
+# It is not necessary, but for the colormap, we need only the
+# number of levels minus 1.  To avoid discretization error, use
+# either this number or a large number such as the default (256).
+
 #If we want lines as well as filled regions, we need to call
 # contour separately; don't try to change the edgecolor or edgewidth
 # of the polygons in the collections returned by contourf.
 # Use levels output from previous call to guarantee they are the same.
-levs2, colls2 = contour(X, Y, Z, levs1,
+cset2 = contour(X, Y, Z, cset1.levels,
                         colors = 'k',
                         hold='on')
 # We don't really need dashed contour lines to indicate negative
 # regions, so let's turn them off.
-for c in colls2:
+for c in cset2.collections:
     c.set_linestyle('solid')
 
 # It is easier here to make a separate call to contour than
 # to set up an array of colors and linewidths.
 # We are making a thick green line as a zero contour.
 # Specify the zero level as a tuple with only 0 in it.
-levs3, colls3 = contour(X, Y, Z, (0,),
-                        colors = 'g',
-                        linewidths = 2,
-                        hold='on')
+cset3 = contour(X, Y, Z, (0,),
+                colors = 'g',
+                linewidths = 2,
+                hold='on')
 title('Filled contours')
-#colorbar()
-hot()
-# To Do: make a discrete colorbar to match filled contours.
+colorbar(cset1)
+#hot()
+
 
 subplot(2,2,2)
 
 imshow(Z, extent=extent)
 v = axis()
-contour(Z, levels, hold='on', colors = 'k', origin='upper', extent=extent)
+contour(Z, cset3.levels, hold='on', colors = 'k',
+        origin='upper', extent=extent)
 axis(v)
 title("Image, origin 'upper'")
 
@@ -70,7 +76,8 @@ subplot(2,2,3)
 
 imshow(Z, origin='lower', extent=extent)
 v = axis()
-contour(Z, levels, hold='on', colors = 'k', origin='lower', extent=extent)
+contour(Z, cset3.levels, hold='on', colors = 'k',
+        origin='lower', extent=extent)
 axis(v)
 title("Image, origin 'lower'")
 
@@ -82,14 +89,15 @@ subplot(2,2,4)
 # This is intentional. The Z values are defined at the center of each
 # image pixel (each color block on the following subplot), so the
 # domain that is contoured does not extend beyond these pixel centers.
-imshow(Z, interpolation='nearest', extent=extent)
+im = imshow(Z, interpolation='nearest', extent=extent)
 v = axis()
-contour(Z, levels, hold='on', colors = 'k', origin='image', extent=extent)
+contour(Z, cset3.levels, hold='on', colors = 'k',
+        origin='image', extent=extent)
 axis(v)
 ylim = get(gca(), 'ylim')
 setp(gca(), ylim=ylim[::-1])
 title("Image, origin from rc, reversed y-axis")
-
+colorbar(im)
 #savefig('contour_image')
 
 show()

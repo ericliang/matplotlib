@@ -1,13 +1,21 @@
 import yaptu
-import re, os, sys, copy
+import re, os, sys, copy, errno, traceback
+
 from StringIO import StringIO
 import matplotlib
 from hthelpers import modules
+
 rex=re.compile('@([^@]+)@')
 rbe=re.compile('\s*\+')
 ren=re.compile('\s*-')
 rco=re.compile('\s*= ')
 
+
+def exception_to_str(s = None):
+   sh = StringIO()
+   if s is not None: print >>sh, s
+   traceback.print_exc(file=sh)
+   return sh.getvalue()
 
 class NewsBox:
     def __init__(self, body):
@@ -176,17 +184,19 @@ def isNewEntry(line):
         return 0
 
 # re-add news to the params dict 'tables' entry below for news
+_news1 = NewsBox("""\
+matplotlib now accepting donations in support of matplotlib development
+""")
+
 news1 = NewsBox("""\
-matplotlib now has a <a
-href=http://www.scipy.org/wikis/topical_software/MatplotlibCookbook>wiki</a>.
-It's just getting started, so move the ball forward by adding a tip,
-trick, howto or recipe.
+The latest matplotlib release requires <a href="http://sourceforge.net/project/showfiles.php?group_id=1369&package_id=175103">numpy 1.0b5</a> or later if you are using <a href="http://numpy.scipy.org/">numpy</a> as your <a href="matplotlib.numerix.html">numerix</a> package (note that this is the default numerix package in your <a href="matplotlibrc">matplotlibrc</a> file.
 """)
 
 
 
 table1 =  LinkBox(header='Matplotlib', links=(
     ('Home', 'http://matplotlib.sourceforge.net'),
+    #('Donate', 'donations.html'),    
     ("What's&nbsp;New", 'whats_new.html'),
     ('Download', 'http://sourceforge.net/projects/matplotlib'),
     ('Installing', 'installing.html'),
@@ -280,7 +290,13 @@ for inFile in files:
             fileParams[key] = val
 
     outFile, ext = os.path.splitext(inFile)
-    cop = yaptu.copier(rex, fileParams, rbe, ren, rco, ouf=file(outFile, 'w'))
-    lines = ['@header@']
-    lines.extend(fh.readlines())
-    cop.copy(lines)
+    try:
+        cop = yaptu.copier(rex, fileParams, rbe, ren, rco, ouf=file(outFile, 'w'))
+        lines = ['@header@']
+        lines.extend(fh.readlines())
+        cop.copy(lines)
+    except:
+        print exception_to_str('Failed converting: %s'%inFile)
+        continue
+
+        

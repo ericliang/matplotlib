@@ -28,12 +28,21 @@ to&nbsp;be&nbsp;to&nbsp;accommodate&nbsp;your&nbsp;widget.</tt></p>
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Cursor">Cursor</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#HorizontalSpanSelector">HorizontalSpanSelector</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Widget">Widget</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#LockDraw">LockDraw</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#MultiCursor">MultiCursor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#RectangleSelector">RectangleSelector</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#SpanSelector">SpanSelector</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#HorizontalSpanSelector">HorizontalSpanSelector</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Widget">Widget</a>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Button">Button</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#CheckButtons">CheckButtons</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Lasso">Lasso</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#RadioButtons">RadioButtons</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#Slider">Slider</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.widgets.html#SubplotTool">SubplotTool</a>
@@ -59,7 +68,7 @@ The&nbsp;following&nbsp;attributes&nbsp;are&nbsp;accesible<br>
 Call&nbsp;"on_clicked"&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;button<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Button-__init__"><strong>__init__</strong></a>(self, ax, label, image<font color="#909090">=None</font>, color<font color="#909090">=0.84999999999999998</font>, hovercolor<font color="#909090">=0.94999999999999996</font>)</dt><dd><tt>ax&nbsp;is&nbsp;the&nbsp;Axes&nbsp;instance&nbsp;the&nbsp;button&nbsp;will&nbsp;be&nbsp;placed&nbsp;into<br>
+<dl><dt><a name="Button-__init__"><strong>__init__</strong></a>(self, ax, label, image<font color="#909090">=None</font>, color<font color="#909090">='0.85'</font>, hovercolor<font color="#909090">='0.95'</font>)</dt><dd><tt>ax&nbsp;is&nbsp;the&nbsp;Axes&nbsp;instance&nbsp;the&nbsp;button&nbsp;will&nbsp;be&nbsp;placed&nbsp;into<br>
 &nbsp;<br>
 label&nbsp;is&nbsp;a&nbsp;string&nbsp;which&nbsp;is&nbsp;the&nbsp;button&nbsp;text<br>
 &nbsp;<br>
@@ -136,7 +145,7 @@ the&nbsp;pointer.&nbsp;&nbsp;You&nbsp;can&nbsp;turn&nbsp;off&nbsp;the&nbsp;hline
 the&nbsp;attributes<br>
 &nbsp;<br>
 &nbsp;&nbsp;horizOn&nbsp;=True|False:&nbsp;controls&nbsp;visibility&nbsp;of&nbsp;the&nbsp;horizontal&nbsp;line<br>
-&nbsp;&nbsp;vertOn&nbsp;=True|False:&nbsp;controls&nbsp;visibility&nbsp;of&nbsp;the&nbsp;horizontal&nbsp;line&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;vertOn&nbsp;=True|False:&nbsp;controls&nbsp;visibility&nbsp;of&nbsp;the&nbsp;horizontal&nbsp;line<br>
 &nbsp;<br>
 And&nbsp;the&nbsp;visibility&nbsp;of&nbsp;the&nbsp;cursor&nbsp;itself&nbsp;with&nbsp;visible&nbsp;attribute<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
@@ -154,36 +163,16 @@ examples/widgets/cursor.py.</tt></dd></dl>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="HorizontalSpanSelector">class <strong>HorizontalSpanSelector</strong></a></font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="HorizontalSpanSelector">class <strong>HorizontalSpanSelector</strong></a>(<a href="matplotlib.widgets.html#SpanSelector">SpanSelector</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>Select&nbsp;a&nbsp;min/max&nbsp;range&nbsp;of&nbsp;the&nbsp;x&nbsp;axes&nbsp;for&nbsp;a&nbsp;matplotlib&nbsp;Axes<br>
-&nbsp;<br>
-Example&nbsp;usage:<br>
-&nbsp;<br>
-&nbsp;&nbsp;ax&nbsp;=&nbsp;subplot(111)<br>
-&nbsp;&nbsp;ax.plot(x,y)<br>
-&nbsp;<br>
-&nbsp;&nbsp;def&nbsp;onselect(xmin,&nbsp;xmax):<br>
-&nbsp;&nbsp;print&nbsp;xmin,&nbsp;xmax<br>
-&nbsp;&nbsp;span&nbsp;=&nbsp;<a href="#HorizontalSpanSelector">HorizontalSpanSelector</a>(ax,&nbsp;onselect)<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>#&nbsp;For&nbsp;backwards&nbsp;compatibility&nbsp;only!<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="HorizontalSpanSelector-__init__"><strong>__init__</strong></a>(self, ax, onselect, minspan<font color="#909090">=None</font>, useblit<font color="#909090">=False</font>, rectprops<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;a&nbsp;span&nbsp;selector&nbsp;in&nbsp;ax.&nbsp;&nbsp;When&nbsp;a&nbsp;selection&nbsp;is&nbsp;made,&nbsp;clear<br>
-the&nbsp;span&nbsp;and&nbsp;call&nbsp;onselect&nbsp;with<br>
-&nbsp;<br>
-&nbsp;&nbsp;onselect(xmin,&nbsp;xmax)<br>
-&nbsp;<br>
-and&nbsp;clear&nbsp;the&nbsp;span.<br>
-&nbsp;<br>
-If&nbsp;minspan&nbsp;is&nbsp;not&nbsp;None,&nbsp;ignore&nbsp;events&nbsp;smaller&nbsp;than&nbsp;minspan<br>
-&nbsp;<br>
-The&nbsp;span&nbsp;rect&nbsp;is&nbsp;drawn&nbsp;with&nbsp;rectprops;&nbsp;default<br>
-&nbsp;&nbsp;rectprops&nbsp;=&nbsp;dict(facecolor='red',&nbsp;alpha=0.5)<br>
-&nbsp;<br>
-set&nbsp;the&nbsp;visible&nbsp;attribute&nbsp;to&nbsp;False&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;turn&nbsp;off<br>
-the&nbsp;functionality&nbsp;of&nbsp;the&nbsp;span&nbsp;selector</tt></dd></dl>
+<dl><dt><a name="HorizontalSpanSelector-__init__"><strong>__init__</strong></a>(self, ax, onselect, **kwargs)</dt></dl>
 
+<hr>
+Methods inherited from <a href="matplotlib.widgets.html#SpanSelector">SpanSelector</a>:<br>
 <dl><dt><a name="HorizontalSpanSelector-ignore"><strong>ignore</strong></a>(self, event)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;event&nbsp;should&nbsp;be&nbsp;ignored</tt></dd></dl>
 
 <dl><dt><a name="HorizontalSpanSelector-onmove"><strong>onmove</strong></a>(self, event)</dt><dd><tt>on&nbsp;motion&nbsp;notify&nbsp;event</tt></dd></dl>
@@ -195,6 +184,85 @@ the&nbsp;functionality&nbsp;of&nbsp;the&nbsp;span&nbsp;selector</tt></dd></dl>
 <dl><dt><a name="HorizontalSpanSelector-update"><strong>update</strong></a>(self)</dt><dd><tt>draw&nbsp;using&nbsp;newfangled&nbsp;blit&nbsp;or&nbsp;oldfangled&nbsp;draw&nbsp;depending&nbsp;on&nbsp;useblit</tt></dd></dl>
 
 <dl><dt><a name="HorizontalSpanSelector-update_background"><strong>update_background</strong></a>(self, event)</dt><dd><tt>force&nbsp;an&nbsp;update&nbsp;of&nbsp;the&nbsp;background</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Lasso">class <strong>Lasso</strong></a>(<a href="matplotlib.widgets.html#Widget">Widget</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Lasso-__init__"><strong>__init__</strong></a>(self, ax, xy, callback<font color="#909090">=None</font>, useblit<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="Lasso-onmove"><strong>onmove</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="Lasso-onrelease"><strong>onrelease</strong></a>(self, event)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.widgets.html#Widget">Widget</a>:<br>
+<dl><dt><strong>drawon</strong> = True</dl>
+
+<dl><dt><strong>eventson</strong> = True</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="LockDraw">class <strong>LockDraw</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>some&nbsp;widgets,&nbsp;like&nbsp;the&nbsp;cursor,&nbsp;draw&nbsp;onto&nbsp;the&nbsp;canvas,&nbsp;and&nbsp;this&nbsp;is&nbsp;not<br>
+desirable&nbsp;under&nbsp;all&nbsp;circumstaces,&nbsp;like&nbsp;when&nbsp;the&nbsp;toolbar&nbsp;is&nbsp;in<br>
+zoom-to-rect&nbsp;mode&nbsp;and&nbsp;drawing&nbsp;a&nbsp;rectangle.&nbsp;&nbsp;The&nbsp;module&nbsp;level&nbsp;"lock"<br>
+allows&nbsp;someone&nbsp;to&nbsp;grab&nbsp;the&nbsp;lock&nbsp;and&nbsp;prevent&nbsp;other&nbsp;widgets&nbsp;from<br>
+drawing.&nbsp;&nbsp;Use&nbsp;matplotlib.widgets.lock(someobj)&nbsp;to&nbsp;pr<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="LockDraw-__call__"><strong>__call__</strong></a>(self, o)</dt><dd><tt>reserve&nbsp;the&nbsp;lock&nbsp;for&nbsp;o</tt></dd></dl>
+
+<dl><dt><a name="LockDraw-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="LockDraw-available"><strong>available</strong></a>(self, o)</dt><dd><tt>drawing&nbsp;is&nbsp;available&nbsp;to&nbsp;o</tt></dd></dl>
+
+<dl><dt><a name="LockDraw-isowner"><strong>isowner</strong></a>(self, o)</dt><dd><tt>o&nbsp;owns&nbsp;the&nbsp;lock</tt></dd></dl>
+
+<dl><dt><a name="LockDraw-locked"><strong>locked</strong></a>(self)</dt><dd><tt>the&nbsp;lock&nbsp;is&nbsp;held</tt></dd></dl>
+
+<dl><dt><a name="LockDraw-release"><strong>release</strong></a>(self, o)</dt><dd><tt>release&nbsp;the&nbsp;lock</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MultiCursor">class <strong>MultiCursor</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Provide&nbsp;a&nbsp;vertical&nbsp;line&nbsp;cursor&nbsp;shared&nbsp;between&nbsp;multiple&nbsp;axes<br>
+&nbsp;<br>
+from&nbsp;matplotlib.widgets&nbsp;import&nbsp;<a href="#MultiCursor">MultiCursor</a><br>
+from&nbsp;pylab&nbsp;import&nbsp;figure,&nbsp;show,&nbsp;nx<br>
+&nbsp;<br>
+t&nbsp;=&nbsp;nx.arange(0.0,&nbsp;2.0,&nbsp;0.01)<br>
+s1&nbsp;=&nbsp;nx.sin(2*nx.pi*t)<br>
+s2&nbsp;=&nbsp;nx.sin(4*nx.pi*t)<br>
+fig&nbsp;=&nbsp;figure()<br>
+ax1&nbsp;=&nbsp;fig.add_subplot(211)<br>
+ax1.plot(t,&nbsp;s1)<br>
+&nbsp;<br>
+&nbsp;<br>
+ax2&nbsp;=&nbsp;fig.add_subplot(212,&nbsp;sharex=ax1)<br>
+ax2.plot(t,&nbsp;s2)<br>
+&nbsp;<br>
+multi&nbsp;=&nbsp;<a href="#MultiCursor">MultiCursor</a>(fig.canvas,&nbsp;(ax1,&nbsp;ax2),&nbsp;color='r',&nbsp;lw=1)<br>
+show()<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MultiCursor-__init__"><strong>__init__</strong></a>(self, canvas, axes, useblit<font color="#909090">=True</font>, **lineprops)</dt></dl>
+
+<dl><dt><a name="MultiCursor-clear"><strong>clear</strong></a>(self, event)</dt><dd><tt>clear&nbsp;the&nbsp;cursor</tt></dd></dl>
+
+<dl><dt><a name="MultiCursor-onmove"><strong>onmove</strong></a>(self, event)</dt></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -239,24 +307,83 @@ Data and other attributes inherited from <a href="matplotlib.widgets.html#Widget
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RectangleSelector">class <strong>RectangleSelector</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Select&nbsp;a&nbsp;min/max&nbsp;range&nbsp;of&nbsp;the&nbsp;x&nbsp;axes&nbsp;for&nbsp;a&nbsp;matplotlib&nbsp;Axes<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;ax&nbsp;=&nbsp;subplot(111)<br>
+&nbsp;&nbsp;ax.plot(x,y)<br>
+&nbsp;<br>
+&nbsp;&nbsp;def&nbsp;onselect(eclick,&nbsp;erelease):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'eclick&nbsp;and&nbsp;erelease&nbsp;are&nbsp;matplotlib&nbsp;events&nbsp;at&nbsp;press&nbsp;and&nbsp;release'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'startposition&nbsp;:&nbsp;(%f,%f)'%(eclick.xdata,&nbsp;eclick.ydata)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'endposition&nbsp;&nbsp;&nbsp;:&nbsp;(%f,%f)'%(erelease.xdata,&nbsp;erelease.ydata)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'used&nbsp;button&nbsp;&nbsp;&nbsp;:&nbsp;',&nbsp;eclick.button<br>
+&nbsp;<br>
+&nbsp;&nbsp;span&nbsp;=&nbsp;Selector(ax,&nbsp;onselect,drawtype='box')<br>
+&nbsp;&nbsp;show()<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RectangleSelector-__init__"><strong>__init__</strong></a>(self, ax, onselect, drawtype<font color="#909090">='box'</font>, minspanx<font color="#909090">=None</font>, minspany<font color="#909090">=None</font>, useblit<font color="#909090">=False</font>, lineprops<font color="#909090">=None</font>, rectprops<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;a&nbsp;selector&nbsp;in&nbsp;ax.&nbsp;&nbsp;When&nbsp;a&nbsp;selection&nbsp;is&nbsp;made,&nbsp;clear<br>
+the&nbsp;span&nbsp;and&nbsp;call&nbsp;onselect&nbsp;with<br>
+&nbsp;<br>
+&nbsp;&nbsp;onselect(pos_1,&nbsp;pos_2)<br>
+&nbsp;<br>
+and&nbsp;clear&nbsp;the&nbsp;drawn&nbsp;box/line.&nbsp;There&nbsp;pos_i&nbsp;are&nbsp;arrays&nbsp;of&nbsp;length&nbsp;2<br>
+containing&nbsp;the&nbsp;x-&nbsp;and&nbsp;y-coordinate.<br>
+&nbsp;<br>
+If&nbsp;minspanx&nbsp;is&nbsp;not&nbsp;None&nbsp;then&nbsp;events&nbsp;smaller&nbsp;than&nbsp;minspanx<br>
+in&nbsp;x&nbsp;direction&nbsp;are&nbsp;ignored(it's&nbsp;the&nbsp;same&nbsp;for&nbsp;y).<br>
+&nbsp;<br>
+The&nbsp;rect&nbsp;is&nbsp;drawn&nbsp;with&nbsp;rectprops;&nbsp;default<br>
+&nbsp;&nbsp;rectprops&nbsp;=&nbsp;dict(facecolor='red',&nbsp;edgecolor&nbsp;=&nbsp;'black',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha=0.5,&nbsp;fill=False)<br>
+&nbsp;<br>
+The&nbsp;line&nbsp;is&nbsp;drawn&nbsp;with&nbsp;lineprops;&nbsp;default<br>
+&nbsp;&nbsp;lineprops&nbsp;=&nbsp;dict(color='black',&nbsp;linestyle='-',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewidth&nbsp;=&nbsp;2,&nbsp;alpha=0.5)<br>
+&nbsp;<br>
+Use&nbsp;type&nbsp;if&nbsp;you&nbsp;want&nbsp;the&nbsp;mouse&nbsp;to&nbsp;draw&nbsp;a&nbsp;line,&nbsp;a&nbsp;box&nbsp;or&nbsp;nothing<br>
+between&nbsp;click&nbsp;and&nbsp;actual&nbsp;position&nbsp;ny&nbsp;setting<br>
+drawtype&nbsp;=&nbsp;'line',&nbsp;drawtype='box'&nbsp;or&nbsp;drawtype&nbsp;=&nbsp;'none'.</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-ignore"><strong>ignore</strong></a>(self, event)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;event&nbsp;should&nbsp;be&nbsp;ignored</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-onmove"><strong>onmove</strong></a>(self, event)</dt><dd><tt>on&nbsp;motion&nbsp;notify&nbsp;event&nbsp;if&nbsp;box/line&nbsp;is&nbsp;wanted</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-press"><strong>press</strong></a>(self, event)</dt><dd><tt>on&nbsp;button&nbsp;press&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-release"><strong>release</strong></a>(self, event)</dt><dd><tt>on&nbsp;button&nbsp;release&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-update"><strong>update</strong></a>(self)</dt><dd><tt>draw&nbsp;using&nbsp;newfangled&nbsp;blit&nbsp;or&nbsp;oldfangled&nbsp;draw&nbsp;depending&nbsp;on&nbsp;useblit</tt></dd></dl>
+
+<dl><dt><a name="RectangleSelector-update_background"><strong>update_background</strong></a>(self, event)</dt><dd><tt>force&nbsp;an&nbsp;update&nbsp;of&nbsp;the&nbsp;background</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="Slider">class <strong>Slider</strong></a>(<a href="matplotlib.widgets.html#Widget">Widget</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>A&nbsp;slider&nbsp;representing&nbsp;a&nbsp;floating&nbsp;point&nbsp;range<br>
 &nbsp;<br>
-The&nbsp;following&nbsp;attributes&nbsp;are&nbsp;defined&nbsp;<br>
+The&nbsp;following&nbsp;attributes&nbsp;are&nbsp;defined<br>
 &nbsp;&nbsp;ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;slider&nbsp;axes.Axes&nbsp;instance<br>
 &nbsp;&nbsp;val&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;current&nbsp;slider&nbsp;value<br>
 &nbsp;&nbsp;vline&nbsp;&nbsp;:&nbsp;a&nbsp;Line2D&nbsp;instance&nbsp;representing&nbsp;the&nbsp;initial&nbsp;value<br>
 &nbsp;&nbsp;poly&nbsp;&nbsp;&nbsp;:&nbsp;A&nbsp;patch.Polygon&nbsp;instance&nbsp;which&nbsp;is&nbsp;the&nbsp;slider<br>
 &nbsp;&nbsp;valfmt&nbsp;:&nbsp;the&nbsp;format&nbsp;string&nbsp;for&nbsp;formatting&nbsp;the&nbsp;slider&nbsp;text<br>
 &nbsp;&nbsp;label&nbsp;&nbsp;:&nbsp;a&nbsp;text.Text&nbsp;instance,&nbsp;the&nbsp;slider&nbsp;label<br>
-&nbsp;&nbsp;closedmin&nbsp;:&nbsp;whether&nbsp;the&nbsp;slider&nbsp;is&nbsp;closed&nbsp;on&nbsp;the&nbsp;minimum&nbsp;<br>
+&nbsp;&nbsp;closedmin&nbsp;:&nbsp;whether&nbsp;the&nbsp;slider&nbsp;is&nbsp;closed&nbsp;on&nbsp;the&nbsp;minimum<br>
 &nbsp;&nbsp;closedmax&nbsp;:&nbsp;whether&nbsp;the&nbsp;slider&nbsp;is&nbsp;closed&nbsp;on&nbsp;the&nbsp;maximum<br>
 &nbsp;&nbsp;slidermin&nbsp;:&nbsp;another&nbsp;slider&nbsp;-&nbsp;if&nbsp;not&nbsp;None,&nbsp;this&nbsp;slider&nbsp;must&nbsp;be&nbsp;&gt;&nbsp;slidermin<br>
 &nbsp;&nbsp;slidermax&nbsp;:&nbsp;another&nbsp;slider&nbsp;-&nbsp;if&nbsp;not&nbsp;None,&nbsp;this&nbsp;slider&nbsp;must&nbsp;be&nbsp;&lt;&nbsp;slidermax<br>
 &nbsp;&nbsp;dragging&nbsp;:&nbsp;allow&nbsp;for&nbsp;mouse&nbsp;dragging&nbsp;on&nbsp;slider<br>
-&nbsp;&nbsp;<br>
+&nbsp;<br>
 Call&nbsp;on_changed&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;slider&nbsp;event<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
@@ -264,7 +391,7 @@ Call&nbsp;on_changed&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;slider&nbsp;even
 &nbsp;<br>
 valinit&nbsp;-&nbsp;&nbsp;the&nbsp;slider&nbsp;initial&nbsp;position<br>
 &nbsp;<br>
-label&nbsp;-&nbsp;the&nbsp;slider&nbsp;label&nbsp;<br>
+label&nbsp;-&nbsp;the&nbsp;slider&nbsp;label<br>
 &nbsp;<br>
 valfmt&nbsp;-&nbsp;used&nbsp;to&nbsp;format&nbsp;the&nbsp;slider&nbsp;value<br>
 &nbsp;<br>
@@ -282,11 +409,64 @@ A&nbsp;connection&nbsp;id&nbsp;is&nbsp;returned&nbsp;which&nbsp;can&nbsp;be&nbsp
 
 <dl><dt><a name="Slider-reset"><strong>reset</strong></a>(self)</dt><dd><tt>reset&nbsp;the&nbsp;slider&nbsp;to&nbsp;the&nbsp;initial&nbsp;value&nbsp;if&nbsp;needed</tt></dd></dl>
 
+<dl><dt><a name="Slider-set_val"><strong>set_val</strong></a>(self, val)</dt></dl>
+
 <hr>
 Data and other attributes inherited from <a href="matplotlib.widgets.html#Widget">Widget</a>:<br>
 <dl><dt><strong>drawon</strong> = True</dl>
 
 <dl><dt><strong>eventson</strong> = True</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SpanSelector">class <strong>SpanSelector</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Select&nbsp;a&nbsp;min/max&nbsp;range&nbsp;of&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes&nbsp;for&nbsp;a&nbsp;matplotlib&nbsp;Axes<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;ax&nbsp;=&nbsp;subplot(111)<br>
+&nbsp;&nbsp;ax.plot(x,y)<br>
+&nbsp;<br>
+&nbsp;&nbsp;def&nbsp;onselect(vmin,&nbsp;vmax):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;vmin,&nbsp;vmax<br>
+&nbsp;&nbsp;span&nbsp;=&nbsp;<a href="#SpanSelector">SpanSelector</a>(ax,&nbsp;onselect,&nbsp;'horizontal')<br>
+&nbsp;<br>
+&nbsp;&nbsp;onmove_callback&nbsp;is&nbsp;an&nbsp;optional&nbsp;callback&nbsp;that&nbsp;will&nbsp;be&nbsp;called&nbsp;on&nbsp;mouse&nbsp;move<br>
+&nbsp;&nbsp;with&nbsp;the&nbsp;span&nbsp;range<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SpanSelector-__init__"><strong>__init__</strong></a>(self, ax, onselect, direction, minspan<font color="#909090">=None</font>, useblit<font color="#909090">=False</font>, rectprops<font color="#909090">=None</font>, onmove_callback<font color="#909090">=None</font>)</dt><dd><tt>Create&nbsp;a&nbsp;span&nbsp;selector&nbsp;in&nbsp;ax.&nbsp;&nbsp;When&nbsp;a&nbsp;selection&nbsp;is&nbsp;made,&nbsp;clear<br>
+the&nbsp;span&nbsp;and&nbsp;call&nbsp;onselect&nbsp;with<br>
+&nbsp;<br>
+&nbsp;&nbsp;onselect(vmin,&nbsp;vmax)<br>
+&nbsp;<br>
+and&nbsp;clear&nbsp;the&nbsp;span.<br>
+&nbsp;<br>
+direction&nbsp;must&nbsp;be&nbsp;'horizontal'&nbsp;or&nbsp;'vertical'<br>
+&nbsp;<br>
+If&nbsp;minspan&nbsp;is&nbsp;not&nbsp;None,&nbsp;ignore&nbsp;events&nbsp;smaller&nbsp;than&nbsp;minspan<br>
+&nbsp;<br>
+The&nbsp;span&nbsp;rect&nbsp;is&nbsp;drawn&nbsp;with&nbsp;rectprops;&nbsp;default<br>
+&nbsp;&nbsp;rectprops&nbsp;=&nbsp;dict(facecolor='red',&nbsp;alpha=0.5)<br>
+&nbsp;<br>
+set&nbsp;the&nbsp;visible&nbsp;attribute&nbsp;to&nbsp;False&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;turn&nbsp;off<br>
+the&nbsp;functionality&nbsp;of&nbsp;the&nbsp;span&nbsp;selector</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-ignore"><strong>ignore</strong></a>(self, event)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;event&nbsp;should&nbsp;be&nbsp;ignored</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-onmove"><strong>onmove</strong></a>(self, event)</dt><dd><tt>on&nbsp;motion&nbsp;notify&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-press"><strong>press</strong></a>(self, event)</dt><dd><tt>on&nbsp;button&nbsp;press&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-release"><strong>release</strong></a>(self, event)</dt><dd><tt>on&nbsp;button&nbsp;release&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-update"><strong>update</strong></a>(self)</dt><dd><tt>draw&nbsp;using&nbsp;newfangled&nbsp;blit&nbsp;or&nbsp;oldfangled&nbsp;draw&nbsp;depending&nbsp;on&nbsp;useblit</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-update_background"><strong>update_background</strong></a>(self, event)</dt><dd><tt>force&nbsp;an&nbsp;update&nbsp;of&nbsp;the&nbsp;background</tt></dd></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -337,13 +517,5 @@ widgets<br>&nbsp;</tt></td></tr>
 
 <dl><dt><strong>eventson</strong> = True</dl>
 
-</td></tr></table></td></tr></table><p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#eeaa77">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
-    
-<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(sequence,&nbsp;typecode=None,&nbsp;copy=1,&nbsp;savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;formed&nbsp;from&nbsp;the&nbsp;given&nbsp;(potentially&nbsp;nested)&nbsp;sequence&nbsp;with&nbsp;type&nbsp;given&nbsp;by&nbsp;typecode.&nbsp;&nbsp;If&nbsp;no&nbsp;typecode&nbsp;is&nbsp;given,&nbsp;then&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;sequence.&nbsp;&nbsp;If&nbsp;copy&nbsp;is&nbsp;zero&nbsp;and&nbsp;sequence&nbsp;is&nbsp;already&nbsp;an&nbsp;array,&nbsp;a&nbsp;reference&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;maintain&nbsp;its&nbsp;precision&nbsp;in&nbsp;operations.</tt></dd></dl>
-</td></tr></table>
+</td></tr></table></td></tr></table>
 @footer@

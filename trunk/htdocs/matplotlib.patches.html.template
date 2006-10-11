@@ -28,10 +28,17 @@
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Patch">Patch</a>
 </font></dt><dd>
 <dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Ellipse">Ellipse</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Circle">Circle</a>
+</font></dt></dl>
+</dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Polygon">Polygon</a>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Arrow">Arrow</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#FancyArrow">FancyArrow</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Wedge">Wedge</a>
 </font></dt></dl>
 </dd>
@@ -39,7 +46,7 @@
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Circle">Circle</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#CirclePolygon">CirclePolygon</a>
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Shadow">Shadow</a>
@@ -47,7 +54,8 @@
 </dd>
 </dl>
 </dd>
-</dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#PolygonInteractor">PolygonInteractor</a>
+</font></dt></dl>
  <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
@@ -90,6 +98,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Arrow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Arrow-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Arrow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Arrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -116,6 +126,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Arrow-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Arrow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -134,6 +164,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Arrow-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Arrow-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -163,6 +195,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Arrow-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -208,29 +244,30 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Circle">class <strong>Circle</strong></a>(<a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Circle">class <strong>Circle</strong></a>(<a href="matplotlib.patches.html#Ellipse">Ellipse</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>A&nbsp;circle&nbsp;patch<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.patches.html#Circle">Circle</a></dd>
-<dd><a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a></dd>
+<dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Circle-__init__"><strong>__init__</strong></a>(self, xy, radius<font color="#909090">=5</font>, resolution<font color="#909090">=20</font>, **kwargs)</dt></dl>
+<dl><dt><a name="Circle-__init__"><strong>__init__</strong></a>(self, xy, radius<font color="#909090">=5</font>, **kwargs)</dt></dl>
 
 <hr>
-Methods inherited from <a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>:<br>
-<dl><dt><a name="Circle-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
+<dl><dt><a name="Circle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="Circle-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Not&nbsp;actually&nbsp;used&nbsp;for&nbsp;rendering.&nbsp;&nbsp;Provided&nbsp;to&nbsp;conform&nbsp;to<br>
+<a href="#Patch">Patch</a>&nbsp;super&nbsp;class.</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
-<dl><dt><a name="Circle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
-
 <dl><dt><a name="Circle-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
@@ -244,6 +281,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Circle-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Circle-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
@@ -271,6 +310,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Circle-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Circle-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -289,6 +348,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Circle-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Circle-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -318,6 +379,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Circle-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -363,6 +428,568 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CirclePolygon">class <strong>CirclePolygon</strong></a>(<a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;circle&nbsp;patch<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#CirclePolygon">CirclePolygon</a></dd>
+<dd><a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a></dd>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="CirclePolygon-__init__"><strong>__init__</strong></a>(self, xy, radius<font color="#909090">=5</font>, resolution<font color="#909090">=20</font>, **kwargs)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>:<br>
+<dl><dt><a name="CirclePolygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="CirclePolygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="CirclePolygon-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Ellipse">class <strong>Ellipse</strong></a>(<a href="matplotlib.patches.html#Patch">Patch</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;scale-free&nbsp;ellipse<br>
+&nbsp;<br>
+xy&nbsp;-&nbsp;center&nbsp;of&nbsp;ellipse<br>
+width&nbsp;-&nbsp;length&nbsp;of&nbsp;horizontal&nbsp;axis<br>
+height&nbsp;-&nbsp;length&nbsp;of&nbsp;vertical&nbsp;axis<br>
+angle&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees&nbsp;(anti-clockwise)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Ellipse-__init__"><strong>__init__</strong></a>(self, xy, width, height, angle<font color="#909090">=0.0</font>, **kwargs)</dt></dl>
+
+<dl><dt><a name="Ellipse-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Not&nbsp;actually&nbsp;used&nbsp;for&nbsp;rendering.&nbsp;&nbsp;Provided&nbsp;to&nbsp;conform&nbsp;to<br>
+<a href="#Patch">Patch</a>&nbsp;super&nbsp;class.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Ellipse-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Ellipse-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="Ellipse-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="Ellipse-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FancyArrow">class <strong>FancyArrow</strong></a>(<a href="matplotlib.patches.html#Polygon">Polygon</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Like&nbsp;<a href="#Arrow">Arrow</a>,&nbsp;but&nbsp;lets&nbsp;you&nbsp;set&nbsp;head&nbsp;width&nbsp;and&nbsp;head&nbsp;height&nbsp;independently.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#FancyArrow">FancyArrow</a></dd>
+<dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="FancyArrow-__init__"><strong>__init__</strong></a>(self, x, y, dx, dy, width<font color="#909090">=0.001</font>, length_includes_head<font color="#909090">=False</font>, head_width<font color="#909090">=None</font>, head_length<font color="#909090">=None</font>, shape<font color="#909090">='full'</font>, overhang<font color="#909090">=0</font>, head_starts_at_zero<font color="#909090">=False</font>, **kwargs)</dt><dd><tt>Returns&nbsp;a&nbsp;new&nbsp;<a href="#Arrow">Arrow</a>.<br>
+&nbsp;<br>
+length_includes_head:&nbsp;True&nbsp;if&nbsp;head&nbsp;is&nbsp;counted&nbsp;in&nbsp;calculating&nbsp;the&nbsp;length.<br>
+&nbsp;<br>
+shape:&nbsp;['full',&nbsp;'left',&nbsp;'right']<br>
+&nbsp;<br>
+overhang:&nbsp;distance&nbsp;that&nbsp;the&nbsp;arrow&nbsp;is&nbsp;swept&nbsp;back&nbsp;(0&nbsp;overhang&nbsp;means<br>
+triangular&nbsp;shape).<br>
+&nbsp;<br>
+head_starts_at_zero:&nbsp;if&nbsp;True,&nbsp;the&nbsp;head&nbsp;starts&nbsp;being&nbsp;drawn&nbsp;at&nbsp;coordinate<br>
+0&nbsp;instead&nbsp;of&nbsp;ending&nbsp;at&nbsp;coordinate&nbsp;0.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
+<dl><dt><a name="FancyArrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="FancyArrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="FancyArrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="FancyArrow-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="FancyArrow-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="Patch">class <strong>Patch</strong></a>(<a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
@@ -372,7 +999,7 @@ If&nbsp;any&nbsp;of&nbsp;edgecolor,&nbsp;facecolor,&nbsp;linewidth,&nbsp;or&nbsp
 None,&nbsp;they&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;params&nbsp;setting<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Patch-__init__"><strong>__init__</strong></a>(self, edgecolor<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, linewidth<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, fill<font color="#909090">=1</font>, **kwargs)</dt></dl>
+<dl><dt><a name="Patch-__init__"><strong>__init__</strong></a>(self, edgecolor<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, linewidth<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, hatch<font color="#909090">=None</font>, fill<font color="#909090">=1</font>, **kwargs)</dt></dl>
 
 <dl><dt><a name="Patch-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -389,6 +1016,8 @@ None,&nbsp;they&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;params&nbsp;setting
 <dl><dt><a name="Patch-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Patch-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
@@ -418,6 +1047,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Patch-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Patch-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -436,6 +1085,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Patch-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Patch-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -465,6 +1116,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Patch-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Patch-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -544,6 +1199,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Polygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Polygon-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Polygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Polygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -570,6 +1227,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Polygon-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Polygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -588,6 +1265,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Polygon-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Polygon-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -617,6 +1296,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Polygon-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -657,6 +1340,46 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PolygonInteractor">class <strong>PolygonInteractor</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;polygon&nbsp;editor.<br>
+&nbsp;<br>
+Key-bindings<br>
+&nbsp;<br>
+&nbsp;&nbsp;'t'&nbsp;toggle&nbsp;vertex&nbsp;markers&nbsp;on&nbsp;and&nbsp;off.&nbsp;&nbsp;When&nbsp;vertex&nbsp;markers&nbsp;are&nbsp;on,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;can&nbsp;move&nbsp;them,&nbsp;delete&nbsp;them<br>
+&nbsp;<br>
+&nbsp;&nbsp;'d'&nbsp;delete&nbsp;the&nbsp;vertex&nbsp;under&nbsp;point<br>
+&nbsp;<br>
+&nbsp;&nbsp;'i'&nbsp;insert&nbsp;a&nbsp;vertex&nbsp;at&nbsp;point.&nbsp;&nbsp;You&nbsp;must&nbsp;be&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;connecting&nbsp;two&nbsp;existing&nbsp;vertices<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="PolygonInteractor-__init__"><strong>__init__</strong></a>(self, poly)</dt></dl>
+
+<dl><dt><a name="PolygonInteractor-button_press_callback"><strong>button_press_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
+
+<dl><dt><a name="PolygonInteractor-button_release_callback"><strong>button_release_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;released</tt></dd></dl>
+
+<dl><dt><a name="PolygonInteractor-get_ind_under_point"><strong>get_ind_under_point</strong></a>(self, event)</dt><dd><tt>get&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;vertex&nbsp;under&nbsp;point&nbsp;if&nbsp;within&nbsp;epsilon&nbsp;tolerance</tt></dd></dl>
+
+<dl><dt><a name="PolygonInteractor-key_press_callback"><strong>key_press_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;key&nbsp;is&nbsp;pressed</tt></dd></dl>
+
+<dl><dt><a name="PolygonInteractor-motion_notify_callback"><strong>motion_notify_callback</strong></a>(self, event)</dt><dd><tt>on&nbsp;mouse&nbsp;movement</tt></dd></dl>
+
+<dl><dt><a name="PolygonInteractor-poly_changed"><strong>poly_changed</strong></a>(self, poly)</dt><dd><tt>this&nbsp;method&nbsp;is&nbsp;called&nbsp;whenever&nbsp;the&nbsp;polygon&nbsp;object&nbsp;is&nbsp;called</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>epsilon</strong> = 5</dl>
+
+<dl><dt><strong>showverts</strong> = True</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -729,6 +1452,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Rectangle-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Rectangle-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -755,6 +1480,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Rectangle-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -773,6 +1518,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Rectangle-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Rectangle-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -802,6 +1549,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Rectangle-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -884,6 +1635,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="RegularPolygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -910,6 +1663,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -928,6 +1701,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="RegularPolygon-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="RegularPolygon-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -957,6 +1732,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="RegularPolygon-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -1036,6 +1815,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Shadow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Shadow-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Shadow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Shadow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -1062,6 +1843,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Shadow-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Shadow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -1080,6 +1881,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Shadow-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Shadow-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -1109,6 +1912,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Shadow-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -1195,6 +2002,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Wedge-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Wedge-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Wedge-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Wedge-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -1221,6 +2030,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Wedge-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Wedge-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -1239,6 +2068,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Wedge-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Wedge-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -1268,6 +2099,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Wedge-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -1316,20 +2151,28 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-arange"><strong>arange</strong></a>(...)</dt><dd><tt><a href="#-arange">arange</a>(start,&nbsp;stop=None,&nbsp;step=1,&nbsp;typecode=None)<br>
-&nbsp;<br>
-&nbsp;Just&nbsp;like&nbsp;range()&nbsp;except&nbsp;it&nbsp;returns&nbsp;an&nbsp;array&nbsp;whose&nbsp;type&nbsp;can&nbsp;be<br>
-specified&nbsp;by&nbsp;the&nbsp;keyword&nbsp;argument&nbsp;typecode.</tt></dd></dl>
- <dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(sequence,&nbsp;typecode=None,&nbsp;copy=1,&nbsp;savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;formed&nbsp;from&nbsp;the&nbsp;given&nbsp;(potentially&nbsp;nested)&nbsp;sequence&nbsp;with&nbsp;type&nbsp;given&nbsp;by&nbsp;typecode.&nbsp;&nbsp;If&nbsp;no&nbsp;typecode&nbsp;is&nbsp;given,&nbsp;then&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;sequence.&nbsp;&nbsp;If&nbsp;copy&nbsp;is&nbsp;zero&nbsp;and&nbsp;sequence&nbsp;is&nbsp;already&nbsp;an&nbsp;array,&nbsp;a&nbsp;reference&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;maintain&nbsp;its&nbsp;precision&nbsp;in&nbsp;operations.</tt></dd></dl>
- <dl><dt><a name="-bbox_artist"><strong>bbox_artist</strong></a>(artist, renderer, props<font color="#909090">=None</font>, fill<font color="#909090">=True</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
+<td width="100%"><dl><dt><a name="-bbox_artist"><strong>bbox_artist</strong></a>(artist, renderer, props<font color="#909090">=None</font>, fill<font color="#909090">=True</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
 box&nbsp;returned&nbsp;by&nbsp;get_window_extent&nbsp;of&nbsp;an&nbsp;artist,&nbsp;to&nbsp;test&nbsp;whether<br>
 the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox<br>
 &nbsp;<br>
 props&nbsp;is&nbsp;a&nbsp;dict&nbsp;of&nbsp;rectangle&nbsp;props&nbsp;with&nbsp;the&nbsp;additional&nbsp;property<br>
 'pad'&nbsp;that&nbsp;sets&nbsp;the&nbsp;padding&nbsp;around&nbsp;the&nbsp;bbox&nbsp;in&nbsp;points</tt></dd></dl>
+ <dl><dt><a name="-concatenate"><strong>concatenate</strong></a>(...)</dt><dd><tt><a href="#-concatenate">concatenate</a>((a1,&nbsp;a2,&nbsp;...),&nbsp;axis=0)<br>
+&nbsp;<br>
+Join&nbsp;arrays&nbsp;together.<br>
+&nbsp;<br>
+The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
+(default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
+&nbsp;<br>
+Example:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
+array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
  <dl><dt><a name="-draw_bbox"><strong>draw_bbox</strong></a>(bbox, renderer, color<font color="#909090">='k'</font>, trans<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
 box&nbsp;returned&nbsp;by&nbsp;get_window_extent&nbsp;of&nbsp;an&nbsp;artist,&nbsp;to&nbsp;test&nbsp;whether<br>
 the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd></dl>
+ <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -1341,8 +2184,9 @@ the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd>
 <strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
+<strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', 'datapath': '/usr/share/matplotlib', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;</td></tr></table>
 @footer@

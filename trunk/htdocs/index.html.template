@@ -6,7 +6,7 @@ commands = all_commands[0][1]
 
 
 @header@
-<a href=http://www.scipy.org/wikis/topical_software/Maps><img align=right
+<a href=http://www.scipy.org/Cookbook/Matplotlib/Maps><img align=right
 src=screenshots/contour_small.png></a>
 
 <h2>Matplotlib</h2> 

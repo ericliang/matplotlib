@@ -66,10 +66,57 @@ Credits:<br>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.numerix.linear_algebra.html">matplotlib.numerix.linear_algebra</a><br>
 <a href="math.html">math</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.numerix.html">matplotlib.numerix</a><br>
+<a href="matplotlib.numerix.html">matplotlib.numerix</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
 <a href="operator.html">operator</a><br>
 </td><td width="25%" valign=top><a href="random.html">random</a><br>
 <a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FIFOBuffer">FIFOBuffer</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FIFOBuffer">class <strong>FIFOBuffer</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;FIFO&nbsp;queue&nbsp;to&nbsp;hold&nbsp;incoming&nbsp;x,&nbsp;y&nbsp;data&nbsp;in&nbsp;a&nbsp;rotating&nbsp;buffer&nbsp;using<br>
+numerix&nbsp;arrrays&nbsp;under&nbsp;the&nbsp;hood.&nbsp;&nbsp;It&nbsp;is&nbsp;assumed&nbsp;that&nbsp;you&nbsp;will&nbsp;call<br>
+asarrays&nbsp;much&nbsp;less&nbsp;frequently&nbsp;than&nbsp;you&nbsp;add&nbsp;data&nbsp;to&nbsp;the&nbsp;queue&nbsp;--<br>
+otherwise&nbsp;another&nbsp;data&nbsp;structure&nbsp;will&nbsp;be&nbsp;faster<br>
+&nbsp;<br>
+This&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;support&nbsp;plots&nbsp;where&nbsp;data&nbsp;is&nbsp;added&nbsp;from&nbsp;a&nbsp;real<br>
+time&nbsp;feed&nbsp;and&nbsp;the&nbsp;plot&nbsp;object&nbsp;wants&nbsp;grab&nbsp;data&nbsp;from&nbsp;the&nbsp;buffer&nbsp;and<br>
+plot&nbsp;it&nbsp;to&nbsp;screen&nbsp;less&nbsp;freqeuently&nbsp;than&nbsp;the&nbsp;incoming<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;set&nbsp;the&nbsp;dataLim&nbsp;attr&nbsp;to&nbsp;a&nbsp;matplotlib&nbsp;BBox&nbsp;(eg&nbsp;ax.dataLim),<br>
+the&nbsp;dataLim&nbsp;will&nbsp;be&nbsp;updated&nbsp;as&nbsp;new&nbsp;data&nbsp;come&nbsp;in<br>
+&nbsp;<br>
+TODI:&nbsp;add&nbsp;a&nbsp;grow&nbsp;method&nbsp;that&nbsp;will&nbsp;extend&nbsp;nmax<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="FIFOBuffer-__init__"><strong>__init__</strong></a>(self, nmax)</dt><dd><tt>buffer&nbsp;up&nbsp;to&nbsp;nmax&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="FIFOBuffer-add"><strong>add</strong></a>(self, x, y)</dt><dd><tt>add&nbsp;scalar&nbsp;x&nbsp;and&nbsp;y&nbsp;to&nbsp;the&nbsp;queue</tt></dd></dl>
+
+<dl><dt><a name="FIFOBuffer-asarrays"><strong>asarrays</strong></a>(self)</dt><dd><tt>return&nbsp;x&nbsp;and&nbsp;y&nbsp;as&nbsp;arrays;&nbsp;their&nbsp;length&nbsp;will&nbsp;be&nbsp;the&nbsp;len&nbsp;of&nbsp;data<br>
+added&nbsp;or&nbsp;nmax</tt></dd></dl>
+
+<dl><dt><a name="FIFOBuffer-last"><strong>last</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;last&nbsp;x,&nbsp;y&nbsp;or&nbsp;None,&nbsp;None&nbsp;if&nbsp;no&nbsp;data&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="FIFOBuffer-register"><strong>register</strong></a>(self, func, N)</dt><dd><tt>call&nbsp;func&nbsp;everytime&nbsp;N&nbsp;events&nbsp;are&nbsp;passed;&nbsp;func&nbsp;signature&nbsp;is&nbsp;func(fifo)</tt></dd></dl>
+
+<dl><dt><a name="FIFOBuffer-update_datalim_to_current"><strong>update_datalim_to_current</strong></a>(self)</dt><dd><tt>update&nbsp;the&nbsp;datalim&nbsp;in&nbsp;the&nbsp;current&nbsp;data&nbsp;in&nbsp;the&nbsp;fifo</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -79,14 +126,9 @@ Credits:<br>
 <td width="100%"><dl><dt><a name="-amap"><strong>amap</strong></a>(fn, *args)</dt><dd><tt><a href="#-amap">amap</a>(function,&nbsp;sequence[,&nbsp;sequence,&nbsp;...])&nbsp;-&gt;&nbsp;array.<br>
 &nbsp;<br>
 Works&nbsp;like&nbsp;map(),&nbsp;but&nbsp;it&nbsp;returns&nbsp;an&nbsp;array.&nbsp;&nbsp;This&nbsp;is&nbsp;just&nbsp;a&nbsp;convenient<br>
-shorthand&nbsp;for&nbsp;Numeric.<a href="#-array">array</a>(map(...))</tt></dd></dl>
+shorthand&nbsp;for&nbsp;Numeric.array(map(...))</tt></dd></dl>
  <dl><dt><a name="-approx_real"><strong>approx_real</strong></a>(x)</dt><dd><tt><a href="#-approx_real">approx_real</a>(x)&nbsp;:&nbsp;returns&nbsp;x.real&nbsp;if&nbsp;|x.imag|&nbsp;&lt;&nbsp;|x.real|&nbsp;*&nbsp;_eps_approx.<br>
 This&nbsp;function&nbsp;is&nbsp;needed&nbsp;by&nbsp;sqrtm&nbsp;and&nbsp;allows&nbsp;further&nbsp;functions.</tt></dd></dl>
- <dl><dt><a name="-arange"><strong>arange</strong></a>(...)</dt><dd><tt><a href="#-arange">arange</a>(start,&nbsp;stop=None,&nbsp;step=1,&nbsp;typecode=None)<br>
-&nbsp;<br>
-&nbsp;Just&nbsp;like&nbsp;range()&nbsp;except&nbsp;it&nbsp;returns&nbsp;an&nbsp;array&nbsp;whose&nbsp;type&nbsp;can&nbsp;be<br>
-specified&nbsp;by&nbsp;the&nbsp;keyword&nbsp;argument&nbsp;typecode.</tt></dd></dl>
- <dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(sequence,&nbsp;typecode=None,&nbsp;copy=1,&nbsp;savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;formed&nbsp;from&nbsp;the&nbsp;given&nbsp;(potentially&nbsp;nested)&nbsp;sequence&nbsp;with&nbsp;type&nbsp;given&nbsp;by&nbsp;typecode.&nbsp;&nbsp;If&nbsp;no&nbsp;typecode&nbsp;is&nbsp;given,&nbsp;then&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;sequence.&nbsp;&nbsp;If&nbsp;copy&nbsp;is&nbsp;zero&nbsp;and&nbsp;sequence&nbsp;is&nbsp;already&nbsp;an&nbsp;array,&nbsp;a&nbsp;reference&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;maintain&nbsp;its&nbsp;precision&nbsp;in&nbsp;operations.</tt></dd></dl>
  <dl><dt><a name="-base_repr"><strong>base_repr</strong></a>(number, base<font color="#909090">=2</font>, padding<font color="#909090">=0</font>)</dt><dd><tt>Return&nbsp;the&nbsp;representation&nbsp;of&nbsp;a&nbsp;number&nbsp;in&nbsp;any&nbsp;given&nbsp;base.</tt></dd></dl>
  <dl><dt><a name="-binary_repr"><strong>binary_repr</strong></a>(number, max_length<font color="#909090">=1025</font>)</dt><dd><tt>Return&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;input&nbsp;number&nbsp;as&nbsp;a&nbsp;string.<br>
 &nbsp;<br>
@@ -171,6 +213,17 @@ cohere.<br>
 See&nbsp;test/cohere_pairs_test.py&nbsp;in&nbsp;the&nbsp;src&nbsp;tree&nbsp;for&nbsp;an&nbsp;example<br>
 script&nbsp;that&nbsp;shows&nbsp;that&nbsp;this&nbsp;cohere_pairs&nbsp;and&nbsp;cohere&nbsp;give&nbsp;the&nbsp;same<br>
 results&nbsp;for&nbsp;a&nbsp;given&nbsp;pair.</tt></dd></dl>
+ <dl><dt><a name="-concatenate"><strong>concatenate</strong></a>(...)</dt><dd><tt><a href="#-concatenate">concatenate</a>((a1,&nbsp;a2,&nbsp;...),&nbsp;axis=0)<br>
+&nbsp;<br>
+Join&nbsp;arrays&nbsp;together.<br>
+&nbsp;<br>
+The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
+(default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
+&nbsp;<br>
+Example:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
+array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
  <dl><dt><a name="-conv"><strong>conv</strong></a>(x, y, mode<font color="#909090">=2</font>)</dt><dd><tt>convolve&nbsp;x&nbsp;with&nbsp;y</tt></dd></dl>
  <dl><dt><a name="-corrcoef"><strong>corrcoef</strong></a>(*args)</dt><dd><tt><a href="#-corrcoef">corrcoef</a>(X)&nbsp;where&nbsp;X&nbsp;is&nbsp;a&nbsp;matrix&nbsp;returns&nbsp;a&nbsp;matrix&nbsp;of&nbsp;correlation<br>
 coefficients&nbsp;for&nbsp;each&nbsp;numrows&nbsp;observations&nbsp;and&nbsp;numcols&nbsp;variables.<br>
@@ -215,6 +268,7 @@ p,&nbsp;s0,&nbsp;s1&nbsp;are&nbsp;xy&nbsp;sequences<br>
 This&nbsp;algorithm&nbsp;from<br>
 <a href="http://softsurfer.com/Archive/algorithm_0102/algorithm_0102.htm#Distance%20to%20Ray%20or%20Segment">http://softsurfer.com/Archive/algorithm_0102/algorithm_0102.htm#Distance%20to%20Ray%20or%20Segment</a></tt></dd></dl>
  <dl><dt><a name="-donothing_callback"><strong>donothing_callback</strong></a>(*args)</dt></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
  <dl><dt><a name="-entropy"><strong>entropy</strong></a>(y, bins)</dt><dd><tt>Return&nbsp;the&nbsp;entropy&nbsp;of&nbsp;the&nbsp;data&nbsp;in&nbsp;y<br>
 &nbsp;<br>
 \sum&nbsp;p_i&nbsp;<a href="#-log2">log2</a>(p_i)&nbsp;where&nbsp;p_i&nbsp;is&nbsp;the&nbsp;probability&nbsp;of&nbsp;observing&nbsp;y&nbsp;in<br>
@@ -229,7 +283,7 @@ Sanalytic&nbsp;=&nbsp;0.5&nbsp;&nbsp;*&nbsp;(&nbsp;1.0&nbsp;+&nbsp;log(2*pi*sigm
 Slow&nbsp;but&nbsp;convenient&nbsp;to&nbsp;use.&nbsp;Note&nbsp;that&nbsp;NumArray&nbsp;will&nbsp;introduce&nbsp;proper<br>
 floating&nbsp;point&nbsp;exception&nbsp;handling&nbsp;with&nbsp;access&nbsp;to&nbsp;the&nbsp;underlying<br>
 hardware.</tt></dd></dl>
- <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none&gt;</font>, window<font color="#909090">=&lt;function window_none&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
  <dl><dt><a name="-find"><strong>find</strong></a>(condition)</dt><dd><tt>Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;condition&nbsp;is&nbsp;true</tt></dd></dl>
  <dl><dt><a name="-fix"><strong>fix</strong></a>(x)</dt><dd><tt>Rounds&nbsp;towards&nbsp;zero.<br>
 x_rounded&nbsp;=&nbsp;<a href="#-fix">fix</a>(x)&nbsp;rounds&nbsp;the&nbsp;elements&nbsp;of&nbsp;x&nbsp;to&nbsp;the&nbsp;nearest&nbsp;integers<br>
@@ -237,16 +291,16 @@ towards&nbsp;zero.<br>
 For&nbsp;negative&nbsp;numbers&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;ceil&nbsp;and&nbsp;for&nbsp;positive&nbsp;to&nbsp;floor.</tt></dd></dl>
  <dl><dt><a name="-frange"><strong>frange</strong></a>(xini, xfin<font color="#909090">=None</font>, delta<font color="#909090">=None</font>, **kw)</dt><dd><tt><a href="#-frange">frange</a>([start,]&nbsp;stop[,&nbsp;step,&nbsp;keywords])&nbsp;-&gt;&nbsp;array&nbsp;of&nbsp;floats<br>
 &nbsp;<br>
-Return&nbsp;a&nbsp;Numeric&nbsp;<a href="#-array">array</a>()&nbsp;containing&nbsp;a&nbsp;progression&nbsp;of&nbsp;floats.&nbsp;Similar&nbsp;to<br>
-<a href="#-arange">arange</a>(),&nbsp;but&nbsp;defaults&nbsp;to&nbsp;a&nbsp;closed&nbsp;interval.<br>
+Return&nbsp;a&nbsp;Numeric&nbsp;array()&nbsp;containing&nbsp;a&nbsp;progression&nbsp;of&nbsp;floats.&nbsp;Similar&nbsp;to<br>
+arange(),&nbsp;but&nbsp;defaults&nbsp;to&nbsp;a&nbsp;closed&nbsp;interval.<br>
 &nbsp;<br>
 <a href="#-frange">frange</a>(x0,&nbsp;x1)&nbsp;returns&nbsp;[x0,&nbsp;x0+1,&nbsp;x0+2,&nbsp;...,&nbsp;x1];&nbsp;start&nbsp;defaults&nbsp;to&nbsp;0,&nbsp;and<br>
 the&nbsp;endpoint&nbsp;*is&nbsp;included*.&nbsp;This&nbsp;behavior&nbsp;is&nbsp;different&nbsp;from&nbsp;that&nbsp;of<br>
-range()&nbsp;and&nbsp;<a href="#-arange">arange</a>().&nbsp;This&nbsp;is&nbsp;deliberate,&nbsp;since&nbsp;frange&nbsp;will&nbsp;probably&nbsp;be<br>
+range()&nbsp;and&nbsp;arange().&nbsp;This&nbsp;is&nbsp;deliberate,&nbsp;since&nbsp;frange&nbsp;will&nbsp;probably&nbsp;be<br>
 more&nbsp;useful&nbsp;for&nbsp;generating&nbsp;lists&nbsp;of&nbsp;points&nbsp;for&nbsp;function&nbsp;evaluation,&nbsp;and<br>
 endpoints&nbsp;are&nbsp;often&nbsp;desired&nbsp;in&nbsp;this&nbsp;use.&nbsp;The&nbsp;usual&nbsp;behavior&nbsp;of&nbsp;range()&nbsp;can<br>
 be&nbsp;obtained&nbsp;by&nbsp;setting&nbsp;the&nbsp;keyword&nbsp;'closed=0',&nbsp;in&nbsp;this&nbsp;case&nbsp;<a href="#-frange">frange</a>()<br>
-basically&nbsp;becomes&nbsp;<a href="#-arange">arange</a>().<br>
+basically&nbsp;becomes&nbsp;arange().<br>
 &nbsp;<br>
 When&nbsp;step&nbsp;is&nbsp;given,&nbsp;it&nbsp;specifies&nbsp;the&nbsp;increment&nbsp;(or&nbsp;decrement).&nbsp;All<br>
 arguments&nbsp;can&nbsp;be&nbsp;floating&nbsp;point&nbsp;numbers.<br>
@@ -255,17 +309,17 @@ arguments&nbsp;can&nbsp;be&nbsp;floating&nbsp;point&nbsp;numbers.<br>
 &nbsp;<br>
 frange&nbsp;can&nbsp;also&nbsp;be&nbsp;called&nbsp;with&nbsp;the&nbsp;keyword&nbsp;'npts'.&nbsp;This&nbsp;sets&nbsp;the&nbsp;number&nbsp;of<br>
 points&nbsp;the&nbsp;list&nbsp;should&nbsp;contain&nbsp;(and&nbsp;overrides&nbsp;the&nbsp;value&nbsp;'step'&nbsp;might&nbsp;have<br>
-been&nbsp;given).&nbsp;<a href="#-arange">arange</a>()&nbsp;doesn't&nbsp;offer&nbsp;this&nbsp;option.<br>
+been&nbsp;given).&nbsp;arange()&nbsp;doesn't&nbsp;offer&nbsp;this&nbsp;option.<br>
 &nbsp;<br>
 Examples:<br>
 &gt;&gt;&gt;&nbsp;<a href="#-frange">frange</a>(3)<br>
-<a href="#-array">array</a>([&nbsp;0.,&nbsp;&nbsp;1.,&nbsp;&nbsp;2.,&nbsp;&nbsp;3.])<br>
+array([&nbsp;0.,&nbsp;&nbsp;1.,&nbsp;&nbsp;2.,&nbsp;&nbsp;3.])<br>
 &gt;&gt;&gt;&nbsp;<a href="#-frange">frange</a>(3,closed=0)<br>
-<a href="#-array">array</a>([&nbsp;0.,&nbsp;&nbsp;1.,&nbsp;&nbsp;2.])<br>
+array([&nbsp;0.,&nbsp;&nbsp;1.,&nbsp;&nbsp;2.])<br>
 &gt;&gt;&gt;&nbsp;<a href="#-frange">frange</a>(1,6,2)<br>
-<a href="#-array">array</a>([1,&nbsp;3,&nbsp;5])<br>
+array([1,&nbsp;3,&nbsp;5])<br>
 &gt;&gt;&gt;&nbsp;<a href="#-frange">frange</a>(1,6.5,npts=5)<br>
-<a href="#-array">array</a>([&nbsp;1.&nbsp;&nbsp;&nbsp;,&nbsp;&nbsp;2.375,&nbsp;&nbsp;3.75&nbsp;,&nbsp;&nbsp;5.125,&nbsp;&nbsp;6.5&nbsp;&nbsp;])</tt></dd></dl>
+array([&nbsp;1.&nbsp;&nbsp;&nbsp;,&nbsp;&nbsp;2.375,&nbsp;&nbsp;3.75&nbsp;,&nbsp;&nbsp;5.125,&nbsp;&nbsp;6.5&nbsp;&nbsp;])</tt></dd></dl>
  <dl><dt><a name="-fromfunction_kw"><strong>fromfunction_kw</strong></a>(function, dimensions, **kwargs)</dt><dd><tt>Drop-in&nbsp;replacement&nbsp;for&nbsp;fromfunction()&nbsp;from&nbsp;Numerical&nbsp;Python.<br>
 &nbsp;<br>
 Allows&nbsp;passing&nbsp;keyword&nbsp;arguments&nbsp;to&nbsp;the&nbsp;desired&nbsp;function.<br>
@@ -302,6 +356,12 @@ Optionally&nbsp;a&nbsp;typecode&nbsp;may&nbsp;be&nbsp;given&nbsp;(it&nbsp;defaul
 &nbsp;<br>
 Since&nbsp;rank&nbsp;defaults&nbsp;to&nbsp;2,&nbsp;this&nbsp;function&nbsp;behaves&nbsp;in&nbsp;the&nbsp;default&nbsp;case&nbsp;(when<br>
 only&nbsp;n&nbsp;is&nbsp;given)&nbsp;like&nbsp;the&nbsp;Numeric&nbsp;identity&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-inside_poly"><strong>inside_poly</strong></a>(points, verts)</dt><dd><tt>"<br>
+points&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;x,y&nbsp;points<br>
+verts&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;x,y&nbsp;vertices&nbsp;of&nbsp;a&nbsp;poygon<br>
+&nbsp;<br>
+return&nbsp;value&nbsp;is&nbsp;a&nbsp;sequence&nbsp;on&nbsp;indices&nbsp;into&nbsp;points&nbsp;for&nbsp;the&nbsp;points<br>
+that&nbsp;are&nbsp;inside&nbsp;the&nbsp;polygon</tt></dd></dl>
  <dl><dt><a name="-ispower2"><strong>ispower2</strong></a>(n)</dt><dd><tt>Returns&nbsp;the&nbsp;log&nbsp;base&nbsp;2&nbsp;of&nbsp;n&nbsp;if&nbsp;n&nbsp;is&nbsp;a&nbsp;power&nbsp;of&nbsp;2,&nbsp;zero&nbsp;otherwise.<br>
 &nbsp;<br>
 Note&nbsp;the&nbsp;potential&nbsp;ambiguity&nbsp;if&nbsp;n==1:&nbsp;2**0==1,&nbsp;interpret&nbsp;accordingly.</tt></dd></dl>
@@ -312,17 +372,67 @@ Implemented&nbsp;as&nbsp;a&nbsp;separate&nbsp;function&nbsp;(not&nbsp;a&nbsp;cal
 &nbsp;<br>
 Implemented&nbsp;as&nbsp;a&nbsp;separate&nbsp;function&nbsp;(not&nbsp;a&nbsp;call&nbsp;to&nbsp;<a href="#-norm">norm</a>()&nbsp;for&nbsp;speed).</tt></dd></dl>
  <dl><dt><a name="-levypdf"><strong>levypdf</strong></a>(x, gamma, alpha)</dt><dd><tt>Returm&nbsp;the&nbsp;levy&nbsp;pdf&nbsp;evaluated&nbsp;at&nbsp;x&nbsp;for&nbsp;params&nbsp;gamma,&nbsp;alpha</tt></dd></dl>
+ <dl><dt><a name="-liaupunov"><strong>liaupunov</strong></a>(x, fprime)</dt><dd><tt>x&nbsp;is&nbsp;a&nbsp;very&nbsp;long&nbsp;trajectory&nbsp;from&nbsp;a&nbsp;map,&nbsp;and&nbsp;fprime&nbsp;returns&nbsp;the<br>
+derivative&nbsp;of&nbsp;x.&nbsp;&nbsp;Return&nbsp;lambda&nbsp;=&nbsp;1/n\sum&nbsp;ln|fprime(x_i)|.&nbsp;&nbsp;See&nbsp;Sec<br>
+10.5&nbsp;Strogatz&nbsp;(1994)"Nonlinear&nbsp;Dynamics&nbsp;and&nbsp;Chaos".</tt></dd></dl>
  <dl><dt><a name="-linspace"><strong>linspace</strong></a>(xmin, xmax, N)</dt></dl>
+ <dl><dt><a name="-load"><strong>load</strong></a>(fname, comments<font color="#909090">='%'</font>, delimiter<font color="#909090">=None</font>, converters<font color="#909090">=None</font>, skiprows<font color="#909090">=0</font>, usecols<font color="#909090">=None</font>, unpack<font color="#909090">=False</font>)</dt><dd><tt>Load&nbsp;ASCII&nbsp;data&nbsp;from&nbsp;fname&nbsp;into&nbsp;an&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;array.<br>
+&nbsp;<br>
+The&nbsp;data&nbsp;must&nbsp;be&nbsp;regular,&nbsp;same&nbsp;number&nbsp;of&nbsp;values&nbsp;in&nbsp;every&nbsp;row<br>
+&nbsp;<br>
+fname&nbsp;can&nbsp;be&nbsp;a&nbsp;filename&nbsp;or&nbsp;a&nbsp;file&nbsp;handle.&nbsp;&nbsp;Support&nbsp;for&nbsp;gzipped&nbsp;files&nbsp;is<br>
+automatic,&nbsp;if&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz<br>
+&nbsp;<br>
+matfile&nbsp;data&nbsp;is&nbsp;not&nbsp;currently&nbsp;supported,&nbsp;but&nbsp;see<br>
+Nigel&nbsp;Wade's&nbsp;matfile&nbsp;<a href="ftp://ion.le.ac.uk/matfile/matfile.tar.gz">ftp://ion.le.ac.uk/matfile/matfile.tar.gz</a><br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+&nbsp;&nbsp;X&nbsp;=&nbsp;<a href="#-load">load</a>('test.dat')&nbsp;&nbsp;#&nbsp;data&nbsp;in&nbsp;two&nbsp;columns<br>
+&nbsp;&nbsp;t&nbsp;=&nbsp;X[:,0]<br>
+&nbsp;&nbsp;y&nbsp;=&nbsp;X[:,1]<br>
+&nbsp;<br>
+Alternatively,&nbsp;you&nbsp;can&nbsp;do&nbsp;the&nbsp;same&nbsp;with&nbsp;"unpack";&nbsp;see&nbsp;below<br>
+&nbsp;<br>
+&nbsp;&nbsp;X&nbsp;=&nbsp;<a href="#-load">load</a>('test.dat')&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;a&nbsp;matrix&nbsp;of&nbsp;data<br>
+&nbsp;&nbsp;x&nbsp;=&nbsp;<a href="#-load">load</a>('test.dat')&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;a&nbsp;single&nbsp;column&nbsp;of&nbsp;data<br>
+&nbsp;<br>
+comments&nbsp;-&nbsp;the&nbsp;character&nbsp;used&nbsp;to&nbsp;indicate&nbsp;the&nbsp;start&nbsp;of&nbsp;a&nbsp;comment<br>
+in&nbsp;the&nbsp;file<br>
+&nbsp;<br>
+delimiter&nbsp;is&nbsp;a&nbsp;string-like&nbsp;character&nbsp;used&nbsp;to&nbsp;seperate&nbsp;values&nbsp;in&nbsp;the<br>
+file.&nbsp;If&nbsp;delimiter&nbsp;is&nbsp;unspecified&nbsp;or&nbsp;none,&nbsp;any&nbsp;whitespace&nbsp;string&nbsp;is<br>
+a&nbsp;separator.<br>
+&nbsp;<br>
+converters,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;column&nbsp;number&nbsp;to<br>
+a&nbsp;function&nbsp;that&nbsp;will&nbsp;convert&nbsp;that&nbsp;column&nbsp;to&nbsp;a&nbsp;float.&nbsp;&nbsp;Eg,&nbsp;if<br>
+column&nbsp;0&nbsp;is&nbsp;a&nbsp;date&nbsp;string:&nbsp;converters={0:datestr2num}<br>
+&nbsp;<br>
+skiprows&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;rows&nbsp;from&nbsp;the&nbsp;top&nbsp;to&nbsp;skip<br>
+&nbsp;<br>
+usecols,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;integer&nbsp;column&nbsp;indexes&nbsp;to<br>
+extract&nbsp;where&nbsp;0&nbsp;is&nbsp;the&nbsp;first&nbsp;column,&nbsp;eg&nbsp;usecols=(1,4,5)&nbsp;to&nbsp;extract<br>
+just&nbsp;the&nbsp;2nd,&nbsp;5th&nbsp;and&nbsp;6th&nbsp;columns<br>
+&nbsp;<br>
+unpack,&nbsp;if&nbsp;True,&nbsp;will&nbsp;transpose&nbsp;the&nbsp;matrix&nbsp;allowing&nbsp;you&nbsp;to&nbsp;unpack<br>
+into&nbsp;named&nbsp;arguments&nbsp;on&nbsp;the&nbsp;left&nbsp;hand&nbsp;side<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t,y&nbsp;=&nbsp;<a href="#-load">load</a>('test.dat',&nbsp;unpack=True)&nbsp;#&nbsp;for&nbsp;&nbsp;two&nbsp;column&nbsp;data<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x,y,z&nbsp;=&nbsp;<a href="#-load">load</a>('somefile.dat',&nbsp;usecols=(3,5,7),&nbsp;unpack=True)<br>
+&nbsp;<br>
+See&nbsp;examples/load_demo.py&nbsp;which&nbsp;exeercises&nbsp;many&nbsp;of&nbsp;these&nbsp;options.</tt></dd></dl>
  <dl><dt><a name="-log2"><strong>log2</strong></a>(x, ln2<font color="#909090">=0.69314718055994529</font>)</dt><dd><tt>Return&nbsp;the&nbsp;log(x)&nbsp;in&nbsp;base&nbsp;2.<br>
 &nbsp;<br>
 This&nbsp;is&nbsp;a&nbsp;_slow_&nbsp;function&nbsp;but&nbsp;which&nbsp;is&nbsp;guaranteed&nbsp;to&nbsp;return&nbsp;the&nbsp;correct<br>
 integer&nbsp;value&nbsp;if&nbsp;the&nbsp;input&nbsp;is&nbsp;an&nbsp;ineger&nbsp;exact&nbsp;power&nbsp;of&nbsp;2.</tt></dd></dl>
+ <dl><dt><a name="-logspace"><strong>logspace</strong></a>(xmin, xmax, N)</dt></dl>
  <dl><dt><a name="-longest_contiguous_ones"><strong>longest_contiguous_ones</strong></a>(x)</dt><dd><tt>return&nbsp;the&nbsp;indicies&nbsp;of&nbsp;the&nbsp;longest&nbsp;stretch&nbsp;of&nbsp;contiguous&nbsp;ones&nbsp;in&nbsp;x,<br>
 assuming&nbsp;x&nbsp;is&nbsp;a&nbsp;vector&nbsp;of&nbsp;zeros&nbsp;and&nbsp;ones.</tt></dd></dl>
  <dl><dt><a name="-longest_ones"><strong>longest_ones</strong></a>(x)</dt><dd><tt>return&nbsp;the&nbsp;indicies&nbsp;of&nbsp;the&nbsp;longest&nbsp;stretch&nbsp;of&nbsp;contiguous&nbsp;ones&nbsp;in&nbsp;x,<br>
 assuming&nbsp;x&nbsp;is&nbsp;a&nbsp;vector&nbsp;of&nbsp;zeros&nbsp;and&nbsp;ones.<br>
 &nbsp;<br>
 If&nbsp;there&nbsp;are&nbsp;two&nbsp;equally&nbsp;long&nbsp;stretches,&nbsp;pick&nbsp;the&nbsp;first</tt></dd></dl>
+ <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
  <dl><dt><a name="-mean"><strong>mean</strong></a>(x, dim<font color="#909090">=None</font>)</dt></dl>
  <dl><dt><a name="-mean_flat"><strong>mean_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;mean&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.</tt></dd></dl>
  <dl><dt><a name="-meshgrid"><strong>meshgrid</strong></a>(x, y)</dt><dd><tt>For&nbsp;vectors&nbsp;x,&nbsp;y&nbsp;with&nbsp;lengths&nbsp;Nx=len(x)&nbsp;and&nbsp;Ny=len(y),&nbsp;return&nbsp;X,&nbsp;Y<br>
@@ -348,12 +458,25 @@ EG,<br>
  <dl><dt><a name="-mfuncC"><strong>mfuncC</strong></a>(f, x)</dt><dd><tt><a href="#-mfuncC">mfuncC</a>(f,&nbsp;x)&nbsp;:&nbsp;matrix&nbsp;function&nbsp;with&nbsp;possibly&nbsp;complex&nbsp;eigenvalues.<br>
 Note:&nbsp;Numeric&nbsp;defines&nbsp;(v,u)&nbsp;=&nbsp;eig(x)&nbsp;=&gt;&nbsp;x*u.T&nbsp;=&nbsp;u.T&nbsp;*&nbsp;Diag(v)<br>
 This&nbsp;function&nbsp;is&nbsp;needed&nbsp;by&nbsp;sqrtm&nbsp;and&nbsp;allows&nbsp;further&nbsp;functions.</tt></dd></dl>
- <dl><dt><a name="-norm"><strong>norm</strong></a>(a, p<font color="#909090">=2</font>)</dt><dd><tt><a href="#-norm">norm</a>(a,p=2)&nbsp;-&gt;&nbsp;l-p&nbsp;norm&nbsp;of&nbsp;a.flat<br>
+ <dl><dt><a name="-movavg"><strong>movavg</strong></a>(x, n)</dt><dd><tt>compute&nbsp;the&nbsp;len(n)&nbsp;moving&nbsp;average&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-norm"><strong>norm</strong></a>(x, y<font color="#909090">=2</font>)</dt><dd><tt>Norm&nbsp;of&nbsp;a&nbsp;matrix&nbsp;or&nbsp;a&nbsp;vector&nbsp;according&nbsp;to&nbsp;Matlab.<br>
+The&nbsp;description&nbsp;is&nbsp;taken&nbsp;from&nbsp;Matlab:<br>
 &nbsp;<br>
-Return&nbsp;the&nbsp;l-p&nbsp;norm&nbsp;of&nbsp;a,&nbsp;considered&nbsp;as&nbsp;a&nbsp;flat&nbsp;array.&nbsp;&nbsp;This&nbsp;is&nbsp;NOT&nbsp;a&nbsp;true<br>
-matrix&nbsp;norm,&nbsp;since&nbsp;arrays&nbsp;of&nbsp;arbitrary&nbsp;rank&nbsp;are&nbsp;always&nbsp;flattened.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;matrices...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X)&nbsp;is&nbsp;the&nbsp;largest&nbsp;singular&nbsp;value&nbsp;of&nbsp;X,&nbsp;max(svd(X)).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,2)&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;NORM(X).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,1)&nbsp;is&nbsp;the&nbsp;1-norm&nbsp;of&nbsp;X,&nbsp;the&nbsp;largest&nbsp;column&nbsp;sum,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;max(sum(abs((X)))).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,inf)&nbsp;is&nbsp;the&nbsp;infinity&nbsp;norm&nbsp;of&nbsp;X,&nbsp;the&nbsp;largest&nbsp;row&nbsp;sum,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;max(sum(abs((X')))).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,'fro')&nbsp;is&nbsp;the&nbsp;Frobenius&nbsp;norm,&nbsp;sqrt(sum(diag(X'*X))).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,P)&nbsp;is&nbsp;available&nbsp;for&nbsp;matrix&nbsp;X&nbsp;only&nbsp;if&nbsp;P&nbsp;is&nbsp;1,&nbsp;2,&nbsp;inf&nbsp;or&nbsp;'fro'.<br>
 &nbsp;<br>
-p&nbsp;can&nbsp;be&nbsp;a&nbsp;number&nbsp;or&nbsp;the&nbsp;string&nbsp;'Infinity'&nbsp;to&nbsp;get&nbsp;the&nbsp;L-infinity&nbsp;norm.</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;vectors...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,P)&nbsp;=&nbsp;sum(abs(V).^P)^(1/P).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V)&nbsp;=&nbsp;<a href="#-norm">norm</a>(V,2).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,inf)&nbsp;=&nbsp;max(abs(V)).<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,-inf)&nbsp;=&nbsp;min(abs(V)).</tt></dd></dl>
  <dl><dt><a name="-normpdf"><strong>normpdf</strong></a>(x, *args)</dt><dd><tt>Return&nbsp;the&nbsp;normal&nbsp;pdf&nbsp;evaluated&nbsp;at&nbsp;x;&nbsp;args&nbsp;provides&nbsp;mu,&nbsp;sigma</tt></dd></dl>
  <dl><dt><a name="-orth"><strong>orth</strong></a>(A)</dt><dd><tt>Orthogonalization&nbsp;procedure&nbsp;by&nbsp;Matlab.<br>
 The&nbsp;description&nbsp;is&nbsp;taken&nbsp;from&nbsp;its&nbsp;help:<br>
@@ -436,6 +559,14 @@ Returns&nbsp;the&nbsp;tuple&nbsp;Pxx,&nbsp;freqs<br>
 Refs:<br>
 &nbsp;&nbsp;Bendat&nbsp;&amp;&nbsp;Piersol&nbsp;--&nbsp;Random&nbsp;Data:&nbsp;Analysis&nbsp;and&nbsp;Measurement<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Procedures,&nbsp;John&nbsp;Wiley&nbsp;&amp;&nbsp;Sons&nbsp;(1986)</tt></dd></dl>
+ <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
+random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
+&nbsp;<br>
+<a href="#-rand">rand</a>(d0,&nbsp;d1,&nbsp;...,&nbsp;dn)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
+&nbsp;<br>
+Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbsp;you&nbsp;want&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;that&nbsp;takes&nbsp;a&nbsp;tuple&nbsp;as&nbsp;the&nbsp;first&nbsp;argument<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;numpy.random.random_sample(shape_tuple).</tt></dd></dl>
  <dl><dt><a name="-rank"><strong>rank</strong></a>(x)</dt><dd><tt>Returns&nbsp;the&nbsp;rank&nbsp;of&nbsp;a&nbsp;matrix.<br>
 The&nbsp;rank&nbsp;is&nbsp;understood&nbsp;here&nbsp;as&nbsp;the&nbsp;an&nbsp;estimation&nbsp;of&nbsp;the&nbsp;number&nbsp;of<br>
 linearly&nbsp;independent&nbsp;rows&nbsp;or&nbsp;columns&nbsp;(depending&nbsp;on&nbsp;the&nbsp;size&nbsp;of&nbsp;the<br>
@@ -447,7 +578,6 @@ This&nbsp;function&nbsp;is!</tt></dd></dl>
 By&nbsp;convention,&nbsp;<a href="#-rem">rem</a>(x,0)&nbsp;returns&nbsp;None.<br>
 We&nbsp;keep&nbsp;the&nbsp;convention&nbsp;by&nbsp;Matlab:<br>
 "The&nbsp;input&nbsp;x&nbsp;and&nbsp;y&nbsp;must&nbsp;be&nbsp;real&nbsp;arrays&nbsp;of&nbsp;the&nbsp;same&nbsp;size,&nbsp;or&nbsp;real&nbsp;scalars."</tt></dd></dl>
- <dl><dt><a name="-reshape"><strong>reshape</strong></a>(...)</dt><dd><tt><a href="#-reshape">reshape</a>(a,&nbsp;(d1,&nbsp;d2,&nbsp;...,&nbsp;dn)).&nbsp;&nbsp;Change&nbsp;the&nbsp;shape&nbsp;of&nbsp;a&nbsp;to&nbsp;be&nbsp;an&nbsp;n-dimensional&nbsp;array&nbsp;with&nbsp;dimensions&nbsp;given&nbsp;by&nbsp;d1...dn.&nbsp;&nbsp;Note:&nbsp;the&nbsp;size&nbsp;specified&nbsp;for&nbsp;the&nbsp;new&nbsp;array&nbsp;must&nbsp;be&nbsp;exactly&nbsp;equal&nbsp;to&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;&nbsp;old&nbsp;one&nbsp;or&nbsp;an&nbsp;error&nbsp;will&nbsp;occur.</tt></dd></dl>
  <dl><dt><a name="-rk4"><strong>rk4</strong></a>(derivs, y0, t)</dt><dd><tt>Integrate&nbsp;1D&nbsp;or&nbsp;ND&nbsp;system&nbsp;of&nbsp;ODEs&nbsp;from&nbsp;initial&nbsp;state&nbsp;y0&nbsp;at&nbsp;sample<br>
 times&nbsp;t.&nbsp;&nbsp;derivs&nbsp;returns&nbsp;the&nbsp;derivative&nbsp;of&nbsp;the&nbsp;system&nbsp;and&nbsp;has&nbsp;the<br>
 signature<br>
@@ -463,7 +593,7 @@ Example&nbsp;1&nbsp;:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;d2&nbsp;=&nbsp;&nbsp;-3*x[0]&nbsp;+&nbsp;4*x[1]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;(d1,&nbsp;d2)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;dt&nbsp;=&nbsp;0.0005<br>
-&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;<a href="#-arange">arange</a>(0.0,&nbsp;2.0,&nbsp;dt)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;=&nbsp;arange(0.0,&nbsp;2.0,&nbsp;dt)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;y0&nbsp;=&nbsp;(1,2)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;yout&nbsp;=&nbsp;<a href="#-rk4">rk4</a>(derivs6,&nbsp;y0,&nbsp;t)<br>
 &nbsp;<br>
@@ -477,12 +607,50 @@ Example&nbsp;2:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;y0&nbsp;=&nbsp;1<br>
 &nbsp;&nbsp;&nbsp;&nbsp;yout&nbsp;=&nbsp;<a href="#-rk4">rk4</a>(derivs,&nbsp;y0,&nbsp;t)</tt></dd></dl>
  <dl><dt><a name="-rms_flat"><strong>rms_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;root&nbsp;mean&nbsp;square&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.</tt></dd></dl>
- <dl><dt><a name="-searchsorted"><strong>searchsorted</strong></a> = binarysearch(...)</dt><dd><tt>binarysearch(a,v)</tt></dd></dl>
+ <dl><dt><a name="-save"><strong>save</strong></a>(fname, X, fmt<font color="#909090">='%.18e'</font>, delimiter<font color="#909090">=' '</font>)</dt><dd><tt>Save&nbsp;the&nbsp;data&nbsp;in&nbsp;X&nbsp;to&nbsp;file&nbsp;fname&nbsp;using&nbsp;fmt&nbsp;string&nbsp;to&nbsp;convert&nbsp;the<br>
+data&nbsp;to&nbsp;strings<br>
+&nbsp;<br>
+fname&nbsp;can&nbsp;be&nbsp;a&nbsp;filename&nbsp;or&nbsp;a&nbsp;file&nbsp;handle.&nbsp;&nbsp;If&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz,<br>
+the&nbsp;file&nbsp;is&nbsp;automatically&nbsp;saved&nbsp;in&nbsp;compressed&nbsp;gzip&nbsp;format.&nbsp;&nbsp;The&nbsp;<a href="#-load">load</a>()<br>
+command&nbsp;understands&nbsp;gzipped&nbsp;files&nbsp;transparently.<br>
+&nbsp;<br>
+Example&nbsp;usage:<br>
+&nbsp;<br>
+<a href="#-save">save</a>('test.out',&nbsp;X)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;X&nbsp;is&nbsp;an&nbsp;array<br>
+<a href="#-save">save</a>('test1.out',&nbsp;(x,y,z))&nbsp;&nbsp;#&nbsp;x,y,z&nbsp;equal&nbsp;sized&nbsp;1D&nbsp;arrays<br>
+<a href="#-save">save</a>('test2.out',&nbsp;x)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;x&nbsp;is&nbsp;1D<br>
+<a href="#-save">save</a>('test3.out',&nbsp;x,&nbsp;fmt='%1.4e')&nbsp;&nbsp;#&nbsp;use&nbsp;exponential&nbsp;notation<br>
+&nbsp;<br>
+delimiter&nbsp;is&nbsp;used&nbsp;to&nbsp;separate&nbsp;the&nbsp;fields,&nbsp;eg&nbsp;delimiter&nbsp;','&nbsp;for<br>
+comma-separated&nbsp;values</tt></dd></dl>
  <dl><dt><a name="-segments_intersect"><strong>segments_intersect</strong></a>(s1, s2)</dt><dd><tt>Return&nbsp;True&nbsp;if&nbsp;s1&nbsp;and&nbsp;s2&nbsp;intersect.<br>
 s1&nbsp;and&nbsp;s2&nbsp;are&nbsp;defines&nbsp;as<br>
 &nbsp;<br>
 s1:&nbsp;(x1,&nbsp;y1),&nbsp;(x2,&nbsp;y2)<br>
 s2:&nbsp;(x3,&nbsp;y3),&nbsp;(x4,&nbsp;y4)</tt></dd></dl>
+ <dl><dt><a name="-slopes"><strong>slopes</strong></a>(x, y)</dt><dd><tt>SLOPES&nbsp;calculate&nbsp;the&nbsp;slope&nbsp;y'(x)&nbsp;Given&nbsp;data&nbsp;vectors&nbsp;X&nbsp;and&nbsp;Y&nbsp;SLOPES<br>
+calculates&nbsp;Y'(X),&nbsp;i.e&nbsp;the&nbsp;slope&nbsp;of&nbsp;a&nbsp;curve&nbsp;Y(X).&nbsp;The&nbsp;slope&nbsp;is<br>
+estimated&nbsp;using&nbsp;the&nbsp;slope&nbsp;obtained&nbsp;from&nbsp;that&nbsp;of&nbsp;a&nbsp;parabola&nbsp;through<br>
+any&nbsp;three&nbsp;consecutive&nbsp;points.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;should&nbsp;be&nbsp;superior&nbsp;to&nbsp;that&nbsp;described&nbsp;in&nbsp;the&nbsp;appendix<br>
+of&nbsp;A&nbsp;CONSISTENTLY&nbsp;WELL&nbsp;BEHAVED&nbsp;METHOD&nbsp;OF&nbsp;INTERPOLATION&nbsp;by&nbsp;Russel<br>
+W.&nbsp;Stineman&nbsp;(Creative&nbsp;Computing&nbsp;July&nbsp;1980)&nbsp;in&nbsp;at&nbsp;least&nbsp;one&nbsp;aspect:<br>
+&nbsp;<br>
+Circles&nbsp;for&nbsp;interpolation&nbsp;demand&nbsp;a&nbsp;known&nbsp;aspect&nbsp;ratio&nbsp;between&nbsp;x-<br>
+and&nbsp;y-values.&nbsp;&nbsp;For&nbsp;many&nbsp;functions,&nbsp;however,&nbsp;the&nbsp;abscissa&nbsp;are&nbsp;given<br>
+in&nbsp;different&nbsp;dimensions,&nbsp;so&nbsp;an&nbsp;aspect&nbsp;ratio&nbsp;is&nbsp;completely<br>
+arbitrary.<br>
+&nbsp;<br>
+The&nbsp;parabola&nbsp;method&nbsp;gives&nbsp;very&nbsp;similar&nbsp;results&nbsp;to&nbsp;the&nbsp;circle<br>
+method&nbsp;for&nbsp;most&nbsp;regular&nbsp;cases&nbsp;but&nbsp;behaves&nbsp;much&nbsp;better&nbsp;in&nbsp;special<br>
+cases<br>
+&nbsp;<br>
+Norbert&nbsp;Nemec,&nbsp;Institute&nbsp;of&nbsp;Theoretical&nbsp;Physics,&nbsp;University&nbsp;or<br>
+Regensburg,&nbsp;April&nbsp;2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-regensburg.de<br>
+&nbsp;<br>
+(inspired&nbsp;by&nbsp;a&nbsp;original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,<br>
+Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is)</tt></dd></dl>
  <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none&gt;</font>, window<font color="#909090">=&lt;function window_hanning&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
@@ -495,10 +663,47 @@ the&nbsp;ffts&nbsp;are&nbsp;calculated</tt></dd></dl>
  <dl><dt><a name="-sqrtm"><strong>sqrtm</strong></a>(x)</dt><dd><tt>Returns&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;a&nbsp;square&nbsp;matrix.<br>
 This&nbsp;means&nbsp;that&nbsp;s=<a href="#-sqrtm">sqrtm</a>(x)&nbsp;implies&nbsp;s*s&nbsp;=&nbsp;x.<br>
 Note&nbsp;that&nbsp;s&nbsp;and&nbsp;x&nbsp;are&nbsp;matrices.</tt></dd></dl>
+ <dl><dt><a name="-stineman_interp"><strong>stineman_interp</strong></a>(xi, x, y, yp<font color="#909090">=None</font>)</dt><dd><tt>STINEMAN_INTERP&nbsp;Well&nbsp;behaved&nbsp;data&nbsp;interpolation.&nbsp;&nbsp;Given&nbsp;data<br>
+vectors&nbsp;X&nbsp;and&nbsp;Y,&nbsp;the&nbsp;slope&nbsp;vector&nbsp;YP&nbsp;and&nbsp;a&nbsp;new&nbsp;abscissa&nbsp;vector&nbsp;XI<br>
+the&nbsp;function&nbsp;<a href="#-stineman_interp">stineman_interp</a>(xi,x,y,yp)&nbsp;uses&nbsp;Stineman<br>
+interpolation&nbsp;to&nbsp;calculate&nbsp;a&nbsp;vector&nbsp;YI&nbsp;corresponding&nbsp;to&nbsp;XI.<br>
+&nbsp;<br>
+Here's&nbsp;an&nbsp;example&nbsp;that&nbsp;generates&nbsp;a&nbsp;coarse&nbsp;sine&nbsp;curve,&nbsp;then<br>
+interpolates&nbsp;over&nbsp;a&nbsp;finer&nbsp;abscissa:<br>
+&nbsp;<br>
+&nbsp;&nbsp;x&nbsp;=&nbsp;<a href="#-linspace">linspace</a>(0,2*pi,20);&nbsp;&nbsp;y&nbsp;=&nbsp;sin(x);&nbsp;yp&nbsp;=&nbsp;cos(x)<br>
+&nbsp;&nbsp;xi&nbsp;=&nbsp;<a href="#-linspace">linspace</a>(0,2*pi,40);<br>
+&nbsp;&nbsp;yi&nbsp;=&nbsp;<a href="#-stineman_interp">stineman_interp</a>(xi,x,y,yp);<br>
+&nbsp;&nbsp;plot(x,y,'o',xi,yi)<br>
+&nbsp;<br>
+The&nbsp;interpolation&nbsp;method&nbsp;is&nbsp;described&nbsp;in&nbsp;the&nbsp;article&nbsp;A<br>
+CONSISTENTLY&nbsp;WELL&nbsp;BEHAVED&nbsp;METHOD&nbsp;OF&nbsp;INTERPOLATION&nbsp;by&nbsp;Russell<br>
+W.&nbsp;Stineman.&nbsp;The&nbsp;article&nbsp;appeared&nbsp;in&nbsp;the&nbsp;July&nbsp;1980&nbsp;issue&nbsp;of<br>
+Creative&nbsp;computing&nbsp;with&nbsp;a&nbsp;note&nbsp;from&nbsp;the&nbsp;editor&nbsp;stating&nbsp;that&nbsp;while<br>
+they&nbsp;were<br>
+&nbsp;<br>
+&nbsp;&nbsp;not&nbsp;an&nbsp;academic&nbsp;journal&nbsp;but&nbsp;once&nbsp;in&nbsp;a&nbsp;while&nbsp;something&nbsp;serious<br>
+&nbsp;&nbsp;and&nbsp;original&nbsp;comes&nbsp;in&nbsp;adding&nbsp;that&nbsp;this&nbsp;was<br>
+&nbsp;&nbsp;"apparently&nbsp;a&nbsp;real&nbsp;solution"&nbsp;to&nbsp;a&nbsp;well&nbsp;known&nbsp;problem.<br>
+&nbsp;<br>
+For&nbsp;yp=None,&nbsp;the&nbsp;routine&nbsp;automatically&nbsp;determines&nbsp;the&nbsp;slopes&nbsp;using<br>
+the&nbsp;"slopes"&nbsp;routine.<br>
+&nbsp;<br>
+X&nbsp;is&nbsp;assumed&nbsp;to&nbsp;be&nbsp;sorted&nbsp;in&nbsp;increasing&nbsp;order<br>
+&nbsp;<br>
+For&nbsp;values&nbsp;xi[j]&nbsp;&lt;&nbsp;x[0]&nbsp;or&nbsp;xi[j]&nbsp;&gt;&nbsp;x[-1],&nbsp;the&nbsp;routine&nbsp;tries&nbsp;a<br>
+extrapolation.&nbsp;&nbsp;The&nbsp;relevance&nbsp;of&nbsp;the&nbsp;data&nbsp;obtained&nbsp;from&nbsp;this,&nbsp;of<br>
+course,&nbsp;questionable...<br>
+&nbsp;<br>
+original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,&nbsp;Icelandic<br>
+Meteorolocial&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is<br>
+&nbsp;<br>
+completely&nbsp;reworked&nbsp;and&nbsp;optimized&nbsp;for&nbsp;Python&nbsp;by&nbsp;Norbert&nbsp;Nemec,<br>
+Institute&nbsp;of&nbsp;Theoretical&nbsp;Physics,&nbsp;University&nbsp;or&nbsp;Regensburg,&nbsp;April<br>
+2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-regensburg.de</tt></dd></dl>
  <dl><dt><a name="-sum_flat"><strong>sum_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;sum&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.<br>
 &nbsp;<br>
 It&nbsp;uses&nbsp;a.flat,&nbsp;and&nbsp;if&nbsp;a&nbsp;is&nbsp;not&nbsp;contiguous,&nbsp;a&nbsp;call&nbsp;to&nbsp;ravel(a)&nbsp;is&nbsp;made.</tt></dd></dl>
- <dl><dt><a name="-take"><strong>take</strong></a>(...)</dt><dd><tt><a href="#-take">take</a>(a,&nbsp;indices,&nbsp;axis=0).&nbsp;&nbsp;Selects&nbsp;the&nbsp;elements&nbsp;in&nbsp;indices&nbsp;from&nbsp;array&nbsp;a&nbsp;along&nbsp;the&nbsp;given&nbsp;axis.</tt></dd></dl>
  <dl><dt><a name="-trapz"><strong>trapz</strong></a>(x, y)</dt></dl>
  <dl><dt><a name="-vander"><strong>vander</strong></a>(x, N<font color="#909090">=None</font>)</dt><dd><tt>X&nbsp;=&nbsp;<a href="#-vander">vander</a>(x,N=None)<br>
 &nbsp;<br>
@@ -507,7 +712,6 @@ the&nbsp;i-th&nbsp;power&nbsp;of&nbsp;x.&nbsp;&nbsp;N&nbsp;is&nbsp;the&nbsp;maxi
 None&nbsp;it&nbsp;defaults&nbsp;to&nbsp;len(x).</tt></dd></dl>
  <dl><dt><a name="-window_hanning"><strong>window_hanning</strong></a>(x)</dt><dd><tt>return&nbsp;x&nbsp;times&nbsp;the&nbsp;hanning&nbsp;window&nbsp;of&nbsp;len(x)</tt></dd></dl>
  <dl><dt><a name="-window_none"><strong>window_none</strong></a>(x)</dt><dd><tt>No&nbsp;window&nbsp;function;&nbsp;simply&nbsp;return&nbsp;x</tt></dd></dl>
- <dl><dt><a name="-zeros"><strong>zeros</strong></a>(...)</dt><dd><tt><a href="#-zeros">zeros</a>((d1,...,dn),typecode='l',savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;of&nbsp;shape&nbsp;(d1,...,dn)&nbsp;and&nbsp;type&nbsp;typecode&nbsp;with&nbsp;all&nbsp;it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero&nbsp;the&nbsp;array&nbsp;will&nbsp;be&nbsp;a&nbsp;spacesaver&nbsp;array.</tt></dd></dl>
  <dl><dt><a name="-zeros_like"><strong>zeros_like</strong></a>(a)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;zeros&nbsp;of&nbsp;the&nbsp;shape&nbsp;and&nbsp;typecode&nbsp;of&nbsp;a.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

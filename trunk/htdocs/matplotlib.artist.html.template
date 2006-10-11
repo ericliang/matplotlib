@@ -45,6 +45,8 @@
 <dl><dt><a name="Artist-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
+<dl><dt><a name="Artist-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
 <dl><dt><a name="Artist-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="Artist-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
@@ -73,6 +75,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Artist-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Artist-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -182,7 +188,7 @@ if&nbsp;s&nbsp;is&nbsp;'somename',&nbsp;this&nbsp;function&nbsp;returns<br>
 &nbsp;<br>
 &nbsp;&nbsp;o.get_somename()<br>
 &nbsp;<br>
-get&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;query&nbsp;all&nbsp;the&nbsp;gettable&nbsp;properties&nbsp;with&nbsp;<a href="#-get">get</a>(o)<br>
+getp&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;query&nbsp;all&nbsp;the&nbsp;gettable&nbsp;properties&nbsp;with&nbsp;<a href="#-getp">getp</a>(o)<br>
 Many&nbsp;properties&nbsp;have&nbsp;aliases&nbsp;for&nbsp;shorter&nbsp;typing,&nbsp;eg&nbsp;'lw'&nbsp;is&nbsp;an<br>
 alias&nbsp;for&nbsp;'linewidth'.&nbsp;&nbsp;In&nbsp;the&nbsp;output,&nbsp;aliases&nbsp;and&nbsp;full&nbsp;property<br>
 names&nbsp;will&nbsp;be&nbsp;listed&nbsp;as<br>
@@ -199,7 +205,7 @@ if&nbsp;s&nbsp;is&nbsp;'somename',&nbsp;this&nbsp;function&nbsp;returns<br>
 &nbsp;<br>
 &nbsp;&nbsp;o.get_somename()<br>
 &nbsp;<br>
-get&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;query&nbsp;all&nbsp;the&nbsp;gettable&nbsp;properties&nbsp;with&nbsp;<a href="#-get">get</a>(o)<br>
+getp&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;query&nbsp;all&nbsp;the&nbsp;gettable&nbsp;properties&nbsp;with&nbsp;<a href="#-getp">getp</a>(o)<br>
 Many&nbsp;properties&nbsp;have&nbsp;aliases&nbsp;for&nbsp;shorter&nbsp;typing,&nbsp;eg&nbsp;'lw'&nbsp;is&nbsp;an<br>
 alias&nbsp;for&nbsp;'linewidth'.&nbsp;&nbsp;In&nbsp;the&nbsp;output,&nbsp;aliases&nbsp;and&nbsp;full&nbsp;property<br>
 names&nbsp;will&nbsp;be&nbsp;listed&nbsp;as<br>
@@ -209,44 +215,44 @@ names&nbsp;will&nbsp;be&nbsp;listed&nbsp;as<br>
 eg<br>
 &nbsp;<br>
 &nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw&nbsp;=&nbsp;2</tt></dd></dl>
- <dl><dt><a name="-set"><strong>set</strong></a>(*args, **kwargs)</dt></dl>
- <dl><dt><a name="-setp"><strong>setp</strong></a>(h, *args, **kwargs)</dt><dd><tt>matlab(TM)&nbsp;and&nbsp;pylab&nbsp;allow&nbsp;you&nbsp;to&nbsp;use&nbsp;set&nbsp;and&nbsp;get&nbsp;to&nbsp;set&nbsp;and&nbsp;get<br>
-object&nbsp;properties,&nbsp;as&nbsp;well&nbsp;as&nbsp;to&nbsp;do&nbsp;introspection&nbsp;on&nbsp;the&nbsp;object<br>
-For&nbsp;example,&nbsp;to&nbsp;set&nbsp;the&nbsp;linestyle&nbsp;of&nbsp;a&nbsp;line&nbsp;to&nbsp;be&nbsp;dashed,&nbsp;you&nbsp;can&nbsp;do<br>
+ <dl><dt><a name="-setp"><strong>setp</strong></a>(h, *args, **kwargs)</dt><dd><tt>matplotlib&nbsp;supports&nbsp;the&nbsp;use&nbsp;of&nbsp;setp&nbsp;("set&nbsp;property")&nbsp;and&nbsp;getp&nbsp;to&nbsp;set&nbsp;<br>
+and&nbsp;get&nbsp;object&nbsp;properties,&nbsp;as&nbsp;well&nbsp;as&nbsp;to&nbsp;do&nbsp;introspection&nbsp;on&nbsp;the&nbsp;<br>
+object&nbsp;For&nbsp;example,&nbsp;to&nbsp;set&nbsp;the&nbsp;linestyle&nbsp;of&nbsp;a&nbsp;line&nbsp;to&nbsp;be&nbsp;dashed,&nbsp;you&nbsp;<br>
+can&nbsp;do<br>
 &nbsp;<br>
 &nbsp;&nbsp;&gt;&gt;&gt;&nbsp;line,&nbsp;=&nbsp;plot([1,2,3])<br>
-&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(line,&nbsp;linestyle='--')<br>
+&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(line,&nbsp;linestyle='--')<br>
 &nbsp;<br>
 If&nbsp;you&nbsp;want&nbsp;to&nbsp;know&nbsp;the&nbsp;valid&nbsp;types&nbsp;of&nbsp;arguments,&nbsp;you&nbsp;can&nbsp;provide&nbsp;the<br>
 name&nbsp;of&nbsp;the&nbsp;property&nbsp;you&nbsp;want&nbsp;to&nbsp;set&nbsp;without&nbsp;a&nbsp;value<br>
 &nbsp;<br>
-&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(line,&nbsp;'linestyle')<br>
+&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(line,&nbsp;'linestyle')<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linestyle:&nbsp;[&nbsp;'-'&nbsp;|&nbsp;'--'&nbsp;|&nbsp;'-.'&nbsp;|&nbsp;':'&nbsp;|&nbsp;'steps'&nbsp;|&nbsp;'None'&nbsp;]<br>
 &nbsp;<br>
 If&nbsp;you&nbsp;want&nbsp;to&nbsp;see&nbsp;all&nbsp;the&nbsp;properties&nbsp;that&nbsp;can&nbsp;be&nbsp;set,&nbsp;and&nbsp;their<br>
 possible&nbsp;values,&nbsp;you&nbsp;can&nbsp;do<br>
 &nbsp;<br>
 &nbsp;<br>
-&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(line)<br>
+&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(line)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...&nbsp;long&nbsp;output&nbsp;listing&nbsp;omitted'<br>
 &nbsp;<br>
-set&nbsp;operates&nbsp;on&nbsp;a&nbsp;single&nbsp;instance&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;instances.&nbsp;&nbsp;If&nbsp;you&nbsp;are<br>
-in&nbsp;quey&nbsp;mode&nbsp;introspecting&nbsp;the&nbsp;possible&nbsp;values,&nbsp;only&nbsp;the&nbsp;first<br>
-instance&nbsp;in&nbsp;the&nbsp;sequnce&nbsp;is&nbsp;used.&nbsp;&nbsp;When&nbsp;actually&nbsp;setting&nbsp;values,&nbsp;all<br>
-the&nbsp;instances&nbsp;will&nbsp;be&nbsp;set.&nbsp;&nbsp;Eg,&nbsp;suppose&nbsp;you&nbsp;have&nbsp;a&nbsp;list&nbsp;of&nbsp;two&nbsp;lines,<br>
-the&nbsp;following&nbsp;will&nbsp;make&nbsp;both&nbsp;lines&nbsp;thicker&nbsp;and&nbsp;red<br>
+setp&nbsp;operates&nbsp;on&nbsp;a&nbsp;single&nbsp;instance&nbsp;or&nbsp;a&nbsp;list&nbsp;of&nbsp;instances.&nbsp;&nbsp;If&nbsp;you<br>
+are&nbsp;in&nbsp;query&nbsp;mode&nbsp;introspecting&nbsp;the&nbsp;possible&nbsp;values,&nbsp;only&nbsp;the&nbsp;first<br>
+instance&nbsp;in&nbsp;the&nbsp;sequence&nbsp;is&nbsp;used.&nbsp;&nbsp;When&nbsp;actually&nbsp;setting&nbsp;values,<br>
+all&nbsp;the&nbsp;instances&nbsp;will&nbsp;be&nbsp;set.&nbsp;&nbsp;Eg,&nbsp;suppose&nbsp;you&nbsp;have&nbsp;a&nbsp;list&nbsp;of&nbsp;two<br>
+lines,&nbsp;the&nbsp;following&nbsp;will&nbsp;make&nbsp;both&nbsp;lines&nbsp;thicker&nbsp;and&nbsp;red<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;x&nbsp;=&nbsp;arange(0,1.0,0.01)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;y1&nbsp;=&nbsp;sin(2*pi*x)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;y2&nbsp;=&nbsp;sin(4*pi*x)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;lines&nbsp;=&nbsp;plot(x,&nbsp;y1,&nbsp;x,&nbsp;y2)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(lines,&nbsp;linewidth=2,&nbsp;color='r')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(lines,&nbsp;linewidth=2,&nbsp;color='r')<br>
 &nbsp;<br>
-Set&nbsp;works&nbsp;with&nbsp;the&nbsp;matlab(TM)&nbsp;style&nbsp;string/value&nbsp;pairs&nbsp;or&nbsp;with&nbsp;python<br>
-kwargs.&nbsp;&nbsp;For&nbsp;example,&nbsp;the&nbsp;following&nbsp;are&nbsp;equivalent<br>
+setp&nbsp;works&nbsp;with&nbsp;the&nbsp;matlab(TM)&nbsp;style&nbsp;string/value&nbsp;pairs&nbsp;or&nbsp;with<br>
+python&nbsp;kwargs.&nbsp;&nbsp;For&nbsp;example,&nbsp;the&nbsp;following&nbsp;are&nbsp;equivalent<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(lines,&nbsp;'linewidth',&nbsp;2,&nbsp;'color',&nbsp;r')&nbsp;&nbsp;#&nbsp;matlab&nbsp;style<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-set">set</a>(lines,&nbsp;linewidth=2,&nbsp;color='r')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;python&nbsp;style</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(lines,&nbsp;'linewidth',&nbsp;2,&nbsp;'color',&nbsp;r')&nbsp;&nbsp;#&nbsp;matlab&nbsp;style<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;<a href="#-setp">setp</a>(lines,&nbsp;linewidth=2,&nbsp;color='r')&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;python&nbsp;style</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">

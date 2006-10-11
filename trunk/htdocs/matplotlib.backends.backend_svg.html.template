@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_svg</strong></big></big> (version 0.83.2)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_svg</strong></big></big> (version 0.87.5)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/backends/backend_svg.py">/usr/lib/python2.4/site-packages/matplotlib/backends/backend_svg.py</a></font></td></tr></table>
     <p></p>
@@ -13,8 +13,11 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="base64.html">base64</a><br>
+</td><td width="25%" valign=top><a href="codecs.html">codecs</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="tempfile.html">tempfile</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -50,7 +53,7 @@
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="FigureCanvasSVG-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=80</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>)</dt></dl>
+<dl><dt><a name="FigureCanvasSVG-print_figure"><strong>print_figure</strong></a>(self, filename, dpi, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
@@ -92,9 +95,10 @@ button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</
 &nbsp;<br>
 where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbsp;events&nbsp;are&nbsp;recognized<br>
 &nbsp;<br>
+&nbsp;'resize_event'<br>
 &nbsp;'draw_event'<br>
 &nbsp;'key_press_event'<br>
-&nbsp;'key_release_event'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;'key_release_event'<br>
 &nbsp;'button_press_event'<br>
 &nbsp;'button_release_event'<br>
 &nbsp;'motion_notify_event'<br>
@@ -110,6 +114,10 @@ mpl_disconnect</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasSVG-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>Connect&nbsp;s&nbsp;to&nbsp;func.&nbsp;return&nbsp;an&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with&nbsp;disconnect<br>
 Method&nbsp;should&nbsp;return&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasSVG-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>set&nbsp;the&nbsp;canvas&nbsp;size&nbsp;in&nbsp;pixels</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasSVG-resize_event"><strong>resize_event</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FigureCanvasSVG-switch_backends"><strong>switch_backends</strong></a>(self, FigureCanvasClass)</dt><dd><tt>instantiate&nbsp;an&nbsp;instance&nbsp;of&nbsp;FigureCanvasClass<br>
 &nbsp;<br>
@@ -138,6 +146,8 @@ Data and other attributes inherited from <a href="matplotlib.backend_bases.html#
 
 <dl><dt><a name="FigureManagerSVG-key_press"><strong>key_press</strong></a>(self, event)</dt></dl>
 
+<dl><dt><a name="FigureManagerSVG-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>For&nbsp;gui&nbsp;backends:&nbsp;resize&nbsp;window&nbsp;in&nbsp;pixels</tt></dd></dl>
+
 <dl><dt><a name="FigureManagerSVG-show_popup"><strong>show_popup</strong></a>(self, msg)</dt><dd><tt>Display&nbsp;message&nbsp;in&nbsp;a&nbsp;popup&nbsp;--&nbsp;GUI&nbsp;only</tt></dd></dl>
 
 </td></tr></table> <p>
@@ -156,6 +166,8 @@ Data and other attributes inherited from <a href="matplotlib.backend_bases.html#
 
 <dl><dt><a name="FigureManagerSVG-key_press"><strong>key_press</strong></a>(self, event)</dt></dl>
 
+<dl><dt><a name="FigureManagerSVG-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>For&nbsp;gui&nbsp;backends:&nbsp;resize&nbsp;window&nbsp;in&nbsp;pixels</tt></dd></dl>
+
 <dl><dt><a name="FigureManagerSVG-show_popup"><strong>show_popup</strong></a>(self, msg)</dt><dd><tt>Display&nbsp;message&nbsp;in&nbsp;a&nbsp;popup&nbsp;--&nbsp;GUI&nbsp;only</tt></dd></dl>
 
 </td></tr></table> <p>
@@ -166,14 +178,13 @@ Data and other attributes inherited from <a href="matplotlib.backend_bases.html#
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="RendererSVG-__init__"><strong>__init__</strong></a>(self, width, height, svgwriter, basename<font color="#909090">='_svg'</font>)</dt></dl>
+<dl><dt><a name="RendererSVG-__init__"><strong>__init__</strong></a>(self, width, height, svgwriter)</dt></dl>
 
 <dl><dt><a name="RendererSVG-close_group"><strong>close_group</strong></a>(self, s)</dt></dl>
 
-<dl><dt><a name="RendererSVG-draw_arc"><strong>draw_arc</strong></a>(self, gc, rgbFace, x, y, width, height, angle1, angle2)</dt><dd><tt>Currently&nbsp;implemented&nbsp;by&nbsp;drawing&nbsp;a&nbsp;circle&nbsp;of&nbsp;diameter&nbsp;width,&nbsp;not&nbsp;an<br>
-arc.&nbsp;angle1,&nbsp;angle2&nbsp;not&nbsp;used</tt></dd></dl>
+<dl><dt><a name="RendererSVG-draw_arc"><strong>draw_arc</strong></a>(self, gc, rgbFace, x, y, width, height, angle1, angle2, rotation)</dt><dd><tt>Ignores&nbsp;angles&nbsp;for&nbsp;now</tt></dd></dl>
 
-<dl><dt><a name="RendererSVG-draw_image"><strong>draw_image</strong></a>(self, x, y, im, origin, bbox)</dt></dl>
+<dl><dt><a name="RendererSVG-draw_image"><strong>draw_image</strong></a>(self, x, y, im, bbox)</dt></dl>
 
 <dl><dt><a name="RendererSVG-draw_line"><strong>draw_line</strong></a>(self, gc, x1, y1, x2, y2)</dt></dl>
 
@@ -207,7 +218,7 @@ a&nbsp;GC&nbsp;and&nbsp;many&nbsp;of&nbsp;the&nbsp;line&nbsp;props&nbsp;it&nbsp;
 matplotlib.collections&nbsp;for&nbsp;more&nbsp;details.<br>
 &nbsp;<br>
 segments&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(&nbsp;line0,&nbsp;line1,&nbsp;line2),&nbsp;where&nbsp;linen&nbsp;=<br>
-(x0,&nbsp;y0),&nbsp;(x1,&nbsp;y1),&nbsp;...&nbsp;(xm,&nbsp;ym).&nbsp;&nbsp;Each&nbsp;line&nbsp;can&nbsp;be&nbsp;a<br>
+is&nbsp;an&nbsp;Mx2&nbsp;array&nbsp;with&nbsp;columns&nbsp;x,&nbsp;y.&nbsp;&nbsp;Each&nbsp;line&nbsp;can&nbsp;be&nbsp;a<br>
 different&nbsp;length<br>
 &nbsp;<br>
 transform&nbsp;is&nbsp;used&nbsp;to&nbsp;Transform&nbsp;the&nbsp;lines<br>
@@ -225,8 +236,9 @@ linestyle&nbsp;is&nbsp;an&nbsp;(offset,&nbsp;onoffseq)&nbsp;tuple&nbsp;or&nbsp;N
 antialiseds&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;ones&nbsp;or&nbsp;zeros&nbsp;indicating&nbsp;whether&nbsp;the<br>
 segment&nbsp;should&nbsp;be&nbsp;aa&nbsp;or&nbsp;not<br>
 &nbsp;<br>
-offsets,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;x,y&nbsp;offsets&nbsp;to&nbsp;translate&nbsp;the&nbsp;lines<br>
-by&nbsp;after&nbsp;transform&nbsp;is&nbsp;used&nbsp;to&nbsp;transform&nbsp;the&nbsp;offset&nbsp;coords<br>
+offsets,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;an&nbsp;Nx2&nbsp;array&nbsp;of&nbsp;x,y&nbsp;offsets&nbsp;to<br>
+translate&nbsp;the&nbsp;lines&nbsp;by&nbsp;after&nbsp;transform&nbsp;is&nbsp;used&nbsp;to&nbsp;transform<br>
+the&nbsp;offset&nbsp;coords<br>
 &nbsp;<br>
 This&nbsp;function&nbsp;could&nbsp;be&nbsp;overridden&nbsp;in&nbsp;the&nbsp;backend&nbsp;to&nbsp;possibly&nbsp;implement<br>
 faster&nbsp;drawing,&nbsp;but&nbsp;it&nbsp;is&nbsp;already&nbsp;much&nbsp;faster&nbsp;than&nbsp;using&nbsp;<a href="#RendererSVG-draw_lines">draw_lines</a>()<br>
@@ -239,7 +251,14 @@ vector&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;x,y&nbsp;tuples&nbsp;of&nbsp;ve
 &nbsp;<br>
 facecolors&nbsp;and&nbsp;edgecolors&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;RGBA&nbsp;tuples<br>
 linewidths&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;linewidths<br>
-antialiaseds&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;0,1&nbsp;integers&nbsp;whether&nbsp;to&nbsp;use&nbsp;aa</tt></dd></dl>
+antialiaseds&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;0,1&nbsp;integers&nbsp;whether&nbsp;to&nbsp;use&nbsp;aa<br>
+&nbsp;<br>
+If&nbsp;a&nbsp;linewidth&nbsp;is&nbsp;zero&nbsp;or&nbsp;an&nbsp;edgecolor&nbsp;alpha&nbsp;is&nbsp;zero,&nbsp;the<br>
+line&nbsp;will&nbsp;be&nbsp;omitted;&nbsp;similarly,&nbsp;the&nbsp;fill&nbsp;will&nbsp;be&nbsp;omitted<br>
+if&nbsp;the&nbsp;facecolor&nbsp;alpha&nbsp;is&nbsp;zero.</tt></dd></dl>
+
+<dl><dt><a name="RendererSVG-draw_quad_mesh"><strong>draw_quad_mesh</strong></a>(self, meshWidth, meshHeight, colors, xCoords, yCoords, clipbox, transform, offsets, transOffset, showedges)</dt><dd><tt>Draw&nbsp;a&nbsp;quadrilateral&nbsp;mesh<br>
+See&nbsp;documentation&nbsp;in&nbsp;QuadMesh&nbsp;class&nbsp;in&nbsp;collections.py&nbsp;for&nbsp;details</tt></dd></dl>
 
 <dl><dt><a name="RendererSVG-draw_regpoly_collection"><strong>draw_regpoly_collection</strong></a>(self, clipbox, offsets, transOffset, verts, sizes, facecolors, edgecolors, linewidths, antialiaseds)</dt><dd><tt>Draw&nbsp;a&nbsp;regular&nbsp;poly&nbsp;collection<br>
 &nbsp;<br>
@@ -256,6 +275,8 @@ linewidths&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;linewidths<br>
 antialiaseds&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;0,1&nbsp;integers&nbsp;whether&nbsp;to&nbsp;use&nbsp;aa</tt></dd></dl>
 
 <dl><dt><a name="RendererSVG-draw_tex"><strong>draw_tex</strong></a>(self, gc, x, y, s, prop, angle, ismath<font color="#909090">='TeX!'</font>)</dt></dl>
+
+<dl><dt><a name="RendererSVG-get_texmanager"><strong>get_texmanager</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="RendererSVG-get_text_extent"><strong>get_text_extent</strong></a>(self, text)</dt><dd><tt>Get&nbsp;the&nbsp;text&nbsp;extent&nbsp;in&nbsp;window&nbsp;coords</tt></dd></dl>
 
@@ -280,7 +301,7 @@ points&nbsp;to&nbsp;pixels&nbsp;=&nbsp;points&nbsp;*&nbsp;pixels_per_inch/72.0&n
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt><a name="-FT2Font"><strong>FT2Font</strong></a>(...)</dt><dd><tt>FT2Font</tt></dd></dl>
- <dl><dt><a name="-new_figure_manager"><strong>new_figure_manager</strong></a>(num, *args)</dt></dl>
+ <dl><dt><a name="-new_figure_manager"><strong>new_figure_manager</strong></a>(num, *args, **kwargs)</dt></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -288,10 +309,11 @@ points&nbsp;to&nbsp;pixels&nbsp;=&nbsp;points&nbsp;*&nbsp;pixels_per_inch/72.0&n
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>__version__</strong> = '0.83.2'<br>
-<strong>backend_version</strong> = '0.83.2'<br>
+<td width="100%"><strong>__version__</strong> = '0.87.5'<br>
+<strong>backend_version</strong> = '0.87.5'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance&gt;<br>
-<strong>svgProlog</strong> = '&lt;?xml version="1.0" standalone="no"?&gt;<font color="#c040c0">\n</font>&lt;!DOCTYPE ...0"<font color="#c040c0">\n</font>   width="%i"<font color="#c040c0">\n</font>   height="%i"   <font color="#c040c0">\n</font>   id="svg1"&gt;<font color="#c040c0">\n</font>'<br>
+<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance&gt;<br>
+<strong>svgProlog</strong> = '&lt;?xml version="1.0" standalone="no"?&gt;<font color="#c040c0">\n</font>&lt;!DOCTYPE ...3.org/1999/xlink"<font color="#c040c0">\n</font>   version="1.1"<font color="#c040c0">\n</font>   id="svg1"&gt;<font color="#c040c0">\n</font>'<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
 @footer@

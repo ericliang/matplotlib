@@ -148,8 +148,7 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license&nbsp;(PSF&nbsp;compatibl
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#DummyFonts">DummyFonts</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Element">Element</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Element">Element</a>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#GroupElement">GroupElement</a>
@@ -166,13 +165,71 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license&nbsp;(PSF&nbsp;compatibl
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaTrueTypeFonts">BakomaTrueTypeFonts</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#TrueTypeFonts">TrueTypeFonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaPDFFonts">BakomaPDFFonts</a>
 </font></dt></dl>
 </dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaTrueTypeFonts">BakomaTrueTypeFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#DummyFonts">DummyFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#StandardPSFonts">StandardPSFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaUnicodeFonts">BakomaUnicodeFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#CMUUnicodeFonts">CMUUnicodeFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MyUnicodeFonts">MyUnicodeFonts</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Handler">Handler</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#math_parse_s_ft2font_common">math_parse_s_ft2font_common</a>
 </font></dt></dl>
  <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BakomaPDFFonts">class <strong>BakomaPDFFonts</strong></a>(<a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Hack&nbsp;of&nbsp;<a href="#BakomaPSFonts">BakomaPSFonts</a>&nbsp;for&nbsp;PDF&nbsp;support.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#BakomaPDFFonts">BakomaPDFFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BakomaPDFFonts-render"><strong>render</strong></a>(self, ox, oy, font, sym, fontsize, dpi)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>:<br>
+<dl><dt><a name="BakomaPDFFonts-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BakomaPDFFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaPDFFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>:<br>
+<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+
+<dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
+
+<dl><dt><strong>fontmap</strong> = {None: 'cmmi10', 'cal': 'cmsy10', 'it': 'cmmi10', 'rm': 'cmr10', 'tt': 'cmtt10'}</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="BakomaPDFFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+</td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -192,7 +249,7 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license&nbsp;(PSF&nbsp;compatibl
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/share/matplotlib'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
@@ -200,9 +257,9 @@ Data and other attributes defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
-<dl><dt><a name="BakomaPSFonts-get_kern"><strong>get_kern</strong></a>(self, font, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+<dl><dt><a name="BakomaPSFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
 &nbsp;<br>
-font&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
 &nbsp;<br>
 sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
 like&nbsp;\sigma.</tt></dd></dl>
@@ -219,13 +276,6 @@ like&nbsp;\sigma.</tt></dd></dl>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="BakomaTrueTypeFonts-__init__"><strong>__init__</strong></a>(self, useSVG<font color="#909090">=False</font>)</dt></dl>
 
-<dl><dt><a name="BakomaTrueTypeFonts-get_kern"><strong>get_kern</strong></a>(self, font, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
-&nbsp;<br>
-font&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
-&nbsp;<br>
-sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
-like&nbsp;\sigma.</tt></dd></dl>
-
 <dl><dt><a name="BakomaTrueTypeFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt></dl>
 
 <dl><dt><a name="BakomaTrueTypeFonts-render"><strong>render</strong></a>(self, ox, oy, font, sym, fontsize, dpi)</dt></dl>
@@ -234,23 +284,118 @@ like&nbsp;\sigma.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/share/matplotlib'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
 <dl><dt><strong>fontmap</strong> = {None: 'cmmi10', 'cal': 'cmsy10', 'it': 'cmmi10', 'rm': 'cmr10', 'tt': 'cmtt10'}</dl>
 
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="BakomaTrueTypeFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="DummyFonts">class <strong>DummyFonts</strong></a></font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="BakomaUnicodeFonts">class <strong>BakomaUnicodeFonts</strong></a>(<a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;that&nbsp;simulates&nbsp;Unicode&nbsp;support&nbsp;in&nbsp;the&nbsp;BaKoMa&nbsp;fonts<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#BakomaUnicodeFonts">BakomaUnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>filenamesd</strong> = {None: 'cmmi10.ttf', 'cal': 'cmsy10.ttf', 'it': 'cmmi10.ttf', 'rm': 'cmr10.ttf', 'tt': 'cmtt10.ttf'}</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>:<br>
+<dl><dt><a name="BakomaUnicodeFonts-__init__"><strong>__init__</strong></a>(self, output<font color="#909090">='Agg'</font>)</dt><dd><tt>#&nbsp;The&nbsp;path&nbsp;to&nbsp;the&nbsp;dir&nbsp;with&nbsp;the&nbsp;fontfiles</tt></dd></dl>
+
+<dl><dt><a name="BakomaUnicodeFonts-get_metrics"><strong>get_metrics</strong></a>(self, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaUnicodeFonts-render"><strong>render</strong></a>(self, ox, oy, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaUnicodeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter<font color="#909090">=None</font>)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="BakomaUnicodeFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CMUUnicodeFonts">class <strong>CMUUnicodeFonts</strong></a>(<a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;representing&nbsp;Computer&nbsp;Modern&nbsp;Unicode&nbsp;<a href="#Fonts">Fonts</a>,&nbsp;made&nbsp;by<br>
+Andrey&nbsp;V.&nbsp;Panov<br>
+panov&nbsp;/at/&nbsp;canopus.&nbsp;iacp.&nbsp;dvo.&nbsp;ru<br>
+They&nbsp;are&nbsp;distributed&nbsp;under&nbsp;the&nbsp;X11&nbsp;License.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#CMUUnicodeFonts">CMUUnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+</dl>
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>:<br>
+<dl><dt><a name="CMUUnicodeFonts-__init__"><strong>__init__</strong></a>(self, output<font color="#909090">='Agg'</font>)</dt><dd><tt>#&nbsp;The&nbsp;path&nbsp;to&nbsp;the&nbsp;dir&nbsp;with&nbsp;the&nbsp;fontfiles</tt></dd></dl>
+
+<dl><dt><a name="CMUUnicodeFonts-get_metrics"><strong>get_metrics</strong></a>(self, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="CMUUnicodeFonts-render"><strong>render</strong></a>(self, ox, oy, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="CMUUnicodeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter<font color="#909090">=None</font>)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="CMUUnicodeFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="DummyFonts">class <strong>DummyFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>dummy&nbsp;class&nbsp;for&nbsp;debugging&nbsp;parser<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="DummyFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="DummyFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+<dl><dt><a name="DummyFonts-render"><strong>render</strong></a>(self, ox, oy, facename, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="DummyFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -389,14 +534,14 @@ The&nbsp;class&nbsp;must&nbsp;be&nbsp;able&nbsp;to&nbsp;take&nbsp;symbol&nbsp;ke
 return&nbsp;the&nbsp;character&nbsp;metrics&nbsp;as&nbsp;well&nbsp;as&nbsp;do&nbsp;the&nbsp;drawing<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Fonts-get_kern"><strong>get_kern</strong></a>(self, font, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+<dl><dt><a name="Fonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
 &nbsp;<br>
-font&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
 &nbsp;<br>
 sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
 like&nbsp;\sigma.</tt></dd></dl>
 
-<dl><dt><a name="Fonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt><dd><tt>font&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+<dl><dt><a name="Fonts-get_metrics"><strong>get_metrics</strong></a>(self, facename, sym, fontsize, dpi)</dt><dd><tt>facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
 &nbsp;<br>
 sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
 like&nbsp;\sigma.<br>
@@ -412,7 +557,7 @@ a&nbsp;pictoral&nbsp;representation&nbsp;of&nbsp;these&nbsp;attributes<br>
 &nbsp;&nbsp;width<br>
 &nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph</tt></dd></dl>
 
-<dl><dt><a name="Fonts-render"><strong>render</strong></a>(self, ox, oy, font, sym, fontsize, dpi)</dt></dl>
+<dl><dt><a name="Fonts-render"><strong>render</strong></a>(self, ox, oy, facename, sym, fontsize, dpi)</dt></dl>
 
 <dl><dt><a name="Fonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
 
@@ -516,6 +661,39 @@ Data and other attributes defined here:<br>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MyUnicodeFonts">class <strong>MyUnicodeFonts</strong></a>(<a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MyUnicodeFonts">MyUnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MyUnicodeFonts-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>:<br>
+<dl><dt><a name="MyUnicodeFonts-get_metrics"><strong>get_metrics</strong></a>(self, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="MyUnicodeFonts-render"><strong>render</strong></a>(self, ox, oy, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="MyUnicodeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter<font color="#909090">=None</font>)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="MyUnicodeFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="SpaceElement">class <strong>SpaceElement</strong></a>(<a href="matplotlib.mathtext.html#Element">Element</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
@@ -572,6 +750,34 @@ Data and other attributes inherited from <a href="matplotlib.mathtext.html#Eleme
 <dl><dt><strong>font</strong> = 'it'</dl>
 
 <dl><dt><strong>fontsize</strong> = 12</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StandardPSFonts">class <strong>StandardPSFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Use&nbsp;the&nbsp;standard&nbsp;postscript&nbsp;fonts&nbsp;for&nbsp;rendering&nbsp;to&nbsp;backend_ps<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="StandardPSFonts-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StandardPSFonts-get_kern"><strong>get_kern</strong></a>(self, font, symleft, symright, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPSFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPSFonts-render"><strong>render</strong></a>(self, ox, oy, font, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPSFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+
+<dl><dt><strong>fnames</strong> = ('psyr', 'pncri8a', 'pcrr8a', 'pncr8a', 'pzcmi8a')</dl>
+
+<dl><dt><strong>fontmap</strong> = {'cal': 'pzcmi8a', 'it': 'pncri8a', 'rm': 'pncr8a', 'tt': 'pcrr8a'}</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -635,24 +841,79 @@ Data and other attributes inherited from <a href="matplotlib.mathtext.html#Eleme
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="TrueTypeFonts">class <strong>TrueTypeFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="UnicodeFonts">class <strong>UnicodeFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
     
-<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
-<dl><dt><a name="TrueTypeFonts-__init__"><strong>__init__</strong></a>(self)</dt></dl>
-
-<dl><dt><a name="TrueTypeFonts-get_kern"><strong>get_kern</strong></a>(self, font, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;handling&nbsp;Unicode&nbsp;fonts.<br>
 &nbsp;<br>
-font&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
+Specific&nbsp;terminology:<br>
+&nbsp;*&nbsp;fontface:&nbsp;an&nbsp;FT2Font&nbsp;object,&nbsp;corresponding&nbsp;to&nbsp;a&nbsp;facename<br>
+&nbsp;*&nbsp;facename:&nbsp;a&nbsp;string&nbsp;that&nbsp;defines&nbsp;the&nbsp;(type)face's&nbsp;name&nbsp;-&nbsp;'rm',&nbsp;'it'&nbsp;etc.<br>
+&nbsp;*&nbsp;filename:&nbsp;a&nbsp;string&nbsp;that&nbsp;is&nbsp;used&nbsp;for&nbsp;generating&nbsp;a&nbsp;fontface&nbsp;object<br>
+&nbsp;*&nbsp;symbol*:&nbsp;a&nbsp;single&nbsp;Unicode&nbsp;character&nbsp;or&nbsp;a&nbsp;TeX&nbsp;command,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;to&nbsp;be&nbsp;precise,&nbsp;a&nbsp;TeX&nbsp;symbol&nbsp;command&nbsp;like&nbsp;lpha&nbsp;(but&nbsp;not&nbsp;rac)&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;even&nbsp;a&nbsp;Type1/PS&nbsp;name<br>
+&nbsp;*&nbsp;filenamesd:&nbsp;a&nbsp;dict&nbsp;that&nbsp;maps&nbsp;the&nbsp;face's&nbsp;name&nbsp;to&nbsp;the&nbsp;filename:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;filenamesd&nbsp;=&nbsp;{&nbsp;'cal'&nbsp;:&nbsp;'fontnamecal.ext',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'rm'&nbsp;&nbsp;:&nbsp;'fontnamerm.ext',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'tt'&nbsp;&nbsp;:&nbsp;'fontnamett.ext',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'it'&nbsp;&nbsp;:&nbsp;'fontnameit.ext',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;&nbsp;:&nbsp;'fontnamesmth.ext'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;filenamesd&nbsp;should&nbsp;be&nbsp;declared&nbsp;as&nbsp;a&nbsp;class&nbsp;atribute<br>
+&nbsp;*&nbsp;glyphdict:&nbsp;a&nbsp;dict&nbsp;used&nbsp;for&nbsp;caching&nbsp;of&nbsp;glyph&nbsp;specific&nbsp;data<br>
+&nbsp;*&nbsp;fonts:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;fontface&nbsp;pairs<br>
+&nbsp;*&nbsp;charmaps:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;charmap&nbsp;pairs<br>
+&nbsp;*&nbsp;glyphmaps:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;glyphmap&nbsp;pairs.&nbsp;A&nbsp;glyphmap&nbsp;is&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;inverted&nbsp;charmap<br>
+&nbsp;*&nbsp;output:&nbsp;a&nbsp;string&nbsp;in&nbsp;['Agg','SVG','PS'],&nbsp;coresponding&nbsp;to&nbsp;the&nbsp;backends<br>
+&nbsp;*&nbsp;index:&nbsp;Fontfile&nbsp;specific&nbsp;index&nbsp;of&nbsp;a&nbsp;glyph/char.&nbsp;Taken&nbsp;from&nbsp;a&nbsp;charmap.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="UnicodeFonts-__init__"><strong>__init__</strong></a>(self, output<font color="#909090">='Agg'</font>)</dt><dd><tt>#&nbsp;The&nbsp;path&nbsp;to&nbsp;the&nbsp;dir&nbsp;with&nbsp;the&nbsp;fontfiles</tt></dd></dl>
+
+<dl><dt><a name="UnicodeFonts-get_metrics"><strong>get_metrics</strong></a>(self, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-render"><strong>render</strong></a>(self, ox, oy, facename, symbol, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, pswriter<font color="#909090">=None</font>)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="UnicodeFonts-get_kern"><strong>get_kern</strong></a>(self, facename, symleft, symright, fontsize, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;symleft&nbsp;and&nbsp;symright.<br>
+&nbsp;<br>
+facename&nbsp;is&nbsp;one&nbsp;of&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal&nbsp;or&nbsp;None<br>
 &nbsp;<br>
 sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
 like&nbsp;\sigma.</tt></dd></dl>
 
-<dl><dt><a name="TrueTypeFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, sym, fontsize, dpi)</dt></dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="math_parse_s_ft2font_common">class <strong>math_parse_s_ft2font_common</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Parse&nbsp;the&nbsp;math&nbsp;expression&nbsp;s,&nbsp;return&nbsp;the&nbsp;(bbox,&nbsp;fonts)&nbsp;tuple&nbsp;needed<br>
+to&nbsp;render&nbsp;it.<br>
+&nbsp;<br>
+fontsize&nbsp;must&nbsp;be&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="math_parse_s_ft2font_common-__call__"><strong>__call__</strong></a>(self, s, dpi, fontsize, angle<font color="#909090">=0</font>)</dt></dl>
 
-<dl><dt><a name="TrueTypeFonts-render"><strong>render</strong></a>(self, ox, oy, font, sym, fontsize, dpi)</dt></dl>
+<dl><dt><a name="math_parse_s_ft2font_common-__init__"><strong>__init__</strong></a>(self, output)</dt></dl>
 
-<dl><dt><a name="TrueTypeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>major</strong> = 2</dl>
+
+<dl><dt><strong>minor1</strong> = 4</dl>
+
+<dl><dt><strong>minor2</strong> = 1</dl>
+
+<dl><dt><strong>tmp</strong> = 0</dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -663,24 +924,16 @@ like&nbsp;\sigma.</tt></dd></dl>
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt><a name="-FT2Font"><strong>FT2Font</strong></a>(...)</dt><dd><tt>FT2Font</tt></dd></dl>
  <dl><dt><a name="-StringIO"><strong>StringIO</strong></a>(...)</dt><dd><tt><a href="#-StringIO">StringIO</a>([s])&nbsp;--&nbsp;Return&nbsp;a&nbsp;StringIO-like&nbsp;stream&nbsp;for&nbsp;reading&nbsp;or&nbsp;writing</tt></dd></dl>
- <dl><dt><a name="-math_parse_s_ft2font"><strong>math_parse_s_ft2font</strong></a>(s, dpi, fontsize, angle<font color="#909090">=0</font>)</dt><dd><tt>Parse&nbsp;the&nbsp;math&nbsp;expression&nbsp;s,&nbsp;return&nbsp;the&nbsp;(bbox,&nbsp;fonts)&nbsp;tuple&nbsp;needed<br>
-to&nbsp;render&nbsp;it.<br>
+ <dl><dt><a name="-font_open"><strong>font_open</strong></a>(filename)</dt></dl>
+ <dl><dt><a name="-get_type1_name"><strong>get_type1_name</strong></a>(symbol)</dt><dd><tt><a href="#-get_type1_name">get_type1_name</a>(symbol)&nbsp;-&gt;&nbsp;string<br>
 &nbsp;<br>
-fontsize&nbsp;must&nbsp;be&nbsp;in&nbsp;points<br>
+Returns&nbsp;the&nbsp;the&nbsp;Type1&nbsp;name&nbsp;of&nbsp;symbol.<br>
+symbol&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;unicode&nbsp;character,&nbsp;or&nbsp;a&nbsp;TeX&nbsp;command&nbsp;(i.e.&nbsp;r'\pi').</tt></dd></dl>
+ <dl><dt><a name="-get_unicode_index"><strong>get_unicode_index</strong></a>(symbol)</dt><dd><tt><a href="#-get_unicode_index">get_unicode_index</a>(symbol)&nbsp;-&gt;&nbsp;integer<br>
 &nbsp;<br>
-return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
- <dl><dt><a name="-math_parse_s_ft2font_svg"><strong>math_parse_s_ft2font_svg</strong></a>(s, dpi, fontsize, angle<font color="#909090">=0</font>)</dt><dd><tt>Parse&nbsp;the&nbsp;math&nbsp;expression&nbsp;s,&nbsp;return&nbsp;the&nbsp;(bbox,&nbsp;fonts)&nbsp;tuple&nbsp;needed<br>
-to&nbsp;render&nbsp;it.<br>
-&nbsp;<br>
-fontsize&nbsp;must&nbsp;be&nbsp;in&nbsp;points<br>
-&nbsp;<br>
-return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
- <dl><dt><a name="-math_parse_s_ps"><strong>math_parse_s_ps</strong></a>(s, dpi, fontsize)</dt><dd><tt>Parse&nbsp;the&nbsp;math&nbsp;expression&nbsp;s,&nbsp;return&nbsp;the&nbsp;(bbox,&nbsp;fonts)&nbsp;tuple&nbsp;needed<br>
-to&nbsp;render&nbsp;it.<br>
-&nbsp;<br>
-fontsize&nbsp;must&nbsp;be&nbsp;in&nbsp;points<br>
-&nbsp;<br>
-return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
+Return&nbsp;the&nbsp;integer&nbsp;index&nbsp;(from&nbsp;the&nbsp;Unicode&nbsp;table)&nbsp;of&nbsp;symbol.<br>
+symbol&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;unicode&nbsp;character,&nbsp;a&nbsp;TeX&nbsp;command&nbsp;(i.e.&nbsp;r'\pi'),<br>
+or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -718,9 +971,14 @@ return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
 <strong>italics</strong> = "it"<br>
 <strong>langle</strong> = "&lt;"<br>
 <strong>latex_to_bakoma</strong> = {'(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), '0': ('cmr10', 40), '1': ('cmr10', 100), ...}<br>
+<strong>latex_to_standard</strong> = {r'\Delta': ('psyr', 68), r'\Diamond': ('psyr', 224), r'\Downarrow': ('psyr', 223), r'\Gamma': ('psyr', 89), r'\Im': ('psyr', 193), r'\Leftarrow': ('psyr', 220), r'\Leftrightarrow': ('psyr', 219), r'\Phi': ('psyr', 70), r'\Pi': ('psyr', 213), r'\Re': ('psyr', 194), ...}<br>
 <strong>lbrace</strong> = Suppress:("{")<br>
 <strong>lbrack</strong> = "["<br>
 <strong>lparen</strong> = "("<br>
+<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance&gt;<br>
+<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance&gt;<br>
+<strong>math_parse_s_pdf</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance&gt;<br>
+<strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance&gt;<br>
 <strong>minus</strong> = "-"<br>
 <strong>misc</strong> = {{{"!" | "@"} | "%"} | "&amp;"}<br>
 <strong>number</strong> = Combine:({{W:(0123...) ["."]} [W:(0123...)]})<br>
@@ -735,6 +993,7 @@ return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
 <strong>rangle</strong> = "&gt;"<br>
 <strong>rbrace</strong> = Suppress:("}")<br>
 <strong>rbrack</strong> = "]"<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
 <strong>relation</strong> = {{"&lt;" | "&gt;"} | "="}<br>
 <strong>roman</strong> = "rm"<br>
 <strong>rparen</strong> = ")"<br>
@@ -743,11 +1002,15 @@ return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts</tt></dd></dl>
 <strong>subscript</strong> = subscript<br>
 <strong>subsuperscript</strong> = subsuperscript<br>
 <strong>superscript</strong> = superscript<br>
-<strong>symbol</strong> = {{{{{{Combine:({{"\" W:(abcd...)} ~{"{"}}) | W:(...@"} | "%"} | "&amp;"}} | {{{"[" | "]"} | "("} | ")"}}<br>
-<strong>symgroup</strong> = {{font | group} | {{{{{{Combine:({{"\" W:(abcd....."} | "%"} | "&amp;"}} | {{{"[" | "]"} | "("} | ")"}}}<br>
+<strong>symbol</strong> = Re:('(\\\\[a-zA-Z0-9]+(?!{))|([a-zA-Z0-9 ])|([+\\-*/])|([&lt;&gt;=])|([:,.;!])|([!@%&amp;])|([[\\]()])')<br>
+<strong>symgroup</strong> = {{font | group} | Re:('(\\\\[a-zA-Z0-9]+(?!{))|(...+\\-*/])|([&lt;&gt;=])|([:,.;!])|([!@%&amp;])|([[\\]()])')}<br>
+<strong>tex2type1</strong> = {'AA': 'uni212B', 'AE': 'AE', 'BbbC': 'uni2102', 'BbbN': 'uni2115', 'BbbP': 'uni2119', 'BbbQ': 'uni211A', 'BbbR': 'uni211D', 'BbbZ': 'uni2124', 'Bumpeq': 'uni224E', 'Cap': 'uni22D2', ...}<br>
+<strong>tex2uni</strong> = {'AA': 8491, 'AE': 198, 'BbbC': 8450, 'BbbN': 8469, 'BbbP': 8473, 'BbbQ': 8474, 'BbbR': 8477, 'BbbZ': 8484, 'Bumpeq': 8782, 'Cap': 8914, ...}<br>
 <strong>texsym</strong> = Combine:({{"\" W:(abcd...)} ~{"{"}})<br>
 <strong>times</strong> = "*"<br>
+<strong>type12uni</strong> = {'A': 65, 'AE': 198, 'Aacute': 193, 'Acircumflex': 194, 'Adieresis': 196, 'Agrave': 192, 'Aring': 197, 'Atilde': 195, 'B': 66, 'C': 67, ...}<br>
 <strong>typewriter</strong> = "tt"<br>
 <strong>under</strong> = "under"<br>
+<strong>uni2type1</strong> = {32: 'space', 33: 'exclam', 34: 'quotedbl', 35: 'numbersign', 36: 'dollar', 37: 'percent', 38: 'ampersand', 39: 'quotesingle', 40: 'parenleft', 41: 'parenright', ...}<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
 @footer@

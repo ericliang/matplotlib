@@ -144,6 +144,8 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">matplotlib.patche
 
 <dl><dt><a name="Cell-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
+<dl><dt><a name="Cell-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
 <dl><dt><a name="Cell-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
@@ -170,6 +172,26 @@ ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Cell-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
 <dl><dt><a name="Cell-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -188,6 +210,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Cell-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Cell-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -217,6 +241,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Cell-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -306,6 +334,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 <dl><dt><a name="Table-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
+<dl><dt><a name="Table-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
 <dl><dt><a name="Table-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="Table-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
@@ -334,6 +364,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Table-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Table-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -387,6 +421,15 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt><a name="-Bbox"><strong>Bbox</strong></a>(...)</dt><dd><tt><a href="#-Bbox">Bbox</a>(ll,&nbsp;ur)</tt></dd></dl>
+ <dl><dt><a name="-table"><strong>table</strong></a>(ax, cellText<font color="#909090">=None</font>, cellColours<font color="#909090">=None</font>, cellLoc<font color="#909090">='right'</font>, colWidths<font color="#909090">=None</font>, rowLabels<font color="#909090">=None</font>, rowColours<font color="#909090">=None</font>, rowLoc<font color="#909090">='left'</font>, colLabels<font color="#909090">=None</font>, colColours<font color="#909090">=None</font>, colLoc<font color="#909090">='center'</font>, loc<font color="#909090">='bottom'</font>, bbox<font color="#909090">=None</font>)</dt><dd><tt>TABLE(cellText=None,&nbsp;cellColours=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellLoc='right',&nbsp;colWidths=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rowLabels=None,&nbsp;rowColours=None,&nbsp;rowLoc='left',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colLabels=None,&nbsp;colColours=None,&nbsp;colLoc='center',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;loc='bottom',&nbsp;bbox=None)<br>
+&nbsp;<br>
+Factory&nbsp;function&nbsp;to&nbsp;generate&nbsp;a&nbsp;<a href="#Table">Table</a>&nbsp;instance.<br>
+&nbsp;<br>
+Thanks&nbsp;to&nbsp;John&nbsp;Gill&nbsp;for&nbsp;providing&nbsp;the&nbsp;class&nbsp;and&nbsp;table.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">

@@ -28,8 +28,12 @@
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.text.html#Text">Text</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.text.html#TextWithDash">TextWithDash</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.text.html#TextWithDash">TextWithDash</a>
 </font></dt></dl>
+</dd>
+</dl>
 </dd>
 </dl>
  <p>
@@ -182,7 +186,7 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
 
-<dl><dt><a name="Text-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;t&nbsp;to&nbsp;self</tt></dd></dl>
+<dl><dt><a name="Text-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
@@ -194,6 +198,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="Text-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="Text-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="Text-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -223,6 +229,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Text-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Text-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -268,13 +278,13 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="TextWithDash">class <strong>TextWithDash</strong></a>(<a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="TextWithDash">class <strong>TextWithDash</strong></a>(<a href="matplotlib.text.html#Text">Text</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>This&nbsp;is&nbsp;basically&nbsp;a&nbsp;<a href="#Text">Text</a>&nbsp;with&nbsp;a&nbsp;dash&nbsp;(drawn&nbsp;with&nbsp;a&nbsp;Line2D)<br>
 before/after&nbsp;it.&nbsp;It&nbsp;is&nbsp;intended&nbsp;to&nbsp;be&nbsp;a&nbsp;drop-in&nbsp;replacement<br>
-for&nbsp;<a href="#Text">Text</a>&nbsp;(implemented&nbsp;using&nbsp;delegation&nbsp;and&nbsp;get/setattr),<br>
-and&nbsp;should&nbsp;behave&nbsp;identically&nbsp;to&nbsp;<a href="#Text">Text</a>&nbsp;when&nbsp;dashlength=0.0.<br>
+for&nbsp;<a href="#Text">Text</a>,&nbsp;and&nbsp;should&nbsp;behave&nbsp;identically&nbsp;to&nbsp;<a href="#Text">Text</a>&nbsp;when<br>
+dashlength=0.0.<br>
 &nbsp;<br>
 The&nbsp;dash&nbsp;always&nbsp;comes&nbsp;between&nbsp;the&nbsp;point&nbsp;specified&nbsp;by<br>
 <a href="#TextWithDash-set_position">set_position</a>()&nbsp;and&nbsp;the&nbsp;text.&nbsp;When&nbsp;a&nbsp;dash&nbsp;exists,&nbsp;the<br>
@@ -290,7 +300,7 @@ after&nbsp;the&nbsp;text&nbsp;and&nbsp;1&nbsp;before.<br>
 &nbsp;<br>
 dashrotation&nbsp;specifies&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;dash,&nbsp;and<br>
 should&nbsp;generally&nbsp;stay&nbsp;None.&nbsp;In&nbsp;this&nbsp;case<br>
-<a href="#TextWithDash-get_dashrotation">get_dashrotation</a>()&nbsp;returns&nbsp;<a href="#-get_rotation">get_rotation</a>().<br>
+<a href="#TextWithDash-get_dashrotation">get_dashrotation</a>()&nbsp;returns&nbsp;<a href="#TextWithDash-get_rotation">get_rotation</a>().<br>
 (I.e.,&nbsp;the&nbsp;dash&nbsp;takes&nbsp;its&nbsp;rotation&nbsp;from&nbsp;the&nbsp;text's<br>
 rotation).&nbsp;Because&nbsp;the&nbsp;text&nbsp;center&nbsp;is&nbsp;projected&nbsp;onto<br>
 the&nbsp;dash,&nbsp;major&nbsp;deviations&nbsp;in&nbsp;the&nbsp;rotation&nbsp;cause<br>
@@ -316,13 +326,14 @@ NOTE2:&nbsp;I'm&nbsp;not&nbsp;sure&nbsp;that&nbsp;I&nbsp;got&nbsp;the&nbsp;<a hr
 right,&nbsp;or&nbsp;whether&nbsp;that's&nbsp;sufficient&nbsp;for&nbsp;providing&nbsp;the<br>
 object&nbsp;bbox.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
-<dl><dt><a name="TextWithDash-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt><dd><tt>Delegate&nbsp;most&nbsp;things&nbsp;to&nbsp;self.<strong>_mytext</strong>.</tt></dd></dl>
-
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.text.html#TextWithDash">TextWithDash</a></dd>
+<dd><a href="matplotlib.text.html#Text">Text</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
 <dl><dt><a name="TextWithDash-__init__"><strong>__init__</strong></a>(self, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>, text<font color="#909090">=''</font>, color<font color="#909090">=None</font>, verticalalignment<font color="#909090">='center'</font>, horizontalalignment<font color="#909090">='center'</font>, multialignment<font color="#909090">=None</font>, fontproperties<font color="#909090">=None</font>, rotation<font color="#909090">=None</font>, dashlength<font color="#909090">=0.0</font>, dashdirection<font color="#909090">=0</font>, dashrotation<font color="#909090">=None</font>, dashpad<font color="#909090">=3</font>, dashpush<font color="#909090">=0</font>, xaxis<font color="#909090">=True</font>)</dt></dl>
-
-<dl><dt><a name="TextWithDash-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt><dd><tt>Capture&nbsp;only&nbsp;a&nbsp;few&nbsp;things&nbsp;as&nbsp;necessary<br>
-and&nbsp;send&nbsp;the&nbsp;rest&nbsp;off&nbsp;to&nbsp;self.<strong>_mytext</strong></tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -390,10 +401,138 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-update_coords"><strong>update_coords</strong></a>(self, renderer)</dt><dd><tt>Computes&nbsp;the&nbsp;actual&nbsp;x,y&nbsp;coordinates&nbsp;for<br>
-self.<strong>_mytext</strong>&nbsp;based&nbsp;on&nbsp;the&nbsp;input&nbsp;x,y&nbsp;and&nbsp;the<br>
+text&nbsp;based&nbsp;on&nbsp;the&nbsp;input&nbsp;x,y&nbsp;and&nbsp;the<br>
 dashlength.&nbsp;Since&nbsp;the&nbsp;rotation&nbsp;is&nbsp;with&nbsp;respect<br>
 to&nbsp;the&nbsp;actual&nbsp;canvas's&nbsp;coordinates&nbsp;we&nbsp;need&nbsp;to<br>
 map&nbsp;back&nbsp;and&nbsp;forth.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.text.html#Text">Text</a>:<br>
+<dl><dt><a name="TextWithDash-get_color"><strong>get_color</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;text</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_font_properties"><strong>get_font_properties</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_fontname"><strong>get_fontname</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_name</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_fontsize"><strong>get_fontsize</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_size</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_fontstyle"><strong>get_fontstyle</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_style</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_fontweight"><strong>get_fontweight</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_weight</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_ha"><strong>get_ha</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_horizontalalignment</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_horizontalalignment"><strong>get_horizontalalignment</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;horizontal&nbsp;alignment&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_name"><strong>get_name</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;name&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_prop_tup"><strong>get_prop_tup</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;hashable&nbsp;tuple&nbsp;of&nbsp;properties<br>
+&nbsp;<br>
+Not&nbsp;intended&nbsp;to&nbsp;be&nbsp;human&nbsp;readable,&nbsp;but&nbsp;useful&nbsp;for&nbsp;backends&nbsp;who<br>
+want&nbsp;to&nbsp;cache&nbsp;derived&nbsp;information&nbsp;about&nbsp;text&nbsp;(eg&nbsp;layouts)&nbsp;and<br>
+need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_rotation"><strong>get_rotation</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_rotation_matrix"><strong>get_rotation_matrix</strong></a>(self, x0, y0)</dt></dl>
+
+<dl><dt><a name="TextWithDash-get_size"><strong>get_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;size&nbsp;as&nbsp;integer</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_style"><strong>get_style</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;style&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_text"><strong>get_text</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;text&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_va"><strong>get_va</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;getverticalalignment</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_verticalalignment"><strong>get_verticalalignment</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertical&nbsp;alignment&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_weight"><strong>get_weight</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;font&nbsp;weight&nbsp;as&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-is_math_text"><strong>is_math_text</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TextWithDash-set_backgroundcolor"><strong>set_backgroundcolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;background&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_bbox"><strong>set_bbox</strong></a>(self, rectprops)</dt><dd><tt>Draw&nbsp;a&nbsp;bounding&nbsp;box&nbsp;around&nbsp;self.&nbsp;&nbsp;rect&nbsp;props&nbsp;are&nbsp;any&nbsp;settable<br>
+properties&nbsp;for&nbsp;a&nbsp;rectangle,&nbsp;eg&nbsp;color='r',&nbsp;alpha=0.5<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;which&nbsp;is&nbsp;a&nbsp;pad&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_color"><strong>set_color</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;foreground&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_family"><strong>set_family</strong></a>(self, fontname)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;family<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'serif'&nbsp;|&nbsp;'sans-serif'&nbsp;|&nbsp;'cursive'&nbsp;|&nbsp;'fantasy'&nbsp;|&nbsp;'monospace'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_fontname"><strong>set_fontname</strong></a>(self, fontname)</dt><dd><tt>alias&nbsp;for&nbsp;set_name</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_fontproperties"><strong>set_fontproperties</strong></a>(self, fp)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;properties&nbsp;that&nbsp;control&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.font_manager.FontProperties&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_fontsize"><strong>set_fontsize</strong></a>(self, fontsize)</dt><dd><tt>alias&nbsp;for&nbsp;set_size</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_fontstyle"><strong>set_fontstyle</strong></a>(self, fontstyle)</dt><dd><tt>alias&nbsp;for&nbsp;set_style</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_fontweight"><strong>set_fontweight</strong></a>(self, weight)</dt><dd><tt>alias&nbsp;for&nbsp;set_weight</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_ha"><strong>set_ha</strong></a>(self, align)</dt><dd><tt>alias&nbsp;for&nbsp;set_horizontalalignment</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_horizontalalignment"><strong>set_horizontalalignment</strong></a>(self, align)</dt><dd><tt>Set&nbsp;the&nbsp;horizontal&nbsp;alignment&nbsp;to&nbsp;one&nbsp;of<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'left'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_ma"><strong>set_ma</strong></a>(self, align)</dt><dd><tt>alias&nbsp;for&nbsp;set_verticalalignment</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_multialignment"><strong>set_multialignment</strong></a>(self, align)</dt><dd><tt>Set&nbsp;the&nbsp;alignment&nbsp;for&nbsp;multiple&nbsp;lines&nbsp;layout.&nbsp;&nbsp;The&nbsp;layout&nbsp;of&nbsp;the<br>
+bounding&nbsp;box&nbsp;of&nbsp;all&nbsp;the&nbsp;lines&nbsp;is&nbsp;determined&nbsp;bu&nbsp;the&nbsp;horizontalalignment<br>
+and&nbsp;verticalalignment&nbsp;properties,&nbsp;but&nbsp;the&nbsp;multiline&nbsp;text&nbsp;within&nbsp;that<br>
+box&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;['left'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'center'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_name"><strong>set_name</strong></a>(self, fontname)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;name,<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;string&nbsp;eg,&nbsp;['Sans'&nbsp;|&nbsp;'Courier'&nbsp;|&nbsp;'Helvetica'&nbsp;...]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_rotation"><strong>set_rotation</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;angle&nbsp;in&nbsp;degrees&nbsp;'vertical'&nbsp;|&nbsp;'horizontal'</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_size"><strong>set_size</strong></a>(self, fontsize)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;size,&nbsp;eg,&nbsp;8,&nbsp;10,&nbsp;12,&nbsp;14...<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;size&nbsp;in&nbsp;points&nbsp;|&nbsp;relative&nbsp;size&nbsp;eg&nbsp;'smaller',&nbsp;'x-large'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_style"><strong>set_style</strong></a>(self, fontstyle)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;style<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'italic'&nbsp;|&nbsp;'oblique']</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_text"><strong>set_text</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;text&nbsp;string&nbsp;s<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_va"><strong>set_va</strong></a>(self, align)</dt><dd><tt>alias&nbsp;for&nbsp;set_verticalalignment</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_variant"><strong>set_variant</strong></a>(self, variant)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;variant,&nbsp;eg,<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'small-caps'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_verticalalignment"><strong>set_verticalalignment</strong></a>(self, align)</dt><dd><tt>Set&nbsp;the&nbsp;vertical&nbsp;alignment<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'top'&nbsp;|&nbsp;'bottom'&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_weight"><strong>set_weight</strong></a>(self, weight)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;weight<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'bold'&nbsp;|&nbsp;'heavy'&nbsp;|&nbsp;'light'&nbsp;|&nbsp;'ultrabold'&nbsp;|&nbsp;'ultralight']</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.text.html#Text">Text</a>:<br>
+<dl><dt><strong>zorder</strong> = 3</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -401,6 +540,8 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 
 <dl><dt><a name="TextWithDash-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -428,6 +569,10 @@ backends</tt></dd></dl>
 all&nbsp;backends<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="TextWithDash-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
@@ -457,13 +602,9 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-update"><strong>update</strong></a>(self, props)</dt></dl>
 
-<dl><dt><a name="TextWithDash-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
-
 <hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
-
-<dl><dt><strong>zorder</strong> = 0</dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -472,7 +613,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(sequence,&nbsp;typecode=None,&nbsp;copy=1,&nbsp;savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;formed&nbsp;from&nbsp;the&nbsp;given&nbsp;(potentially&nbsp;nested)&nbsp;sequence&nbsp;with&nbsp;type&nbsp;given&nbsp;by&nbsp;typecode.&nbsp;&nbsp;If&nbsp;no&nbsp;typecode&nbsp;is&nbsp;given,&nbsp;then&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;sequence.&nbsp;&nbsp;If&nbsp;copy&nbsp;is&nbsp;zero&nbsp;and&nbsp;sequence&nbsp;is&nbsp;already&nbsp;an&nbsp;array,&nbsp;a&nbsp;reference&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;maintain&nbsp;its&nbsp;precision&nbsp;in&nbsp;operations.</tt></dd></dl>
+<td width="100%"><dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
  <dl><dt><a name="-get_rotation"><strong>get_rotation</strong></a>(rotation)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
  <dl><dt><a name="-scanner"><strong>scanner</strong></a>(s)</dt><dd><tt>Split&nbsp;a&nbsp;string&nbsp;into&nbsp;mathtext&nbsp;and&nbsp;non-mathtext&nbsp;parts.&nbsp;&nbsp;mathtext&nbsp;is<br>
 surrounded&nbsp;by&nbsp;$&nbsp;symbols.&nbsp;&nbsp;quoted&nbsp;\$&nbsp;are&nbsp;ignored<br>
@@ -493,7 +634,7 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(substring,&nbsp;inmath)
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', 'datapath': '/usr/share/matplotlib', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>

@@ -4,6 +4,44 @@
 
 versioninfo = {}
 
+versioninfo['0.87.5'] = (
+  ("aspect handling", """\
+Excellent support for axes aspect handling, with aspect='equal' or
+  aspect=1.5 or aspect='norm' passed to an Axes or Subplot
+"""),
+
+  ("lasso tool", """\
+Use a lasso tool for picking points -- see <a
+href=examples/lasso_demo.py>lasso demo</a>
+"""),
+
+  ("true ellipses", """\
+Earlier versions of matplotlib used a polygon approximation to
+ellipses.  With this release we have arcs supporting scale free
+ellipses and circles.  See <a href=examples/ellipse_demo.py>ellipse demo.py</a>
+"""),
+
+  ("pdf backend", """\
+A alpha release of the PDF backend
+"""),
+
+  ("quiver2", """\
+Better support for quiver / direction field plots
+"""),
+
+  ("enhanced colorbar support", """\
+Supports discrete colorbars and more
+"""),
+
+  ("John Porter's 3D code incorporated", """\ A prototype
+implementation of simple 3D plots -- see <a
+href=examples/simple3d_oo.py>simple3d_oo.py</a> """),
+
+
+
+
+
+)
 versioninfo['0.83'] = (
 
   ("axis('scale')", """\

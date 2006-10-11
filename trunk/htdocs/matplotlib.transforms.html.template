@@ -37,7 +37,7 @@ as<br>
 The&nbsp;bounding&nbsp;box&nbsp;class&nbsp;Bbox&nbsp;is&nbsp;also&nbsp;heavily&nbsp;used,&nbsp;and&nbsp;is&nbsp;defined&nbsp;by&nbsp;a<br>
 lower&nbsp;left&nbsp;point&nbsp;ll&nbsp;and&nbsp;an&nbsp;upper&nbsp;right&nbsp;point&nbsp;ur.&nbsp;&nbsp;The&nbsp;points&nbsp;ll&nbsp;and&nbsp;ur<br>
 are&nbsp;given&nbsp;by&nbsp;<a href="#-Point">Point</a>(x,&nbsp;y)&nbsp;instances,&nbsp;where&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;LazyValues.&nbsp;&nbsp;So<br>
-you&nbsp;can&nbsp;represent&nbsp;a&nbsp;point&nbsp;such&nbsp;as&nbsp;<br>
+you&nbsp;can&nbsp;represent&nbsp;a&nbsp;point&nbsp;such&nbsp;as<br>
 &nbsp;<br>
 &nbsp;&nbsp;ll&nbsp;=&nbsp;<a href="#-Point">Point</a>(&nbsp;<a href="#-Value">Value</a>(0),&nbsp;<a href="#-Value">Value</a>(0)&nbsp;&nbsp;)&nbsp;&nbsp;#&nbsp;the&nbsp;origin<br>
 &nbsp;&nbsp;ur&nbsp;=&nbsp;<a href="#-Point">Point</a>(&nbsp;width,&nbsp;height&nbsp;)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;the&nbsp;upper&nbsp;right&nbsp;of&nbsp;the&nbsp;figure<br>
@@ -73,7 +73,7 @@ The&nbsp;bbox&nbsp;methods&nbsp;are<br>
 &nbsp;&nbsp;ymin()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;the&nbsp;y&nbsp;coord&nbsp;of&nbsp;lower&nbsp;left<br>
 &nbsp;&nbsp;scale(sx,sy)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;scale&nbsp;the&nbsp;bbox&nbsp;by&nbsp;sx,&nbsp;sy<br>
 &nbsp;&nbsp;deepcopy()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;a&nbsp;deep&nbsp;copy&nbsp;of&nbsp;self&nbsp;(pointers&nbsp;are&nbsp;lost)<br>
-&nbsp;&nbsp;<br>
+&nbsp;<br>
 &nbsp;<br>
 The&nbsp;basic&nbsp;transformation&nbsp;maps&nbsp;one&nbsp;bbox&nbsp;to&nbsp;another,&nbsp;with&nbsp;an&nbsp;optional<br>
 nonlinear&nbsp;transformation&nbsp;of&nbsp;one&nbsp;of&nbsp;coordinates&nbsp;(eg&nbsp;log&nbsp;scaling).<br>
@@ -106,7 +106,7 @@ For&nbsp;more&nbsp;general&nbsp;transformations&nbsp;including&nbsp;rotation,&nb
 is&nbsp;provided,&nbsp;which&nbsp;is&nbsp;constructed&nbsp;with&nbsp;6&nbsp;LazyValue&nbsp;instances:<br>
 a,&nbsp;b,&nbsp;c,&nbsp;d,&nbsp;tx,&nbsp;ty.&nbsp;&nbsp;These&nbsp;give&nbsp;the&nbsp;values&nbsp;of&nbsp;the&nbsp;matrix&nbsp;transformation<br>
 &nbsp;<br>
-&nbsp;&nbsp;[xo&nbsp;&nbsp;=&nbsp;&nbsp;|a&nbsp;&nbsp;c|&nbsp;[xi&nbsp;&nbsp;+&nbsp;[tx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;[xo&nbsp;&nbsp;=&nbsp;&nbsp;|a&nbsp;&nbsp;c|&nbsp;[xi&nbsp;&nbsp;+&nbsp;[tx<br>
 &nbsp;&nbsp;&nbsp;yo]&nbsp;&nbsp;&nbsp;&nbsp;|b&nbsp;&nbsp;d|&nbsp;&nbsp;yi]&nbsp;&nbsp;&nbsp;&nbsp;ty]<br>
 &nbsp;<br>
 where&nbsp;if&nbsp;sx,&nbsp;sy&nbsp;are&nbsp;the&nbsp;scaling&nbsp;components,&nbsp;tx,&nbsp;y&nbsp;are&nbsp;the&nbsp;translation<br>
@@ -127,13 +127,17 @@ All&nbsp;transformations<br>
 &nbsp;&nbsp;xy_tup(xy)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;transform&nbsp;the&nbsp;tuple&nbsp;(x,y)<br>
 &nbsp;&nbsp;seq_x_y(x,&nbsp;y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;transform&nbsp;the&nbsp;python&nbsp;sequences&nbsp;x&nbsp;and&nbsp;y<br>
 &nbsp;&nbsp;numerix_x_y(x,&nbsp;y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;numerix&nbsp;1D&nbsp;arrays<br>
-&nbsp;&nbsp;seq_xy_tups(seq)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;seq&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;xy&nbsp;tuples<br>
-&nbsp;&nbsp;inverse_xy_tup(xy)&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;apply&nbsp;the&nbsp;inverse&nbsp;transformation&nbsp;to&nbsp;tuple&nbsp;xy&nbsp;<br>
+&nbsp;&nbsp;numerix_xy(xy)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;xy&nbsp;is&nbsp;a&nbsp;numerix&nbsp;array&nbsp;of&nbsp;shape&nbsp;(N,2)<br>
+&nbsp;&nbsp;inverse_numerix_xy(xy)-&nbsp;inverse&nbsp;of&nbsp;the&nbsp;above<br>
+&nbsp;&nbsp;seq_xy_tups(seq)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;seq&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;xy&nbsp;tuples&nbsp;or&nbsp;a&nbsp;(N,2)&nbsp;array<br>
+&nbsp;&nbsp;inverse_xy_tup(xy)&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;apply&nbsp;the&nbsp;inverse&nbsp;transformation&nbsp;to&nbsp;tuple&nbsp;xy<br>
 &nbsp;<br>
 &nbsp;&nbsp;set_offset(xy,&nbsp;trans)&nbsp;-&nbsp;xy&nbsp;is&nbsp;an&nbsp;x,y&nbsp;tuple&nbsp;and&nbsp;trans&nbsp;is&nbsp;a<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Transformation&nbsp;instance.&nbsp;&nbsp;This&nbsp;will&nbsp;apply&nbsp;a&nbsp;post&nbsp;transformational<br>
 &nbsp;&nbsp;&nbsp;&nbsp;offset&nbsp;of&nbsp;all&nbsp;future&nbsp;transformations&nbsp;by&nbsp;xt,yt&nbsp;=&nbsp;trans.xy_tup(xy[0],&nbsp;xy[1])<br>
 &nbsp;<br>
+&nbsp;&nbsp;deepcopy()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;a&nbsp;deep&nbsp;copy;&nbsp;references&nbsp;are&nbsp;lost<br>
+&nbsp;&nbsp;shallowcopy()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;returns&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;excluding&nbsp;the&nbsp;offset<br>
 &nbsp;<br>
 Separable&nbsp;transformations<br>
 -------------------------<br>
@@ -147,10 +151,11 @@ Separable&nbsp;transformations<br>
 &nbsp;&nbsp;set_funcx()&nbsp;-&nbsp;set&nbsp;the&nbsp;Func&nbsp;instance&nbsp;on&nbsp;x<br>
 &nbsp;&nbsp;set_funcy()&nbsp;-&nbsp;set&nbsp;the&nbsp;Func&nbsp;instance&nbsp;on&nbsp;y<br>
 &nbsp;<br>
+&nbsp;<br>
 Affine&nbsp;transformations<br>
 ----------------------<br>
 &nbsp;<br>
-&nbsp;&nbsp;as_vec6()&nbsp;-&nbsp;return&nbsp;the&nbsp;affine&nbsp;as&nbsp;length&nbsp;6&nbsp;list&nbsp;of&nbsp;Values<br>
+&nbsp;&nbsp;as_vec6()&nbsp;-&nbsp;return&nbsp;the&nbsp;affine&nbsp;as&nbsp;length&nbsp;6&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;Values<br>
 &nbsp;<br>
 &nbsp;<br>
 In&nbsp;general,&nbsp;you&nbsp;shouldn't&nbsp;need&nbsp;to&nbsp;construct&nbsp;your&nbsp;own&nbsp;transformations,<br>
@@ -173,23 +178,50 @@ but&nbsp;should&nbsp;use&nbsp;the&nbsp;helper&nbsp;functions&nbsp;defined&nbsp;i
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left,&nbsp;bottom,&nbsp;width,&nbsp;height&nbsp;tuple<br>
 &nbsp;<br>
 &nbsp;&nbsp;multiply_affines&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;the&nbsp;affine&nbsp;that&nbsp;is&nbsp;the&nbsp;matrix&nbsp;product&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;two&nbsp;affines<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;two&nbsp;affines<br>
 &nbsp;<br>
 &nbsp;&nbsp;get_bbox_transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;a&nbsp;SeparableTransformation&nbsp;instance&nbsp;that<br>
-&nbsp;&nbsp;&nbsp;&nbsp;transforms&nbsp;one&nbsp;bbox&nbsp;to&nbsp;another<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transforms&nbsp;one&nbsp;bbox&nbsp;to&nbsp;another<br>
 &nbsp;<br>
 &nbsp;&nbsp;blend_xy_sep_transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;mix&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;components&nbsp;of&nbsp;two&nbsp;separable<br>
-&nbsp;&nbsp;&nbsp;&nbsp;transformations&nbsp;into&nbsp;a&nbsp;new&nbsp;transformation.&nbsp;&nbsp;This&nbsp;allows&nbsp;you&nbsp;to<br>
-&nbsp;&nbsp;&nbsp;&nbsp;specify&nbsp;x&nbsp;and&nbsp;y&nbsp;in&nbsp;different&nbsp;coordinate&nbsp;systems<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transformations&nbsp;into&nbsp;a&nbsp;new&nbsp;transformation.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;allows&nbsp;you&nbsp;to&nbsp;specify&nbsp;x&nbsp;and&nbsp;y&nbsp;in<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;coordinate&nbsp;systems<br>
 &nbsp;<br>
 &nbsp;&nbsp;transform_bbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;apply&nbsp;a&nbsp;transformation&nbsp;to&nbsp;a&nbsp;bbox&nbsp;and&nbsp;return&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;transformed&nbsp;bbox<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transformed&nbsp;bbox<br>
 &nbsp;<br>
 &nbsp;&nbsp;inverse_transform_bbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;apply&nbsp;the&nbsp;inverse&nbsp;transformation&nbsp;of&nbsp;a&nbsp;bbox<br>
-&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;the&nbsp;inverse&nbsp;transformed&nbsp;bbox<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;return&nbsp;the&nbsp;inverse&nbsp;transformed&nbsp;bbox<br>
+&nbsp;<br>
+&nbsp;&nbsp;offset_copy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;make&nbsp;a&nbsp;copy&nbsp;with&nbsp;an&nbsp;offset<br>
 &nbsp;<br>
 &nbsp;<br>
-The&nbsp;units/transform_unit.py&nbsp;code&nbsp;has&nbsp;many&nbsp;examples.</tt></p>
+The&nbsp;units/transform_unit.py&nbsp;code&nbsp;has&nbsp;many&nbsp;examples.<br>
+&nbsp;<br>
+A&nbsp;related&nbsp;and&nbsp;partly&nbsp;overlapping&nbsp;class,&nbsp;<a href="#PBox">PBox</a>,&nbsp;has&nbsp;been&nbsp;added&nbsp;to&nbsp;the<br>
+original&nbsp;transforms&nbsp;module&nbsp;to&nbsp;facilitate&nbsp;Axes&nbsp;repositioning&nbsp;and&nbsp;resizing.<br>
+At&nbsp;present,&nbsp;the&nbsp;differences&nbsp;between&nbsp;Bbox&nbsp;and&nbsp;<a href="#PBox">PBox</a>&nbsp;include:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bbox&nbsp;works&nbsp;with&nbsp;the&nbsp;bounding&nbsp;box,&nbsp;the&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;lower-left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;upper-right&nbsp;corners;&nbsp;<a href="#PBox">PBox</a>&nbsp;works&nbsp;with&nbsp;the&nbsp;lower-left&nbsp;coordinates<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;the&nbsp;width,&nbsp;height&nbsp;pair&nbsp;(left,&nbsp;bottom,&nbsp;width,&nbsp;height,&nbsp;or&nbsp;'lbwh').<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Obviously,&nbsp;these&nbsp;are&nbsp;equivalent,&nbsp;but&nbsp;lbwh&nbsp;is&nbsp;what&nbsp;is&nbsp;used&nbsp;by<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Axes._position,&nbsp;and&nbsp;it&nbsp;is&nbsp;the&nbsp;natural&nbsp;specification&nbsp;for&nbsp;the&nbsp;types&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;manipulations&nbsp;for&nbsp;which&nbsp;the&nbsp;<a href="#PBox">PBox</a>&nbsp;class&nbsp;was&nbsp;made.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bbox&nbsp;uses&nbsp;LazyValues&nbsp;grouped&nbsp;in&nbsp;pairs&nbsp;as&nbsp;'ll'&nbsp;and&nbsp;'ur'&nbsp;Point&nbsp;objects;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#PBox">PBox</a>&nbsp;uses&nbsp;a&nbsp;4-element&nbsp;<a href="__builtin__.html#list">list</a>,&nbsp;subclassed&nbsp;from&nbsp;the&nbsp;python&nbsp;<a href="__builtin__.html#list">list</a>.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bbox&nbsp;and&nbsp;<a href="#PBox">PBox</a>&nbsp;methods&nbsp;are&nbsp;mostly&nbsp;quite&nbsp;different,&nbsp;reflecting&nbsp;their<br>
+&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;original&nbsp;purposes.&nbsp;&nbsp;Similarly,&nbsp;the&nbsp;CXX&nbsp;implementation&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Bbox&nbsp;is&nbsp;good&nbsp;for&nbsp;methods&nbsp;such&nbsp;as&nbsp;update&nbsp;and&nbsp;for&nbsp;lazy&nbsp;evaluation,&nbsp;but<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;<a href="#PBox">PBox</a>&nbsp;intended&nbsp;uses,&nbsp;involving&nbsp;very&nbsp;little&nbsp;calculation,&nbsp;pure<br>
+&nbsp;&nbsp;&nbsp;&nbsp;python&nbsp;probably&nbsp;is&nbsp;adequate.<br>
+&nbsp;<br>
+In&nbsp;the&nbsp;future&nbsp;we&nbsp;may&nbsp;reimplement&nbsp;the&nbsp;<a href="#PBox">PBox</a>&nbsp;using&nbsp;Bbox<br>
+and&nbsp;transforms,&nbsp;or&nbsp;eliminate&nbsp;it&nbsp;entirely&nbsp;by&nbsp;adding&nbsp;its&nbsp;methods<br>
+and&nbsp;attributes&nbsp;to&nbsp;Bbox&nbsp;and/or&nbsp;putting&nbsp;them&nbsp;elsewhere&nbsp;in&nbsp;this&nbsp;module.</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -199,6 +231,173 @@ The&nbsp;units/transform_unit.py&nbsp;code&nbsp;has&nbsp;many&nbsp;examples.</tt
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
 </td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#list">__builtin__.list</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.transforms.html#PBox">PBox</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PBox">class <strong>PBox</strong></a>(<a href="__builtin__.html#list">__builtin__.list</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;left-bottom-width-height&nbsp;(lbwh)&nbsp;specification&nbsp;of&nbsp;a&nbsp;bounding&nbsp;box,<br>
+such&nbsp;as&nbsp;is&nbsp;used&nbsp;to&nbsp;specify&nbsp;the&nbsp;position&nbsp;of&nbsp;an&nbsp;Axes&nbsp;object&nbsp;within<br>
+a&nbsp;Figure.<br>
+It&nbsp;is&nbsp;a&nbsp;4-element&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;with&nbsp;methods&nbsp;for&nbsp;changing&nbsp;the&nbsp;size,&nbsp;shape,<br>
+and&nbsp;position&nbsp;relative&nbsp;to&nbsp;its&nbsp;container.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.transforms.html#PBox">PBox</a></dd>
+<dd><a href="__builtin__.html#list">__builtin__.list</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PBox-__init__"><strong>__init__</strong></a>(self, box, container<font color="#909090">=None</font>, llur<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="PBox-anchor"><strong>anchor</strong></a>(self, c, container<font color="#909090">=None</font>)</dt><dd><tt>Shift&nbsp;to&nbsp;position&nbsp;c&nbsp;within&nbsp;its&nbsp;container.<br>
+&nbsp;<br>
+c&nbsp;can&nbsp;be&nbsp;a&nbsp;sequence&nbsp;(cx,&nbsp;cy)&nbsp;where&nbsp;cx,&nbsp;cy&nbsp;range&nbsp;from&nbsp;0&nbsp;to&nbsp;1,<br>
+where&nbsp;0&nbsp;is&nbsp;left&nbsp;or&nbsp;bottom&nbsp;and&nbsp;1&nbsp;is&nbsp;right&nbsp;or&nbsp;top.<br>
+&nbsp;<br>
+Alternatively,&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;string:&nbsp;C&nbsp;for&nbsp;centered,<br>
+S&nbsp;for&nbsp;bottom-center,&nbsp;SE&nbsp;for&nbsp;bottom-left,&nbsp;E&nbsp;for&nbsp;left,&nbsp;etc.<br>
+&nbsp;<br>
+Optional&nbsp;arg&nbsp;container&nbsp;is&nbsp;the&nbsp;lbwh&nbsp;box&nbsp;within&nbsp;which&nbsp;the<br>
+<a href="#PBox">PBox</a>&nbsp;is&nbsp;positioned;&nbsp;it&nbsp;defaults&nbsp;to&nbsp;the&nbsp;initial<br>
+<a href="#PBox">PBox</a>.</tt></dd></dl>
+
+<dl><dt><a name="PBox-as_llur"><strong>as_llur</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PBox-get_container"><strong>get_container</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="PBox-set_container"><strong>set_container</strong></a>(self, box<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="PBox-shrink"><strong>shrink</strong></a>(self, mx, my)</dt><dd><tt>Shrink&nbsp;the&nbsp;box&nbsp;by&nbsp;mx&nbsp;in&nbsp;the&nbsp;x&nbsp;direction&nbsp;and&nbsp;my&nbsp;in&nbsp;the&nbsp;y&nbsp;direction.<br>
+The&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;the&nbsp;box&nbsp;remains&nbsp;unchanged.<br>
+Normally&nbsp;mx&nbsp;and&nbsp;my&nbsp;will&nbsp;be&nbsp;&lt;=&nbsp;1,&nbsp;but&nbsp;this&nbsp;is&nbsp;not&nbsp;enforced.</tt></dd></dl>
+
+<dl><dt><a name="PBox-shrink_to_aspect"><strong>shrink_to_aspect</strong></a>(self, box_aspect, fig_aspect<font color="#909090">=1</font>)</dt><dd><tt>Shrink&nbsp;the&nbsp;box&nbsp;so&nbsp;that&nbsp;it&nbsp;is&nbsp;as&nbsp;large&nbsp;as&nbsp;it&nbsp;can&nbsp;be&nbsp;while<br>
+having&nbsp;the&nbsp;desired&nbsp;aspect&nbsp;ratio,&nbsp;box_aspect.<br>
+If&nbsp;the&nbsp;box&nbsp;coordinates&nbsp;are&nbsp;relative--that&nbsp;is,&nbsp;fractions&nbsp;of<br>
+a&nbsp;larger&nbsp;box&nbsp;such&nbsp;as&nbsp;a&nbsp;figure--then&nbsp;the&nbsp;physical&nbsp;aspect<br>
+ratio&nbsp;of&nbsp;that&nbsp;figure&nbsp;is&nbsp;specified&nbsp;with&nbsp;fig_aspect,&nbsp;so<br>
+that&nbsp;box_aspect&nbsp;can&nbsp;also&nbsp;be&nbsp;given&nbsp;as&nbsp;a&nbsp;ratio&nbsp;of&nbsp;the<br>
+absolute&nbsp;dimensions,&nbsp;not&nbsp;the&nbsp;relative&nbsp;dimensions.</tt></dd></dl>
+
+<dl><dt><a name="PBox-splitx"><strong>splitx</strong></a>(self, *args)</dt><dd><tt>e.g.,&nbsp;PB.<a href="#PBox-splitx">splitx</a>(f1,&nbsp;f2,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;new&nbsp;PBoxes&nbsp;formed&nbsp;by<br>
+splitting&nbsp;the&nbsp;original&nbsp;one&nbsp;(PB)&nbsp;with&nbsp;vertical&nbsp;lines<br>
+at&nbsp;fractional&nbsp;positions&nbsp;f1,&nbsp;f2,&nbsp;...</tt></dd></dl>
+
+<dl><dt><a name="PBox-splity"><strong>splity</strong></a>(self, *args)</dt><dd><tt>e.g.,&nbsp;PB.<a href="#PBox-splity">splity</a>(f1,&nbsp;f2,&nbsp;...)<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;new&nbsp;PBoxes&nbsp;formed&nbsp;by<br>
+splitting&nbsp;the&nbsp;original&nbsp;one&nbsp;(PB)&nbsp;with&nbsp;horizontal&nbsp;lines<br>
+at&nbsp;fractional&nbsp;positions&nbsp;f1,&nbsp;f2,&nbsp;...,&nbsp;with&nbsp;y&nbsp;measured<br>
+positive&nbsp;up.</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
+
+<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'PBox' objects&gt;<dd><tt><a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
+
+<dl><dt><strong>coefs</strong> = {'C': (0.5, 0.5), 'E': (1.0, 0.5), 'N': (0.5, 1.0), 'NE': (1.0, 1.0), 'NW': (0, 1.0), 'S': (0.5, 0), 'SE': (1.0, 0), 'SW': (0, 0), 'W': (0, 0.5)}</dl>
+
+<hr>
+Methods inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
+<dl><dt><a name="PBox-__add__"><strong>__add__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__add__">__add__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__contains__">__contains__</a>(y)&nbsp;&lt;==&gt;&nbsp;y&nbsp;in&nbsp;x</tt></dd></dl>
+
+<dl><dt><a name="PBox-__delitem__"><strong>__delitem__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__delitem__">__delitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="PBox-__delslice__"><strong>__delslice__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__delslice__">__delslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="PBox-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="PBox-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="PBox-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="PBox-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="PBox-__iadd__"><strong>__iadd__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__iadd__">__iadd__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__imul__"><strong>__imul__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__imul__">__imul__</a>(y)&nbsp;&lt;==&gt;&nbsp;x*=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="PBox-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="PBox-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__mul__"><strong>__mul__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__mul__">__mul__</a>(n)&nbsp;&lt;==&gt;&nbsp;x*n</tt></dd></dl>
+
+<dl><dt><a name="PBox-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="PBox-__reversed__"><strong>__reversed__</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-__reversed__">__reversed__</a>()&nbsp;--&nbsp;return&nbsp;a&nbsp;reverse&nbsp;iterator&nbsp;over&nbsp;the&nbsp;<a href="__builtin__.html#list">list</a></tt></dd></dl>
+
+<dl><dt><a name="PBox-__rmul__"><strong>__rmul__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__rmul__">__rmul__</a>(n)&nbsp;&lt;==&gt;&nbsp;n*x</tt></dd></dl>
+
+<dl><dt><a name="PBox-__setitem__"><strong>__setitem__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__setitem__">__setitem__</a>(i,&nbsp;y)&nbsp;&lt;==&gt;&nbsp;x[i]=y</tt></dd></dl>
+
+<dl><dt><a name="PBox-__setslice__"><strong>__setslice__</strong></a>(...)</dt><dd><tt>x.<a href="#PBox-__setslice__">__setslice__</a>(i,&nbsp;j,&nbsp;y)&nbsp;&lt;==&gt;&nbsp;x[i:j]=y<br>
+&nbsp;<br>
+Use&nbsp;&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="PBox-append"><strong>append</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-append">append</a>(object)&nbsp;--&nbsp;append&nbsp;object&nbsp;to&nbsp;end</tt></dd></dl>
+
+<dl><dt><a name="PBox-count"><strong>count</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-count">count</a>(value)&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="PBox-extend"><strong>extend</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-extend">extend</a>(iterable)&nbsp;--&nbsp;extend&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;by&nbsp;appending&nbsp;elements&nbsp;from&nbsp;the&nbsp;iterable</tt></dd></dl>
+
+<dl><dt><a name="PBox-index"><strong>index</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-index">index</a>(value,&nbsp;[start,&nbsp;[stop]])&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;first&nbsp;index&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="PBox-insert"><strong>insert</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-insert">insert</a>(index,&nbsp;object)&nbsp;--&nbsp;insert&nbsp;object&nbsp;before&nbsp;index</tt></dd></dl>
+
+<dl><dt><a name="PBox-pop"><strong>pop</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-pop">pop</a>([index])&nbsp;-&gt;&nbsp;item&nbsp;--&nbsp;remove&nbsp;and&nbsp;return&nbsp;item&nbsp;at&nbsp;index&nbsp;(default&nbsp;last)</tt></dd></dl>
+
+<dl><dt><a name="PBox-remove"><strong>remove</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-remove">remove</a>(value)&nbsp;--&nbsp;remove&nbsp;first&nbsp;occurrence&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="PBox-reverse"><strong>reverse</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-reverse">reverse</a>()&nbsp;--&nbsp;reverse&nbsp;*IN&nbsp;PLACE*</tt></dd></dl>
+
+<dl><dt><a name="PBox-sort"><strong>sort</strong></a>(...)</dt><dd><tt>L.<a href="#PBox-sort">sort</a>(cmp=None,&nbsp;key=None,&nbsp;reverse=False)&nbsp;--&nbsp;stable&nbsp;sort&nbsp;*IN&nbsp;PLACE*;<br>
+cmp(x,&nbsp;y)&nbsp;-&gt;&nbsp;-1,&nbsp;0,&nbsp;1</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#PBox-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -214,7 +413,6 @@ The&nbsp;units/transform_unit.py&nbsp;code&nbsp;has&nbsp;many&nbsp;examples.</tt
  <dl><dt><a name="-Point"><strong>Point</strong></a>(...)</dt><dd><tt><a href="#-Point">Point</a>(x,&nbsp;y)</tt></dd></dl>
  <dl><dt><a name="-SeparableTransformation"><strong>SeparableTransformation</strong></a>(...)</dt><dd><tt><a href="#-SeparableTransformation">SeparableTransformation</a>(box1,&nbsp;box2,&nbsp;funcx,&nbsp;funcy))</tt></dd></dl>
  <dl><dt><a name="-Value"><strong>Value</strong></a>(...)</dt><dd><tt><a href="#-Value">Value</a>(x)</tt></dd></dl>
- <dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(sequence,&nbsp;typecode=None,&nbsp;copy=1,&nbsp;savespace=0)&nbsp;will&nbsp;return&nbsp;a&nbsp;new&nbsp;array&nbsp;formed&nbsp;from&nbsp;the&nbsp;given&nbsp;(potentially&nbsp;nested)&nbsp;sequence&nbsp;with&nbsp;type&nbsp;given&nbsp;by&nbsp;typecode.&nbsp;&nbsp;If&nbsp;no&nbsp;typecode&nbsp;is&nbsp;given,&nbsp;then&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;sequence.&nbsp;&nbsp;If&nbsp;copy&nbsp;is&nbsp;zero&nbsp;and&nbsp;sequence&nbsp;is&nbsp;already&nbsp;an&nbsp;array,&nbsp;a&nbsp;reference&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;If&nbsp;savespace&nbsp;is&nbsp;nonzero,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;maintain&nbsp;its&nbsp;precision&nbsp;in&nbsp;operations.</tt></dd></dl>
  <dl><dt><a name="-bbox_all"><strong>bbox_all</strong></a>(bboxes)</dt><dd><tt>Return&nbsp;the&nbsp;Bbox&nbsp;that&nbsp;bounds&nbsp;all&nbsp;bboxes</tt></dd></dl>
  <dl><dt><a name="-blend_xy_sep_transform"><strong>blend_xy_sep_transform</strong></a>(trans1, trans2)</dt><dd><tt>If&nbsp;trans1&nbsp;and&nbsp;trans2&nbsp;are&nbsp;SeparableTransformation&nbsp;instances,&nbsp;you&nbsp;can<br>
 build&nbsp;a&nbsp;new&nbsp;SeparableTransformation&nbsp;from&nbsp;them&nbsp;by&nbsp;extracting&nbsp;the&nbsp;x&nbsp;and&nbsp;y<br>
@@ -225,7 +423,6 @@ trans2&nbsp;and&nbsp;returns&nbsp;the&nbsp;new&nbsp;Transformation&nbsp;instance
 useful,&nbsp;for&nbsp;example,&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;specify&nbsp;x&nbsp;in&nbsp;data&nbsp;coordinates<br>
 and&nbsp;y&nbsp;in&nbsp;axes&nbsp;coordinates.</tt></dd></dl>
  <dl><dt><a name="-bound_vertices"><strong>bound_vertices</strong></a>(verts)</dt><dd><tt>Return&nbsp;the&nbsp;Bbox&nbsp;of&nbsp;the&nbsp;sequence&nbsp;of&nbsp;x,y&nbsp;tuples&nbsp;in&nbsp;verts</tt></dd></dl>
- <dl><dt><a name="-copy_bbox_transform"><strong>copy_bbox_transform</strong></a>(trans)</dt><dd><tt>return&nbsp;a&nbsp;deep&nbsp;copy&nbsp;of&nbsp;the&nbsp;bbox&nbsp;transform</tt></dd></dl>
  <dl><dt><a name="-get_bbox_transform"><strong>get_bbox_transform</strong></a>(boxin, boxout)</dt><dd><tt>return&nbsp;the&nbsp;transform&nbsp;that&nbsp;maps&nbsp;transform&nbsp;one&nbsp;bounding&nbsp;box&nbsp;to<br>
 another</tt></dd></dl>
  <dl><dt><a name="-get_vec6_rotation"><strong>get_vec6_rotation</strong></a>(v)</dt><dd><tt>v&nbsp;is&nbsp;an&nbsp;affine&nbsp;vec6&nbsp;a,b,c,d,tx,ty;&nbsp;return&nbsp;rotation&nbsp;in&nbsp;degrees</tt></dd></dl>
@@ -241,6 +438,13 @@ another</tt></dd></dl>
 Return&nbsp;the&nbsp;inverse&nbsp;of&nbsp;v&nbsp;as&nbsp;a&nbsp;vec6</tt></dd></dl>
  <dl><dt><a name="-lbwh_to_bbox"><strong>lbwh_to_bbox</strong></a>(l, b, w, h)</dt></dl>
  <dl><dt><a name="-multiply_affines"><strong>multiply_affines</strong></a>(v1, v2)</dt><dd><tt>v1&nbsp;and&nbsp;v2&nbsp;are&nbsp;Affine&nbsp;instances</tt></dd></dl>
+ <dl><dt><a name="-offset_copy"><strong>offset_copy</strong></a>(trans, fig<font color="#909090">=None</font>, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>, units<font color="#909090">='inches'</font>)</dt><dd><tt>Return&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;a&nbsp;transform&nbsp;with&nbsp;an&nbsp;added&nbsp;offset.<br>
+&nbsp;&nbsp;args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;trans&nbsp;is&nbsp;any&nbsp;transform<br>
+&nbsp;&nbsp;kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig&nbsp;is&nbsp;the&nbsp;current&nbsp;figure;&nbsp;it&nbsp;can&nbsp;be&nbsp;None&nbsp;if&nbsp;units&nbsp;are&nbsp;'dots'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x,&nbsp;y&nbsp;give&nbsp;the&nbsp;offset<br>
+&nbsp;&nbsp;&nbsp;&nbsp;units&nbsp;is&nbsp;'inches',&nbsp;'points'&nbsp;or&nbsp;'dots'</tt></dd></dl>
  <dl><dt><a name="-one"><strong>one</strong></a>()</dt></dl>
  <dl><dt><a name="-origin"><strong>origin</strong></a>()</dt></dl>
  <dl><dt><a name="-scale_sep_transform"><strong>scale_sep_transform</strong></a>(sx, sy)</dt><dd><tt>Return&nbsp;a&nbsp;pure&nbsp;scale&nbsp;transformation&nbsp;as&nbsp;a&nbsp;SeparableTransformation;<br>
@@ -251,7 +455,7 @@ sy&nbsp;are&nbsp;LazyValue&nbsp;instances&nbsp;(Values&nbsp;or&nbsp;binary&nbsp;
 values)</tt></dd></dl>
  <dl><dt><a name="-transform_bbox"><strong>transform_bbox</strong></a>(trans, bbox)</dt><dd><tt>transform&nbsp;the&nbsp;bbox&nbsp;to&nbsp;a&nbsp;new&nbsp;bbox</tt></dd></dl>
  <dl><dt><a name="-translation_transform"><strong>translation_transform</strong></a>(tx, ty)</dt><dd><tt>return&nbsp;a&nbsp;pure&nbsp;tranlational&nbsp;transformation&nbsp;tx&nbsp;and&nbsp;ty&nbsp;are&nbsp;LazyValue<br>
-instances&nbsp;(Values&nbsp;or&nbsp;binary&nbsp;opertations&nbsp;on&nbsp;values)</tt></dd></dl>
+instances&nbsp;(Values&nbsp;or&nbsp;binary&nbsp;operations&nbsp;on&nbsp;values)</tt></dd></dl>
  <dl><dt><a name="-unit_bbox"><strong>unit_bbox</strong></a>()</dt><dd><tt>Get&nbsp;a&nbsp;0,0&nbsp;-&gt;&nbsp;1,1&nbsp;Bbox&nbsp;instance</tt></dd></dl>
  <dl><dt><a name="-zero"><strong>zero</strong></a>()</dt></dl>
 </td></tr></table><p>
@@ -264,5 +468,6 @@ instances&nbsp;(Values&nbsp;or&nbsp;binary&nbsp;opertations&nbsp;on&nbsp;values)
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>IDENTITY</strong> = 0<br>
 <strong>LOG10</strong> = 1<br>
-<strong>POLAR</strong> = 0</td></tr></table>
+<strong>POLAR</strong> = 0<br>
+<strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
 @footer@

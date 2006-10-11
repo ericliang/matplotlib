@@ -1,6 +1,6 @@
 import os, sys, glob, shutil
 import matplotlib
-MPL_SRC = '/home/jdhunter/python/projects/matplotlib'
+MPL_SRC = '/home/jdhunter/mpl'
 
 #copy all the examples to the htdocs examples dir
 for fname in glob.glob('examples/*.py*'):
