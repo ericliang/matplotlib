@@ -333,13 +333,6 @@ def makeValue(v):
     else:
         return Value(v)
 
-def units_conversion(x, units):
-    if (units and hasattr(x, 'convert_to')):
-        x = x.convert_to(units)
-    if (hasattr(x, 'get_value')):
-        x = x.get_value()
-    return x
-
 class Axes(Artist):
     """
     The Axes contains most of the figure elements: Axis, Tick, Line2D,
@@ -1378,8 +1371,8 @@ class Axes(Artist):
         else:
             raise ValueError('args must be length 0, 1 or 2')
 
-        vmin = units_conversion(vmin, self._xunits)
-        vmax = units_conversion(vmax, self._xunits)
+        vmin, = self._convert_units((vmin, self._xunits))
+        vmax, = self._convert_units((vmax, self._xunits))
 
         if self.transData.get_funcx().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -1507,8 +1500,8 @@ class Axes(Artist):
         else:
             raise ValueError('args must be length 0, 1 or 2')
 
-        vmin = units_conversion(vmin, self._yunits)
-        vmax = units_conversion(vmax, self._yunits)
+        vmin, = self._convert_units((vmin, self._yunits))
+        vmax, = self._convert_units((vmax, self._yunits))
 
         if self.transData.get_funcy().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -2053,7 +2046,7 @@ class Axes(Artist):
         # convert y axis units
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy)
-        y = units_conversion(y, self._yunits)
+        y, = self._convert_units((y, self._yunits))
         
         trans = blend_xy_sep_transform( self.transAxes, self.transData  )
         verts = (xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)
@@ -2095,7 +2088,7 @@ class Axes(Artist):
         # convert x axis units
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy)
-        x = units_conversion(x, self._xunits)
+        x, = self._convert_units((x, self._xunits))
 
         trans = blend_xy_sep_transform( self.transData, self.transAxes   )
         verts = [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]
@@ -2125,9 +2118,9 @@ class Axes(Artist):
         # convert, if necessary
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy)
-        xmin = units_conversion(xmin, self._xunits)
-        xmax = units_conversion(xmax, self._xunits)
-        y    = units_conversion(y, self._yunits)
+        xmin, xmax = self._convert_units((xmin, self._xunits),
+                                         (xmax, self._xunits))
+        y,    = self._convert_units((y, self._yunits))
 
         if not iterable(y): y = [y]
         if not iterable(xmin): xmin = [xmin]
@@ -2180,9 +2173,9 @@ class Axes(Artist):
         self._update_units_args(kwargs_copy)
         xunits = kwargs_copy.pop('xunits', None)
         yunits = kwargs_copy.pop('yunits', None)
-        ymin = units_conversion(ymin, self._yunits)
-        ymax = units_conversion(ymax, self._yunits)
-        x    = units_conversion(x, self._xunits)
+        ymin, ymax = self._convert_units((ymin, self._yunits),
+                                         (ymax, self._yunits))
+        x,    = self._convert_units((x, self._xunits))
 
         if not iterable(x): x = [x]
         if not iterable(ymin): ymin = [ymin]
@@ -3362,17 +3355,25 @@ class Axes(Artist):
             }
 
         x_original, y_original = x, y
-        if (hasattr(x, 'get_value')):
-            x = x.get_value()
-        if (hasattr(y, 'get_value')):
-            y = y.get_value()
+        print '(original) x = %s' % (`x`)
+        x, y = self._invoke_units_method('get_value', ((x,),(y,)))
+#        if (hasattr(x, 'get_value')):
+#            x = x.get_value()
+#        if (hasattr(y, 'get_value')):
+#            y = y.get_value()
 
+        print '(before) x = %s' % (`x`)
         x, y, s, c = delete_masked_points(x, y, s, c)
+        print '(after) x = %s' % (`x`)
 
-        if (hasattr(x_original, 'attach_unit_to_value')):
-            x = x_original.attach_unit_to_value(x)
-        if (hasattr(y_original, 'attach_unit_to_value')):
-            y = y_original.attach_unit_to_value(y)
+        x, y = self._invoke_units_method('attach_unit_to_value',
+                                         ((x_original, x), (y_original, y)),
+                                         distinct_lookup=True)
+#        if (hasattr(x_original, 'attach_unit_to_value')):
+#            x = x_original.attach_unit_to_value(x)
+#        if (hasattr(y_original, 'attach_unit_to_value')):
+#            y = y_original.attach_unit_to_value(y)
+        print '(after attach) x = %s' % (`x`)
 
         if kwargs_copy.has_key('color'):
             c = kwargs_copy['color']
@@ -3440,10 +3441,18 @@ class Axes(Artist):
             else:
                 collection.autoscale()
 
-        minx = amin(x)
-        maxx = amax(x)
-        miny = amin(y)
-        maxy = amax(y)
+#        temp_x, temp_y = self._convert_units((x, self._xunits),
+#                                             (y, self._yunits))
+        temp_x = x
+        temp_y = y
+
+        print 'temp_x = '
+        print temp_x
+        
+        minx = amin(temp_x)
+        maxx = amax(temp_x)
+        miny = amin(temp_y)
+        maxy = amax(temp_y)
 
         w = maxx-minx
         h = maxy-miny

@@ -127,7 +127,7 @@ class TaggedValue (UnitTaggedInterface, object):
 
   def convert_to(self, unit):
     try:
-      if (unit == self.unit):
+      if (unit == self.unit or not unit):
         return self
       new_value = self.unit.convert_value_to(self.value, unit)
       return TaggedValue(new_value, unit)

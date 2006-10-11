@@ -3,6 +3,7 @@ import sys
 from cbook import iterable, flatten
 from transforms import identity_transform
 import warnings
+import copy
 ## Note, matplotlib artists use the doc strings for set and get
 # methods to enable the introspection methods of setp and getp.  Every
 # set_* method should have a docstring containing the line
@@ -44,7 +45,100 @@ class Artist:
         self._oid = 0  # an observer id
         self._propobservers = {} # a dict from oids to funcs
 
+    def _invoke_units_method(self, method_name, value_arg_seq, \
+                             distinct_lookup=False):
+        """
+           value_arg_seq should be a sequence of (value, param) tuples
+        """
+        class working_copy:
+            def __init__(self, value, lookup=None):
+                self.working_copy = value
+                self.lookup = lookup
+                self.copied = False
+            def get_lookup(self, indices):
+                if (not distinct_lookup):
+                    return self.get_value(indices)
+                position = self.lookup
+                for index in indices[:-1]:
+                    position = position[index]
+                return position[indices[-1]]
+            def get_value(self, indices):
+                position = self.working_copy
+                for index in indices[:-1]:
+                    position = position[index]
+                return position[indices[-1]]
+            def set_value(self, indices, value):
+                if (not self.copied):
+                    # first level is an enclosing list
+                    self.working_copy = [copy.copy(self.working_copy[0])]
+                    self.copied = True
+                position = self.working_copy
+                for index in indices[:-1]:
+                    position = position[index]
+                position[indices[-1]] = value 
+
+        def invoke_on_elem(working, current_index, previous_indices, args):
+            #print 'in invoke_on_elem, args = %s' % (`args`)
+            position = previous_indices + [current_index]
+            value = working.get_value(position)
+            lookup = working.get_lookup(position)
+            if (hasattr(lookup, method_name)):
+                #print 'in invoke_on_elem, args = %s' % (`args`)
+                arg_list = args
+                if (distinct_lookup):
+                    arg_list = (value,) + arg_list
+                value = getattr(lookup, method_name)(*arg_list)
+                # copy check and replace
+                working.set_value(position, value)
+            else:
+                conversion_class = None
+                try:
+                    #print 'lookup = %s' % (`lookup`)
+                    #print 'type(lookup) = %s' % (`type(lookup)`,)
+                    conversion_class = \
+                        self.figure._get_unit_conversion(lookup.__class__)
+                except: pass
+                if (conversion_class):
+                    # copy check
+                    arg_list = [value]
+                    arg_list.extend(args)
+                    arg_list = tuple(arg_list)
+                    value = getattr(conversion_class, method_name)(*arg_list)
+                    # copy check and replace
+                    working.set_value(position, value)
+                elif (iterable(value)):
+                    for v_index in range(len(value)):
+                        invoke_on_elem(working, v_index, position, args)
+            
+        def invoke_once(args):
+            #print 'invoke_once(%s,%s)' % (`value`, `args`)
+            if (distinct_lookup):
+                # lookup is first
+                lookup = args[0]
+                value  = args[1]
+                args   = args[2:]
+                working = working_copy([value], lookup=[lookup])
+            else:
+                # value is first
+                value  = args[0]
+                args   = args[1:]
+                working = working_copy([value])
+            #print working.get_value([0])
+            invoke_on_elem(working, 0, [], args)
+            #print 'returning => %s' % (`working.get_value([0])`)
+            return working.get_value([0])
+         
+        ret = tuple([invoke_once(args) for args in value_arg_seq])
+        return ret
+
     def _convert_units(self, *args):
+        #print 'in _convert_units(%s)' % (`args`)
+        converted = self._invoke_units_method('convert_to', args)
+        converted = tuple([(c,) for c in converted])
+        #print 'in _convert_units(), converted = %s' % (`converted`)
+        return self._invoke_units_method('get_value', converted)
+ 
+    def _convert_units_old(self, *args):
         """Useful conversion routine for performing many values
            with corresponding units.
            Parameters:
@@ -53,12 +147,26 @@ class Artist:
              tuple of converted arguments
         """
         def convert_one(value, unit):
-            if (unit and hasattr(value, 'convert_to')):
-                value = value.convert_to(unit)
-            if (hasattr(value, 'get_value')):
-                value = value.get_value()
+            if (hasattr(value, 'convert_to')):
+                if (unit):
+                    value = value.convert_to(unit)
+                if (hasattr(value, 'get_value')):
+                    value = value.get_value()
+            else:
+                conversion_class = self.figure._get_conversion(value)
+                if (conversion_class):
+                    value = conversion_class.convert_to(value, unit)
+                    # ok, we don't know whether we need a new conversion
+                    # class - try to figure out what to do here
+                    value_conv_class = self.figure._get_conversion(value)
+                    if (value_conv_class):
+                        value = value_conv_class.get_value(value)
+                elif (iterable(value)):
+                    value = [convert_one(v, unit) for v in value]
             return value
-        return tuple([convert_one(value, unit) for value, unit in args]) 
+        ret = tuple([convert_one(value, unit) for value, unit in args]) 
+        #print '_convert_units(%s) => %s' % (`args`, `ret`)
+        return ret
 
     def add_callback(self, func):
         oid = self._oid

@@ -369,6 +369,7 @@ class RegularPolyCollection(PatchCollection):
         if is_string_like(self._edgecolors) and self._edgecolors[:2] == 'No':
             #self._edgecolors = self._facecolors
             self._linewidths = (0,)
+        print 'in draw(), self._offsets = %s' % (`self._offsets`)
         renderer.draw_regpoly_collection(
             self.clipbox,
             self._offsets, self._transOffset,
