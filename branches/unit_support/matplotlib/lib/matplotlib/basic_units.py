@@ -1,5 +1,6 @@
 
 import numpy as N
+import numpy.core.ma as ma
 from units import *
 from axes import Axes
 from ticker import AutoLocator, ScalarFormatter
@@ -87,7 +88,7 @@ class ConvertAllProxy(PassThroughProxy):
       return NotImplemented
     return TaggedValue(ret, ret_unit)
 
-class TaggedValue (UnitTaggedInterface, object):
+class TaggedValue (UnitsTagInterface, object):
 
   __metaclass__ = TaggedValueMeta
   _proxies = {'__add__':ConvertAllProxy, 
@@ -95,10 +96,33 @@ class TaggedValue (UnitTaggedInterface, object):
               '__rmul__':ConvertAllProxy,
               '__len__':PassThroughProxy}
 
+  def __new__(cls, value, unit):
+    # generate a new subclass for value
+    value_class = type(value)
+    try:
+        subcls = type('TaggedValue_of_%s' % (`value_class.__name__`),
+                      tuple([cls, value_class]),
+                      {})
+        return object.__new__(subcls, value, unit)
+    except:
+        return object.__new__(cls, value, unit)
+
   def __init__(self, value, unit):
     self.value = value
     self.unit  = unit
     self.proxy_target = self.value
+
+  def get_compressed_copy(self, mask):
+    compressed_value = ma.masked_array(self.value, mask=mask).compressed()
+    return TaggedValue(compressed_value, self.unit)
+
+  def __getattribute__(self, name):
+    if (name.startswith('__')):
+       return object.__getattribute__(self, name)
+    variable = object.__getattribute__(self, 'value')
+    if (hasattr(variable, name) and name not in self.__class__.__dict__):
+      return getattr(variable, name)
+    return object.__getattribute__(self, name)
 
   def __array__(self, t = None, context = None):
     if t:
@@ -125,6 +149,10 @@ class TaggedValue (UnitTaggedInterface, object):
         return TaggedValue(value, self.unit) 
     return IteratorProxy(iter(self.value), self.unit)
 
+  def get_compressed_copy(self, mask):
+    new_value = ma.masked_array(self.value, mask=mask).compressed()
+    return TaggedValue(new_value, self.unit)
+
   def convert_to(self, unit):
     try:
       if (unit == self.unit or not unit):
@@ -137,8 +165,8 @@ class TaggedValue (UnitTaggedInterface, object):
   def get_value(self):
     return self.value
 
-  def attach_unit_to_value(self, value):
-    return TaggedValue(value, self.unit)
+  def convert_to_value(self, unit):
+    return self.convert_to(unit).get_value()
 
   def get_unit(self):
     return self.unit

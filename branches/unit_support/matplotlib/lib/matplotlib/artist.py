@@ -68,6 +68,10 @@ class Artist:
                     position = position[index]
                 return position[indices[-1]]
             def set_value(self, indices, value):
+                if (indices == [0]):
+                    self.working_copy = [value]
+                    self.copied = True
+                    return
                 if (not self.copied):
                     # first level is an enclosing list
                     self.working_copy = [copy.copy(self.working_copy[0])]
@@ -93,12 +97,15 @@ class Artist:
             else:
                 conversion_class = None
                 try:
-                    #print 'lookup = %s' % (`lookup`)
-                    #print 'type(lookup) = %s' % (`type(lookup)`,)
+#                    print 'lookup = %s' % (`lookup`)
+#                    print 'type(lookup) = %s' % (`lookup.__class__`,)
+#                    print 'self.figure = %s' % (`self.figure`,)
                     conversion_class = \
                         self.figure._get_unit_conversion(lookup.__class__)
+#                    print 'after _get_unit_conversion()'
                 except: pass
                 if (conversion_class):
+#                    print 'found conversion_class for %s' % (`lookup.__class__`,)
                     # copy check
                     arg_list = [value]
                     arg_list.extend(args)
@@ -111,7 +118,7 @@ class Artist:
                         invoke_on_elem(working, v_index, position, args)
             
         def invoke_once(args):
-            #print 'invoke_once(%s,%s)' % (`value`, `args`)
+#            print '[%s] invoke_once(%s)' % (method_name, `args`,)
             if (distinct_lookup):
                 # lookup is first
                 lookup = args[0]
@@ -123,9 +130,8 @@ class Artist:
                 value  = args[0]
                 args   = args[1:]
                 working = working_copy([value])
-            #print working.get_value([0])
+#            print 'invoke_on_elem(working, 0, [], %s)' % (`args`,)
             invoke_on_elem(working, 0, [], args)
-            #print 'returning => %s' % (`working.get_value([0])`)
             return working.get_value([0])
          
         ret = tuple([invoke_once(args) for args in value_arg_seq])
@@ -133,10 +139,7 @@ class Artist:
 
     def _convert_units(self, *args):
         #print 'in _convert_units(%s)' % (`args`)
-        converted = self._invoke_units_method('convert_to', args)
-        converted = tuple([(c,) for c in converted])
-        #print 'in _convert_units(), converted = %s' % (`converted`)
-        return self._invoke_units_method('get_value', converted)
+        return self._invoke_units_method('convert_to_value', args)
  
     def _convert_units_old(self, *args):
         """Useful conversion routine for performing many values

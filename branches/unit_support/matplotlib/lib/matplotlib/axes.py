@@ -76,7 +76,11 @@ def delete_masked_points(*args):
     margs = []
     for x in args:
         if shape(x) == shape(mask):
-            margs.append(ma.masked_array(x, mask=mask).compressed())
+            if (hasattr(x, 'get_compressed_copy')):
+                compressed_x = x.get_compressed_copy(mask)
+            else:
+                compressed_x = ma.masked_array(x, mask=mask).compressed()
+            margs.append(compressed_x)
         else:
             margs.append(x)
     return margs
@@ -267,7 +271,6 @@ class _process_plot_var_args:
             elif self.command == 'fill':
                 ret = Polygon( zip(x,y), fill=True, )
                 self.set_patchprops(ret, **kwargs)
-
             return ret
 
     def _plot_3_args(self, tup3, **kwargs):
@@ -358,8 +361,8 @@ class Axes(Artist):
         self.set_anchor('C')
 
         # unit locator/formatter maps
-        self._unit_locator_map = None
-        self._unit_formatter_map = None
+        self._unit_locator_map_list = []
+        self._unit_formatter_map_list = []
 
         # must be set before set_figure
         self._sharex = sharex
@@ -419,10 +422,11 @@ class Axes(Artist):
     get_default_unit_to_locator_map = \
         staticmethod(_get_default_unit_to_locator_map)
 
-    def set_unit_to_locator_map(self, map_fn):
-        self._unit_locator_map = map_fn
-    def get_unit_to_locator_map(self):
-        return self._unit_locator_map
+    def add_unit_to_locator_map(self, map_fn):
+        if (map_fn and map_fn not in self._unit_locator_map_list):
+            self._unit_locator_map_list.append(map_fn)
+    def get_unit_to_locator_maps(self):
+        return self._unit_locator_map_list
 
     def _set_default_unit_to_formatter_map(map_fn):
         Axes._default_unit_formatter_map = staticmethod(map_fn)
@@ -433,43 +437,70 @@ class Axes(Artist):
     get_default_unit_to_formatter_map = \
         staticmethod(_get_default_unit_to_formatter_map)
 
-    def set_unit_to_formatter_map(self, map_fn):
-        self._unit_formatter_map = map_fn
-    def get_unit_to_formatter_map(self):
-        return self._unit_formatter_map
+    def add_unit_to_formatter_map(self, map_fn):
+        if (map_fn and map_fn not in self._unit_formatter_map_list):
+            self._unit_formatter_map_list.append(map_fn)
+    def get_unit_to_formatter_maps(self):
+        return self._unit_formatter_map_list
 
     def _set_locators_for_units(self, units, axis):
-        fn = self.get_unit_to_locator_map()
-        if (not fn):
-            fn = Axes.get_default_unit_to_locator_map() 
         set_locators = False
-        if (fn):
-            try:
-                locators = fn(units)
-                axis.set_major_locator(locators[0])
-                axis.set_minor_locator(locators[1])
-                set_locators = True
-            except: pass
+        if (units):
+            fn_list = self.get_unit_to_locator_maps()
+            fn_list = fn_list + [Axes.get_default_unit_to_locator_map()]
+#            print 'in _set_locators_for_units(), fn_list = %s' % (`fn_list`,)
+            for fn in fn_list:
+                if (fn):
+                    try:
+                        locators = fn(units)
+                        axis.set_major_locator(locators[0])
+                        axis.set_minor_locator(locators[1])
+                        set_locators = True
+                        break
+                    except: pass
         if (not set_locators):
             axis.set_major_locator(AutoLocator())
             axis.set_minor_locator(NullLocator())
-        
+
     def _set_formatters_for_units(self, units, axis):
-        fn = self.get_unit_to_formatter_map()
-        if (not fn):
-            fn = Axes.get_default_unit_to_formatter_map()
         set_formatters = False
-        if (fn):
-            try: 
-                formatters = fn(units)
-                axis.set_major_formatter(formatters[0])
-                axis.set_minor_formatter(formatters[1])
-                set_formatters = True
-            except: pass
+        if (units):
+            fn_list = self.get_unit_to_formatter_maps()
+            fn_list = fn_list + [Axes.get_default_unit_to_formatter_map()]
+#            print 'in _set_formatters_for_units(), fn_list = %s' % (`fn_list`,)
+            for fn in fn_list:
+                if (fn):
+                    try: 
+                        formatters = fn(units)
+                        axis.set_major_formatter(formatters[0])
+                        axis.set_minor_formatter(formatters[1])
+                        set_formatters = True
+                        break
+                    except: pass
         if (not set_formatters):
             axis.set_major_formatter(ScalarFormatter())
             axis.set_minor_formatter(NullFormatter())
-                 
+    
+    def _update_locators_and_formatters(self, *variables):
+#        print 'variables = %s' % (`variables`,)
+        variables = [(var,) for var in variables]
+#        print 'variables = %s' % (`variables`,)
+        locators = \
+            self._invoke_units_method('get_unit_to_locator_map', variables)
+        locators = flatten([locators])
+        formatters = \
+            self._invoke_units_method('get_unit_to_formatter_map', variables)
+        formatters = flatten([formatters])
+        for locator_fn in locators:
+            self.add_unit_to_locator_map(locator_fn)
+        for formatter_fn in formatters:
+            self.add_unit_to_formatter_map(formatter_fn)
+        # formatters/locators likely changed, update axes settings
+        self._set_locators_for_units(self._xunits, self.xaxis)
+        self._set_formatters_for_units(self._xunits, self.xaxis)
+        self._set_locators_for_units(self._yunits, self.yaxis)
+        self._set_formatters_for_units(self._yunits, self.yaxis)
+ 
     def _update_units_args(self, kwarg_set):
         "update a set of args to include the default x/y unit settings"
         kwarg_set['xunits'] = kwarg_set.get('xunits', self._xunits)
@@ -1029,6 +1060,7 @@ class Axes(Artist):
             ydata = array([y for x,y in xys])
 
         self.update_datalim_numerix( xdata, ydata )
+        self._update_locators_and_formatters(l.get_xdata(), l.get_ydata())
         label = l.get_label()
         if not label: l.set_label('line%d'%len(self.lines))
         self.lines.append(l)
@@ -2305,6 +2337,7 @@ class Axes(Artist):
         for line in self._get_lines(*args, **d):
             self.add_line(line)
             lines.append(line)
+ 
         lines = [line for line in lines] # consume the generator
 
         self.autoscale_view(scalex=scalex, scaley=scaley)
@@ -3354,26 +3387,8 @@ class Axes(Artist):
             '8' : (8,0),             # octagon
             }
 
-        x_original, y_original = x, y
-        print '(original) x = %s' % (`x`)
-        x, y = self._invoke_units_method('get_value', ((x,),(y,)))
-#        if (hasattr(x, 'get_value')):
-#            x = x.get_value()
-#        if (hasattr(y, 'get_value')):
-#            y = y.get_value()
-
-        print '(before) x = %s' % (`x`)
         x, y, s, c = delete_masked_points(x, y, s, c)
-        print '(after) x = %s' % (`x`)
-
-        x, y = self._invoke_units_method('attach_unit_to_value',
-                                         ((x_original, x), (y_original, y)),
-                                         distinct_lookup=True)
-#        if (hasattr(x_original, 'attach_unit_to_value')):
-#            x = x_original.attach_unit_to_value(x)
-#        if (hasattr(y_original, 'attach_unit_to_value')):
-#            y = y_original.attach_unit_to_value(y)
-        print '(after attach) x = %s' % (`x`)
+        self._update_locators_and_formatters(x,y)
 
         if kwargs_copy.has_key('color'):
             c = kwargs_copy['color']
@@ -3446,9 +3461,6 @@ class Axes(Artist):
         temp_x = x
         temp_y = y
 
-        print 'temp_x = '
-        print temp_x
-        
         minx = amin(temp_x)
         maxx = amax(temp_x)
         miny = amin(temp_y)

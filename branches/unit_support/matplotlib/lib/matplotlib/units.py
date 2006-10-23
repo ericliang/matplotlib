@@ -1,5 +1,5 @@
 
-class UnitTaggedInterface:
+class UnitsTagInterface:
     """
        This interface describes the expected protocol for types implementing
        values tagged with measurement units.
@@ -21,17 +21,26 @@ class UnitTaggedInterface:
            def simple_locator_map(unit_object):
                'returns (major locator, minor locator) tuple for unit'
                return (AutoLocator(), NullLocator())
-      
-       Once defined, the function must be passed to the current Axes
-       object using set_units_locator_map().
-       Example:
-           gca().set_units_locator_map(simple_locator_map)
 
-       The locator function can be set globally using
-       Axes.set_default_units_locator_map().  An analogous function
-       exists for formatter functions, Axes.set_default_units_formatter_map().
-       A local function takes precedence over a globally defined locator/
-       formatter function.
+       Once defined, the function must be passed to the current Axes
+       object in one of two ways.
+
+       First, the implementations of get_unit_to_[formatter|locator]_map()
+       can return this function.
+
+       Second, default maps can be specified using the static methods
+       in the Axes class, set_default_unit_to_[locator|formatter]_map().
+
+       When determining the locator/formatter, the first valid
+       locator/formatter pair is used.  All supplied data is queried
+       for locator/formatter functions, and the default map is checked
+       only when a check of the data results in no valid locator/formatter
+       pairs.
+
+       Lastly, duplicate functions (duplicate Python objects) are not
+       checked multiple times.  Thus, whenever possible, returning the
+       same Python object as the locator/formatter function may improve
+       efficiency.
     """
     def convert_to(self, unit):
         """Converts the existing units object to the specified units object.
@@ -46,9 +55,35 @@ class UnitTaggedInterface:
         """Returns the quantities stripped of unit.
         """
         raise NotImplemented
-    def attach_unit_to_value(self, value):
-        """Wraps the value parameter in a units object of the same kind
-           as the current object.
+    def convert_to_value(self, unit):
+        """
+           Converts the existing units object to the specified units
+           object and strips the target unit, leaving the unit-less
+           values.  If convert_to() and convert_to_value() are
+           both implemented, val.convert_to_value() should be equivalent
+           to val.convert_to().get_value().
+           Parameters:
+             unit - unit of the desired type
+           Returns:
+             values converted to the requested units
         """
         raise NotImplemented
-
+    def get_unit_to_locator_map(self):
+        """
+           If a custom locators are desired, this method should return
+           a function with the profile
+             fn(unit) => (<major locator>, <minor locator>)
+           In the absence of a valid return, the default locators
+           are used.
+        """
+        return None
+    def get_unit_to_formatter_map(self):
+        """
+           If a custom formatters are desired, this method should return
+           a function with the profile
+             fn(unit) => (<major formatter>, <minor formatter>)
+           In the absence of a valid return, the default formatters
+           are used.
+        """
+        return None
+           
