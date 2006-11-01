@@ -42,7 +42,12 @@ line&nbsp;segemnts)</tt></p>
 <dt><font face="helvetica, arial"><a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.collections.html#QuadMesh">QuadMesh</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.collections.html#RegularPolyCollection">RegularPolyCollection</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.collections.html#StarPolygonCollection">StarPolygonCollection</a>
 </font></dt></dl>
+</dd>
+</dl>
 </dd>
 </dl>
 </dd>
@@ -980,7 +985,7 @@ Methods defined here:<br>
 *&nbsp;dpi&nbsp;is&nbsp;the&nbsp;figure&nbsp;dpi&nbsp;instance,&nbsp;and&nbsp;is&nbsp;required&nbsp;to&nbsp;do&nbsp;the<br>
 &nbsp;&nbsp;area&nbsp;scaling.<br>
 &nbsp;<br>
-*&nbsp;numsides:&nbsp;the&nbsp;number&nbsp;of&nbsp;sides&nbsp;of&nbsp;the&nbsp;&nbsp;polygon<br>
+*&nbsp;numsides:&nbsp;the&nbsp;number&nbsp;of&nbsp;sides&nbsp;of&nbsp;the&nbsp;polygon<br>
 &nbsp;<br>
 *&nbsp;sizes&nbsp;gives&nbsp;the&nbsp;area&nbsp;of&nbsp;the&nbsp;circle&nbsp;circumscribing&nbsp;the<br>
 &nbsp;&nbsp;regular&nbsp;polygon&nbsp;in&nbsp;points^2<br>
@@ -1170,6 +1175,202 @@ Update&nbsp;the&nbsp;cmap,&nbsp;norm&nbsp;accordingly</tt></dd></dl>
 <dl><dt><a name="RegularPolyCollection-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;x.<br>
 If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nbsp;return&nbsp;it&nbsp;unchanged.</tt></dd></dl>
 
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StarPolygonCollection">class <strong>StarPolygonCollection</strong></a>(<a href="matplotlib.collections.html#RegularPolyCollection">RegularPolyCollection</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.collections.html#StarPolygonCollection">StarPolygonCollection</a></dd>
+<dd><a href="matplotlib.collections.html#RegularPolyCollection">RegularPolyCollection</a></dd>
+<dd><a href="matplotlib.collections.html#PatchCollection">PatchCollection</a></dd>
+<dd><a href="matplotlib.collections.html#Collection">Collection</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StarPolygonCollection-__init__"><strong>__init__</strong></a>(self, dpi, numsides, rotation<font color="#909090">=0</font>, sizes<font color="#909090">=(1,)</font>, **kwargs)</dt><dd><tt>Draw&nbsp;a&nbsp;regular&nbsp;star&nbsp;like&nbsp;Polygone&nbsp;with&nbsp;numsides.<br>
+&nbsp;<br>
+*&nbsp;dpi&nbsp;is&nbsp;the&nbsp;figure&nbsp;dpi&nbsp;instance,&nbsp;and&nbsp;is&nbsp;required&nbsp;to&nbsp;do&nbsp;the<br>
+&nbsp;&nbsp;area&nbsp;scaling.<br>
+&nbsp;<br>
+*&nbsp;numsides:&nbsp;the&nbsp;number&nbsp;of&nbsp;sides&nbsp;of&nbsp;the&nbsp;polygon<br>
+&nbsp;<br>
+*&nbsp;sizes&nbsp;gives&nbsp;the&nbsp;area&nbsp;of&nbsp;the&nbsp;circle&nbsp;circumscribing&nbsp;the<br>
+&nbsp;&nbsp;regular&nbsp;polygon&nbsp;in&nbsp;points^2<br>
+&nbsp;<br>
+*&nbsp;rotation&nbsp;is&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;polygon&nbsp;in&nbsp;radians<br>
+&nbsp;<br>
+kwargs:&nbsp;See&nbsp;<a href="#PatchCollection">PatchCollection</a>&nbsp;for&nbsp;more&nbsp;details<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;offsets&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of&nbsp;x,y&nbsp;tuples&nbsp;that&nbsp;give&nbsp;the&nbsp;centers&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;polygon&nbsp;in&nbsp;data&nbsp;coordinates<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;transOffset&nbsp;is&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform&nbsp;the&nbsp;centers&nbsp;onto&nbsp;the&nbsp;canvas.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.collections.html#RegularPolyCollection">RegularPolyCollection</a>:<br>
+<dl><dt><a name="StarPolygonCollection-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_verts"><strong>get_verts</strong></a>(self, dataTrans<font color="#909090">=None</font>)</dt><dd><tt>Return&nbsp;vertices&nbsp;in&nbsp;data&nbsp;coordinates.<br>
+The&nbsp;calculation&nbsp;is&nbsp;incomplete;&nbsp;it&nbsp;uses&nbsp;only<br>
+the&nbsp;offsets,&nbsp;and&nbsp;only&nbsp;if&nbsp;_transOffset&nbsp;is&nbsp;dataTrans.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.collections.html#PatchCollection">PatchCollection</a>:<br>
+<dl><dt><a name="StarPolygonCollection-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;tranpancies&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;Alpha&nbsp;must&nbsp;be<br>
+a&nbsp;float.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_color"><strong>set_color</strong></a>(self, c)</dt><dd><tt>Set&nbsp;both&nbsp;the&nbsp;edgecolor&nbsp;and&nbsp;the&nbsp;facecolor.<br>
+See&nbsp;set_facecolor&nbsp;and&nbsp;set_edgecolor.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_edgecolor"><strong>set_edgecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib&nbsp;color<br>
+arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if<br>
+it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_facecolor"><strong>set_facecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib<br>
+color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or<br>
+rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_linewidth"><strong>set_linewidth</strong></a>(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;lw&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar&nbsp;or&nbsp;a<br>
+sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the<br>
+sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-update_scalarmappable"><strong>update_scalarmappable</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;scalar&nbsp;mappable&nbsp;array&nbsp;is&nbsp;not&nbsp;none,&nbsp;update&nbsp;facecolors<br>
+from&nbsp;scalar&nbsp;data</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.collections.html#PatchCollection">PatchCollection</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="StarPolygonCollection-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<dl><dt><a name="StarPolygonCollection-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
+<dl><dt><a name="StarPolygonCollection-add_observer"><strong>add_observer</strong></a>(self, mappable)</dt><dd><tt>whenever&nbsp;the&nbsp;norm,&nbsp;clim&nbsp;or&nbsp;cmap&nbsp;is&nbsp;set,&nbsp;call&nbsp;the&nbsp;notify<br>
+instance&nbsp;of&nbsp;the&nbsp;mappable&nbsp;observer&nbsp;with&nbsp;self.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;designed&nbsp;to&nbsp;allow&nbsp;one&nbsp;image&nbsp;to&nbsp;follow&nbsp;changes&nbsp;in&nbsp;the<br>
+cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
+update&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;called&nbsp;then&nbsp;we&nbsp;are&nbsp;pegged&nbsp;to&nbsp;another&nbsp;mappable.<br>
+Update&nbsp;the&nbsp;cmap,&nbsp;norm&nbsp;accordingly</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numeric/numarray&nbsp;A</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-set_norm"><strong>set_norm</strong></a>(self, norm)</dt><dd><tt>set&nbsp;the&nbsp;normalization&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="StarPolygonCollection-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;x.<br>
+If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nbsp;return&nbsp;it&nbsp;unchanged.</tt></dd></dl>
+
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -1181,7 +1382,7 @@ If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nb
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>

@@ -113,7 +113,7 @@ is&nbsp;intended&nbsp;to&nbsp;hide&nbsp;that&nbsp;fact.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-motion_notify_event"><strong>motion_notify_event</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="FigureCanvasTkAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=150</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
+<dl><dt><a name="FigureCanvasTkAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-resize"><strong>resize</strong></a>(self, event)</dt></dl>
 
@@ -1773,6 +1773,6 @@ interactive&nbsp;mode&nbsp;to&nbsp;True,&nbsp;as&nbsp;detailed&nbsp;on<br>
 <strong>cursord</strong> = {0: 'hand2', 1: 'arrow', 2: 'tcross', 3: 'fleur'}<br>
 <strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
 @footer@

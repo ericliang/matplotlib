@@ -252,6 +252,8 @@ A&nbsp;image.FigureImage&nbsp;instance&nbsp;is&nbsp;returned.</tt></dd></dl>
 
 <dl><dt><a name="Figure-get_size_inches"><strong>get_size_inches</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Figure-get_window_extent"><strong>get_window_extent</strong></a>(self, *args, **kwargs)</dt><dd><tt>get&nbsp;the&nbsp;figure&nbsp;bounding&nbsp;box&nbsp;in&nbsp;display&nbsp;space</tt></dd></dl>
+
 <dl><dt><a name="Figure-hold"><strong>hold</strong></a>(self, b<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;hold&nbsp;state.&nbsp;&nbsp;If&nbsp;hold&nbsp;is&nbsp;None&nbsp;(default),&nbsp;toggle&nbsp;the<br>
 hold&nbsp;state.&nbsp;&nbsp;Else&nbsp;set&nbsp;the&nbsp;hold&nbsp;state&nbsp;to&nbsp;boolean&nbsp;value&nbsp;b.<br>
 &nbsp;<br>
@@ -291,18 +293,19 @@ top.<br>
 &nbsp;<br>
 The&nbsp;legend&nbsp;instance&nbsp;is&nbsp;returned</tt></dd></dl>
 
-<dl><dt><a name="Figure-savefig"><strong>savefig</strong></a>(self, *args, **kwargs)</dt><dd><tt>SAVEFIG(fname,&nbsp;dpi=150,&nbsp;facecolor='w',&nbsp;edgecolor='w',<br>
+<dl><dt><a name="Figure-savefig"><strong>savefig</strong></a>(self, *args, **kwargs)</dt><dd><tt>SAVEFIG(fname,&nbsp;dpi=None,&nbsp;facecolor='w',&nbsp;edgecolor='w',<br>
 orientation='portrait',&nbsp;papertype=None,&nbsp;format=None):<br>
 &nbsp;<br>
 Save&nbsp;the&nbsp;current&nbsp;figure.<br>
 &nbsp;<br>
-fname&nbsp;-&nbsp;the&nbsp;filename&nbsp;to&nbsp;save&nbsp;the&nbsp;current&nbsp;figure&nbsp;to.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;output&nbsp;formats&nbsp;supported&nbsp;depend&nbsp;on&nbsp;the&nbsp;backend&nbsp;being&nbsp;used.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;are&nbsp;deduced&nbsp;by&nbsp;the&nbsp;extension&nbsp;to&nbsp;fname.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Possibilities&nbsp;are&nbsp;eps,&nbsp;jpeg,&nbsp;pdf,&nbsp;png,&nbsp;ps,&nbsp;svg.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fname&nbsp;can&nbsp;also&nbsp;be&nbsp;a&nbsp;file&nbsp;or&nbsp;file-like&nbsp;object&nbsp;-&nbsp;cairo&nbsp;backend<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;only.<br>
-dpi&nbsp;-&nbsp;is&nbsp;the&nbsp;resolution&nbsp;in&nbsp;dots&nbsp;per&nbsp;inch.<br>
+fname&nbsp;-&nbsp;the&nbsp;filename&nbsp;to&nbsp;save&nbsp;the&nbsp;current&nbsp;figure&nbsp;to.&nbsp;&nbsp;The<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;output&nbsp;formats&nbsp;supported&nbsp;depend&nbsp;on&nbsp;the&nbsp;backend&nbsp;being<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used.&nbsp;&nbsp;and&nbsp;are&nbsp;deduced&nbsp;by&nbsp;the&nbsp;extension&nbsp;to&nbsp;fname.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Possibilities&nbsp;are&nbsp;eps,&nbsp;jpeg,&nbsp;pdf,&nbsp;png,&nbsp;ps,&nbsp;svg.&nbsp;&nbsp;fname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;can&nbsp;also&nbsp;be&nbsp;a&nbsp;file&nbsp;or&nbsp;file-like&nbsp;object&nbsp;-&nbsp;cairo&nbsp;backend<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;only.&nbsp;&nbsp;dpi&nbsp;-&nbsp;is&nbsp;the&nbsp;resolution&nbsp;in&nbsp;dots&nbsp;per&nbsp;inch.&nbsp;&nbsp;If<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;it&nbsp;will&nbsp;default&nbsp;to&nbsp;the&nbsp;value&nbsp;savefig.dpi&nbsp;in&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;file<br>
 &nbsp;<br>
 facecolor&nbsp;and&nbsp;edgecolor&nbsp;are&nbsp;the&nbsp;colors&nbsp;of&nbsp;the&nbsp;figure&nbsp;rectangle<br>
 &nbsp;<br>
@@ -528,5 +531,5 @@ Thanks&nbsp;to&nbsp;Fernando&nbsp;Perez&nbsp;for&nbsp;this&nbsp;function</tt></d
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}</td></tr></table>
 @footer@

@@ -73,7 +73,7 @@ Methods defined here:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-configure_event"><strong>configure_event</strong></a>(self, widget, event<font color="#909090">=None</font>)</dt></dl>
 
-<dl><dt><a name="FigureCanvasGTKAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=150</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
+<dl><dt><a name="FigureCanvasGTKAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backends.backend_gtk.html#FigureCanvasGTK">matplotlib.backends.backend_gtk.FigureCanvasGTK</a>:<br>
@@ -105,7 +105,7 @@ Methods inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (138845056)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (138879952)&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
@@ -833,7 +833,7 @@ Methods inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (138847624)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (138882440)&gt;</dl>
 
 <dl><dt><strong>do_orientation_changed</strong> = &lt;built-in method do_orientation_changed of type object&gt;</dl>
 

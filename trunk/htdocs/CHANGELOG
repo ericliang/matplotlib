@@ -1,3 +1,88 @@
+2006-10-31 Applied axes3d patch 1587359
+           http://sourceforge.net/tracker/index.php?func=detail&aid=1587359&group_id=80706&atid=560722
+           JDH
+
+===============================================================
+2006-10-26 Released 0.87.7 at revision 2835
+
+2006-10-25 Made "tiny" kwarg in Locator.nonsingular much smaller - EF
+
+2006-10-17 Closed sf bug 1562496 update line props dash/solid/cap/join
+           styles - JDH
+
+2006-10-17 Complete overhaul of the annotations API and example code -
+           See matplotlib.text.Annotation and
+           examples/annotation_demo.py JDH
+
+2006-10-12 Committed Manuel Metz's StarPolygon code and
+           examples/scatter_star_poly.py - JDH
+
+
+2006-10-11 commented out all default values in matplotlibrc.template
+           Default values should generally be taken from defaultParam in
+           __init__.py - the file matplotlib should only contain those values
+           that the user wants to explicitly change from the default.
+           (see thread "marker color handling" on matplotlib-devel)
+
+2006-10-10 Changed default comment character for load to '#' - JDH
+
+2006-10-10 deactivated rcfile-configurability of markerfacecolor
+           and markeredgecolor. Both are now hardcoded to the special value
+	   'auto' to follow the line color. Configurability at run-time
+	   (using function arguments) remains functional. - NN
+
+2006-10-07 introduced dummy argument magnification=1.0 to
+           FigImage.make_image to satisfy unit test figimage_demo.py
+           The argument is not yet handled correctly, which should only
+	   show up when using non-standard DPI settings in PS backend,
+	   introduced by patch #1562394. - NN
+
+2006-10-06 add backend-agnostic example: simple3d.py - NN
+
+2006-09-29 fix line-breaking for SVG-inline images (purely cosmetic) - NN
+
+2006-09-29 reworked set_linestyle and set_marker
+	   markeredgecolor and markerfacecolor now default to
+	   a special value "auto" that keeps the color in sync with
+	   the line color
+	   further, the intelligence of axes.plot is cleaned up,
+	   improved and simplified. Complete compatibility cannot be
+	   guaranteed, but the new behavior should be much more predictable
+	   (see patch #1104615 for details) - NN
+
+2006-09-29 changed implementation of clip-path in SVG to work around a
+           limitation in inkscape - NN
+
+2006-09-29 added two options to matplotlibrc:
+	   svg.image_inline
+	   svg.image_noscale
+	   see patch #1533010 for details - NN
+
+2006-09-29 axes.py: cleaned up kwargs checking - NN
+
+2006-09-29 setup.py: cleaned up setup logic - NN
+
+2006-09-29 setup.py: check for required pygtk versions, fixes bug #1460783 - SC
+
+===============================================================
+2006-09-27 Released 0.87.6 at revision 2783
+
+2006-09-24 Added line pointers to the Annotation code, and a pylab
+           interface.  See matplotlib.text.Annotation,
+           examples/annotation_demo.py and
+           examples/annotation_demo_pylab.py - JDH
+
+2006-09-18 mathtext2.py: The SVG backend now supports the same things that
+           the AGG backend does. Fixed some bugs with rendering, and out of
+           bounds errors in the AGG backend - ES. Changed the return values
+           of math_parse_s_ft2font_svg to support lines (fractions etc.)
+
+2006-09-17 Added an Annotation class to facilitate annotating objects
+           and an examples file examples/annotation_demo.py.  I want
+           to add dash support as in TextWithDash, but haven't decided
+           yet whether inheriting from TextWithDash is the right base
+           class or if another approach is needed - JDH
+
 ===============================================================
 2006-09-05 Released 0.87.5 at revision 2761
 

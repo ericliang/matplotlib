@@ -184,14 +184,17 @@ def isNewEntry(line):
         return 0
 
 # re-add news to the params dict 'tables' entry below for news
-_news1 = NewsBox("""\
-matplotlib now accepting donations in support of matplotlib development
-""")
-
 news1 = NewsBox("""\
-The latest matplotlib release requires <a href="http://sourceforge.net/project/showfiles.php?group_id=1369&package_id=175103">numpy 1.0b5</a> or later if you are using <a href="http://numpy.scipy.org/">numpy</a> as your <a href="matplotlib.numerix.html">numerix</a> package (note that this is the default numerix package in your <a href="matplotlibrc">matplotlibrc</a> file.
-""")
+The latest matplotlib-0.87.7 for windows was compiled with <a href=
+http://numpy.scipy.org>numpy</a> 1.0 final.  Please make sure you are
+using the latest numpy-1.0 and not an earlier version or one of the rc
+release candidate series. You can check your numpy version by doing
+<pre>
+>>> import numpy
+>>> print numpy.__version__
+</pre>
 
+""")
 
 
 table1 =  LinkBox(header='Matplotlib', links=(
@@ -275,6 +278,9 @@ for key in locals().keys():
 
 for inFile in files:
     print '\tConverting', inFile
+    if not os.path.exists(inFile):
+       print 'Could not find', inFile
+       continue
     fh = file(inFile, 'r')
     s = ''
 

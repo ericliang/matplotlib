@@ -83,7 +83,7 @@ If&nbsp;bbox&nbsp;is&nbsp;None,&nbsp;the&nbsp;entire&nbsp;buffer&nbsp;is&nbsp;tr
 
 <dl><dt><a name="FigureCanvasWxAgg-draw"><strong>draw</strong></a>(self, repaint<font color="#909090">=True</font>)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;using&nbsp;agg.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=150</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;to&nbsp;hardcopy</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;to&nbsp;hardcopy</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backends.backend_wx.html#FigureCanvasWx">matplotlib.backends.backend_wx.FigureCanvasWx</a>:<br>

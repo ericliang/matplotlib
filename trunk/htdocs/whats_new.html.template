@@ -39,9 +39,8 @@ href=examples/simple3d_oo.py>simple3d_oo.py</a> """),
 
 
 
-
-
 )
+
 versioninfo['0.83'] = (
 
   ("axis('scale')", """\

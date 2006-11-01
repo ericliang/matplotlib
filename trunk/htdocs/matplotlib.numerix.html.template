@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0rc1.dev3139)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.dev3370)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/numerix/__init__.py">/usr/lib/python2.4/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
@@ -69,6 +69,9 @@ from&nbsp;the&nbsp;last&nbsp;dimensions&nbsp;of&nbsp;a&nbsp;and&nbsp;b.</tt></dd
  <dl><dt><a name="-iscontiguous"><strong>iscontiguous</strong></a>(a)</dt></dl>
  <dl><dt><a name="-itemsize"><strong>itemsize</strong></a>(a)</dt></dl>
  <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
+ <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)&nbsp;sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where<br>
+mask.flat[n]&nbsp;is&nbsp;true.&nbsp;&nbsp;If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;of&nbsp;a&nbsp;and&nbsp;mask&nbsp;then<br>
+it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavior&nbsp;than&nbsp;a[mask]&nbsp;=&nbsp;values.</tt></dd></dl>
  <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
 random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
 &nbsp;<br>
@@ -123,7 +126,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>UnsignedInt32</strong> = 'I'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.0rc1.dev3139'<br>
+<strong>__version__</strong> = '1.0.dev3370'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -176,7 +179,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>
@@ -189,6 +192,6 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;<br>
-<strong>version</strong> = 'numpy 1.0rc1.dev3139'<br>
+<strong>version</strong> = 'numpy 1.0.dev3370'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@

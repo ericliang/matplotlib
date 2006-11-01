@@ -54,4 +54,6 @@ os.system('python convert.py')
 
 print 'Building archive'
 version = matplotlib.__version__
-os.system('tar cfz site.tar.gz *.html users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut examples gd matplotlibrc CHANGELOG NUMARRAY_ISSUES  API_CHANGES set_begone.py'%locals())
+tarcommand = 'tar cfz site.tar.gz *.html users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut examples gd matplotlibrc CHANGELOG NUMARRAY_ISSUES  API_CHANGES set_begone.py -X exclude.txt'%locals()
+print tarcommand
+os.system(tarcommand)

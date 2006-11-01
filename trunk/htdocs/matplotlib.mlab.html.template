@@ -376,7 +376,7 @@ Implemented&nbsp;as&nbsp;a&nbsp;separate&nbsp;function&nbsp;(not&nbsp;a&nbsp;cal
 derivative&nbsp;of&nbsp;x.&nbsp;&nbsp;Return&nbsp;lambda&nbsp;=&nbsp;1/n\sum&nbsp;ln|fprime(x_i)|.&nbsp;&nbsp;See&nbsp;Sec<br>
 10.5&nbsp;Strogatz&nbsp;(1994)"Nonlinear&nbsp;Dynamics&nbsp;and&nbsp;Chaos".</tt></dd></dl>
  <dl><dt><a name="-linspace"><strong>linspace</strong></a>(xmin, xmax, N)</dt></dl>
- <dl><dt><a name="-load"><strong>load</strong></a>(fname, comments<font color="#909090">='%'</font>, delimiter<font color="#909090">=None</font>, converters<font color="#909090">=None</font>, skiprows<font color="#909090">=0</font>, usecols<font color="#909090">=None</font>, unpack<font color="#909090">=False</font>)</dt><dd><tt>Load&nbsp;ASCII&nbsp;data&nbsp;from&nbsp;fname&nbsp;into&nbsp;an&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;array.<br>
+ <dl><dt><a name="-load"><strong>load</strong></a>(fname, comments<font color="#909090">='#'</font>, delimiter<font color="#909090">=None</font>, converters<font color="#909090">=None</font>, skiprows<font color="#909090">=0</font>, usecols<font color="#909090">=None</font>, unpack<font color="#909090">=False</font>)</dt><dd><tt>Load&nbsp;ASCII&nbsp;data&nbsp;from&nbsp;fname&nbsp;into&nbsp;an&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;array.<br>
 &nbsp;<br>
 The&nbsp;data&nbsp;must&nbsp;be&nbsp;regular,&nbsp;same&nbsp;number&nbsp;of&nbsp;values&nbsp;in&nbsp;every&nbsp;row<br>
 &nbsp;<br>
