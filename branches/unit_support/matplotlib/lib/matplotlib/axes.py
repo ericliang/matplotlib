@@ -551,7 +551,7 @@ class Axes(Artist):
         self._set_locators_for_units(xunits, self.xaxis)
         self._set_formatters_for_units(xunits, self.xaxis)
         self._pending_units_change = True
-        if (update):
+        if (not update):
             self.update_units_in_child_artists()
 
     def set_yunits(self, yunits, update=True):
@@ -567,7 +567,7 @@ class Axes(Artist):
         self._set_locators_for_units(yunits, self.yaxis)
         self._set_formatters_for_units(yunits, self.yaxis)
         self._pending_units_change = True
-        if (update):
+        if (not update):
             self.update_units_in_child_artists()
 
     def set_figure(self, fig):

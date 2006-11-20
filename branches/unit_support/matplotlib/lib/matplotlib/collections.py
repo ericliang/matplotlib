@@ -105,10 +105,28 @@ class PatchCollection(Collection, ScalarMappable):
             self._edgecolors = colorConverter.to_rgba_list(edgecolors)
         self._linewidths  = linewidths
         self._antialiaseds = antialiaseds
-        self._offsets = offsets
+        #self._offsets = offsets
         self._original_offsets = offsets
+        self._cached_offsets = offsets
         self._transOffset = transOffset
         self._xunits = self._yunits = None
+        self._update_cache = {'_original_offsets':None,
+                              '_xunits':None,
+                              '_yunits':None}
+
+    def _update_offsets(self):
+        recalc = False
+        for key, value in self._update_cache.iteritems():
+            if (id(getattr(self, key)) != value):
+                recalc = True
+                break
+        if recalc:
+            # convert _original_offsets
+            self._cached_offsets = \
+                [self._convert_units((x, self._xunits), (y, self._yunits)) 
+                 for x,y in self._original_offsets]
+        return self._cached_offsets
+    _offsets = property(_update_offsets, None, None)
 
     def set_xunits(self, units, update=True):
         self._xunits = units
@@ -122,9 +140,10 @@ class PatchCollection(Collection, ScalarMappable):
 
     def update_units(self):
         # convert _original_offsets
-        self._offsets = \
-            [self._convert_units((x, self._xunits), (y, self._yunits)) 
-             for x,y in self._original_offsets]
+        pass
+#        self._offsets = \
+#            [self._convert_units((x, self._xunits), (y, self._yunits)) 
+#             for x,y in self._original_offsets]
 
     def set_linewidth(self, lw):
         """

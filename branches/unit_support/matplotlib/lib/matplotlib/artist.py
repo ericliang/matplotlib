@@ -48,9 +48,37 @@ class Artist:
     def _invoke_units_method(self, method_name, value_arg_seq, \
                              distinct_lookup=False):
         """
-           value_arg_seq should be a sequence of (value, param) tuples
+           value_arg_seq should be a sequence of tuples.
+           The contents of each tuple varies with the value of
+           distinct_lookup and the parameters of the method
+           being called.
+
+           If distinct_lookup == True, the first element in
+           the tuple is the lookup variable, followed by
+           the value variable, then parameters for the method
+           invocation.
+             
+           If distinct_lookup == False, the first element
+           in the tuple is the value variable followed by
+           the parameters of the method invocation.
+
+           With distinct_lookup set to True, the lookup
+           parameter is used for resolving the method name.
+           Currently, this feature is unused and was added
+           during earlier implementation.
+
+           The real benefit of this routine is its encapsulation
+           of the two types of conversion mechanism.  Whether
+           the conversion implementation is internal or
+           external to the units class, this method
+           handles it.
         """
         class working_copy:
+            """Working copy allows partial modification of
+               sequences.  This is useful in the case of
+               a heterogenous sequence, where only one element
+               might need conversion.
+            """
             def __init__(self, value, lookup=None):
                 self.working_copy = value
                 self.lookup = lookup
@@ -86,6 +114,7 @@ class Artist:
             position = previous_indices + [current_index]
             value = working.get_value(position)
             lookup = working.get_lookup(position)
+            # check for internal implementation
             if (hasattr(lookup, method_name)):
                 #print 'in invoke_on_elem, args = %s' % (`args`)
                 arg_list = args
@@ -97,15 +126,10 @@ class Artist:
             else:
                 conversion_class = None
                 try:
-#                    print 'lookup = %s' % (`lookup`)
-#                    print 'type(lookup) = %s' % (`lookup.__class__`,)
-#                    print 'self.figure = %s' % (`self.figure`,)
                     conversion_class = \
                         self.figure._get_unit_conversion(lookup.__class__)
-#                    print 'after _get_unit_conversion()'
                 except: pass
                 if (conversion_class):
-#                    print 'found conversion_class for %s' % (`lookup.__class__`,)
                     # copy check
                     arg_list = [value]
                     arg_list.extend(args)
@@ -118,7 +142,6 @@ class Artist:
                         invoke_on_elem(working, v_index, position, args)
             
         def invoke_once(args):
-#            print '[%s] invoke_once(%s)' % (method_name, `args`,)
             if (distinct_lookup):
                 # lookup is first
                 lookup = args[0]
@@ -130,7 +153,6 @@ class Artist:
                 value  = args[0]
                 args   = args[1:]
                 working = working_copy([value])
-#            print 'invoke_on_elem(working, 0, [], %s)' % (`args`,)
             invoke_on_elem(working, 0, [], args)
             return working.get_value([0])
          
@@ -141,36 +163,6 @@ class Artist:
         #print 'in _convert_units(%s)' % (`args`)
         return self._invoke_units_method('convert_to_value', args)
  
-    def _convert_units_old(self, *args):
-        """Useful conversion routine for performing many values
-           with corresponding units.
-           Parameters:
-             args - sequence of tuples (value, desired unit)
-           Returns:
-             tuple of converted arguments
-        """
-        def convert_one(value, unit):
-            if (hasattr(value, 'convert_to')):
-                if (unit):
-                    value = value.convert_to(unit)
-                if (hasattr(value, 'get_value')):
-                    value = value.get_value()
-            else:
-                conversion_class = self.figure._get_conversion(value)
-                if (conversion_class):
-                    value = conversion_class.convert_to(value, unit)
-                    # ok, we don't know whether we need a new conversion
-                    # class - try to figure out what to do here
-                    value_conv_class = self.figure._get_conversion(value)
-                    if (value_conv_class):
-                        value = value_conv_class.get_value(value)
-                elif (iterable(value)):
-                    value = [convert_one(v, unit) for v in value]
-            return value
-        ret = tuple([convert_one(value, unit) for value, unit in args]) 
-        #print '_convert_units(%s) => %s' % (`args`, `ret`)
-        return ret
-
     def add_callback(self, func):
         oid = self._oid
         self._propobservers[oid] = func

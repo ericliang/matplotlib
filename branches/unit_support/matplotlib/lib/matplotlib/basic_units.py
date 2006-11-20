@@ -88,7 +88,7 @@ class ConvertAllProxy(PassThroughProxy):
       return NotImplemented
     return TaggedValue(ret, ret_unit)
 
-class TaggedValue (UnitsTagInterface, object):
+class TaggedValue (UnitsTagInterfaceWithMA, object):
 
   __metaclass__ = TaggedValueMeta
   _proxies = {'__add__':ConvertAllProxy, 
