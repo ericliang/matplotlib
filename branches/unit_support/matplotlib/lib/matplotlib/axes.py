@@ -443,9 +443,26 @@ class Axes(Artist):
     def get_unit_to_formatter_maps(self):
         return self._unit_formatter_map_list
 
+    _use_none_as_default_unit = False
+    @staticmethod
+    def set_use_none_as_default_unit(def_unit):
+        """
+        Normally, the None unit implies no unit conversion.
+        Alternatively, the unit support subsystem can treat
+        xunits/yunits values of None as requests to convert to a
+        default value.  This is primarily an implementation task
+        for the conversion handlers, but the locator/formatter support
+        will not work properly in this case without calling 
+        staticmethod set_use_none_as_default_unit(True).
+        """
+        Axes._use_none_as_default_unit = def_unit
+    @staticmethod
+    def get_use_none_as_default_unit():
+        return Axes._use_none_as_default_unit
+
     def _set_locators_for_units(self, units, axis):
         set_locators = False
-        if (units):
+        if (units or Axes.get_use_none_as_default_unit()):
             fn_list = self.get_unit_to_locator_maps()
             fn_list = fn_list + [Axes.get_default_unit_to_locator_map()]
 #            print 'in _set_locators_for_units(), fn_list = %s' % (`fn_list`,)
@@ -464,7 +481,7 @@ class Axes(Artist):
 
     def _set_formatters_for_units(self, units, axis):
         set_formatters = False
-        if (units):
+        if (units or Axes.get_use_none_as_default_unit()):
             fn_list = self.get_unit_to_formatter_maps()
             fn_list = fn_list + [Axes.get_default_unit_to_formatter_map()]
 #            print 'in _set_formatters_for_units(), fn_list = %s' % (`fn_list`,)
