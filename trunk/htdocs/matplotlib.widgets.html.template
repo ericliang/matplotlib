@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.widgets</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/widgets.py">/usr/lib/python2.4/site-packages/matplotlib/widgets.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/widgets.py">/usr/lib64/python2.4/site-packages/matplotlib/widgets.py</a></font></td></tr></table>
     <p><tt>GUI&nbsp;Neutral&nbsp;widgets<br>
 &nbsp;<br>
 All&nbsp;of&nbsp;these&nbsp;widgets&nbsp;require&nbsp;you&nbsp;to&nbsp;predefine&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;and<br>

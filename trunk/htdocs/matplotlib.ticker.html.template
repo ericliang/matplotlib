@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.ticker</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/ticker.py">/usr/lib/python2.4/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/ticker.py">/usr/lib64/python2.4/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
     <p><tt>Tick&nbsp;locating&nbsp;and&nbsp;formatting<br>
 ============================<br>
 &nbsp;<br>
@@ -1032,7 +1032,7 @@ Methods defined here:<br>
 
 <dl><dt><a name="ScalarFormatter-set_powerlimits"><strong>set_powerlimits</strong></a>(self, lims)</dt><dd><tt>Sets&nbsp;size&nbsp;thresholds&nbsp;for&nbsp;scientific&nbsp;notation.<br>
 &nbsp;<br>
-e.g.&nbsp;xaxis.<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>((-3,&nbsp;4))&nbsp;sets&nbsp;the&nbsp;default&nbsp;in<br>
+e.g.&nbsp;xaxis.<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>((-3,&nbsp;4))&nbsp;sets&nbsp;the&nbsp;pre-2007&nbsp;default&nbsp;in<br>
 which&nbsp;scientific&nbsp;notation&nbsp;is&nbsp;used&nbsp;for&nbsp;numbers&nbsp;less&nbsp;than<br>
 1e-3&nbsp;or&nbsp;greater&nbsp;than&nbsp;1e4.<br>
 See&nbsp;also&nbsp;<a href="#ScalarFormatter-set_scientific">set_scientific</a>().</tt></dd></dl>

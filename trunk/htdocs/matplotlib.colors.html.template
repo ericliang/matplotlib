@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.colors</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/colors.py">/usr/lib/python2.4/site-packages/matplotlib/colors.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/colors.py">/usr/lib64/python2.4/site-packages/matplotlib/colors.py</a></font></td></tr></table>
     <p><tt>A&nbsp;class&nbsp;for&nbsp;converting&nbsp;color&nbsp;arguments&nbsp;to&nbsp;RGB<br>
 &nbsp;<br>
 This&nbsp;class&nbsp;instantiates&nbsp;a&nbsp;single&nbsp;instance&nbsp;colorConverter&nbsp;that&nbsp;is&nbsp;used<br>
@@ -409,6 +409,6 @@ it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavio
 <strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance&gt;<br>
 <strong>divide</strong> = &lt;ufunc 'divide'&gt;<br>
 <strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}</td></tr></table>
 @footer@

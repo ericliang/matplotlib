@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/pylab.py">/usr/lib/python2.4/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/pylab.py">/usr/lib64/python2.4/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
     <p><tt>This&nbsp;is&nbsp;a&nbsp;matlab(TM)&nbsp;style&nbsp;interface&nbsp;to&nbsp;matplotlib.<br>
 &nbsp;<br>
 The&nbsp;following&nbsp;plotting&nbsp;commands&nbsp;are&nbsp;provided;&nbsp;some&nbsp;of&nbsp;these&nbsp;do&nbsp;not<br>
@@ -942,7 +942,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;with&nbsp;different&nbsp;linewidths&nbsp;in&nbsp;the&nbsp;order<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;clip_ends&nbsp;=&nbsp;True<br>
@@ -1045,7 +1045,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;with&nbsp;different&nbsp;linewidths&nbsp;in&nbsp;the&nbsp;order<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;clip_ends&nbsp;=&nbsp;True<br>
@@ -1124,7 +1124,11 @@ exist&nbsp;an&nbsp;error&nbsp;will&nbsp;be&nbsp;raised.<br>
 <a href="#-delaxes">delaxes</a>():&nbsp;delete&nbsp;the&nbsp;current&nbsp;axes</tt></dd></dl>
  <dl><dt><a name="-disconnect"><strong>disconnect</strong></a>(cid)</dt><dd><tt>Connect&nbsp;s&nbsp;to&nbsp;func.&nbsp;return&nbsp;an&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with&nbsp;disconnect<br>
 Method&nbsp;should&nbsp;return&nbsp;None</tt></dd></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-draw"><strong>draw</strong></a>()</dt><dd><tt>redraw&nbsp;the&nbsp;current&nbsp;figure</tt></dd></dl>
  <dl><dt><a name="-dump"><strong>dump</strong></a>(...)</dt><dd><tt><a href="#-dump">dump</a>(obj,&nbsp;file,&nbsp;protocol=0)&nbsp;--&nbsp;Write&nbsp;an&nbsp;object&nbsp;in&nbsp;pickle&nbsp;format&nbsp;to&nbsp;the&nbsp;given&nbsp;file.<br>
 &nbsp;<br>
@@ -1290,7 +1294,7 @@ kwargs:<br>
 &nbsp;&nbsp;facecolor&nbsp;-&nbsp;the&nbsp;background&nbsp;color;&nbsp;defaults&nbsp;to&nbsp;rc&nbsp;figure.facecolor<br>
 &nbsp;&nbsp;edgecolor&nbsp;-&nbsp;the&nbsp;border&nbsp;color;&nbsp;defaults&nbsp;to&nbsp;rc&nbsp;figure.edgecolor<br>
 &nbsp;<br>
-rcParams&nbsp;gives&nbsp;the&nbsp;default&nbsp;values&nbsp;from&nbsp;the&nbsp;.matplotlibrc&nbsp;file<br>
+rcParams&nbsp;gives&nbsp;the&nbsp;default&nbsp;values&nbsp;from&nbsp;the&nbsp;matplotlibrc&nbsp;file<br>
 &nbsp;<br>
 FigureClass&nbsp;is&nbsp;a&nbsp;Figure&nbsp;or&nbsp;derived&nbsp;class&nbsp;that&nbsp;will&nbsp;be&nbsp;passed&nbsp;on&nbsp;to<br>
 new_figure_manager&nbsp;in&nbsp;the&nbsp;backends&nbsp;which&nbsp;allows&nbsp;you&nbsp;to&nbsp;hook&nbsp;custom<br>
@@ -1533,11 +1537,11 @@ The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;allowed:<br>
 &nbsp;&nbsp;&nbsp;'lanczos'&nbsp;or&nbsp;'blackman'<br>
 &nbsp;<br>
 Addition&nbsp;kwargs:&nbsp;hold&nbsp;=&nbsp;[True|False]&nbsp;overrides&nbsp;default&nbsp;hold&nbsp;state</tt></dd></dl>
- <dl><dt><a name="-innerproduct"><strong>innerproduct</strong></a> = inner(...)</dt><dd><tt>inner(a,b)<br>
-&nbsp;<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;two&nbsp;arrays,&nbsp;which&nbsp;has&nbsp;shape&nbsp;a.shape[:-1]&nbsp;+<br>
-b.shape[:-1]&nbsp;with&nbsp;elements&nbsp;computed&nbsp;by&nbsp;the&nbsp;product&nbsp;of&nbsp;the&nbsp;elements<br>
-from&nbsp;the&nbsp;last&nbsp;dimensions&nbsp;of&nbsp;a&nbsp;and&nbsp;b.</tt></dd></dl>
+ <dl><dt><a name="-innerproduct"><strong>innerproduct</strong></a> = inner(...)</dt><dd><tt><a href="#-innerproduct">innerproduct</a>(a,b)<br>
+Returns&nbsp;the&nbsp;inner&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;NumPy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-ioff"><strong>ioff</strong></a>()</dt><dd><tt>turn&nbsp;interactive&nbsp;mode&nbsp;off</tt></dd></dl>
  <dl><dt><a name="-ion"><strong>ion</strong></a>()</dt><dd><tt>turn&nbsp;interactive&nbsp;mode&nbsp;on</tt></dd></dl>
  <dl><dt><a name="-ishold"><strong>ishold</strong></a>()</dt><dd><tt>Return&nbsp;the&nbsp;hold&nbsp;status&nbsp;of&nbsp;the&nbsp;current&nbsp;axes</tt></dd></dl>
@@ -1969,7 +1973,6 @@ to&nbsp;AutoDateLocator&nbsp;(if&nbsp;the&nbsp;tick&nbsp;locator&nbsp;is&nbsp;no
 a&nbsp;DateLocator&nbsp;instance)&nbsp;and&nbsp;the&nbsp;default&nbsp;tick&nbsp;formatter&nbsp;to<br>
 AutoDateFormatter&nbsp;(if&nbsp;the&nbsp;tick&nbsp;formatter&nbsp;is&nbsp;not&nbsp;already&nbsp;set&nbsp;to<br>
 a&nbsp;DateFormatter&nbsp;instance).<br>
-&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -2904,6 +2907,9 @@ optional&nbsp;args&nbsp;work</tt></dd></dl>
  <dl><dt><a name="-twinx"><strong>twinx</strong></a>(ax<font color="#909090">=None</font>)</dt><dd><tt>Make&nbsp;a&nbsp;second&nbsp;axes&nbsp;overlay&nbsp;ax&nbsp;(or&nbsp;the&nbsp;current&nbsp;axes&nbsp;if&nbsp;ax&nbsp;is&nbsp;None)<br>
 sharing&nbsp;the&nbsp;xaxis.&nbsp;&nbsp;The&nbsp;ticks&nbsp;for&nbsp;ax2&nbsp;will&nbsp;be&nbsp;placed&nbsp;on&nbsp;the&nbsp;right,<br>
 and&nbsp;the&nbsp;ax2&nbsp;instance&nbsp;is&nbsp;returned.&nbsp;&nbsp;See&nbsp;examples/two_scales.py</tt></dd></dl>
+ <dl><dt><a name="-vdot"><strong>vdot</strong></a>(...)</dt><dd><tt><a href="#-vdot">vdot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;scalars&nbsp;and&nbsp;vectors<br>
+of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbsp;first&nbsp;argument,&nbsp;a,&nbsp;is&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-vlines"><strong>vlines</strong></a>(*args, **kwargs)</dt><dd><tt>VLINES(x,&nbsp;ymin,&nbsp;ymax,&nbsp;color='k')<br>
 Plot&nbsp;vertical&nbsp;lines&nbsp;at&nbsp;each&nbsp;x&nbsp;from&nbsp;ymin&nbsp;to&nbsp;ymax.&nbsp;&nbsp;ymin&nbsp;or&nbsp;ymax&nbsp;can&nbsp;be<br>
 scalars&nbsp;or&nbsp;len(x)&nbsp;numpy&nbsp;arrays.&nbsp;&nbsp;If&nbsp;they&nbsp;are&nbsp;scalars,&nbsp;then&nbsp;the<br>
@@ -3047,6 +3053,7 @@ information&nbsp;on&nbsp;text&nbsp;properties.</tt></dd></dl>
 <strong>Int0</strong> = 'b'<br>
 <strong>Int16</strong> = 'h'<br>
 <strong>Int32</strong> = 'i'<br>
+<strong>Int64</strong> = 'l'<br>
 <strong>Int8</strong> = 'b'<br>
 <strong>LittleEndian</strong> = True<br>
 <strong>MINUTELY</strong> = 5<br>
@@ -3117,8 +3124,8 @@ information&nbsp;on&nbsp;text&nbsp;properties.</tt></dd></dl>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
-<strong>rcParamsDefault</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
+<strong>rcParamsDefault</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_qt</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/backends/backend_qt.py">/usr/lib/python2.4/site-packages/matplotlib/backends/backend_qt.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_qt.py">/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_qt.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -91,9 +91,19 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
+<dl><dt><strong>buttond</strong> = {1: 1, 2: 3, 4: 2}</dl>
+
+<dl><dt><strong>keyvald</strong> = {4128: 'shift', 4129: 'control', 4131: 'alt'}</dl>
+
+<hr>
+Data and other attributes inherited from <a href="qt.html#QWidget">qt.QWidget</a>:<br>
 <dl><dt><strong>AncestorOrigin</strong> = 3</dl>
 
+<dl><dt><strong>BackgroundOrigin</strong> = &lt;class 'qt.BackgroundOrigin'&gt;</dl>
+
 <dl><dt><strong>ClickFocus</strong> = 2</dl>
+
+<dl><dt><strong>FocusPolicy</strong> = &lt;class 'qt.FocusPolicy'&gt;</dl>
 
 <dl><dt><strong>NoFocus</strong> = 0</dl>
 
@@ -108,6 +118,10 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>WidgetOrigin</strong> = 0</dl>
 
 <dl><dt><strong>WindowOrigin</strong> = 2</dl>
+
+<dl><dt><strong>__reduce__</strong> = None</dl>
+
+<dl><dt><strong>__reduce_ex__</strong> = None</dl>
 
 <dl><dt><strong>acceptDrops</strong> = &lt;built-in function acceptDrops&gt;</dl>
 
@@ -124,8 +138,6 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>backgroundOrigin</strong> = &lt;built-in function backgroundOrigin&gt;</dl>
 
 <dl><dt><strong>baseSize</strong> = &lt;built-in function baseSize&gt;</dl>
-
-<dl><dt><strong>buttond</strong> = {1: 1, 2: 3, 4: 2}</dl>
 
 <dl><dt><strong>caption</strong> = &lt;built-in function caption&gt;</dl>
 
@@ -293,8 +305,6 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>keyboardGrabber</strong> = &lt;built-in function keyboardGrabber&gt;</dl>
 
-<dl><dt><strong>keyvald</strong> = {4128: 'shift', 4129: 'control', 4131: 'alt'}</dl>
-
 <dl><dt><strong>layout</strong> = &lt;built-in function layout&gt;</dl>
 
 <dl><dt><strong>leaveEvent</strong> = &lt;built-in function leaveEvent&gt;</dl>
@@ -380,8 +390,6 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>resetInputContext</strong> = &lt;built-in function resetInputContext&gt;</dl>
 
 <dl><dt><strong>scroll</strong> = &lt;built-in function scroll&gt;</dl>
-
-<dl><dt><strong>sender</strong> = &lt;built-in function sender&gt;</dl>
 
 <dl><dt><strong>setAcceptDrops</strong> = &lt;built-in function setAcceptDrops&gt;</dl>
 
@@ -546,12 +554,6 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>y</strong> = &lt;built-in function y&gt;</dl>
 
 <hr>
-Data and other attributes inherited from <a href="qt.html#QWidget">qt.QWidget</a>:<br>
-<dl><dt><strong>BackgroundOrigin</strong> = &lt;class 'qt.BackgroundOrigin'&gt;</dl>
-
-<dl><dt><strong>FocusPolicy</strong> = &lt;class 'qt.FocusPolicy'&gt;</dl>
-
-<hr>
 Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a>:<br>
 <dl><dt><strong>blockSignals</strong> = &lt;built-in function blockSignals&gt;</dl>
 
@@ -604,6 +606,8 @@ Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a
 <dl><dt><strong>removeChild</strong> = &lt;built-in function removeChild&gt;</dl>
 
 <dl><dt><strong>removeEventFilter</strong> = &lt;built-in function removeEventFilter&gt;</dl>
+
+<dl><dt><strong>sender</strong> = &lt;built-in function sender&gt;</dl>
 
 <dl><dt><strong>setProperty</strong> = &lt;built-in function setProperty&gt;</dl>
 
@@ -1409,6 +1413,32 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>MPenStyle</strong> = 15</dl>
 
+<dl><dt><strong>MV_10_DOT_0</strong> = 2</dl>
+
+<dl><dt><strong>MV_10_DOT_1</strong> = 3</dl>
+
+<dl><dt><strong>MV_10_DOT_2</strong> = 4</dl>
+
+<dl><dt><strong>MV_10_DOT_3</strong> = 5</dl>
+
+<dl><dt><strong>MV_10_DOT_4</strong> = 6</dl>
+
+<dl><dt><strong>MV_9</strong> = 1</dl>
+
+<dl><dt><strong>MV_CHEETAH</strong> = 2</dl>
+
+<dl><dt><strong>MV_JAGUAR</strong> = 4</dl>
+
+<dl><dt><strong>MV_PANTHER</strong> = 5</dl>
+
+<dl><dt><strong>MV_PUMA</strong> = 3</dl>
+
+<dl><dt><strong>MV_TIGER</strong> = 6</dl>
+
+<dl><dt><strong>MV_Unknown</strong> = 0</dl>
+
+<dl><dt><strong>MacintoshVersion</strong> = &lt;class 'qt.MacintoshVersion'&gt;</dl>
+
 <dl><dt><strong>MetaButton</strong> = 2048</dl>
 
 <dl><dt><strong>MidButton</strong> = 4</dl>
@@ -1696,6 +1726,8 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 <dl><dt><strong>WV_NT</strong> = 16</dl>
 
 <dl><dt><strong>WV_NT_based</strong> = 240</dl>
+
+<dl><dt><strong>WV_VISTA</strong> = 128</dl>
 
 <dl><dt><strong>WV_XP</strong> = 48</dl>
 
@@ -2154,15 +2186,51 @@ Methods defined here:<br>
 
 <dl><dt><a name="NavigationToolbar2QT-set_message"><strong>set_message</strong></a>(self, s)</dt></dl>
 
-<dl><dt><a name="NavigationToolbar2QT-update"><strong>update</strong></a>(self)</dt><dd><tt>reset&nbsp;the&nbsp;axes&nbsp;stack</tt></dd></dl>
-
 <dl><dt><a name="NavigationToolbar2QT-zoom"><strong>zoom</strong></a>(self, *args)</dt></dl>
 
 <hr>
 Data and other attributes defined here:<br>
+<dl><dt><strong>toolitems</strong> = (('Home', 'Reset original view', 'home.ppm', 'home'), ('Back', 'Back to  previous view', 'back.ppm', 'back'), ('Forward', 'Forward to next view', 'forward.ppm', 'forward'), (None, None, None, None), ('Pan', 'Pan axes with left mouse, zoom with right', 'move.ppm', 'pan'), ('Zoom', 'Zoom to rectangle', 'zoom_to_rect.ppm', 'zoom'), (None, None, None, None), ('Subplots', 'Configure subplots', 'subplots.png', 'configure_subplots'), ('Save', 'Save the figure', 'filesave.ppm', 'save_figure'))</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2">matplotlib.backend_bases.NavigationToolbar2</a>:<br>
+<dl><dt><a name="NavigationToolbar2QT-back"><strong>back</strong></a>(self, *args)</dt><dd><tt>move&nbsp;back&nbsp;up&nbsp;the&nbsp;view&nbsp;lim&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-drag_pan"><strong>drag_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;drag&nbsp;callback&nbsp;in&nbsp;pan/zoom&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-draw"><strong>draw</strong></a>(self)</dt><dd><tt>redraw&nbsp;the&nbsp;canvases,&nbsp;update&nbsp;the&nbsp;locators</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-forward"><strong>forward</strong></a>(self, *args)</dt><dd><tt>move&nbsp;forward&nbsp;in&nbsp;the&nbsp;view&nbsp;lim&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-home"><strong>home</strong></a>(self, *args)</dt><dd><tt>restore&nbsp;the&nbsp;original&nbsp;view</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-press_pan"><strong>press_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;pan/zoom&nbsp;mode&nbsp;callback</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-press_zoom"><strong>press_zoom</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;zoom&nbsp;to&nbsp;rect&nbsp;mode&nbsp;callback</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-push_current"><strong>push_current</strong></a>(self)</dt><dd><tt>push&nbsp;the&nbsp;current&nbsp;view&nbsp;limits&nbsp;and&nbsp;position&nbsp;onto&nbsp;the&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-release"><strong>release</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenever&nbsp;mouse&nbsp;button&nbsp;is&nbsp;released</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-release_pan"><strong>release_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;release&nbsp;mouse&nbsp;button&nbsp;callback&nbsp;in&nbsp;pan/zoom&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-release_zoom"><strong>release_zoom</strong></a>(self, event)</dt><dd><tt>the&nbsp;release&nbsp;mouse&nbsp;button&nbsp;callback&nbsp;in&nbsp;zoom&nbsp;to&nbsp;rect&nbsp;mode</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2QT-update"><strong>update</strong></a>(self)</dt><dd><tt>reset&nbsp;the&nbsp;axes&nbsp;stack</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="qt.html#QWidget">qt.QWidget</a>:<br>
 <dl><dt><strong>AncestorOrigin</strong> = 3</dl>
 
+<dl><dt><strong>BackgroundOrigin</strong> = &lt;class 'qt.BackgroundOrigin'&gt;</dl>
+
 <dl><dt><strong>ClickFocus</strong> = 2</dl>
+
+<dl><dt><strong>FocusPolicy</strong> = &lt;class 'qt.FocusPolicy'&gt;</dl>
 
 <dl><dt><strong>NoFocus</strong> = 0</dl>
 
@@ -2177,6 +2245,10 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>WidgetOrigin</strong> = 0</dl>
 
 <dl><dt><strong>WindowOrigin</strong> = 2</dl>
+
+<dl><dt><strong>__reduce__</strong> = None</dl>
+
+<dl><dt><strong>__reduce_ex__</strong> = None</dl>
 
 <dl><dt><strong>acceptDrops</strong> = &lt;built-in function acceptDrops&gt;</dl>
 
@@ -2460,8 +2532,6 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>scroll</strong> = &lt;built-in function scroll&gt;</dl>
 
-<dl><dt><strong>sender</strong> = &lt;built-in function sender&gt;</dl>
-
 <dl><dt><strong>setAcceptDrops</strong> = &lt;built-in function setAcceptDrops&gt;</dl>
 
 <dl><dt><strong>setActiveWindow</strong> = &lt;built-in function setActiveWindow&gt;</dl>
@@ -2592,8 +2662,6 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>timerEvent</strong> = &lt;built-in function timerEvent&gt;</dl>
 
-<dl><dt><strong>toolitems</strong> = (('Home', 'Reset original view', 'home.ppm', 'home'), ('Back', 'Back to  previous view', 'back.ppm', 'back'), ('Forward', 'Forward to next view', 'forward.ppm', 'forward'), (None, None, None, None), ('Pan', 'Pan axes with left mouse, zoom with right', 'move.ppm', 'pan'), ('Zoom', 'Zoom to rectangle', 'zoom_to_rect.ppm', 'zoom'), (None, None, None, None), ('Subplots', 'Configure subplots', 'subplots.png', 'configure_subplots'), ('Save', 'Save the figure', 'filesave.ppm', 'save_figure'))</dl>
-
 <dl><dt><strong>topLevelWidget</strong> = &lt;built-in function topLevelWidget&gt;</dl>
 
 <dl><dt><strong>unsetCursor</strong> = &lt;built-in function unsetCursor&gt;</dl>
@@ -2623,40 +2691,6 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>x</strong> = &lt;built-in function x&gt;</dl>
 
 <dl><dt><strong>y</strong> = &lt;built-in function y&gt;</dl>
-
-<hr>
-Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2">matplotlib.backend_bases.NavigationToolbar2</a>:<br>
-<dl><dt><a name="NavigationToolbar2QT-back"><strong>back</strong></a>(self, *args)</dt><dd><tt>move&nbsp;back&nbsp;up&nbsp;the&nbsp;view&nbsp;lim&nbsp;stack</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-drag_pan"><strong>drag_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;drag&nbsp;callback&nbsp;in&nbsp;pan/zoom&nbsp;mode</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-draw"><strong>draw</strong></a>(self)</dt><dd><tt>redraw&nbsp;the&nbsp;canvases,&nbsp;update&nbsp;the&nbsp;locators</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-forward"><strong>forward</strong></a>(self, *args)</dt><dd><tt>move&nbsp;forward&nbsp;in&nbsp;the&nbsp;view&nbsp;lim&nbsp;stack</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-home"><strong>home</strong></a>(self, *args)</dt><dd><tt>restore&nbsp;the&nbsp;original&nbsp;view</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-press_pan"><strong>press_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;pan/zoom&nbsp;mode&nbsp;callback</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-press_zoom"><strong>press_zoom</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;zoom&nbsp;to&nbsp;rect&nbsp;mode&nbsp;callback</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-push_current"><strong>push_current</strong></a>(self)</dt><dd><tt>push&nbsp;the&nbsp;current&nbsp;view&nbsp;limits&nbsp;and&nbsp;position&nbsp;onto&nbsp;the&nbsp;stack</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-release"><strong>release</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenever&nbsp;mouse&nbsp;button&nbsp;is&nbsp;released</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-release_pan"><strong>release_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;release&nbsp;mouse&nbsp;button&nbsp;callback&nbsp;in&nbsp;pan/zoom&nbsp;mode</tt></dd></dl>
-
-<dl><dt><a name="NavigationToolbar2QT-release_zoom"><strong>release_zoom</strong></a>(self, event)</dt><dd><tt>the&nbsp;release&nbsp;mouse&nbsp;button&nbsp;callback&nbsp;in&nbsp;zoom&nbsp;to&nbsp;rect&nbsp;mode</tt></dd></dl>
-
-<hr>
-Data and other attributes inherited from <a href="qt.html#QWidget">qt.QWidget</a>:<br>
-<dl><dt><strong>BackgroundOrigin</strong> = &lt;class 'qt.BackgroundOrigin'&gt;</dl>
-
-<dl><dt><strong>FocusPolicy</strong> = &lt;class 'qt.FocusPolicy'&gt;</dl>
 
 <hr>
 Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a>:<br>
@@ -2711,6 +2745,8 @@ Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a
 <dl><dt><strong>removeChild</strong> = &lt;built-in function removeChild&gt;</dl>
 
 <dl><dt><strong>removeEventFilter</strong> = &lt;built-in function removeEventFilter&gt;</dl>
+
+<dl><dt><strong>sender</strong> = &lt;built-in function sender&gt;</dl>
 
 <dl><dt><strong>setProperty</strong> = &lt;built-in function setProperty&gt;</dl>
 
@@ -3516,6 +3552,32 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>MPenStyle</strong> = 15</dl>
 
+<dl><dt><strong>MV_10_DOT_0</strong> = 2</dl>
+
+<dl><dt><strong>MV_10_DOT_1</strong> = 3</dl>
+
+<dl><dt><strong>MV_10_DOT_2</strong> = 4</dl>
+
+<dl><dt><strong>MV_10_DOT_3</strong> = 5</dl>
+
+<dl><dt><strong>MV_10_DOT_4</strong> = 6</dl>
+
+<dl><dt><strong>MV_9</strong> = 1</dl>
+
+<dl><dt><strong>MV_CHEETAH</strong> = 2</dl>
+
+<dl><dt><strong>MV_JAGUAR</strong> = 4</dl>
+
+<dl><dt><strong>MV_PANTHER</strong> = 5</dl>
+
+<dl><dt><strong>MV_PUMA</strong> = 3</dl>
+
+<dl><dt><strong>MV_TIGER</strong> = 6</dl>
+
+<dl><dt><strong>MV_Unknown</strong> = 0</dl>
+
+<dl><dt><strong>MacintoshVersion</strong> = &lt;class 'qt.MacintoshVersion'&gt;</dl>
+
 <dl><dt><strong>MetaButton</strong> = 2048</dl>
 
 <dl><dt><strong>MidButton</strong> = 4</dl>
@@ -3803,6 +3865,8 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 <dl><dt><strong>WV_NT</strong> = 16</dl>
 
 <dl><dt><strong>WV_NT_based</strong> = 240</dl>
+
+<dl><dt><strong>WV_VISTA</strong> = 128</dl>
 
 <dl><dt><strong>WV_XP</strong> = 48</dl>
 

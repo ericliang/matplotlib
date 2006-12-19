@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mlab</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/mlab.py">/usr/lib/python2.4/site-packages/matplotlib/mlab.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/mlab.py">/usr/lib64/python2.4/site-packages/matplotlib/mlab.py</a></font></td></tr></table>
     <p><tt>Numerical&nbsp;python&nbsp;functions&nbsp;written&nbsp;for&nbsp;compatability&nbsp;with&nbsp;matlab(TM)<br>
 commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.&nbsp;&nbsp;<br>
 &nbsp;<br>
@@ -272,7 +272,11 @@ p,&nbsp;s0,&nbsp;s1&nbsp;are&nbsp;xy&nbsp;sequences<br>
 This&nbsp;algorithm&nbsp;from<br>
 <a href="http://softsurfer.com/Archive/algorithm_0102/algorithm_0102.htm#Distance%20to%20Ray%20or%20Segment">http://softsurfer.com/Archive/algorithm_0102/algorithm_0102.htm#Distance%20to%20Ray%20or%20Segment</a></tt></dd></dl>
  <dl><dt><a name="-donothing_callback"><strong>donothing_callback</strong></a>(*args)</dt></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-entropy"><strong>entropy</strong></a>(y, bins)</dt><dd><tt>Return&nbsp;the&nbsp;entropy&nbsp;of&nbsp;the&nbsp;data&nbsp;in&nbsp;y<br>
 &nbsp;<br>
 \sum&nbsp;p_i&nbsp;<a href="#-log2">log2</a>(p_i)&nbsp;where&nbsp;p_i&nbsp;is&nbsp;the&nbsp;probability&nbsp;of&nbsp;observing&nbsp;y&nbsp;in<br>
@@ -436,7 +440,11 @@ assuming&nbsp;x&nbsp;is&nbsp;a&nbsp;vector&nbsp;of&nbsp;zeros&nbsp;and&nbsp;ones
 assuming&nbsp;x&nbsp;is&nbsp;a&nbsp;vector&nbsp;of&nbsp;zeros&nbsp;and&nbsp;ones.<br>
 &nbsp;<br>
 If&nbsp;there&nbsp;are&nbsp;two&nbsp;equally&nbsp;long&nbsp;stretches,&nbsp;pick&nbsp;the&nbsp;first</tt></dd></dl>
- <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
+ <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-mean"><strong>mean</strong></a>(x, dim<font color="#909090">=None</font>)</dt></dl>
  <dl><dt><a name="-mean_flat"><strong>mean_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;mean&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.</tt></dd></dl>
  <dl><dt><a name="-meshgrid"><strong>meshgrid</strong></a>(x, y)</dt><dd><tt>For&nbsp;vectors&nbsp;x,&nbsp;y&nbsp;with&nbsp;lengths&nbsp;Nx=len(x)&nbsp;and&nbsp;Ny=len(y),&nbsp;return&nbsp;X,&nbsp;Y<br>

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.cbook</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/cbook.py">/usr/lib/python2.4/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/cbook.py">/usr/lib64/python2.4/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
     <p><tt>A&nbsp;collection&nbsp;of&nbsp;utility&nbsp;functions&nbsp;and&nbsp;classes.&nbsp;&nbsp;Many&nbsp;(but&nbsp;not&nbsp;all)<br>
 from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nbsp;cbook</tt></p>
 <p>
@@ -566,7 +566,7 @@ val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key,&nbsp;default)</tt></dd></
 <td width="100%"><strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 4096)<br>
 <strong>major</strong> = 2<br>
 <strong>minor1</strong> = 4<br>
-<strong>minor2</strong> = 1<br>
+<strong>minor2</strong> = 4<br>
 <strong>s</strong> = 'final'<br>
 <strong>tmp</strong> = 0</td></tr></table>
 @footer@

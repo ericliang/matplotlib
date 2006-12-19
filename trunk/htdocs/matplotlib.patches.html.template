@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.patches</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/patches.py">/usr/lib/python2.4/site-packages/matplotlib/patches.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/patches.py">/usr/lib64/python2.4/site-packages/matplotlib/patches.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -2389,11 +2389,19 @@ Example:<br>
 &nbsp;<br>
 &gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
 array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-draw_bbox"><strong>draw_bbox</strong></a>(bbox, renderer, color<font color="#909090">='k'</font>, trans<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
 box&nbsp;returned&nbsp;by&nbsp;get_window_extent&nbsp;of&nbsp;an&nbsp;artist,&nbsp;to&nbsp;test&nbsp;whether<br>
 the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd></dl>
- <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
+ <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
+Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
+the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
+NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -2409,7 +2417,7 @@ the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd>
 <strong>k</strong> = 'Ellipse'<br>
 <strong>patchdoc</strong> = '            alpha: float<font color="#c040c0">\n</font>            animated: [...le: [True | False]<font color="#c040c0">\n</font>            zorder: any number'<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;</td></tr></table>
 @footer@

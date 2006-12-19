@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.axes</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/axes.py">/usr/lib/python2.4/site-packages/matplotlib/axes.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/axes.py">/usr/lib64/python2.4/site-packages/matplotlib/axes.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -669,7 +669,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -798,7 +798,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -2833,6 +2833,21 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Text&nbsp;properties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Axes-ticklabel_format"><strong>ticklabel_format</strong></a>(self, **kwargs)</dt><dd><tt>Convenience&nbsp;method&nbsp;for&nbsp;manipulating&nbsp;the&nbsp;ScalarFormatter<br>
+used&nbsp;by&nbsp;default&nbsp;for&nbsp;linear&nbsp;axes.<br>
+&nbsp;<br>
+kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style&nbsp;=&nbsp;'sci'&nbsp;(or&nbsp;'scientific')&nbsp;or&nbsp;'plain';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plain&nbsp;turns&nbsp;off&nbsp;scientific&nbsp;notation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis&nbsp;=&nbsp;'x',&nbsp;'y',&nbsp;or&nbsp;'both'<br>
+&nbsp;<br>
+Only&nbsp;the&nbsp;major&nbsp;ticks&nbsp;are&nbsp;affected.<br>
+If&nbsp;the&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;the&nbsp;ScalarFormatter&nbsp;is&nbsp;not<br>
+the&nbsp;one&nbsp;being&nbsp;used,&nbsp;an&nbsp;AttributeError&nbsp;will&nbsp;be&nbsp;raised&nbsp;with<br>
+no&nbsp;additional&nbsp;error&nbsp;message.<br>
+&nbsp;<br>
+Additional&nbsp;capabilities&nbsp;and/or&nbsp;friendlier&nbsp;error&nbsp;checking&nbsp;may&nbsp;be&nbsp;added.</tt></dd></dl>
+
 <dl><dt><a name="Axes-toggle_log_lineary"><strong>toggle_log_lineary</strong></a>(self)</dt><dd><tt>toggle&nbsp;between&nbsp;log&nbsp;and&nbsp;linear&nbsp;on&nbsp;the&nbsp;y&nbsp;axis</tt></dd></dl>
 
 <dl><dt><a name="Axes-update_datalim"><strong>update_datalim</strong></a>(self, xys)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups&nbsp;or&nbsp;equiv.&nbsp;2-D&nbsp;array</tt></dd></dl>
@@ -3747,7 +3762,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -3876,7 +3891,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -5655,6 +5670,21 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Text&nbsp;properties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="PolarAxes-ticklabel_format"><strong>ticklabel_format</strong></a>(self, **kwargs)</dt><dd><tt>Convenience&nbsp;method&nbsp;for&nbsp;manipulating&nbsp;the&nbsp;ScalarFormatter<br>
+used&nbsp;by&nbsp;default&nbsp;for&nbsp;linear&nbsp;axes.<br>
+&nbsp;<br>
+kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style&nbsp;=&nbsp;'sci'&nbsp;(or&nbsp;'scientific')&nbsp;or&nbsp;'plain';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plain&nbsp;turns&nbsp;off&nbsp;scientific&nbsp;notation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis&nbsp;=&nbsp;'x',&nbsp;'y',&nbsp;or&nbsp;'both'<br>
+&nbsp;<br>
+Only&nbsp;the&nbsp;major&nbsp;ticks&nbsp;are&nbsp;affected.<br>
+If&nbsp;the&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;the&nbsp;ScalarFormatter&nbsp;is&nbsp;not<br>
+the&nbsp;one&nbsp;being&nbsp;used,&nbsp;an&nbsp;AttributeError&nbsp;will&nbsp;be&nbsp;raised&nbsp;with<br>
+no&nbsp;additional&nbsp;error&nbsp;message.<br>
+&nbsp;<br>
+Additional&nbsp;capabilities&nbsp;and/or&nbsp;friendlier&nbsp;error&nbsp;checking&nbsp;may&nbsp;be&nbsp;added.</tt></dd></dl>
+
 <dl><dt><a name="PolarAxes-update_datalim"><strong>update_datalim</strong></a>(self, xys)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups&nbsp;or&nbsp;equiv.&nbsp;2-D&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="PolarAxes-update_datalim_numerix"><strong>update_datalim_numerix</strong></a>(self, x, y)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups</tt></dd></dl>
@@ -6583,7 +6613,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -6712,7 +6742,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -8491,6 +8521,21 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Text&nbsp;properties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="PolarSubplot-ticklabel_format"><strong>ticklabel_format</strong></a>(self, **kwargs)</dt><dd><tt>Convenience&nbsp;method&nbsp;for&nbsp;manipulating&nbsp;the&nbsp;ScalarFormatter<br>
+used&nbsp;by&nbsp;default&nbsp;for&nbsp;linear&nbsp;axes.<br>
+&nbsp;<br>
+kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style&nbsp;=&nbsp;'sci'&nbsp;(or&nbsp;'scientific')&nbsp;or&nbsp;'plain';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plain&nbsp;turns&nbsp;off&nbsp;scientific&nbsp;notation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis&nbsp;=&nbsp;'x',&nbsp;'y',&nbsp;or&nbsp;'both'<br>
+&nbsp;<br>
+Only&nbsp;the&nbsp;major&nbsp;ticks&nbsp;are&nbsp;affected.<br>
+If&nbsp;the&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;the&nbsp;ScalarFormatter&nbsp;is&nbsp;not<br>
+the&nbsp;one&nbsp;being&nbsp;used,&nbsp;an&nbsp;AttributeError&nbsp;will&nbsp;be&nbsp;raised&nbsp;with<br>
+no&nbsp;additional&nbsp;error&nbsp;message.<br>
+&nbsp;<br>
+Additional&nbsp;capabilities&nbsp;and/or&nbsp;friendlier&nbsp;error&nbsp;checking&nbsp;may&nbsp;be&nbsp;added.</tt></dd></dl>
+
 <dl><dt><a name="PolarSubplot-update_datalim"><strong>update_datalim</strong></a>(self, xys)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups&nbsp;or&nbsp;equiv.&nbsp;2-D&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="PolarSubplot-update_datalim_numerix"><strong>update_datalim_numerix</strong></a>(self, x, y)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups</tt></dd></dl>
@@ -9287,7 +9332,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -9416,7 +9461,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;linewidths&nbsp;==&nbsp;None,&nbsp;the&nbsp;default&nbsp;width&nbsp;in&nbsp;lines.linewidth&nbsp;in<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.matplotlibrc&nbsp;is&nbsp;used<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlibrc&nbsp;is&nbsp;used<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contourf&nbsp;only:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*****&nbsp;Obsolete:&nbsp;****<br>
@@ -11451,6 +11496,21 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Text&nbsp;properties<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Subplot-ticklabel_format"><strong>ticklabel_format</strong></a>(self, **kwargs)</dt><dd><tt>Convenience&nbsp;method&nbsp;for&nbsp;manipulating&nbsp;the&nbsp;ScalarFormatter<br>
+used&nbsp;by&nbsp;default&nbsp;for&nbsp;linear&nbsp;axes.<br>
+&nbsp;<br>
+kwargs:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style&nbsp;=&nbsp;'sci'&nbsp;(or&nbsp;'scientific')&nbsp;or&nbsp;'plain';<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;plain&nbsp;turns&nbsp;off&nbsp;scientific&nbsp;notation<br>
+&nbsp;&nbsp;&nbsp;&nbsp;axis&nbsp;=&nbsp;'x',&nbsp;'y',&nbsp;or&nbsp;'both'<br>
+&nbsp;<br>
+Only&nbsp;the&nbsp;major&nbsp;ticks&nbsp;are&nbsp;affected.<br>
+If&nbsp;the&nbsp;method&nbsp;is&nbsp;called&nbsp;when&nbsp;the&nbsp;ScalarFormatter&nbsp;is&nbsp;not<br>
+the&nbsp;one&nbsp;being&nbsp;used,&nbsp;an&nbsp;AttributeError&nbsp;will&nbsp;be&nbsp;raised&nbsp;with<br>
+no&nbsp;additional&nbsp;error&nbsp;message.<br>
+&nbsp;<br>
+Additional&nbsp;capabilities&nbsp;and/or&nbsp;friendlier&nbsp;error&nbsp;checking&nbsp;may&nbsp;be&nbsp;added.</tt></dd></dl>
+
 <dl><dt><a name="Subplot-toggle_log_lineary"><strong>toggle_log_lineary</strong></a>(self)</dt><dd><tt>toggle&nbsp;between&nbsp;log&nbsp;and&nbsp;linear&nbsp;on&nbsp;the&nbsp;y&nbsp;axis</tt></dd></dl>
 
 <dl><dt><a name="Subplot-update_datalim"><strong>update_datalim</strong></a>(self, xys)</dt><dd><tt>Update&nbsp;the&nbsp;data&nbsp;lim&nbsp;bbox&nbsp;with&nbsp;seq&nbsp;of&nbsp;xy&nbsp;tups&nbsp;or&nbsp;equiv.&nbsp;2-D&nbsp;array</tt></dd></dl>
@@ -11704,7 +11764,7 @@ useful.</tt></dd></dl>
 <strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
 <strong>newaxis</strong> = None<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@

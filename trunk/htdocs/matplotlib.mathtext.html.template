@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mathtext</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/mathtext.py">/usr/lib/python2.4/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/mathtext.py">/usr/lib64/python2.4/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
     <p><tt>OVERVIEW&nbsp;<br>
 &nbsp;<br>
 &nbsp;&nbsp;mathtext&nbsp;is&nbsp;a&nbsp;module&nbsp;for&nbsp;parsing&nbsp;TeX&nbsp;expressions&nbsp;and&nbsp;drawing&nbsp;them<br>
@@ -214,7 +214,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPS
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib64/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
@@ -249,7 +249,7 @@ like&nbsp;\sigma.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib64/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
@@ -284,7 +284,7 @@ like&nbsp;\sigma.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib64/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
@@ -773,7 +773,7 @@ Data and other attributes inherited from <a href="matplotlib.mathtext.html#Eleme
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.4/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/usr/lib64/python2.4/site-packages/matplotlib/mpl-data'</dl>
 
 <dl><dt><strong>fnames</strong> = ('psyr', 'pncri8a', 'pcrr8a', 'pncr8a', 'pzcmi8a')</dl>
 
@@ -911,7 +911,7 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>minor1</strong> = 4</dl>
 
-<dl><dt><strong>minor2</strong> = 1</dl>
+<dl><dt><strong>minor2</strong> = 4</dl>
 
 <dl><dt><strong>tmp</strong> = 0</dl>
 
@@ -993,7 +993,7 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>rangle</strong> = "&gt;"<br>
 <strong>rbrace</strong> = Suppress:("}")<br>
 <strong>rbrack</strong> = "]"<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
 <strong>relation</strong> = {{"&lt;" | "&gt;"} | "="}<br>
 <strong>roman</strong> = "rm"<br>
 <strong>rparen</strong> = ")"<br>
