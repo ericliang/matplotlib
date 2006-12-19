@@ -2638,9 +2638,6 @@ Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2
 
 <dl><dt><a name="NavigationToolbar2QT-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="NavigationToolbar2QT-nonsingular"><strong>nonsingular</strong></a>(self, x0, x1)</dt><dd><tt>Desperate&nbsp;hack&nbsp;to&nbsp;prevent&nbsp;crashes&nbsp;when&nbsp;button-3&nbsp;panning&nbsp;with<br>
-axis('image')&nbsp;in&nbsp;effect.</tt></dd></dl>
-
 <dl><dt><a name="NavigationToolbar2QT-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2QT-press_pan"><strong>press_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;pan/zoom&nbsp;mode&nbsp;callback</tt></dd></dl>
@@ -4102,7 +4099,7 @@ Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper<
 It&nbsp;does&nbsp;not&nbsp;catch&nbsp;SystemExit</tt></dd></dl>
  <dl><dt><a name="-fn_name"><strong>fn_name</strong></a>()</dt></dl>
  <dl><dt><a name="-new_figure_manager"><strong>new_figure_manager</strong></a>(num, *args, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;figure&nbsp;manager&nbsp;instance</tt></dd></dl>
- <dl><dt><a name="-show"><strong>show</strong></a>(mainloop<font color="#909090">=True</font>)</dt><dd><tt>Show&nbsp;all&nbsp;the&nbsp;figures&nbsp;and&nbsp;enter&nbsp;the&nbsp;qt&nbsp;main&nbsp;loop<br>
+ <dl><dt><a name="-show"><strong>show</strong></a>()</dt><dd><tt>Show&nbsp;all&nbsp;the&nbsp;figures&nbsp;and&nbsp;enter&nbsp;the&nbsp;qt&nbsp;main&nbsp;loop<br>
 This&nbsp;should&nbsp;be&nbsp;the&nbsp;last&nbsp;line&nbsp;of&nbsp;your&nbsp;script</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

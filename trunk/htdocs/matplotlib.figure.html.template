@@ -14,10 +14,11 @@
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib._image.html">matplotlib._image</a><br>
+<a href="matplotlib.artist.html">matplotlib.artist</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.colorbar.html">matplotlib.colorbar</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="sys.html">sys</a><br>
 </td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -136,7 +137,7 @@ kwargs&nbsp;are&nbsp;in&nbsp;two&nbsp;groups:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;true,&nbsp;draw&nbsp;lines&nbsp;at&nbsp;color&nbsp;boundaries.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;following&nbsp;will&nbsp;probably&nbsp;be&nbsp;useful&nbsp;only&nbsp;in&nbsp;the&nbsp;context&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indexed&nbsp;colors&nbsp;(that&nbsp;is,&nbsp;when&nbsp;the&nbsp;mappable&nbsp;has&nbsp;norm=no_norm()),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indexed&nbsp;colors&nbsp;(that&nbsp;is,&nbsp;when&nbsp;the&nbsp;mappable&nbsp;has&nbsp;norm=NoNorm()),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;other&nbsp;unusual&nbsp;circumstances.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boundaries=None&nbsp;or&nbsp;a&nbsp;sequence<br>
@@ -214,7 +215,7 @@ The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;allowed:<br>
 &nbsp;&nbsp;*&nbsp;cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance,&nbsp;eg&nbsp;cm.jet.&nbsp;&nbsp;If&nbsp;None,&nbsp;default&nbsp;to<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;rc&nbsp;image.cmap&nbsp;valuex<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;norm&nbsp;is&nbsp;a&nbsp;matplotlib.colors.normalize&nbsp;instance;&nbsp;default&nbsp;is<br>
+&nbsp;&nbsp;*&nbsp;norm&nbsp;is&nbsp;a&nbsp;matplotlib.colors.Normalize&nbsp;instance;&nbsp;default&nbsp;is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;normalization().&nbsp;&nbsp;This&nbsp;scales&nbsp;luminance&nbsp;-&gt;&nbsp;0-1<br>
 &nbsp;<br>
 &nbsp;&nbsp;*&nbsp;vmin&nbsp;and&nbsp;vmax&nbsp;are&nbsp;used&nbsp;to&nbsp;scale&nbsp;a&nbsp;luminance&nbsp;image&nbsp;to&nbsp;0-1.&nbsp;&nbsp;If<br>
@@ -252,7 +253,7 @@ A&nbsp;image.FigureImage&nbsp;instance&nbsp;is&nbsp;returned.</tt></dd></dl>
 
 <dl><dt><a name="Figure-get_size_inches"><strong>get_size_inches</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Figure-get_window_extent"><strong>get_window_extent</strong></a>(self, *args, **kwargs)</dt><dd><tt>get&nbsp;the&nbsp;figure&nbsp;bounding&nbsp;box&nbsp;in&nbsp;display&nbsp;space</tt></dd></dl>
+<dl><dt><a name="Figure-get_window_extent"><strong>get_window_extent</strong></a>(self, *args, **kwargs)</dt><dd><tt>get&nbsp;the&nbsp;figure&nbsp;bounding&nbsp;box&nbsp;in&nbsp;display&nbsp;space;&nbsp;kwargs&nbsp;are&nbsp;void</tt></dd></dl>
 
 <dl><dt><a name="Figure-hold"><strong>hold</strong></a>(self, b<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;hold&nbsp;state.&nbsp;&nbsp;If&nbsp;hold&nbsp;is&nbsp;None&nbsp;(default),&nbsp;toggle&nbsp;the<br>
 hold&nbsp;state.&nbsp;&nbsp;Else&nbsp;set&nbsp;the&nbsp;hold&nbsp;state&nbsp;to&nbsp;boolean&nbsp;value&nbsp;b.<br>
@@ -367,12 +368,44 @@ WARNING:&nbsp;forward=True&nbsp;is&nbsp;broken&nbsp;on&nbsp;all&nbsp;backends&nb
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;w,h&nbsp;tuple&nbsp;with&nbsp;w,h&nbsp;in&nbsp;inches</tt></dd></dl>
 
-<dl><dt><a name="Figure-subplots_adjust"><strong>subplots_adjust</strong></a>(self, *args, **kwargs)</dt><dd><tt>fig.<a href="#Figure-subplots_adjust">subplots_adjust</a>(left=None,&nbsp;bottom=None,&nbsp;right=None,&nbsp;wspace=None,&nbsp;hspace=None):<br>
+<dl><dt><a name="Figure-subplots_adjust"><strong>subplots_adjust</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Figure-subplots_adjust">subplots_adjust</a>(self,&nbsp;left=None,&nbsp;bottom=None,&nbsp;right=None,&nbsp;top=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wspace=None,&nbsp;hspace=None)<br>
+fig.<a href="#Figure-subplots_adjust">subplots_adjust</a>(left=None,&nbsp;bottom=None,&nbsp;right=None,&nbsp;wspace=None,&nbsp;hspace=None):<br>
 Update&nbsp;the&nbsp;<a href="#SubplotParams">SubplotParams</a>&nbsp;with&nbsp;kwargs&nbsp;(defaulting&nbsp;to&nbsp;rc&nbsp;where<br>
 None)&nbsp;and&nbsp;update&nbsp;the&nbsp;subplot&nbsp;locations</tt></dd></dl>
 
 <dl><dt><a name="Figure-text"><strong>text</strong></a>(self, x, y, s, *args, **kwargs)</dt><dd><tt>Add&nbsp;text&nbsp;to&nbsp;figure&nbsp;at&nbsp;location&nbsp;x,y&nbsp;(relative&nbsp;0-1&nbsp;coords)&nbsp;See<br>
-the&nbsp;help&nbsp;for&nbsp;Axis&nbsp;text&nbsp;for&nbsp;the&nbsp;meaning&nbsp;of&nbsp;the&nbsp;other&nbsp;arguments</tt></dd></dl>
+the&nbsp;help&nbsp;for&nbsp;Axis&nbsp;text&nbsp;for&nbsp;the&nbsp;meaning&nbsp;of&nbsp;the&nbsp;other&nbsp;arguments<br>
+&nbsp;<br>
+kwargs&nbsp;control&nbsp;the&nbsp;Text&nbsp;properties:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;backgroundcolor:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;bbox:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;which&nbsp;is&nbsp;a&nbsp;pad&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;[&nbsp;'serif'&nbsp;|&nbsp;'sans-serif'&nbsp;|&nbsp;'cursive'&nbsp;|&nbsp;'fantasy'&nbsp;|&nbsp;'monospace'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.<a href="#Figure">Figure</a>&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fontproperties:&nbsp;a&nbsp;matplotlib.font_manager.FontProperties&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;horizontalalignment&nbsp;or&nbsp;ha:&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'left'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;multialignment:&nbsp;['left'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'center'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;name&nbsp;or&nbsp;fontname:&nbsp;string&nbsp;eg,&nbsp;['Sans'&nbsp;|&nbsp;'Courier'&nbsp;|&nbsp;'Helvetica'&nbsp;...]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;position:&nbsp;(x,y)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rotation:&nbsp;[&nbsp;angle&nbsp;in&nbsp;degrees&nbsp;'vertical'&nbsp;|&nbsp;'horizontal'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;size&nbsp;or&nbsp;fontsize:&nbsp;[&nbsp;size&nbsp;in&nbsp;points&nbsp;|&nbsp;relative&nbsp;size&nbsp;eg&nbsp;'smaller',&nbsp;'x-large'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style&nbsp;or&nbsp;fontstyle:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'italic'&nbsp;|&nbsp;'oblique']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;text:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;variant:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'small-caps'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;verticalalignment&nbsp;or&nbsp;va:&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'top'&nbsp;|&nbsp;'bottom'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;weight&nbsp;or&nbsp;fontweight:&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'bold'&nbsp;|&nbsp;'heavy'&nbsp;|&nbsp;'light'&nbsp;|&nbsp;'ultrabold'&nbsp;|&nbsp;'ultralight']<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -531,5 +564,5 @@ Thanks&nbsp;to&nbsp;Fernando&nbsp;Perez&nbsp;for&nbsp;this&nbsp;function</tt></d
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}</td></tr></table>
 @footer@

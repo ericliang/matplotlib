@@ -150,7 +150,7 @@ Cxy&nbsp;=&nbsp;|Pxy|^2/(Pxx*Pyy)<br>
 &nbsp;<br>
 The&nbsp;return&nbsp;value&nbsp;is&nbsp;(Cxy,&nbsp;f),&nbsp;where&nbsp;f&nbsp;are&nbsp;the&nbsp;frequencies&nbsp;of&nbsp;the<br>
 coherence&nbsp;vector.&nbsp;&nbsp;See&nbsp;the&nbsp;docs&nbsp;for&nbsp;psd&nbsp;and&nbsp;csd&nbsp;for&nbsp;information<br>
-about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;windowm&nbsp;noverlap,&nbsp;as<br>
+about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;window,&nbsp;noverlap,&nbsp;as<br>
 well&nbsp;as&nbsp;the&nbsp;methods&nbsp;used&nbsp;to&nbsp;compute&nbsp;Pxy,&nbsp;Pxx&nbsp;and&nbsp;Pyy.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Cxy,&nbsp;freqs</tt></dd></dl>
@@ -246,6 +246,10 @@ correct&nbsp;for&nbsp;power&nbsp;loss&nbsp;due&nbsp;to&nbsp;windowing.&nbsp;&nbs
 frequency.<br>
 &nbsp;<br>
 NFFT&nbsp;must&nbsp;be&nbsp;a&nbsp;power&nbsp;of&nbsp;2<br>
+&nbsp;<br>
+window&nbsp;can&nbsp;be&nbsp;a&nbsp;function&nbsp;or&nbsp;a&nbsp;vector&nbsp;of&nbsp;length&nbsp;NFFT.&nbsp;To&nbsp;create&nbsp;<br>
+window&nbsp;vectors&nbsp;see&nbsp;numpy.blackman,&nbsp;numpy.hamming,&nbsp;numpy.bartlett,<br>
+scipy.signal,&nbsp;scipy.signal.get_window&nbsp;etc.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Pxy,&nbsp;freqs<br>
 &nbsp;<br>
@@ -549,8 +553,10 @@ with&nbsp;a&nbsp;scaling&nbsp;to&nbsp;correct&nbsp;for&nbsp;power&nbsp;loss&nbsp
 the&nbsp;sampling&nbsp;frequency.<br>
 &nbsp;<br>
 --&nbsp;NFFT&nbsp;must&nbsp;be&nbsp;a&nbsp;power&nbsp;of&nbsp;2<br>
---&nbsp;detrend&nbsp;and&nbsp;window&nbsp;are&nbsp;functions,&nbsp;unlike&nbsp;in&nbsp;matlab&nbsp;where&nbsp;they&nbsp;are<br>
-&nbsp;&nbsp;&nbsp;vectors.<br>
+--&nbsp;detrend&nbsp;is&nbsp;a&nbsp;functions,&nbsp;unlike&nbsp;in&nbsp;matlab&nbsp;where&nbsp;it&nbsp;is&nbsp;a&nbsp;vector.<br>
+--&nbsp;window&nbsp;can&nbsp;be&nbsp;a&nbsp;function&nbsp;or&nbsp;a&nbsp;vector&nbsp;of&nbsp;length&nbsp;NFFT.&nbsp;To&nbsp;create&nbsp;window<br>
+&nbsp;&nbsp;&nbsp;vectors&nbsp;see&nbsp;numpy.blackman,&nbsp;numpy.hamming,&nbsp;numpy.bartlett,<br>
+&nbsp;&nbsp;&nbsp;scipy.signal,&nbsp;scipy.signal.get_window&nbsp;etc.<br>
 --&nbsp;if&nbsp;length&nbsp;x&nbsp;&lt;&nbsp;NFFT,&nbsp;it&nbsp;will&nbsp;be&nbsp;zero&nbsp;padded&nbsp;to&nbsp;NFFT<br>
 &nbsp;<br>
 &nbsp;<br>
@@ -654,9 +660,17 @@ Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbs
  <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none&gt;</font>, window<font color="#909090">=&lt;function window_hanning&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
-amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap<br>
+amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap.<br>
+&nbsp;<br>
+window&nbsp;can&nbsp;be&nbsp;a&nbsp;function&nbsp;or&nbsp;a&nbsp;vector&nbsp;of&nbsp;length&nbsp;NFFT.&nbsp;To&nbsp;create<br>
+window&nbsp;vectors&nbsp;see&nbsp;numpy.blackman,&nbsp;numpy.hamming,&nbsp;numpy.bartlett,<br>
+scipy.signal,&nbsp;scipy.signal.get_window&nbsp;etc.<br>
+&nbsp;<br>
 &nbsp;<br>
 See&nbsp;pdf&nbsp;for&nbsp;more&nbsp;info.<br>
+&nbsp;<br>
+If&nbsp;x&nbsp;is&nbsp;real&nbsp;(i.e.&nbsp;non-Complex)&nbsp;only&nbsp;the&nbsp;positive&nbsp;spectrum&nbsp;is<br>
+given.&nbsp;&nbsp;If&nbsp;x&nbsp;is&nbsp;Complex&nbsp;then&nbsp;the&nbsp;complete&nbsp;spectrum&nbsp;is&nbsp;given.<br>
 &nbsp;<br>
 The&nbsp;returned&nbsp;times&nbsp;are&nbsp;the&nbsp;midpoints&nbsp;of&nbsp;the&nbsp;intervals&nbsp;over&nbsp;which<br>
 the&nbsp;ffts&nbsp;are&nbsp;calculated</tt></dd></dl>

@@ -30,9 +30,10 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license</tt></p>
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 </td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -160,11 +161,11 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
 

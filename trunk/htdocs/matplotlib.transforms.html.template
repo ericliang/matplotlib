@@ -438,6 +438,13 @@ another</tt></dd></dl>
 Return&nbsp;the&nbsp;inverse&nbsp;of&nbsp;v&nbsp;as&nbsp;a&nbsp;vec6</tt></dd></dl>
  <dl><dt><a name="-lbwh_to_bbox"><strong>lbwh_to_bbox</strong></a>(l, b, w, h)</dt></dl>
  <dl><dt><a name="-multiply_affines"><strong>multiply_affines</strong></a>(v1, v2)</dt><dd><tt>v1&nbsp;and&nbsp;v2&nbsp;are&nbsp;Affine&nbsp;instances</tt></dd></dl>
+ <dl><dt><a name="-nonsingular"><strong>nonsingular</strong></a>(vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=1.0000000000000001e-15</font>, increasing<font color="#909090">=True</font>)</dt><dd><tt>Ensure&nbsp;the&nbsp;endpoints&nbsp;of&nbsp;a&nbsp;range&nbsp;are&nbsp;not&nbsp;too&nbsp;close&nbsp;together.<br>
+&nbsp;<br>
+"too&nbsp;close"&nbsp;means&nbsp;the&nbsp;interval&nbsp;is&nbsp;smaller&nbsp;than&nbsp;'tiny'&nbsp;times<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;maximum&nbsp;absolute&nbsp;value.<br>
+&nbsp;<br>
+If&nbsp;they&nbsp;are&nbsp;too&nbsp;close,&nbsp;each&nbsp;will&nbsp;be&nbsp;moved&nbsp;by&nbsp;the&nbsp;'expander'.<br>
+If&nbsp;'increasing'&nbsp;is&nbsp;True&nbsp;and&nbsp;vmin&nbsp;&gt;&nbsp;vmax,&nbsp;they&nbsp;will&nbsp;be&nbsp;swapped.</tt></dd></dl>
  <dl><dt><a name="-offset_copy"><strong>offset_copy</strong></a>(trans, fig<font color="#909090">=None</font>, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>, units<font color="#909090">='inches'</font>)</dt><dd><tt>Return&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;a&nbsp;transform&nbsp;with&nbsp;an&nbsp;added&nbsp;offset.<br>
 &nbsp;&nbsp;args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;trans&nbsp;is&nbsp;any&nbsp;transform<br>

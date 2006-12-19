@@ -13,10 +13,11 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
 </td><td width="25%" valign=top><a href="re.html">re</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -54,17 +55,25 @@ Axes,&nbsp;Point,&nbsp;Rectangle,&nbsp;etc...&nbsp;easier<br>&nbsp;</tt></td></t
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Annotation-__init__"><strong>__init__</strong></a>(self, s, xy, xycoords<font color="#909090">='data'</font>, xytext<font color="#909090">=None</font>, textcoords<font color="#909090">=None</font>, lineprops<font color="#909090">=None</font>, markerprops<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Annotate&nbsp;the&nbsp;x,y&nbsp;point&nbsp;xy&nbsp;with&nbsp;text&nbsp;s&nbsp;at&nbsp;x,y&nbsp;location&nbsp;xytext<br>
+<dl><dt><a name="Annotation-__init__"><strong>__init__</strong></a>(self, s, xy, xycoords<font color="#909090">='data'</font>, xytext<font color="#909090">=None</font>, textcoords<font color="#909090">=None</font>, arrowprops<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Annotate&nbsp;the&nbsp;x,y&nbsp;point&nbsp;xy&nbsp;with&nbsp;text&nbsp;s&nbsp;at&nbsp;x,y&nbsp;location&nbsp;xytext<br>
 (xytext&nbsp;if&nbsp;None&nbsp;defaults&nbsp;to&nbsp;xy&nbsp;and&nbsp;textcoords&nbsp;if&nbsp;None&nbsp;defaults<br>
 to&nbsp;xycoords).<br>
 &nbsp;<br>
-lineprops,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;line&nbsp;properties<br>
-(see&nbsp;matplotlib.lines.Line2D)&nbsp;for&nbsp;a&nbsp;line&nbsp;that&nbsp;connects&nbsp;the<br>
-annotation&nbsp;to&nbsp;the&nbsp;point.<br>
+arrowprops,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;line&nbsp;properties<br>
+(see&nbsp;matplotlib.lines.Line2D)&nbsp;for&nbsp;the&nbsp;arrow&nbsp;that&nbsp;connects<br>
+annotation&nbsp;to&nbsp;the&nbsp;point.&nbsp;&nbsp;&nbsp;Valid&nbsp;keys&nbsp;are<br>
 &nbsp;<br>
-markerprops,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;ductionaly&nbsp;of&nbsp;line&nbsp;marker<br>
-properties&nbsp;for&nbsp;marking&nbsp;the&nbsp;point&nbsp;at&nbsp;xy.<br>
-&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;width&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;arrow&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;-&nbsp;frac&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;arrow&nbsp;length&nbsp;occupied&nbsp;by&nbsp;the&nbsp;head<br>
+&nbsp;&nbsp;-&nbsp;headwidth&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;base&nbsp;of&nbsp;the&nbsp;arrow&nbsp;head&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;-&nbsp;shrink:&nbsp;often&nbsp;times&nbsp;it&nbsp;is&nbsp;convenient&nbsp;to&nbsp;have&nbsp;the&nbsp;arrowtip<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;a&nbsp;bit&nbsp;away&nbsp;from&nbsp;the&nbsp;text&nbsp;and&nbsp;point&nbsp;being<br>
+&nbsp;&nbsp;&nbsp;&nbsp;annotated.&nbsp;&nbsp;If&nbsp;d&nbsp;is&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;text&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;annotated&nbsp;point,&nbsp;shrink&nbsp;will&nbsp;shorten&nbsp;the&nbsp;arrow&nbsp;so&nbsp;the&nbsp;tip<br>
+&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;are&nbsp;shink&nbsp;percent&nbsp;of&nbsp;the&nbsp;distance&nbsp;d&nbsp;away&nbsp;from&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;endpoints.&nbsp;&nbsp;ie,&nbsp;shrink=0.05&nbsp;is&nbsp;5%<br>
+&nbsp;&nbsp;-&nbsp;any&nbsp;key&nbsp;for&nbsp;matplotlib.patches.polygon<br>
+&nbsp;&nbsp;<br>
 xycoords&nbsp;and&nbsp;textcoords&nbsp;are&nbsp;a&nbsp;string&nbsp;that&nbsp;indicates&nbsp;the<br>
 coordinates&nbsp;of&nbsp;xy&nbsp;and&nbsp;xytext.<br>
 &nbsp;<br>
@@ -142,7 +151,7 @@ need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd
 
 <dl><dt><a name="Annotation-set_backgroundcolor"><strong>set_backgroundcolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;background&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Annotation-set_bbox"><strong>set_bbox</strong></a>(self, rectprops)</dt><dd><tt>Draw&nbsp;a&nbsp;bounding&nbsp;box&nbsp;around&nbsp;self.&nbsp;&nbsp;rect&nbsp;props&nbsp;are&nbsp;any&nbsp;settable<br>
 properties&nbsp;for&nbsp;a&nbsp;rectangle,&nbsp;eg&nbsp;color='r',&nbsp;alpha=0.5<br>
@@ -151,7 +160,7 @@ ACCEPTS:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;w
 
 <dl><dt><a name="Annotation-set_color"><strong>set_color</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;foreground&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Annotation-set_family"><strong>set_family</strong></a>(self, fontname)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;family<br>
 &nbsp;<br>
@@ -380,7 +389,7 @@ need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd
 
 <dl><dt><a name="Text-set_backgroundcolor"><strong>set_backgroundcolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;background&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Text-set_bbox"><strong>set_bbox</strong></a>(self, rectprops)</dt><dd><tt>Draw&nbsp;a&nbsp;bounding&nbsp;box&nbsp;around&nbsp;self.&nbsp;&nbsp;rect&nbsp;props&nbsp;are&nbsp;any&nbsp;settable<br>
 properties&nbsp;for&nbsp;a&nbsp;rectangle,&nbsp;eg&nbsp;color='r',&nbsp;alpha=0.5<br>
@@ -389,7 +398,7 @@ ACCEPTS:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;w
 
 <dl><dt><a name="Text-set_color"><strong>set_color</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;foreground&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Text-set_family"><strong>set_family</strong></a>(self, fontname)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;family<br>
 &nbsp;<br>
@@ -734,7 +743,7 @@ need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd
 
 <dl><dt><a name="TextWithDash-set_backgroundcolor"><strong>set_backgroundcolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;background&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-set_bbox"><strong>set_bbox</strong></a>(self, rectprops)</dt><dd><tt>Draw&nbsp;a&nbsp;bounding&nbsp;box&nbsp;around&nbsp;self.&nbsp;&nbsp;rect&nbsp;props&nbsp;are&nbsp;any&nbsp;settable<br>
 properties&nbsp;for&nbsp;a&nbsp;rectangle,&nbsp;eg&nbsp;color='r',&nbsp;alpha=0.5<br>
@@ -743,7 +752,7 @@ ACCEPTS:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;w
 
 <dl><dt><a name="TextWithDash-set_color"><strong>set_color</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;foreground&nbsp;color&nbsp;of&nbsp;the&nbsp;text<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-set_family"><strong>set_family</strong></a>(self, fontname)</dt><dd><tt>Set&nbsp;the&nbsp;font&nbsp;family<br>
 &nbsp;<br>
@@ -916,7 +925,7 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(substring,&nbsp;inmath)
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>

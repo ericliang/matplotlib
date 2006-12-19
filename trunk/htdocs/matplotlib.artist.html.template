@@ -167,7 +167,7 @@ Eg,&nbsp;for&nbsp;a&nbsp;line&nbsp;linestyle,&nbsp;return<br>
 
 <dl><dt><a name="ArtistInspector-pprint_getters"><strong>pprint_getters</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;getters&nbsp;and&nbsp;actual&nbsp;values&nbsp;as&nbsp;list&nbsp;of&nbsp;strings'</tt></dd></dl>
 
-<dl><dt><a name="ArtistInspector-pprint_setters"><strong>pprint_setters</strong></a>(self, prop<font color="#909090">=None</font>)</dt><dd><tt>if&nbsp;prop&nbsp;is&nbsp;None,&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;strings&nbsp;of&nbsp;all&nbsp;settable&nbsp;properies<br>
+<dl><dt><a name="ArtistInspector-pprint_setters"><strong>pprint_setters</strong></a>(self, prop<font color="#909090">=None</font>, leadingspace<font color="#909090">=2</font>)</dt><dd><tt>if&nbsp;prop&nbsp;is&nbsp;None,&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;strings&nbsp;of&nbsp;all&nbsp;settable&nbsp;properies<br>
 and&nbsp;their&nbsp;valid&nbsp;values<br>
 &nbsp;<br>
 if&nbsp;prop&nbsp;is&nbsp;not&nbsp;None,&nbsp;it&nbsp;is&nbsp;a&nbsp;valid&nbsp;property&nbsp;name&nbsp;and&nbsp;that<br>
@@ -215,9 +215,9 @@ names&nbsp;will&nbsp;be&nbsp;listed&nbsp;as<br>
 eg<br>
 &nbsp;<br>
 &nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw&nbsp;=&nbsp;2</tt></dd></dl>
- <dl><dt><a name="-setp"><strong>setp</strong></a>(h, *args, **kwargs)</dt><dd><tt>matplotlib&nbsp;supports&nbsp;the&nbsp;use&nbsp;of&nbsp;setp&nbsp;("set&nbsp;property")&nbsp;and&nbsp;getp&nbsp;to&nbsp;set&nbsp;<br>
-and&nbsp;get&nbsp;object&nbsp;properties,&nbsp;as&nbsp;well&nbsp;as&nbsp;to&nbsp;do&nbsp;introspection&nbsp;on&nbsp;the&nbsp;<br>
-object&nbsp;For&nbsp;example,&nbsp;to&nbsp;set&nbsp;the&nbsp;linestyle&nbsp;of&nbsp;a&nbsp;line&nbsp;to&nbsp;be&nbsp;dashed,&nbsp;you&nbsp;<br>
+ <dl><dt><a name="-setp"><strong>setp</strong></a>(h, *args, **kwargs)</dt><dd><tt>matplotlib&nbsp;supports&nbsp;the&nbsp;use&nbsp;of&nbsp;setp&nbsp;("set&nbsp;property")&nbsp;and&nbsp;getp&nbsp;to&nbsp;set<br>
+and&nbsp;get&nbsp;object&nbsp;properties,&nbsp;as&nbsp;well&nbsp;as&nbsp;to&nbsp;do&nbsp;introspection&nbsp;on&nbsp;the<br>
+object&nbsp;For&nbsp;example,&nbsp;to&nbsp;set&nbsp;the&nbsp;linestyle&nbsp;of&nbsp;a&nbsp;line&nbsp;to&nbsp;be&nbsp;dashed,&nbsp;you<br>
 can&nbsp;do<br>
 &nbsp;<br>
 &nbsp;&nbsp;&gt;&gt;&gt;&nbsp;line,&nbsp;=&nbsp;plot([1,2,3])<br>
@@ -260,5 +260,6 @@ python&nbsp;kwargs.&nbsp;&nbsp;For&nbsp;example,&nbsp;the&nbsp;following&nbsp;ar
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
+<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
+<strong>kwdocd</strong> = {'Artist': '            alpha: float<font color="#c040c0">\n</font>            animated: [...le: [True | False]<font color="#c040c0">\n</font>            zorder: any number'}</td></tr></table>
 @footer@

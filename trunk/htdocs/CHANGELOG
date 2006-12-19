@@ -1,3 +1,98 @@
+2006-12-16 Added ability to turn control scientific notation
+           in ScalarFormatter - EF
+
+2006-12-16 Enhanced boxplot to handle more flexible inputs - EF
+
+2006-12-13 Replaced calls to where() in colors.py with much faster
+           clip() and putmask() calls; removed inappropriate
+           uses of getmaskorNone (which should be needed only
+           very rarely); all in response to profiling by
+           David Cournapeau.  Also fixed bugs in my 2-D
+           array support from 12-09. - EF
+
+2006-12-09 Replaced spy and spy2 with the new spy that combines
+           marker and image capabilities - EF
+
+2006-12-09 Added support for plotting 2-D arrays with plot:
+           columns are plotted as in Matlab - EF
+
+2006-12-09 Added linewidth kwarg to bar and barh; fixed arg
+           checking bugs - EF
+
+2006-12-07 Made pcolormesh argument handling match pcolor;
+           fixed kwarg handling problem noted by Pierre GM - EF
+
+2006-12-06 Made pcolor support vector X and/or Y instead of
+           requiring 2-D arrays - EF
+
+2006-12-05 Made the default Artist._transform None (rather than
+           invoking identity_transform for each artist only to have it
+           overridden later).  Use artist.get_transform() rather than
+           artist._transform, even in derived classes, so that the
+           default transform will be created lazily as needed - JDH
+
+2006-12-03 Added LogNorm to colors.py as illustrated by
+           examples/pcolor_log.py, based on suggestion by
+           Jim McDonald.  Colorbar modified to handle LogNorm.
+           Norms have additional "inverse" method. - EF
+
+2006-12-02 Changed class names in colors.py to match convention:
+           normalize -> Normalize, no_norm -> NoNorm.  Old names
+           are still available.
+           Changed __init__.py rc defaults to match those in
+           matplotlibrc - EF
+
+2006-11-22 Fixed bug in set_*lim that I had introduced on 11-15 - EF
+
+2006-11-22 Added examples/clippedline.py, which shows how to clip line
+           data based on view limits -- it also changes the marker
+           style when zoomed in - JDH
+
+2006-11-21 Some spy bug-fixes and added precision arg per Robert C's
+           suggestion  - JDH
+
+2006-11-19 Added semi-automatic docstring generation detailing all the
+           kwargs that functions take using the artist introspection
+           tools; eg 'help text now details the scatter kwargs
+           that control the Text properties  - JDH
+
+2006-11-17 Removed obsolete scatter_classic, leaving a stub to
+           raise NotImplementedError; same for pcolor_classic - EF
+
+2006-11-15 Removed obsolete pcolor_classic - EF
+
+2006-11-15 Fixed 1588908 reported by Russel Owen; factored
+           nonsingular method out of ticker.py, put it into
+           transforms.py as a function, and used it in
+           set_xlim and set_ylim. - EF
+
+2006-11-14 Applied patch 1591716 by Ulf Larssen to fix a bug in
+           apply_aspect.  Modified and applied patch
+           1594894 by mdehoon to fix bugs and improve
+           formatting in lines.py. Applied patch 1573008
+           by Greg Willden to make psd etc. plot full frequency
+           range for complex inputs. - EF
+
+2006-11-14 Improved the ability of the colorbar to track
+           changes in corresponding image, pcolor, or
+           contourf. - EF
+
+2006-11-11 Fixed bug that broke Numeric compatibility;
+           added support for alpha to colorbar.  The
+           alpha information is taken from the mappable
+           object, not specified as a kwarg. - EF
+
+2006-11-05 Added broken_barh function for makring a sequence of
+           horizontal bars broken by gaps -- see examples/broken_barh.py
+
+2006-11-05 Removed lineprops and markerprops from the Annotation code
+           and replaced them with an arrow configurable with kwarg
+           arrowprops.  See examples/annotation_demo.py - JDH
+
+2006-11-02 Fixed a pylab subplot bug that was causing axes to be
+           deleted with hspace or wspace equals zero in
+           subplots_adjust - JDH
+
 2006-10-31 Applied axes3d patch 1587359
            http://sourceforge.net/tracker/index.php?func=detail&aid=1587359&group_id=80706&atid=560722
            JDH

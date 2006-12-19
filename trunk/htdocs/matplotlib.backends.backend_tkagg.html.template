@@ -1038,9 +1038,6 @@ Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2
 
 <dl><dt><a name="NavigationToolbar2TkAgg-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="NavigationToolbar2TkAgg-nonsingular"><strong>nonsingular</strong></a>(self, x0, x1)</dt><dd><tt>Desperate&nbsp;hack&nbsp;to&nbsp;prevent&nbsp;crashes&nbsp;when&nbsp;button-3&nbsp;panning&nbsp;with<br>
-axis('image')&nbsp;in&nbsp;effect.</tt></dd></dl>
-
 <dl><dt><a name="NavigationToolbar2TkAgg-pan"><strong>pan</strong></a>(self, *args)</dt><dd><tt>Activate&nbsp;the&nbsp;pan/zoom&nbsp;tool.&nbsp;pan&nbsp;with&nbsp;left&nbsp;button,&nbsp;zoom&nbsp;with&nbsp;right</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2TkAgg-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
@@ -1773,6 +1770,6 @@ interactive&nbsp;mode&nbsp;to&nbsp;True,&nbsp;as&nbsp;detailed&nbsp;on<br>
 <strong>cursord</strong> = {0: 'hand2', 1: 'arrow', 2: 'tcross', 3: 'fleur'}<br>
 <strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
 @footer@

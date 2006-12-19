@@ -196,8 +196,6 @@ Methods inherited from <a href="matplotlib.ticker.html#MaxNLocator">MaxNLocator<
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
-<dl><dt><a name="AutoLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="AutoLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="AutoLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -294,8 +292,6 @@ Methods defined here:<br>
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 <dl><dt><a name="FixedLocator-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>autoscale&nbsp;the&nbsp;view&nbsp;limits</tt></dd></dl>
-
-<dl><dt><a name="FixedLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
 
 <dl><dt><a name="FixedLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
@@ -478,8 +474,6 @@ Methods defined here:<br>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 <dl><dt><a name="IndexLocator-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>autoscale&nbsp;the&nbsp;view&nbsp;limits</tt></dd></dl>
 
-<dl><dt><a name="IndexLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="IndexLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="IndexLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -529,8 +523,6 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
-<dl><dt><a name="LinearLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="LinearLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="LinearLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -568,8 +560,6 @@ limits<br>&nbsp;</tt></td></tr>
 <dl><dt><a name="Locator-__call__"><strong>__call__</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;locations&nbsp;of&nbsp;the&nbsp;ticks</tt></dd></dl>
 
 <dl><dt><a name="Locator-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>autoscale&nbsp;the&nbsp;view&nbsp;limits</tt></dd></dl>
-
-<dl><dt><a name="Locator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
 
 <dl><dt><a name="Locator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
@@ -807,8 +797,6 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
-<dl><dt><a name="LogLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="LogLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="LogLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -855,8 +843,6 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
-<dl><dt><a name="MaxNLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="MaxNLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="MaxNLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -903,8 +889,6 @@ contain&nbsp;the&nbsp;data</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
-<dl><dt><a name="MultipleLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="MultipleLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="MultipleLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -993,8 +977,6 @@ Methods defined here:<br>
 Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 <dl><dt><a name="NullLocator-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>autoscale&nbsp;the&nbsp;view&nbsp;limits</tt></dd></dl>
 
-<dl><dt><a name="NullLocator-nonsingular"><strong>nonsingular</strong></a>(self, vmin, vmax, expander<font color="#909090">=0.001</font>, tiny<font color="#909090">=9.9999999999999995e-07</font>)</dt></dl>
-
 <dl><dt><a name="NullLocator-pan"><strong>pan</strong></a>(self, numsteps)</dt><dd><tt>Pan&nbsp;numticks&nbsp;(can&nbsp;be&nbsp;positive&nbsp;or&nbsp;negative)</tt></dd></dl>
 
 <dl><dt><a name="NullLocator-refresh"><strong>refresh</strong></a>(self)</dt><dd><tt>refresh&nbsp;internal&nbsp;information&nbsp;based&nbsp;on&nbsp;current&nbsp;lim</tt></dd></dl>
@@ -1047,6 +1029,15 @@ Methods defined here:<br>
 <dl><dt><a name="ScalarFormatter-pprint_val"><strong>pprint_val</strong></a>(self, x)</dt></dl>
 
 <dl><dt><a name="ScalarFormatter-set_locs"><strong>set_locs</strong></a>(self, locs)</dt><dd><tt>set&nbsp;the&nbsp;locations&nbsp;of&nbsp;the&nbsp;ticks</tt></dd></dl>
+
+<dl><dt><a name="ScalarFormatter-set_powerlimits"><strong>set_powerlimits</strong></a>(self, lims)</dt><dd><tt>Sets&nbsp;size&nbsp;thresholds&nbsp;for&nbsp;scientific&nbsp;notation.<br>
+&nbsp;<br>
+e.g.&nbsp;xaxis.<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>((-3,&nbsp;4))&nbsp;sets&nbsp;the&nbsp;default&nbsp;in<br>
+which&nbsp;scientific&nbsp;notation&nbsp;is&nbsp;used&nbsp;for&nbsp;numbers&nbsp;less&nbsp;than<br>
+1e-3&nbsp;or&nbsp;greater&nbsp;than&nbsp;1e4.<br>
+See&nbsp;also&nbsp;<a href="#ScalarFormatter-set_scientific">set_scientific</a>().</tt></dd></dl>
+
+<dl><dt><a name="ScalarFormatter-set_scientific"><strong>set_scientific</strong></a>(self, b)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;to&nbsp;turn&nbsp;scientific&nbsp;notation&nbsp;on&nbsp;or&nbsp;off;&nbsp;see&nbsp;also&nbsp;<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>()</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatter">Formatter</a>:<br>

@@ -2631,9 +2631,6 @@ Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2
 
 <dl><dt><a name="NavigationToolbar2QTAgg-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="NavigationToolbar2QTAgg-nonsingular"><strong>nonsingular</strong></a>(self, x0, x1)</dt><dd><tt>Desperate&nbsp;hack&nbsp;to&nbsp;prevent&nbsp;crashes&nbsp;when&nbsp;button-3&nbsp;panning&nbsp;with<br>
-axis('image')&nbsp;in&nbsp;effect.</tt></dd></dl>
-
 <dl><dt><a name="NavigationToolbar2QTAgg-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2QTAgg-press_pan"><strong>press_pan</strong></a>(self, event)</dt><dd><tt>the&nbsp;press&nbsp;mouse&nbsp;button&nbsp;in&nbsp;pan/zoom&nbsp;mode&nbsp;callback</tt></dd></dl>

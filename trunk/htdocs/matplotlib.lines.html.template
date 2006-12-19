@@ -15,10 +15,11 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.agg.html">matplotlib.agg</a><br>
-<a href="matplotlib.numerix.ma.html">matplotlib.numerix.ma</a><br>
-</td><td width="25%" valign=top><a href="math.html">math</a><br>
-<a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+<a href="matplotlib.artist.html">matplotlib.artist</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.numerix.ma.html">matplotlib.numerix.ma</a><br>
+<a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="warnings.html">warnings</a><br>
 </td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -42,18 +43,36 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>xdata&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;x&nbsp;data<br>
-ydata&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;y&nbsp;data<br>
-linewidth&nbsp;is&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;line&nbsp;in&nbsp;points<br>
-linestyle&nbsp;is&nbsp;one&nbsp;of&nbsp;lineStyles<br>
-marker&nbsp;is&nbsp;one&nbsp;of&nbsp;lineMarkers&nbsp;or&nbsp;None<br>
-markersize&nbsp;is&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;marker&nbsp;in&nbsp;points<br>
-markeredgecolor&nbsp;&nbsp;and&nbsp;markerfacecolor&nbsp;can&nbsp;be&nbsp;any&nbsp;color&nbsp;arg<br>
-markeredgewidth&nbsp;is&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;markter&nbsp;edge&nbsp;in&nbsp;points<br>
-dash_capstyle&nbsp;set&nbsp;the&nbsp;capstyle&nbsp;for&nbsp;dashed&nbsp;line<br>
-solid_capstyle&nbsp;set&nbsp;the&nbsp;capstyle&nbsp;for&nbsp;solid&nbsp;line<br>
-dash_joinstyle&nbsp;set&nbsp;the&nbsp;joinstyle&nbsp;for&nbsp;dashed&nbsp;line<br>
-solid_joinstyle&nbsp;set&nbsp;the&nbsp;joinstyle&nbsp;for&nbsp;solid&nbsp;line</tt></dd></dl>
+<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Initialize&nbsp;the&nbsp;line&nbsp;instance<br>
+&nbsp;<br>
+The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
+&nbsp;&nbsp;alpha:&nbsp;float<br>
+&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
+&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;color&nbsp;or&nbsp;c:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;dash_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']<br>
+&nbsp;&nbsp;dash_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
+&nbsp;&nbsp;dashes:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;data:&nbsp;(array&nbsp;xdata,&nbsp;array&nbsp;ydata)<br>
+&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
+&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
+&nbsp;&nbsp;linestyle&nbsp;or&nbsp;ls:&nbsp;[&nbsp;'-'&nbsp;|&nbsp;'--'&nbsp;|&nbsp;'-.'&nbsp;|&nbsp;':'&nbsp;|&nbsp;'steps'&nbsp;|&nbsp;'None'&nbsp;|&nbsp;'&nbsp;'&nbsp;|&nbsp;''&nbsp;]<br>
+&nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;marker:&nbsp;[&nbsp;'+'&nbsp;|&nbsp;','&nbsp;|&nbsp;'.'&nbsp;|&nbsp;'1'&nbsp;|&nbsp;'2'&nbsp;|&nbsp;'3'&nbsp;|&nbsp;'4'<br>
+&nbsp;&nbsp;markeredgecolor&nbsp;or&nbsp;mec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;markeredgewidth&nbsp;or&nbsp;mew:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;markerfacecolor&nbsp;or&nbsp;mfc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;markersize&nbsp;or&nbsp;ms:&nbsp;float<br>
+&nbsp;&nbsp;solid_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;&nbsp;'projecting']<br>
+&nbsp;&nbsp;solid_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
+&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
+&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;xdata:&nbsp;array<br>
+&nbsp;&nbsp;ydata:&nbsp;array<br>
+&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="Line2D-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -117,7 +136,7 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_color"><strong>set_color</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;line<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_dash_capstyle"><strong>set_dash_capstyle</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;cap&nbsp;style&nbsp;for&nbsp;dashed&nbsp;linestyles<br>
 ACCEPTS:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']</tt></dd></dl>
@@ -155,7 +174,7 @@ ACCEPTS:&nbsp;[&nbsp;'+'&nbsp;|&nbsp;','&nbsp;|&nbsp;'.'&nbsp;|&nbsp;'1'&nbsp;|&
 
 <dl><dt><a name="Line2D-set_markeredgecolor"><strong>set_markeredgecolor</strong></a>(self, ec)</dt><dd><tt>Set&nbsp;the&nbsp;marker&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_markeredgewidth"><strong>set_markeredgewidth</strong></a>(self, ew)</dt><dd><tt>Set&nbsp;the&nbsp;marker&nbsp;edge&nbsp;width&nbsp;in&nbsp;points<br>
 &nbsp;<br>
@@ -163,7 +182,7 @@ ACCEPTS:&nbsp;float&nbsp;value&nbsp;in&nbsp;points</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_markerfacecolor"><strong>set_markerfacecolor</strong></a>(self, fc)</dt><dd><tt>Set&nbsp;the&nbsp;marker&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_markersize"><strong>set_markersize</strong></a>(self, sz)</dt><dd><tt>Set&nbsp;the&nbsp;marker&nbsp;size&nbsp;in&nbsp;points<br>
 &nbsp;<br>
@@ -353,7 +372,7 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}<br>
 <strong>logical_and</strong> = &lt;ufunc 'logical_and'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
 @footer@

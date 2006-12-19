@@ -175,7 +175,7 @@ Methods inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (136664752)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (136664744)&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
@@ -808,7 +808,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#FileChooserDialog">gtk.FileChooserDialog</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkFileChooserDialog (136725528)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkFileChooserDialog (136725520)&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Dialog">gtk.Dialog</a>:<br>
@@ -1798,7 +1798,7 @@ Methods inherited from <a href="gtk.html#FileSelection">gtk.FileSelection</a>:<b
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#FileSelection">gtk.FileSelection</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkFileSelection (136725408)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkFileSelection (136725400)&gt;</dl>
 
 <dl><dt><strong>action_area</strong> = &lt;attribute 'action_area' of 'gtk.FileSelection' objects&gt;</dl>
 
@@ -2792,7 +2792,7 @@ Methods inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (136667240)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (136667232)&gt;</dl>
 
 <dl><dt><strong>do_orientation_changed</strong> = &lt;built-in method do_orientation_changed of type object&gt;</dl>
 
@@ -3419,9 +3419,6 @@ Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2
 
 <dl><dt><a name="NavigationToolbar2GTK-mouse_move"><strong>mouse_move</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="NavigationToolbar2GTK-nonsingular"><strong>nonsingular</strong></a>(self, x0, x1)</dt><dd><tt>Desperate&nbsp;hack&nbsp;to&nbsp;prevent&nbsp;crashes&nbsp;when&nbsp;button-3&nbsp;panning&nbsp;with<br>
-axis('image')&nbsp;in&nbsp;effect.</tt></dd></dl>
-
 <dl><dt><a name="NavigationToolbar2GTK-pan"><strong>pan</strong></a>(self, *args)</dt><dd><tt>Activate&nbsp;the&nbsp;pan/zoom&nbsp;tool.&nbsp;pan&nbsp;with&nbsp;left&nbsp;button,&nbsp;zoom&nbsp;with&nbsp;right</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2GTK-press"><strong>press</strong></a>(self, event)</dt><dd><tt>this&nbsp;will&nbsp;be&nbsp;called&nbsp;whenver&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
@@ -3512,7 +3509,7 @@ Methods inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (136667240)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (136667232)&gt;</dl>
 
 <dl><dt><strong>do_orientation_changed</strong> = &lt;built-in method do_orientation_changed of type object&gt;</dl>
 

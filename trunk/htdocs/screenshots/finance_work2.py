@@ -23,7 +23,7 @@ from matplotlib.finance import candlestick2, plot_day_summary2, \
 from pylab import *
 
 rcParams['timezone'] = 'US/Eastern'
-rc('grid', color=0.75, linestyle='-', linewidth=0.5)
+rc('grid', color='0.75', linestyle='-', linewidth=0.5)
 
 
 

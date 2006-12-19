@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.dev3370)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.1.dev3432)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/numerix/__init__.py">/usr/lib/python2.4/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
@@ -126,7 +126,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>UnsignedInt32</strong> = 'I'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.0.dev3370'<br>
+<strong>__version__</strong> = '1.0.1.dev3432'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -179,7 +179,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'large', 'backend': 'GTKAgg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>
@@ -192,6 +192,6 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;<br>
-<strong>version</strong> = 'numpy 1.0.dev3370'<br>
+<strong>version</strong> = 'numpy 1.0.1.dev3432'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@
