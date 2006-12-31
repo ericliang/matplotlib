@@ -40,7 +40,7 @@ To build the matplotlib users guide, you will need to
     You will need a working version of "dot", from the graphiviz
     suite.  To generate the dot graphs
 
-    > make dot
+    > make graphs
 
     You will also need the ImageMagick convert tool to conver the dot
     ps output to PNG

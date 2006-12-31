@@ -1,3 +1,5 @@
+from matplotlib import rcParams
+rcParams['ps.useafm']=False
 from pylab import *
 
 subplot(111, axisbg='w')

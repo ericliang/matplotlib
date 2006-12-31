@@ -25,7 +25,7 @@ o.draw_rectangle(gc, face, 10, 50, 100, 200)
 # draw a translucent ellipse
 rgb = (0,0,1)
 gc.set_alpha(0.5)
-o.draw_arc(gc, rgb,  100, 100, 100, 100, 360, 360)
+o.draw_arc(gc, rgb,  100, 100, 100, 100, 360, 360, 0)
 
 # draw a dashed line
 gc.set_dashes(0, [5, 10])

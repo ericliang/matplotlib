@@ -1,3 +1,5 @@
+from matplotlib import rcParams
+rcParams['ps.useafm']=False
 # implement the example graphs/integral from pyx
 from pylab import *
 from matplotlib.patches import Polygon

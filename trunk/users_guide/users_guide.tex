@@ -7,15 +7,18 @@
 \usepackage{fullpage}
 \usepackage{amssymb}
 \usepackage{verbatimfiles}
-%\usepackage[dvips]{hyperref}
+\usepackage{url}
+\usepackage[width=0.75\textwidth]{caption}
 
 \usepackage{ae,aecompl}
 \usepackage[bookmarks,colorlinks=true]{hyperref}
 \usepackage{pslatex}
 %\usepackage{html}
 
+\definecolor{lightgray}{gray}{0.9}
+
 \title{The Matplotlib User's Guide}
-\author{John Hunter}
+\author{John Hunter\\and\\Darren Dale}
 \begin{document}
 \lstset{
   language=Python,
@@ -23,7 +26,9 @@
   commentstyle=\color{blue},
   stringstyle=\ttfamily,
   showstringspaces=false,
-%  frame=single, 
+  backgroundcolor=\color{lightgray},
+  frame=single, 
+  framerule=0pt,
   emph = {axes, axis, bar, cla, clf, clim, close, cohere, colorbar,
     colors, csd, draw, errorbar, figimage, figlegend, figtext, figure,
     fill, gca, gcf, gci, get, get_current_fig_manager,
@@ -47,7 +52,7 @@
 \end{center}
 \end{figure}}
 
-\newcommand{\matlab}[0]{matlab{\texttrademark}}
+\newcommand{\matlab}[0]{MATLAB{\texttrademark}}
 \newcommand{\fname}[1]{{\tt #1}}
 \newcommand{\func}[1]{{\tt #1}}
 \newcommand{\class}[1]{{\tt #1}}
@@ -72,24 +77,24 @@
 
 matplotlib is a library for making 2D plots of arrays in python.
 Although it has its origins in emulating the \matlab\ graphics
-commands, it does not require matlab, and can be used in a pythonic,
+commands, it does not require \matlab, and can be used in a pythonic,
 object oriented way.  Although matplotlib is written primarily in pure
-python, it makes heavy use of Numeric/numarray and other extension
+python, it makes heavy use of {NumPy} and other extension
 code to provide good performance even for large arrays.
 
 matplotlib is designed with the philosophy that you should be able to
 create simple plots with just a few commands, or just one!  If you
 want to see a histogram of your data, you shouldn't need to
 instantiate objects, call methods, set properties, and so it; it
-should just work.  
+should just work.
 
-For years, I used to use matlab exclusively for data analysis and
-visualization.  matlab excels at making nice looking plots easy.  When
+For years, I used to use \matlab\ exclusively for data analysis and
+visualization.  \matlab\ excels at making nice looking plots easy.  When
 I began working with EEG data, I found that I needed to write
 applications to interact with my data, and developed and EEG analysis
-application in matlab.  As the application grew in complexity,
+application in \matlab.  As the application grew in complexity,
 interacting with databases, http servers, manipulating complex data
-structures, I began to strain against the limitations of matlab as a
+structures, I began to strain against the limitations of \matlab\ as a
 programming language, and decided to start over in python.  python
 more than makes up for all of matlab's deficiencies as a programming
 language, but I was having difficulty finding a 2D plotting package
@@ -118,9 +123,9 @@ requirements:
 \noindent Finding no package that suited me just right, I did what any
 self-respecting python programmer would do: rolled up my sleeves and
 dived in.  Not having any real experience with computer graphics, I
-decided to emulate matlab's plotting capabilities because that is
-something matlab does very well.  This had the added advantage that
-many people have a lot of matlab experience, and thus they can quickly
+decided to emulate \matlab's plotting capabilities because that is
+something \matlab\ does very well.  This had the added advantage that
+many people have a lot of \matlab\ experience, and thus they can quickly
 get up to steam plotting in python.  From a developer's perspective,
 having a fixed user interface (the pylab interface) has
 been very useful, because the guts of the code base can be redesigned
@@ -128,19 +133,20 @@ without affecting user code.
 
 The matplotlib code is conceptually divided into three parts: the
 \textit{pylab interface} is the set of functions provided by
-\mpldoc{matplotlib.pylab} which allow the user to create plots with code quite
-similar to matlab figure generating code.  The \textit{matplotlib
-  frontend} or \textit{matplotlib API} is the set of classes that do
-the heavy lifting, creating and managing figures, text, lines, plots
-and so on.  This is an abstract interface that knows nothing about
-output.  The \textit{backends} are device dependent drawing devices,
-aka renderers, that transform the frontend representation to hardcopy
-or a display device.  Example backends: PS creates postscript
-hardcopy, SVG creates scalar vector graphics hardcopy, Agg creates PNG
-output using the high quality antigrain library that ships with
-matplotlib - \url{http://antigrain.com}, GTK embeds matplotlib in a
-GTK application, GTKAgg uses the antigrain renderer to create a figure
-and embed it a GTK application, and so on for WX, Tkinter, FLTK\dots.
+\mpldoc{matplotlib.pylab} which allow the user to create plots with 
+code quite similar to \matlab\ figure generating code.  The 
+\textit{matplotlib frontend} or \textit{matplotlib API} is the set of 
+classes that do the heavy lifting, creating and managing figures, text, 
+lines, plots and so on.  This is an abstract interface that knows 
+nothing about output.  The \textit{backends} are device dependent 
+drawing devices, aka renderers, that transform the frontend 
+representation to hardcopy or a display device.  Example backends: PS 
+creates postscript hardcopy, SVG creates scalar vector graphics 
+hardcopy, Agg creates PNG output using the high quality antigrain 
+library that ships with matplotlib - \url{http://antigrain.com}, GTK 
+embeds matplotlib in a GTK application, GTKAgg uses the antigrain 
+renderer to create a figure and embed it a GTK application, and so on 
+for WX, Tkinter, FLTK\dots.
 
 matplotlib is used by many people in many different contexts.  Some
 people want to automatically generate postscript files to send to a
@@ -152,37 +158,32 @@ EEG application that runs on windows, linux and OS~X.
 
 Because there are so many ways people want to use a plotting library,
 there is a certain amount of complexity inherent in configuring the
-library so that it will work naturally the way you want it to.  To
-manage this, a number of choices must be made when compiling and
-running matplotlib: do you want to use it in a graphical user
-interface (GUI) or just to generate hardcopy; which array package will
-you use; do you want to work interactively from the python shell?  
+library so that it will work naturally the way you want it to.  Before 
+diving into these details, let's first explore matplotlib's simplicity 
+by comparing a typical matplotlib script with its analog in \matlab.
 
-Most of this chapter will explain these options and how to configure
-them.  Before diving into these details, let's take a detour comparing
-a typical matplotlib script with its analog in matlab.
+{--- JDH}
 
-\section{Migrating from matlab}
+\section{Migrating from \matlab}
 \label{sec:migrating}
 
 Using matplotlib should come naturally if you have ever plotted with
-matlab, and should be fairly straightforward if you haven't.  Like all
+\matlab\, and should be fairly straightforward if you haven't.  Like all
 interpreted languages used for serious number crunching, python has an
-extension module for processing numeric arrays.  Numerical python has
-been around since the early days, and already comes with many matlab
-compatible analysis functions, which matplotlib extends.  The example
-code below shows two complete scripts: on the left hand side is python
-with matplotlib, and on the right is matlab.  
+extension module for processing numeric arrays.  NumPy comes with many 
+\matlab-compatible analysis functions, which matplotlib extends.  The 
+example code below shows two complete scripts: on the left hand side is 
+python with matplotlib, and on the right is \matlab.  
 
 \fig{4in}{figures/psd_matlab}{Colored noise signal and power spectrum
-  generated with matlab as shown in Listing~\ref{lst:versus_matlab}.
+  generated with \matlab\ as shown in Listing~\ref{lst:versus_matlab}.
   Compare with matplotlib in Figure~\ref{fig:psd_py}.}{fig:psd_matlab}
 
 Both scripts do the same thing: generate a white noise vector,
 convolve it with an exponential function, add it to a sine wave, plot
 the signal in one subplot and plot the power spectrum in another.
 
-\begin{lstlisting}[caption={matplotlib and matlab}, label=lst:versus_matlab]
+\begin{lstlisting}[caption={matplotlib and \matlab}, label=lst:versus_matlab]
 # python                               % matlab
 from pylab import *                    % no import necessary
 
@@ -201,62 +202,444 @@ subplot(212)                           subplot(212)
 psd(s, 512, 1/dt)                      psd(s, 512, 1/dt)
 \end{lstlisting}
 
-The major differences are 1) Numeric has a functions for creating
-arrays (\func{arange} above) whereas matlab has the handy notation
-\code{[0:dt:10]}, 2) python uses square brackets rather than
+The major differences are 1) NumPy has a function for creating
+arrays (\func{arange} above) whereas \matlab\ has the handy notation
+\code{[0:dt:10]}, 2) Python uses square brackets rather than
 parentheses for array indexing, and there are some small differences
-in how do array lengths, sizes, and indexing.  But the differences are
-minute compared to the similarities: 1) matlab and Numeric both do
+in how to do array lengths, sizes, and indexing.  But the differences are
+minute compared to the similarities: 1) \matlab\ and NumPy both do
 array processing and have a variety of functions that efficiently
 operate on arrays and scalars, 2) moderately sophisticated signal
 processing (white noise, convolution, power spectra) is achieved in
 only a few lines of clear code and 3) plots are simple, intuitive and
-attractive (compare  Figures~\ref{fig:psd_matlab} and Figures~\ref{fig:psd_py}).
+attractive (compare  Figures~\ref{fig:psd_matlab} and 
+Figures~\ref{fig:psd_py}).
 
 
 \fig{4in}{figures/psd_py}{Colored noise signal and power spectrum
   generated with python matplotlib as shown in
-  Listing~\ref{lst:versus_matlab}.  Compare with matlab in
+  Listing~\ref{lst:versus_matlab}.  Compare with \matlab\ in
   Figure~\ref{fig:psd_matlab}.  Note that the waveforms are not
   identical because they were generated from random
   signals!}{fig:psd_py}
+
+Hopefully, this example will have instilled some confidence in those who 
+have previously worked with \matlab\ that migrating to Python is not too 
+daunting a task. However, this guide will not attempt to serve as an 
+introduction to Python itself, and therefore assumes you already have a 
+rudimentary knowledge of the language. For users who are new to Python, 
+we recommend getting accustomed to the language by experimenting with 
+some of the tutorials at
+\url{http://wiki.python.org/moin/BeginnersGuide/Programmers}.
+
+Finally, matplotlib does not intend to meet the needs of \matlab\ users 
+alone. Many matplotlib users previously worked with gnuplot, for example, 
+and have influenced matplotlib's features based on their previous 
+experience. Our goal is to provide a flexible, powerful library that is 
+capable of easily producing beautiful plots for scientists and engineers 
+who work with Python.
+
+\chapter{Installation and Setup}
+\label{ch:setup}
+
+\section{Installing}
+\label{sec:installing}
+
+Matplotlib is known to work on linux, unix, win32 and OS~X platforms.
+This chapter will begin with basic installation instructions to help new 
+users get going quickly. The suggested setup for matplotlib version 
+0.87.7 and later requires python 2.3 or later, NumPy 1.0 or 
+later and freetype.  To get the most out of matplotlib, you should also 
+install IPython and at least one of the GUI toolkits. We suggest using
+the Tk GUI toolkit if you are just getting started.
+
+\subsection{Quickstart on windows}
+
+If you don't already have python installed, you may want to consider
+using the enthought edition of python, which includes everything you 
+need to start plotting with matplotlib. Enthought's Python distribution
+also includes a lot of other goodies, like the wxPython GUI toolkit and 
+SciPy - see \url{http://www.enthought.com/python} .
+
+For standard Python installations, you should install NumPy before running
+the matplotlib installer.  The windows installer (*.exe) on the download 
+page contains everything else you need to get up and running. We highly 
+recommend  installing PyReadline and IPython as well, 
+(see \url{http://ipython.scipy.org}).
+
+There are many examples that are not included in the windows installer. 
+They can be found at 
+\url{http://matplotlib.sourceforge.net/matplotlib_examples_0.87.7.zip} .
+
+\subsection{Package managers: (rpms, apt, fink)}
+
+\subsubsection{RPMS}
+\label{sec:rpms}
+
+To build all the backends on a binary linux distro such as redhat, you
+need to install a number of the devel libs (and whatever dependencies
+they require), I suggest
+\begin{itemize}
+  
+\item matplotlib core: zlib, zlib-devel, libpng, libpng-devel,
+  freetype, freetype-devel, freetype-utils
+  
+\item gtk backend: gtk2-devel, gtk+-devel, pygtk2, glib-devel,
+  pygtk2-devel, gnome-libs-devel, pygtk2-libglade
+
+\item tk backend: tcl, tk, tkinter
+
+\item wx, wxagg backend.  The wxpython rpms.
+\end{itemize}
+
+\subsubsection{Debian and Ubuntu}
+\label{sec:debian}
+
+Vittorio Palmisano <\url{redclay@email.it}> maintails the debian
+packages at \url{http://mentors.debian.net}.  He provides the
+following instructions
+
+\begin{itemize}
+\item       add these lines to your /etc/apt/sources.list:
+\begin{verbatim}
+  deb http://anakonda.altervista.org/debian packages/
+  deb-src http://anakonda.altervista.org/debian sources/
+\end{verbatim}
+
+\item then run
+
+\begin{verbatim}
+  > apt-get update
+  > apt-get install python-matplotlib python-matplotlib-doc
+\end{verbatim}
+\end{itemize}
+
+Alternatively, Andrew Straw maintains an Apt Repository of 
+scientific Python packages:
+\begin{itemize}
+\item       add these lines to your /etc/apt/sources.list:
+\begin{verbatim}
+  deb http://debs.astraw.com/ dapper/
+  deb-src http://debs.astraw.com/ dapper/
+\end{verbatim}
+\end{itemize}
+
+\subsubsection{fink}
+\label{sec:fink}
+
+fink users should use Jeffrey Whitaker's matplotlib fink package,
+which includes support for the GTK, Tk, and WX GUI toolkits (see \url{http://fink.sourceforge.net/pdb/package.php/matplotlib-py23} or 
+\url{http://fink.sourceforge.net/pdb/package.php/matplotlib-py24}, or 
+\url{http://fink.sourceforge.net/pdb/package.php/matplotlib-py25}).
+
+\subsection{Compiling matplotlib}
+\label{sec:compilng}
+
+You will need to have recent versions of freetype (>= 2.1.7), libpng
+and zlib installed on your system.  If you are using a package
+manager, also make sure the devel versions of these packages are also
+installed (eg freetype-devel).
+
+If you want to use a GUI backend, you will need either Tkinter, pygtk, 
+PyQt, PyQt4 or wxpython installed on your system, from src or from a 
+package manager, including the devel packages.  You can choose which 
+backends to enable by setting the flags in setup.py, but the 'auto' flags 
+will work in most cases, as matplotlib tries to find a GUI and build 
+the backend accordingly.  If you know you don't want a particular backend 
+or extension, you can set that flag to \val{False}.
+  
+Most users will want to keep the setup.py default \code{BUILD\_AGG = 1}.  
+Exceptions to this are if you know you don't need a GUI (eg a web server) 
+or you only want to produce vector graphics like postscript, svg or pdf.
+  
+If you have installed prerequisites to nonstandard places and need to
+inform matplotlib where they are, edit setupext.py an add the base
+dirs to the 'basedir' dictionary entry for your sys.platform.  Eg, if
+the header to some required library is in
+\fname{/some/path/include/somheader.h}, put \fname{/some/path} in the
+basedir list for your platform.
+  
+Note that if you install matplotlib anywhere other than the default
+location, you will need to set the \code{MATPLOTLIBDATA} environment
+variable to point to the install base dir.  Eg, if you install
+matplotlib with \code{python setup.py build --prefix=/home/jdhunter}
+then set \code{MATPLOTLIBDATA} to \fname{/home/jdhunter/share/matplotlib}.
+
+\subsubsection{OS X}
+\label{sec:osx}
+
+All of the backends run on OS~X.  fink users consult the fink discussion 
+in section \ref{sec:fink}.  Another option is 
+\url{http://www.stecf.org/macosxscisoft} which packages many scientific 
+packages for python on OS~X, including matplotlib, although it is 
+designed for astronomical analysis.
+
+If you want to compile matplotlib yourself on OS~X, make sure you read the
+compiling instructions above.  You will need to install freetype2,
+libpng and zlib via fink or from src.  You will also need the base
+libraries for a given backend.  Eg, if you want to run TkAgg, you will
+need a python with Tkinter; if you want to use WxAgg, install
+wxpython.  See Section~\ref{sec:intro_backends} for a more comprehensive
+discussion of the various backend requirements.  Edit \fname{setup.py}
+to configure the backends you want to build as described above.
+
+Note when running a GUI backend in OS~X, you should launch your
+programs with pythonw rather than python, or you may get
+nonresponsive GUIs.
+
+\subsection{Trial Run}
+
+To test your matplotlib installation, run IPython in pylab mode, which
+includes special support for interactive use of matplotlib. Linux and Mac 
+users, run the following in a shell:
+\begin{verbatim}
+$ ipython -pylab
+\end{verbatim}
+Windows users can edit the ipython launch icon properties to include 
+the \code{-pylab} flag.
+
+IPython's pylab mode automatically imports from matplotlib, and prepares 
+the session for interactive plotting. At the command prompt 
+(\code{In [1]:}), run the following:
+\begin{lstlisting}
+plot([1,2,3])
+\end{lstlisting}
+A window should appear, which looks like figure \ref{fig:simple_plot_tkagg}. 
+(If you get errors instead of a plot window, you probably were missing one 
+of the packages required by matplotlib during installation.) Now that we 
+have demonstrated how easy it can be to get started, perhaps it is now safe 
+to explore the various options associated with installing and configuring
+matplotlib.
+
+\fig{3in}{figures/simple_plot_tkagg}{A simple plot shown in the TkAgg
+  graphical user interface.  Navigation controls shown below the
+  figure provide an easy way to pan and zoom around your figures, and
+  a save dialog allows you to save your figure after you have set the
+  pan and zoom.}{fig:simple_plot_tkagg}
+
+
+\section{Backends}
+\label{sec:intro_backends}
+
+The matplotlib backends are responsible for taking the figure
+representation and transferring this to a display device, either a
+hardcopy image (\fname{*.jpg}, \fname{*.png}, \fname{*.ps},
+\fname{*.svg}, etc) or a GUI window that you can interact with.  There
+are many GUIs for python: pygtk, wxpython, Tkinter, PyQT, pyfltk, and
+more, and matplotlib supports most of them.  
+
+In choosing your backend, the following considerations are important:
+
+\begin{itemize}
+\item What kind of output do you require?  Any matplotlib installation
+  can generate PS and SVG.  For other hardcopy formats, different
+  backends have different capabilities.  Agg can only generate png but
+  produces the highest quality output (antialiased, alpha).  The
+  native GTK and WX backends support many more image formats (JPG,
+  TIFF, \dots) but can only be used in GUI mode and produce lower
+  quality images.  The GUI hybrid backends (WXAgg, GTKAgg, Tkagg,
+  FLTKAgg, QtAgg, Qt4Agg) have the same limitations and capabilities 
+  as Agg.
+  
+\item Do you want to produce plots interactively from the python
+  shell?  Because most GUIs have a mainloop, they become unresponsive
+  to input outside of their mainloop once they are launched.  Thus you
+  often need to use a custom shell to work interactively with a GUI
+  application from the shell (pycrust for wx, PyShell for gtk).  A
+  notable exception is Tkinter, which can be controlled from a
+  standard python shell or ipython.  Fernando Perez, the author of
+  ipython, has written a pylab mode for ipython that lets you use WX, 
+  GTK, Qt, Qt4 or Tk interactively from the python shell.  If you want 
+  to work interactively with matplotlib, this is the recommended 
+  approach.
+
+\item What platform do you work most on?  Do you want to embed
+  matplotlib in an application that you distribute across platforms?
+  Do you need a GUI interface?  Each of the python GUIs work on all
+  major platforms, but some are easier than others to install.  Each
+  have different advantages: GTK is natural for linux and has
+  excellent looking widgets but is a tough install on OS~X.  Tkinter
+  is deployed with most python installations but has primitive looking
+  widgets.  wxpython has native widgets but can be difficult to
+  install.  \textit{Windows users note: the enthought edition of
+  python from \url{http://www.enthought.com/python} comes with Tkinter
+  and wxpython included}. Now that Qt-4 has been released under the 
+ GPL for windows, the Qt backend is a new alternative with excellent 
+ looking widgets.
+  
+\item What features do you need?  Some of the matplotlib features
+  including alpha blending, antialiasing, images and mathtext are not
+  ported to all backends.  Agg and the *Agg hybrids support all
+  matplotlib features (agg is a core matplotlib backend).  postscript,
+  native gtk and native wx do not support alpha or antialiasing.  svg
+  supports everything except mathtext (which will hopefully be 
+  supported soon).
+
+\item Do you need dynamic images such as animation?  The GUI backends
+  vary in their ability to support rapid updating of the image
+  canvas.  GTKAgg is currently the fastest backend for animation,
+  with FLTKAgg a close second.
+\end{itemize}
+
+Once you have decided on which backends you want to use, make sure
+you have installed the required GUI toolkits (and devel versions 
+if you are using a package manager).  Then install matplotlib and 
+edit your \fname{matplotlibrc} files to reflect these choices as 
+described in section \ref{sec:matplotlibrc}.
+
+\section{Integrated development environments}
+\label{sec:ides}
+
+If you work primarily in an integrated development environment such as
+idle, pycrust, SciTE, Pythonwin, you will probably want to set your
+default backend to be compatible with the GUI your IDE uses. See
+Table~\ref{tab:ides} for a summary of the various python IDEs and
+their matplotlib compatibility.\footnote{If you have experience with
+  these or other IDEs and matplotlib backends to help me finish this
+  table, please contact me or the matplotlib-devel mailing list.}
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|l|}\hline
+  IDE & GUI & Backends and Options\\\hline
+  idle & Tkinter & Works best with TkAgg if idle is launched with -n\\
+  pycrust & WX & Works best with WX/WXAgg\\
+  Scintilla and SciTE & GTK & Should work with GTK/GTKAgg backends but untested\\
+  Eric3, Eric4 & Qt, Qt4 & works with QtAgg, Qt4Agg\\
+  pythonwin & MFC & Unknown\\\hline
+
+  \end{tabular}
+  \caption{\label{tab:ides}python IDEs and matplotlib compatibility.
+  }
+\end{table}
+
+\section{Interactive}
+\label{sec:interactive}
+
+The recommended way to use matplotlib interactively from a shell is
+with IPython. IPython has a \code{-pylab} mode that detects your 
+matplotlibrc file and makes the right settings to run matplotlib 
+with your GUI of choice in interactive mode using threading. Ipython's
+pylab mode is compatible with the Tk, GTK, WX and Qt GUI toolkits.
+GTK users will need to make sure that they have compiled GTK with 
+threading for this to work.  Using ipython in pylab mode is 
+basically a nobrainer because it knows enough about matplotlib
+internals to make all the right settings for you internally.
+
+\begin{lstlisting}
+peds-pc311:~> ipython -pylab
+Python 2.3.3 (#2, Apr 13 2004, 17:41:29) 
+Type "copyright", "credits" or "license" for more information.
+
+IPython 0.6.5 -- An enhanced Interactive Python.
+?       -> Introduction to IPython's features.
+%magic  -> Information about IPython's 'magic' % functions.
+help    -> Python's own help system.
+object? -> Details about 'object'. ?object also works, ?? prints more.
+
+Welcome to pylab, a matplotlib-based Python environment.
+  help(matplotlib) -> generic matplotlib information.
+  help(matlab)     -> matlab-compatible commands from matplotlib.
+  help(plotting)   -> plotting commands.
+
+In[1]: plot( rand(20), rand(20), 'go' )
+\end{lstlisting}
+
+Note that you did not need to import any matplotlib names because in
+pylab mode ipython will import them for you.  ipython turns on
+interactive mode for you, and also provides a \code{run} command so
+you can run matplotlib scripts from the matplotlib shell and then
+interactively update your figure.  ipython will turn off interactive
+mode during a run command for efficiency, and then restore the
+interactive state at the end of the run.
+
+\begin{lstlisting}
+>>> cd python/projects/matplotlib/examples/
+/home/jdhunter/python/projects/matplotlib/examples
+>>> run simple_plot.py
+>>> title('a new title', color='r')
+\end{lstlisting}
+
+The pylab interface provides 4 commands that are useful for
+interactive control.  Note again that the interactive setting
+primarily controls whether the figure is redrawn with each plotting
+command.  \func{isinteractive} returns the interactive setting,
+\func{ion} turns interactive on, \func{ioff} turns it off, and
+\func{draw} forces a redraw of the entire figure.  Thus when working
+with a big figure in which drawing is expensive, you may want to turn
+matplotlib's interactive setting off temporarily to avoid the
+performance hit
+
+\begin{lstlisting}
+>>> run mybigfatfigure.py
+>>> ioff()      # turn updates off
+>>> title('now how much would you pay?')
+>>> xticklabels(fontsize=20, color='green')
+>>> draw()      # force a draw
+>>> savefig('alldone', dpi=300)
+>>> close()
+>>> ion()      # turn updates back on
+>>> plot(rand(20), mfc='g', mec='r', ms=40, mew=4, ls='--', lw=3)
+\end{lstlisting}
+
+If you are not using \code{ipython -pylab}, then by default, 
+matplotlib defers drawing until the end of the script because drawing 
+can be an expensive operation. Often you don't want to update the 
+plot every time a single property is changed, only once after all the 
+properties have changed.  But in interactive mode, eg from the 
+standard python shell, you usually do want to update the plot with
+every command, eg, after changing the xlabel or the marker style of a
+line.  To do this, you need to set \rc{interactive : True} in your
+configuration file; see Section~\ref{sec:matplotlibrc}.
+
+There are many python shells out there: the standard python shell,
+ipython, PyShell, pysh, pycrust.  Some of these are GUI dependent
+(PyShell/pycrust) and some are not (ipython, pysh).  As discussed in
+backends Section~\ref{sec:ides}, not all shells are compatible
+with all matplotlib backends because of GUI mainloop issues.  With a
+non-GUI python shell such as the standard python shell or
+pysh, the TkAgg backend is the best choice for interactive use.  Just
+set \rc{backend : TkAgg} and \rc{interactive : True} in your
+\fname{matplotlibrc} file and fire up python.  Then
+
+\begin{lstlisting}
+  # using matplotlib interactively from the python shell
+  >>> from pylab import *
+  >>> plot([1,2,3])
+  >>> xlabel('hi mom')
+\end{lstlisting}
+
+\noindent should work out of the box.  Note, in batch mode, ie when making
+figures from scripts, interactive mode can be slow since it redraws
+the figure with each command.  So you may want to think carefully
+before making this the default behavior.
 
 
 \section{Numerix}
 \label{sec:numerix}
 
-Numeric is a python module for efficiently processing arrays of
+Numeric is the original python module for efficiently processing arrays of
 numeric data.  While highly optimized for performance and very stable,
 some limitations in the design made it inefficient for very large
 arrays, and developers decided it was better to start with a new array
 package to solve some of these design problems and numarray was born. 
 In a sense, the numerical python community split into Numeric and 
-numarray camps, and eventually a third package was developed, based 
-on the Numeric code base, which incorporated the advances made in 
-numarray, and was called NumPy. NumPy is intended to be the successor 
-to both Numeric and numarray, and to reunite the numerical python 
-community. An array interface was developed in order to allow the three 
-array packages to play well together and to easy migration to NumPy.
+numarray user groups. Travis Oliphant, one of the maintainers of Numeric, 
+began work on a third package, based on the Numeric code base, which 
+incorporated the advances made in numarray, and was called NumPy. NumPy 
+is intended to be the successor to both Numeric and numarray, and to 
+reunite the numerical python community. An array interface was developed 
+in order to allow the three array packages to play well together and to 
+easy migration to NumPy. Numeric is no longer undergoing active 
+development, and the numarray release notes suggest users to switch to 
+Numpy.
 
 Matplotlib requires one of Numeric, numarray, or NumPy to operate.  If you
 have no experience with any of them, you are strongly advised to install
-one of the packages and read through some of the documentation before
-continuing, as this manual assumes you are familiar with one of them;
-see \url{http://www.numpy.scipy.org/} and
-\url{http://www.stsci.edu/resources/software_hardware/numarray}.
-
-Currently the python computing community is in a state of transition
-from Numeric and numarray to NumPy. SciPy, for example, is based on NumPy.
-The transition will take some time, in part because NumPy is rapidly maturing.
-Since the array packages all play well together, the intention is that matplotlib
-will depend on NumPy alone, once the package has matured.
-
-Fortunately, several Numeric/numarray/NumPy developers are codevelopers of
-matplotlib, giving matplotlib full Numeric, numarray and NumPy compatibility,
-thanks in large part to Todd Miller's matplotlib.numerix module and
-the numarray compatibility layer for extension code.  This allows you
-to choose between Numeric, numarray and NumPy at the prompt or in a config
-file.  Thus when you do
+Numpy and read through some of the documentation before continuing. The 
+\mpldoc{matplotlib.numerix} module, written by Todd Miller, allows you to 
+choose between Numeric, numarray and NumPy at the prompt or in a config 
+file. Thus when you do
 
 \begin{lstlisting}
 # import matplotlib and all the numerix functions
@@ -301,203 +684,8 @@ script with
 make this setting in their rc file using either \rc{numerix : Numeric}, 
 \rc{numerix : numarray}, or \rc{numerix : numpy}; see Section~\ref{sec:matplotlibrc}.
 
-
-\section{Backends}
-\label{sec:intro_backends}
-
-The matplotlib backends are responsible for taking the figure
-representation and transferring this to a display device, either a
-hardcopy image (\fname{*.jpg}, \fname{*.png}, \fname{*.ps},
-\fname{*.svg}, etc) or a GUI window that you can interact with.  There
-are many GUIs for python: pygtk, wxpython, Tkinter, PyQT, pyfltk, and
-more, and matplotlib supports most of them.  
-
-In choosing your backend, the following considerations are important
-
-\begin{itemize}
-\item What kind of output do you require?  Any matplotlib installation
-  can generate PS and SVG.  For other hardcopy formats, different
-  backends have different capabilities.  Agg can only generate png but
-  produces the highest quality output (antialiased, alpha).  The
-  native GTK and WX backends support many more image formats (JPG,
-  TIFF, \dots) but can only be used in GUI mode and produce lower
-  quality images.  The GUI hybrid backends (WXAgg, GTKAgg, Tkagg,
-  FLTKAgg) have the same limitations and capabilities as Agg.
-  
-\item Do you want to produce plots interactively from the python
-  shell?  Because most GUIs have a mainloop, they become unresponsive
-  to input outside of their mainloop once they are launched.  Thus you
-  often need to use a custom shell to work interactively with a GUI
-  application from the shell (pycrust for wx, PyShell for gtk).  A
-  notable exception is Tkinter, which can be controlled from a
-  standard python shell or ipython.  Fernando Perez, the author of
-  ipython, has written a pylab mode that lets you use WX, GTK, Qt or Tk
-  interactively from the python shell.  If you want to work
-  interactively with matplotlib, this is the recommended approach.
-
-\item What platform do you work most on?  Do you want to embed
-  matplotlib in an application that you distribute across platforms?
-  Do you need a GUI interface?  Each of the python GUIs work on all
-  major platforms, but some are easier than others to install.  Each
-  have different advantages: GTK is natural for linux and has
-  excellent looking widgets but is a tough install on OS~X.  Tkinter
-  is deployed with most python installations but has primitive looking
-  widgets.  wxpython has native widgets but can be difficult to
-  install.  \textit{Windows users note: the enthought edition of
-  python from \url{http://www.enthought.com/python} comes with Tkinter
-  and wxpython included}. Now that Qt-4 has been released under the 
- GPL for windows, the Qt backend is a new alternative with excellent 
- looking widgets.
-  
-\item What features do you need?  Some of the matplotlib features
-  including alpha blending, antialiasing, images and mathtext are not
-  ported to all backends.  Agg and the GUIAgg hybrids support all
-  matplotlib features (agg is a core matplotlib backend).  postscript,
-  native gtk and native wx do not support alpha or antialiasing.  svg
-  supports everything except mathtext (which will be added soon
-  hopefully).
-
-\item Do you need dynamic images such as animation?  The GUI backends
-  vary in their ability to support rapid updating of the image
-  canvas.  GTKAgg is currently the fastest backend for animation,
-  with FLTKAgg a close second.
-\end{itemize}
-
-Once you have decided on which backends you want to install, make sure
-you install the GUI required toolkits (and devel versions if you are
-using a package manager).  Then install matplotlib and edit your
-\fname{matplotlibrc} files to reflect these choices as described
-below.
-
-\section{Integrated development environments}
-\label{sec:ides}
-
-If you work primarily in an integrated development environment such as
-idle, pycrust, SciTE, Pythonwin, you will probably want to set your
-default backend to be compatible with the GUI your IDE uses. See
-Table~\ref{tab:ides} for a summary of the various python IDEs and
-their matplotlib compatibility.\footnote{If you have experience with
-  these or other IDEs and matplotlib backends to help me finish this
-  table, please contact me or the matplotlib-devel mailing list.}
-
-\begin{table}[htbp]
-  \centering
-  \begin{tabular}[t]{|l|l|l|}\hline
-  IDE & GUI & Backends and Options\\\hline
-  idle & Tkinter & Works best with TkAgg if idle is launched with -n\\
-  pycrust & WX & Works best with WX/WXAgg\\
-  Scintilla and SciTE & GTK & Should work with GTK/GTKAgg backends but untested\\
-  Eric3 & Qt & works with QtAgg, will work with Qt4Agg in the future\\
-  pythonwin & MFC & Unknown\\\hline
-
-  \end{tabular}
-  \caption{\label{tab:ides}python IDEs and matplotlib compatibility.
-  }
-\end{table}
-
-\section{Interactive}
-\label{sec:interactive}
-
-By default, matplotlib defers drawing until the end of the script
-because drawing can be an expensive operation, and in often you don't
-want to update the plot every time a single property is changed, only
-once after all the properties have changed.  But in interactive mode,
-eg from the python shell, you usually do want to update the plot with
-every command, eg, after changing the xlabel or the marker style of a
-line.  To do this, you need to set \rc{interactive : True} in your
-configuration file; see Section~\ref{sec:matplotlibrc}.
-
-There are many python shells out there: the standard python shell,
-ipython, PyShell, pysh, pycrust.  Some of these are GUI dependent
-(PyShell/pycrust) and some are not (ipython, pysh).  As discussed in
-backends Section~\ref{sec:intro_backends}, not all shells are compatible
-with all matplotlib backends because of GUI mainloop issues.  With a
-non-GUI python shell such as the standard python shell, ipython or
-pysh, the TkAgg backend is the best choice for interactive use.  Just
-set \rc{backend : TkAgg} and \rc{interactive : True} in your
-\fname{matplotlibrc}file and fire up python.  Then
-
-\begin{lstlisting}
-  # using matplotlib interactively from the python shell
-  >>> from pylab import *
-  >>> plot([1,2,3])
-  >>> xlabel('hi mom')
-\end{lstlisting}
-
-\noindent should work out of the box.  Note, in batch mode, ie when making
-figures from scripts, interactive mode can be slow since it redraws
-the figure with each command.  So you may want to think carefully
-before making this the default behavior.
-
-Unfortunately, due to the 'mainloop' cycle of GUI toolkits, it is not
-yet possible to use matplotlib from an arbitrary python shell with the
-other GUI backends.  You must use a custom python shell that runs the
-GUI is a separate thread.
-
-The recommended way to use matplotlib interactively from a shell is
-with ipython, which has an pylab
-mode that detects your matplotlib matplotlibrc file and makes the right settings
-to run matplotlib with your GUI of choice in interactive mode using
-threading.  gtk users will need to make sure that they have compiled
-gtk with threading for this to work.  Using ipython in pylab mode is
-basically a nobrainer because it knows enough about matplotlib
-internals to make all the right settings for you internally.
-
-\begin{lstlisting}
-peds-pc311:~> ipython -pylab
-Python 2.3.3 (#2, Apr 13 2004, 17:41:29) 
-Type "copyright", "credits" or "license" for more information.
-
-IPython 0.6.5 -- An enhanced Interactive Python.
-?       -> Introduction to IPython's features.
-%magic  -> Information about IPython's 'magic' % functions.
-help    -> Python's own help system.
-object? -> Details about 'object'. ?object also works, ?? prints more.
-
-Welcome to pylab, a matplotlib-based Python environment.
-  help(matplotlib) -> generic matplotlib information.
-  help(matlab)     -> matlab-compatible commands from matplotlib.
-  help(plotting)   -> plotting commands.
-
->>> plot( rand(20), rand(20), 'go' )
-\end{lstlisting}
-
-Note that you did not need to import any matplotlib names because in
-pylab mode ipython will import them for you.  ipython turns on
-interactive mode for you, and also provides a \code{run} command so
-you can run matplotlib scripts from the matplotlib shell and then
-interactively update your figure.  ipython will turn off interactive
-mode during a run command for efficiency, and then restore the
-interactive state at the end of the run.
-
-\begin{lstlisting}
->>> cd python/projects/matplotlib/examples/
-/home/jdhunter/python/projects/matplotlib/examples
->>> run simple_plot.py
->>> title('a new title', color='r')
-\end{lstlisting}
-
-The pylab interface provides 4 commands that are useful for
-interactive control.  Note again that the interactive setting
-primarily controls whether the figure is redrawn with each plotting
-command.  \func{isinteractive} returns the interactive setting,
-\func{ion} turns interactive on, \func{ioff} turns it off, and
-\func{draw} forces a redraw of the entire figure.  Thus when working
-with a big figure in which drawing is expensive, you may want to turn
-matplotlib's interactive setting off temporarily to avoid the
-performance hit
-
-\begin{lstlisting}
->>> run mybigfatfigure.py
->>> ioff()      # turn updates off
->>> title('now how much would you pay?')
->>> xticklabels(fontsize=20, color='green')
->>> draw()      # force a draw
->>> savefig('alldone', dpi=300)
->>> close()
->>> ion()      # turn updates back on
->>> plot(rand(20), mfc='g', mec='r', ms=40, mew=4, ls='--', lw=3)
-\end{lstlisting}
+Since the array packages all play well together, we expect that in the near 
+future, matplotlib will depend on NumPy alone.
 
 \section{Customization using \fname{matplotlibrc}}
 \label{sec:matplotlibrc}
@@ -515,8 +703,9 @@ C:\Python24\Lib\site-packages\matplotlib\mpl-data\matplotlibrc  # windows
 \end{verbatim}
 
 \noindent By default, the installer will overwrite the existing file in
-the install path, so if you want to preserve your's, please move it to the .matplotlib directory
-your HOME directory and set the environment variable if necessary.
+the install path, so if you want to preserve your changes, please move it to 
+the .matplotlib directory in your HOME directory (and set the HOME 
+environment variable if necessary).
 
 In the rc file, you can set your backend (Section~\ref{sec:intro_backends}),
 your numerix setting (Section~\ref{sec:numerix}), whether you'll be
@@ -587,163 +776,9 @@ matplotlib will search for an rc file in the following locations
 \end{itemize}
 
 
-\section{Installing}
-\label{sec:installing}
-
-matplotlib requires at a minimum python 2.3+, Numeric, numarray, or 
-NumPy and freetype.  To get the most out of matplotlib, you will want 
-to build some of the optional GUI and image extensions, discussed below.
-Matplotlib is known to work on linux, unix, win32 and OS~X platforms.
-
-\subsection{Compiling matplotlib}
-\label{sec:compilng}
-
-You will need to have recent versions of freetype (>= 2.1.7), libpng
-and zlib installed on your system.  If you are using a package
-manager, also make sure the devel versions of these packages are also
-installed (eg freetype-devel).
-  
-If you want to use a GUI backend, you will need either Tkinter, pygtk or 
-wxpython installed on your system, from src or from a package manager 
-including the devel packages.  You can choose which backends to enable 
-by setting the flags in setup.py, but the 'auto' flags will work in most 
-cases, as matplotlib tries to find a GUI and build the backend accordingly.  
-If you know you don't want a particular backend or extension, you can set 
-that flag to \val{False}.
-  
-Most users will want to set \code{BUILD\_AGG = 1} and one or more of
-the GUI backends to \val{True}.  Exceptions to this are if you know
-you don't need a GUI (eg a web server) or you only want to produce
-vector graphics.
-  
-If you have installed prerequisites to nonstandard places and need to
-inform matplotlib where they are, edit setupext.py an add the base
-dirs to the 'basedir' dictionary entry for your sys.platform.  Eg, if
-the header to some required library is in
-\fname{/some/path/include/somheader.h}, put \fname{/some/path} in the
-basedir list for your platform.
-  
-Note that if you install matplotlib anywhere other than the default
-location, you will need to set the \code{MATPLOTLIBDATA} environment
-variable to point to the install base dir.  Eg, if you install
-matplotlib with \code{python setup.py build --prefix=/home/jdhunter}
-then set \code{MATPLOTLIBDATA} to\\
-\fname{/home/jdhunter/share/matplotlib}.
- 
-    
-\subsection{Installing on windows}
-
-If you don't already have python installed, you may want to consider
-using the enthought edition of python, which has scipy, Numeric, numpy, 
-and wxpython, plus a lot of other goodies, preinstalled -
-\url{http://www.enthought.com/python} .  With the enthought edition of
-python + matplotlib installer, the following backends should work out
-of the box: agg, wx, wxagg, tkagg, ps and svg.
-
-For standard python installations, you will also need to install either 
-Numeric, numarray, or NumPy in addition to the matplotlib installer.
-matplotlib has a 'numerix' setting in the matplotlib rc file should make 
-sure this setting corresponds to your preferred array package; 
-Sections~\ref{sec:numerix} and \ref{sec:matplotlibrc}. With a standard 
-python + Numeric/numarray/NumPy + matplotlib, the following 
-backends should work on windows: agg, tkagg, ps, svg.  If you want 
-others, eg a wx, wxagg, gtk, gtkagg, qtagg or qt4agg, you'll
-need to install the requisite GUI toolkits.  This is fairly easy, as
-wxpython, pygtk, and PyQt4 come with windows friendly installers.  
-PyGTK includes an additional requirement of the GTK runtime. PyQt 
-requires the Qt library.
-
-All of the GUI backends run on windows, but TkAgg is probably the best
-for interactive use from the standard python shell or ipython.  The
-windows installer (*.exe) on the download page contains all the code
-you need to get up and running.  However, there are many examples that
-are not included in the windows installer.  If you want to try the
-many demos that come in the matplotlib src distribution, download the
-zip file and look in the examples subdir.
-
-\textbf{Important:} There are known conflicts with some of the
-backends with some python IDEs such as pycrust and idle.  If you want to
-use matplotlib from an IDE, please consult
-\url{http://matplotlib.sf.net/backends.html} for compatibility
-information.  You will have the greatest likelihood of success if you
-run the examples from the command shell or by double clicking on them,
-rather than from an IDE.  If you are interactively generating plots,
-your best bet is TkAgg from the standard python shell or ipython.
-
-\subsubsection{OS X}
-\label{sec:osx}
-
-All of the backends run on OS~X.  fink users consult the fink section
-below.  Another option is \url{http://www.stecf.org/macosxscisoft}
-which packages many scientific packages for python on OS~X, including
-matplotlib, although it is designed for astronomical analysis.
-
-If you want to compile matplotlib yourself on OS~X, make sure you read the
-compiling instructions above.  You will need to install freetype2,
-libpng and zlib via fink or from src.  You will also need the base
-libraries for a given backend.  Eg, if you want to run TkAgg, you will
-need a python with Tkinter; if you want to use WxAgg, install
-wxpython.  See Section~\ref{sec:intro_backends} for a more comprehensive
-discussion of the various backend requirements.  Edit \fname{setup.py}
-to configure the backends you want to build as described above.
-
-Note when running a GUI backend in OS~X, you should launch your
-programs with pythonw rather than python, or you may get
-nonresponsive GUIs.
-
-\subsection{Package managers: (rpms, apt, fink)}
-
-\subsubsection{RPMS}
-\label{sec:rpms}
-
-To build all the backends on a binary linux distro such as redhat, you
-need to install a number of the devel libs (and whatever dependencies
-they require), I suggest
-\begin{itemize}
-  
-\item matplotlib core: zlib, zlib-devel, libpng, libpng-devel,
-  freetype, freetype-devel, freetype-utils
-  
-\item gtk backend: gtk2-devel, gtk+-devel, pygtk2, glib-devel,
-  pygtk2-devel, gnome-libs-devel, pygtk2-libglade
-
-\item tk backend: tcl, tk, tkinter
-
-\item wx, wxagg backend.  The wxpython rpms.
-\end{itemize}
-
-\subsubsection{Debian}
-\label{sec:debian}
-
-Vittorio Palmisano <\url{redclay@email.it}> maintails the debian
-packages at \url{http://mentors.debian.net}.  He provides the
-following instructions
-
-\begin{itemize}
-\item       add these lines to your /etc/apt/sources.list:
-\begin{verbatim}
-  deb http://anakonda.altervista.org/debian packages/
-  deb-src http://anakonda.altervista.org/debian sources/
-\end{verbatim}
-
-\item then run
-
-\begin{verbatim}
-  > apt-get update
-  > apt-get install python-matplotlib python-matplotlib-doc
-\end{verbatim}
-\end{itemize}
-
-\subsubsection{fink}
-\label{sec:fink}
-
-fink users should use Jeffrey Whitaker's matplotlib fink package,
-which supports the GTK, TkAgg, GTKAgg, PS, WX, WXAgg and Agg backends
-- \url{http://fink.sourceforge.net/pdb/package.php/matplotlib-py23}.
-
 \subsection{Getting feedback from matplotlib}
 
-matplotlib uses a verbose setting, defined in the matplotlibrc file,
+matplotlib uses a verbose setting, defined in the matplotlibrc file
 to determine how much information to report. 
 
 \begin{verbatim}
@@ -791,22 +826,18 @@ from pylab import *
 \end{lstlisting}
 
 \noindent This import command brings in all of the matplotlib code
-needed to produce plots, the extra matlab compatible, non-plotting
+needed to produce plots, the extra \matlab\ compatible, non-plotting
 functions found in \mpldoc{matplotlib.mlab} and all of the
-matplotlib.numerix code needed to create and manipulate arrays.  The
-latter import depends on your \rc{numerix} setting in
-\fname{matplotlibrc}, as described in Sections~\ref{sec:numerix} and
-\ref{sec:matplotlibrc}; ie, when you import
-\mpldoc{pylab}, you will either get all of Numeric or all
-of numarray depending on your \rc{numerix} setting.
+matplotlib.numerix code needed to create and manipulate arrays.  When 
+you import \mpldoc{pylab}, you will get all of NumPy (or Numeric or 
+numarray depending on your \rc{numerix} setting).
 
 matplotlib is organized around figures and axes.  The figure contains
 an arbitrary number of axes, which can be placed anywhere in the
 figure you want, including over other axes.  You can directly create
 and manage your own figures and axes, but if you don't, matplotlib
 will try and do the right thing by automatically creating default
-figures and axes for you if you issue a plot command before creating a
-figure or axes. 
+figures and axes for you.
 
 There are two ways of working in the pylab interface: interactively or
 in script mode.  When working interactively, you want every plotting
@@ -822,8 +853,9 @@ figure will be redrawn with each command.  When \rc{interactive :
 assume you have set \rc{interactive : True} in your
 \fname{matplotlibrc} file and are working from an interactive python
 shell using a compatible backend.  Please make sure you have read and
-understood Sections~\ref{sec:matplotlibrc}, \ref{sec:intro_backends}
-and \ref{sec:ides} before trying these examples.
+understood Sections~\ref{sec:intro_backends}, \ref{sec:ides}, 
+\ref{sec:interactive} and \ref{sec:matplotlibrc}, before trying these 
+examples.
 
 \section{Simple plots}
 \label{sec:simple_plot}
@@ -838,12 +870,6 @@ Just about the simplest plot you can create is
 \noindent I have set my backend to \rc{backend : TkAgg}, which causes
 the plot in Figure~\ref{fig:simple_plot_tkagg} to appear, with
 navigation controls for interactive panning and zooming.
-
-\fig{3in}{figures/simple_plot_tkagg}{A simple plot shown in the TkAgg
-  graphical user interface.  Navigation controls shown below the
-  figure provide an easy way to pan and zoom around your figures, and
-  a save dialog allows you to save your figure after you have set the
-  pan and zoom.}{fig:simple_plot_tkagg}
 
 I can continue to decorate the plot with labels and titles
 
@@ -1183,9 +1209,9 @@ which will work with either \rc{numerix} rc setting.
 
 Since python is a programming language \textit{par excellence}, it is
 easy to process data in batch.  When I started the gradual transition
-from a full time matlab user to a full time python user, I began
+from a full time \matlab\ user to a full time python user, I began
 processing my data in python and saving the results to data files for
-plotting in matlab.  When that became too cumbersome, I decided to
+plotting in \matlab.  When that became too cumbersome, I decided to
 write matplotlib so I could have all the functionality I needed in one
 environment.  Here is a brief example showing how to iterate over
 several data files, named \fname{basename001.dat, basename002.dat,
@@ -1336,7 +1362,7 @@ to create the lower axes.  The last digit counts across the rows.
 create the right axes.  If the total number of axes exceeds single
 digits, use comma separated arguments to subplot.  For example, the
 lower right panel of a 3 x 4 grid of axes is created with
-\code{subplot(3,4,12)}.  matplotlib uses matlab style indexing in
+\code{subplot(3,4,12)}.  matplotlib uses \matlab\ style indexing in
 creating figures and axes, so \code{subplot(3,4,1)} is the first
 subplot, not \code{subplot(3,4,0)}.
 
@@ -1623,7 +1649,6 @@ free fonts.
 
 \subsubsection{Using mathtext}
 
-
 Any text element can use math text.  You need to use raw strings
 (preceed the quotes with an \code{r}), and surround the string text
 with dollar signs, as in \TeX.
@@ -1691,6 +1716,14 @@ Figure~\ref{fig:mathtext_demo}.
 label=lst:mathtext_demo]{code/mathtext_demo.py}
 
 
+\subsubsection{usetex}
+
+If you have \LaTeX, ghostscript, and dvipng installed on your computer, 
+matplotlib can use \LaTeX to perform all of the text layout in your 
+figures. To enable this option, set \code{text.usetex : True} in your 
+rc settings. For more information and examples, see 
+\url{http://www.scipy.org/Cookbook/Matplotlib/UsingTex} .
+
 
 \section{Images}
 \label{sec:images}
@@ -1727,9 +1760,9 @@ The following \carg{interpolation} schemes are available:
   sinc144, sinc256, sinc64, spline16, and spline36}.  The default
 interpolation method is given by the value of \rc{image.interpolation}
 in your \fname{matplotlibrc} file.  \carg{aspect} can be either
-\val{preserve} or \val{free} which will constrain the aspect ratio of
-the image or not, respectively.  The default aspect setting is given
-by the value of the rc parameter \rc{image.aspect}.
+\val{equal}, \val{auto}, or some number, which will constrain the 
+aspect ratio of the image.  The default aspect setting is given by 
+the value of the rc parameter \rc{image.aspect}.
 
 The full syntax of the \func{imshow} command is
 
@@ -1956,7 +1989,7 @@ bar method is
 \section{Spectral analysis}
 \label{sec:spectral}
 
-matplotlib provides a number of matlab compatible functions for
+matplotlib provides a number of \matlab\ compatible functions for
 computing and plotting spectral analysis results.  All of them are
 based on Welch's Averaged Periodogram Method \citep{BendatPiersol1986}
 using the numerix \code{fft} method for the fast fourier transforms.
@@ -1982,7 +2015,7 @@ provide the sampling frequency \carg{Fs}.
 
 Each of the segments will be detrended and windowed before the fft,
 according to the values of \carg{detrend} and \carg{window}.  Unlike
-matlab, in which these arguments are strings, in matplotlib they are
+\matlab, in which these arguments are strings, in matplotlib they are
 functions.  Several helper functions are provided in matplotlib.mlab
 for detrending and windowing: 
 
@@ -2248,10 +2281,12 @@ platform you run on.
   expanded, extra-expanded, ultra-expanded, wider, and narrower.  This
   property is not currently implemented.
   
-\item The \rc{font.size} property has 11 values: xx-small, x-small,
-  small, medium, large, x-large, xx-large, larger, smaller, length
-  (such as 12pt), and percentage.  larger and smaller are relative
-  values.  percentage is not yet implemented.
+\item The \rc{font.size} property is the default font size for text, 
+  given in pts. 12pt is the standard value. Special text sizes for 
+  tick labels, axes, labels, title, etc. can be defined relative to
+  \rc{font.size} using the following values: xx-small, x-small,
+  small, medium, large, x-large, xx-large, larger, or smaller. Special
+  text sizes can also be an absolute size, given in pts.
 
 \end{itemize}
 
@@ -2747,7 +2782,7 @@ the start of matplotlib provided considerable freedom to redesign the
 guts of the plotting library -- the object model can be totally
 revamped and the user interface remains fixed.
 
-The matplotlib code is divided conceptually into 3 parts: the matlab
+The matplotlib code is divided conceptually into 3 parts: the \matlab\
 interface, the matplotlib Artists, and the backend renderers.  The
 \textit{pylab interface} was covered in
 Chapter~\ref{cha:matlab_interface}.  This module
@@ -2965,7 +3000,7 @@ widget which can be drawn upon).  The figure canvas derives from
   \mpldoc{matplotlib.backend\_bases.FigureManagerBase}, which contains
   the figure canvas and figure window.  The attribute names are shown
   in lower case, and the backend dependent classes are shown in upper
-  case.  The standard attribute naming system allows the matlab
+  case.  The standard attribute naming system allows the \matlab\
   interface to make calls across backends to the figure canvas and
   figure.}{fig:manager}
   
@@ -3064,11 +3099,11 @@ updated; see Figure~\ref{fig:show}.
 \chapter{matplotlib source code license}
 \label{cha:license}
 
-All of the matplotlib src code is distributed under the Python
-Software Foundation (PSF) license, which permits commercial and
-noncommercial free use and redistribution as long as the conditions
-below are met.  The VERSION string below is replaced by the current
-matplotlib version number with each release.
+matplotlib is distributed under the Python Software Foundation (PSF) 
+license, which permits commercial and noncommercial free use and 
+redistribution as long as the conditions below are met.  The VERSION 
+string below is replaced by the current matplotlib version number 
+with each release.
 
 \begin{verbatim}
 LICENSE AGREEMENT FOR MATPLOTLIB VERSION
