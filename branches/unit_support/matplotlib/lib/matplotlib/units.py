@@ -42,19 +42,6 @@ class UnitsTagInterface:
        same Python object as the locator/formatter function may improve
        efficiency.
     """
-    def convert_to(self, unit):
-        """Converts the existing units object to the specified units object.
-           Parameters:
-             unit - unit of the desired type
-           Returns:
-             object converted to the requested units (should be of a type
-             that supports this interface)
-        """
-        raise NotImplemented
-    def get_value(self):
-        """Returns the quantities stripped of unit.
-        """
-        raise NotImplemented
     def convert_to_value(self, unit):
         """
            Converts the existing units object to the specified units
@@ -68,6 +55,18 @@ class UnitsTagInterface:
              values converted to the requested units
         """
         raise NotImplemented
+
+    def get_default_unit_tag(self):
+        """
+           Returns the default unit tag if not unit is specified.
+           This method will be invoked when no desired unit is
+           specified using xunits/yunits parameters.  The result
+           of querying this method is used to set xunits/yunits.
+           Returns:
+             default unit tag when no unit is specified
+        """
+        raise NotImplemented
+
     def get_unit_to_locator_map(self):
         """
            If a custom locators are desired, this method should return
@@ -77,6 +76,7 @@ class UnitsTagInterface:
            are used.
         """
         return None
+
     def get_unit_to_formatter_map(self):
         """
            If a custom formatters are desired, this method should return
@@ -176,6 +176,18 @@ class UnitsTagConversionInterface:
              values converted to the requested units
         """
         raise NotImplemented
+
+    def get_default_unit_tag(self, tagged_value):
+        """
+           Returns the default unit tag if not unit is specified.
+           This method will be invoked when no desired unit is
+           specified using xunits/yunits parameters.  The result
+           of querying this method is used to set xunits/yunits.
+           Returns:
+             default unit tag when no unit is specified
+        """
+        raise NotImplemented
+
     def get_unit_to_locator_map(self, tagged_value):
         """
            If a custom locators are desired, this method should return

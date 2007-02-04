@@ -213,7 +213,7 @@ class _process_plot_var_args:
         return marker in filled
 
 
-    def _plot_1_arg(self, y, **kwargs):
+    def _plot_1_arg(self, y, callback_fn=None, **kwargs):
         assert self.command == 'plot', 'fill needs at least 2 arguments'
         if self.count==0:
             color = self.firstColor
@@ -221,6 +221,9 @@ class _process_plot_var_args:
             color = self.colors[int(self.count % self.Ncolors)]
 
         assert(iterable(y))
+
+        if (callback_fn):
+            callback_fn(kwargs, ydata=y)
 
         try: N=max(y.shape)
         except AttributeError: N = len(y)
@@ -232,13 +235,16 @@ class _process_plot_var_args:
         self.count += 1
         return ret
 
-    def _plot_2_args(self, tup2, **kwargs):
+    def _plot_2_args(self, tup2, callback_fn=None, **kwargs):
         if is_string_like(tup2[1]):
 
             assert self.command == 'plot', 'fill needs at least 2 non-string arguments'
             y, fmt = tup2
       
             assert(iterable(y))
+
+            if (callback_fn):
+                callback_fn(kwargs, ydata=y)
 
             linestyle, marker, color = _process_plot_format(fmt)
 
@@ -260,6 +266,10 @@ class _process_plot_var_args:
             #print self.count, self.Ncolors, self.count % self.Ncolors
             assert(iterable(x))
             assert(iterable(y))
+
+            if (callback_fn):
+                callback_fn(kwargs, xdata=x, ydata=y)
+
             if self.command == 'plot':
                 c = self.colors[self.count % self.Ncolors]
                 ret =  Line2D(x, y,
@@ -269,17 +279,21 @@ class _process_plot_var_args:
                 self.set_lineprops(ret, **kwargs)
                 self.count += 1
             elif self.command == 'fill':
+                if (callback_fn):
+                    callback_fn(kwargs, xdata=x, ydata=y)
                 ret = Polygon( zip(x,y), fill=True, )
                 self.set_patchprops(ret, **kwargs)
             return ret
 
-    def _plot_3_args(self, tup3, **kwargs):
+    def _plot_3_args(self, tup3, callback_fn=None, **kwargs):
         kwargs_copy = kwargs.copy()
         if self.command == 'plot':
             x, y, fmt = tup3
 
             assert(iterable(x))
             assert(iterable(y))
+            if (callback_fn):
+                callback_fn(kwargs, xdata=x, ydata=y)
 
             linestyle, marker, color = _process_plot_format(fmt)
             if self.is_filled(marker): mec = None # use default
@@ -293,6 +307,8 @@ class _process_plot_var_args:
             self.set_lineprops(ret, **kwargs_copy)
         if self.command == 'fill':
             x, y, facecolor = tup3
+            if (callback_fn):
+                callback_fn(kwargs, xdata=x, ydata=y)
             ret = Polygon(zip(x,y),
                           facecolor = facecolor,
                           fill=True,
@@ -518,11 +534,36 @@ class Axes(Artist):
         self._set_locators_for_units(self._yunits, self.yaxis)
         self._set_formatters_for_units(self._yunits, self.yaxis)
  
-    def _update_units_args(self, kwarg_set):
+    def _update_units_args(self, kwarg_set, xdata=None, ydata=None):
         "update a set of args to include the default x/y unit settings"
         kwarg_set['xunits'] = kwarg_set.get('xunits', self._xunits)
         kwarg_set['yunits'] = kwarg_set.get('yunits', self._yunits)
         self.set_units(kwarg_set['xunits'], kwarg_set['yunits'])
+        self._check_default_units(xdata, ydata)
+
+    def _check_default_units(self, xdata=None, ydata=None):
+        # check xunits
+        if (not self._xunits and xdata):
+            # get units from xdata
+            unit_tag = \
+                self._invoke_units_method('get_default_unit_tag', ((xdata,),))
+            unit_tags = flatten([unit_tag])
+            # flatten returns a generator!
+            for tag in unit_tags:
+                if (tag): 
+                    self.set_xunits(tag, update=False)
+                    break
+        # check yunits
+        if (not self._yunits and ydata):
+            # get units from ydata
+            unit_tag = \
+                self._invoke_units_method('get_default_unit_tag', ((xdata,),))
+            unit_tags = flatten([unit_tag])
+            # flatten returns a generator!
+            for tag in unit_tags:
+                if (tag): 
+                    self.set_yunits(unit_tag, update=False)
+                    break
 
     def update_units_in_child_artists(self):
         """update the xunits, yunits in child artists"""
@@ -2094,7 +2135,7 @@ class Axes(Artist):
         """
         # convert y axis units
         kwargs_copy = kwargs.copy()
-        self._update_units_args(kwargs_copy)
+        self._update_units_args(kwargs_copy, ydata=y)
         y, = self._convert_units((y, self._yunits))
         
         trans = blend_xy_sep_transform( self.transAxes, self.transData  )
@@ -2136,7 +2177,7 @@ class Axes(Artist):
         """
         # convert x axis units
         kwargs_copy = kwargs.copy()
-        self._update_units_args(kwargs_copy)
+        self._update_units_args(kwargs_copy, xdata=x)
         x, = self._convert_units((x, self._xunits))
 
         trans = blend_xy_sep_transform( self.transData, self.transAxes   )
@@ -2166,7 +2207,7 @@ class Axes(Artist):
 
         # convert, if necessary
         kwargs_copy = kwargs.copy()
-        self._update_units_args(kwargs_copy)
+        self._update_units_args(kwargs_copy, xdata=(xmin, xmax), ydata=y)
         xmin, xmax = self._convert_units((xmin, self._xunits),
                                          (xmax, self._xunits))
         y,    = self._convert_units((y, self._yunits))
@@ -2219,7 +2260,7 @@ class Axes(Artist):
 
         # convert, if necessary
         kwargs_copy = kwargs.copy()
-        self._update_units_args(kwargs_copy)
+        self._update_units_args(kwargs_copy, xdata=x, ydata=(ymin, ymax))
         xunits = kwargs_copy.pop('xunits', None)
         yunits = kwargs_copy.pop('yunits', None)
         ymin, ymax = self._convert_units((ymin, self._yunits),
@@ -2350,8 +2391,12 @@ class Axes(Artist):
         scalex = d.pop('scalex', True)
         scaley = d.pop('scaley', True)
         if not self._hold: self.cla()
+        def c_fn(kwargs, xdata=None, ydata=None):
+            self._check_default_units(xdata, ydata)
+            kwargs['xunits'] = self._xunits
+            kwargs['yunits'] = self._yunits
         lines = []
-        for line in self._get_lines(*args, **d):
+        for line in self._get_lines(callback_fn=c_fn, *args, **d):
             self.add_line(line)
             lines.append(line)
  
@@ -3387,7 +3432,7 @@ class Axes(Artist):
            """
         # convert, if necessary
         kwargs_copy = kwargs.copy()
-        self._update_units_args(kwargs_copy)
+        self._update_units_args(kwargs_copy, xdata=x, ydata=y)
 
         if not self._hold: self.cla()
 
@@ -3740,8 +3785,14 @@ class Axes(Artist):
         d = kwargs.copy()
         self._update_units_args(d)
         if not self._hold: self.cla()
+
+        def c_fn(xdata=None, ydata=None):
+            self._update_default_units(xdata=xdata, ydata=ydata)
+            kwargs['xunits'] = self._xunits
+            kwargs['yunits'] = self._yunits
+
         patches = []
-        for poly in self._get_patches_for_fill(*args, **d):
+        for poly in self._get_patches_for_fill(callback_fn=c_fn, *args, **d):
             self.add_patch( poly )
             patches.append( poly )
         self.autoscale_view()
