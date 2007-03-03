@@ -1,3 +1,134 @@
+2007-02-23 Require setuptools for Python 2.3 - ADS
+
+2007-02-22 WXAgg accelerator updates - KM
+           WXAgg's C++ accelerator has been fixed to use the correct wxBitmap
+           constructor.
+           
+           The backend has been updated to use new wxPython functionality to
+           provide fast blit() animation without the C++ accelerator.  This
+           requires wxPython 2.8 or later.  Previous versions of wxPython can
+           use the C++ acclerator or the old pure Python routines.
+           
+           setup.py no longer builds the C++ accelerator when wxPython >= 2.8
+           is present.
+           
+           The blit() method is now faster regardless of which agg/wxPython
+           conversion routines are used.
+
+2007-02-21 Applied the PDF backend patch by Nicolas Grilly. 
+           This impacts several files and directories in matplotlib:
+           
+           - Created the directory lib/matplotlib/mpl-data/fonts/pdfcorefonts,
+             holding AFM files for the 14 PDF core fonts. These fonts are
+             embedded in every PDF viewing application.
+           
+           - setup.py: Added the directory pdfcorefonts to package_data.
+           
+           - lib/matplotlib/__init__.py: Added the default parameter
+             'pdf.use14corefonts'. When True, the PDF backend uses
+             only the 14 PDF core fonts.
+           
+           - lib/matplotlib/afm.py: Added some keywords found in
+             recent AFM files. Added a little workaround to handle
+             Euro symbol.
+           
+           - lib/matplotlib/fontmanager.py: Added support for the 14
+             PDF core fonts. These fonts have a dedicated cache (file
+             pdfcorefont.cache), not the same as for other AFM files
+             (file .afmfont.cache). Also cleaned comments to conform
+             to CODING_GUIDE.
+           
+           - lib/matplotlib/backends/backend_pdf.py:
+             Added support for 14 PDF core fonts.
+             Fixed some issues with incorrect character widths and
+             encodings (works only for the most common encoding, 
+             WinAnsiEncoding, defined by the official PDF Reference).
+             Removed parameter 'dpi' because it causes alignment issues.
+
+           -JKS (patch by Nicolas Grilly)
+
+2007-02-17 Changed ft2font.get_charmap, and updated all the files where
+           get_charmap is mentioned - ES
+
+2007-02-13 Added barcode demo- JDH
+
+2007-02-13 Added binary colormap to cm - JDH
+
+2007-02-13 Added twiny to pylab - JDH
+
+2007-02-12 Moved data files into lib/matplotlib so that setuptools'
+           develop mode works. Re-organized the mpl-data layout so
+           that this source structure is maintained in the
+           installation. (I.e. the 'fonts' and 'images'
+           sub-directories are maintained in site-packages.)  Suggest
+           removing site-packages/matplotlib/mpl-data and
+           ~/.matplotlib/ttffont.cache before installing - ADS
+
+2007-02-07 Committed Rob Hetland's patch for qt4: remove 
+           references to text()/latin1(), plus some improvements 
+           to the toolbar layout - DSD
+
+===============================================================
+2007-02-06 Released 0.90.0 at revision 3003
+
+2007-01-22 Extended the new picker API to text, patches and patch
+           collections.  Added support for user customizable pick hit
+           testing and attribute tagging of the PickEvent - Details
+           and examples in examples/pick_event_demo.py - JDH
+
+2007-01-16 Begun work on a new pick API using the mpl event handling
+           frameowrk.  Artists will define their own pick method with
+           a configurable epsilon tolerance and return pick attrs.
+           All artists that meet the tolerance threshold will fire a
+           PickEvent with artist dependent attrs; eg, a Line2D can set
+           the indices attribute that shows the indices into the line
+           that are within epsilon of the pick point.  See
+           examples/pick_event_demo.py.  The implementation of pick
+           for the remaining Artists remains to be done, but the core
+           infrastructure at the level of event handling is in place
+           with a proof-of-concept implementation for Line2D - JDH
+
+2007-01-16 src/_image.cpp: update to use Py_ssize_t (for 64-bit systems).
+           Use return value of fread() to prevent warning messages - SC.
+
+2007-01-15 src/_image.cpp: combine buffer_argb32() and buffer_bgra32() into
+           a new method color_conv(format) - SC
+
+2007-01-14 backend_cairo.py: update draw_arc() so that
+           examples/arctest.py looks correct - SC
+
+2007-01-12 backend_cairo.py: enable clipping. Update draw_image() so that
+           examples/contour_demo.py looks correct - SC
+
+2007-01-12 backend_cairo.py: fix draw_image() so that examples/image_demo.py
+           now looks correct - SC
+
+2007-01-11 Added Axes.xcorr and Axes.acorr to plot the cross
+           correlation of x vs y or the autocorrelation of x.  pylab
+           wrappers also provided.  See examples/xcorr_demo.py - JDH
+
+2007-01-10 Added "Subplot.label_outer" method.  It will set the
+           visibility of the ticklabels so that yticklabels are only
+           visible in the first column and xticklabels are only
+           visible in the last row - JDH
+
+2007-01-02 Added additional kwarg documentation - JDH
+
+2006-12-28 Improved error message for nonpositive input to log
+           transform; added log kwarg to bar, barh, and hist,
+           and modified bar method to behave sensibly by default
+           when the ordinate has a log scale.  (This only works
+           if the log scale is set before or by the call to bar,
+           hence the utility of the log kwarg.) - EF
+
+2006-12-27 backend_cairo.py: update draw_image() and _draw_mathtext() to work
+           with numpy - SC
+
+2006-12-20 Fixed xpdf dependency check, which was failing on windows.
+           Removed ps2eps dependency check. - DSD
+
+2006-12-19 Added Tim Leslie's spectral patch - JDH
+
 2006-12-17 Added rc param 'axes.formatter.limits' to control
            the default threshold for switching to scientific
            notation. Added convenience method

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.texmanager</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/texmanager.py">/usr/lib64/python2.4/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/texmanager.py">/usr/lib/python2.5/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;supports&nbsp;embedded&nbsp;TeX&nbsp;expressions&nbsp;in&nbsp;matplotlib&nbsp;via&nbsp;dvipng<br>
 and&nbsp;dvips&nbsp;for&nbsp;the&nbsp;raster&nbsp;and&nbsp;postscript&nbsp;backends.&nbsp;&nbsp;The&nbsp;tex&nbsp;and<br>
 dvipng/dvips&nbsp;information&nbsp;is&nbsp;cached&nbsp;in&nbsp;~/.matplotlib/tex.cache&nbsp;for&nbsp;reuse&nbsp;between<br>
@@ -101,7 +101,7 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>cursive</strong> = ('pzc', r'\usepackage{chancery}')</dl>
 
-<dl><dt><strong>dvipngVersion</strong> = '1.8'</dl>
+<dl><dt><strong>dvipngVersion</strong> = '1.9'</dl>
 
 <dl><dt><strong>font_family</strong> = 'serif'</dl>
 
@@ -143,7 +143,7 @@ Data and other attributes defined here:<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>cmd_split</strong> = ';'<br>
 <strong>debug</strong> = False<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a9b08c&gt;</td></tr></table>
 @footer@

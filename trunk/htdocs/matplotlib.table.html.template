@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.table</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/table.py">/usr/lib64/python2.4/site-packages/matplotlib/table.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/table.py">/usr/lib/python2.5/site-packages/matplotlib/table.py</a></font></td></tr></table>
     <p><tt>Place&nbsp;a&nbsp;table&nbsp;below&nbsp;the&nbsp;x-axis&nbsp;at&nbsp;location&nbsp;loc.<br>
 &nbsp;<br>
 The&nbsp;table&nbsp;consists&nbsp;of&nbsp;a&nbsp;grid&nbsp;of&nbsp;cells.<br>
@@ -441,5 +441,5 @@ Thanks&nbsp;to&nbsp;John&nbsp;Gill&nbsp;for&nbsp;providing&nbsp;the&nbsp;class&n
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
 @footer@

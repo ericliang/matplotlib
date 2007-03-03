@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.legend</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/legend.py">/usr/lib64/python2.4/site-packages/matplotlib/legend.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/legend.py">/usr/lib/python2.5/site-packages/matplotlib/legend.py</a></font></td></tr></table>
     <p><tt>Place&nbsp;a&nbsp;legend&nbsp;on&nbsp;the&nbsp;axes&nbsp;at&nbsp;location&nbsp;loc.&nbsp;&nbsp;Labels&nbsp;are&nbsp;a<br>
 sequence&nbsp;of&nbsp;strings&nbsp;and&nbsp;loc&nbsp;can&nbsp;be&nbsp;a&nbsp;string&nbsp;or&nbsp;an&nbsp;integer<br>
 specifying&nbsp;the&nbsp;legend&nbsp;location<br>
@@ -219,6 +219,6 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
 @footer@

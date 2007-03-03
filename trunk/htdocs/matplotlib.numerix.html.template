@@ -2,9 +2,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.2.dev3487)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.1)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/numerix/__init__.py">/usr/lib64/python2.4/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/numerix/__init__.py">/usr/lib/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
 &nbsp;<br>
 0.&nbsp;&nbsp;If&nbsp;the&nbsp;value&nbsp;"--numpy","--numarray"&nbsp;or&nbsp;"--Numeric"&nbsp;is&nbsp;specified&nbsp;on&nbsp;the<br>
@@ -125,7 +125,6 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>Int0</strong> = 'b'<br>
 <strong>Int16</strong> = 'h'<br>
 <strong>Int32</strong> = 'i'<br>
-<strong>Int64</strong> = 'l'<br>
 <strong>Int8</strong> = 'b'<br>
 <strong>LittleEndian</strong> = True<br>
 <strong>NewAxis</strong> = None<br>
@@ -138,7 +137,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>UnsignedInt32</strong> = 'I'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.0.2.dev3487'<br>
+<strong>__version__</strong> = '1.0.1'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -164,14 +163,14 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>floor</strong> = &lt;ufunc 'floor'&gt;<br>
 <strong>floor_divide</strong> = &lt;ufunc 'floor_divide'&gt;<br>
 <strong>fmod</strong> = &lt;ufunc 'fmod'&gt;<br>
-<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray&gt;, 'Float': 'd', ...}<br>
+<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x823bf0c&gt;, 'Float': 'd', ...}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
 <strong>infinity</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
-<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray&gt;, 'Float': 'd', ...}<br>
+<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x823bf0c&gt;, 'Float': 'd', ...}<br>
 <strong>left_shift</strong> = &lt;ufunc 'left_shift'&gt;<br>
 <strong>less</strong> = &lt;ufunc 'less'&gt;<br>
 <strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
@@ -188,10 +187,10 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x822ce0c&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>
@@ -203,7 +202,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>tanh</strong> = &lt;ufunc 'tanh'&gt;<br>
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;<br>
-<strong>version</strong> = 'numpy 1.0.2.dev3487'<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;<br>
+<strong>version</strong> = 'numpy 1.0.1'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@

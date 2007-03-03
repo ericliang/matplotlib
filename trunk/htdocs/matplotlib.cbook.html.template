@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.cbook</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/cbook.py">/usr/lib64/python2.4/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/cbook.py">/usr/lib/python2.5/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
     <p><tt>A&nbsp;collection&nbsp;of&nbsp;utility&nbsp;functions&nbsp;and&nbsp;classes.&nbsp;&nbsp;Many&nbsp;(but&nbsp;not&nbsp;all)<br>
 from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nbsp;cbook</tt></p>
 <p>
@@ -213,11 +213,13 @@ Methods defined here:<br>
 <dl><dt><a name="Xlator-xlat"><strong>xlat</strong></a>(self, text)</dt><dd><tt>Translate&nbsp;text,&nbsp;returns&nbsp;the&nbsp;modified&nbsp;text.</tt></dd></dl>
 
 <hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Xlator' objects&gt;<dd><tt><a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 <hr>
 Methods inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
 <dl><dt><a name="Xlator-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
@@ -287,9 +289,9 @@ If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nb
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#Xlator-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f50ba0&gt;<dd><tt>T.<a href="#Xlator-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#Xlator-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x814b35c&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#Xlator-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
 v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
 
 </td></tr></table> <p>
@@ -315,11 +317,13 @@ Methods defined here:<br>
 <dl><dt><a name="maxdict-__setitem__"><strong>__setitem__</strong></a>(self, k, v)</dt></dl>
 
 <hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'maxdict' objects&gt;<dd><tt><a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 <hr>
 Methods inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
 <dl><dt><a name="maxdict-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
@@ -385,9 +389,9 @@ If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nb
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#maxdict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f50ba0&gt;<dd><tt>T.<a href="#maxdict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#maxdict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x814b9c4&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#maxdict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
 v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
 
 </td></tr></table> <p>
@@ -415,11 +419,13 @@ Methods defined here:<br>
 <dl><dt><a name="silent_list-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
 <hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'silent_list' objects&gt;<dd><tt><a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 <hr>
 Methods inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
 <dl><dt><a name="silent_list-__add__"><strong>__add__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__add__">__add__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+y</tt></dd></dl>
@@ -495,7 +501,7 @@ cmp(x,&nbsp;y)&nbsp;-&gt;&nbsp;-1,&nbsp;0,&nbsp;1</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object&gt;<dd><tt>T.<a href="#silent_list-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f4f880&gt;<dd><tt>T.<a href="#silent_list-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -515,7 +521,7 @@ Condensed&nbsp;by&nbsp;Alex&nbsp;Martelli&nbsp;from&nbsp;this&nbsp;thread&nbsp;o
  <dl><dt><a name="-exception_to_str"><strong>exception_to_str</strong></a>(s<font color="#909090">=None</font>)</dt></dl>
  <dl><dt><a name="-finddir"><strong>finddir</strong></a>(o, match, case<font color="#909090">=False</font>)</dt><dd><tt>return&nbsp;all&nbsp;attributes&nbsp;of&nbsp;o&nbsp;which&nbsp;match&nbsp;string&nbsp;in&nbsp;match.&nbsp;&nbsp;if&nbsp;case<br>
 is&nbsp;True&nbsp;require&nbsp;an&nbsp;exact&nbsp;case&nbsp;match.</tt></dd></dl>
- <dl><dt><a name="-flatten"><strong>flatten</strong></a>(seq, scalarp<font color="#909090">=&lt;function is_scalar&gt;</font>)</dt><dd><tt>this&nbsp;generator&nbsp;flattens&nbsp;nested&nbsp;containers&nbsp;such&nbsp;as<br>
+ <dl><dt><a name="-flatten"><strong>flatten</strong></a>(seq, scalarp<font color="#909090">=&lt;function is_scalar at 0x811cb54&gt;</font>)</dt><dd><tt>this&nbsp;generator&nbsp;flattens&nbsp;nested&nbsp;containers&nbsp;such&nbsp;as<br>
 &nbsp;<br>
 &gt;&gt;&gt;&nbsp;l=(&nbsp;('John',&nbsp;'Hunter'),&nbsp;(1,23),&nbsp;[[[[42,(5,23)]]]])<br>
 &nbsp;<br>
@@ -563,10 +569,10 @@ val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key,&nbsp;default)</tt></dd></
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 4096)<br>
+<td width="100%"><strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 0)<br>
 <strong>major</strong> = 2<br>
-<strong>minor1</strong> = 4<br>
-<strong>minor2</strong> = 4<br>
+<strong>minor1</strong> = 5<br>
+<strong>minor2</strong> = 0<br>
 <strong>s</strong> = 'final'<br>
 <strong>tmp</strong> = 0</td></tr></table>
 @footer@

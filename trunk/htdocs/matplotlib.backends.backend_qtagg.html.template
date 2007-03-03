@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_qtagg</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_qtagg.py">/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_qtagg.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/backends/backend_qtagg.py">/usr/lib/python2.5/site-packages/matplotlib/backends/backend_qtagg.py</a></font></td></tr></table>
     <p><tt>Render&nbsp;to&nbsp;qt&nbsp;from&nbsp;agg</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -636,6 +636,11 @@ Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a
 
 <dl><dt><strong>trUtf8</strong> = &lt;built-in function trUtf8&gt;</dl>
 
+<hr>
+Data descriptors inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 <hr>
 Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 <dl><dt><strong>ALT</strong> = 8388608</dl>
@@ -1782,79 +1787,77 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>XorROP</strong> = 2</dl>
 
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Qt' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
+<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x8634fac&gt;</dl>
 
-<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x875042c&gt;</dl>
 
-<dl><dt><strong>black</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x8634d2c&gt;</dl>
 
-<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x875026c&gt;</dl>
 
-<dl><dt><strong>blue</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x8634bac&gt;</dl>
 
-<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x87504ac&gt;</dl>
 
-<dl><dt><strong>color0</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x875046c&gt;</dl>
 
-<dl><dt><strong>color1</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x8634f2c&gt;</dl>
 
-<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x875022c&gt;</dl>
 
-<dl><dt><strong>cyan</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x87500ec&gt;</dl>
 
-<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x87500ac&gt;</dl>
 
-<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x87503ac&gt;</dl>
 
-<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x875012c&gt;</dl>
 
-<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x875006c&gt;</dl>
 
-<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x875016c&gt;</dl>
 
-<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x875002c&gt;</dl>
 
-<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x8634c2c&gt;</dl>
 
-<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x875036c&gt;</dl>
 
-<dl><dt><strong>gray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x87502ac&gt;</dl>
 
-<dl><dt><strong>green</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x8634eac&gt;</dl>
 
-<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x875032c&gt;</dl>
 
-<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x87501ec&gt;</dl>
 
-<dl><dt><strong>magenta</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x8634c6c&gt;</dl>
 
-<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x87502ec&gt;</dl>
 
-<dl><dt><strong>red</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x8634d6c&gt;</dl>
 
-<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x8634dec&gt;</dl>
 
-<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x8634dac&gt;</dl>
 
-<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x8634e2c&gt;</dl>
 
-<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x8634e6c&gt;</dl>
 
-<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x8634cac&gt;</dl>
 
-<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x8634cec&gt;</dl>
 
-<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x8634f6c&gt;</dl>
 
-<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x8634eec&gt;</dl>
 
-<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x8634bec&gt;</dl>
 
-<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x87503ec&gt;</dl>
 
-<dl><dt><strong>white</strong> = &lt;qt.QColor object&gt;</dl>
-
-<dl><dt><strong>yellow</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x87501ac&gt;</dl>
 
 <hr>
 Data and other attributes inherited from <a href="qt.html#QPaintDevice">qt.QPaintDevice</a>:<br>
@@ -2026,7 +2029,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb65d8ae0&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backends.backend_agg.html#FigureCanvasAgg">matplotlib.backends.backend_agg.FigureCanvasAgg</a>:<br>
@@ -2748,6 +2751,11 @@ Data and other attributes inherited from <a href="qt.html#QObject">qt.QObject</a
 <dl><dt><strong>trUtf8</strong> = &lt;built-in function trUtf8&gt;</dl>
 
 <hr>
+Data descriptors inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 <dl><dt><strong>ALT</strong> = 8388608</dl>
 
@@ -3893,79 +3901,77 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>XorROP</strong> = 2</dl>
 
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Qt' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
+<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x8634fac&gt;</dl>
 
-<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x875042c&gt;</dl>
 
-<dl><dt><strong>black</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x8634d2c&gt;</dl>
 
-<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x875026c&gt;</dl>
 
-<dl><dt><strong>blue</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x8634bac&gt;</dl>
 
-<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x87504ac&gt;</dl>
 
-<dl><dt><strong>color0</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x875046c&gt;</dl>
 
-<dl><dt><strong>color1</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x8634f2c&gt;</dl>
 
-<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x875022c&gt;</dl>
 
-<dl><dt><strong>cyan</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x87500ec&gt;</dl>
 
-<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x87500ac&gt;</dl>
 
-<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x87503ac&gt;</dl>
 
-<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x875012c&gt;</dl>
 
-<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x875006c&gt;</dl>
 
-<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x875016c&gt;</dl>
 
-<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x875002c&gt;</dl>
 
-<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x8634c2c&gt;</dl>
 
-<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x875036c&gt;</dl>
 
-<dl><dt><strong>gray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x87502ac&gt;</dl>
 
-<dl><dt><strong>green</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x8634eac&gt;</dl>
 
-<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x875032c&gt;</dl>
 
-<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x87501ec&gt;</dl>
 
-<dl><dt><strong>magenta</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x8634c6c&gt;</dl>
 
-<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x87502ec&gt;</dl>
 
-<dl><dt><strong>red</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x8634d6c&gt;</dl>
 
-<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x8634dec&gt;</dl>
 
-<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x8634dac&gt;</dl>
 
-<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x8634e2c&gt;</dl>
 
-<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x8634e6c&gt;</dl>
 
-<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x8634cac&gt;</dl>
 
-<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x8634cec&gt;</dl>
 
-<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x8634f6c&gt;</dl>
 
-<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x8634eec&gt;</dl>
 
-<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x8634bec&gt;</dl>
 
-<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object&gt;</dl>
+<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x87503ec&gt;</dl>
 
-<dl><dt><strong>white</strong> = &lt;qt.QColor object&gt;</dl>
-
-<dl><dt><strong>yellow</strong> = &lt;qt.QColor object&gt;</dl>
+<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x87501ac&gt;</dl>
 
 <hr>
 Data and other attributes inherited from <a href="qt.html#QPaintDevice">qt.QPaintDevice</a>:<br>
@@ -4137,7 +4143,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb65d8ae0&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -4157,5 +4163,5 @@ Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper<
 <td width="100%"><strong>DEBUG</strong> = False<br>
 <strong>backend_version</strong> = '0.9.1'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
 @footer@

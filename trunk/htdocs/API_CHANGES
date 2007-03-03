@@ -1,3 +1,24 @@
+    ft2font.get_charmap() now returns a dict that maps character codes
+    to glyph indices (until now it was reversed)
+    
+    Moved data files into lib/matplotlib so that setuptools' develop
+    mode works. Re-organized the mpl-data layout so that this source
+    structure is maintained in the installation. (I.e. the 'fonts' and
+    'images' sub-directories are maintained in site-packages.).
+    Suggest removing site-packages/matplotlib/mpl-data and
+    ~/.matplotlib/ttffont.cache before installing
+
+0.90.0 released
+
+    All artists now implement a "pick" method which users should not
+    call.  Rather, set the "picker" property of any artist you want to
+    pick on (the epsilon distance in points for a hit test) and
+    register with the "pick_event" callback.  See
+    examples/pick_event_demo.py for details
+
+    Bar, barh, and hist have "log" binary kwarg: log=True
+    sets the ordinate to a log scale.
+
     Boxplot can handle a list of vectors instead of just
     an array, so vectors can have different lengths.
 

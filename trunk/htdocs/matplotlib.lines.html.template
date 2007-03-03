@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.lines</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/lines.py">/usr/lib64/python2.4/site-packages/matplotlib/lines.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/lines.py">/usr/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;contains&nbsp;all&nbsp;the&nbsp;2D&nbsp;line&nbsp;class&nbsp;which&nbsp;can&nbsp;draw&nbsp;with&nbsp;a<br>
 variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p>
 <p>
@@ -43,36 +43,10 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Initialize&nbsp;the&nbsp;line&nbsp;instance<br>
-&nbsp;<br>
-The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
-&nbsp;&nbsp;alpha:&nbsp;float<br>
-&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
-&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;color&nbsp;or&nbsp;c:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;dash_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']<br>
-&nbsp;&nbsp;dash_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
-&nbsp;&nbsp;dashes:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;data:&nbsp;(array&nbsp;xdata,&nbsp;array&nbsp;ydata)<br>
-&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
-&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
-&nbsp;&nbsp;linestyle&nbsp;or&nbsp;ls:&nbsp;[&nbsp;'-'&nbsp;|&nbsp;'--'&nbsp;|&nbsp;'-.'&nbsp;|&nbsp;':'&nbsp;|&nbsp;'steps'&nbsp;|&nbsp;'None'&nbsp;|&nbsp;'&nbsp;'&nbsp;|&nbsp;''&nbsp;]<br>
-&nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;marker:&nbsp;[&nbsp;'+'&nbsp;|&nbsp;','&nbsp;|&nbsp;'.'&nbsp;|&nbsp;'1'&nbsp;|&nbsp;'2'&nbsp;|&nbsp;'3'&nbsp;|&nbsp;'4'<br>
-&nbsp;&nbsp;markeredgecolor&nbsp;or&nbsp;mec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;markeredgewidth&nbsp;or&nbsp;mew:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;markerfacecolor&nbsp;or&nbsp;mfc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;markersize&nbsp;or&nbsp;ms:&nbsp;float<br>
-&nbsp;&nbsp;solid_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;&nbsp;'projecting']<br>
-&nbsp;&nbsp;solid_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
-&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
-&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;xdata:&nbsp;array<br>
-&nbsp;&nbsp;ydata:&nbsp;array<br>
-&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
+<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initialize&nbsp;the&nbsp;line&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;following&nbsp;line&nbsp;properties&nbsp;are&nbsp;customizable&nbsp;by&nbsp;kwargs<br>
+%(line2d)s</tt></dd></dl>
 
 <dl><dt><a name="Line2D-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -363,7 +337,7 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x83565ac&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
@@ -372,7 +346,7 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}<br>
 <strong>logical_and</strong> = &lt;ufunc 'logical_and'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
 @footer@

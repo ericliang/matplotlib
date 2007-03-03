@@ -1,22 +1,26 @@
 @header@ 
 <h2>Installing matplotlib</h2>
 
-matplotlib requires at a minimum python 2.2+, Numeric or numarray and
-freetype.  To get the most out of matplotlib, you will want to build
-some of the optional GUI and image extensions, discussed below.
-Matplotlib is known to work on linux, unix, win32 and OS X platforms.<p>
+matplotlib requires at a minimum python 2.3, NumPy or Numeric or 
+numarray and freetype.  If you are using python-2.3, you will also need 
+to install setuptools, which can be downloaded at 
+<a>http://peak.telecommunity.com/dist/ez_setup.py</a>.  Just run 
+ez_setup.py to install setuptools. To get 
+the most out of matplotlib, you will want to build some of the optional 
+GUI and image extensions, discussed below. Matplotlib is known to work 
+on linux, unix, win32 and OS X platforms.<p>
 
 There are two kinds of matplotlib backends: vector based and raster
 based.  Two vector based backends, SVG and PS, produce ASCII text
-output files *.svg and *.ps; the other vector based backend, EMF,
-produces binary output files *.emf.  The core raster based renderer is
-the <a href=http://antigrain.com>antigrain</a> (agg) backend.  This is
-a high quality 2D library that supports fast antialiasing, alpha
-blending and much more.  If you want to produce PNGs or GUI images
-that support all of matplotlib's features, you should compile
-matplotlib with agg support and use one of the GUI agg backends as
-described below: GTKAgg, WXAgg, TkAgg or FLTKAgg.  All of these
-features are included in the windows installer<p>
+output files *.svg and *.ps; the other vector based backends, PDF and 
+EMF, produces binary output files *.emf.  The core raster based 
+renderer is the <a href=http://antigrain.com>antigrain</a> (agg) 
+backend.  This is a high quality 2D library that supports fast 
+antialiasing, alpha blending and much more.  If you want to produce 
+PNGs or GUI images that support all of matplotlib's features, you 
+should compile matplotlib with agg support and use one of the GUI agg 
+backends as described below: GTKAgg, WXAgg, TkAgg or FLTKAgg.  All of 
+these features are included in the windows installer<p>
 
 <h2><a name=compiling>Compiling</a></h2>
 
@@ -51,11 +55,11 @@ base dirs to the <tt>basedir</tt> dictionary entry for your
 in <tt>/some/path/include/somheader.h</tt>, put <tt>/some/path</tt> in
 the basedir list for your platform.<p>
 
-matplotlib works with with Numeric or numarray.  At compile time,
+matplotlib works with with NumPy, Numeric or numarray.  At compile time,
 setup.py will look for both packages and compile the appropriate
 extensions into matplotlib.  At runtime, the correct extension code
 will be chosen based on your numerix setting in matplotlibrc.  If you
-want to be able to use either Numeric or numarray efficiently with
+want to be able to use either NumPy, Numeric or numarray efficiently with
 matplotlib, it is important that you have *both* present and in your
 PYTHONPATH when you compile matplotlib.<p>
 
@@ -89,14 +93,13 @@ backends should work out of the box: agg, wx, wxagg, tkagg, ps and
 svg.<p>
 
 For standard python installations, you will also need to install
-either Numeric or numarray in addition to the matplotlib installer.
-matplotlib provides installers for Numeric and numarray users.
+either Numpy, Numeric or numarray in addition to the matplotlib installer.
 matplotlib has a <tt>numerix</tt> setting in the matplotlib rc file
 (which by default resides in
 <tt>c:\python23\share\matplotlitb\matplotlibrc</tt>) and you should
 make sure this setting corresponds to your preferred array package.<p>
 
-With a standard python + Numeric/numarray + matplotlib, the following
+With a standard python + NumPy/Numeric/numarray + matplotlib, the following
 backends should work on windows: agg, tkagg, ps, svg.  If you want
 others, eg a wx, wxagg, gtk or gtkagg, you'll need to install the
 requisite GUI toolkits, as described on <a
@@ -106,7 +109,7 @@ includes an additional requirement of the GTK runtime.<p>
 
 All of the GUI backends run on windows, but TkAgg is probably the best
 for interactive use from the standard python shell or ipython.  The
-windows installer (*.exe) on the download page contains all the code
+windows installer (*.exe or *.egg) on the download page contains all the code
 you need to get up and running.  However, there are many <a
 href=examples>examples</a> that are not included in the windows
 installer.  If you want to try the many demos that come in the

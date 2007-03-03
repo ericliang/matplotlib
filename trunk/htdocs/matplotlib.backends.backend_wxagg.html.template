@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_wxagg</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_wxagg.py">/usr/lib64/python2.4/site-packages/matplotlib/backends/backend_wxagg.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/backends/backend_wxagg.py">/usr/lib/python2.5/site-packages/matplotlib/backends/backend_wxagg.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -13,11 +13,10 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.backends._wxagg.html">matplotlib.backends._wxagg</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.backends.backend_wx.html">matplotlib.backends.backend_wx</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.backends.backend_wx.html">matplotlib.backends.backend_wx</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
 </td><td width="25%" valign=top><a href="wx.html">wx</a><br>
-</td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -299,7 +298,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x2b0c24025de8&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x88d3ed4&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -314,7 +313,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x2b0c24025de8&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x88d3ed4&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -1560,11 +1559,13 @@ Methods inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
 Returns&nbsp;the&nbsp;class&nbsp;name&nbsp;of&nbsp;the&nbsp;C++&nbsp;class&nbsp;using&nbsp;wxRTTI.</tt></dd></dl>
 
 <hr>
-Data and other attributes inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Object' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
@@ -3006,11 +3007,13 @@ Methods inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
 Returns&nbsp;the&nbsp;class&nbsp;name&nbsp;of&nbsp;the&nbsp;C++&nbsp;class&nbsp;using&nbsp;wxRTTI.</tt></dd></dl>
 
 <hr>
-Data and other attributes inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Object' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
@@ -3303,7 +3306,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x2b0c24025de8&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x88d3ed4&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -3318,7 +3321,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x2b0c24025de8&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x88d3ed4&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -4571,11 +4574,13 @@ Methods inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
 Returns&nbsp;the&nbsp;class&nbsp;name&nbsp;of&nbsp;the&nbsp;C++&nbsp;class&nbsp;using&nbsp;wxRTTI.</tt></dd></dl>
 
 <hr>
-Data and other attributes inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Object' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors inherited from <a href="wx._core.html#Object">wx._core.Object</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -4594,6 +4599,6 @@ Data and other attributes inherited from <a href="wx._core.html#Object">wx._core
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>backend_version</strong> = '2.6.3.2'<br>
+<td width="100%"><strong>backend_version</strong> = '2.6.3.3'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
 @footer@

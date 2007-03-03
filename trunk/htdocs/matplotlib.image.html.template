@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.image</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/image.py">/usr/lib64/python2.4/site-packages/matplotlib/image.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/image.py">/usr/lib/python2.5/site-packages/matplotlib/image.py</a></font></td></tr></table>
     <p><tt>The&nbsp;image&nbsp;module&nbsp;supports&nbsp;basic&nbsp;image&nbsp;loading,&nbsp;rescaling&nbsp;and&nbsp;display<br>
 operations.</tt></p>
 <p>
@@ -69,8 +69,8 @@ operations.</tt></p>
 Methods defined here:<br>
 <dl><dt><a name="AxesImage-__init__"><strong>__init__</strong></a>(self, ax, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, interpolation<font color="#909090">=None</font>, origin<font color="#909090">=None</font>, extent<font color="#909090">=None</font>, filternorm<font color="#909090">=1</font>, filterrad<font color="#909090">=4.0</font>)</dt><dd><tt>interpolation&nbsp;and&nbsp;cmap&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;settings<br>
 &nbsp;<br>
-cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
-norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1<br>
+cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance<br>
+norm&nbsp;is&nbsp;a&nbsp;colors.normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1<br>
 &nbsp;<br>
 extent&nbsp;is&nbsp;a&nbsp;data&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;for&nbsp;making&nbsp;image&nbsp;plots<br>
 registered&nbsp;with&nbsp;data&nbsp;plots.&nbsp;&nbsp;Default&nbsp;is&nbsp;the&nbsp;image&nbsp;dimensions<br>
@@ -251,8 +251,8 @@ If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nb
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
-norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1</tt></dd></dl>
+<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance<br>
+norm&nbsp;is&nbsp;a&nbsp;colors.normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-draw"><strong>draw</strong></a>(self, renderer, *args, **kwargs)</dt></dl>
 
@@ -571,7 +571,7 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;MxNx4&nbsp;array&nbsp;of&nbsp;0-1&nbsp;nor
 <td width="100%"><strong>Float32</strong> = 'f'<br>
 <strong>NewAxis</strong> = None<br>
 <strong>UInt8</strong> = 'B'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x82b62ac&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}</td></tr></table>
 @footer@

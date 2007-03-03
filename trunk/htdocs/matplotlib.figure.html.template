@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.figure</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib64/python2.4/site-packages/matplotlib/figure.py">/usr/lib64/python2.4/site-packages/matplotlib/figure.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/figure.py">/usr/lib/python2.5/site-packages/matplotlib/figure.py</a></font></td></tr></table>
     <p><tt><a href="#Figure">Figure</a>&nbsp;class&nbsp;--&nbsp;add&nbsp;docstring&nbsp;here!</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -137,7 +137,7 @@ kwargs&nbsp;are&nbsp;in&nbsp;two&nbsp;groups:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;true,&nbsp;draw&nbsp;lines&nbsp;at&nbsp;color&nbsp;boundaries.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;following&nbsp;will&nbsp;probably&nbsp;be&nbsp;useful&nbsp;only&nbsp;in&nbsp;the&nbsp;context&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indexed&nbsp;colors&nbsp;(that&nbsp;is,&nbsp;when&nbsp;the&nbsp;mappable&nbsp;has&nbsp;norm=NoNorm()),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;indexed&nbsp;colors&nbsp;(that&nbsp;is,&nbsp;when&nbsp;the&nbsp;mappable&nbsp;has&nbsp;norm=no_norm()),<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;other&nbsp;unusual&nbsp;circumstances.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boundaries=None&nbsp;or&nbsp;a&nbsp;sequence<br>
@@ -215,7 +215,7 @@ The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;allowed:<br>
 &nbsp;&nbsp;*&nbsp;cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance,&nbsp;eg&nbsp;cm.jet.&nbsp;&nbsp;If&nbsp;None,&nbsp;default&nbsp;to<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;rc&nbsp;image.cmap&nbsp;valuex<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;norm&nbsp;is&nbsp;a&nbsp;matplotlib.colors.Normalize&nbsp;instance;&nbsp;default&nbsp;is<br>
+&nbsp;&nbsp;*&nbsp;norm&nbsp;is&nbsp;a&nbsp;matplotlib.colors.normalize&nbsp;instance;&nbsp;default&nbsp;is<br>
 &nbsp;&nbsp;&nbsp;&nbsp;normalization().&nbsp;&nbsp;This&nbsp;scales&nbsp;luminance&nbsp;-&gt;&nbsp;0-1<br>
 &nbsp;<br>
 &nbsp;&nbsp;*&nbsp;vmin&nbsp;and&nbsp;vmax&nbsp;are&nbsp;used&nbsp;to&nbsp;scale&nbsp;a&nbsp;luminance&nbsp;image&nbsp;to&nbsp;0-1.&nbsp;&nbsp;If<br>
@@ -564,5 +564,5 @@ Thanks&nbsp;to&nbsp;Fernando&nbsp;Perez&nbsp;for&nbsp;this&nbsp;function</tt></d
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 'medium', 'axes.linewidth': 1.0, 'axes.titlesize': 'medium', ...}</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}</td></tr></table>
 @footer@
