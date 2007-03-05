@@ -168,6 +168,9 @@ class TaggedValue (UnitsTagInterfaceWithMA, object):
   def convert_to_value(self, unit):
     return self.convert_to(unit).get_value()
 
+  def get_default_unit_tag(self):
+    return self.unit
+
   def get_unit(self):
     return self.unit
 

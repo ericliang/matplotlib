@@ -267,10 +267,16 @@ class Shadow(Patch):
         self._update()
 
     def _get_ox(self):
-        return self._convert_units(((self._ox, self._xunits),))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            return mgr._convert_units(((self._ox, self._xunits),))
+        return self._ox
 
     def _get_oy(self):
-        return self._convert_units(((self._oy, self._yunits),))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            return mgr._convert_units(((self._oy, self._yunits),))
+        return self._oy
 
     ox = property(_get_ox, None, None)
     oy = property(_get_oy, None, None)
@@ -324,15 +330,25 @@ class Rectangle(Patch):
         self.width, self.height = width, height
 
     def _convert_xy(self):
-        x, y = self._convert_units((self._xy[0], self._xunits),
-                                   (self._xy[1], self._yunits))
+        x, y = (self._xy[0], self._xy[1])
+
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            x, y = mgr._convert_units((x, self._xunits),
+                                      (y, self._yunits))
         return array((x,y), Float)
     xy = property(_convert_xy, None, None)
     def _convert_width(self):
-        return self._convert_units((self._width, self._xunits))[0]
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            return mgr._convert_units((self._width, self._xunits))[0]
+        return self._width
     width = property(_convert_width, None, None)
     def _convert_height(self):
-        return self._convert_units((self._height, self._yunits))[0]
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            return mgr._convert_units((self._height, self._yunits))[0]
+        return self._height
     height = property(_convert_height, None, None)
 
     def get_verts(self):
@@ -435,8 +451,12 @@ class RegularPolygon(Patch):
         self.verts = zip(xs, ys)
 
     def _convert_xy(self):
-        x, y = self._convert_units((self._xy[0], self._xunits),
-                                   (self._xy[1], self._yunits))
+        x, y = (self._xy[0], self._xy[1])
+
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            x, y = mgr._convert_units((x, self._xunits),
+                                      (y, self._yunits))
         return (x,y)
     xy = property(_convert_xy, None, None)
 
@@ -457,9 +477,12 @@ class Polygon(Patch):
     def _convert_xy(self):
         if (self._is_units_updated()):
             x, y = zip(*self._xy)
-            print 'x = %s, y = %s' % (x, y)
-            x, y = self._convert_units((list(x), self._xunits),
-                                       (list(y), self._yunits))
+            if (self.is_unitsmgr_set()):
+                mgr = self.get_unitsmgr()
+                x, y = mgr._convert_units((list(x), self._xunits),
+                                          (list(y), self._yunits))
+            else:
+                print 'No units manager set!'
             self._cached_xy = zip(x,y)
             self._handle_units_update()
         return self._cached_xy
@@ -622,12 +645,14 @@ class Ellipse(Patch):
         x,y = self.center
         l,r = x-width/2.0, x+width/2.0
         b,t = y-height/2.0, y+height/2.0
-        x,l,r = self._convert_units((x, self._xunits),
-                                    (l, self._xunits),
-                                    (r, self._xunits))
-        y,b,t = self._convert_units((y, self._yunits),
-                                    (b, self._yunits),
-                                    (t, self._yunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            x,l,r = mgr._convert_units((x, self._xunits),
+                                       (l, self._xunits),
+                                       (r, self._xunits))
+            y,b,t = mgr._convert_units((y, self._yunits),
+                                       (b, self._yunits),
+                                       (t, self._yunits))
         return array(((x,y),(l,y),(x,t),(r,y),(x,b)), Float)
     verts = property(_get_verts, None, None)
          

@@ -320,8 +320,12 @@ class Line2D(Artist):
         self._cached__segments = None
         self._cached__logcache = None
 
-        x, y = self._convert_units((self._x_orig, self._xunits),
-                                   (self._y_orig, self._yunits))
+        if (self.is_unitsmgr_set()):
+            unitsmgr = self.get_unitsmgr() 
+            x, y = unitsmgr._convert_units((self._x_orig, self._xunits),
+                                           (self._y_orig, self._yunits))
+        else:
+            x, y = (self._x_orig, self._y_orig)
 
         x = ma.ravel(x)
         y = ma.ravel(y)

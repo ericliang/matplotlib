@@ -28,6 +28,7 @@ from ticker import ScalarFormatter, LogFormatter, LogFormatterExponent, LogForma
 from image import AxesImage
 from legend import Legend
 from lines import Line2D, lineStyles, lineMarkers
+from units import UnitsManager
 
 from matplotlib.mlab import meshgrid, detrend_none, detrend_linear, \
      window_none, window_hanning, linspace, prctile
@@ -358,6 +359,8 @@ class Axes(Artist):
     Text, Polygon etc, and sets the coordinate system
     """
 
+    sharedUnitsMgr = UnitsManager()
+
     scaled = {IDENTITY : 'linear',
               LOG10 : 'log',
               }
@@ -375,6 +378,9 @@ class Axes(Artist):
         self.set_aspect('auto')
         self.set_adjustable('box')
         self.set_anchor('C')
+
+        # units manager
+        self._unitsmgr = Axes.sharedUnitsMgr 
 
         # unit locator/formatter maps
         self._unit_locator_map_list = []
@@ -518,21 +524,23 @@ class Axes(Artist):
 #        print 'variables = %s' % (`variables`,)
         variables = [(var,) for var in variables]
 #        print 'variables = %s' % (`variables`,)
-        locators = \
-            self._invoke_units_method('get_unit_to_locator_map', variables)
-        locators = flatten([locators])
-        formatters = \
-            self._invoke_units_method('get_unit_to_formatter_map', variables)
-        formatters = flatten([formatters])
-        for locator_fn in locators:
-            self.add_unit_to_locator_map(locator_fn)
-        for formatter_fn in formatters:
-            self.add_unit_to_formatter_map(formatter_fn)
-        # formatters/locators likely changed, update axes settings
-        self._set_locators_for_units(self._xunits, self.xaxis)
-        self._set_formatters_for_units(self._xunits, self.xaxis)
-        self._set_locators_for_units(self._yunits, self.yaxis)
-        self._set_formatters_for_units(self._yunits, self.yaxis)
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            locators = \
+                mgr._invoke_units_method('get_unit_to_locator_map', variables)
+            locators = flatten([locators])
+            formatters = \
+                mgr._invoke_units_method('get_unit_to_formatter_map', variables)
+            formatters = flatten([formatters])
+            for locator_fn in locators:
+                self.add_unit_to_locator_map(locator_fn)
+            for formatter_fn in formatters:
+                self.add_unit_to_formatter_map(formatter_fn)
+            # formatters/locators likely changed, update axes settings
+            self._set_locators_for_units(self._xunits, self.xaxis)
+            self._set_formatters_for_units(self._xunits, self.xaxis)
+            self._set_locators_for_units(self._yunits, self.yaxis)
+            self._set_formatters_for_units(self._yunits, self.yaxis)
  
     def _update_units_args(self, kwarg_set, xdata=None, ydata=None):
         "update a set of args to include the default x/y unit settings"
@@ -542,11 +550,15 @@ class Axes(Artist):
         self._check_default_units(xdata, ydata)
 
     def _check_default_units(self, xdata=None, ydata=None):
+        mgr = None
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+
         # check xunits
-        if (not self._xunits and xdata):
+        if (mgr and not self._xunits and xdata is not None):
             # get units from xdata
             unit_tag = \
-                self._invoke_units_method('get_default_unit_tag', ((xdata,),))
+                mgr._invoke_units_method('get_default_unit_tag', ((xdata,),))
             unit_tags = flatten([unit_tag])
             # flatten returns a generator!
             for tag in unit_tags:
@@ -554,10 +566,10 @@ class Axes(Artist):
                     self.set_xunits(tag, update=False)
                     break
         # check yunits
-        if (not self._yunits and ydata):
+        if (mgr and not self._yunits and ydata is not None):
             # get units from ydata
             unit_tag = \
-                self._invoke_units_method('get_default_unit_tag', ((xdata,),))
+                mgr._invoke_units_method('get_default_unit_tag', ((xdata,),))
             unit_tags = flatten([unit_tag])
             # flatten returns a generator!
             for tag in unit_tags:
@@ -720,6 +732,7 @@ class Axes(Artist):
     def _set_artist_props(self, a):
         'set the boilerplate props for artists added to axes'
         a.set_figure(self.figure)
+        a.set_unitsmgr(self._unitsmgr)
         if not a.is_transform_set():
             a.set_transform(self.transData)
         a.axes = self
@@ -1461,8 +1474,10 @@ class Axes(Artist):
         else:
             raise ValueError('args must be length 0, 1 or 2')
 
-        vmin, = self._convert_units((vmin, self._xunits))
-        vmax, = self._convert_units((vmax, self._xunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            vmin, = mgr._convert_units((vmin, self._xunits))
+            vmax, = mgr._convert_units((vmax, self._xunits))
 
         if self.transData.get_funcx().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -1590,8 +1605,10 @@ class Axes(Artist):
         else:
             raise ValueError('args must be length 0, 1 or 2')
 
-        vmin, = self._convert_units((vmin, self._yunits))
-        vmax, = self._convert_units((vmax, self._yunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            vmin, = mgr._convert_units((vmin, self._yunits))
+            vmax, = mgr._convert_units((vmax, self._yunits))
 
         if self.transData.get_funcy().get_type()==LOG10 and min(vmin, vmax)<=0:
             raise ValueError('Cannot set nonpositive limits with log transform')
@@ -2136,7 +2153,9 @@ class Axes(Artist):
         # convert y axis units
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy, ydata=y)
-        y, = self._convert_units((y, self._yunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            y, = mgr._convert_units((y, self._yunits))
         
         trans = blend_xy_sep_transform( self.transAxes, self.transData  )
         verts = (xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)
@@ -2178,7 +2197,9 @@ class Axes(Artist):
         # convert x axis units
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy, xdata=x)
-        x, = self._convert_units((x, self._xunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            x, = mgr._convert_units((x, self._xunits))
 
         trans = blend_xy_sep_transform( self.transData, self.transAxes   )
         verts = [(xmin, ymin), (xmin, ymax), (xmax, ymax), (xmax, ymin)]
@@ -2208,9 +2229,11 @@ class Axes(Artist):
         # convert, if necessary
         kwargs_copy = kwargs.copy()
         self._update_units_args(kwargs_copy, xdata=(xmin, xmax), ydata=y)
-        xmin, xmax = self._convert_units((xmin, self._xunits),
-                                         (xmax, self._xunits))
-        y,    = self._convert_units((y, self._yunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            xmin, xmax = mgr._convert_units((xmin, self._xunits),
+                                            (xmax, self._xunits))
+            y,    = mgr._convert_units((y, self._yunits))
 
         if not iterable(y): y = [y]
         if not iterable(xmin): xmin = [xmin]
@@ -2263,9 +2286,11 @@ class Axes(Artist):
         self._update_units_args(kwargs_copy, xdata=x, ydata=(ymin, ymax))
         xunits = kwargs_copy.pop('xunits', None)
         yunits = kwargs_copy.pop('yunits', None)
-        ymin, ymax = self._convert_units((ymin, self._yunits),
-                                         (ymax, self._yunits))
-        x,    = self._convert_units((x, self._xunits))
+        if (self.is_unitsmgr_set()):
+            mgr = self.get_unitsmgr()
+            ymin, ymax = mgr._convert_units((ymin, self._yunits),
+                                            (ymax, self._yunits))
+            x,    = mgr._convert_units((x, self._xunits))
 
         if not iterable(x): x = [x]
         if not iterable(ymin): ymin = [ymin]
@@ -3786,8 +3811,8 @@ class Axes(Artist):
         self._update_units_args(d)
         if not self._hold: self.cla()
 
-        def c_fn(xdata=None, ydata=None):
-            self._update_default_units(xdata=xdata, ydata=ydata)
+        def c_fn(kwargs, xdata=None, ydata=None):
+            self._check_default_units(xdata=xdata, ydata=ydata)
             kwargs['xunits'] = self._xunits
             kwargs['yunits'] = self._yunits
 

@@ -122,9 +122,14 @@ class PatchCollection(Collection, ScalarMappable):
                 break
         if recalc:
             # convert _original_offsets
-            self._cached_offsets = \
-                [self._convert_units((x, self._xunits), (y, self._yunits)) 
-                 for x,y in self._original_offsets]
+            if (self.is_unitsmgr_set()):
+                mgr = self.get_unitsmgr()
+                self._cached_offsets = \
+                    [mgr._convert_units((x, self._xunits), (y, self._yunits)) 
+                     for x,y in self._original_offsets]
+            else:
+                self._cached_offsets = self._original_offsets
+
         return self._cached_offsets
     _offsets = property(_update_offsets, None, None)
 
