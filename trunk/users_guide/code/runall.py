@@ -1,6 +1,7 @@
 import os
 files = (
     'alignment_demo.py',
+    'annotation_demo.py',
     'axes_demo.py',
     'compare_with_matlab.py',
     'color_demo.py',            
@@ -17,6 +18,7 @@ files = (
     'major_minor_demo.py',
     'mathtext_demo.py',
     'poly_regression.py',
+    'radian_demo.py',
     'renderer_agg.py',
     'simple_imshow.py',
     'simple_plot_tkagg.py',

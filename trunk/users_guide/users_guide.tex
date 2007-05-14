@@ -1629,6 +1629,69 @@ $\mathtt{\backslash ddot\{o\}}$.  The shortcuts are also provided, eg:
 \"o \'e \`e \~n \.x \^y
 \end{verbatim}
 
+\subsection{Annotations}
+\label{sec:annotations}
+
+The uses of the basic \func{text} command above place text at an
+arbitrary position on the Axes.  A common use case of text is to
+\emph{annotate} some feature of the plot, and the \func{Axes.annotate}
+method (pylab method \func{annotate}) provides helper functionality to
+make annotations easy.  In an annotation, there are two points to
+consider: the location being annotated represented by the argument
+\carg{xy} and the location of the text \carg{xytext}.  Both of these
+arguments are \code{(x,y)} tuples.  Optionally, you can specify the
+coordinate system of xy and xytext with one of the following strings
+for \carg{xycoords} and \carg{textcoords} (default is 'data')
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|}\hline
+  argument & coordinate system\\
+  'figure points'   & points from the lower left corner of the figure\\
+  'figure pixels'   & pixels from the lower left corner of the figure\\
+  'figure fraction' & 0,0 is lower left of figure and 1,1 is upper, right\\
+  'axes points'     & points from lower left corner of axes\\
+  'axes pixels'     & pixels from lower left corner of axes\\
+  'axes fraction'   & 0,1 is lower left of axes and 1,1 is upper right\\
+  'data'            & use the axes data coordinate system\\\hline
+  \end{tabular}
+  \caption{\label{tab:annotation}Coordinate systems for the text point \carg{xy} and annotation text point \carg{xytext} are supplied by optional keyword arguments  \carg{xycoords} and \carg{textcoords} .
+  }
+\end{table}
+
+
+For physical coordinate systems (points or pixels) the origin is the
+(bottom, left) of the figure or axes.  If the value is negative,
+however, the origin is from the (right, top) of the figure or axes,
+analogous to negative indexing of sequences.
+
+
+Optionally, you can specify arrow properties which draws and arrow
+from the text to the annotated point by giving a dictionary of arrow
+properties in the optional keyword argument \carg{arrowprops}.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|}\hline
+  \carg{arrowprops} key & description\\
+  width & the width of the arrow in points\\
+  frac  & the fraction of the arrow length occupied by the head\\
+  headwidth & the width of the base of the arrow head in points\\
+  shrink & move the tip and base some percent away from the annotated point and text\\
+  **kwargs & any key for \code{matplotlib.patches.polygon}  (eg facecolor)\\\hline
+  \end{tabular}
+  \caption{\label{tab:arrowprops}keys controlling the arrow properties in the \carg{arrowprops} dictionary.
+  }
+\end{table}
+
+
+\fig{4in}{figures/annotation_demo}{Sample annotation output generated from Listing~\ref{lst:annotation_demo} }{fig:annotation_demo}
+\lstinputlisting[linerange=1-27,caption={Annotations with different coordinate systems for the annotated point and text
+  see Figure~\ref{fig:annotation_demo}},
+label=lst:annotation_demo]{code/annotation_demo.py}
+
+
+
 
 
 \subsubsection{Licensing}
@@ -2231,6 +2294,7 @@ mouse moves
 
 
 
+
 \chapter{Font finding and properties}
 \label{cha:font_finding}
 
@@ -2516,9 +2580,353 @@ tick labels.
 label=lst:date_ticker_demo]{code/date_ticker_demo.py}
 
 
+\chapter{Interactive object picking}
+\label{cha:picking}
+
+When interacting with a plot in a user interface window, it is often
+helpful to be able to select, or ``pick'' graphical elements with a
+mouse click or a lasso select.  matplotlib provides a pick interface
+to select and inspect objects and their data though a pick event
+handler.  Everything in the graph, from basic elements like Text,
+Line2D, Polygon to complex objects like Figure, Axes and Axis, are
+derived from the matplotlib Artist base class, and each artist defines
+a \code{pick} method that responds to mouse click events and fires a
+\code{pick\_event} when the mouse click is over the artist.  When
+selected, the code{pick\_event} is fired off and clients who are
+registered to get callbacks on \code{pick\_event} will be notified with
+a callback with the following signature
+
+\begin{lstlisting}
+def onpick(event):
+    pass
+
+fig.canvas.mpl_connect('pick_event', onpick)
+\end{lstlisting}
+
+\code{event} is a \code{matplotlib.backend\_bases.PickEvent} instance 
+which has attributes
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|}\hline
+  attribute & Description\\\hline
+    mouseevent & the MouseEvent that generated the pick\\
+    artist    & the artist picked\\\hline
+ \end{tabular}
+  \caption{\label{tab:pickeventattrs}The \code{PickEvent} attributes
+  }
+\end{table}
+
+In addition, certain matplotlib Artists, such as \code{Line2D} may
+attach additional type dependent attributes.  For example, Line2D
+attaches \code{ind} which is a sequeunce of integers giving the
+indices into the data of the points which meet the pick criterion
+tolerance.  These extra attributes are documented in the
+\code{Artist.pick} method, eg, from
+\code{matplotlib.lines.Line2D.pick}
+
+\begin{lstlisting}
+    def pick(self, mouseevent):
+        """
+        If mouseevent is over data that satisifies the picker, fire
+        off a backend_bases.PickEvent with the additional attribute "ind"
+        which is a sequence of indices into the data that meet the criteria
+        """
+\end{lstlisting}
+
+In order to enable picking on a given artist, you need to set the
+\carg{pickeps} property, which take several forms.  At the most basic
+level, it is simply a boolean \code{True|False} which will
+enable/disable picking for that artist and the artist defines a
+default rule for hit testing (eg for Text, if the mouse click occurs
+in the rectangular bounding box surrounding the text it will fire off
+a \code{pick\_event}.  Alternatively, one can specify a scalar value
+which is interpreted as a epsilon tolerance distance in printer's
+points; Line2D for example will determine the indicies of all the data
+points which fall within this epsilon tolerance distance.  The list of
+valid picker values and types is given in the table below.
+
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|l|}\hline
+    \code{picker} value &  description\\\hline
+    None &  picking is disabled for this artist (default)\\
+
+    boolean & if True then picking will be enabled and the
+      artist will fire a pick event if the mouse event is over
+      the artist\\
+        
+    float & if \code{picker} is a number it is interpreted as an
+      epsilon tolerance in points and the the Artist will fire
+      off an event if it's data is within epsilon of the mouse
+      event.  For some artists like lines and patch collections,
+      the Artist may provide additional data to the pick event
+      that is generated, eg the indices of the data within
+      epsilon of the pick event\\
+
+     function & if \code{picker} is callable, it is a user supplied
+      function which determines whether the artist is hit by the
+      mouse event.  \code{hit, props = picker(artist, mouseevent)}
+      to determine the hit test.  if the mouse event is over the
+      artist, return \code{hit=True} and \code{props} is a dictionary of properties
+      you want added to the \code{PickEvent} attributes\\\hline
+  \end{tabular}
+  \caption{\label{tab:picker}The valid types and their interpretation for the \carg{picker} Artist property.
+  }
+\end{table}
+
+The example below shows how to enable picking on basic matplotlib
+Artists (Line2D, Rectangle and Text).  Note that the picker property
+must be explicitly set either as a keyword argument to the plotting
+function that creates the Artist (eg \code{plot} or \code{bar}) or by
+setting the property of the Artist directly (eg
+\code{label.set\_picker(True)})
+
+\lstinputlisting[caption={Basic picker event handling},
+label=lst:pick_demo1]{code/pick_demo1.py}
+
+You can also define your own custom hit testing function and return
+custom data to the callback.  This is very useful if you want to
+define your own distance metric or to decorate your plot objects with
+custom data and return it to the user through the pick infrastructure,
+eg to query plot objects for associated data.  In the example below we
+define the pick distance function to operate in data coordinate space
+rather than printer's points, and return additional metadata to the
+user, specifically the x and y coordinates of the pick point in data
+coordinates
+
+\lstinputlisting[caption={Defining custom hit testing functions},
+label=lst:pick_demo2]{code/pick_demo2.py}
 
 
 
+
+\chapter{Custom objects and units}
+\label{cha:units}
+
+matplotlib provides support for working with custom objects that know
+how to convert themselves to numeric-like objects.  Suppose you want
+to plot a certain type of object (eg a python \code{datetime.date})
+and you do not have access to the code to provide an array interface
+to it.  This may be because the object is coming from a 3rd party or
+from some part of your API that you do not have control over.  You
+could wrap it to put an array interface around it, but then it may not
+work properly with other parts of your code, again parts you may not
+have control over.  To support this, matplotlib allows you to register
+object types with conversion interfaces.
+
+As a simple example, matplotlib assumes dates are passed as floating
+point days since '0000-00-00'.  To work with native python date
+objects, we need to provide a conversion interface that converts
+\code{datetime.date} objects to the floats matplotlib is expecting.
+The basic conversion interface is in \code{matplotlib.units}.
+Additionally, we can provide axis info to enable default axis
+labeling, tick locating and tick formatting.  Here is the basic
+conversion interface required to support dates
+
+\begin{lstlisting}[caption={Conversion interface for working with
+    python dates}, label=lst:datesupport]
+import matplotlib
+from matplotlib.cbook import iterable, is_numlike
+import matplotlib.units as units
+import matplotlib.dates as dates
+import matplotlib.ticker as ticker
+import datetime
+
+class DateConverter(units.ConversionInterface):
+
+    def axisinfo(unit):
+        'return the unit AxisInfo'
+        if unit=='date':
+            majloc = dates.AutoDateLocator()
+            majfmt = dates.AutoDateFormatter(majloc)
+            return units.AxisInfo(
+                majloc = majloc,
+                majfmt = majfmt,
+                label='date',
+                )
+        else: return None
+    axisinfo = staticmethod(axisinfo)
+
+    def convert(value, unit):
+        if units.ConversionInterface.is_numlike(value): return value
+        return dates.date2num(value)
+    convert = staticmethod(convert)
+        
+    def default_units(x):
+        'return the default unit for x or None'
+        return 'date'
+    default_units = staticmethod(default_units)
+
+
+# Once we have provided the basic required interface, we need to
+# register it with matplotlib so the matplotlib code knows how to
+# convert date and datetime objects to matplotlib floats.
+
+units.registry[datetime.date] = DateConverter()
+units.registry[datetime.datetime] = DateConverter()
+\end{lstlisting}
+
+Now we are ready to use native python date objects with matplotlib.
+If we put the above in a modulke called \code{datesupport}, we can use
+datetime object in matplotlib code as follows
+
+\begin{lstlisting}
+import datesupport # set up the date converters
+import datetime
+from matplotlib.dates import drange
+from pylab import figure, show, nx
+
+
+xmin = datetime.date(2007,1,1)
+xmax = datetime.date.today()
+delta = datetime.timedelta(days=1)
+xdates = drange(xmin, xmax, delta)
+
+fig = figure()
+fig.subplots_adjust(bottom=0.2)
+ax = fig.add_subplot(111)
+ax.plot(xdates, nx.mlab.rand(len(xdates)), 'o')
+ax.set_xlim(datetime.date(2007,2,1), datetime.date(2007,3,1))
+
+fig.autofmt_xdate()
+show()
+
+\end{lstlisting}
+
+
+In addition to custom types, in the same units infrastructure
+matplotlib supports unit types; that is, objects which know how to
+convert themselves to scalars given a unit argument.  Because there is
+no standard python units package, we do not assume any particular form
+of the units.  Rather, \code{matplotlib.axis.Axis} stores a
+\code{units} property (which can be an arbitrary type) and will pass
+this value of the units property to objects which are registered with
+the units registry.  The units conversion interface provides the
+default do-nothing method
+
+\begin{lstlisting}
+    def convert(obj, unit):
+        """
+        convert obj using unit.  If obj is a sequence, return the
+        converted sequence.  The ouput must be a sequence of scalars
+        that can be used by the numerix array layer
+        """
+        return obj
+    convert = staticmethod(convert)
+\end{lstlisting}
+
+to support unit conversions.  The implementor is free to ignore the
+\code{unit} argument which defaults to None.  But if you set the
+\code{unit} property (eg to \code{inches}), this will be passed to
+your unit enabled objects registered with the units registry.  Below
+is a toy example in which a unit enabled class \code{Foo} is plotted
+with different units (here the ``units'' are simple scalars 1.0, 2.0,
+etc... but in real code would likely be strings like 'inches', 'cm' or
+object instances like \code{inches}, \code{cm}\dots.
+
+\begin{lstlisting}
+
+from matplotlib.cbook import iterable
+import matplotlib.units as units
+import matplotlib.ticker as ticker
+from pylab import figure, show, nx
+
+class Foo:
+    def __init__( self, val, unit=1.0 ):
+        self.unit = unit
+        self._val = val * unit
+
+    def value( self, unit ):
+        if unit is None: unit = self.unit
+        return self._val / unit
+
+class FooConverter:
+
+    def axisinfo(unit):
+        'return the Foo AxisInfo'
+        if unit==1.0 or unit==2.0:
+            return units.AxisInfo(
+                majloc = ticker.IndexLocator( 4, 0 ),
+                majfmt = ticker.FormatStrFormatter("VAL: %s"),
+                label='foo',
+                )
+
+        else:
+            return None
+    axisinfo = staticmethod(axisinfo)
+
+    def convert(obj, unit):
+        """
+        convert obj using unit.  If obj is a sequence, return the
+        converted sequence
+        """
+        if units.ConversionInterface.is_numlike(obj):
+            return obj
+
+        if iterable(obj):
+            return [o.value(unit) for o in obj]
+        else:
+            return obj.value(unit)
+    convert = staticmethod(convert)
+
+    def default_units(x):
+        'return the default unit for x or None'
+        if iterable(x):
+            for thisx in x:
+                return thisx.unit
+        else:
+            return x.unit
+    default_units = staticmethod(default_units)
+
+units.registry[Foo] = FooConverter()
+
+# create some Foos
+x = []
+for val in range( 0, 50, 2 ):
+    x.append( Foo( val, 1.0 ) )
+
+# and some arbitrary y data
+y = [i for i in range( len(x) ) ]
+
+
+# plot specifying units
+fig = figure()
+fig.subplots_adjust(bottom=0.2)
+ax = fig.add_subplot(111)
+ax.plot( x, y, 'o', xunits=2.0 )
+for label in ax.get_xticklabels():
+    label.set_rotation(30)
+    label.set_ha('right')
+
+
+# plot without specifying units; will use the None branch for axisinfo
+fig2 = figure()
+ax = fig2.add_subplot(111)
+ax.plot( x, y ) # uses default units
+
+fig3 = figure()
+ax = fig3.add_subplot(111)
+ax.plot( x, y, xunits=0.5)
+
+show()
+
+\end{lstlisting}
+
+
+In the matplotlib examples directory, there is a mockup units package
+\code{basic\_units}.  While this is not designed for production use and
+is not meant to be expanded upon, it does illustrate how one can use
+unit enabled arrays with matplotlib with default axis labeling and
+ticking.  Here is an example using the \code{basic\_units} code for
+plotting with radians and degrees; not the axis labels are set
+``automagically''
+
+\fig{4in}{figures/radian_demo}{Basic units: radians and degrees; see
+  Listing~\ref{lst:radian_demo}.}{fig:radian_demo}
+
+\lstinputlisting[linerange=1-12,caption={Working with units and conversions Figure~\ref{lst:radian_demo}},
+label=lst:radian_demo]{code/radian_demo.py}
 
 \chapter{Cookbook}
 \label{cha:cookbook}
@@ -3120,7 +3528,7 @@ to reproduce, analyze, test, perform and/or display publicly, prepare
 derivative works, distribute, and otherwise use matplotlib VERSION
 alone or in any derivative version, provided, however, that JDH's
 License Agreement and JDH's notice of copyright, i.e., "Copyright (c)
-2002-2004 John D. Hunter; All Rights Reserved" are retained in
+2002-2007 John D. Hunter; All Rights Reserved" are retained in
 matplotlib VERSION alone or in any derivative version prepared by
 Licensee.
 
