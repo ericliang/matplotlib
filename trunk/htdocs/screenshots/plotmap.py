@@ -5,7 +5,8 @@
 # the data is interpolated to the native projection grid.
 
 from matplotlib.toolkits.basemap import Basemap, shiftgrid
-from pylab import *
+from pylab import title, colorbar, show, axes, cm, load, arange, figure, \
+                  text
 
 # read in topo data (on a regular lat/lon grid)
 # longitudes go from 20 to 380.
@@ -52,4 +53,3 @@ m.drawmeridians(meridians,labels=[1,1,0,1])
 # set title.
 title('ETOPO Topography - Lambert Conformal Conic')
 show()
-
