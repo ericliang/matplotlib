@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.cbook</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/cbook.py">/usr/lib/python2.5/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/cbook.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
     <p><tt>A&nbsp;collection&nbsp;of&nbsp;utility&nbsp;functions&nbsp;and&nbsp;classes.&nbsp;&nbsp;Many&nbsp;(but&nbsp;not&nbsp;all)<br>
 from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nbsp;cbook</tt></p>
 <p>
@@ -16,13 +16,14 @@ from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nb
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="StringIO.html">StringIO</a><br>
 <a href="__builtin__.html">__builtin__</a><br>
-</td><td width="25%" valign=top><a href="errno.html">errno</a><br>
-<a href="itertools.html">itertools</a><br>
-</td><td width="25%" valign=top><a href="os.html">os</a><br>
-<a href="re.html">re</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="errno.html">errno</a><br>
+</td><td width="25%" valign=top><a href="itertools.html">itertools</a><br>
+<a href="matplotlib.numerix.html">matplotlib.numerix</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
 <a href="traceback.html">traceback</a><br>
-</td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -44,6 +45,8 @@ from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nb
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Bunch">Bunch</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#CallbackRegistry">CallbackRegistry</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#MemoryMonitor">MemoryMonitor</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Null">Null</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#RingBuffer">RingBuffer</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Sorter">Sorter</a>
@@ -69,6 +72,68 @@ group&nbsp;a&nbsp;few&nbsp;variables:<br>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Bunch-__init__"><strong>__init__</strong></a>(self, **kwds)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CallbackRegistry">class <strong>CallbackRegistry</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Handle&nbsp;registering&nbsp;and&nbsp;disconnecting&nbsp;for&nbsp;a&nbsp;set&nbsp;of&nbsp;signals&nbsp;and<br>
+callbacks<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;signals&nbsp;=&nbsp;'eat',&nbsp;'drink',&nbsp;'be&nbsp;merry'<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;def&nbsp;oneat(x):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'eat',&nbsp;x<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;def&nbsp;ondrink(x):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'drink',&nbsp;x<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;callbacks&nbsp;=&nbsp;<a href="#CallbackRegistry">CallbackRegistry</a>(signals)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;ideat&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('eat',&nbsp;oneat)<br>
+&nbsp;&nbsp;&nbsp;iddrink&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('drink',&nbsp;ondrink)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#tmp&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('drunk',&nbsp;ondrink)&nbsp;#&nbsp;this&nbsp;will&nbsp;raise&nbsp;a&nbsp;ValueError<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('drink',&nbsp;123)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;will&nbsp;call&nbsp;oneat<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('eat',&nbsp;456)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;will&nbsp;call&nbsp;ondrink<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('be&nbsp;merry',&nbsp;456)&nbsp;#&nbsp;nothing&nbsp;will&nbsp;be&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-disconnect">disconnect</a>(ideat)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;disconnect&nbsp;oneat<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('eat',&nbsp;456)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;nothing&nbsp;will&nbsp;be&nbsp;called<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CallbackRegistry-__init__"><strong>__init__</strong></a>(self, signals)</dt><dd><tt>signals&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;valid&nbsp;signals</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-connect"><strong>connect</strong></a>(self, s, func)</dt><dd><tt>register&nbsp;func&nbsp;to&nbsp;be&nbsp;called&nbsp;when&nbsp;a&nbsp;signal&nbsp;s&nbsp;is&nbsp;generated<br>
+func&nbsp;will&nbsp;be&nbsp;called&nbsp;with&nbsp;args&nbsp;and&nbsp;kwargs</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-disconnect"><strong>disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;the&nbsp;callback&nbsp;registered&nbsp;with&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-process"><strong>process</strong></a>(self, s, *args, **kwargs)</dt><dd><tt>process&nbsp;signal&nbsp;s.&nbsp;&nbsp;All&nbsp;of&nbsp;the&nbsp;functions&nbsp;registered&nbsp;to&nbsp;receive<br>
+callbacks&nbsp;on&nbsp;s&nbsp;will&nbsp;be&nbsp;called&nbsp;with&nbsp;*args&nbsp;and&nbsp;**kwargs</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MemoryMonitor">class <strong>MemoryMonitor</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MemoryMonitor-__call__"><strong>__call__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-__init__"><strong>__init__</strong></a>(self, nmax<font color="#909090">=20000</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-clear"><strong>clear</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-plot"><strong>plot</strong></a>(self, i0<font color="#909090">=0</font>, isub<font color="#909090">=1</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-report"><strong>report</strong></a>(self, segments<font color="#909090">=4</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-xy"><strong>xy</strong></a>(self, i0<font color="#909090">=0</font>, isub<font color="#909090">=1</font>)</dt></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -289,9 +354,9 @@ If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nb
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f50ba0&gt;<dd><tt>T.<a href="#Xlator-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8145420&gt;<dd><tt>T.<a href="#Xlator-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x814b35c&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#Xlator-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x8377744&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#Xlator-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
 v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
 
 </td></tr></table> <p>
@@ -389,9 +454,9 @@ If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nb
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f50ba0&gt;<dd><tt>T.<a href="#maxdict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8145420&gt;<dd><tt>T.<a href="#maxdict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x814b9c4&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#maxdict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x837689c&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#maxdict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
 v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
 
 </td></tr></table> <p>
@@ -501,7 +566,7 @@ cmp(x,&nbsp;y)&nbsp;-&gt;&nbsp;-1,&nbsp;0,&nbsp;1</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0xb7f4f880&gt;<dd><tt>T.<a href="#silent_list-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8144360&gt;<dd><tt>T.<a href="#silent_list-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -517,11 +582,19 @@ Data and other attributes inherited from <a href="__builtin__.html#list">__built
 Condensed&nbsp;by&nbsp;Alex&nbsp;Martelli&nbsp;from&nbsp;this&nbsp;thread&nbsp;on&nbsp;c.l.python<br>
 <a href="http://groups.google.com/groups?q=all+pairs+group:*python*&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;selm=mailman.4028.1096403649.5135.python-list%40python.org&amp;rnum=1">http://groups.google.com/groups?q=all+pairs+group:*python*&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;selm=mailman.4028.1096403649.5135.python-list%40python.org&amp;rnum=1</a></tt></dd></dl>
  <dl><dt><a name="-alltrue"><strong>alltrue</strong></a>(seq)</dt></dl>
+ <dl><dt><a name="-dedent"><strong>dedent</strong></a>(s)</dt><dd><tt>Remove&nbsp;excess&nbsp;indentation&nbsp;from&nbsp;docstrings.<br>
+&nbsp;<br>
+Discards&nbsp;any&nbsp;leading&nbsp;blank&nbsp;lines,&nbsp;then&nbsp;removes&nbsp;up&nbsp;to<br>
+n&nbsp;whitespace&nbsp;characters&nbsp;from&nbsp;each&nbsp;line,&nbsp;where&nbsp;n&nbsp;is<br>
+the&nbsp;number&nbsp;of&nbsp;leading&nbsp;whitespace&nbsp;characters&nbsp;in&nbsp;the<br>
+first&nbsp;line.&nbsp;It&nbsp;differs&nbsp;from&nbsp;textwrap.dedent&nbsp;in&nbsp;its<br>
+deletion&nbsp;of&nbsp;leading&nbsp;blank&nbsp;lines&nbsp;and&nbsp;its&nbsp;use&nbsp;of&nbsp;the<br>
+first&nbsp;non-blank&nbsp;line&nbsp;to&nbsp;determine&nbsp;the&nbsp;indentation.</tt></dd></dl>
  <dl><dt><a name="-dict_delall"><strong>dict_delall</strong></a>(d, keys)</dt><dd><tt>delete&nbsp;all&nbsp;of&nbsp;the&nbsp;keys&nbsp;from&nbsp;the&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;d</tt></dd></dl>
  <dl><dt><a name="-exception_to_str"><strong>exception_to_str</strong></a>(s<font color="#909090">=None</font>)</dt></dl>
  <dl><dt><a name="-finddir"><strong>finddir</strong></a>(o, match, case<font color="#909090">=False</font>)</dt><dd><tt>return&nbsp;all&nbsp;attributes&nbsp;of&nbsp;o&nbsp;which&nbsp;match&nbsp;string&nbsp;in&nbsp;match.&nbsp;&nbsp;if&nbsp;case<br>
 is&nbsp;True&nbsp;require&nbsp;an&nbsp;exact&nbsp;case&nbsp;match.</tt></dd></dl>
- <dl><dt><a name="-flatten"><strong>flatten</strong></a>(seq, scalarp<font color="#909090">=&lt;function is_scalar at 0x811cb54&gt;</font>)</dt><dd><tt>this&nbsp;generator&nbsp;flattens&nbsp;nested&nbsp;containers&nbsp;such&nbsp;as<br>
+ <dl><dt><a name="-flatten"><strong>flatten</strong></a>(seq, scalarp<font color="#909090">=&lt;function is_scalar at 0x8353a3c&gt;</font>)</dt><dd><tt>this&nbsp;generator&nbsp;flattens&nbsp;nested&nbsp;containers&nbsp;such&nbsp;as<br>
 &nbsp;<br>
 &gt;&gt;&gt;&nbsp;l=(&nbsp;('John',&nbsp;'Hunter'),&nbsp;(1,23),&nbsp;[[[[42,(5,23)]]]])<br>
 &nbsp;<br>
@@ -557,6 +630,7 @@ val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key)<br>
 #&nbsp;returns&nbsp;value&nbsp;for&nbsp;key&nbsp;if&nbsp;key&nbsp;exists,&nbsp;else&nbsp;default.&nbsp;&nbsp;Delete&nbsp;key,<br>
 #&nbsp;val&nbsp;item&nbsp;if&nbsp;it&nbsp;exists.&nbsp;&nbsp;Will&nbsp;not&nbsp;raise&nbsp;a&nbsp;KeyError<br>
 val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key,&nbsp;default)</tt></dd></dl>
+ <dl><dt><a name="-report_memory"><strong>report_memory</strong></a>(i<font color="#909090">=0</font>)</dt><dd><tt>return&nbsp;the&nbsp;memory&nbsp;consumed&nbsp;by&nbsp;process</tt></dd></dl>
  <dl><dt><a name="-reverse_dict"><strong>reverse_dict</strong></a>(d)</dt><dd><tt>reverse&nbsp;the&nbsp;dictionary&nbsp;--&nbsp;may&nbsp;lose&nbsp;data&nbsp;if&nbsp;values&nbsp;are&nbsp;not&nbsp;uniq!</tt></dd></dl>
  <dl><dt><a name="-soundex"><strong>soundex</strong></a>(name, len<font color="#909090">=4</font>)</dt><dd><tt>soundex&nbsp;module&nbsp;conforming&nbsp;to&nbsp;Odell-Russell&nbsp;algorithm</tt></dd></dl>
  <dl><dt><a name="-strip_math"><strong>strip_math</strong></a>(s)</dt><dd><tt>remove&nbsp;latex&nbsp;formatting&nbsp;from&nbsp;mathtext</tt></dd></dl>
@@ -572,7 +646,7 @@ val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key,&nbsp;default)</tt></dd></
 <td width="100%"><strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 0)<br>
 <strong>major</strong> = 2<br>
 <strong>minor1</strong> = 5<br>
-<strong>minor2</strong> = 0<br>
+<strong>minor2</strong> = 1<br>
 <strong>s</strong> = 'final'<br>
 <strong>tmp</strong> = 0</td></tr></table>
 @footer@

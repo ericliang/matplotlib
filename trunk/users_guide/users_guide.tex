@@ -2045,6 +2045,125 @@ bar method is
 \end{lstlisting}
 
 
+\subsection{Broken bar charts}
+\label{sec:broken_bar}
+
+matplotlib provides a collection
+\code{matplotlib.collections.BrokenBarHCollection}, and a wrapper
+function \code{broken\_barh} to facilitate plotting a series of
+\code{(xmin, xwidth)} ranges with horizontal bars.  This functionality
+is typically used in plotting temporal data, when you want to visually
+represent the windows of time where a certain feature is available,
+etc...  The signature of the class and the wrapper function are
+
+\begin{lstlisting}
+    def broken_barh(self, xranges, yrange, **kwargs):
+        """
+        A collection of horizontal bars spanning yrange with a sequence of
+        xranges
+
+        xranges : sequence of (xmin, xwidth)
+        yrange  : (ymin, ywidth)
+
+        kwargs are PatchCollection properties
+        """
+\end{lstlisting}
+
+The collection properties are controlled with standard
+\code{matplotlib.collections.PatchColllection} kwargs
+\begin{table}[htbp]
+  \centering
+  \begin{tabular}[t]{|l|l|}\hline
+    \carg{Property}  & \val{Value}\\\hline
+    \carg{edgecolors}  & a single edge colors or a sequence\\
+    \carg{facecolors}  & a single facecolor or a sequence\\
+    \carg{linewidths} & a single linewidth or a sequence \\\hline
+  \end{tabular}
+  \caption{\label{tab:events}The broken bar collection properties}
+\end{table}
+
+Any of these arguments can be a single object, like
+\code{facecolors='blue'} in which case all bars will be homogeneous on
+that property, or a sequence, eg \code{facecolors=('blue', 'red',
+  'green')} which will capply different colors to the bars.
+
+\fig{4in}{figures/broken_barh}{This graph simulates data in which a
+  race was interrupted and the bars show the time periods when the
+  race was on and when it was interrupted; code is in
+  Listing~\ref{lst:broken_barh}.  The annotation command used here is
+  discussed in Section~\ref{sec:annotations} }{fig:broken_barh}
+\lstinputlisting[linerange=1-18,caption={Use the broken\_barh to make
+  horizontal broken bar plots, eg to represent intervals where
+  something is turned on or off; see Figure~\ref{fig:broken_barh}. },
+label=lst:broken_barh]{code/broken_barh.py}
+
+\section{Polar charts}
+\label{sec:polar_charts}
+
+matplotlib has a \code{PolarAxes} class and a \func{polar} function in
+the pylab interface.  Not every matplotlib polar function is supported
+on polar axes, but most are: you can do polar line plots, bar charts,
+scatter plots, area fills, text and legends.
+
+To create a \code{PolarSubplot}, pass the \code{polar=True} keyword
+argument to the axes or subplot creation fuinction you are using, eg
+to create a 
+\begin{lstlisting}
+  subplot(211, polar=True)
+\end{lstlisting}
+or 
+\begin{lstlisting}
+  axes([left, bottom, width, height], polar=True)
+\end{lstlisting}
+
+The view limits (eg \code{xlim} and \code{ylim}) apply to the lower
+left and upper right of the rectangular box that surrounds to polar
+axes.  Eg if you have
+
+\begin{lstlisting}
+r = arange(0,1,0.01)
+theta = 2*pi*r
+\end{lstlisting}
+the lower left corner is $5/4\pi, \sqrt{2}$ and the
+upper right corner is $1/4\pi, \sqrt{2}$.
+
+To customize the radial and angular gridding, ticking and formatting,
+a few helper methods of the polar axes (with corresponding pylab
+interface wrappers) are provided.
+
+To customize the radial grids, the PolarAxes has a method
+\func{set\_rgrids} (the pylab method is simply \code{rgrids}).
+\begin{lstlisting}
+  def set_rgrids(self, radii, labels=None, angle=22.5, rpad=0.05, **kwargs):
+\end{lstlisting}
+This method will set the radial locations and labels of the radial
+grids.  The \code{labels} will appear at radial distances \code{radii}
+at the specified \code{angle}.  \code{labels}, if not \code{None}, is
+a \code{len(radii)} list of strings of the labels to use at each
+angle.  If \code{labels} is \code{None}, the radial tick formatter
+\code{ax.rformatter} will be used.  \code{rpad} is a fraction of the
+max of \code{radii} which will pad each of the radial labels in the
+radial direction.  You can use the additional keyword arguments in
+\code{kwargs} to pass in \code{matplotlib.text.Text} properties to
+customize the text labels.
+
+Similarly, to set and format the angular gridlines and labels, use the
+\code{set\_thetagrids} function.  See the class documentation -- the
+signature is similar to the rgrids method discussed above.
+
+The \code{PolarAxes} will clip all objects to the circular polygon
+which comprises the Axes bounding polygon, and you can use the
+\code{set\_rmax} method to set the maximum radius and data that will be
+visible.
+
+\fig{4in}{figures/polar_demo}{A polar line chart; code is in
+  Listing~\ref{lst:polar_demo}.  }{fig:polar_demo}
+\lstinputlisting[linerange=1-19,caption={A simple polar line plot; see
+  Figure~\ref{fig:polar_demo}. The matplotlib source distribution has
+  addition examples \fname{polar\_scattter.py}, \fname{polar\_bar.py} and
+  \fname{polar\_legend.py} which show how to make additional polar plot
+  types.}, label=lst:polar_demo]{code/polar_demo.py}
+
 
 \section{Pseudocolor and scatter plots}
 \label{sec:pcolor_scatter}
@@ -2699,7 +2818,118 @@ coordinates
 label=lst:pick_demo2]{code/pick_demo2.py}
 
 
+\section{Picking with a lasso tool}
 
+matplotlib provides a lasso tool to select a region of the plot, and
+some high performance hit testing functions to query whether a point
+or group of points is withing the polygon created by the lasso.
+
+The basic lasso widget is defined in \code{matplotlib.widgets} and is
+initialized with an Axes instance, an \code{x,y} starting location,
+and a callback function.  The widget will handle the mouse movement
+events and trigger a callback with the vertices of the lasso when the
+mouse button is released.  A standard use case is to create the lasso
+on a button press event with the Axes in which the mouse press
+occurred and the x,y locations of the mouse press event.
+
+\begin{lstlisting}
+    def onpress(self, event):        
+        if self.canvas.widgetlock.locked(): return 
+        if event.inaxes is None: return 
+        self.lasso = Lasso(event.inaxes, (event.xdata, event.ydata), self.callback)
+        # acquire a lock on the widget drawing
+        self.canvas.widgetlock(self.lasso)
+\end{lstlisting}
+
+The callback function will get the vertices of the lasso, and can use
+the \code{matplotlib.nxutils.points\_inside\_poly} function to test
+whether a list of x,y points are inside the lasso region or not.  
+
+\begin{lstlisting}
+    def callback(self, verts):
+        # self.xys is a sequene of (x,y) data points and verts are 
+        # the x,y vertices of the lasso polygon
+        ind = nx.nonzero(points_inside_poly(self.xys, verts))
+        self.canvas.draw_idle()
+        self.canvas.widgetlock.release(self.lasso)
+        del self.lasso
+\end{lstlisting}
+
+In the example code, we allso manage the widget locking of the canvas
+so different widgets will not compete to draw on the canvas at the
+same time, eg a rectangular select widget and a lasso widget may both
+need to get a lock on the canvas at different times.  A complete
+example is below
+
+\begin{lstlisting}
+from matplotlib.widgets import Lasso
+import matplotlib.mlab 
+from matplotlib.nxutils import points_inside_poly
+from matplotlib.colors import colorConverter
+from matplotlib.collections import RegularPolyCollection
+
+from pylab import figure, show, nx
+
+class Datum:
+    colorin = colorConverter.to_rgba('red')
+    colorout = colorConverter.to_rgba('green')    
+    def __init__(self, x, y, include=False):
+        self.x = x
+        self.y = y
+        if include: self.color = self.colorin
+        else: self.color = self.colorout
+        
+        
+class LassoManager:
+    def __init__(self, ax, data):
+        self.axes = ax
+        self.canvas = ax.figure.canvas
+        self.data = data
+
+        self.Nxy = len(data)
+
+        self.facecolors = [d.color for d in data]
+        self.xys = [(d.x, d.y) for d in data]
+
+        self.collection = RegularPolyCollection(
+            fig.dpi, 6, sizes=(100,),
+            facecolors=self.facecolors,
+            offsets = self.xys,
+            transOffset = ax.transData)
+
+        ax.add_collection(self.collection)
+
+        self.cid = self.canvas.mpl_connect('button_press_event', self.onpress)
+        
+    def callback(self, verts):
+        #ind = matplotlib.mlab._inside_poly_deprecated(self.xys, verts)
+        ind = nx.nonzero(points_inside_poly(self.xys, verts))
+        for i in range(self.Nxy):
+            if i in ind:
+                self.facecolors[i] = Datum.colorin
+            else:
+                self.facecolors[i] = Datum.colorout             
+
+        self.canvas.draw_idle()
+        self.canvas.widgetlock.release(self.lasso)
+        del self.lasso
+
+    def onpress(self, event):        
+        if self.canvas.widgetlock.locked(): return 
+        if event.inaxes is None: return 
+        self.lasso = Lasso(event.inaxes, (event.xdata, event.ydata), self.callback)
+        # acquire a lock on the widget drawing
+        self.canvas.widgetlock(self.lasso)
+
+data = [Datum(*xy) for xy in nx.mlab.rand(100, 2)]
+
+fig = figure()
+ax = fig.add_subplot(111, xlim=(0,1), ylim=(0,1), autoscale_on=False)
+lman = LassoManager(ax, data)
+    
+show()
+
+\end{lstlisting}
 
 \chapter{Custom objects and units}
 \label{cha:units}
@@ -2928,6 +3158,31 @@ plotting with radians and degrees; not the axis labels are set
 \lstinputlisting[linerange=1-12,caption={Working with units and conversions Figure~\ref{lst:radian_demo}},
 label=lst:radian_demo]{code/radian_demo.py}
 
+
+Unit information is stored by the XAxis and YAxis instance using the
+\code{units} property.  This property can be set implicitly by passing
+the \carg{xunits} or \carg{yunits} keyword arguments to the plotting
+functions, eg
+
+\begin{lstlisting}
+ax.plot(cms, cms, xunits=cm, yunits=inch)
+\end{lstlisting}
+
+or set explicitly using the axis \code{set\_units} method, eg  
+
+\begin{lstlisting}
+ax.xaxis.set_units(cm)
+\end{lstlisting}
+
+When units are reset, the matplotlib artists will attempt to convert
+themselves to the new unit, eg \code{cm} to \code{inch} conversions
+shouldbe fine, and \code{cm} to \code{Hz} conversions should raise an
+exception.  Whether an exception is actually raise and what that
+exception is is the province of the underlying units package, since,
+as indicated above, matplotlib makes no assumption about the
+underlying units functionality other than it's interface as specified
+by \mpldoc{units.ConversionInterface}.
+
 \chapter{Cookbook}
 \label{cha:cookbook}
 
@@ -2950,13 +3205,6 @@ this easier.
 \subsection{Fill the area between two curves}
 \label{cbook:fill_between}
 
-The fill command takes a list of vertices and draws a polygon.  A
-filled area between two curves is simply a large polygon.  All you
-need to do is get the vertices in the correct order, which basically
-means reversing the order of the x,y pairs in one of the lines, so
-that path across the vertices of the polygon is continuous.  Here is a
-simple example
-
 \fig{4in}{figures/fill_between}{Fill the area between two curves; see
   Listing~\ref{lst:fill_between}.}{fig:fill_between}
 
@@ -2964,6 +3212,31 @@ simple example
   curves; see Figure~\ref{lst:fill_between}},
 label=lst:fill_between]{code/fill_between.py}
 
+The fill command takes a list of vertices and draws a polygon.  A
+filled area between two curves is simply a large polygon.  All you
+need to do is get the vertices in the correct order, which basically
+means reversing the order of the x,y pairs in one of the lines, so
+that path across the vertices of the polygon is continuous.  Here is a
+simple example
+
+
+\subsection{Drawing true ellipses and circles}
+\label{cbook:true_ellipses}
+The \code{matplotlib.patches.Ellipse} class, and the special case
+derived class \code{matplotlib.patches.Circle} use 4 cubic splines to
+approximate a true ellipse, which gives a very close approximation to
+ellipses and is scale free. With a polygonal representation, you can
+see the discreteness of the approximation as you zoom into the
+vertices of the polygon.
+
+\fig{4in}{figures/ellipse_demo}{Drawing true ellipses using spline, rather than polygonal, representations; see
+  Listing~\ref{lst:ellipse_demo}.}{fig:ellipse_demo}
+
+\lstinputlisting[linerange=1-19,caption={The Ellipse patch
+  approximates true ellipses using 4 cubic splines, which is much more
+  accurate than a high resolution polygon representation.
+  SeeFigure~\ref{lst:ellipse_demo}},
+label=lst:ellipse_demo]{code/ellipse_demo.py}
 
 \section{Text}
 

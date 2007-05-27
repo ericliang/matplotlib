@@ -90,7 +90,7 @@ def fill_over(ax, x, y, val, color, over=True):
             thisY = y[indLast:ind+1]
             thisY[0] = val
             thisY[-1] = val
-            ax.fill(thisX, thisY, color)
+            ax.fill(thisX, thisY, facecolor=color)
         fillon = not fillon
         indLast = ind
 

@@ -33,6 +33,7 @@ def load_hst_data():
     """reconstruct the numerix arrays from the data files"""
 
     #hst = n.fromfile('hst.dat',typecode=n.UInt8, shape=(812,592,3))/255.
+    
     str = open('data/hst.zdat').read()
     dstr = zlib.decompress(str)
     hst = n.fromstring(dstr, n.UInt8)

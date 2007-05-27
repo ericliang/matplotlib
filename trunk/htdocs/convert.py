@@ -185,10 +185,9 @@ def isNewEntry(line):
 
 # re-add news to the params dict 'tables' entry below for news
 news1 = NewsBox("""\
-The latest matplotlib-0.87.7 for windows was compiled with <a href=
-http://numpy.scipy.org>numpy</a> 1.0 final.  Please make sure you are
-using the latest numpy-1.0 and not an earlier version or one of the rc
-release candidate series. You can check your numpy version by doing
+Please make sure you are using at least numpy-1.0 and not an earlier
+version or one of the rc release candidate series. You can check your
+numpy version by doing
 <pre>
 >>> import numpy
 >>> print numpy.__version__

@@ -2,9 +2,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.toolkits.html"><font color="#ffffff">toolkits</font></a>.<a href="matplotlib.toolkits.basemap.html"><font color="#ffffff">basemap</font></a>.basemap</strong></big></big> (version 0.9.3)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.toolkits.html"><font color="#ffffff">toolkits</font></a>.<a href="matplotlib.toolkits.basemap.html"><font color="#ffffff">basemap</font></a>.basemap</strong></big></big> (version 0.9.6)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/toolkits/basemap/basemap.py">/usr/lib/python2.4/site-packages/matplotlib/toolkits/basemap/basemap.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/basemap.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/basemap.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -18,7 +18,7 @@
 </td><td width="25%" valign=top><a href="matplotlib.numerix.ma.html">matplotlib.numerix.ma</a><br>
 <a href="math.html">math</a><br>
 </td><td width="25%" valign=top><a href="os.html">os</a><br>
-<a href="pyproj.html">pyproj</a><br>
+<a href="matplotlib.toolkits.basemap.pyproj.html">matplotlib.toolkits.basemap.pyproj</a><br>
 </td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -71,11 +71,13 @@
 &nbsp;resolution&nbsp;-&nbsp;resolution&nbsp;of&nbsp;boundary&nbsp;dataset&nbsp;being&nbsp;used&nbsp;('c'&nbsp;for&nbsp;crude,<br>
 &nbsp;&nbsp;&nbsp;'l'&nbsp;for&nbsp;low,&nbsp;etc.).&nbsp;If&nbsp;None,&nbsp;no&nbsp;boundary&nbsp;dataset&nbsp;is&nbsp;associated&nbsp;with&nbsp;the<br>
 &nbsp;&nbsp;&nbsp;<a href="#Basemap">Basemap</a>&nbsp;instance.&nbsp;&nbsp;<br>
+&nbsp;srs&nbsp;-&nbsp;a&nbsp;string&nbsp;representing&nbsp;the&nbsp;'spatial&nbsp;reference&nbsp;system'&nbsp;for&nbsp;the&nbsp;map<br>
+&nbsp;&nbsp;&nbsp;projection&nbsp;as&nbsp;defined&nbsp;by&nbsp;PROJ.4.<br>
 &nbsp;<br>
 &nbsp;Example&nbsp;Usage:<br>
 &nbsp;<br>
 &gt;&gt;&gt;&nbsp;from&nbsp;matplotlib.toolkits.basemap&nbsp;import&nbsp;<a href="#Basemap">Basemap</a><br>
-&gt;&gt;&gt;&nbsp;from&nbsp;pylab&nbsp;import&nbsp;*<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;pylab&nbsp;import&nbsp;load,&nbsp;meshgrid,&nbsp;title,&nbsp;arange,&nbsp;show<br>
 &gt;&gt;&gt;&nbsp;#&nbsp;read&nbsp;in&nbsp;topo&nbsp;data&nbsp;(on&nbsp;a&nbsp;regular&nbsp;lat/lon&nbsp;grid)<br>
 &gt;&gt;&gt;&nbsp;etopo&nbsp;=&nbsp;load('etopo20data.gz')<br>
 &gt;&gt;&gt;&nbsp;lons&nbsp;&nbsp;=&nbsp;load('etopo20lons.gz')<br>
@@ -252,11 +254,11 @@ color&nbsp;-&nbsp;country&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;
 antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;country&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
 ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)</tt></dd></dl>
 
-<dl><dt><a name="Basemap-drawgreatcircle"><strong>drawgreatcircle</strong></a>(self, lon1, lat1, lon2, lat2, dtheta<font color="#909090">=0.02</font>, **kwargs)</dt><dd><tt>draw&nbsp;a&nbsp;great&nbsp;circle&nbsp;on&nbsp;the&nbsp;map.<br>
+<dl><dt><a name="Basemap-drawgreatcircle"><strong>drawgreatcircle</strong></a>(self, lon1, lat1, lon2, lat2, del_s<font color="#909090">=100.0</font>, **kwargs)</dt><dd><tt>draw&nbsp;a&nbsp;great&nbsp;circle&nbsp;on&nbsp;the&nbsp;map.<br>
 &nbsp;<br>
 lon1,lat1&nbsp;-&nbsp;longitude,latitude&nbsp;of&nbsp;one&nbsp;endpoint&nbsp;of&nbsp;the&nbsp;great&nbsp;circle.<br>
 lon2,lat2&nbsp;-&nbsp;longitude,latitude&nbsp;of&nbsp;the&nbsp;other&nbsp;endpoint&nbsp;of&nbsp;the&nbsp;great&nbsp;circle.<br>
-dtheta&nbsp;-&nbsp;points&nbsp;on&nbsp;great&nbsp;circle&nbsp;computed&nbsp;every&nbsp;dtheta&nbsp;radians&nbsp;(default&nbsp;0.02).<br>
+del_s&nbsp;-&nbsp;points&nbsp;on&nbsp;great&nbsp;circle&nbsp;computed&nbsp;every&nbsp;delta&nbsp;kilometers&nbsp;(default&nbsp;100).<br>
 &nbsp;<br>
 Other&nbsp;keyword&nbsp;arguments&nbsp;(**kwargs)&nbsp;control&nbsp;plotting&nbsp;of&nbsp;great&nbsp;circle&nbsp;line,<br>
 see&nbsp;pylab.plot&nbsp;documentation&nbsp;for&nbsp;details.<br>
@@ -357,10 +359,12 @@ color&nbsp;-&nbsp;state&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;bl
 antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;state&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
 ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)</tt></dd></dl>
 
-<dl><dt><a name="Basemap-fillcontinents"><strong>fillcontinents</strong></a>(self, color<font color="#909090">='0.8'</font>, ax<font color="#909090">=None</font>)</dt><dd><tt>Fill&nbsp;continents.<br>
+<dl><dt><a name="Basemap-fillcontinents"><strong>fillcontinents</strong></a>(self, color<font color="#909090">='0.8'</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=1</font>)</dt><dd><tt>Fill&nbsp;continents.<br>
 &nbsp;<br>
 color&nbsp;-&nbsp;color&nbsp;to&nbsp;fill&nbsp;continents&nbsp;(default&nbsp;gray).<br>
-ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance).<br>
+zorder&nbsp;-&nbsp;set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;continent&nbsp;polygons&nbsp;(default&nbsp;1&nbsp;-&nbsp;set&nbsp;<br>
+&nbsp;to&nbsp;zero&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;paint&nbsp;over&nbsp;the&nbsp;filled&nbsp;continents).<br>
 &nbsp;<br>
 After&nbsp;filling&nbsp;continents,&nbsp;lakes&nbsp;are&nbsp;re-filled&nbsp;with&nbsp;axis&nbsp;background&nbsp;color.</tt></dd></dl>
 
@@ -511,11 +515,13 @@ The&nbsp;order&nbsp;keyword&nbsp;can&nbsp;be&nbsp;0&nbsp;for&nbsp;nearest-neighb
 or&nbsp;1&nbsp;for&nbsp;bilinear&nbsp;interpolation&nbsp;(default&nbsp;1).</tt></dd></dl>
 
 <hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>__dict__</strong> = &lt;dictproxy object&gt;<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dl>
-
-<dl><dt><strong>__weakref__</strong> = &lt;attribute '__weakref__' of 'Basemap' objects&gt;<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;(if&nbsp;defined)</tt></dl>
-
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -527,44 +533,6 @@ Data and other attributes defined here:<br>
 &nbsp;<br>
 Add&nbsp;cyclic&nbsp;(wraparound)&nbsp;point&nbsp;in&nbsp;longitude.</tt></dd></dl>
  <dl><dt><a name="-interp"><strong>interp</strong></a>(datain, xin, yin, xout, yout, checkbounds<font color="#909090">=False</font>, masked<font color="#909090">=False</font>, order<font color="#909090">=1</font>)</dt><dd><tt>dataout&nbsp;=&nbsp;<a href="#-interp">interp</a>(datain,xin,yin,xout,yout,order=1)<br>
-&nbsp;<br>
-This&nbsp;version&nbsp;uses&nbsp;array&nbsp;indexing&nbsp;and&nbsp;is&nbsp;not&nbsp;compatible&nbsp;with&nbsp;Numeric.<br>
-&nbsp;<br>
-interpolate&nbsp;data&nbsp;(datain)&nbsp;on&nbsp;a&nbsp;rectilinear&nbsp;grid&nbsp;(with&nbsp;x=xin<br>
-y=yin)&nbsp;to&nbsp;a&nbsp;grid&nbsp;with&nbsp;x=xout,&nbsp;y=yout.<br>
-&nbsp;<br>
-datain&nbsp;is&nbsp;a&nbsp;rank-2&nbsp;array&nbsp;with&nbsp;1st&nbsp;dimension&nbsp;corresponding&nbsp;to&nbsp;y,<br>
-2nd&nbsp;dimension&nbsp;x.<br>
-&nbsp;<br>
-xin,&nbsp;yin&nbsp;are&nbsp;rank-1&nbsp;arrays&nbsp;containing&nbsp;x&nbsp;and&nbsp;y&nbsp;of<br>
-datain&nbsp;grid&nbsp;in&nbsp;increasing&nbsp;order.<br>
-&nbsp;<br>
-xout,&nbsp;yout&nbsp;are&nbsp;rank-2&nbsp;arrays&nbsp;containing&nbsp;x&nbsp;and&nbsp;y&nbsp;of&nbsp;desired&nbsp;output&nbsp;grid.<br>
-&nbsp;<br>
-If&nbsp;checkbounds=True,&nbsp;values&nbsp;of&nbsp;xout&nbsp;and&nbsp;yout&nbsp;are&nbsp;checked&nbsp;to&nbsp;see&nbsp;that<br>
-they&nbsp;lie&nbsp;within&nbsp;the&nbsp;range&nbsp;specified&nbsp;by&nbsp;xin&nbsp;and&nbsp;xin.&nbsp;&nbsp;Default&nbsp;is&nbsp;False.<br>
-If&nbsp;checkbounds=False,&nbsp;and&nbsp;xout,yout&nbsp;are&nbsp;outside&nbsp;xin,yin,&nbsp;interpolated<br>
-values&nbsp;will&nbsp;be&nbsp;clipped&nbsp;to&nbsp;values&nbsp;on&nbsp;boundary&nbsp;of&nbsp;input&nbsp;grid&nbsp;(xin,yin)<br>
-if&nbsp;masked=False.&nbsp;If&nbsp;masked=True,&nbsp;the&nbsp;return&nbsp;value&nbsp;will&nbsp;be&nbsp;a&nbsp;masked<br>
-array&nbsp;with&nbsp;those&nbsp;points&nbsp;masked.&nbsp;If&nbsp;masked&nbsp;is&nbsp;set&nbsp;to&nbsp;a&nbsp;number,&nbsp;then<br>
-points&nbsp;outside&nbsp;the&nbsp;range&nbsp;of&nbsp;xin&nbsp;and&nbsp;yin&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;that&nbsp;number.<br>
-&nbsp;<br>
-The&nbsp;order&nbsp;keyword&nbsp;can&nbsp;be&nbsp;0&nbsp;for&nbsp;nearest-neighbor&nbsp;interpolation,<br>
-or&nbsp;1&nbsp;for&nbsp;bilinear&nbsp;interpolation&nbsp;(default&nbsp;1).<br>
-&nbsp;<br>
-If&nbsp;datain&nbsp;is&nbsp;a&nbsp;masked&nbsp;array&nbsp;and&nbsp;order=1&nbsp;(bilinear&nbsp;interpolation)&nbsp;is&nbsp;<br>
-used,&nbsp;elements&nbsp;of&nbsp;dataout&nbsp;will&nbsp;be&nbsp;masked&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;four&nbsp;surrounding<br>
-points&nbsp;in&nbsp;datain&nbsp;are&nbsp;masked.&nbsp;&nbsp;To&nbsp;avoid&nbsp;this,&nbsp;do&nbsp;the&nbsp;interpolation&nbsp;in&nbsp;two<br>
-passes,&nbsp;first&nbsp;with&nbsp;order=1&nbsp;(producing&nbsp;dataout1),&nbsp;then&nbsp;with&nbsp;order=0<br>
-(producing&nbsp;dataout2).&nbsp;&nbsp;Then&nbsp;replace&nbsp;all&nbsp;the&nbsp;masked&nbsp;values&nbsp;in&nbsp;dataout1<br>
-with&nbsp;the&nbsp;corresponding&nbsp;elements&nbsp;in&nbsp;dataout2&nbsp;(using&nbsp;numerix.where).<br>
-This&nbsp;effectively&nbsp;uses&nbsp;nearest&nbsp;neighbor&nbsp;interpolation&nbsp;if&nbsp;any&nbsp;of&nbsp;the<br>
-four&nbsp;surrounding&nbsp;points&nbsp;in&nbsp;datain&nbsp;are&nbsp;masked,&nbsp;and&nbsp;bilinear&nbsp;interpolation<br>
-otherwise.</tt></dd></dl>
- <dl><dt><a name="-interp_numeric"><strong>interp_numeric</strong></a>(datain, xin, yin, xout, yout, checkbounds<font color="#909090">=False</font>, masked<font color="#909090">=False</font>, order<font color="#909090">=1</font>)</dt><dd><tt>dataout&nbsp;=&nbsp;<a href="#-interp">interp</a>(datain,xin,yin,xout,yout,order=1)<br>
-&nbsp;<br>
-This&nbsp;version&nbsp;uses&nbsp;'take'&nbsp;instead&nbsp;of&nbsp;array&nbsp;indexing,&nbsp;and<br>
-thus&nbsp;is&nbsp;compatible&nbsp;with&nbsp;Numeric.<br>
 &nbsp;<br>
 interpolate&nbsp;data&nbsp;(datain)&nbsp;on&nbsp;a&nbsp;rectilinear&nbsp;grid&nbsp;(with&nbsp;x=xin<br>
 y=yin)&nbsp;to&nbsp;a&nbsp;grid&nbsp;with&nbsp;x=xout,&nbsp;y=yout.<br>
@@ -616,10 +584,9 @@ returns&nbsp;dataout,lonsout&nbsp;(data&nbsp;and&nbsp;longitudes&nbsp;on&nbsp;sh
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>__revision__</strong> = '20061017'<br>
-<strong>__version__</strong> = '0.9.3'<br>
-<strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
-<strong>matplotlib_version</strong> = '0.87.7'<br>
-<strong>mpl_required_version</strong> = '0.87.3'<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, 'backend': 'Agg', ...}</td></tr></table>
+<td width="100%"><strong>__version__</strong> = '0.9.6'<br>
+<strong>basemap_datadir</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/data'<br>
+<strong>matplotlib_version</strong> = '0.90.0'<br>
+<strong>mpl_required_version</strong> = '0.90'<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}</td></tr></table>
 @footer@

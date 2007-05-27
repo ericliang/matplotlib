@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.cm</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/cm.py">/usr/lib/python2.5/site-packages/matplotlib/cm.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/cm.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/cm.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;contains&nbsp;the&nbsp;instantiations&nbsp;of&nbsp;color&nbsp;mapping&nbsp;classes</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -48,6 +48,9 @@ cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
 <dl><dt><a name="ScalarMappable-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
+<dl><dt><a name="ScalarMappable-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="ScalarMappable-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
 update&nbsp;state</tt></dd></dl>
 
@@ -60,9 +63,15 @@ Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&n
 
 <dl><dt><a name="ScalarMappable-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numeric/numarray&nbsp;A</tt></dd></dl>
 
-<dl><dt><a name="ScalarMappable-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+<dl><dt><a name="ScalarMappable-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="ScalarMappable-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data</tt></dd></dl>
+<dl><dt><a name="ScalarMappable-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="ScalarMappable-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
 
@@ -86,125 +95,129 @@ If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nb
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Accent</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca4ec&gt;<br>
-<strong>Accent_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82caeac&gt;<br>
-<strong>Blues</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca50c&gt;<br>
-<strong>Blues_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8374a6c&gt;<br>
-<strong>BrBG</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca52c&gt;<br>
-<strong>BrBG_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83741cc&gt;<br>
-<strong>BuGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca54c&gt;<br>
-<strong>BuGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835486c&gt;<br>
-<strong>BuPu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca56c&gt;<br>
-<strong>BuPu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835458c&gt;<br>
-<strong>Dark2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca58c&gt;<br>
-<strong>Dark2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835462c&gt;<br>
-<strong>GnBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca5ac&gt;<br>
-<strong>GnBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83745ac&gt;<br>
-<strong>Greens</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca5cc&gt;<br>
-<strong>Greens_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354ccc&gt;<br>
-<strong>Greys</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca5ec&gt;<br>
-<strong>Greys_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83746cc&gt;<br>
+<td width="100%"><strong>Accent</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be862c&gt;<br>
+<strong>Accent_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8fac&gt;<br>
+<strong>Blues</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be864c&gt;<br>
+<strong>Blues_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0c8c&gt;<br>
+<strong>BrBG</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be866c&gt;<br>
+<strong>BrBG_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc03cc&gt;<br>
+<strong>BuGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be868c&gt;<br>
+<strong>BuGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21a0c&gt;<br>
+<strong>BuPu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be86ac&gt;<br>
+<strong>BuPu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2172c&gt;<br>
+<strong>Dark2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be86cc&gt;<br>
+<strong>Dark2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c217cc&gt;<br>
+<strong>GnBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be86ec&gt;<br>
+<strong>GnBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc07ac&gt;<br>
+<strong>Greens</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be870c&gt;<br>
+<strong>Greens_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21e4c&gt;<br>
+<strong>Greys</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be872c&gt;<br>
+<strong>Greys_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc08ec&gt;<br>
 <strong>LUTSIZE</strong> = 256<br>
-<strong>OrRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca62c&gt;<br>
-<strong>OrRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82caf4c&gt;<br>
-<strong>Oranges</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca60c&gt;<br>
-<strong>Oranges_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835474c&gt;<br>
-<strong>PRGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca6cc&gt;<br>
-<strong>PRGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354d6c&gt;<br>
-<strong>Paired</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca64c&gt;<br>
-<strong>Paired_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354fcc&gt;<br>
-<strong>Pastel1</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca66c&gt;<br>
-<strong>Pastel1_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837448c&gt;<br>
-<strong>Pastel2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca68c&gt;<br>
-<strong>Pastel2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837436c&gt;<br>
-<strong>PiYG</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca6ac&gt;<br>
-<strong>PiYG_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83549ac&gt;<br>
-<strong>PuBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca6ec&gt;<br>
-<strong>PuBuGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca70c&gt;<br>
-<strong>PuBuGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8374b0c&gt;<br>
-<strong>PuBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83541ec&gt;<br>
-<strong>PuOr</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca72c&gt;<br>
-<strong>PuOr_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83748ac&gt;<br>
-<strong>PuRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca74c&gt;<br>
-<strong>PuRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837494c&gt;<br>
-<strong>Purples</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca76c&gt;<br>
-<strong>Purples_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837424c&gt;<br>
-<strong>RdBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca78c&gt;<br>
-<strong>RdBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82cafec&gt;<br>
-<strong>RdGy</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca7ac&gt;<br>
-<strong>RdGy_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837476c&gt;<br>
-<strong>RdPu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca7cc&gt;<br>
-<strong>RdPu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354c2c&gt;<br>
-<strong>RdYlBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca7ec&gt;<br>
-<strong>RdYlBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354f2c&gt;<br>
-<strong>RdYlGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca80c&gt;<br>
-<strong>RdYlGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82cac2c&gt;<br>
-<strong>Reds</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca82c&gt;<br>
-<strong>Reds_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354b8c&gt;<br>
-<strong>Set1</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca84c&gt;<br>
-<strong>Set1_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835414c&gt;<br>
-<strong>Set2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca86c&gt;<br>
-<strong>Set2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82caccc&gt;<br>
-<strong>Set3</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca88c&gt;<br>
-<strong>Set3_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835428c&gt;<br>
-<strong>Spectral</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca8ac&gt;<br>
-<strong>Spectral_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82caa6c&gt;<br>
-<strong>YlGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca8cc&gt;<br>
-<strong>YlGnBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca8ec&gt;<br>
-<strong>YlGnBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354e8c&gt;<br>
-<strong>YlGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354aec&gt;<br>
-<strong>YlOrBr</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca90c&gt;<br>
-<strong>YlOrBr_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354a4c&gt;<br>
-<strong>YlOrRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca92c&gt;<br>
-<strong>YlOrRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837480c&gt;<br>
-<strong>autumn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b844c&gt;<br>
-<strong>autumn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83540ac&gt;<br>
-<strong>bone</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b846c&gt;<br>
-<strong>bone_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8374c2c&gt;<br>
+<strong>OrRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be876c&gt;<br>
+<strong>OrRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2106c&gt;<br>
+<strong>Oranges</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be874c&gt;<br>
+<strong>Oranges_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c218ec&gt;<br>
+<strong>PRGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be880c&gt;<br>
+<strong>PRGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21f6c&gt;<br>
+<strong>Paired</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be878c&gt;<br>
+<strong>Paired_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc01ec&gt;<br>
+<strong>Pastel1</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be87ac&gt;<br>
+<strong>Pastel1_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc068c&gt;<br>
+<strong>Pastel2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be87cc&gt;<br>
+<strong>Pastel2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc056c&gt;<br>
+<strong>PiYG</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be87ec&gt;<br>
+<strong>PiYG_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21b4c&gt;<br>
+<strong>PuBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be882c&gt;<br>
+<strong>PuBuGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be884c&gt;<br>
+<strong>PuBuGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0d2c&gt;<br>
+<strong>PuBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c212ec&gt;<br>
+<strong>PuOr</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be886c&gt;<br>
+<strong>PuOr_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0acc&gt;<br>
+<strong>PuRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be888c&gt;<br>
+<strong>PuRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0b6c&gt;<br>
+<strong>Purples</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be88ac&gt;<br>
+<strong>Purples_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc044c&gt;<br>
+<strong>RdBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be88cc&gt;<br>
+<strong>RdBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2110c&gt;<br>
+<strong>RdGy</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be88ec&gt;<br>
+<strong>RdGy_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc098c&gt;<br>
+<strong>RdPu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be890c&gt;<br>
+<strong>RdPu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21dac&gt;<br>
+<strong>RdYlBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be892c&gt;<br>
+<strong>RdYlBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc014c&gt;<br>
+<strong>RdYlGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be894c&gt;<br>
+<strong>RdYlGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8d2c&gt;<br>
+<strong>Reds</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be896c&gt;<br>
+<strong>Reds_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21c8c&gt;<br>
+<strong>Set1</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be898c&gt;<br>
+<strong>Set1_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2124c&gt;<br>
+<strong>Set2</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be89ac&gt;<br>
+<strong>Set2_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8dcc&gt;<br>
+<strong>Set3</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be89cc&gt;<br>
+<strong>Set3_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2138c&gt;<br>
+<strong>Spectral</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be89ec&gt;<br>
+<strong>Spectral_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8bac&gt;<br>
+<strong>YlGn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8a0c&gt;<br>
+<strong>YlGnBu</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8a2c&gt;<br>
+<strong>YlGnBu_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc00ac&gt;<br>
+<strong>YlGn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc084c&gt;<br>
+<strong>YlOrBr</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8a4c&gt;<br>
+<strong>YlOrBr_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21bec&gt;<br>
+<strong>YlOrRd</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8a6c&gt;<br>
+<strong>YlOrRd_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0a2c&gt;<br>
+<strong>autumn</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c554ec&gt;<br>
+<strong>autumn_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c211ac&gt;<br>
+<strong>binary</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5552c&gt;<br>
+<strong>binary_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2154c&gt;<br>
+<strong>bone</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5550c&gt;<br>
+<strong>bone_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0e4c&gt;<br>
 <strong>cmapdat_r</strong> = {'blue': [(0.0, 1.0, 1.0), (0.63492100000000007, 0.44444400000000001, 0.44444400000000001), (1.0, 0.0, 0.0)], 'green': [(0.0, 1.0, 1.0), (0.25396799999999997, 0.77777799999999997, 0.77777799999999997), (0.63492100000000007, 0.31944400000000001, 0.31944400000000001), (1.0, 0.0, 0.0)], 'red': [(0.0, 1.0, 1.0), (0.25396799999999997, 0.65277799999999997, 0.65277799999999997), (1.0, 0.0, 0.0)]}<br>
 <strong>cmapname</strong> = 'bone'<br>
 <strong>cmapname_r</strong> = 'bone_r'<br>
-<strong>cmapnames</strong> = ['Spectral', 'copper', 'RdYlGn', 'Set2', 'summer', 'spring', 'Accent', 'OrRd', 'RdBu', 'autumn', 'Set1', 'PuBu', 'Set3', 'gist_rainbow', 'pink', 'winter', 'jet', 'BuPu', 'Dark2', 'prism', ...]<br>
-<strong>cool</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b848c&gt;<br>
-<strong>cool_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83742ec&gt;<br>
-<strong>copper</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b84ac&gt;<br>
-<strong>copper_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82cab8c&gt;<br>
+<strong>cmapnames</strong> = ['Spectral', 'copper', 'RdYlGn', 'Set2', 'summer', 'spring', 'Accent', 'OrRd', 'RdBu', 'autumn', 'Set1', 'PuBu', 'Set3', 'gist_rainbow', 'pink', 'binary', 'winter', 'jet', 'BuPu', 'Dark2', ...]<br>
+<strong>cool</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5554c&gt;<br>
+<strong>cool_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc04ec&gt;<br>
+<strong>copper</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5556c&gt;<br>
+<strong>copper_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8c8c&gt;<br>
 <strong>datad</strong> = {'Accent': {'blue': [(0.0, 0.49803921580314636, 0.49803921580314636), (0.14285714285714285, 0.83137255907058716, 0.83137255907058716), (0.2857142857142857, 0.52549022436141968, 0.52549022436141968), (0.42857142857142855, 0.60000002384185791, 0.60000002384185791), (0.5714285714285714, 0.69019609689712524, 0.69019609689712524), (0.7142857142857143, 0.49803921580314636, 0.49803921580314636), (0.8571428571428571, 0.090196080505847931, 0.090196080505847931), (1.0, 0.40000000596046448, 0.40000000596046448)], 'green': [(0.0, 0.78823530673980713, 0.78823530673980713), (0.14285714285714285, 0.68235296010971069, 0.68235296010971069), (0.2857142857142857, 0.75294119119644165, 0.75294119119644165), (0.42857142857142855, 1.0, 1.0), (0.5714285714285714, 0.42352941632270813, 0.42352941632270813), (0.7142857142857143, 0.0078431377187371254, 0.0078431377187371254), (0.8571428571428571, 0.35686275362968445, 0.35686275362968445), (1.0, 0.40000000596046448, 0.40000000596046448)], 'red': [(0.0, 0.49803921580314636, 0.49803921580314636), (0.14285714285714285, 0.7450980544090271, 0.7450980544090271), (0.2857142857142857, 0.99215686321258545, 0.99215686321258545), (0.42857142857142855, 1.0, 1.0), (0.5714285714285714, 0.21960784494876862, 0.21960784494876862), (0.7142857142857143, 0.94117647409439087, 0.94117647409439087), (0.8571428571428571, 0.74901962280273438, 0.74901962280273438), (1.0, 0.40000000596046448, 0.40000000596046448)]}, 'Accent_r': {'blue': [(0.0, 0.40000000596046448, 0.40000000596046448), (0.1428571428571429, 0.090196080505847931, 0.090196080505847931), (0.2857142857142857, 0.49803921580314636, 0.49803921580314636), (0.4285714285714286, 0.69019609689712524, 0.69019609689712524), (0.5714285714285714, 0.60000002384185791, 0.60000002384185791), (0.7142857142857143, 0.52549022436141968, 0.52549022436141968), (0.85714285714285721, 0.83137255907058716, 0.83137255907058716), (1.0, 0.49803921580314636, 0.49803921580314636)], 'green': [(0.0, 0.40000000596046448, 0.40000000596046448), (0.1428571428571429, 0.35686275362968445, 0.35686275362968445), (0.2857142857142857, 0.0078431377187371254, 0.0078431377187371254), (0.4285714285714286, 0.42352941632270813, 0.42352941632270813), (0.5714285714285714, 1.0, 1.0), (0.7142857142857143, 0.75294119119644165, 0.75294119119644165), (0.85714285714285721, 0.68235296010971069, 0.68235296010971069), (1.0, 0.78823530673980713, 0.78823530673980713)], 'red': [(0.0, 0.40000000596046448, 0.40000000596046448), (0.1428571428571429, 0.74901962280273438, 0.74901962280273438), (0.2857142857142857, 0.94117647409439087, 0.94117647409439087), (0.4285714285714286, 0.21960784494876862, 0.21960784494876862), (0.5714285714285714, 1.0, 1.0), (0.7142857142857143, 0.99215686321258545, 0.99215686321258545), (0.85714285714285721, 0.7450980544090271, 0.7450980544090271), (1.0, 0.49803921580314636, 0.49803921580314636)]}, 'Blues': {'blue': [(0.0, 1.0, 1.0), (0.125, 0.9686274528503418, 0.9686274528503418), (0.25, 0.93725490570068359, 0.93725490570068359), (0.375, 0.88235294818878174, 0.88235294818878174), (0.5, 0.83921569585800171, 0.83921569585800171), (0.625, 0.7764706015586853, 0.7764706015586853), (0.75, 0.70980393886566162, 0.70980393886566162), (0.875, 0.61176472902297974, 0.61176472902297974), (1.0, 0.41960784792900085, 0.41960784792900085)], 'green': [(0.0, 0.9843137264251709, 0.9843137264251709), (0.125, 0.92156863212585449, 0.92156863212585449), (0.25, 0.85882353782653809, 0.85882353782653809), (0.375, 0.7921568751335144, 0.7921568751335144), (0.5, 0.68235296010971069, 0.68235296010971069), (0.625, 0.57254904508590698, 0.57254904508590698), (0.75, 0.44313725829124451, 0.44313725829124451), (0.875, 0.31764706969261169, 0.31764706969261169), (1.0, 0.18823529779911041, 0.18823529779911041)], 'red': [(0.0, 0.9686274528503418, 0.9686274528503418), (0.125, 0.87058824300765991, 0.87058824300765991), (0.25, 0.7764706015586853, 0.7764706015586853), (0.375, 0.61960786581039429, 0.61960786581039429), (0.5, 0.41960784792900085, 0.41960784792900085), (0.625, 0.25882354378700256, 0.25882354378700256), (0.75, 0.12941177189350128, 0.12941177189350128), (0.875, 0.031372550874948502, 0.031372550874948502), (1.0, 0.031372550874948502, 0.031372550874948502)]}, 'Blues_r': {'blue': [(0.0, 0.41960784792900085, 0.41960784792900085), (0.125, 0.61176472902297974, 0.61176472902297974), (0.25, 0.70980393886566162, 0.70980393886566162), (0.375, 0.7764706015586853, 0.7764706015586853), (0.5, 0.83921569585800171, 0.83921569585800171), (0.625, 0.88235294818878174, 0.88235294818878174), (0.75, 0.93725490570068359, 0.93725490570068359), (0.875, 0.9686274528503418, 0.9686274528503418), (1.0, 1.0, 1.0)], 'green': [(0.0, 0.18823529779911041, 0.18823529779911041), (0.125, 0.31764706969261169, 0.31764706969261169), (0.25, 0.44313725829124451, 0.44313725829124451), (0.375, 0.57254904508590698, 0.57254904508590698), (0.5, 0.68235296010971069, 0.68235296010971069), (0.625, 0.7921568751335144, 0.7921568751335144), (0.75, 0.85882353782653809, 0.85882353782653809), (0.875, 0.92156863212585449, 0.92156863212585449), (1.0, 0.9843137264251709, 0.9843137264251709)], 'red': [(0.0, 0.031372550874948502, 0.031372550874948502), (0.125, 0.031372550874948502, 0.031372550874948502), (0.25, 0.12941177189350128, 0.12941177189350128), (0.375, 0.25882354378700256, 0.25882354378700256), (0.5, 0.41960784792900085, 0.41960784792900085), (0.625, 0.61960786581039429, 0.61960786581039429), (0.75, 0.7764706015586853, 0.7764706015586853), (0.875, 0.87058824300765991, 0.87058824300765991), (1.0, 0.9686274528503418, 0.9686274528503418)]}, 'BrBG': {'blue': [(0.0, 0.019607843831181526, 0.019607843831181526), (0.10000000000000001, 0.039215687662363052, 0.039215687662363052), (0.20000000000000001, 0.17647059261798859, 0.17647059261798859), (0.29999999999999999, 0.49019607901573181, 0.49019607901573181), (0.40000000000000002, 0.76470589637756348, 0.76470589637756348), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.89803922176361084, 0.89803922176361084), (0.69999999999999996, 0.75686275959014893, 0.75686275959014893), (0.80000000000000004, 0.56078433990478516, 0.56078433990478516), (0.90000000000000002, 0.36862745881080627, 0.36862745881080627), (1.0, 0.18823529779911041, 0.18823529779911041)], 'green': [(0.0, 0.18823529779911041, 0.18823529779911041), (0.10000000000000001, 0.31764706969261169, 0.31764706969261169), (0.20000000000000001, 0.5058823823928833, 0.5058823823928833), (0.29999999999999999, 0.7607843279838562, 0.7607843279838562), (0.40000000000000002, 0.90980392694473267, 0.90980392694473267), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.91764706373214722, 0.91764706373214722), (0.69999999999999996, 0.80392158031463623, 0.80392158031463623), (0.80000000000000004, 0.59215688705444336, 0.59215688705444336), (0.90000000000000002, 0.40000000596046448, 0.40000000596046448), (1.0, 0.23529411852359772, 0.23529411852359772)], 'red': [(0.0, 0.32941177487373352, 0.32941177487373352), (0.10000000000000001, 0.54901963472366333, 0.54901963472366333), (0.20000000000000001, 0.74901962280273438, 0.74901962280273438), (0.29999999999999999, 0.87450981140136719, 0.87450981140136719), (0.40000000000000002, 0.96470588445663452, 0.96470588445663452), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.78039216995239258, 0.78039216995239258), (0.69999999999999996, 0.50196081399917603, 0.50196081399917603), (0.80000000000000004, 0.20784313976764679, 0.20784313976764679), (0.90000000000000002, 0.0039215688593685627, 0.0039215688593685627), (1.0, 0.0, 0.0)]}, 'BrBG_r': {'blue': [(0.0, 0.18823529779911041, 0.18823529779911041), (0.099999999999999978, 0.36862745881080627, 0.36862745881080627), (0.19999999999999996, 0.56078433990478516, 0.56078433990478516), (0.30000000000000004, 0.75686275959014893, 0.75686275959014893), (0.40000000000000002, 0.89803922176361084, 0.89803922176361084), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.76470589637756348, 0.76470589637756348), (0.69999999999999996, 0.49019607901573181, 0.49019607901573181), (0.80000000000000004, 0.17647059261798859, 0.17647059261798859), (0.90000000000000002, 0.039215687662363052, 0.039215687662363052), (1.0, 0.019607843831181526, 0.019607843831181526)], 'green': [(0.0, 0.23529411852359772, 0.23529411852359772), (0.099999999999999978, 0.40000000596046448, 0.40000000596046448), (0.19999999999999996, 0.59215688705444336, 0.59215688705444336), (0.30000000000000004, 0.80392158031463623, 0.80392158031463623), (0.40000000000000002, 0.91764706373214722, 0.91764706373214722), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.90980392694473267, 0.90980392694473267), (0.69999999999999996, 0.7607843279838562, 0.7607843279838562), (0.80000000000000004, 0.5058823823928833, 0.5058823823928833), (0.90000000000000002, 0.31764706969261169, 0.31764706969261169), (1.0, 0.18823529779911041, 0.18823529779911041)], 'red': [(0.0, 0.0, 0.0), (0.099999999999999978, 0.0039215688593685627, 0.0039215688593685627), (0.19999999999999996, 0.20784313976764679, 0.20784313976764679), (0.30000000000000004, 0.50196081399917603, 0.50196081399917603), (0.40000000000000002, 0.78039216995239258, 0.78039216995239258), (0.5, 0.96078431606292725, 0.96078431606292725), (0.59999999999999998, 0.96470588445663452, 0.96470588445663452), (0.69999999999999996, 0.87450981140136719, 0.87450981140136719), (0.80000000000000004, 0.74901962280273438, 0.74901962280273438), (0.90000000000000002, 0.54901963472366333, 0.54901963472366333), (1.0, 0.32941177487373352, 0.32941177487373352)]}, 'BuGn': {'blue': [(0.0, 0.99215686321258545, 0.99215686321258545), (0.125, 0.97647058963775635, 0.97647058963775635), (0.25, 0.90196079015731812, 0.90196079015731812), (0.375, 0.78823530673980713, 0.78823530673980713), (0.5, 0.64313727617263794, 0.64313727617263794), (0.625, 0.46274510025978088, 0.46274510025978088), (0.75, 0.27058824896812439, 0.27058824896812439), (0.875, 0.17254902422428131, 0.17254902422428131), (1.0, 0.10588235408067703, 0.10588235408067703)], 'green': [(0.0, 0.98823529481887817, 0.98823529481887817), (0.125, 0.96078431606292725, 0.96078431606292725), (0.25, 0.92549020051956177, 0.92549020051956177), (0.375, 0.84705883264541626, 0.84705883264541626), (0.5, 0.7607843279838562, 0.7607843279838562), (0.625, 0.68235296010971069, 0.68235296010971069), (0.75, 0.54509806632995605, 0.54509806632995605), (0.875, 0.42745098471641541, 0.42745098471641541), (1.0, 0.26666668057441711, 0.26666668057441711)], 'red': [(0.0, 0.9686274528503418, 0.9686274528503418), (0.125, 0.89803922176361084, 0.89803922176361084), (0.25, 0.80000001192092896, 0.80000001192092896), (0.375, 0.60000002384185791, 0.60000002384185791), (0.5, 0.40000000596046448, 0.40000000596046448), (0.625, 0.25490197539329529, 0.25490197539329529), (0.75, 0.13725490868091583, 0.13725490868091583), (0.875, 0.0, 0.0), (1.0, 0.0, 0.0)]}, 'BuGn_r': {'blue': [(0.0, 0.10588235408067703, 0.10588235408067703), (0.125, 0.17254902422428131, 0.17254902422428131), (0.25, 0.27058824896812439, 0.27058824896812439), (0.375, 0.46274510025978088, 0.46274510025978088), (0.5, 0.64313727617263794, 0.64313727617263794), (0.625, 0.78823530673980713, 0.78823530673980713), (0.75, 0.90196079015731812, 0.90196079015731812), (0.875, 0.97647058963775635, 0.97647058963775635), (1.0, 0.99215686321258545, 0.99215686321258545)], 'green': [(0.0, 0.26666668057441711, 0.26666668057441711), (0.125, 0.42745098471641541, 0.42745098471641541), (0.25, 0.54509806632995605, 0.54509806632995605), (0.375, 0.68235296010971069, 0.68235296010971069), (0.5, 0.7607843279838562, 0.7607843279838562), (0.625, 0.84705883264541626, 0.84705883264541626), (0.75, 0.92549020051956177, 0.92549020051956177), (0.875, 0.96078431606292725, 0.96078431606292725), (1.0, 0.98823529481887817, 0.98823529481887817)], 'red': [(0.0, 0.0, 0.0), (0.125, 0.0, 0.0), (0.25, 0.13725490868091583, 0.13725490868091583), (0.375, 0.25490197539329529, 0.25490197539329529), (0.5, 0.40000000596046448, 0.40000000596046448), (0.625, 0.60000002384185791, 0.60000002384185791), (0.75, 0.80000001192092896, 0.80000001192092896), (0.875, 0.89803922176361084, 0.89803922176361084), (1.0, 0.9686274528503418, 0.9686274528503418)]}, 'BuPu': {'blue': [(0.0, 0.99215686321258545, 0.99215686321258545), (0.125, 0.95686274766921997, 0.95686274766921997), (0.25, 0.90196079015731812, 0.90196079015731812), (0.375, 0.85490196943283081, 0.85490196943283081), (0.5, 0.7764706015586853, 0.7764706015586853), (0.625, 0.69411766529083252, 0.69411766529083252), (0.75, 0.61568629741668701, 0.61568629741668701), (0.875, 0.48627451062202454, 0.48627451062202454), (1.0, 0.29411765933036804, 0.29411765933036804)], 'green': [(0.0, 0.98823529481887817, 0.98823529481887817), (0.125, 0.92549020051956177, 0.92549020051956177), (0.25, 0.82745099067687988, 0.82745099067687988), (0.375, 0.73725491762161255, 0.73725491762161255), (0.5, 0.58823531866073608, 0.58823531866073608), (0.625, 0.41960784792900085, 0.41960784792900085), (0.75, 0.25490197539329529, 0.25490197539329529), (0.875, 0.058823529630899429, 0.058823529630899429), (1.0, 0.0, 0.0)], 'red': [(0.0, 0.9686274528503418, 0.9686274528503418), (0.125, 0.87843137979507446, 0.87843137979507446), (0.25, 0.74901962280273438, 0.74901962280273438), (0.375, 0.61960786581039429, 0.61960786581039429), (0.5, 0.54901963472366333, 0.54901963472366333), (0.625, 0.54901963472366333, 0.54901963472366333), (0.75, 0.53333336114883423, 0.53333336114883423), (0.875, 0.5058823823928833, 0.5058823823928833), (1.0, 0.30196079611778259, 0.30196079611778259)]}, 'BuPu_r': {'blue': [(0.0, 0.29411765933036804, 0.29411765933036804), (0.125, 0.48627451062202454, 0.48627451062202454), (0.25, 0.61568629741668701, 0.61568629741668701), (0.375, 0.69411766529083252, 0.69411766529083252), (0.5, 0.7764706015586853, 0.7764706015586853), (0.625, 0.85490196943283081, 0.85490196943283081), (0.75, 0.90196079015731812, 0.90196079015731812), (0.875, 0.95686274766921997, 0.95686274766921997), (1.0, 0.99215686321258545, 0.99215686321258545)], 'green': [(0.0, 0.0, 0.0), (0.125, 0.058823529630899429, 0.058823529630899429), (0.25, 0.25490197539329529, 0.25490197539329529), (0.375, 0.41960784792900085, 0.41960784792900085), (0.5, 0.58823531866073608, 0.58823531866073608), (0.625, 0.73725491762161255, 0.73725491762161255), (0.75, 0.82745099067687988, 0.82745099067687988), (0.875, 0.92549020051956177, 0.92549020051956177), (1.0, 0.98823529481887817, 0.98823529481887817)], 'red': [(0.0, 0.30196079611778259, 0.30196079611778259), (0.125, 0.5058823823928833, 0.5058823823928833), (0.25, 0.53333336114883423, 0.53333336114883423), (0.375, 0.54901963472366333, 0.54901963472366333), (0.5, 0.54901963472366333, 0.54901963472366333), (0.625, 0.61960786581039429, 0.61960786581039429), (0.75, 0.74901962280273438, 0.74901962280273438), (0.875, 0.87843137979507446, 0.87843137979507446), (1.0, 0.9686274528503418, 0.9686274528503418)]}, ...}<br>
-<strong>flag</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b84cc&gt;<br>
-<strong>flag_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837408c&gt;<br>
-<strong>gist_earth</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca94c&gt;<br>
-<strong>gist_earth_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8374b8c&gt;<br>
-<strong>gist_gray</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca96c&gt;<br>
-<strong>gist_gray_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83749cc&gt;<br>
-<strong>gist_heat</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca98c&gt;<br>
-<strong>gist_heat_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x8354dec&gt;<br>
-<strong>gist_ncar</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca9ac&gt;<br>
-<strong>gist_ncar_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837462c&gt;<br>
-<strong>gist_rainbow</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca9cc&gt;<br>
-<strong>gist_rainbow_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835430c&gt;<br>
-<strong>gist_stern</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82ca9ec&gt;<br>
-<strong>gist_stern_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837450c&gt;<br>
-<strong>gist_yarg</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82caa0c&gt;<br>
-<strong>gist_yarg_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83547cc&gt;<br>
-<strong>gray</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b84ec&gt;<br>
-<strong>gray_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837440c&gt;<br>
-<strong>hot</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b850c&gt;<br>
-<strong>hot_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835490c&gt;<br>
-<strong>hsv</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b852c&gt;<br>
-<strong>hsv_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x837412c&gt;<br>
-<strong>jet</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b854c&gt;<br>
-<strong>jet_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83544ec&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x82395ec&gt;<br>
-<strong>pink</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b856c&gt;<br>
-<strong>pink_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83543ac&gt;<br>
-<strong>prism</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b858c&gt;<br>
-<strong>prism_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x83546cc&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
-<strong>spring</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b85ac&gt;<br>
-<strong>spring_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82cae0c&gt;<br>
-<strong>summer</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b85cc&gt;<br>
-<strong>summer_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82cad6c&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;<br>
-<strong>winter</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x82b85ec&gt;<br>
-<strong>winter_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0x835444c&gt;</td></tr></table>
+<strong>flag</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5558c&gt;<br>
+<strong>flag_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc028c&gt;<br>
+<strong>gist_earth</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8a8c&gt;<br>
+<strong>gist_earth_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0dac&gt;<br>
+<strong>gist_gray</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8aac&gt;<br>
+<strong>gist_gray_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc0bec&gt;<br>
+<strong>gist_heat</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8acc&gt;<br>
+<strong>gist_heat_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21fec&gt;<br>
+<strong>gist_ncar</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8aec&gt;<br>
+<strong>gist_ncar_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21ecc&gt;<br>
+<strong>gist_rainbow</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8b0c&gt;<br>
+<strong>gist_rainbow_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2140c&gt;<br>
+<strong>gist_stern</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8b2c&gt;<br>
+<strong>gist_stern_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc070c&gt;<br>
+<strong>gist_yarg</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8b4c&gt;<br>
+<strong>gist_yarg_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2196c&gt;<br>
+<strong>gray</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c555ac&gt;<br>
+<strong>gray_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc060c&gt;<br>
+<strong>hot</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c555cc&gt;<br>
+<strong>hot_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21aac&gt;<br>
+<strong>hsv</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c555ec&gt;<br>
+<strong>hsv_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5bc032c&gt;<br>
+<strong>jet</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5560c&gt;<br>
+<strong>jet_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2168c&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0xb691b4ac&gt;<br>
+<strong>pink</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5562c&gt;<br>
+<strong>pink_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c214ac&gt;<br>
+<strong>prism</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5564c&gt;<br>
+<strong>prism_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c2186c&gt;<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
+<strong>spectral</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c556cc&gt;<br>
+<strong>spectral_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c21d0c&gt;<br>
+<strong>spring</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5566c&gt;<br>
+<strong>spring_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8f0c&gt;<br>
+<strong>summer</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c5568c&gt;<br>
+<strong>summer_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5be8e6c&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7af68ec&gt;<br>
+<strong>winter</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c556ac&gt;<br>
+<strong>winter_r</strong> = &lt;matplotlib.colors.LinearSegmentedColormap instance at 0xb5c215ec&gt;</td></tr></table>
 @footer@

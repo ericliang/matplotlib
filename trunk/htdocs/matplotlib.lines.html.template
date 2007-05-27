@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.lines</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/lines.py">/usr/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;contains&nbsp;all&nbsp;the&nbsp;2D&nbsp;line&nbsp;class&nbsp;which&nbsp;can&nbsp;draw&nbsp;with&nbsp;a<br>
 variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p>
 <p>
@@ -43,10 +43,37 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Initialize&nbsp;the&nbsp;line&nbsp;instance<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;following&nbsp;line&nbsp;properties&nbsp;are&nbsp;customizable&nbsp;by&nbsp;kwargs<br>
-%(line2d)s</tt></dd></dl>
+<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;<a href="#Line2D">Line2D</a>&nbsp;instance&nbsp;with&nbsp;x&nbsp;and&nbsp;y&nbsp;data&nbsp;in&nbsp;sequences&nbsp;xdata,<br>
+ydata<br>
+&nbsp;<br>
+The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
+&nbsp;&nbsp;alpha:&nbsp;float<br>
+&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
+&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;color&nbsp;or&nbsp;c:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;dash_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']<br>
+&nbsp;&nbsp;dash_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
+&nbsp;&nbsp;dashes:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;data:&nbsp;(array&nbsp;xdata,&nbsp;array&nbsp;ydata)<br>
+&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
+&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
+&nbsp;&nbsp;linestyle&nbsp;or&nbsp;ls:&nbsp;[&nbsp;'-'&nbsp;|&nbsp;'--'&nbsp;|&nbsp;'-.'&nbsp;|&nbsp;':'&nbsp;|&nbsp;'steps'&nbsp;|&nbsp;'None'&nbsp;|&nbsp;'&nbsp;'&nbsp;|&nbsp;''&nbsp;]<br>
+&nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;marker:&nbsp;[&nbsp;'+'&nbsp;|&nbsp;','&nbsp;|&nbsp;'.'&nbsp;|&nbsp;'1'&nbsp;|&nbsp;'2'&nbsp;|&nbsp;'3'&nbsp;|&nbsp;'4'<br>
+&nbsp;&nbsp;markeredgecolor&nbsp;or&nbsp;mec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;markeredgewidth&nbsp;or&nbsp;mew:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;markerfacecolor&nbsp;or&nbsp;mfc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;markersize&nbsp;or&nbsp;ms:&nbsp;float<br>
+&nbsp;&nbsp;solid_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;&nbsp;'projecting']<br>
+&nbsp;&nbsp;solid_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
+&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
+&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;xdata:&nbsp;array<br>
+&nbsp;&nbsp;ydata:&nbsp;array<br>
+&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="Line2D-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -94,17 +121,27 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
 
 <dl><dt><a name="Line2D-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Line2D-get_xdata"><strong>get_xdata</strong></a>(self, valid_only<font color="#909090">=False</font>)</dt></dl>
+<dl><dt><a name="Line2D-get_xdata"><strong>get_xdata</strong></a>(self, orig<font color="#909090">=True</font>)</dt><dd><tt>return&nbsp;the&nbsp;xdata;&nbsp;if&nbsp;orig&nbsp;is&nbsp;true&nbsp;return&nbsp;the&nbsp;original&nbsp;data,<br>
+else&nbsp;the&nbsp;processed&nbsp;data</tt></dd></dl>
 
-<dl><dt><a name="Line2D-get_ydata"><strong>get_ydata</strong></a>(self, valid_only<font color="#909090">=False</font>)</dt></dl>
+<dl><dt><a name="Line2D-get_ydata"><strong>get_ydata</strong></a>(self, orig<font color="#909090">=True</font>)</dt><dd><tt>return&nbsp;the&nbsp;ydata;&nbsp;if&nbsp;orig&nbsp;is&nbsp;true&nbsp;return&nbsp;the&nbsp;original&nbsp;data,<br>
+else&nbsp;the&nbsp;processed&nbsp;data</tt></dd></dl>
 
 <dl><dt><a name="Line2D-is_dashed"><strong>is_dashed</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;line&nbsp;is&nbsp;dashstyle</tt></dd></dl>
+
+<dl><dt><a name="Line2D-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>If&nbsp;mouseevent&nbsp;is&nbsp;over&nbsp;data&nbsp;that&nbsp;satisifies&nbsp;the&nbsp;picker,&nbsp;fire<br>
+off&nbsp;a&nbsp;backend_bases.PickEvent&nbsp;with&nbsp;the&nbsp;additional&nbsp;attribute&nbsp;"ind"<br>
+which&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;indices&nbsp;into&nbsp;the&nbsp;data&nbsp;that&nbsp;meet&nbsp;the&nbsp;criteria</tt></dd></dl>
+
+<dl><dt><a name="Line2D-recache"><strong>recache</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Line2D-set_aa"><strong>set_aa</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_antialiased</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_antialiased"><strong>set_antialiased</strong></a>(self, b)</dt><dd><tt>True&nbsp;if&nbsp;line&nbsp;should&nbsp;be&nbsp;drawin&nbsp;with&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Line2D-set_axes"><strong>set_axes</strong></a>(self, ax)</dt></dl>
 
 <dl><dt><a name="Line2D-set_c"><strong>set_c</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_color</tt></dd></dl>
 
@@ -118,7 +155,9 @@ ACCEPTS:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']</tt></dd></d
 <dl><dt><a name="Line2D-set_dash_joinstyle"><strong>set_dash_joinstyle</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;join&nbsp;style&nbsp;for&nbsp;dashed&nbsp;linestyles<br>
 ACCEPTS:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']</tt></dd></dl>
 
-<dl><dt><a name="Line2D-set_dashes"><strong>set_dashes</strong></a>(self, seq)</dt><dd><tt>Set&nbsp;the&nbsp;dash&nbsp;sequence,&nbsp;sequence&nbsp;of&nbsp;dashes&nbsp;with&nbsp;on&nbsp;off&nbsp;ink&nbsp;in&nbsp;points<br>
+<dl><dt><a name="Line2D-set_dashes"><strong>set_dashes</strong></a>(self, seq)</dt><dd><tt>Set&nbsp;the&nbsp;dash&nbsp;sequence,&nbsp;sequence&nbsp;of&nbsp;dashes&nbsp;with&nbsp;on&nbsp;off&nbsp;ink&nbsp;in<br>
+points.&nbsp;&nbsp;If&nbsp;seq&nbsp;is&nbsp;empty&nbsp;or&nbsp;if&nbsp;seq&nbsp;=&nbsp;(None,&nbsp;None),&nbsp;the<br>
+linestyle&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;solid.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points</tt></dd></dl>
 
@@ -200,18 +239,30 @@ Data and other attributes defined here:<br>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><a name="Line2D-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
+<dl><dt><a name="Line2D-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Line2D-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
 <dl><dt><a name="Line2D-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
+<dl><dt><a name="Line2D-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="Line2D-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
 
+<dl><dt><a name="Line2D-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
 <dl><dt><a name="Line2D-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Line2D-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
@@ -219,11 +270,15 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Line2D-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
 <dl><dt><a name="Line2D-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Line2D-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Line2D-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Line2D-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
 <dl><dt><a name="Line2D-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -246,6 +301,10 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="Line2D-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
 <dl><dt><a name="Line2D-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
@@ -259,6 +318,36 @@ things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;
 their&nbsp;contents&nbsp;accordingly<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Line2D-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
@@ -337,16 +426,18 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x83565ac&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb5a36a0c&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>less</strong> = &lt;ufunc 'less'&gt;<br>
+<strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
 <strong>lineMarkers</strong> = {0: '_draw_tickleft', 1: '_draw_tickright', 2: '_draw_tickup', 3: '_draw_tickdown', '': '_draw_nothing', ' ': '_draw_nothing', '+': '_draw_plus', ',': '_draw_pixel', '.': '_draw_point', '1': '_draw_tri_down', ...}<br>
 <strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}<br>
 <strong>logical_and</strong> = &lt;ufunc 'logical_and'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
+<strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b5e8ec&gt;</td></tr></table>
 @footer@

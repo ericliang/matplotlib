@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.ticker</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/ticker.py">/usr/lib/python2.5/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/ticker.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
     <p><tt>Tick&nbsp;locating&nbsp;and&nbsp;formatting<br>
 ============================<br>
 &nbsp;<br>
@@ -20,16 +20,12 @@ Tick&nbsp;locating<br>
 &nbsp;<br>
 The&nbsp;<a href="#Locator">Locator</a>&nbsp;class&nbsp;is&nbsp;the&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;tick&nbsp;locators.&nbsp;&nbsp;The<br>
 locators&nbsp;handle&nbsp;autoscaling&nbsp;of&nbsp;the&nbsp;view&nbsp;limits&nbsp;based&nbsp;on&nbsp;the&nbsp;data<br>
-limits,&nbsp;and&nbsp;the&nbsp;choosing&nbsp;of&nbsp;tick&nbsp;locations.&nbsp;&nbsp;The&nbsp;most&nbsp;generally&nbsp;useful<br>
+limits,&nbsp;and&nbsp;the&nbsp;choosing&nbsp;of&nbsp;tick&nbsp;locations.&nbsp;&nbsp;A&nbsp;useful&nbsp;semi-automatic<br>
 tick&nbsp;locator&nbsp;is&nbsp;<a href="#MultipleLocator">MultipleLocator</a>.&nbsp;&nbsp;You&nbsp;initialize&nbsp;this&nbsp;with&nbsp;a&nbsp;base,&nbsp;eg<br>
 10,&nbsp;and&nbsp;it&nbsp;picks&nbsp;axis&nbsp;limits&nbsp;and&nbsp;ticks&nbsp;that&nbsp;are&nbsp;multiples&nbsp;of&nbsp;your<br>
-base.&nbsp;&nbsp;The&nbsp;class&nbsp;<a href="#AutoLocator">AutoLocator</a>&nbsp;contains&nbsp;a&nbsp;<a href="#MultipleLocator">MultipleLocator</a>&nbsp;instance,&nbsp;and<br>
-dynamically&nbsp;updates&nbsp;it&nbsp;based&nbsp;upon&nbsp;the&nbsp;data&nbsp;and&nbsp;zoom&nbsp;limits.&nbsp;&nbsp;This<br>
-should&nbsp;provide&nbsp;much&nbsp;more&nbsp;intelligent&nbsp;automatic&nbsp;tick&nbsp;locations&nbsp;both&nbsp;in<br>
-figure&nbsp;creation&nbsp;and&nbsp;in&nbsp;navigation&nbsp;than&nbsp;in&nbsp;prior&nbsp;versions&nbsp;of<br>
-matplotlib.<br>
+base.<br>
 &nbsp;<br>
-The&nbsp;basic&nbsp;generic&nbsp;&nbsp;locators&nbsp;are<br>
+The&nbsp;<a href="#Locator">Locator</a>&nbsp;subclasses&nbsp;defined&nbsp;here&nbsp;are<br>
 &nbsp;<br>
 &nbsp;&nbsp;*&nbsp;<a href="#NullLocator">NullLocator</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;No&nbsp;ticks<br>
 &nbsp;<br>
@@ -44,8 +40,14 @@ The&nbsp;basic&nbsp;generic&nbsp;&nbsp;locators&nbsp;are<br>
 &nbsp;&nbsp;*&nbsp;<a href="#MultipleLocator">MultipleLocator</a>&nbsp;-&nbsp;ticks&nbsp;and&nbsp;range&nbsp;are&nbsp;a&nbsp;multiple&nbsp;of&nbsp;base;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;either&nbsp;integer&nbsp;or&nbsp;float<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;<a href="#AutoLocator">AutoLocator</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;choose&nbsp;a&nbsp;<a href="#MultipleLocator">MultipleLocator</a>&nbsp;and&nbsp;dyamically&nbsp;reassign<br>
+&nbsp;&nbsp;*&nbsp;OldAutoLocator&nbsp;&nbsp;-&nbsp;choose&nbsp;a&nbsp;<a href="#MultipleLocator">MultipleLocator</a>&nbsp;and&nbsp;dyamically&nbsp;reassign<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;it&nbsp;for&nbsp;intelligent&nbsp;ticking&nbsp;during&nbsp;navigation<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;<a href="#MaxNLocator">MaxNLocator</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;finds&nbsp;up&nbsp;to&nbsp;a&nbsp;max&nbsp;number&nbsp;of&nbsp;ticks&nbsp;at&nbsp;nice<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;locations<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;<a href="#AutoLocator">AutoLocator</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;<a href="#MaxNLocator">MaxNLocator</a>&nbsp;with&nbsp;simple&nbsp;defaults.&nbsp;This&nbsp;is&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;tick&nbsp;locator&nbsp;for&nbsp;most&nbsp;plotting.<br>
 &nbsp;<br>
 There&nbsp;are&nbsp;a&nbsp;number&nbsp;of&nbsp;locators&nbsp;specialized&nbsp;for&nbsp;date&nbsp;locations&nbsp;-&nbsp;see<br>
 the&nbsp;dates&nbsp;module<br>
@@ -204,6 +206,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="AutoLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="AutoLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="AutoLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -255,6 +264,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="FixedFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="FixedFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="FixedFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -301,6 +317,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="FixedLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="FixedLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="FixedLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -349,6 +372,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="FormatStrFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="FormatStrFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="FormatStrFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -387,6 +417,13 @@ Data and other attributes defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="Formatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="Formatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="Formatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -435,6 +472,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="FuncFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="FuncFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="FuncFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -482,6 +526,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="IndexLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="IndexLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="IndexLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -531,6 +582,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="LinearLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="LinearLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="LinearLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -569,6 +627,13 @@ limits<br>&nbsp;</tt></td></tr>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="Locator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="Locator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="Locator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -631,6 +696,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="LogFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="LogFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="LogFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -694,6 +766,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="LogFormatterExponent-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="LogFormatterExponent-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="LogFormatterExponent-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -757,6 +836,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="LogFormatterMathtext-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="LogFormatterMathtext-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="LogFormatterMathtext-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -805,6 +891,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="LogLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="LogLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="LogLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -835,7 +928,7 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHel
 Methods defined here:<br>
 <dl><dt><a name="MaxNLocator-__call__"><strong>__call__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="MaxNLocator-__init__"><strong>__init__</strong></a>(self, nbins<font color="#909090">=10</font>, steps<font color="#909090">=None</font>, trim<font color="#909090">=True</font>)</dt></dl>
+<dl><dt><a name="MaxNLocator-__init__"><strong>__init__</strong></a>(self, nbins<font color="#909090">=10</font>, steps<font color="#909090">=None</font>, trim<font color="#909090">=True</font>, integer<font color="#909090">=False</font>)</dt></dl>
 
 <dl><dt><a name="MaxNLocator-autoscale"><strong>autoscale</strong></a>(self)</dt></dl>
 
@@ -851,6 +944,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="MaxNLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="MaxNLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="MaxNLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -897,6 +997,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="MultipleLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="MultipleLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="MultipleLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -943,6 +1050,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="NullFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="NullFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="NullFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -985,6 +1099,13 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">Locator</a>:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="NullLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="NullLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="NullLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -1030,12 +1151,28 @@ Methods defined here:<br>
 
 <dl><dt><a name="ScalarFormatter-set_locs"><strong>set_locs</strong></a>(self, locs)</dt><dd><tt>set&nbsp;the&nbsp;locations&nbsp;of&nbsp;the&nbsp;ticks</tt></dd></dl>
 
+<dl><dt><a name="ScalarFormatter-set_powerlimits"><strong>set_powerlimits</strong></a>(self, lims)</dt><dd><tt>Sets&nbsp;size&nbsp;thresholds&nbsp;for&nbsp;scientific&nbsp;notation.<br>
+&nbsp;<br>
+e.g.&nbsp;xaxis.<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>((-3,&nbsp;4))&nbsp;sets&nbsp;the&nbsp;pre-2007&nbsp;default&nbsp;in<br>
+which&nbsp;scientific&nbsp;notation&nbsp;is&nbsp;used&nbsp;for&nbsp;numbers&nbsp;less&nbsp;than<br>
+1e-3&nbsp;or&nbsp;greater&nbsp;than&nbsp;1e4.<br>
+See&nbsp;also&nbsp;<a href="#ScalarFormatter-set_scientific">set_scientific</a>().</tt></dd></dl>
+
+<dl><dt><a name="ScalarFormatter-set_scientific"><strong>set_scientific</strong></a>(self, b)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;to&nbsp;turn&nbsp;scientific&nbsp;notation&nbsp;on&nbsp;or&nbsp;off;&nbsp;see&nbsp;also&nbsp;<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>()</tt></dd></dl>
+
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatter">Formatter</a>:<br>
 <dl><dt><strong>locs</strong> = []</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">TickHelper</a>:<br>
+<dl><dt><a name="ScalarFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="ScalarFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="ScalarFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
@@ -1056,6 +1193,13 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHel
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
+<dl><dt><a name="TickHelper-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
+Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
+cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
+automatically.</tt></dd></dl>
+
 <dl><dt><a name="TickHelper-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
 
 <dl><dt><a name="TickHelper-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>

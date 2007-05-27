@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mathtext</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/mathtext.py">/usr/lib/python2.5/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mathtext.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
     <p><tt>OVERVIEW&nbsp;<br>
 &nbsp;<br>
 &nbsp;&nbsp;mathtext&nbsp;is&nbsp;a&nbsp;module&nbsp;for&nbsp;parsing&nbsp;TeX&nbsp;expressions&nbsp;and&nbsp;drawing&nbsp;them<br>
@@ -214,9 +214,9 @@ Methods inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPS
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#BakomaPSFonts">BakomaPSFonts</a>:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.5/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts/ttf'</dl>
 
-<dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
+<dl><dt><strong>facenames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
 <dl><dt><strong>fontmap</strong> = {None: 'cmmi10', 'cal': 'cmsy10', 'it': 'cmmi10', 'rm': 'cmr10', 'tt': 'cmtt10'}</dl>
 
@@ -249,9 +249,9 @@ like&nbsp;\sigma.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.5/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts/ttf'</dl>
 
-<dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
+<dl><dt><strong>facenames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
 <dl><dt><strong>fontmap</strong> = {None: 'cmmi10', 'cal': 'cmsy10', 'it': 'cmmi10', 'rm': 'cmr10', 'tt': 'cmtt10'}</dl>
 
@@ -284,7 +284,7 @@ like&nbsp;\sigma.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.5/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts/ttf'</dl>
 
 <dl><dt><strong>fnames</strong> = ('cmmi10', 'cmsy10', 'cmex10', 'cmtt10', 'cmr10')</dl>
 
@@ -773,7 +773,7 @@ Data and other attributes inherited from <a href="matplotlib.mathtext.html#Eleme
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/usr/lib/python2.5/site-packages/matplotlib/mpl-data'</dl>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts/afm'</dl>
 
 <dl><dt><strong>fnames</strong> = ('psyr', 'pncri8a', 'pcrr8a', 'pncr8a', 'pzcmi8a')</dl>
 
@@ -862,11 +862,12 @@ Specific&nbsp;terminology:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;filenamesd&nbsp;should&nbsp;be&nbsp;declared&nbsp;as&nbsp;a&nbsp;class&nbsp;atribute<br>
 &nbsp;*&nbsp;glyphdict:&nbsp;a&nbsp;dict&nbsp;used&nbsp;for&nbsp;caching&nbsp;of&nbsp;glyph&nbsp;specific&nbsp;data<br>
 &nbsp;*&nbsp;fonts:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;fontface&nbsp;pairs<br>
-&nbsp;*&nbsp;charmaps:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;charmap&nbsp;pairs<br>
+&nbsp;*&nbsp;charmaps:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;charmap&nbsp;pairs.&nbsp;Charmap&nbsp;maps&nbsp;character<br>
+&nbsp;&nbsp;&nbsp;codes&nbsp;to&nbsp;glyph&nbsp;indices<br>
 &nbsp;*&nbsp;glyphmaps:&nbsp;a&nbsp;dict&nbsp;of&nbsp;facename&nbsp;-&gt;&nbsp;glyphmap&nbsp;pairs.&nbsp;A&nbsp;glyphmap&nbsp;is&nbsp;an<br>
 &nbsp;&nbsp;&nbsp;&nbsp;inverted&nbsp;charmap<br>
 &nbsp;*&nbsp;output:&nbsp;a&nbsp;string&nbsp;in&nbsp;['Agg','SVG','PS'],&nbsp;coresponding&nbsp;to&nbsp;the&nbsp;backends<br>
-&nbsp;*&nbsp;index:&nbsp;Fontfile&nbsp;specific&nbsp;index&nbsp;of&nbsp;a&nbsp;glyph/char.&nbsp;Taken&nbsp;from&nbsp;a&nbsp;charmap.<br>&nbsp;</tt></td></tr>
+&nbsp;*&nbsp;index:&nbsp;Fontfile&nbsp;specific&nbsp;index&nbsp;of&nbsp;a&nbsp;glyph.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="UnicodeFonts-__init__"><strong>__init__</strong></a>(self, output<font color="#909090">='Agg'</font>)</dt><dd><tt>#&nbsp;The&nbsp;path&nbsp;to&nbsp;the&nbsp;dir&nbsp;with&nbsp;the&nbsp;fontfiles</tt></dd></dl>
@@ -911,7 +912,7 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>minor1</strong> = 5</dl>
 
-<dl><dt><strong>minor2</strong> = 0</dl>
+<dl><dt><strong>minor2</strong> = 1</dl>
 
 <dl><dt><strong>tmp</strong> = 0</dl>
 
@@ -963,11 +964,11 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>exclamation</strong> = "!"<br>
 <strong>expression</strong> = expression<br>
 <strong>font</strong> = font<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x81df58c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x848de2c&gt;<br>
 <strong>fontname</strong> = {{{"rm" | "cal"} | "it"} | "tt"}<br>
 <strong>group</strong> = group<br>
 <strong>grouping</strong> = {{{"[" | "]"} | "("} | ")"}<br>
-<strong>handler</strong> = &lt;matplotlib.mathtext.Handler instance at 0x83a5aac&gt;<br>
+<strong>handler</strong> = &lt;matplotlib.mathtext.Handler instance at 0x84ff12c&gt;<br>
 <strong>italics</strong> = "it"<br>
 <strong>langle</strong> = "&lt;"<br>
 <strong>latex_to_bakoma</strong> = {'(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), '0': ('cmr10', 40), '1': ('cmr10', 100), ...}<br>
@@ -975,10 +976,10 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>lbrace</strong> = Suppress:("{")<br>
 <strong>lbrack</strong> = "["<br>
 <strong>lparen</strong> = "("<br>
-<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x83b848c&gt;<br>
-<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x83b84ac&gt;<br>
-<strong>math_parse_s_pdf</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x83b84ec&gt;<br>
-<strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x83b84cc&gt;<br>
+<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c0c&gt;<br>
+<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c2c&gt;<br>
+<strong>math_parse_s_pdf</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c6c&gt;<br>
+<strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c4c&gt;<br>
 <strong>minus</strong> = "-"<br>
 <strong>misc</strong> = {{{"!" | "@"} | "%"} | "&amp;"}<br>
 <strong>number</strong> = Combine:({{W:(0123...) ["."]} [W:(0123...)]})<br>
@@ -993,7 +994,7 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>rangle</strong> = "&gt;"<br>
 <strong>rbrace</strong> = Suppress:("}")<br>
 <strong>rbrack</strong> = "]"<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>relation</strong> = {{"&lt;" | "&gt;"} | "="}<br>
 <strong>roman</strong> = "rm"<br>
 <strong>rparen</strong> = ")"<br>
@@ -1012,5 +1013,5 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>typewriter</strong> = "tt"<br>
 <strong>under</strong> = "under"<br>
 <strong>uni2type1</strong> = {32: 'space', 33: 'exclam', 34: 'quotedbl', 35: 'numbersign', 36: 'dollar', 37: 'percent', 38: 'ampersand', 39: 'quotesingle', 40: 'parenleft', 41: 'parenright', ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x80f50ac&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82508ec&gt;</td></tr></table>
 @footer@

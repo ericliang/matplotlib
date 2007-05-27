@@ -21,6 +21,8 @@ OK, YOU'RE STILL HERE?
 
       http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52305
 
+    (also included in this dir so you don't need to install it)
+
     All of the web pages are templates, eg, index.html.template in which I
     combine arbitrary python data structures with yaptu templating.
 

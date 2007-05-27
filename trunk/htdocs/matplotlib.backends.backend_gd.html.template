@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_gd</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.4/site-packages/matplotlib/backends/backend_gd.py">/usr/lib/python2.4/site-packages/matplotlib/backends/backend_gd.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py</a></font></td></tr></table>
     <p><tt>A&nbsp;gd&nbsp;backend&nbsp;<a href="http://newcenturycomputers.net/projects/gdmodule.html">http://newcenturycomputers.net/projects/gdmodule.html</a></tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -105,25 +105,29 @@ button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</
 &nbsp;<br>
 where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbsp;events&nbsp;are&nbsp;recognized<br>
 &nbsp;<br>
-&nbsp;'resize_event'<br>
-&nbsp;'draw_event'<br>
-&nbsp;'key_press_event'<br>
-&nbsp;'key_release_event'<br>
-&nbsp;'button_press_event'<br>
-&nbsp;'button_release_event'<br>
-&nbsp;'motion_notify_event'<br>
+'resize_event',<br>
+'draw_event',<br>
+'key_press_event',<br>
+'key_release_event',<br>
+'button_press_event',<br>
+'button_release_event',<br>
+'motion_notify_event',<br>
+'pick_event',&nbsp;<br>
 &nbsp;<br>
-&nbsp;For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
-&nbsp;the&nbsp;variable&nbsp;event.inaxes&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;axes&nbsp;it&nbsp;is&nbsp;over,<br>
-&nbsp;and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;event.xdata&nbsp;and&nbsp;event.ydata<br>
-&nbsp;will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location&nbsp;in&nbsp;data&nbsp;coords.<br>
-&nbsp;See&nbsp;backend_bases.MplEvent.<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
+the&nbsp;variable&nbsp;event.inaxes&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;axes&nbsp;it&nbsp;is&nbsp;over,<br>
+and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;event.xdata&nbsp;and&nbsp;event.ydata<br>
+will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location&nbsp;in&nbsp;data&nbsp;coords.<br>
+See&nbsp;backend_bases.MplEvent.<br>
 &nbsp;<br>
 return&nbsp;value&nbsp;is&nbsp;a&nbsp;connection&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with<br>
 mpl_disconnect</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasGD-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>Connect&nbsp;s&nbsp;to&nbsp;func.&nbsp;return&nbsp;an&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with&nbsp;disconnect<br>
-Method&nbsp;should&nbsp;return&nbsp;None</tt></dd></dl>
+<dl><dt><a name="FigureCanvasGD-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasGD-pick_event"><strong>pick_event</strong></a>(self, mouseevent, artist, **kwargs)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;by&nbsp;artists&nbsp;who&nbsp;are&nbsp;picked&nbsp;and&nbsp;will<br>
+fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasGD-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>set&nbsp;the&nbsp;canvas&nbsp;size&nbsp;in&nbsp;pixels</tt></dd></dl>
 
@@ -138,7 +142,7 @@ figure&nbsp;size&nbsp;or&nbsp;line&nbsp;props),&nbsp;will&nbsp;be&nbsp;reflected
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
-<dl><dt><strong>events</strong> = ('key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'motion_notify_event')</dl>
+<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'motion_notify_event', 'pick_event')</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -216,6 +220,8 @@ all&nbsp;backends</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextGD-get_capstyle"><strong>get_capstyle</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;capstyle&nbsp;as&nbsp;a&nbsp;string&nbsp;in&nbsp;('butt',&nbsp;'round',&nbsp;'projecting')</tt></dd></dl>
 
+<dl><dt><a name="GraphicsContextGD-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path</tt></dd></dl>
+
 <dl><dt><a name="GraphicsContextGD-get_clip_rectangle"><strong>get_clip_rectangle</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;rectangle&nbsp;as&nbsp;(left,&nbsp;bottom,&nbsp;width,&nbsp;height)</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextGD-get_dashes"><strong>get_dashes</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;dash&nbsp;information&nbsp;as&nbsp;an&nbsp;offset&nbsp;dashlist&nbsp;tuple&nbsp;The<br>
@@ -242,6 +248,8 @@ all&nbsp;backends</tt></dd></dl>
 <dl><dt><a name="GraphicsContextGD-set_antialiased"><strong>set_antialiased</strong></a>(self, b)</dt><dd><tt>True&nbsp;if&nbsp;object&nbsp;should&nbsp;be&nbsp;drawn&nbsp;with&nbsp;antialiased&nbsp;rendering</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextGD-set_capstyle"><strong>set_capstyle</strong></a>(self, cs)</dt><dd><tt>Set&nbsp;the&nbsp;capstyle&nbsp;as&nbsp;a&nbsp;string&nbsp;in&nbsp;('butt',&nbsp;'round',&nbsp;'projecting')</tt></dd></dl>
+
+<dl><dt><a name="GraphicsContextGD-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;clip&nbsp;path</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextGD-set_dashes"><strong>set_dashes</strong></a>(self, dash_offset, dash_list)</dt><dd><tt>Set&nbsp;the&nbsp;dash&nbsp;style&nbsp;for&nbsp;the&nbsp;gc.<br>
 dash_offset&nbsp;is&nbsp;the&nbsp;offset&nbsp;(usually&nbsp;0).<br>
@@ -435,9 +443,9 @@ the&nbsp;figure&nbsp;in&nbsp;it.</tt></dd></dl>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 96<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x845756c&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance&gt;</td></tr></table>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x85bf2ac&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x82cf82c&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82508ec&gt;</td></tr></table>
 @footer@

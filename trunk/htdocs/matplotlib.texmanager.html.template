@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.texmanager</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/texmanager.py">/usr/lib/python2.5/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/texmanager.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;supports&nbsp;embedded&nbsp;TeX&nbsp;expressions&nbsp;in&nbsp;matplotlib&nbsp;via&nbsp;dvipng<br>
 and&nbsp;dvips&nbsp;for&nbsp;the&nbsp;raster&nbsp;and&nbsp;postscript&nbsp;backends.&nbsp;&nbsp;The&nbsp;tex&nbsp;and<br>
 dvipng/dvips&nbsp;information&nbsp;is&nbsp;cached&nbsp;in&nbsp;~/.matplotlib/tex.cache&nbsp;for&nbsp;reuse&nbsp;between<br>
@@ -97,7 +97,7 @@ multiple&nbsp;drives.&nbsp;get_shell_cmd&nbsp;deals&nbsp;with&nbsp;this&nbsp;iss
 Data and other attributes defined here:<br>
 <dl><dt><strong>arrayd</strong> = {}</dl>
 
-<dl><dt><strong>configdir</strong> = '/home/darren/.matplotlib'</dl>
+<dl><dt><strong>configdir</strong> = '/home/jdhunter/.matplotlib'</dl>
 
 <dl><dt><strong>cursive</strong> = ('pzc', r'\usepackage{chancery}')</dl>
 
@@ -109,9 +109,9 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>monospace</strong> = ('cmtt', '')</dl>
 
-<dl><dt><strong>oldcache</strong> = '/home/darren/.tex.cache'</dl>
+<dl><dt><strong>oldcache</strong> = '/home/jdhunter/.tex.cache'</dl>
 
-<dl><dt><strong>oldpath</strong> = '/home/darren'</dl>
+<dl><dt><strong>oldpath</strong> = '/home/jdhunter'</dl>
 
 <dl><dt><strong>postscriptd</strong> = {}</dl>
 
@@ -121,7 +121,7 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>serif</strong> = ('cmr', '')</dl>
 
-<dl><dt><strong>texcache</strong> = '/home/darren/.matplotlib/tex.cache'</dl>
+<dl><dt><strong>texcache</strong> = '/home/jdhunter/.matplotlib/tex.cache'</dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -143,7 +143,7 @@ Data and other attributes defined here:<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>cmd_split</strong> = ';'<br>
 <strong>debug</strong> = False<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}<br>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a9b08c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x8250fec&gt;</td></tr></table>
 @footer@

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.image</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/lib/python2.5/site-packages/matplotlib/image.py">/usr/lib/python2.5/site-packages/matplotlib/image.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/image.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/image.py</a></font></td></tr></table>
     <p><tt>The&nbsp;image&nbsp;module&nbsp;supports&nbsp;basic&nbsp;image&nbsp;loading,&nbsp;rescaling&nbsp;and&nbsp;display<br>
 operations.</tt></p>
 <p>
@@ -67,21 +67,23 @@ operations.</tt></p>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="AxesImage-__init__"><strong>__init__</strong></a>(self, ax, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, interpolation<font color="#909090">=None</font>, origin<font color="#909090">=None</font>, extent<font color="#909090">=None</font>, filternorm<font color="#909090">=1</font>, filterrad<font color="#909090">=4.0</font>)</dt><dd><tt>interpolation&nbsp;and&nbsp;cmap&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;settings<br>
+<dl><dt><a name="AxesImage-__init__"><strong>__init__</strong></a>(self, ax, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, interpolation<font color="#909090">=None</font>, origin<font color="#909090">=None</font>, extent<font color="#909090">=None</font>, filternorm<font color="#909090">=1</font>, filterrad<font color="#909090">=4.0</font>, **kwargs)</dt><dd><tt>interpolation&nbsp;and&nbsp;cmap&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;settings<br>
 &nbsp;<br>
-cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance<br>
-norm&nbsp;is&nbsp;a&nbsp;colors.normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1<br>
+cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
+norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1<br>
 &nbsp;<br>
-extent&nbsp;is&nbsp;a&nbsp;data&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;for&nbsp;making&nbsp;image&nbsp;plots<br>
-registered&nbsp;with&nbsp;data&nbsp;plots.&nbsp;&nbsp;Default&nbsp;is&nbsp;the&nbsp;image&nbsp;dimensions<br>
-in&nbsp;pixels</tt></dd></dl>
+extent&nbsp;is&nbsp;data&nbsp;axes&nbsp;(left,&nbsp;right,&nbsp;bottom,&nbsp;top)&nbsp;for&nbsp;making&nbsp;image&nbsp;plots<br>
+registered&nbsp;with&nbsp;data&nbsp;plots.&nbsp;&nbsp;Default&nbsp;is&nbsp;to&nbsp;label&nbsp;the&nbsp;pixel<br>
+centers&nbsp;with&nbsp;the&nbsp;zero-based&nbsp;row&nbsp;and&nbsp;column&nbsp;indices.<br>
+&nbsp;<br>
+Additional&nbsp;kwargs&nbsp;are&nbsp;matplotlib.artist&nbsp;properties</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
 update&nbsp;state</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-draw"><strong>draw</strong></a>(self, renderer, *args, **kwargs)</dt></dl>
 
-<dl><dt><a name="AxesImage-get_extent"><strong>get_extent</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;image&nbsp;extent:&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax</tt></dd></dl>
+<dl><dt><a name="AxesImage-get_extent"><strong>get_extent</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;image&nbsp;extent:&nbsp;left,&nbsp;right,&nbsp;bottom,&nbsp;top</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_filternorm"><strong>get_filternorm</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;filternorm&nbsp;setting</tt></dd></dl>
 
@@ -98,6 +100,8 @@ One&nbsp;of<br>
 
 <dl><dt><a name="AxesImage-make_image"><strong>make_image</strong></a>(self, magnification<font color="#909090">=1.0</font>)</dt></dl>
 
+<dl><dt><a name="AxesImage-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;the&nbsp;data&nbsp;coords&nbsp;of&nbsp;mouse&nbsp;click&nbsp;are&nbsp;within&nbsp;the&nbsp;extent&nbsp;of&nbsp;the&nbsp;image</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
 all&nbsp;backends<br>
 &nbsp;<br>
@@ -109,7 +113,7 @@ ACCEPTS:&nbsp;numeric/numarray/PIL&nbsp;Image&nbsp;A</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-set_data"><strong>set_data</strong></a>(self, A, shape<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;numeric/numarray/PIL&nbsp;Image&nbsp;A</tt></dd></dl>
+ACCEPTS:&nbsp;numpy/PIL&nbsp;Image&nbsp;A</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-set_filternorm"><strong>set_filternorm</strong></a>(self, filternorm)</dt><dd><tt>Set&nbsp;whether&nbsp;the&nbsp;resize&nbsp;filter&nbsp;norms&nbsp;the&nbsp;weights&nbsp;--&nbsp;see<br>
 help&nbsp;for&nbsp;imshow<br>
@@ -131,18 +135,30 @@ ACCEPTS:&nbsp;['bicubic'&nbsp;|&nbsp;'bilinear'&nbsp;|&nbsp;'blackman100'&nbsp;|
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><a name="AxesImage-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
+<dl><dt><a name="AxesImage-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="AxesImage-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
+<dl><dt><a name="AxesImage-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
 
+<dl><dt><a name="AxesImage-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AxesImage-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
@@ -150,11 +166,15 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="AxesImage-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="AxesImage-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="AxesImage-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -164,6 +184,10 @@ backends</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="AxesImage-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
@@ -171,6 +195,10 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 <dl><dt><a name="AxesImage-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="AxesImage-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -185,6 +213,36 @@ things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;
 their&nbsp;contents&nbsp;accordingly<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="AxesImage-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
@@ -219,6 +277,9 @@ cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
 <dl><dt><a name="AxesImage-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
+<dl><dt><a name="AxesImage-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="AxesImage-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
@@ -226,9 +287,15 @@ current&nbsp;array</tt></dd></dl>
 <dl><dt><a name="AxesImage-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;called&nbsp;then&nbsp;we&nbsp;are&nbsp;pegged&nbsp;to&nbsp;another&nbsp;mappable.<br>
 Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&nbsp;mappable.</tt></dd></dl>
 
-<dl><dt><a name="AxesImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+<dl><dt><a name="AxesImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="AxesImage-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data</tt></dd></dl>
+<dl><dt><a name="AxesImage-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
 
@@ -251,8 +318,8 @@ If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nb
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;cm&nbsp;colormap&nbsp;instance<br>
-norm&nbsp;is&nbsp;a&nbsp;colors.normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1</tt></dd></dl>
+<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
+norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-draw"><strong>draw</strong></a>(self, renderer, *args, **kwargs)</dt></dl>
 
@@ -266,18 +333,30 @@ norm&nbsp;is&nbsp;a&nbsp;colors.normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;lu
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><a name="FigureImage-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
+<dl><dt><a name="FigureImage-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="FigureImage-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
+<dl><dt><a name="FigureImage-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
 
+<dl><dt><a name="FigureImage-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureImage-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
@@ -285,11 +364,18 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="FigureImage-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FigureImage-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="FigureImage-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>the&nbsp;user&nbsp;picked&nbsp;location&nbsp;x,y;&nbsp;if&nbsp;this&nbsp;<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;is&nbsp;within&nbsp;picker<br>
+"pick&nbsp;epsilon"&nbsp;of&nbsp;x,y&nbsp;fire&nbsp;off&nbsp;a&nbsp;pick&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="FigureImage-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -304,6 +390,10 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="FigureImage-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
@@ -311,6 +401,10 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 <dl><dt><a name="FigureImage-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FigureImage-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -325,6 +419,36 @@ things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;
 their&nbsp;contents&nbsp;accordingly<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="FigureImage-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
@@ -359,6 +483,9 @@ cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
 <dl><dt><a name="FigureImage-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
+<dl><dt><a name="FigureImage-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="FigureImage-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
 update&nbsp;state</tt></dd></dl>
 
@@ -371,9 +498,15 @@ Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&n
 
 <dl><dt><a name="FigureImage-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numeric/numarray&nbsp;A</tt></dd></dl>
 
-<dl><dt><a name="FigureImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+<dl><dt><a name="FigureImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="FigureImage-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data</tt></dd></dl>
+<dl><dt><a name="FigureImage-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
 
@@ -437,6 +570,8 @@ One&nbsp;of<br>
 
 <dl><dt><a name="NonUniformImage-get_size"><strong>get_size</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;numrows,&nbsp;numcols&nbsp;of&nbsp;the&nbsp;input&nbsp;image</tt></dd></dl>
 
+<dl><dt><a name="NonUniformImage-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;the&nbsp;data&nbsp;coords&nbsp;of&nbsp;mouse&nbsp;click&nbsp;are&nbsp;within&nbsp;the&nbsp;extent&nbsp;of&nbsp;the&nbsp;image</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
 all&nbsp;backends<br>
 &nbsp;<br>
@@ -448,18 +583,30 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><a name="NonUniformImage-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
+<dl><dt><a name="NonUniformImage-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="NonUniformImage-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
+<dl><dt><a name="NonUniformImage-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
 
+<dl><dt><a name="NonUniformImage-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NonUniformImage-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
@@ -467,11 +614,15 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="NonUniformImage-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="NonUniformImage-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="NonUniformImage-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -481,6 +632,10 @@ backends</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
+<dl><dt><a name="NonUniformImage-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
@@ -488,6 +643,10 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 <dl><dt><a name="NonUniformImage-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="NonUniformImage-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -502,6 +661,36 @@ things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;
 their&nbsp;contents&nbsp;accordingly<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="NonUniformImage-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
@@ -536,6 +725,9 @@ cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
 <dl><dt><a name="NonUniformImage-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
+<dl><dt><a name="NonUniformImage-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
 <dl><dt><a name="NonUniformImage-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
@@ -543,7 +735,11 @@ current&nbsp;array</tt></dd></dl>
 <dl><dt><a name="NonUniformImage-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;called&nbsp;then&nbsp;we&nbsp;are&nbsp;pegged&nbsp;to&nbsp;another&nbsp;mappable.<br>
 Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&nbsp;mappable.</tt></dd></dl>
 
-<dl><dt><a name="NonUniformImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+<dl><dt><a name="NonUniformImage-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
 
@@ -571,7 +767,7 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;MxNx4&nbsp;array&nbsp;of&nbsp;0-1&nbsp;nor
 <td width="100%"><strong>Float32</strong> = 'f'<br>
 <strong>NewAxis</strong> = None<br>
 <strong>UInt8</strong> = 'B'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x82b62ac&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x8355eac&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'black', 'axes.facecolor': 'white', 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'black', 'axes.labelsize': 12.0, 'axes.linewidth': 1.0, 'axes.titlesize': 14.0, 'backend': 'Qt4Agg', ...}</td></tr></table>
+<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}</td></tr></table>
 @footer@

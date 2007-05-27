@@ -1,6 +1,7 @@
 import os, sys, glob, shutil
 import matplotlib
-MPL_SRC = '/home/darren/src/matplotlib/matplotlib'
+
+MPL_SRC = os.environ.get('MPL_SRC', '/home/darren/src/matplotlib/matplotlib')
 #MPL_SRC = '/home/jdhunter/mpl'
 
 #copy all the examples to the htdocs examples dir
@@ -22,18 +23,26 @@ for pathname in widgetfiles:
     newname = os.path.join('examples', 'widgets', fname)
     print 'copying %s to %s' % (pathname, newname)
     shutil.copy(pathname, newname)
+
+widgetfiles = glob.glob(os.path.join(MPL_SRC, 'examples', 'units', '*.py'))
+for pathname in widgetfiles:
+    path, fname = os.path.split(pathname)
+    if fname.startswith('_tmp'): continue
+    newname = os.path.join('examples', 'units', fname)
+    print 'copying %s to %s' % (pathname, newname)
+    shutil.copy(pathname, newname)
     
 os.system('zip -r -o matplotlib_examples_%s.zip examples'%matplotlib.__version__)
 
 os.system('cp ../users_guide/users_guide.pdf users_guide_%s.pdf'%matplotlib.__version__)
 
-filenames = ( 'matplotlibrc', 'INSTALL', 'CHANGELOG',
+filenames = ( 'INSTALL', 'CHANGELOG',
               'NUMARRAY_ISSUES', 'API_CHANGES',)
 for fname in filenames:
     oldname = os.path.join(MPL_SRC,fname)
     print 'copying %s to %s' % (oldname, fname)
     shutil.copy(oldname, fname)
-                           
+shutil.copy(os.path.join(MPL_SRC, 'lib', 'matplotlib', 'mpl-data', 'matplotlibrc'), 'matplotlibrc')
 
 # auto-generate the license file with the right version number
 fmt = file('license.fmt').read()
