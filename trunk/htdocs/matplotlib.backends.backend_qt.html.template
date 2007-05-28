@@ -2012,7 +2012,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5a8ba40&gt;<dd><tt>T.<a href="#FigureCanvasQT-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5ab9a40&gt;<dd><tt>T.<a href="#FigureCanvasQT-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
@@ -4161,7 +4161,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5a8ba40&gt;<dd><tt>T.<a href="#NavigationToolbar2QT-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5ab9a40&gt;<dd><tt>T.<a href="#NavigationToolbar2QT-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

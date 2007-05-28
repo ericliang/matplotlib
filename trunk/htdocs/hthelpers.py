@@ -44,6 +44,7 @@ modules = (
     'matplotlib.ticker',
     'matplotlib.toolkits.basemap.basemap',
     'matplotlib.transforms',
+    'matplotlib.units',    
     'matplotlib.widgets',
     )
 

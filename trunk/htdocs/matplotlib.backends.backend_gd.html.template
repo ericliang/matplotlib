@@ -445,7 +445,7 @@ the&nbsp;figure&nbsp;in&nbsp;it.</tt></dd></dl>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 96<br>
 <strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x845756c&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x85bf2ac&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x85be2ac&gt;<br>
 <strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x82cf82c&gt;<br>
 <strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82508ec&gt;</td></tr></table>
 @footer@

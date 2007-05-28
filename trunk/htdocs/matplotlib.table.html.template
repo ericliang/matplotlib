@@ -554,5 +554,5 @@ Thanks&nbsp;to&nbsp;John&nbsp;Gill&nbsp;for&nbsp;providing&nbsp;the&nbsp;class&n
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7ae98ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b5b8ec&gt;</td></tr></table>
 @footer@

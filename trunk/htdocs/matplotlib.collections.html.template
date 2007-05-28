@@ -2186,7 +2186,7 @@ If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;or&nbsp;rgba&nbsp;array,&nb
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x847350c&gt;<br>
+<td width="100%"><strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x84724ac&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
 <strong>k</strong> = 'StarPolygonCollection'<br>

@@ -209,7 +209,8 @@ table1 =  LinkBox(header='Matplotlib', links=(
 
 table2 =  LinkBox(header='Documentation', links=(
     ('Tutorial', 'tutorial.html'),
-    ("User's&nbsp;Guide&nbsp;(pdf)", 'users_guide_%s.pdf'%matplotlib.__version__),    
+    ("User's&nbsp;Guide&nbsp;(pdf)", 'users_guide_%s.pdf'%matplotlib.__version__),
+    ("API&nbsp;(pdf)", 'api.pdf'),
     ('FAQ', 'faq.html'),
     ('Cookbook&nbsp;/&nbsp;wiki', 'http://www.scipy.org/wikis/topical_software/MatplotlibCookbook'),        
     ('pylab&nbsp;interface', 'pylab_commands.html'),

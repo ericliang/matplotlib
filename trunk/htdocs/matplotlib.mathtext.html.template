@@ -964,7 +964,7 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>exclamation</strong> = "!"<br>
 <strong>expression</strong> = expression<br>
 <strong>font</strong> = font<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x848de2c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x848de8c&gt;<br>
 <strong>fontname</strong> = {{{"rm" | "cal"} | "it"} | "tt"}<br>
 <strong>group</strong> = group<br>
 <strong>grouping</strong> = {{{"[" | "]"} | "("} | ")"}<br>
@@ -976,10 +976,10 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>lbrace</strong> = Suppress:("{")<br>
 <strong>lbrack</strong> = "["<br>
 <strong>lparen</strong> = "("<br>
-<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c0c&gt;<br>
-<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c2c&gt;<br>
-<strong>math_parse_s_pdf</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c6c&gt;<br>
-<strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c4c&gt;<br>
+<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c6c&gt;<br>
+<strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549c8c&gt;<br>
+<strong>math_parse_s_pdf</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549ccc&gt;<br>
+<strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x8549cac&gt;<br>
 <strong>minus</strong> = "-"<br>
 <strong>misc</strong> = {{{"!" | "@"} | "%"} | "&amp;"}<br>
 <strong>number</strong> = Combine:({{W:(0123...) ["."]} [W:(0123...)]})<br>
