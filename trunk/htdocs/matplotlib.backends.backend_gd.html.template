@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_gd</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py">/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_gd.py</a></font></td></tr></table>
     <p><tt>A&nbsp;gd&nbsp;backend&nbsp;<a href="http://newcenturycomputers.net/projects/gdmodule.html">http://newcenturycomputers.net/projects/gdmodule.html</a></tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -443,9 +443,9 @@ the&nbsp;figure&nbsp;in&nbsp;it.</tt></dd></dl>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 96<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x845756c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x83d656c&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x85be2ac&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x82cf82c&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82508ec&gt;</td></tr></table>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x853a2ac&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x824f82c&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b648ec&gt;</td></tr></table>
 @footer@

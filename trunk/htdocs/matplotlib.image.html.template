@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.image</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/image.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/image.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/image.py">/usr/local/lib/python2.5/site-packages/matplotlib/image.py</a></font></td></tr></table>
     <p><tt>The&nbsp;image&nbsp;module&nbsp;supports&nbsp;basic&nbsp;image&nbsp;loading,&nbsp;rescaling&nbsp;and&nbsp;display<br>
 operations.</tt></p>
 <p>
@@ -767,7 +767,7 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;MxNx4&nbsp;array&nbsp;of&nbsp;0-1&nbsp;nor
 <td width="100%"><strong>Float32</strong> = 'f'<br>
 <strong>NewAxis</strong> = None<br>
 <strong>UInt8</strong> = 'B'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x83d5e4c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x8456eec&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}</td></tr></table>
 @footer@

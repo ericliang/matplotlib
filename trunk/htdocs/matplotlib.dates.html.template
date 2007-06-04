@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.dates</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/dates.py">/usr/local/lib/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
     <p><tt>Matplotlib&nbsp;provides&nbsp;sophisticated&nbsp;date&nbsp;plotting&nbsp;capabilites,&nbsp;standing<br>
 on&nbsp;the&nbsp;shoulders&nbsp;of&nbsp;python&nbsp;datetime,&nbsp;the&nbsp;add-on&nbsp;modules&nbsp;pytz&nbsp;and<br>
 dateutils.&nbsp;&nbsp;datetime&nbsp;objects&nbsp;are&nbsp;converted&nbsp;to&nbsp;floating&nbsp;point&nbsp;numbers<br>
@@ -169,7 +169,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0xb5c03530&gt;</dl>
+<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x845a530&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>

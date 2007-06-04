@@ -184,16 +184,14 @@ def isNewEntry(line):
         return 0
 
 # re-add news to the params dict 'tables' entry below for news
-news1 = NewsBox("""\
-Please make sure you are using at least numpy-1.0 and not an earlier
-version or one of the rc release candidate series. You can check your
-numpy version by doing
-<pre>
->>> import numpy
->>> print numpy.__version__
-</pre>
 
-""")
+news1 = NewsBox("""matplotlib <a
+href="http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474">0.90.1</a>
+is out.  The 0.90 series is the last release that will continue to
+support Numeric, numarray and numpy.  At 0.91, we will be using numpy
+only internally, though we will continue to provide the <a
+href=matplotlib.numerix.html>numerix</a> compaitibility layer for
+external use.  """)
 
 
 table1 =  LinkBox(header='Matplotlib', links=(

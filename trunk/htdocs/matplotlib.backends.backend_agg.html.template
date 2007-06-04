@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_agg</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_agg.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_agg.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_agg.py">/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_agg.py</a></font></td></tr></table>
     <p><tt>An&nbsp;agg&nbsp;<a href="http://antigrain.com/">http://antigrain.com/</a>&nbsp;backend<br>
 &nbsp;<br>
 Features&nbsp;that&nbsp;are&nbsp;implemented<br>
@@ -412,8 +412,8 @@ want&nbsp;to&nbsp;rescale&nbsp;and&nbsp;composite&nbsp;raster&nbsp;images.&nbsp;
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>backend_version</strong> = 'v2.2'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x85b9ecc&gt;<br>
-<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x880ac6c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x8353ecc&gt;<br>
+<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x85d37ec&gt;<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82508ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7af08ec&gt;</td></tr></table>
 @footer@

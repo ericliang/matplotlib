@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/pylab.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/pylab.py">/usr/local/lib/python2.5/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
     <p><tt>This&nbsp;is&nbsp;a&nbsp;matlab(TM)&nbsp;style&nbsp;interface&nbsp;to&nbsp;matplotlib.<br>
 &nbsp;<br>
 The&nbsp;following&nbsp;plotting&nbsp;commands&nbsp;are&nbsp;provided;&nbsp;some&nbsp;of&nbsp;these&nbsp;do&nbsp;not<br>
@@ -260,7 +260,7 @@ The&nbsp;default&nbsp;value&nbsp;of&nbsp;None&nbsp;will&nbsp;return&nbsp;all&nbs
 See&nbsp;the&nbsp;respective&nbsp;function&nbsp;for&nbsp;documentation&nbsp;on&nbsp;valid&nbsp;kwargs<br>
 &nbsp;<br>
 Addition&nbsp;kwargs:&nbsp;hold&nbsp;=&nbsp;[True|False]&nbsp;overrides&nbsp;default&nbsp;hold&nbsp;state</tt></dd></dl>
- <dl><dt><a name="-annotate"><strong>annotate</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#-annotate">annotate</a>(self,&nbsp;s,&nbsp;xy,&nbsp;textloc,<br>
+ <dl><dt><a name="-annotate"><strong>annotate</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#-annotate">annotate</a>(self,&nbsp;s,&nbsp;xyloc,&nbsp;textloc,<br>
 &nbsp;xycoords='data',&nbsp;textcoords='data',<br>
 &nbsp;lineprops=None,<br>
 &nbsp;markerprops=None<br>
@@ -1422,7 +1422,7 @@ kwargs&nbsp;control&nbsp;the&nbsp;Text&nbsp;properties:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
- <dl><dt><a name="-figure"><strong>figure</strong></a>(num<font color="#909090">=None</font>, figsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, edgecolor<font color="#909090">=None</font>, frameon<font color="#909090">=True</font>, FigureClass<font color="#909090">=&lt;class matplotlib.figure.Figure at 0x845f14c&gt;</font>, **kwargs)</dt><dd><tt><a href="#-figure">figure</a>(num&nbsp;=&nbsp;None,&nbsp;figsize=(8,&nbsp;6),&nbsp;dpi=80,&nbsp;facecolor='w',&nbsp;edgecolor='k')<br>
+ <dl><dt><a name="-figure"><strong>figure</strong></a>(num<font color="#909090">=None</font>, figsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, edgecolor<font color="#909090">=None</font>, frameon<font color="#909090">=True</font>, FigureClass<font color="#909090">=&lt;class matplotlib.figure.Figure at 0x87b117c&gt;</font>, **kwargs)</dt><dd><tt><a href="#-figure">figure</a>(num&nbsp;=&nbsp;None,&nbsp;figsize=(8,&nbsp;6),&nbsp;dpi=80,&nbsp;facecolor='w',&nbsp;edgecolor='k')<br>
 &nbsp;<br>
 &nbsp;<br>
 Create&nbsp;a&nbsp;new&nbsp;figure&nbsp;and&nbsp;return&nbsp;a&nbsp;handle&nbsp;to&nbsp;it.&nbsp;&nbsp;If&nbsp;num=None,&nbsp;the&nbsp;figure<br>

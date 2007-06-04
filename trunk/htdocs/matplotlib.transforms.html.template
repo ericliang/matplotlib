@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.transforms</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/transforms.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/transforms.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/transforms.py">/usr/local/lib/python2.5/site-packages/matplotlib/transforms.py</a></font></td></tr></table>
     <p><tt>The&nbsp;transforms&nbsp;module&nbsp;is&nbsp;broken&nbsp;into&nbsp;two&nbsp;parts,&nbsp;a&nbsp;collection&nbsp;of<br>
 classes&nbsp;written&nbsp;in&nbsp;the&nbsp;extension&nbsp;module&nbsp;_transforms&nbsp;to&nbsp;handle<br>
 efficient&nbsp;transformation&nbsp;of&nbsp;data,&nbsp;and&nbsp;some&nbsp;helper&nbsp;functions&nbsp;in<br>

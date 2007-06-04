@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.text</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/text.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/text.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/text.py">/usr/local/lib/python2.5/site-packages/matplotlib/text.py</a></font></td></tr></table>
     <p><tt>Figure&nbsp;and&nbsp;Axes&nbsp;text</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -123,10 +123,6 @@ Additional&nbsp;kwargs&nbsp;are&nbsp;<a href="#Text">Text</a>&nbsp;properties:<b
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="Annotation-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
-
-<dl><dt><a name="Annotation-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Annotation-update_positions"><strong>update_positions</strong></a>(self, renderer)</dt></dl>
 
@@ -340,6 +336,10 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Annotation-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Annotation-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Annotation-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
@@ -1162,5 +1162,5 @@ Return&nbsp;value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(substring,&nbsp;inmath)
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a9b8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82528ec&gt;</td></tr></table>
 @footer@

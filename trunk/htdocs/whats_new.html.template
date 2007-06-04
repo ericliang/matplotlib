@@ -4,6 +4,93 @@
 
 versioninfo = {}
 
+versioninfo['0.90.1'] = (
+
+('unicode support for latex', """Added LaTeX unicode support. Enable with the 'text.latex.unicode'
+rcParam. This requires the ucs and inputenc LaTeX packages."""),
+
+('polar enhancements', """Fixed some problems with polar -- added general polygon clipping to
+clip the lines a nd grids to the polar axes.  Added support for
+set_rmax to easily change the maximum radial grid.  Added support for
+polar legend"""),
+
+('heler function for date plots', """Added Figure.autofmt_xdate to handle adjusting the bottom and rotating
+the tick labels for date plots when the ticks often overlap"""),
+
+('grayscale colors now strings', """Removed deprecated support for a float value as a gray-scale;
+now it must be a string, like '0.5'.  Added alpha kwarg to
+ColorConverter.to_rgba_list."""),
+
+('enhanced xcorr and acorr', """Some more niceties for xcorr -- a maxlags option, normed now works for
+xcorr as well as axorr, usevlines is supported, and a zero correlation
+hline is added.  See <a href="examples/xcorr_demo.py">xcorr_demo.py</a>"""),
+
+('performance boost to hlines and vlines', """Axes.vlines and
+Axes.hlines now create and returns a LineCollection, not a list of
+lines.  This is much faster.  The kwarg signature has changed, so
+consult the docs.  Modified Axes.errorbar which uses vlines and
+hlines.  See <a href=API_CHANGES>API_CHANGES</a>; the return signature
+for these three functions is now different"""),
+
+('mpl using setuptools', 'Require setuptools for Python 2.3'),
+
+('wx blit enhancements', """The backend has been updated to use new
+wxPython functionality to provide fast blit() animation without the
+C++ accelerator.  This requires wxPython 2.8 or later.  Previous
+versions of wxPython can use the C++ acclerator or the old pure Python
+routines."""),
+
+
+('better pdf font handling', 'Lots of pdf font enhancements -- see the <a href=CHANGELOG>CHANGELOG</a>.'),
+
+('new picker API', 'Better support for interactive object picking. ; see <a href=examples/pick_event_demo.py>pick_event_demo.py</a>'),
+
+
+('subplot labeling convience functions', """Added "Subplot.label_outer" method.  It will set the
+visibility of the ticklabels so that yticklabels are only
+visible in the first column and xticklabels are only
+visible in the last row"""),
+
+('documnetation updates', 'Added additional kwarg documentation'),
+
+('specgram updates', "Added Tim Leslie's spectral patch"),
+
+('tick formatting updates', """Added rc param 'axes.formatter.limits' to control the default
+threshold for switching to scientific notation. Added convenience
+method Axes.ticklabel_format() for turning scientific notation on or
+off on either or both axes.  Added ability to turn control scientific
+notation in ScalarFormatter"""),
+
+('sparse matrix visualization enhancements', """Replaced spy and spy2 with the new spy that combines
+marker and image capabilities"""),
+
+('betterm Matlab compatibility in plot argument handling', """Added support for plotting 2-D arrays with plot:
+columns are plotted as in Matlab"""),
+
+('pcolor now supports vectors', """Made pcolor support vector X and/or Y instead of
+requiring 2-D arrays."""), 
+
+('logarithmic color scaling', """Added LogNorm to colors.py as illustrated by
+<a href=examples/pcolor_log.py>pcolor_log.py</a>, based on suggestion by
+Jim McDonald.  Colorbar modified to handle LogNorm.
+Norms have additional "inverse" method."""),
+
+('clipped line demo', """Added <a href=examples/clippedline.py>clippedline.py</a>, which shows how to clip line
+data based on view limits -- it also changes the marker
+style when zoomed in."""),
+
+('deprecated some old plot functions', """Removed obsolete scatter_classic, leaving a stub to
+raise NotImplementedError; same for pcolor_classic"""),
+
+('new broken bar plot function', """Added broken_barh function for makring a sequence of
+horizontal bars broken by gaps -- see <a href=examples/broken_barh.py>broken_barh.py</a>"""),
+
+('annotation enhancements', """Removed lineprops and markerprops from the Annotation code
+and replaced them with an arrow configurable with kwarg
+arrowprops.  See <a href=examples/annotation_demo.py>annotation_demo.py</a>"""),
+
+)
+
 versioninfo['0.87.5'] = (
   ("aspect handling", """\
 Excellent support for axes aspect handling, with aspect='equal' or

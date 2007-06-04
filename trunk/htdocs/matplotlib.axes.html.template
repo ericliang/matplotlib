@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.axes</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/axes.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/axes.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/axes.py">/usr/local/lib/python2.5/site-packages/matplotlib/axes.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -131,7 +131,7 @@ wil&nbsp;be&nbsp;set&nbsp;to&nbsp;self.<strong>transData</strong>.</tt></dd></dl
 
 <dl><dt><a name="Axes-add_table"><strong>add_table</strong></a>(self, tab)</dt><dd><tt>Add&nbsp;a&nbsp;table&nbsp;instance&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;axes&nbsp;tables</tt></dd></dl>
 
-<dl><dt><a name="Axes-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Axes-annotate">annotate</a>(self,&nbsp;s,&nbsp;xy,&nbsp;textloc,<br>
+<dl><dt><a name="Axes-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Axes-annotate">annotate</a>(self,&nbsp;s,&nbsp;xyloc,&nbsp;textloc,<br>
 &nbsp;xycoords='data',&nbsp;textcoords='data',<br>
 &nbsp;lineprops=None,<br>
 &nbsp;markerprops=None<br>
@@ -587,7 +587,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="Axes-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="Axes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Axes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
@@ -902,7 +902,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;to&nbsp;a&nbsp;large&nbsp;enough&nbsp;value&nbsp;for&nbsp;the&nbsp;particular&nbsp;renderer&nbsp;and<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolution.</tt></dd></dl>
 
-<dl><dt><a name="Axes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Axes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each<br>
@@ -1803,7 +1803,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;matplotlib.dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="Axes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Axes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
 vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is<br>
@@ -2626,7 +2626,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="Axes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Axes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -2854,7 +2854,7 @@ kwargs&nbsp;are&nbsp;LineCollection&nbsp;properties:<br>
 &nbsp;<br>
 tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&nbsp;dates.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;rc&nbsp;value.</tt></dd></dl>
 
-<dl><dt><a name="Axes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
+<dl><dt><a name="Axes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
 and&nbsp;y&nbsp;are&nbsp;detrended&nbsp;by&nbsp;the&nbsp;detrend&nbsp;callable&nbsp;(default&nbsp;no<br>
@@ -3230,7 +3230,7 @@ wil&nbsp;be&nbsp;set&nbsp;to&nbsp;self.<strong>transData</strong>.</tt></dd></dl
 
 <dl><dt><a name="PolarAxes-add_table"><strong>add_table</strong></a>(self, tab)</dt><dd><tt>Add&nbsp;a&nbsp;table&nbsp;instance&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;axes&nbsp;tables</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#PolarAxes-annotate">annotate</a>(self,&nbsp;s,&nbsp;xy,&nbsp;textloc,<br>
+<dl><dt><a name="PolarAxes-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#PolarAxes-annotate">annotate</a>(self,&nbsp;s,&nbsp;xyloc,&nbsp;textloc,<br>
 &nbsp;xycoords='data',&nbsp;textcoords='data',<br>
 &nbsp;lineprops=None,<br>
 &nbsp;markerprops=None<br>
@@ -3679,7 +3679,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="PolarAxes-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarAxes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
@@ -3994,7 +3994,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;to&nbsp;a&nbsp;large&nbsp;enough&nbsp;value&nbsp;for&nbsp;the&nbsp;particular&nbsp;renderer&nbsp;and<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolution.</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarAxes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each<br>
@@ -4840,7 +4840,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;matplotlib.dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarAxes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
 vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is<br>
@@ -5549,7 +5549,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarAxes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -5750,7 +5750,7 @@ kwargs&nbsp;are&nbsp;LineCollection&nbsp;properties:<br>
 &nbsp;<br>
 tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&nbsp;dates.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;rc&nbsp;value.</tt></dd></dl>
 
-<dl><dt><a name="PolarAxes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
+<dl><dt><a name="PolarAxes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
 and&nbsp;y&nbsp;are&nbsp;detrended&nbsp;by&nbsp;the&nbsp;detrend&nbsp;callable&nbsp;(default&nbsp;no<br>
@@ -6146,7 +6146,7 @@ wil&nbsp;be&nbsp;set&nbsp;to&nbsp;self.<strong>transData</strong>.</tt></dd></dl
 
 <dl><dt><a name="PolarSubplot-add_table"><strong>add_table</strong></a>(self, tab)</dt><dd><tt>Add&nbsp;a&nbsp;table&nbsp;instance&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;axes&nbsp;tables</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#PolarSubplot-annotate">annotate</a>(self,&nbsp;s,&nbsp;xy,&nbsp;textloc,<br>
+<dl><dt><a name="PolarSubplot-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#PolarSubplot-annotate">annotate</a>(self,&nbsp;s,&nbsp;xyloc,&nbsp;textloc,<br>
 &nbsp;xycoords='data',&nbsp;textcoords='data',<br>
 &nbsp;lineprops=None,<br>
 &nbsp;markerprops=None<br>
@@ -6595,7 +6595,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="PolarSubplot-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarSubplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
@@ -6910,7 +6910,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;to&nbsp;a&nbsp;large&nbsp;enough&nbsp;value&nbsp;for&nbsp;the&nbsp;particular&nbsp;renderer&nbsp;and<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolution.</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarSubplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each<br>
@@ -7756,7 +7756,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;matplotlib.dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarSubplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
 vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is<br>
@@ -8465,7 +8465,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="PolarSubplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -8666,7 +8666,7 @@ kwargs&nbsp;are&nbsp;LineCollection&nbsp;properties:<br>
 &nbsp;<br>
 tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&nbsp;dates.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;rc&nbsp;value.</tt></dd></dl>
 
-<dl><dt><a name="PolarSubplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
+<dl><dt><a name="PolarSubplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
 and&nbsp;y&nbsp;are&nbsp;detrended&nbsp;by&nbsp;the&nbsp;detrend&nbsp;callable&nbsp;(default&nbsp;no<br>
@@ -8925,7 +8925,7 @@ wil&nbsp;be&nbsp;set&nbsp;to&nbsp;self.<strong>transData</strong>.</tt></dd></dl
 
 <dl><dt><a name="Subplot-add_table"><strong>add_table</strong></a>(self, tab)</dt><dd><tt>Add&nbsp;a&nbsp;table&nbsp;instance&nbsp;to&nbsp;the&nbsp;list&nbsp;of&nbsp;axes&nbsp;tables</tt></dd></dl>
 
-<dl><dt><a name="Subplot-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Subplot-annotate">annotate</a>(self,&nbsp;s,&nbsp;xy,&nbsp;textloc,<br>
+<dl><dt><a name="Subplot-annotate"><strong>annotate</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Subplot-annotate">annotate</a>(self,&nbsp;s,&nbsp;xyloc,&nbsp;textloc,<br>
 &nbsp;xycoords='data',&nbsp;textcoords='data',<br>
 &nbsp;lineprops=None,<br>
 &nbsp;markerprops=None<br>
@@ -9381,7 +9381,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="Subplot-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="Subplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Subplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
@@ -9696,7 +9696,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;to&nbsp;a&nbsp;large&nbsp;enough&nbsp;value&nbsp;for&nbsp;the&nbsp;particular&nbsp;renderer&nbsp;and<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;resolution.</tt></dd></dl>
 
-<dl><dt><a name="Subplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Subplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each<br>
@@ -10597,7 +10597,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;matplotlib.dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="Subplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Subplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
 vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is<br>
@@ -11420,7 +11420,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="Subplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xb5ba3764&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
+<dl><dt><a name="Subplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x847d72c&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;detrend=detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -11648,7 +11648,7 @@ kwargs&nbsp;are&nbsp;LineCollection&nbsp;properties:<br>
 &nbsp;<br>
 tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&nbsp;dates.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;rc&nbsp;value.</tt></dd></dl>
 
-<dl><dt><a name="Subplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xb5ba387c&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
+<dl><dt><a name="Subplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x847d844&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=detrend_none,&nbsp;usevlines=False,&nbsp;**kwargs):<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
 and&nbsp;y&nbsp;are&nbsp;detrended&nbsp;by&nbsp;the&nbsp;detrend&nbsp;callable&nbsp;(default&nbsp;no<br>
@@ -11926,7 +11926,7 @@ NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd
 <strong>POLAR</strong> = 0<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>ceil</strong> = &lt;ufunc 'ceil'&gt;<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb591852c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x85264ec&gt;<br>
 <strong>divide</strong> = &lt;ufunc 'divide'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 0)<br>

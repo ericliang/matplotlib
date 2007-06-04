@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.lines</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/lines.py">/usr/local/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;contains&nbsp;all&nbsp;the&nbsp;2D&nbsp;line&nbsp;class&nbsp;which&nbsp;can&nbsp;draw&nbsp;with&nbsp;a<br>
 variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p>
 <p>
@@ -130,7 +130,7 @@ else&nbsp;the&nbsp;processed&nbsp;data</tt></dd></dl>
 <dl><dt><a name="Line2D-is_dashed"><strong>is_dashed</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;line&nbsp;is&nbsp;dashstyle</tt></dd></dl>
 
 <dl><dt><a name="Line2D-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>If&nbsp;mouseevent&nbsp;is&nbsp;over&nbsp;data&nbsp;that&nbsp;satisifies&nbsp;the&nbsp;picker,&nbsp;fire<br>
-off&nbsp;a&nbsp;backend_bases.PickEvent&nbsp;with&nbsp;the&nbsp;additional&nbsp;attribute&nbsp;"ind"<br>
+off&nbsp;a&nbsp;backend_bases.PickEvent&nbsp;with&nbsp;the&nbsp;additional&nbsp;attribute"ind"<br>
 which&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;indices&nbsp;into&nbsp;the&nbsp;data&nbsp;that&nbsp;meet&nbsp;the&nbsp;criteria</tt></dd></dl>
 
 <dl><dt><a name="Line2D-recache"><strong>recache</strong></a>(self)</dt></dl>
@@ -426,7 +426,7 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb5a44a6c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x84b6a4c&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
@@ -439,5 +439,5 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
 <strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b6b8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82528ec&gt;</td></tr></table>
 @footer@
