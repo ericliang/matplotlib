@@ -426,7 +426,7 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x84b6a4c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x84b6aac&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>

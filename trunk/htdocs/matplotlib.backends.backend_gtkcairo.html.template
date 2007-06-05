@@ -639,7 +639,7 @@ Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</
 Data and other attributes inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><strong>__gdoc__</strong> = 'Object GtkDrawingArea<font color="#c040c0">\n\n</font>Signals from GtkWidget:<font color="#c040c0">\n</font> ...ointer<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
 
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb7b12400&gt;<dd><tt>T.<a href="#FigureCanvasGTKCairo-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb7b71400&gt;<dd><tt>T.<a href="#FigureCanvasGTKCairo-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x8958fac&gt;</dl>
 
@@ -1510,7 +1510,7 @@ Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</
 Data and other attributes inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><strong>__gdoc__</strong> = 'Object GtkToolbar<font color="#c040c0">\n\n</font>Signals from GtkToolbar:<font color="#c040c0">\n</font>  or...ointer<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
 
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb7b12400&gt;<dd><tt>T.<a href="#NavigationToolbar2Cairo-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb7b71400&gt;<dd><tt>T.<a href="#NavigationToolbar2Cairo-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x89dea8c&gt;</dl>
 
@@ -1688,5 +1688,5 @@ want&nbsp;to&nbsp;rescale&nbsp;and&nbsp;composite&nbsp;raster&nbsp;images.&nbsp;
 <strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0x86111ac&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x84af72c&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b248ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b838ec&gt;</td></tr></table>
 @footer@

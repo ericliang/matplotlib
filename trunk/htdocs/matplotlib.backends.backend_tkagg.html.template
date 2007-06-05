@@ -1798,8 +1798,8 @@ interactive&nbsp;mode&nbsp;to&nbsp;True,&nbsp;as&nbsp;detailed&nbsp;on<br>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 75<br>
 <strong>backend_version</strong> = 8.4000000000000004<br>
 <strong>cursord</strong> = {0: 'hand2', 1: 'arrow', 2: 'tcross', 3: 'fleur'}<br>
-<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xb4d0c3cc&gt;<br>
+<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xb4c903cc&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b2f8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7ab38ec&gt;</td></tr></table>
 @footer@

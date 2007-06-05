@@ -740,8 +740,8 @@ Attributes&nbsp;are<br>
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>Float32</strong> = 'f'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb5c810ac&gt;<br>
-<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xb5a8dbec&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb5c3c0ac&gt;<br>
+<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xb5a48bec&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
 <strong>log</strong> = &lt;ufunc 'log'&gt;<br>

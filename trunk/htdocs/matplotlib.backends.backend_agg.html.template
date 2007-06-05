@@ -415,5 +415,5 @@ want&nbsp;to&nbsp;rescale&nbsp;and&nbsp;composite&nbsp;raster&nbsp;images.&nbsp;
 <strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x8353ecc&gt;<br>
 <strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x85d37ec&gt;<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7af08ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a928ec&gt;</td></tr></table>
 @footer@

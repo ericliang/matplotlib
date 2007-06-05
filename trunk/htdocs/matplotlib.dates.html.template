@@ -169,7 +169,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x845a530&gt;</dl>
+<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x845b530&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>

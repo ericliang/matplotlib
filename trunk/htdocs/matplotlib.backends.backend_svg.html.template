@@ -322,9 +322,9 @@ points&nbsp;to&nbsp;pixels&nbsp;=&nbsp;points&nbsp;*&nbsp;pixels_per_inch/72.0&n
 <td width="100%"><strong>__version__</strong> = '0.90.0'<br>
 <strong>backend_version</strong> = '0.90.0'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x83b0dac&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x83b1dac&gt;<br>
 <strong>math_parse_s_ft2font_svg</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x860abcc&gt;<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>svgProlog</strong> = '&lt;?xml version="1.0" standalone="no"?&gt;<font color="#c040c0">\n</font>&lt;!DOCTYPE ...3.org/1999/xlink"<font color="#c040c0">\n</font>   version="1.1"<font color="#c040c0">\n</font>   id="svg1"&gt;<font color="#c040c0">\n</font>'<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b028ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7aa58ec&gt;</td></tr></table>
 @footer@

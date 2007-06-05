@@ -2029,7 +2029,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5b35a40&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5b00a40&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backends.backend_agg.html#FigureCanvasAgg">matplotlib.backends.backend_agg.FigureCanvasAgg</a>:<br>
@@ -4147,7 +4147,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5b35a40&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0xb5b00a40&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -4167,5 +4167,5 @@ Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper<
 <td width="100%"><strong>DEBUG</strong> = False<br>
 <strong>backend_version</strong> = '0.9.1'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b7b8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b468ec&gt;</td></tr></table>
 @footer@

@@ -447,5 +447,5 @@ the&nbsp;figure&nbsp;in&nbsp;it.</tt></dd></dl>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x853a2ac&gt;<br>
 <strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x824f82c&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b648ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b548ec&gt;</td></tr></table>
 @footer@

@@ -277,5 +277,5 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b618ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a988ec&gt;</td></tr></table>
 @footer@

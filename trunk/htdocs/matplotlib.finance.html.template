@@ -173,5 +173,5 @@ alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt>
 <strong>cachedir</strong> = '/home/jdhunter/.matplotlib/finance.cache'<br>
 <strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x834cdcc&gt;<br>
 <strong>configdir</strong> = '/home/jdhunter/.matplotlib'<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a8e8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b2e8ec&gt;</td></tr></table>
 @footer@

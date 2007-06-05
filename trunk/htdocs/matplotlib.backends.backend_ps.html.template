@@ -522,11 +522,11 @@ output&nbsp;that&nbsp;treats&nbsp;text&nbsp;as&nbsp;text.</tt></dd></dl>
 <strong>debugPS</strong> = 0<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0xb59cf66c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0xb59ce66c&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
 <strong>math_parse_s_ps</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x85fa40c&gt;<br>
 <strong>papersize</strong> = {'a0': (33.109999999999999, 46.810000000000002), 'a1': (23.390000000000001, 33.109999999999999), 'a10': (1.02, 1.4570000000000001), 'a2': (16.539999999999999, 23.390000000000001), 'a3': (11.69, 16.539999999999999), 'a4': (8.2699999999999996, 11.69), 'a5': (5.8300000000000001, 8.2699999999999996), 'a6': (4.1299999999999999, 5.8300000000000001), 'a7': (2.9100000000000001, 4.1299999999999999), 'a8': (2.0699999999999998, 2.9100000000000001), ...}<br>
 <strong>psDefs</strong> = ['/m { moveto } bind def', '/l { lineto } bind def', '/r { rlineto } bind def', '/box {<font color="#c040c0">\n</font>      m<font color="#c040c0">\n</font>      1 index 0 r<font color="#c040c0">\n</font>      0 exch r<font color="#c040c0">\n</font>      neg 0 r<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def', '/clipbox {<font color="#c040c0">\n</font>      box<font color="#c040c0">\n</font>      clip<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>    } bind def', '/ellipse {<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>      matrix currentmat...rc<font color="#c040c0">\n</font>      setmatrix<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def']<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b6d8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b6c8ec&gt;</td></tr></table>
 @footer@

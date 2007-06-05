@@ -421,9 +421,9 @@ it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavio
 <td width="100%"><strong>Float</strong> = 'd'<br>
 <strong>Int</strong> = 'l'<br>
 <strong>cnames</strong> = {'aliceblue': '#F0F8FF', 'antiquewhite': '#FAEBD7', 'aqua': '#00FFFF', 'aquamarine': '#7FFFD4', 'azure': '#F0FFFF', 'beige': '#F5F5DC', 'bisque': '#FFE4C4', 'black': '#000000', 'blanchedalmond': '#FFEBCD', 'blue': '#0000FF', ...}<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xb5c8752c&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x831e58c&gt;<br>
 <strong>divide</strong> = &lt;ufunc 'divide'&gt;<br>
-<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xb7ae6f20&gt;<br>
+<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xb7a95f20&gt;<br>
 <strong>k</strong> = 'peachpuff'<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>

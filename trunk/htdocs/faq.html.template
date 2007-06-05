@@ -299,7 +299,17 @@ for fname in files: os.remove(fname)
 
 </pre>
 """),
+	
+    ('FONTMISSING', "When I start matplotlib, I am getting warnings about not being able to find fonts?",
+"""
+matplotlib uses a cache file to store information about your system fonts, and occasionally we reorganize our direcotroy schemes or your system may have changed.  When you get warnings about missing fonts, try removing your font cache directory "ttffont.cache" which is located in your ".matplotlib" configuration directory.  Where this is depends on your operating system but see the prolog of <a href=matplotlibrc>matplotlibrc</a> for information on where this is stored.  You can also run a test pylab script with <tt>--verbose-helpful</tt> or <tt>--verbose-debug</tt>, eg
 
+<pre>
+> python test.py --verbose-helpful
+</pre>
+
+to get additionaly diagnostic information about which <tt>matplotlibrc</tt> file is loaded, which font cache directory is used, which fonts are being used, etc...
+"""),
 
     ('WRONGDIR',
     "When I try to import pylab, I get an error about no _transform.so or ft2font.so",

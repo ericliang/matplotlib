@@ -1,3 +1,25 @@
+2007-06-04 Added labeldistance arg to Axes.pie to control the raidal
+           distance of the wedge labels - JDH
+
+2007-06-03 Turned mathtext in SVG into single <text> with multiple <tspan>
+           objects (easier to edit in inkscape). - NN
+
+===============================================================
+2007-06-02 Released 0.90.1 at revision 3352
+
+2007-06-02 Display only meaningful labels when calling legend()
+           without args. - NN
+
+2007-06-02 Have errorbar follow the color cycle even if line is not plotted.
+           Suppress plotting of errorbar caps for capsize=0. - NN
+
+2007-06-02 Set markers to same alpha value as line. - NN
+
+2007-06-02 Fix mathtext position in svg backend. - NN
+
+2007-06-01 Deprecate Numeric and numarray for use as numerix. Props to
+           Travis -- job well done. - ADS
+
 2007-05-18 Added LaTeX unicode support. Enable with the
            'text.latex.unicode' rcParam. This requires the ucs and
            inputenc LaTeX packages. - ADS

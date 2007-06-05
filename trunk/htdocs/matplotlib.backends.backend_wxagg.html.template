@@ -303,7 +303,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb79c3e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb7960e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -318,7 +318,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb79c3e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb7960e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -3311,7 +3311,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb79c3e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb7960e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -3326,7 +3326,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb79c3e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb7960e2c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>

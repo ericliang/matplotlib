@@ -339,7 +339,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -354,7 +354,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -3785,7 +3785,7 @@ Get&nbsp;the&nbsp;width,&nbsp;height,&nbsp;decent&nbsp;and&nbsp;leading&nbsp;of&
 current&nbsp;or&nbsp;specified&nbsp;font.&nbsp;Works&nbsp;for&nbsp;single&nbsp;as&nbsp;well&nbsp;as&nbsp;multi-line<br>
 strings.</tt></dd></dl>
 
-<dl><dt><a name="GraphicsContextWx-GetOptimization"><strong>GetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;GetOptimization&nbsp;at&nbsp;0xb68d9c34&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="GraphicsContextWx-GetOptimization"><strong>GetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;GetOptimization&nbsp;at&nbsp;0xb68ecc34&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextWx-GetPPI"><strong>GetPPI</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#GraphicsContextWx-GetPPI">GetPPI</a>(self)&nbsp;-&gt;&nbsp;Size<br>
 &nbsp;<br>
@@ -4049,7 +4049,7 @@ mapping&nbsp;mode&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;wx.MM_TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;logical&nbsp;unit&nbsp;is&nbsp;1&nbsp;pixel.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;================&nbsp;&nbsp;&nbsp;&nbsp;=============================================</tt></dd></dl>
 
-<dl><dt><a name="GraphicsContextWx-SetOptimization"><strong>SetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;SetOptimization&nbsp;at&nbsp;0xb68d9bfc&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="GraphicsContextWx-SetOptimization"><strong>SetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;SetOptimization&nbsp;at&nbsp;0xb68ecbfc&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextWx-SetPalette"><strong>SetPalette</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#GraphicsContextWx-SetPalette">SetPalette</a>(self,&nbsp;Palette&nbsp;palette)<br>
 &nbsp;<br>
@@ -4242,7 +4242,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="MenuButtonWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="MenuButtonWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="MenuButtonWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#MenuButtonWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -4257,7 +4257,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="MenuButtonWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="MenuButtonWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="MenuButtonWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#MenuButtonWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -5795,7 +5795,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2Wx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2Wx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2Wx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2Wx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -5810,7 +5810,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2Wx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2Wx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2Wx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2Wx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -7320,7 +7320,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbarWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -7335,7 +7335,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbarWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -8963,7 +8963,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="StatusBarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="StatusBarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="StatusBarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#StatusBarWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -8978,7 +8978,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="StatusBarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="StatusBarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="StatusBarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#StatusBarWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -11951,7 +11951,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#Toolbar-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -11966,7 +11966,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb695641c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#Toolbar-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -13277,6 +13277,6 @@ into&nbsp;this&nbsp;in&nbsp;a&nbsp;later&nbsp;release.</tt></dd></dl>
 <strong>cvs_id</strong> = '$Id$'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b5a8ec&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b6d8ec&gt;<br>
 <strong>wxapp</strong> = None</td></tr></table>
 @footer@

@@ -964,11 +964,11 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>exclamation</strong> = "!"<br>
 <strong>expression</strong> = expression<br>
 <strong>font</strong> = font<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0xb5bade8c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0xb5be6e8c&gt;<br>
 <strong>fontname</strong> = {{{"rm" | "cal"} | "it"} | "tt"}<br>
 <strong>group</strong> = group<br>
 <strong>grouping</strong> = {{{"[" | "]"} | "("} | ")"}<br>
-<strong>handler</strong> = &lt;matplotlib.mathtext.Handler instance at 0xb59b612c&gt;<br>
+<strong>handler</strong> = &lt;matplotlib.mathtext.Handler instance at 0xb59ef12c&gt;<br>
 <strong>italics</strong> = "it"<br>
 <strong>langle</strong> = "&lt;"<br>
 <strong>latex_to_bakoma</strong> = {'(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), '0': ('cmr10', 40), '1': ('cmr10', 100), ...}<br>
@@ -1013,5 +1013,5 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>typewriter</strong> = "tt"<br>
 <strong>under</strong> = "under"<br>
 <strong>uni2type1</strong> = {32: 'space', 33: 'exclam', 34: 'quotedbl', 35: 'numbersign', 36: 'dollar', 37: 'percent', 38: 'ampersand', 39: 'quotesingle', 40: 'parenleft', 41: 'parenright', ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a978ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7ad08ec&gt;</td></tr></table>
 @footer@

@@ -378,5 +378,5 @@ want&nbsp;to&nbsp;rescale&nbsp;and&nbsp;composite&nbsp;raster&nbsp;images.&nbsp;
 <strong>IMAGE_FORMAT_DEFAULT</strong> = 'png'<br>
 <strong>backend_version</strong> = '1.2.0'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x858b12c&gt;</td></tr></table>
+<strong>math_parse_s_ft2font</strong> = &lt;matplotlib.mathtext.math_parse_s_ft2font_common instance at 0x858a12c&gt;</td></tr></table>
 @footer@
