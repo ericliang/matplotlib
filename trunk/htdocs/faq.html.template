@@ -980,86 +980,109 @@ docs</a> for details.
       ('LEAKS',
        'matplotlib appears to be leaking memory, what should I do?',
 """\
+First, determine if it is a true memory leak.  Python allocates memory
+in pools, rather than one object at a time, which can make memory leaks
+difficult to diagnose.  Memory usage may appear to increase rapidly
+with each iteration, but should eventually reach a steady state if no
+true memory leaks exist.  (For more fine-grained memory usage
+reporting, you can build a custom Python with
+the <tt>--without-pymalloc</tt> flag, which disables pool allocation.)
+If after sufficient iterations, you still see that memory usage is
+increasing, it is a likely a bonafide memory leak that should be
+reported.
 
-A number of severe memory leaks were fixed in the 0.54 and 0.60
-matplotlib releases.  These have been fixed, and here are no known
-leaks in matplotlib 0.63 or later with Numeric-23.5 or numarray >1.1.
-There is a leak in freetype 2.1.7 and earlier that was fixed in
-freetype 2.1.9.  The memory leak situation has improved significantly
-as I've migrated almost all of the extension code to pycxx, and I use
-a number of unit tests to test leaks of various extension code
-components. <p>
+</a>
+The unit directory of the source tree contains an example scripts
+useful for diagnosing and reporting memory leaks.  For
+example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii.py?view=markup"><tt>memleak_hawaii.py</tt>
+  is useful for finding plotting-related memory leaks,
+  and <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_gui.py?view=markup"><tt>memleak_gui.py</tt>
+    helps find memory leaks in the GUI-backend.  Please use
+something like these when reporting leaks so we get an idea of the
+magnitude of the problem (i.e. bytes per figure).  Also please provide
+your platform, matplotlib version, backend and as much information
+about the versions of the libraries you are using: e.g. freetype, png and
+zlib.  It would also help if you posted code so I could look for any
+obvious coding errors vis-a-vis matplotlib.<p>
 
-Below is a prototypical script that I use to diagnose and report
-memory leaks.  Please use something like it when reporting leaks so I
-get an idea of the magnitude of the problem (ie bytes per figure).
-Also please provide your platform, matplotlib version, backend and as
-much information about the versions of the libraries you are using:
-freetype, png and zlib.  It would also help if you posted code so I
-could look for any obvious coding errors vis-a-vis matplotlib.<p>
+There are some known memory leaks in matplotlib-0.90.1 when used in
+conjunction with the Tk, Gtk, Wx, Qt and Qt4 GUI backends.  Many of 
+these leaks have resolutions in the current SVN version of matplotlib.  
+However, the following library versions are known to have leaks that
+matplotlib triggers.  If you have one of these versions and are
+experiencing memory leaks, you should upgrade your library.  This is
+not an exhaustive list.
 
-Running the code below with 0.0000k bytes / per figure
-(matplotlib-0.63.0 / agg backend on linux with freetype 2.1.9,
-libpng1.2 and libz 1.1.4).  If your numbers are much worse, it may be
-that you are doing something wrong, ie, not properly closing, reusing
-figure, etc, so please post some code to the list.<p>
+<ul>
+<li><b>Wx backend:</b>wxPython-2.8.2 or earlier in the 2.8 series
+<li><b>Gtk backend:</b>pygobject-2.12.x, pygtk-2.4.0
+</ul>
+"""),
 
+      ('LEAKS2',
+       'I\'d like to help diagnose a memory leak, rather than just
+       report it.  How do you recommend I do that?',
+"""\
+I thought you'd never ask!  Python memory leaks tend to fall into one
+       of the following categories:
 
-<B>There is a fairly large leak in <tt>dot</tt> and a smaller leak in
-<tt>sometrue</tt> in numarray version 1.1, which matplotlib makes
-heavy use of.  If you are using matplotlib with numarray, and are
-concerned about leaks, please use numarray CVS.  Also, there appear to
-be small leaks in earlier versions of Numeric.  My tests with
-Numeric-23.5 and numarray CVS (2004-09-29) revealed no detectable
-leaks.  </B>
-
+<ul>
+  <li><b>Uncollectable garbage:</b> The Python garbage collector is
+  not infallible.  It can not collect objects that the Python that
+  have <tt>__del__</tt> methods or <tt>weakref</tt>s and contain cycles.  If
+  curious, you can read about this problem in
+  <a href="http://svn.python.org/view/python/trunk/Modules/gc_weakref.txt?view=markup">horrific
+  detail</a>.  You can obtain a list of all uncollectable objects as
+  follows:
 <pre>
-import os, sys, time
-import matplotlib
-matplotlib.use('Agg')
-from pylab import *
-
-
-def report_memory(i):
-    pid = os.getpid()
-    a2 = os.popen('ps -p %d -o rss,sz' % pid).readlines()
-    print i, '  ', a2[1],
-    return int(a2[1].split()[1])
-
-
-
-# take a memory snapshot on indStart and compare it with indEnd
-indStart, indEnd = 30, 150
-for i in range(indEnd):
-    ind = arange(100)
-    xx = rand(len(ind))
-
-    figure(1)
-    subplot(221)
-    plot(ind, xx)
-
-    subplot(222)
-    X = rand(50,50)
-    
-    imshow(X)
-    subplot(223)
-    scatter(rand(50), rand(50))
-    subplot(224)
-    pcolor(10*rand(50,50))
-
-    savefig('tmp%d' % i, dpi = 75)
-    close(1)
-
-
-    val = report_memory(i)
-   # wait a few cycles for memory usage to stabilize
-    if i==indStart: start = val 
-
-end = val
-print 'Average memory consumed per loop: %1.4fk bytes\n' % \\
-      ((end-start)/float(indEnd-indStart))
-
+                import gc
+                print gc.garbage
 </pre>
+  To see what cycles these objects participate in, there is a useful
+  function in <tt>matplotlib.cbook</tt>:
+<pre>
+                from matplotlib import cbook
+		cbook.print_cycles(gc.garbage)
+</pre>
+  This will print out all of the reference cycles that are preventing
+  the uncollectable objects from being freed.  The code should then be
+  modified to prevent these cycles, or break the cycles during
+  destruction.
+
+  <li><b>Real references:</b> Sometimes objects are legitimately being
+    held onto by other Python objects.  When this happens, you would
+    see the total number of Python objects in the interpreter increase
+    with each iteration of your test, even when you didn't intend any
+    data to "stick around".  You can print out the total number of
+    objects in the interpreter:
+<pre>
+                import gc
+		print len(gc.get_objects())
+</pre>
+    By comparing the objects before and after your test, you can
+    determine which of them remain between iterations:
+<pre>
+                original_objects = [id(x) for x in gc.get_objects()]
+		# ... do something that leaks objects
+		new_objects = [x for x in gc.get_objects() 
+		               if id(x) not in original_objects]
+</pre>
+    You can then determine what is referencing those objects and
+    causing them to stick around:
+<pre>
+                print gc.get_referents(x)
+</pre>
+    The code should be modified to prevent these unwanted references.
+
+   <li><b>C/C++ leaks in extension objects:</b> These is the classic
+   problem of objects that are "malloc'd/new'd" and never
+   "freed/deleted" in C or C++ parlance.  There are many memory
+   debuggers available such as Purify or Valgrind to help find these
+   errors.  I recommend reading the <a href="http://svn.python.org/view/python/trunk/Misc/README.valgrind?view=markup">documentation about using these
+   tools in conjunction with Python</a> to avoid a lot of false positives.
+</ul>
+<p>
+
 """),
 
 
