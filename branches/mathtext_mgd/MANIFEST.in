@@ -1,0 +1,18 @@
+include API_CHANGES CHANGELOG KNOWN_BUGS INSTALL NUMARRAY_ISSUES
+include INTERACTIVE TODO
+include Makefile  MANIFEST.in MANIFEST
+include matplotlibrc.template matplotlibrc
+include __init__.py setupext.py setup.py setupegg.py makeswig.py
+include examples/data/*
+include lib/matplotlib/toolkits
+include lib/matplotlib/mpl-data/images/*
+include lib/matplotlib/mpl-data/fonts/ttf/*
+include lib/matplotlib/mpl-data/fonts/afm/*
+recursive-include license LICENSE*
+recursive-include examples README *.py
+prune examples/_tmp_*
+recursive-include src  *.cpp *.c *.h
+recursive-include CXX  *.cxx *.hxx *.c
+recursive-include agg23 *
+recursive-include lib *
+recursive-include swig *
