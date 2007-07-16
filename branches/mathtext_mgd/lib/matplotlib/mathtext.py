@@ -135,7 +135,8 @@ from cStringIO import StringIO
 from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      Combine, Group, Optional, Forward, NotAny, alphas, nums, alphanums, \
-     StringStart, StringEnd, ParseException, FollowedBy, Regex
+     StringStart, StringEnd, ParseException, FollowedBy, Regex, \
+     operatorPrecedence, opAssoc, ParseResults
 
 from matplotlib.afm import AFM
 from matplotlib.cbook import enumerate, iterable, Bunch
@@ -1259,7 +1260,7 @@ class Handler:
 
     def expression(self, s, loc, toks):
         self.expr = ExpressionElement(toks)
-        return loc, [self.expr]
+        return [self.expr]
 
     def space(self, s, loc, toks):
         assert(len(toks)==1)
@@ -1271,7 +1272,7 @@ class Handler:
 
         element = SpaceElement(num)
         self.symbols.append(element)
-        return loc, [element]
+        return [element]
 
     def symbol(self, s, loc, toks):
 
@@ -1300,7 +1301,7 @@ class Handler:
             sym = SymbolElement(toks[0])
         self.symbols.append(sym)
 
-        return loc, [sym]
+        return [sym]
 
     def composite(self, s, loc, toks):
 
@@ -1315,7 +1316,7 @@ class Handler:
         self.symbols.append(sym0)
         self.symbols.append(sym1)
 
-        return loc, [sym0]
+        return [sym0]
 
     def accent(self, s, loc, toks):
 
@@ -1343,13 +1344,13 @@ class Handler:
         sym.neighbors['above'] = above
         sym.set_pady(1)
         self.symbols.append(above)
-        return loc, [sym]
+        return [sym]
 
     def group(self, s, loc, toks):
         assert(len(toks)==1)
         #print 'grp', toks
         grp = GroupElement(toks[0])
-        return loc, [grp]
+        return [grp]
 
     def font(self, s, loc, toks):
 
@@ -1357,7 +1358,7 @@ class Handler:
         name, grp = toks[0]
         #print 'fontgrp', toks
         grp.set_font(name[1:])  # suppress the slash
-        return loc, [grp]
+        return [grp]
 
     def subscript(self, s, loc, toks):
         assert(len(toks)==1)
@@ -1391,7 +1392,7 @@ class Handler:
         else:
             prev.neighbors['superscript'] = next
 
-        return loc, [prev]
+        return [prev]
 
     def subsuperscript(self, s, loc, toks):
         assert(len(toks)==1)
@@ -1405,7 +1406,7 @@ class Handler:
             prev.neighbors['subscript'] = down
             prev.neighbors['superscript'] = up
 
-        return loc, [prev]
+        return [prev]
 
 
 
