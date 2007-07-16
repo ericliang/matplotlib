@@ -135,7 +135,7 @@ from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      Combine, Group, Optional, Forward, NotAny, alphas, nums, alphanums, \
      StringStart, StringEnd, ParseException, FollowedBy, Regex, \
-     operatorPrecedence, opAssoc, ParseResults, Or
+     operatorPrecedence, opAssoc, ParseResults, Or, Suppress
 
 from matplotlib.afm import AFM
 from matplotlib.cbook import enumerate, iterable, Bunch
@@ -927,7 +927,6 @@ setfont
 class Element:
     fontsize = 12
     dpi = 72
-    font = 'it'
     _padx, _pady = 2, 2  # the x and y padding in points
     _scale = 1.0
 
@@ -965,10 +964,14 @@ class Element:
         'get the ymax of ink rect'
         raise NotImplementedError('derived must override')
 
+    def determine_font(self, font_stack):
+        'a first pass to determine the font of this element (one of tt, it, rm , cal)'
+        raise NotImplementedError('derived must override')
+
     def set_font(self, font):
         'set the font (one of tt, it, rm , cal)'
         raise NotImplementedError('derived must override')
-
+    
     def render(self):
         'render to the fonts canvas'
         for element in self.neighbors.values():
@@ -1044,6 +1047,45 @@ class Element:
     def __repr__(self):
         return str(self.__class__) + str(self.neighbors)
 
+class FontElement(Element):
+    def __init__(self, name):
+        Element.__init__(self)
+        self.name = name
+
+    def advance(self):
+        'get the horiz advance'
+        return 0
+        
+    def height(self):
+        'get the element height: ymax-ymin'
+        return 0
+        
+    def width(self):
+        'get the element width: xmax-xmin'
+        return 0
+        
+    def xmin(self):
+        'get the xmin of ink rect'
+        return 0
+        
+    def xmax(self):
+        'get the xmax of ink rect'
+        return 0
+        
+    def ymin(self):
+        'get the ymin of ink rect'
+        return 0
+        
+    def ymax(self):
+        'get the ymax of ink rect'
+        return 0
+        
+    def determine_font(self, font_stack):
+        font_stack[-1] = self.name
+
+    def set_font(self, font):
+        return
+        
 class SpaceElement(Element):
     'blank horizontal space'
     def __init__(self, space, height=0):
@@ -1083,10 +1125,17 @@ class SpaceElement(Element):
         'get the max ink in y'
         return self.oy + self.height()
 
-    def set_font(self, f):
+    def determine_font(self, font_stack):
+        # space doesn't care about font, only size
+        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
+            neighbor = self.neighbors.get(neighbor_type)
+            if neighbor is not None:
+                neighbor.determine_font(font_stack)
+
+    def set_font(self, font_stack):
         # space doesn't care about font, only size
         pass
-
+    
 class SymbolElement(Element):
     def __init__(self, sym):
         Element.__init__(self)
@@ -1094,10 +1143,19 @@ class SymbolElement(Element):
         self.kern = None
         self.widthm = 1  # the width of an m; will be resized below
 
+    def determine_font(self, font_stack):
+        'set the font (one of tt, it, rm, cal)'
+        self.set_font(font_stack[-1])
+        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
+            neighbor = self.neighbors.get(neighbor_type)
+            if neighbor is not None:
+                neighbor.determine_font(font_stack)
+        
     def set_font(self, font):
-        'set the font (one of tt, it, rm , cal)'
+        # space doesn't care about font, only size
+        assert not hasattr(self, 'font')
         self.font = font
-
+        
     def set_origin(self, ox, oy):
         Element.set_origin(self, ox, oy)
 
@@ -1163,6 +1221,8 @@ class SymbolElement(Element):
     def __repr__(self):
         return self.sym
 
+class AccentElement(SymbolElement):
+    pass
 
 class GroupElement(Element):
     """
@@ -1174,20 +1234,25 @@ class GroupElement(Element):
         for i in range(len(elements)-1):
             self.elements[i].neighbors['right'] = self.elements[i+1]
 
-    def set_font(self, font):
+    def determine_font(self, font_stack):
         'set the font (one of tt, it, rm , cal)'
+        font_stack.append(font_stack[-1])
         for element in self.elements:
-            element.set_font(font)
+            element.determine_font(font_stack)
+        font_stack.pop()
 
-
+    def set_font(self, font):
+        return
+    
+        # MGDTODO: The code below is probably now broken
         #print 'set fonts'
-        for i in range(len(self.elements)-1):
-            if not isinstance(self.elements[i], SymbolElement): continue
-            if not isinstance(self.elements[i+1], SymbolElement): continue
-            symleft = self.elements[i].sym
-            symright = self.elements[i+1].sym
-            self.elements[i].kern = None
-            #self.elements[i].kern = Element.fonts.get_kern(font, symleft, symright, self.fontsize, self.dpi)
+#         for i in range(len(self.elements)-1):
+#             if not isinstance(self.elements[i], SymbolElement): continue
+#             if not isinstance(self.elements[i+1], SymbolElement): continue
+#             symleft = self.elements[i].sym
+#             symright = self.elements[i+1].sym
+#             self.elements[i].kern = None
+#             #self.elements[i].kern = Element.fonts.get_kern(font, symleft, symright, self.fontsize, self.dpi)
 
 
     def set_size_info(self, fontsize, dpi):
@@ -1250,6 +1315,9 @@ class ExpressionElement(GroupElement):
     def __repr__(self):
         return 'Expression: [ %s ]' % ' '.join([str(e) for e in self.elements])
 
+    def determine_font(self):
+        font_stack = ['it']
+        GroupElement.determine_font(self, font_stack)
 
 class Handler:
     symbols = []
@@ -1275,29 +1343,30 @@ class Handler:
         return [element]
 
     def symbol(self, s, loc, toks):
-
         assert(len(toks)==1)
-
+        #print "symbol", toks
+        
         s  = toks[0]
-        if charOverChars.has_key(s):
-            under, over, pad = charOverChars[s]
-            font, tok, scale = under
-            sym = SymbolElement(tok)
-            if font is not None:
-                sym.set_font(font)
-            sym.set_scale(scale)
-            sym.set_pady(pad)
+        # MGDTODO: This clause is probably broken due to font changes
+#         if charOverChars.has_key(s):
+#             under, over, pad = charOverChars[s]
+#             font, tok, scale = under
+#             sym = SymbolElement(tok)
+#             if font is not None:
+#                 sym.set_font(font)
+#             sym.set_scale(scale)
+#             sym.set_pady(pad)
 
-            font, tok, scale = over
-            sym2 = SymbolElement(tok)
-            if font is not None:
-                sym2.set_font(font)
-            sym2.set_scale(scale)
+#             font, tok, scale = over
+#             sym2 = SymbolElement(tok)
+#             if font is not None:
+#                 sym2.set_font(font)
+#             sym2.set_scale(scale)
 
-            sym.neighbors['above'] = sym2
-            self.symbols.append(sym2)
-        else:
-            sym = SymbolElement(toks[0])
+#             sym.neighbors['above'] = sym2
+#             self.symbols.append(sym2)
+#         else:
+        sym = SymbolElement(toks[0])
         self.symbols.append(sym)
 
         return [sym]
@@ -1339,7 +1408,7 @@ class Handler:
             r'\.'     : r'\combiningdotabove',
             r'\^'   : r'\circumflexaccent',
              }
-        above = SymbolElement(d[accent])
+        above = AccentElement(d[accent])
         sym.neighbors['above'] = above
         sym.set_pady(1)
         self.symbols.append(above)
@@ -1352,12 +1421,11 @@ class Handler:
         return [grp]
 
     def font(self, s, loc, toks):
-
         assert(len(toks)==1)
-        name, grp = toks[0]
+        name = toks[0]
         #print 'fontgrp', toks
-        grp.set_font(name[1:])  # suppress the slash
-        return [grp]
+        font = FontElement(name)
+        return [font]
 
     _subsuperscript_names = {
         'normal':    ['subscript', 'superscript'],
@@ -1524,8 +1592,8 @@ group        = Group(
                  lbrace
                + OneOrMore(
                    space
-                 ^ font
-                 ^ subsuper
+                 | font
+                 | subsuper
                  )
                + rbrace
              ).setParseAction(handler.group).setName("group")
@@ -1539,11 +1607,8 @@ composite    = Group(
                + group
              ).setParseAction(handler.composite).setName("composite")
 
-font        << Group(
-                 Combine(
-                   bslash
-                 + fontname)
-             + group)
+font        <<(Suppress(bslash)
+             + fontname)
 
 placeable   <<(accent
              ^ symbol
@@ -1566,8 +1631,8 @@ subsuper    << Group(
 
 expression   = OneOrMore(
                  space
-               ^ font
-               ^ subsuper
+               | font
+               | subsuper
              ).setParseAction(handler.expression).setName("expression")
 
 ####
@@ -1616,10 +1681,11 @@ class math_parse_s_ft2font_common:
         elif self.output == 'PDF':
             self.font_object = BakomaPDFFonts(character_tracker)
             Element.fonts = self.font_object
-
+            
         handler.clear()
         expression.parseString( s )
 
+        handler.expr.determine_font()
         handler.expr.set_size_info(fontsize, dpi)
         
         # set the origin once to allow w, h compution
