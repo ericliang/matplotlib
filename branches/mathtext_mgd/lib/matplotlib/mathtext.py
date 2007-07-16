@@ -1013,7 +1013,6 @@ class Element:
         self.dpi = dpi
         for loc, element in self.neighbors.items():
             if loc in ('subscript', 'superscript'):
-                print type(element), element
                 element.set_size_info(0.7*self.fontsize, dpi)
             else:
                 element.set_size_info(self.fontsize, dpi)
@@ -1260,7 +1259,6 @@ class Handler:
         self.subscript_stack = []
 
     def expression(self, s, loc, toks):
-        print "expression", toks
         self.expr = ExpressionElement(toks)
         return [self.expr]
 
@@ -1281,7 +1279,6 @@ class Handler:
         assert(len(toks)==1)
 
         s  = toks[0]
-        print 'sym', toks[0]
         if charOverChars.has_key(s):
             under, over, pad = charOverChars[s]
             font, tok, scale = under
@@ -1374,24 +1371,31 @@ class Handler:
          
     def subsuperscript(self, s, loc, toks):
         assert(len(toks)==1)
-        print 'subscript', toks
+        #~ print 'subsuperscript', toks
 
-        if len(toks[0])==3:
+        if len(toks[0]) == 1:
+            return toks[0].asList()
+        if len(toks[0]) == 3:
             prev, op, next = toks[0]
-            index, other_index = self._subsuperscript_indices[op]
-            if self.is_overunder(prev):
-                names = self._subsuperscript_names['overUnder']
-            else:
-                names = self._subsuperscript_names['normal']
-                
-            prev.neighbors[names[index]] = next
+        elif len(toks[0]) == 2:
+            prev = SpaceElement(0)
+            op, next = toks[0]
+        else:
+            raise ParseException("Unable to parse subscript/superscript construct.")
 
-            for compound in self._subsuperscript_names.values():
-                if compound[other_index] in next.neighbors:
-                    prev.neighbors[names[other_index]] = next.neighbors[compound[other_index]]
-                    del next.neighbors[compound[other_index]]
-            return [prev]
-        return toks[0].asList()
+        index, other_index = self._subsuperscript_indices[op]
+        if self.is_overunder(prev):
+            names = self._subsuperscript_names['overUnder']
+        else:
+            names = self._subsuperscript_names['normal']
+
+        prev.neighbors[names[index]] = next
+
+        for compound in self._subsuperscript_names.values():
+            if compound[other_index] in next.neighbors:
+                prev.neighbors[names[other_index]] = next.neighbors[compound[other_index]]
+                del next.neighbors[compound[other_index]]
+        return [prev]
 
     def is_overunder(self, prev):
         return isinstance(prev, SymbolElement) and overunder.has_key(prev.sym)
@@ -1522,7 +1526,6 @@ group        = Group(
                    space
                  ^ font
                  ^ subsuper
-                 ^ placeable
                  )
                + rbrace
              ).setParseAction(handler.group).setName("group")
@@ -1549,20 +1552,22 @@ placeable   <<(accent
              )
 
 subsuper    << Group(
-                 placeable
-               + ZeroOrMore(
-                  ( subscript
-                  | superscript
-                  )
-                 + subsuper
+                 (
+                   placeable
+                 + ZeroOrMore(
+                    ( subscript
+                    | superscript
+                    )
+                   + subsuper
+                   )
                  )
+               | (( subscript | superscript) + placeable)
              )
 
 expression   = OneOrMore(
                  space
                ^ font
                ^ subsuper
-               ^ placeable
              ).setParseAction(handler.expression).setName("expression")
 
 ####
@@ -1616,8 +1621,6 @@ class math_parse_s_ft2font_common:
         expression.parseString( s )
 
         handler.expr.set_size_info(fontsize, dpi)
-        print handler.expr
-        print handler.symbols
         
         # set the origin once to allow w, h compution
         handler.expr.set_origin(0, 0)
