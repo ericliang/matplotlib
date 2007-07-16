@@ -119,7 +119,6 @@ BACKENDS
 
 KNOWN ISSUES:
 
- - nested subscripts, eg, x_i_j not working; but you can do x_{i_j}
  - nesting fonts changes in sub/superscript groups not parsing
  - I would also like to add a few more layout commands, like \frac.
 
@@ -136,7 +135,7 @@ from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      Combine, Group, Optional, Forward, NotAny, alphas, nums, alphanums, \
      StringStart, StringEnd, ParseException, FollowedBy, Regex, \
-     operatorPrecedence, opAssoc, ParseResults
+     operatorPrecedence, opAssoc, ParseResults, Or
 
 from matplotlib.afm import AFM
 from matplotlib.cbook import enumerate, iterable, Bunch
@@ -1014,6 +1013,7 @@ class Element:
         self.dpi = dpi
         for loc, element in self.neighbors.items():
             if loc in ('subscript', 'superscript'):
+                print type(element), element
                 element.set_size_info(0.7*self.fontsize, dpi)
             else:
                 element.set_size_info(self.fontsize, dpi)
@@ -1257,8 +1257,10 @@ class Handler:
 
     def clear(self):
         self.symbols = []
+        self.subscript_stack = []
 
     def expression(self, s, loc, toks):
+        print "expression", toks
         self.expr = ExpressionElement(toks)
         return [self.expr]
 
@@ -1279,7 +1281,7 @@ class Handler:
         assert(len(toks)==1)
 
         s  = toks[0]
-        #~ print 'sym', toks[0]
+        print 'sym', toks[0]
         if charOverChars.has_key(s):
             under, over, pad = charOverChars[s]
             font, tok, scale = under
@@ -1360,171 +1362,208 @@ class Handler:
         grp.set_font(name[1:])  # suppress the slash
         return [grp]
 
-    def subscript(self, s, loc, toks):
+    _subsuperscript_names = {
+        'normal':    ['subscript', 'superscript'],
+        'overUnder': ['below', 'above']
+    }
+
+    _subsuperscript_indices = {
+        '_': (0, 1),
+        '^': (1, 0)
+    }
+         
+    def subsuperscript(self, s, loc, toks):
         assert(len(toks)==1)
-        #print 'subsup', toks
-        if len(toks[0])==2:
-            under, next = toks[0]
-            prev = SpaceElement(0)
-        else:
-            prev, under, next = toks[0]
+        print 'subscript', toks
 
-        if self.is_overunder(prev):
-            prev.neighbors['below'] = next
-        else:
-            prev.neighbors['subscript'] = next
+        if len(toks[0])==3:
+            prev, op, next = toks[0]
+            index, other_index = self._subsuperscript_indices[op]
+            if self.is_overunder(prev):
+                names = self._subsuperscript_names['overUnder']
+            else:
+                names = self._subsuperscript_names['normal']
+                
+            prev.neighbors[names[index]] = next
 
-        return loc, [prev]
+            for compound in self._subsuperscript_names.values():
+                if compound[other_index] in next.neighbors:
+                    prev.neighbors[names[other_index]] = next.neighbors[compound[other_index]]
+                    del next.neighbors[compound[other_index]]
+            return [prev]
+        return toks[0].asList()
 
     def is_overunder(self, prev):
         return isinstance(prev, SymbolElement) and overunder.has_key(prev.sym)
 
-    def superscript(self, s, loc, toks):
-        assert(len(toks)==1)
-        #print 'subsup', toks
-        if len(toks[0])==2:
-            under, next = toks[0]
-            prev = SpaceElement(0,0.6)
-        else:
-            prev, under, next = toks[0]
-        if self.is_overunder(prev):
-            prev.neighbors['above'] = next
-        else:
-            prev.neighbors['superscript'] = next
-
-        return [prev]
-
-    def subsuperscript(self, s, loc, toks):
-        assert(len(toks)==1)
-        #print 'subsup', toks
-        prev, undersym, down, oversym, up = toks[0]
-
-        if self.is_overunder(prev):
-            prev.neighbors['below'] = down
-            prev.neighbors['above'] = up
-        else:
-            prev.neighbors['subscript'] = down
-            prev.neighbors['superscript'] = up
-
-        return [prev]
-
-
-
 handler = Handler()
 
-lbrace = Literal('{').suppress()
-rbrace = Literal('}').suppress()
-lbrack = Literal('[')
-rbrack = Literal(']')
-lparen = Literal('(')
-rparen = Literal(')')
-grouping = lbrack | rbrack | lparen | rparen
-
-bslash = Literal('\\')
-
-
-langle = Literal('<')
-rangle = Literal('>')
-equals = Literal('=')
-relation = langle | rangle | equals
-
-colon =  Literal(':')
-comma =  Literal(',')
-period =  Literal('.')
-semicolon =  Literal(';')
-exclamation =  Literal('!')
-
-punctuation = colon | comma | period | semicolon
-
-at =  Literal('@')
-percent =  Literal('%')
-ampersand =  Literal('&')
-misc = exclamation | at | percent | ampersand
-
-over = Literal('over')
-under = Literal('under')
-#~ composite = over | under
-overUnder = over | under
-
-accent = Literal('hat') | Literal('check') | Literal('dot') | \
-         Literal('breve') | Literal('acute') | Literal('ddot') | \
-         Literal('grave') | Literal('tilde') | Literal('bar') | \
-         Literal('vec') | Literal('"') | Literal("`") | Literal("'") |\
-         Literal('~') | Literal('.') | Literal('^')
-
-
-
-
-number = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
-
-plus = Literal('+')
-minus = Literal('-')
-times = Literal('*')
-div = Literal('/')
-binop = plus | minus | times | div
-
-
-roman      = Literal('rm')
-cal        = Literal('cal')
-italics    = Literal('it')
-typewriter = Literal('tt')
-fontname   = roman | cal | italics | typewriter
-
-texsym = Combine(bslash + Word(alphanums) + NotAny("{"))
-
-char = Word(alphanums + ' ', exact=1).leaveWhitespace()
-
-space = FollowedBy(bslash) + (Literal(r'\ ') | Literal(r'\/') | Group(Literal(r'\hspace{') + number + Literal('}'))).setParseAction(handler.space).setName('space')
-
-symbol = Regex("("+")|(".join(
-    [
-    r"\\[a-zA-Z0-9]+(?!{)",
-    r"[a-zA-Z0-9 ]",
-    r"[+\-*/]",
-    r"[<>=]",
-    r"[:,.;!]",
-    r"[!@%&]",
-    r"[[\]()]",
-    ])+")"
-               ).setParseAction(handler.symbol).leaveWhitespace()
-
-#~ symbol = (texsym ^ char ^ binop ^ relation ^ punctuation ^ misc ^ grouping  ).setParseAction(handler.symbol).leaveWhitespace()
-_symbol = (texsym | char | binop | relation | punctuation | misc | grouping  ).setParseAction(handler.symbol).leaveWhitespace()
-
-subscript = Forward().setParseAction(handler.subscript).setName("subscript")
-superscript = Forward().setParseAction(handler.superscript).setName("superscript")
-subsuperscript = Forward().setParseAction(handler.subsuperscript).setName("subsuperscript")
-
+# All forward declarations are here
 font = Forward().setParseAction(handler.font).setName("font")
+subsuper = Forward().setParseAction(handler.subsuperscript).setName("subsuper")
+placeable = Forward().setName("placeable")
 
 
-accent = Group( Combine(bslash + accent) + Optional(lbrace) + symbol + Optional(rbrace)).setParseAction(handler.accent).setName("accent")
-group = Group( lbrace + OneOrMore(symbol^subscript^superscript^subsuperscript^space^font^accent) + rbrace).setParseAction(handler.group).setName("group")
-#~ group = Group( lbrace + OneOrMore(subsuperscript | subscript | superscript | symbol | space ) + rbrace).setParseAction(handler.group).setName("group")
+lbrace       = Literal('{').suppress()
+rbrace       = Literal('}').suppress()
+lbrack       = Literal('[')
+rbrack       = Literal(']')
+lparen       = Literal('(')
+rparen       = Literal(')')
+grouping     =(lbrack 
+             | rbrack 
+             | lparen 
+             | rparen)
 
-#composite = Group( Combine(bslash + composite) + lbrace + symbol + rbrace + lbrace + symbol + rbrace).setParseAction(handler.composite).setName("composite")
-#~ composite = Group( Combine(bslash + composite) + group + group).setParseAction(handler.composite).setName("composite")
-composite = Group( Combine(bslash + overUnder) + group + group).setParseAction(handler.composite).setName("composite")
+subscript    = Literal('_')
+superscript  = Literal('^')
 
+bslash       = Literal('\\')
 
+langle       = Literal('<')
+rangle       = Literal('>')
+equals       = Literal('=')
+relation     =(langle
+             | rangle
+             | equals)
 
+colon        = Literal(':')
+comma        = Literal(',')
+period       = Literal('.')
+semicolon    = Literal(';')
+exclamation  = Literal('!')
+punctuation  =(colon
+             | comma
+             | period
+             | semicolon)
 
+at           = Literal('@')
+percent      = Literal('%')
+ampersand    = Literal('&')
+misc         =(exclamation
+             | at
+             | percent
+             | ampersand)
 
+over         = Literal('over')
+under        = Literal('under')
+overUnder    =(over
+             | under)
 
-symgroup = font | group | symbol
+accent       =(Literal('hat') | Literal('check') | Literal('dot') | 
+               Literal('breve') | Literal('acute') | Literal('ddot') | 
+               Literal('grave') | Literal('tilde') | Literal('bar') | 
+               Literal('vec') | Literal('"') | Literal("`") | Literal("'") |
+               Literal('~') | Literal('.') | Literal('^'))
 
-subscript << Group( Optional(symgroup) + Literal('_') + symgroup  )
-superscript << Group( Optional(symgroup) + Literal('^') + symgroup  )
-subsuperscript << Group( symgroup + Literal('_') + symgroup + Literal('^') + symgroup  )
+number       = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
 
-font << Group( Combine(bslash + fontname) + group)
+plus         = Literal('+')
+minus        = Literal('-')
+times        = Literal('*')
+div          = Literal('/')
+binop        =(plus 
+             | minus
+             | times
+             | div)
 
+roman        = Literal('rm')
+cal          = Literal('cal')
+italics      = Literal('it')
+typewriter   = Literal('tt')
+fontname     =(roman  
+             | cal    
+             | italics
+             | typewriter)
 
+texsym       = Combine(bslash + Word(alphanums) + NotAny("{"))
 
-expression = OneOrMore(
-    space ^ font ^ accent ^ symbol ^ subscript ^ superscript ^ subsuperscript ^ group ^ composite  ).setParseAction(handler.expression).setName("expression")
-#~ expression = OneOrMore(
-    #~ group | composite | space | font | subsuperscript | subscript | superscript | symbol ).setParseAction(handler.expression).setName("expression")
+char         = Word(alphanums + ' ', exact=1).leaveWhitespace()
+
+space        =(FollowedBy(bslash)
+             +   (Literal(r'\ ')
+               |  Literal(r'\/')
+               |  Group(Literal(r'\hspace{') + number + Literal('}'))
+                 )
+              ).setParseAction(handler.space).setName('space')
+
+symbol       = Regex("(" + ")|(".join(
+               [
+                 r"\\[a-zA-Z0-9]+(?!{)",
+                 r"[a-zA-Z0-9 ]",
+                 r"[+\-*/]",
+                 r"[<>=]",
+                 r"[:,.;!]",
+                 r"[!@%&]",
+                 r"[[\]()]",
+               ])
+             + ")"
+             ).setParseAction(handler.symbol).leaveWhitespace()
+
+_symbol      =(texsym
+             | char
+             | binop
+             | relation
+             | punctuation
+             | misc
+             | grouping
+             ).setParseAction(handler.symbol).leaveWhitespace()
+
+accent       = Group(
+                 Combine(bslash + accent)
+               + Optional(lbrace)
+               + symbol
+               + Optional(rbrace)
+             ).setParseAction(handler.accent).setName("accent")
+
+group        = Group(
+                 lbrace
+               + OneOrMore(
+                   space
+                 ^ font
+                 ^ subsuper
+                 ^ placeable
+                 )
+               + rbrace
+             ).setParseAction(handler.group).setName("group")
+
+composite    = Group(
+                 Combine(
+                   bslash
+                 + overUnder
+                 )
+               + group
+               + group
+             ).setParseAction(handler.composite).setName("composite")
+
+font        << Group(
+                 Combine(
+                   bslash
+                 + fontname)
+             + group)
+
+placeable   <<(accent
+             ^ symbol
+             ^ group
+             ^ composite
+             )
+
+subsuper    << Group(
+                 placeable
+               + ZeroOrMore(
+                  ( subscript
+                  | superscript
+                  )
+                 + subsuper
+                 )
+             )
+
+expression   = OneOrMore(
+                 space
+               ^ font
+               ^ subsuper
+               ^ placeable
+             ).setParseAction(handler.expression).setName("expression")
 
 ####
 
@@ -1577,7 +1616,9 @@ class math_parse_s_ft2font_common:
         expression.parseString( s )
 
         handler.expr.set_size_info(fontsize, dpi)
-
+        print handler.expr
+        print handler.symbols
+        
         # set the origin once to allow w, h compution
         handler.expr.set_origin(0, 0)
         xmin = min([e.xmin() for e in handler.symbols])
