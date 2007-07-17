@@ -135,7 +135,7 @@ from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      Combine, Group, Optional, Forward, NotAny, alphas, nums, alphanums, \
      StringStart, StringEnd, ParseException, FollowedBy, Regex, \
-     operatorPrecedence, opAssoc, ParseResults, Or, Suppress
+     operatorPrecedence, opAssoc, ParseResults, Or, Suppress, oneOf
 
 from matplotlib.afm import AFM
 from matplotlib.cbook import enumerate, iterable, Bunch
@@ -1230,6 +1230,8 @@ class GroupElement(Element):
     """
     def __init__(self, elements):
         Element.__init__(self)
+        if not isinstance(elements, list):
+            elements = elements.asList()
         self.elements = elements
         for i in range(len(elements)-1):
             self.elements[i].neighbors['right'] = self.elements[i+1]
@@ -1414,6 +1416,15 @@ class Handler:
         self.symbols.append(above)
         return [sym]
 
+    def function(self, s, loc, toks):
+        #~ print "function", toks
+        symbols = [FontElement("rm")]
+        for c in toks[0]:
+            sym = SymbolElement(c)
+            symbols.append(sym)
+            self.symbols.append(sym)
+        return [GroupElement(symbols)]
+    
     def group(self, s, loc, toks):
         assert(len(toks)==1)
         #print 'grp', toks
@@ -1427,6 +1438,16 @@ class Handler:
         font = FontElement(name)
         return [font]
 
+    def latexfont(self, s, loc, toks):
+        assert(len(toks)==1)
+        name, grp = toks[0]
+        if len(grp.elements):
+            font = FontElement(name[4:])
+            font.neighbors['right'] = grp.elements[0]
+            grp.elements.insert(0, font)
+            return [grp]
+        return []
+    
     _subsuperscript_names = {
         'normal':    ['subscript', 'superscript'],
         'overUnder': ['below', 'above']
@@ -1463,6 +1484,10 @@ class Handler:
             if compound[other_index] in next.neighbors:
                 prev.neighbors[names[other_index]] = next.neighbors[compound[other_index]]
                 del next.neighbors[compound[other_index]]
+            elif compound[index] in next.neighbors:
+                raise ValueError(
+                    "Double %ss" %
+                    self._subsuperscript_names['normal'][index])
         return [prev]
 
     def is_overunder(self, prev):
@@ -1472,6 +1497,7 @@ handler = Handler()
 
 # All forward declarations are here
 font = Forward().setParseAction(handler.font).setName("font")
+latexfont = Forward().setParseAction(handler.latexfont).setName("latexfont")
 subsuper = Forward().setParseAction(handler.subsuperscript).setName("subsuper")
 placeable = Forward().setName("placeable")
 
@@ -1522,11 +1548,12 @@ under        = Literal('under')
 overUnder    =(over
              | under)
 
-accent       =(Literal('hat') | Literal('check') | Literal('dot') | 
-               Literal('breve') | Literal('acute') | Literal('ddot') | 
-               Literal('grave') | Literal('tilde') | Literal('bar') | 
-               Literal('vec') | Literal('"') | Literal("`") | Literal("'") |
-               Literal('~') | Literal('.') | Literal('^'))
+accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
+                     "\" ` ' ~ . ^")
+
+function     = oneOf("arccos csc ker min arcsin deg lg Pr arctan det lim sec "
+                     "arg dim liminf sin cos exp limsup sinh cosh gcd ln sup "
+                     "cot hom log tan coth inf max tanh")
 
 number       = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
 
@@ -1539,14 +1566,9 @@ binop        =(plus
              | times
              | div)
 
-roman        = Literal('rm')
-cal          = Literal('cal')
-italics      = Literal('it')
-typewriter   = Literal('tt')
-fontname     =(roman  
-             | cal    
-             | italics
-             | typewriter)
+fontname     = oneOf("rm cal it tt")
+               # mathbf and mathsf not supported yet
+latex2efont  = oneOf("mathrm mathcal mathit mathtt")
 
 texsym       = Combine(bslash + Word(alphanums) + NotAny("{"))
 
@@ -1588,15 +1610,27 @@ accent       = Group(
                + Optional(rbrace)
              ).setParseAction(handler.accent).setName("accent")
 
+function     =(Suppress(bslash)
+             + function).setParseAction(handler.function).setName("function")
+
 group        = Group(
                  lbrace
                + OneOrMore(
                    space
                  | font
+                 | latexfont
                  | subsuper
                  )
                + rbrace
              ).setParseAction(handler.group).setName("group")
+
+font        <<(Suppress(bslash)
+             + fontname)
+
+latexfont   << Group(
+                 Suppress(bslash)
+               + latex2efont
+               + group)
 
 composite    = Group(
                  Combine(
@@ -1607,10 +1641,8 @@ composite    = Group(
                + group
              ).setParseAction(handler.composite).setName("composite")
 
-font        <<(Suppress(bslash)
-             + fontname)
-
 placeable   <<(accent
+             ^ function  
              ^ symbol
              ^ group
              ^ composite
@@ -1632,6 +1664,7 @@ subsuper    << Group(
 expression   = OneOrMore(
                  space
                | font
+               | latexfont
                | subsuper
              ).setParseAction(handler.expression).setName("expression")
 
