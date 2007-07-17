@@ -971,11 +971,11 @@ class Element:
         raise NotImplementedError('derived must override')
 
     def determine_font(self, font_stack):
-        'a first pass to determine the font of this element (one of tt, it, rm , cal)'
+        'a first pass to determine the font of this element (one of tt, it, rm , cal, bf, sf)'
         raise NotImplementedError('derived must override')
 
     def set_font(self, font):
-        'set the font (one of tt, it, rm , cal)'
+        'set the font (one of tt, it, rm, cal, bf, sf)'
         raise NotImplementedError('derived must override')
     
     def render(self):
@@ -1143,6 +1143,8 @@ class SpaceElement(Element):
         pass
     
 class SymbolElement(Element):
+    hardcoded_font = False
+
     def __init__(self, sym):
         Element.__init__(self)
         self.sym = sym
@@ -1150,17 +1152,20 @@ class SymbolElement(Element):
         self.widthm = 1  # the width of an m; will be resized below
 
     def determine_font(self, font_stack):
-        'set the font (one of tt, it, rm, cal)'
+        'set the font (one of tt, it, rm, cal, bf, sf)'
         self.set_font(font_stack[-1])
         for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
             neighbor = self.neighbors.get(neighbor_type)
             if neighbor is not None:
                 neighbor.determine_font(font_stack)
         
-    def set_font(self, font):
-        # space doesn't care about font, only size
-        assert not hasattr(self, 'font')
-        self.font = font
+    def set_font(self, font, hardcoded=False):
+        if hardcoded:
+            self.hardcoded_font = True
+            self.font = font
+        if not self.hardcoded_font:
+            assert not hasattr(self, 'font')
+            self.font = font
         
     def set_origin(self, ox, oy):
         Element.set_origin(self, ox, oy)
@@ -1355,26 +1360,25 @@ class Handler:
         #print "symbol", toks
         
         s  = toks[0]
-        # MGDTODO: This clause is probably broken due to font changes
-#         if charOverChars.has_key(s):
-#             under, over, pad = charOverChars[s]
-#             font, tok, scale = under
-#             sym = SymbolElement(tok)
-#             if font is not None:
-#                 sym.set_font(font)
-#             sym.set_scale(scale)
-#             sym.set_pady(pad)
+        if charOverChars.has_key(s):
+            under, over, pad = charOverChars[s]
+            font, tok, scale = under
+            sym = SymbolElement(tok)
+            if font is not None:
+                sym.set_font(font, hardcoded=True)
+            sym.set_scale(scale)
+            sym.set_pady(pad)
 
-#             font, tok, scale = over
-#             sym2 = SymbolElement(tok)
-#             if font is not None:
-#                 sym2.set_font(font)
-#             sym2.set_scale(scale)
+            font, tok, scale = over
+            sym2 = SymbolElement(tok)
+            if font is not None:
+                sym2.set_font(font, hardcoded=True)
+            sym2.set_scale(scale)
 
-#             sym.neighbors['above'] = sym2
-#             self.symbols.append(sym2)
-#         else:
-        sym = SymbolElement(toks[0])
+            sym.neighbors['above'] = sym2
+            self.symbols.append(sym2)
+        else:
+            sym = SymbolElement(toks[0])
         self.symbols.append(sym)
 
         return [sym]
@@ -1673,7 +1677,7 @@ expression   = OneOrMore(
                | subsuper
              ).setParseAction(handler.expression).setName("expression")
 
-
+ 
 
 ####
 
