@@ -475,6 +475,8 @@ class BakomaUnicodeFonts(UnicodeFonts):
                 'rm'  : 'cmr10.ttf',
                 'tt'  : 'cmtt10.ttf',
                 'it'  : 'cmmi10.ttf',
+                'bf'  : 'cmb10.ttf',
+                'sf'  : 'cmss10.ttf',
                 None  : 'cmmi10.ttf',
                 }
 
@@ -547,7 +549,7 @@ class BakomaTrueTypeFonts(Fonts):
     Use the Bakoma true type fonts for rendering
     """
     fnames = ('cmmi10', 'cmsy10', 'cmex10',
-              'cmtt10', 'cmr10')
+              'cmtt10', 'cmr10', 'cmb10', 'cmss10')
     # allocate a new set of fonts
     basepath = os.path.join( get_data_path(), 'fonts', 'ttf' )
 
@@ -555,6 +557,8 @@ class BakomaTrueTypeFonts(Fonts):
                 'rm'  : 'cmr10',
                 'tt'  : 'cmtt10',
                 'it'  : 'cmmi10',
+                'bf'  : 'cmb10',
+                'sf'  : 'cmss10',
                 None  : 'cmmi10',
                 }
 
@@ -694,7 +698,7 @@ class BakomaPSFonts(Fonts):
     Use the Bakoma postscript fonts for rendering to backend_ps
     """
     facenames = ('cmmi10', 'cmsy10', 'cmex10',
-              'cmtt10', 'cmr10')
+              'cmtt10', 'cmr10', 'cmb10', 'cmss10')
     # allocate a new set of fonts
     basepath = os.path.join( get_data_path(), 'fonts', 'ttf' )
 
@@ -702,6 +706,8 @@ class BakomaPSFonts(Fonts):
                 'rm'  : 'cmr10',
                 'tt'  : 'cmtt10',
                 'it'  : 'cmmi10',
+                'bf'  : 'cmb10',
+                'sf'  : 'cmss10',
                 None  : 'cmmi10',
                 }
 
@@ -1566,9 +1572,8 @@ binop        =(plus
              | times
              | div)
 
-fontname     = oneOf("rm cal it tt")
-               # mathbf and mathsf not supported yet
-latex2efont  = oneOf("mathrm mathcal mathit mathtt")
+fontname     = oneOf("rm cal it tt sf bf")
+latex2efont  = oneOf("mathrm mathcal mathit mathtt mathsf mathbf")
 
 texsym       = Combine(bslash + Word(alphanums) + NotAny("{"))
 
@@ -1667,6 +1672,8 @@ expression   = OneOrMore(
                | latexfont
                | subsuper
              ).setParseAction(handler.expression).setName("expression")
+
+
 
 ####
 
