@@ -112,8 +112,6 @@ latex_to_bakoma = {
     r'\phi'                 : ('cmmi10',  42),
     r'\chi'                 : ('cmmi10',  17),
     r'\psi'                 : ('cmmi10',  31),
-    r'\i'                   : ('cmmi10',   8),
-    r'\j'                   : ('cmmi10',  65),
 
     r'('                    : ('cmr10',  119),
     r'\leftparen'           : ('cmr10',  119),
@@ -750,7 +748,8 @@ latex_to_standard = {
     r'\Diamond'         : ('psyr', 224),
     r'\langle'          : ('psyr', 225),
     r'\Sigma'           : ('psyr', 229),
-    r'\sum'             : ('psyr', 229)
+    r'\sum'             : ('psyr', 229),
+
 }
 
 # Automatically generated.
@@ -2572,8 +2571,7 @@ tex2uni = {'doteq': 8784,
 'divideontimes': 8903,
 'lbrack': 91,
 'textquotedblright': 8221,
-'Colon': 8759,
-'i': 305}
+'Colon': 8759}
 
 uni2tex = dict([(v,k) for k,v in tex2uni.items()])
 
@@ -3051,8 +3049,7 @@ tex2type1 = {'doteq': 'uni2250',
 'divideontimes': 'uni22C7',
 'lbrack': 'bracketleft',
 'textquotedblright': 'quotedblright',
-'Colon': 'uni2237',
-'i': 'uni0131'}
+'Colon': 'uni2237'}
 
 type12tex = dict([(v,k) for k,v in tex2type1.items()])
 
