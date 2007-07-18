@@ -229,7 +229,7 @@ class Fonts:
     The class must be able to take symbol keys and font file names and
     return the character metrics as well as do the drawing
     """
-
+    
     def get_kern(self, facename, symleft, symright, fontsize, dpi):
         """
         Get the kerning distance for font between symleft and symright.
@@ -269,7 +269,10 @@ class Fonts:
     def render(self, ox, oy, facename, sym, fontsize, dpi):
         pass
 
-
+    def get_used_characters(self):
+        return {}
+    
+    
 class DummyFonts(Fonts):
     'dummy class for debugging parser'
     def get_metrics(self, font, sym, fontsize, dpi):
@@ -566,7 +569,7 @@ class BakomaFonts(Fonts):
                 'ex'  : 'Cmex10'
                 }
 
-    class FontCache:
+    class CachedFont:
         def __init__(self, font):
             self.font     = font
             self.charmap  = font.get_charmap()
@@ -577,15 +580,9 @@ class BakomaFonts(Fonts):
         self.glyphd          = {}
         self.fonts           = {}
         self.used_characters = {}
-        
-        # MGDTODO: Separate this out into an SVG class
-#         if useSVG:
-#             self.svg_glyphs = []  # a list of "glyphs" we need to render this thing in SVG
-#         else: pass
-#         self.usingSVG = useSVG
 
     def _get_font(self, font):
-        """Looks up a FontCache with its charmap and inverse charmap.
+        """Looks up a CachedFont with its charmap and inverse charmap.
         font may be a TeX font name (cal, rm, it etc.), a Computer Modern
         font name (cmtt10, cmr10, etc.) or an FT2Font object."""
         if isinstance(font, str):
@@ -596,14 +593,14 @@ class BakomaFonts(Fonts):
         else:
             basename = font.postscript_name
 
-        font_cache = self.fonts.get(basename)
-        if font_cache is None:
+        cached_font = self.fonts.get(basename)
+        if cached_font is None:
             if isinstance(font, str):
-                font = FT2Font(os.path.join(self.basepath, basename.lower() + '.ttf'))
+                font = FT2Font(os.path.join(self.basepath, basename.lower() + ".ttf"))
                 basename = font.postscript_name
-            font_cache = self.FontCache(font)
-            self.fonts[basename] = font_cache
-        return basename, font_cache
+            cached_font = self.CachedFont(font)
+            self.fonts[basename] = cached_font
+        return basename, cached_font
 
     def get_fonts(self):
         return [x.font for x in self.fonts.values()]
@@ -613,7 +610,7 @@ class BakomaFonts(Fonts):
                 self._get_info(font, sym, fontsize, dpi)
         return metrics
 
-    def _get_offset(self, basename, font_cache, glyph, fontsize, dpi):
+    def _get_offset(self, basename, cached_font, glyph, fontsize, dpi):
         if basename.lower() == 'cmex10':
             return glyph.height/64.0/2 + 256.0/64.0*dpi/72.0
         return 0.
@@ -632,18 +629,18 @@ class BakomaFonts(Fonts):
         
         if font in self.fontmap and latex_to_bakoma.has_key(sym):
             basename, num = latex_to_bakoma[sym]
-            basename, font_cache = self._get_font(basename.capitalize())
-            symbol_name = font_cache.font.get_glyph_name(num)
-            num = font_cache.glyphmap[num]
+            basename, cached_font = self._get_font(basename.capitalize())
+            symbol_name = cached_font.font.get_glyph_name(num)
+            num = cached_font.glyphmap[num]
         elif len(sym) == 1:
-            basename, font_cache = self._get_font(font)
+            basename, cached_font = self._get_font(font)
             num = ord(sym)
-            symbol_name = font_cache.font.get_glyph_name(font_cache.charmap[num])
+            symbol_name = cached_font.font.get_glyph_name(cached_font.charmap[num])
         else:
             num = 0
             raise ValueError('unrecognized symbol "%s"' % sym)
 
-        font = font_cache.font
+        font = cached_font.font
         font.set_size(fontsize, dpi)
         glyph = font.load_char(num)
 
@@ -653,7 +650,7 @@ class BakomaFonts(Fonts):
         used_characters[1].update(unichr(num))
         
         xmin, ymin, xmax, ymax = [val/64.0 for val in glyph.bbox]
-        offset = self._get_offset(basename, font_cache, glyph, fontsize, dpi)
+        offset = self._get_offset(basename, cached_font, glyph, fontsize, dpi)
         metrics = Bunch(
             advance  = glyph.linearHoriAdvance/65536.0,
             height   = glyph.height/64.0,
@@ -671,8 +668,8 @@ class BakomaFonts(Fonts):
         'Dimension the drawing canvas; may be a noop'
         self.width = int(w)
         self.height = int(h)
-        for font_cache in self.fonts.values():
-            font_cache.font.set_bitmap_size(int(w), int(h))
+        for cached_font in self.fonts.values():
+            cached_font.font.set_bitmap_size(int(w), int(h))
 
     def render(self, ox, oy, font, sym, fontsize, dpi):
         basename, font, metrics, symbol_name, num, glyph, offset = \
@@ -680,21 +677,6 @@ class BakomaFonts(Fonts):
 
         font.draw_glyph_to_bitmap(
             int(ox),  int(self.height - oy - metrics.ymax), glyph)
-#         else:
-#             oy += offset - 512/2048.*10.
-#             basename = self.fontmap[font]
-#             if latex_to_bakoma.has_key(sym):
-#                 basename, num = latex_to_bakoma[sym]
-#                 num = self.glyphmaps[basename][num]
-#             elif len(sym) == 1:
-#                 num = ord(sym)
-#             else:
-#                 num = 0
-#                 print >>sys.stderr, 'unrecognized symbol "%s"' % sym
-#             thetext = unichr(num)
-#             thetext.encode('utf-8')
-#             self.svg_glyphs.append((basename, fontsize, thetext, ox, oy, metrics))
-
 
     def _old_get_kern(self, font, symleft, symright, fontsize, dpi):
         """
@@ -715,14 +697,16 @@ class BakomaFonts(Fonts):
         #print basename, symleft, symright, key, kern
         return kern
 
-
+    def get_used_characters(self):
+        return self.used_characters
+    
 class BakomaPSFonts(BakomaFonts):
     """
     Use the Bakoma postscript fonts for rendering to backend_ps
     """
 
-    def _get_offset(self, basename, font_cache, glyph, fontsize, dpi):
-        head = font_cache.font.get_sfnt_table("head")
+    def _get_offset(self, basename, cached_font, glyph, fontsize, dpi):
+        head = cached_font.font.get_sfnt_table("head")
         if basename.lower() == 'cmex10':
             return -(head['yMin']+512)/head['unitsPerEm']*10.
         return 0.
@@ -759,6 +743,20 @@ class BakomaPDFFonts(BakomaPSFonts):
 
         self.pswriter.append((ox, oy, filename, fontsize, num))
 
+class BakomaSVGFonts(BakomaFonts):
+    """Hack of BakomaFonts for SVG support."""
+    def __init__(self):
+        BakomaFonts.__init__(self)
+        self.svg_glyphs = []
+    
+    def render(self, ox, oy, font, sym, fontsize, dpi):
+        basename, font, metrics, symbol_name, num, glyph, offset = \
+                self._get_info(font, sym, fontsize, dpi)
+
+        oy += offset - 512/2048.*10.
+        thetext = unichr(num)
+        thetext.encode('utf-8')
+        self.svg_glyphs.append((font, fontsize, thetext, ox, oy, metrics))
 
 class StandardPSFonts(Fonts):
     """
@@ -768,21 +766,51 @@ class StandardPSFonts(Fonts):
     # allocate a new set of fonts
     basepath = os.path.join( get_data_path(), 'fonts', 'afm' )
 
-    fontmap = { 'cal' : 'pzcmi8a',
-                'rm'  : 'pncr8a',
-                'tt'  : 'pcrr8a',
-                'it'  : 'pncri8a',
+    fontmap = { 'cal' : 'pzcmi8a',  # Zapf Chancery
+                'rm'  : 'pncr8a',   # New Century Schoolbook
+                'tt'  : 'pcrr8a',   # Courier  
+                'it'  : 'pncri8a',  # New Century Schoolbook Italic
+                'sf'  : 'phvr8a',   # Helvetica
+                'bf'  : 'pncb8a',   # New Century Schoolbook Bold
+                None  : 'psyr'      # Symbol
                 }
 
     def __init__(self):
         self.glyphd = {}
-        self.fonts = dict(
-            [ (name, AFM(file(os.path.join(self.basepath, name) + '.afm')))
-              for name in self.fnames])
+        self.fonts = {}
 
+    def _get_font(self, font):
+        if isinstance(font, str):
+            if font not in self.fontmap.values():
+                basename = self.fontmap[font]
+            else:
+                basename = font
+        else:
+            basename = font.get_fontname()
+
+        cached_font = self.fonts.get(basename)
+        if cached_font is None:
+            if isinstance(font, str):
+                fname = os.path.join(self.basepath, basename + ".afm")
+                cached_font = AFM(file(fname, 'r'))
+                cached_font.fname = fname
+                basename = cached_font.get_fontname()
+            else:
+                cached_font = font
+            self.fonts[basename] = cached_font
+        return basename, cached_font
+
+    def get_fonts(self):
+        return [x.font for x in self.fonts.values()]
+        
     def _get_info (self, font, sym, fontsize, dpi):
         'load the cmfont, metrics and glyph with caching'
-        key = font, sym, fontsize, dpi
+        if hasattr(font, 'get_fontname'):
+            fontname = font.get_fontname()
+        else:
+            fontname = font
+
+        key = fontname, sym, fontsize, dpi
         tup = self.glyphd.get(key)
 
         if tup is not None:
@@ -790,41 +818,40 @@ class StandardPSFonts(Fonts):
 
         if sym in "0123456789()" and font == 'it':
             font = 'rm'
-        basename = self.fontmap[font]
 
         if latex_to_standard.has_key(sym):
-            basename, num = latex_to_standard[sym]
-            char = chr(num)
+            font, num = latex_to_standard[sym]
+            glyph = chr(num)
         elif len(sym) == 1:
-            char = sym
+            glyph = sym
+            num = ord(glyph)
         else:
             raise ValueError('unrecognized symbol "%s"' % (sym))
-
+        basename, font = self._get_font(font)    
+        
         try:
-            sym = self.fonts[basename].get_name_char(char)
+            symbol_name = font.get_name_char(glyph)
         except KeyError:
             raise ValueError('unrecognized symbol "%s"' % (sym))
 
         offset = 0
-        cmfont = self.fonts[basename]
-        fontname = cmfont.get_fontname()
 
         scale = 0.001 * fontsize
 
         xmin, ymin, xmax, ymax = [val * scale
-                                  for val in cmfont.get_bbox_char(char)]
+                                  for val in font.get_bbox_char(glyph)]
         metrics = Bunch(
             advance  = (xmax-xmin),
-            width    = cmfont.get_width_char(char) * scale,
-            height   = cmfont.get_width_char(char) * scale,
+            width    = font.get_width_char(glyph) * scale,
+            height   = font.get_width_char(glyph) * scale,
             xmin = xmin,
             xmax = xmax,
             ymin = ymin+offset,
             ymax = ymax+offset
             )
 
-        self.glyphd[key] = fontname, basename, metrics, sym, offset, char
-        return fontname, basename, metrics, '/'+sym, offset, char
+        self.glyphd[key] = basename, font, metrics, symbol_name, num, glyph, offset
+        return self.glyphd[key]
 
     def set_canvas_size(self, w, h, pswriter):
         'Dimension the drawing canvas; may be a noop'
@@ -832,32 +859,33 @@ class StandardPSFonts(Fonts):
         self.height = h
         self.pswriter = pswriter
 
-
     def render(self, ox, oy, font, sym, fontsize, dpi):
-        fontname, basename, metrics, glyphname, offset, char = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
-        ps = """/%(fontname)s findfont
+        ps = """/%(basename)s findfont
 %(fontsize)s scalefont
 setfont
 %(ox)f %(oy)f moveto
-/%(glyphname)s glyphshow
+/%(symbol_name)s glyphshow
 """ % locals()
         self.pswriter.write(ps)
 
 
     def get_metrics(self, font, sym, fontsize, dpi):
-        fontname, basename, metrics, sym, offset, char  = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
         return metrics
 
     def get_kern(self, font, symleft, symright, fontsize, dpi):
-        fontname, basename, metrics, sym, offset, char1 = \
+        basename, font1, metrics, symbol_name, num, glyph1, offset = \
                 self._get_info(font, symleft, fontsize, dpi)
-        fontname, basename, metrics, sym, offset, char2 = \
+        basename, font2, metrics, symbol_name, num, glyph2, offset = \
                 self._get_info(font, symright, fontsize, dpi)
-        cmfont = self.fonts[basename]
-        return cmfont.get_kern_dist(char1, char2) * 0.001 * fontsize
-
+        if font1.get_fontname() == font2.get_fontname():
+            basename, font = self._get_font(font)
+            return font.get_kern_dist(glyph1, glyph2) * 0.001 * fontsize
+        return 0
+    
 class Element:
     fontsize = 12
     dpi = 72
@@ -1667,33 +1695,36 @@ class math_parse_s_ft2font_common:
             w, h, fontlike, used_characters = self.cache[cacheKey]
             return w, h, fontlike, used_characters
 
+        use_afm = False
         if self.output == 'SVG':
-            self.font_object = BakomaFonts(useSVG=True)
+            self.font_object = BakomaSVGFonts()
             #self.font_object = MyUnicodeFonts(output='SVG')
-            Element.fonts = self.font_object
         elif self.output == 'Agg':
             self.font_object = BakomaFonts()
             #self.font_object = MyUnicodeFonts()
-            Element.fonts = self.font_object
         elif self.output == 'PS':
             if rcParams['ps.useafm']:
                 self.font_object = StandardPSFonts()
-                Element.fonts = self.font_object
+                use_afm = True
             else:
                 self.font_object = BakomaPSFonts()
                 #self.font_object = MyUnicodeFonts(output='PS')
-                Element.fonts = self.font_object
         elif self.output == 'PDF':
             self.font_object = BakomaPDFFonts()
-            Element.fonts = self.font_object
-
+        Element.fonts = self.font_object
+        
         fontsize = prop.get_size_in_points()
             
         handler.clear()
         expression.parseString( s )
-        
-        fname = fontManager.findfont(prop)
-        default_font = FT2Font(str(fname))
+
+        if use_afm:
+            fname = fontManager.findfont(prop, fontext='afm')
+            default_font = AFM(file(fname, 'r'))
+            default_font.fname = fname
+        else:
+            fname = fontManager.findfont(prop)
+            default_font = FT2Font(fname)
         
         handler.expr.determine_font([default_font])
         handler.expr.set_size_info(fontsize, dpi)
@@ -1729,11 +1760,14 @@ class math_parse_s_ft2font_common:
             # The empty list at the end is for lines
             svg_elements = Bunch(svg_glyphs=self.font_object.svg_glyphs,
                     svg_lines=[])
-            self.cache[cacheKey] = w, h, svg_elements, Element.fonts.used_characters
+            self.cache[cacheKey] = \
+                w, h, svg_elements, Element.fonts.get_used_characters()
         elif self.output == 'Agg':
-            self.cache[cacheKey] = w, h, self.font_object.get_fonts(), Element.fonts.used_characters
+            self.cache[cacheKey] = \
+                w, h, self.font_object.get_fonts(), Element.fonts.get_used_characters()
         elif self.output in ('PS', 'PDF'):
-            self.cache[cacheKey] = w, h, pswriter, Element.fonts.used_characters
+            self.cache[cacheKey] = \
+                w, h, pswriter, Element.fonts.get_used_characters()
         return self.cache[cacheKey]
             
 if rcParams["mathtext.mathtext2"]:

@@ -15,7 +15,7 @@ import zlib
 from cStringIO import StringIO
 from datetime import datetime
 from math import ceil, cos, floor, pi, sin
-import sets
+from sets import Set
 
 from matplotlib import __version__, rcParams, agg, get_data_path
 from matplotlib._pylab_helpers import Gcf
@@ -457,9 +457,8 @@ class PdfFile:
             else:
                 realpath, stat_key = get_realpath_and_stat(filename)
                 chars = self.used_characters.get(stat_key)
-                if chars is not None:
-                    fontdictObject = self.embedTTF(
-                        *self.used_characters[stat_key])
+                if chars is not None and len(chars[1]):
+                    fontdictObject = self.embedTTF(realpath, chars[1])
             fonts[Fx] = fontdictObject
             #print >>sys.stderr, filename
         self.writeObject(self.fontObject, fonts)
@@ -932,14 +931,13 @@ class RendererPdf(RendererBase):
             fname = font.fname
         realpath, stat_key = get_realpath_and_stat(fname)
         used_characters = self.used_characters.setdefault(
-            stat_key, (realpath, sets.Set()))
+            stat_key, (realpath, Set()))
         used_characters[1].update(s)
-        print [(os.path.basename(x), y) for x, y in self.used_characters.values()]
 
     def merge_used_characters(self, other):
         for stat_key, (realpath, set) in other.items():
             used_characters = self.used_characters.setdefault(
-                stat_key, (realpath, sets.Set()))
+                stat_key, (realpath, Set()))
             used_characters[1].update(set)
         
     def draw_arc(self, gcEdge, rgbFace, x, y, width, height,
@@ -1103,8 +1101,6 @@ class RendererPdf(RendererBase):
         prev_font = None, None
         oldx, oldy = 0, 0
         for ox, oy, fontname, fontsize, glyph in pswriter:
-            #print ox, oy, glyph
-            #fontname = fontname.lower()
             a = angle / 180.0 * pi
             newx = x + cos(a)*ox - sin(a)*oy
             newy = y + sin(a)*ox + cos(a)*oy

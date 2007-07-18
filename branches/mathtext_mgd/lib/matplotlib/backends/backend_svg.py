@@ -291,9 +291,12 @@ class RendererSVG(RendererBase):
         self._svgwriter.write (svg)
 
     def _add_char_def(self, prop, char):
-        newprop = prop.copy()
-        newprop.set_size(self.FONT_SCALE)
-        font = self._get_font(newprop)
+        if isinstance(prop, FontProperties):
+            newprop = prop.copy()
+            font = self._get_font(newprop)
+        else:
+            font = prop
+        font.set_size(self.FONT_SCALE, 72)
         ps_name = font.get_sfnt()[(1,0,0,6)]
         char_id = urllib.quote('%s-%d' % (ps_name, ord(char)))
         if char_id in self._char_defs:
@@ -332,8 +335,8 @@ class RendererSVG(RendererBase):
         """
         Draw math text using matplotlib.mathtext
         """
-        fontsize = prop.get_size_in_points()
-        width, height, svg_elements = math_parse_s_ft2font_svg(s, 72, fontsize)
+        width, height, svg_elements, used_characters = \
+            math_parse_s_ft2font_svg(s, 72, prop)
         svg_glyphs = svg_elements.svg_glyphs
         svg_lines = svg_elements.svg_lines
         color = rgb2hex(gc.get_rgb())
@@ -349,9 +352,8 @@ class RendererSVG(RendererBase):
                 svg.append('translate(%f,%f)' % (x, y))
             svg.append('">\n')
 
-            for fontname, fontsize, thetext, new_x, new_y_mtc, metrics in svg_glyphs:
-                prop = FontProperties(family=fontname, size=fontsize)
-                charid = self._add_char_def(prop, thetext)
+            for font, fontsize, thetext, new_x, new_y_mtc, metrics in svg_glyphs:
+                charid = self._add_char_def(font, thetext)
 
                 svg.append('<use xlink:href="#%s" transform="translate(%s, %s) scale(%s)"/>\n' % 
                            (charid, new_x, -new_y_mtc, fontsize / self.FONT_SCALE))
@@ -417,8 +419,8 @@ class RendererSVG(RendererBase):
 
     def get_text_width_height(self, s, prop, ismath):
         if ismath:
-            width, height, trash = math_parse_s_ft2font_svg(
-                s, 72, prop.get_size_in_points())
+            width, height, trash, used_characters = \
+                math_parse_s_ft2font_svg(s, 72, prop)
             return width, height
         font = self._get_font(prop)
         font.set_text(s, 0.0)

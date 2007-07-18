@@ -30,7 +30,7 @@ from matplotlib.numerix import UInt8, Float32, alltrue, array, ceil, equal, \
     fromstring, nonzero, ones, put, take, where, isnan
 import binascii
 import re
-import sets
+from sets import Set
 
 if sys.platform.startswith('win'): cmd_split = '&'
 else: cmd_split = ';'
@@ -151,13 +151,13 @@ class RendererPS(RendererBase):
         each font."""
         realpath, stat_key = get_realpath_and_stat(font.fname)
         used_characters = self.used_characters.setdefault(
-            stat_key, (realpath, sets.Set()))
+            stat_key, (realpath, Set()))
         used_characters[1].update(s)
 
     def merge_used_characters(self, other):
         for stat_key, (realpath, set) in other.items():
             used_characters = self.used_characters.setdefault(
-                stat_key, (realpath, sets.Set()))
+                stat_key, (realpath, Set()))
             used_characters[1].update(set)
         
     def set_color(self, r, g, b, store=1):
@@ -1037,13 +1037,14 @@ class FigureCanvasPS(FigureCanvasBase):
                     print >>fh, l.strip()
             if not rcParams['ps.useafm']:
                 for font_filename, chars in renderer.used_characters.values():
-                    font = FT2Font(font_filename)
-                    cmap = font.get_charmap()
-                    glyph_ids = []
-                    for c in chars:
-                        gind = cmap.get(ord(c)) or 0
-                        glyph_ids.append(gind)
-                    convert_ttf_to_ps(font_filename, fh, rcParams['ps.fonttype'], glyph_ids)
+                    if len(chars):
+                        font = FT2Font(font_filename)
+                        cmap = font.get_charmap()
+                        glyph_ids = []
+                        for c in chars:
+                            gind = cmap.get(ord(c)) or 0
+                            glyph_ids.append(gind)
+                        convert_ttf_to_ps(font_filename, fh, rcParams['ps.fonttype'], glyph_ids)
             print >>fh, "end"
             print >>fh, "%%EndProlog"
 
