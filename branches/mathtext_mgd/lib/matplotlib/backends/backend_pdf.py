@@ -456,8 +456,10 @@ class PdfFile:
                 fontdictObject = self._write_afm_font(filename)
             else:
                 realpath, stat_key = get_realpath_and_stat(filename)
-                fontdictObject = self.embedTTF(
-                    *self.used_characters[stat_key])
+                chars = self.used_characters.get(stat_key)
+                if chars is not None:
+                    fontdictObject = self.embedTTF(
+                        *self.used_characters[stat_key])
             fonts[Fx] = fontdictObject
             #print >>sys.stderr, filename
         self.writeObject(self.fontObject, fonts)
@@ -932,7 +934,14 @@ class RendererPdf(RendererBase):
         used_characters = self.used_characters.setdefault(
             stat_key, (realpath, sets.Set()))
         used_characters[1].update(s)
+        print [(os.path.basename(x), y) for x, y in self.used_characters.values()]
 
+    def merge_used_characters(self, other):
+        for stat_key, (realpath, set) in other.items():
+            used_characters = self.used_characters.setdefault(
+                stat_key, (realpath, sets.Set()))
+            used_characters[1].update(set)
+        
     def draw_arc(self, gcEdge, rgbFace, x, y, width, height,
                  angle1, angle2, rotation):
         """
@@ -1085,8 +1094,9 @@ class RendererPdf(RendererBase):
 
     def draw_mathtext(self, gc, x, y, s, prop, angle):
         # TODO: fix positioning and encoding
-        fontsize = prop.get_size_in_points()
-        width, height, pswriter = math_parse_s_pdf(s, 72, fontsize, 0, self.track_characters)
+        width, height, pswriter, used_characters = \
+            math_parse_s_pdf(s, 72, prop, 0)
+        self.merge_used_characters(used_characters)
 
         self.check_gc(gc, gc._rgb)
         self.file.output(Op.begin_text)
@@ -1094,7 +1104,7 @@ class RendererPdf(RendererBase):
         oldx, oldy = 0, 0
         for ox, oy, fontname, fontsize, glyph in pswriter:
             #print ox, oy, glyph
-            fontname = fontname.lower()
+            #fontname = fontname.lower()
             a = angle / 180.0 * pi
             newx = x + cos(a)*ox - sin(a)*oy
             newy = y + sin(a)*ox + cos(a)*oy
@@ -1199,9 +1209,7 @@ class RendererPdf(RendererBase):
             s = s.encode('cp1252', 'replace')
 
         if ismath:
-            fontsize = prop.get_size_in_points()
-            w, h, pswriter = math_parse_s_pdf(
-                s, 72, fontsize, 0, self.track_characters)
+            w, h, pswriter, used_characters = math_parse_s_pdf(s, 72, prop, 0)
 
         elif rcParams['pdf.use14corefonts']:
             font = self._get_font_afm(prop)

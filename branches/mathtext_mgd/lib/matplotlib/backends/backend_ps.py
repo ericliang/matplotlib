@@ -154,6 +154,12 @@ class RendererPS(RendererBase):
             stat_key, (realpath, sets.Set()))
         used_characters[1].update(s)
 
+    def merge_used_characters(self, other):
+        for stat_key, (realpath, set) in other.items():
+            used_characters = self.used_characters.setdefault(
+                stat_key, (realpath, sets.Set()))
+            used_characters[1].update(set)
+        
     def set_color(self, r, g, b, store=1):
         if (r,g,b) != self.color:
             if r==g and r==b:
@@ -272,8 +278,8 @@ class RendererPS(RendererBase):
             return w, h
 
         if ismath:
-            width, height, pswriter = math_parse_s_ps(
-                s, 72, prop.get_size_in_points(), 0, self.track_characters)
+            width, height, pswriter, used_characters = math_parse_s_ps(
+                s, 72, prop, 0)
             return width, height
 
         if rcParams['ps.useafm']:
@@ -808,8 +814,9 @@ grestore
         if debugPS:
             self._pswriter.write("% mathtext\n")
 
-        fontsize = prop.get_size_in_points()
-        width, height, pswriter = math_parse_s_ps(s, 72, fontsize, angle, self.track_characters)
+        width, height, pswriter, used_characters = \
+            math_parse_s_ps(s, 72, prop, angle)
+        self.merge_used_characters(used_characters)
         self.set_color(*gc.get_rgb())
         thetext = pswriter.getvalue()
         ps = """gsave

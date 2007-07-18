@@ -119,9 +119,13 @@ BACKENDS
 
 KNOWN ISSUES:
 
- - nesting fonts changes in sub/superscript groups not parsing
  - I would also like to add a few more layout commands, like \frac.
 
+STATUS:
+  The *Unicode* classes were incomplete when I found them, and have
+  not been refactored to support intermingling of regular text and
+  math text yet.  They are most likely broken. -- Michael Droettboom, July 2007
+ 
 Author    : John Hunter <jdhunter@ace.bsd.uchicago.edu>
 Copyright : John Hunter (2004,2005)
 License   : matplotlib license (PSF compatible)
@@ -130,6 +134,7 @@ License   : matplotlib license (PSF compatible)
 from __future__ import division
 import os, sys
 from cStringIO import StringIO
+from sets import Set
 
 from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
@@ -138,7 +143,7 @@ from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      operatorPrecedence, opAssoc, ParseResults, Or, Suppress, oneOf
 
 from matplotlib.afm import AFM
-from matplotlib.cbook import enumerate, iterable, Bunch
+from matplotlib.cbook import enumerate, iterable, Bunch, get_realpath_and_stat
 from matplotlib.ft2font import FT2Font
 from matplotlib.font_manager import fontManager, FontProperties
 from matplotlib._mathtext_data import latex_to_bakoma, cmkern, \
@@ -544,80 +549,111 @@ They are distributed under the X11 License.
 
 # Old classes
 
-class BakomaTrueTypeFonts(Fonts):
+class BakomaFonts(Fonts):
     """
     Use the Bakoma true type fonts for rendering
     """
-    fnames = ('cmmi10', 'cmsy10', 'cmex10',
-              'cmtt10', 'cmr10', 'cmb10', 'cmss10')
     # allocate a new set of fonts
     basepath = os.path.join( get_data_path(), 'fonts', 'ttf' )
 
-    fontmap = { 'cal' : 'cmsy10',
-                'rm'  : 'cmr10',
-                'tt'  : 'cmtt10',
-                'it'  : 'cmmi10',
-                'bf'  : 'cmb10',
-                'sf'  : 'cmss10',
-                None  : 'cmmi10',
+    fontmap = { 'cal' : 'Cmsy10',
+                'rm'  : 'Cmr10',
+                'tt'  : 'Cmtt10',
+                'it'  : 'Cmmi10',
+                'bf'  : 'Cmb10',
+                'sf'  : 'Cmss10',
+                None  : 'Cmmi10',
+                'ex'  : 'Cmex10'
                 }
 
-    def __init__(self, useSVG=False):
-        self.glyphd = {}
-        self.fonts = dict(
-            [ (name, FT2Font(os.path.join(self.basepath, name) + '.ttf'))
-              for name in self.fnames])
+    class FontCache:
+        def __init__(self, font):
+            self.font     = font
+            self.charmap  = font.get_charmap()
+            self.glyphmap = dict(
+                [(glyphind, ccode) for ccode, glyphind in self.charmap.items()])
+    
+    def __init__(self):
+        self.glyphd          = {}
+        self.fonts           = {}
+        self.used_characters = {}
+        
+        # MGDTODO: Separate this out into an SVG class
+#         if useSVG:
+#             self.svg_glyphs = []  # a list of "glyphs" we need to render this thing in SVG
+#         else: pass
+#         self.usingSVG = useSVG
 
-        self.charmaps = dict(
-            [ (name, self.fonts[name].get_charmap()) for name in self.fnames])
-        # glyphmaps is a dict names to a dict of glyphindex -> charcode
-        self.glyphmaps = {}
-        for name in self.fnames:
-            cmap = self.charmaps[name]
-            self.glyphmaps[name] = dict([(glyphind, ccode) for ccode, glyphind in cmap.items()])
+    def _get_font(self, font):
+        """Looks up a FontCache with its charmap and inverse charmap.
+        font may be a TeX font name (cal, rm, it etc.), a Computer Modern
+        font name (cmtt10, cmr10, etc.) or an FT2Font object."""
+        if isinstance(font, str):
+            if font not in self.fontmap.values():
+                basename = self.fontmap[font]
+            else:
+                basename = font
+        else:
+            basename = font.postscript_name
 
-        for font in self.fonts.values():
-            font.clear()
-        if useSVG:
-            self.svg_glyphs=[]  # a list of "glyphs" we need to render this thing in SVG
-        else: pass
-        self.usingSVG = useSVG
+        font_cache = self.fonts.get(basename)
+        if font_cache is None:
+            if isinstance(font, str):
+                font = FT2Font(os.path.join(self.basepath, basename.lower() + '.ttf'))
+                basename = font.postscript_name
+            font_cache = self.FontCache(font)
+            self.fonts[basename] = font_cache
+        return basename, font_cache
 
+    def get_fonts(self):
+        return [x.font for x in self.fonts.values()]
+        
     def get_metrics(self, font, sym, fontsize, dpi):
-        cmfont, metrics, glyph, offset  = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
         return metrics
 
+    def _get_offset(self, basename, font_cache, glyph, fontsize, dpi):
+        if basename.lower() == 'cmex10':
+            return glyph.height/64.0/2 + 256.0/64.0*dpi/72.0
+        return 0.
+    
     def _get_info (self, font, sym, fontsize, dpi):
         'load the cmfont, metrics and glyph with caching'
-        key = font, sym, fontsize, dpi
+        if hasattr(font, 'postscript_name'):
+            fontname = font.postscript_name
+        else:
+            fontname = font
+            
+        key = fontname, sym, fontsize, dpi
         tup = self.glyphd.get(key)
 
         if tup is not None: return tup
-
-        basename = self.fontmap[font]
-
-        if latex_to_bakoma.has_key(sym):
+        
+        if font in self.fontmap and latex_to_bakoma.has_key(sym):
             basename, num = latex_to_bakoma[sym]
-            num = self.glyphmaps[basename][num]
+            basename, font_cache = self._get_font(basename.capitalize())
+            symbol_name = font_cache.font.get_glyph_name(num)
+            num = font_cache.glyphmap[num]
         elif len(sym) == 1:
+            basename, font_cache = self._get_font(font)
             num = ord(sym)
+            symbol_name = font_cache.font.get_glyph_name(font_cache.charmap[num])
         else:
             num = 0
             raise ValueError('unrecognized symbol "%s"' % sym)
 
-        #print sym, basename, num
-        cmfont = self.fonts[basename]
-        cmfont.set_size(fontsize, dpi)
-        head  = cmfont.get_sfnt_table('head')
-        glyph = cmfont.load_char(num)
+        font = font_cache.font
+        font.set_size(fontsize, dpi)
+        glyph = font.load_char(num)
 
+        realpath, stat_key = get_realpath_and_stat(font.fname)
+        used_characters = self.used_characters.setdefault(
+            stat_key, (realpath, Set()))
+        used_characters[1].update(unichr(num))
+        
         xmin, ymin, xmax, ymax = [val/64.0 for val in glyph.bbox]
-        if basename == 'cmex10':
-            offset =  glyph.height/64.0/2 + 256.0/64.0*dpi/72.0
-            #offset = -(head['yMin']+512)/head['unitsPerEm']*10.
-        else:
-            offset = 0.
+        offset = self._get_offset(basename, font_cache, glyph, fontsize, dpi)
         metrics = Bunch(
             advance  = glyph.linearHoriAdvance/65536.0,
             height   = glyph.height/64.0,
@@ -627,38 +663,37 @@ class BakomaTrueTypeFonts(Fonts):
             ymin = ymin+offset,
             ymax = ymax+offset,
             )
-
-        self.glyphd[key] = cmfont, metrics, glyph, offset
+        
+        self.glyphd[key] = basename, font, metrics, symbol_name, num, glyph, offset
         return self.glyphd[key]
 
     def set_canvas_size(self, w, h):
         'Dimension the drawing canvas; may be a noop'
         self.width = int(w)
         self.height = int(h)
-        for font in self.fonts.values():
-            font.set_bitmap_size(int(w), int(h))
+        for font_cache in self.fonts.values():
+            font_cache.font.set_bitmap_size(int(w), int(h))
 
     def render(self, ox, oy, font, sym, fontsize, dpi):
-        cmfont, metrics, glyph, offset = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
 
-        if not self.usingSVG:
-            cmfont.draw_glyph_to_bitmap(
-                int(ox),  int(self.height - oy - metrics.ymax), glyph)
-        else:
-            oy += offset - 512/2048.*10.
-            basename = self.fontmap[font]
-            if latex_to_bakoma.has_key(sym):
-                basename, num = latex_to_bakoma[sym]
-                num = self.glyphmaps[basename][num]
-            elif len(sym) == 1:
-                num = ord(sym)
-            else:
-                num = 0
-                print >>sys.stderr, 'unrecognized symbol "%s"' % sym
-            thetext = unichr(num)
-            thetext.encode('utf-8')
-            self.svg_glyphs.append((basename, fontsize, thetext, ox, oy, metrics))
+        font.draw_glyph_to_bitmap(
+            int(ox),  int(self.height - oy - metrics.ymax), glyph)
+#         else:
+#             oy += offset - 512/2048.*10.
+#             basename = self.fontmap[font]
+#             if latex_to_bakoma.has_key(sym):
+#                 basename, num = latex_to_bakoma[sym]
+#                 num = self.glyphmaps[basename][num]
+#             elif len(sym) == 1:
+#                 num = ord(sym)
+#             else:
+#                 num = 0
+#                 print >>sys.stderr, 'unrecognized symbol "%s"' % sym
+#             thetext = unichr(num)
+#             thetext.encode('utf-8')
+#             self.svg_glyphs.append((basename, fontsize, thetext, ox, oy, metrics))
 
 
     def _old_get_kern(self, font, symleft, symright, fontsize, dpi):
@@ -680,153 +715,46 @@ class BakomaTrueTypeFonts(Fonts):
         #print basename, symleft, symright, key, kern
         return kern
 
-    def _get_num(self, font, sym):
-        'get charcode for sym'
-        basename = self.fontmap[font]
-        if latex_to_bakoma.has_key(sym):
-            basename, num = latex_to_bakoma[sym]
-            num = self.glyphmaps[basename][num]
-        elif len(sym) == 1:
-            num = ord(sym)
-        else:
-            num = 0
-        return num
 
-
-class BakomaPSFonts(Fonts):
+class BakomaPSFonts(BakomaFonts):
     """
     Use the Bakoma postscript fonts for rendering to backend_ps
     """
-    facenames = ('cmmi10', 'cmsy10', 'cmex10',
-              'cmtt10', 'cmr10', 'cmb10', 'cmss10')
-    # allocate a new set of fonts
-    basepath = os.path.join( get_data_path(), 'fonts', 'ttf' )
 
-    fontmap = { 'cal' : 'cmsy10',
-                'rm'  : 'cmr10',
-                'tt'  : 'cmtt10',
-                'it'  : 'cmmi10',
-                'bf'  : 'cmb10',
-                'sf'  : 'cmss10',
-                None  : 'cmmi10',
-                }
-
-    def __init__(self, character_tracker=None):
-        self.glyphd = {}
-        self.fonts = dict(
-            [ (name, FT2Font(os.path.join(self.basepath, name) + '.ttf'))
-              for name in self.facenames])
-
-        self.glyphmaps = {}
-        for facename in self.facenames:
-            charmap = self.fonts[facename].get_charmap()
-            self.glyphmaps[facename] = dict([(glyphind, charcode)
-                for charcode, glyphind in charmap.items()])
-        for font in self.fonts.values():
-            font.clear()
-        self.character_tracker = character_tracker
-
-    def _get_info (self, font, sym, fontsize, dpi):
-        'load the cmfont, metrics and glyph with caching'
-        key = font, sym, fontsize, dpi
-        tup = self.glyphd.get(key)
-
-        if tup is not None:
-            return tup
-
-        basename = self.fontmap[font]
-
-        if latex_to_bakoma.has_key(sym):
-            basename, num = latex_to_bakoma[sym]
-            sym = self.fonts[basename].get_glyph_name(num)
-            num = self.glyphmaps[basename][num]
-        elif len(sym) == 1:
-            num = ord(sym)
-        else:
-            num = 0
-            #sym = '.notdef'
-            raise ValueError('unrecognized symbol "%s, %d"' % (sym, num))
-
-        cmfont = self.fonts[basename]
-        cmfont.set_size(fontsize, dpi)
-        head = cmfont.get_sfnt_table('head')
-        glyph = cmfont.load_char(num)
-
-        if self.character_tracker:
-            self.character_tracker(cmfont, unichr(num))
-
-        xmin, ymin, xmax, ymax = [val/64.0 for val in glyph.bbox]
-        if basename == 'cmex10':
-            offset = -(head['yMin']+512)/head['unitsPerEm']*10.
-        else:
-            offset = 0.
-        metrics = Bunch(
-            advance  = glyph.linearHoriAdvance/65536.0,
-            height   = glyph.height/64.0,
-            width    = glyph.width/64.0,
-            xmin = xmin,
-            xmax = xmax,
-            ymin = ymin+offset,
-            ymax = ymax+offset
-            )
-
-        self.glyphd[key] = basename, metrics, sym, offset
-        return basename, metrics, '/'+sym, offset
-
+    def _get_offset(self, basename, font_cache, glyph, fontsize, dpi):
+        head = font_cache.font.get_sfnt_table("head")
+        if basename.lower() == 'cmex10':
+            return -(head['yMin']+512)/head['unitsPerEm']*10.
+        return 0.
+    
     def set_canvas_size(self, w, h, pswriter):
         'Dimension the drawing canvas; may be a noop'
         self.width  = w
         self.height = h
         self.pswriter = pswriter
 
-
     def render(self, ox, oy, font, sym, fontsize, dpi):
-        fontname, metrics, glyphname, offset = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
-        fontname = fontname.capitalize()
-        if fontname == 'Cmex10':
+        if basename.lower() == 'cmex10':
             oy += offset - 512/2048.*10.
 
-        ps = """/%(fontname)s findfont
+        ps = """/%(basename)s findfont
 %(fontsize)s scalefont
 setfont
 %(ox)f %(oy)f moveto
-/%(glyphname)s glyphshow
+/%(symbol_name)s glyphshow
 """ % locals()
         self.pswriter.write(ps)
-
-
-    def get_metrics(self, font, sym, fontsize, dpi):
-        basename, metrics, sym, offset  = \
-                self._get_info(font, sym, fontsize, dpi)
-        return metrics
 
 class BakomaPDFFonts(BakomaPSFonts):
     """Hack of BakomaPSFonts for PDF support."""
 
-    def _get_filename_and_num (self, font, sym, fontsize, dpi):
-        'should be part of _get_info'
-        basename = self.fontmap[font]
-
-        if latex_to_bakoma.has_key(sym):
-            basename, num = latex_to_bakoma[sym]
-            sym = self.fonts[basename].get_glyph_name(num)
-            num = self.glyphmaps[basename][num]
-        elif len(sym) == 1:
-            num = ord(sym)
-        else:
-            num = 0
-            raise ValueError('unrecognized symbol "%s"' % (sym,))
-
-        return os.path.join(self.basepath, basename) + '.ttf', num
-
     def render(self, ox, oy, font, sym, fontsize, dpi):
-        fontname, metrics, glyphname, offset = \
+        basename, font, metrics, symbol_name, num, glyph, offset = \
                 self._get_info(font, sym, fontsize, dpi)
-        filename, num = self._get_filename_and_num(font, sym, fontsize, dpi)
-        if self.character_tracker:
-            self.character_tracker(filename, unichr(num))
-        if fontname.lower() == 'cmex10':
+        filename = font.fname
+        if basename.lower() == 'cmex10':
             oy += offset - 512/2048.*10.
 
         self.pswriter.append((ox, oy, filename, fontsize, num))
@@ -1256,32 +1184,25 @@ class GroupElement(Element):
 
     def set_font(self, font):
         return
-    
-        # MGDTODO: The code below is probably now broken
-        #print 'set fonts'
-#         for i in range(len(self.elements)-1):
-#             if not isinstance(self.elements[i], SymbolElement): continue
-#             if not isinstance(self.elements[i+1], SymbolElement): continue
-#             symleft = self.elements[i].sym
-#             symright = self.elements[i+1].sym
-#             self.elements[i].kern = None
-#             #self.elements[i].kern = Element.fonts.get_kern(font, symleft, symright, self.fontsize, self.dpi)
-
 
     def set_size_info(self, fontsize, dpi):
-        self.elements[0].set_size_info(self._scale*fontsize, dpi)
+        if len(self.elements):
+            self.elements[0].set_size_info(self._scale*fontsize, dpi)
         Element.set_size_info(self, fontsize, dpi)
         #print 'set size'
 
 
     def set_origin(self, ox, oy):
-        self.elements[0].set_origin(ox, oy)
+        if len(self.elements):
+            self.elements[0].set_origin(ox, oy)
         Element.set_origin(self, ox, oy)
 
 
     def advance(self):
         'get the horiz advance'
-        return self.elements[-1].xmax() - self.elements[0].ox
+        if len(self.elements):
+            return self.elements[-1].xmax() - self.elements[0].ox
+        return 0
 
 
     def height(self):
@@ -1298,7 +1219,8 @@ class GroupElement(Element):
 
     def render(self):
         'render to the fonts canvas'
-        self.elements[0].render()
+        if len(self.elements):
+            self.elements[0].render()
         Element.render(self)
 
     def xmin(self):
@@ -1320,6 +1242,18 @@ class GroupElement(Element):
     def __repr__(self):
         return 'Group: [ %s ]' % ' '.join([str(e) for e in self.elements])
 
+class MathGroupElement(GroupElement):
+    def determine_font(self, font_stack):
+        font_stack.append('it')
+        for element in self.elements:
+            element.determine_font(font_stack)
+        font_stack.pop()
+
+class NonMathGroupElement(GroupElement):
+    def determine_font(self, font_stack):
+        for element in self.elements:
+            element.determine_font(font_stack)
+        
 class ExpressionElement(GroupElement):
     """
     The entire mathtext expression
@@ -1328,8 +1262,7 @@ class ExpressionElement(GroupElement):
     def __repr__(self):
         return 'Expression: [ %s ]' % ' '.join([str(e) for e in self.elements])
 
-    def determine_font(self):
-        font_stack = ['it']
+    def determine_font(self, font_stack):
         GroupElement.determine_font(self, font_stack)
 
 class Handler:
@@ -1337,12 +1270,24 @@ class Handler:
 
     def clear(self):
         self.symbols = []
-        self.subscript_stack = []
 
     def expression(self, s, loc, toks):
+        #~ print "expr", toks
         self.expr = ExpressionElement(toks)
         return [self.expr]
 
+    def math(self, s, loc, toks):
+        #~ print "math", toks
+        math = MathGroupElement(toks)
+        return [math]
+
+    def non_math(self, s, loc, toks):
+        #~ print "non_math", toks
+        symbols = [SymbolElement(c) for c in toks[0]]
+        self.symbols.extend(symbols)
+        non_math = NonMathGroupElement(symbols)
+        return [non_math]
+    
     def space(self, s, loc, toks):
         assert(len(toks)==1)
 
@@ -1510,7 +1455,7 @@ font = Forward().setParseAction(handler.font).setName("font")
 latexfont = Forward().setParseAction(handler.latexfont).setName("latexfont")
 subsuper = Forward().setParseAction(handler.subsuperscript).setName("subsuper")
 placeable = Forward().setName("placeable")
-
+expression = Forward().setParseAction(handler.expression).setName("expression")
 
 lbrace       = Literal('{').suppress()
 rbrace       = Literal('}').suppress()
@@ -1599,6 +1544,7 @@ symbol       = Regex("(" + ")|(".join(
                  r"[:,.;!]",
                  r"[!@%&]",
                  r"[[\]()]",
+                 r"\\\$"
                ])
              + ")"
              ).setParseAction(handler.symbol).leaveWhitespace()
@@ -1670,14 +1616,29 @@ subsuper    << Group(
                | (( subscript | superscript) + placeable)
              )
 
-expression   = OneOrMore(
+math         = OneOrMore(
                  space
                | font
                | latexfont
                | subsuper
-             ).setParseAction(handler.expression).setName("expression")
+             ).setParseAction(handler.math).setName("math")
 
- 
+math_delim   =(~bslash
+             + Literal('$'))
+
+non_math     = Regex(r"(?:[^$]|(?:\\\$))*"
+             ).setParseAction(handler.non_math).setName("non_math").leaveWhitespace()
+
+expression  <<(
+                 non_math
+               + ZeroOrMore(
+                   Suppress(math_delim)
+                 + math
+                 + Suppress(math_delim)
+                 + non_math
+                 )
+               )
+                     
 
 ####
 
@@ -1700,18 +1661,18 @@ class math_parse_s_ft2font_common:
         self.output = output
         self.cache = {}
 
-    def __call__(self, s, dpi, fontsize, angle=0, character_tracker=None):
-        cacheKey = (s, dpi, fontsize, angle)
-        s = s[1:-1]  # strip the $ from front and back
+    def __call__(self, s, dpi, prop, angle=0):
+        cacheKey = (s, dpi, hash(prop), angle)
         if self.cache.has_key(cacheKey):
-            w, h, fontlike = self.cache[cacheKey]
-            return w, h, fontlike
+            w, h, fontlike, used_characters = self.cache[cacheKey]
+            return w, h, fontlike, used_characters
+
         if self.output == 'SVG':
-            self.font_object = BakomaTrueTypeFonts(useSVG=True)
+            self.font_object = BakomaFonts(useSVG=True)
             #self.font_object = MyUnicodeFonts(output='SVG')
             Element.fonts = self.font_object
         elif self.output == 'Agg':
-            self.font_object = BakomaTrueTypeFonts()
+            self.font_object = BakomaFonts()
             #self.font_object = MyUnicodeFonts()
             Element.fonts = self.font_object
         elif self.output == 'PS':
@@ -1719,17 +1680,22 @@ class math_parse_s_ft2font_common:
                 self.font_object = StandardPSFonts()
                 Element.fonts = self.font_object
             else:
-                self.font_object = BakomaPSFonts(character_tracker)
+                self.font_object = BakomaPSFonts()
                 #self.font_object = MyUnicodeFonts(output='PS')
                 Element.fonts = self.font_object
         elif self.output == 'PDF':
-            self.font_object = BakomaPDFFonts(character_tracker)
+            self.font_object = BakomaPDFFonts()
             Element.fonts = self.font_object
+
+        fontsize = prop.get_size_in_points()
             
         handler.clear()
         expression.parseString( s )
-
-        handler.expr.determine_font()
+        
+        fname = fontManager.findfont(prop)
+        default_font = FT2Font(str(fname))
+        
+        handler.expr.determine_font([default_font])
         handler.expr.set_size_info(fontsize, dpi)
         
         # set the origin once to allow w, h compution
@@ -1738,7 +1704,7 @@ class math_parse_s_ft2font_common:
         xmax = max([e.xmax() for e in handler.symbols])
         ymin = min([e.ymin() for e in handler.symbols])
         ymax = max([e.ymax() for e in handler.symbols])
-
+        
         # now set the true origin - doesn't affect with and height
         w, h =  xmax-xmin, ymax-ymin
         # a small pad for the canvas size
@@ -1758,20 +1724,18 @@ class math_parse_s_ft2font_common:
 
         handler.expr.render()
         handler.clear()
-
+        
         if self.output == 'SVG':
             # The empty list at the end is for lines
             svg_elements = Bunch(svg_glyphs=self.font_object.svg_glyphs,
                     svg_lines=[])
-            self.cache[cacheKey] = w, h, svg_elements
-            return w, h, svg_elements
+            self.cache[cacheKey] = w, h, svg_elements, Element.fonts.used_characters
         elif self.output == 'Agg':
-            self.cache[cacheKey] = w, h, self.font_object.fonts.values()
-            return w, h, self.font_object.fonts.values()
+            self.cache[cacheKey] = w, h, self.font_object.get_fonts(), Element.fonts.used_characters
         elif self.output in ('PS', 'PDF'):
-            self.cache[cacheKey] = w, h, pswriter
-            return w, h, pswriter
-
+            self.cache[cacheKey] = w, h, pswriter, Element.fonts.used_characters
+        return self.cache[cacheKey]
+            
 if rcParams["mathtext.mathtext2"]:
     from matplotlib.mathtext2 import math_parse_s_ft2font
     from matplotlib.mathtext2 import math_parse_s_ft2font_svg
