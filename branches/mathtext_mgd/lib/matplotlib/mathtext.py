@@ -1088,7 +1088,6 @@ class SpaceElement(Element):
         return self.oy + self.height()
 
     def determine_font(self, font_stack):
-        print "Space"
         # space doesn't care about font, only size
         for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
             neighbor = self.neighbors.get(neighbor_type)
@@ -1110,7 +1109,6 @@ class SymbolElement(Element):
 
     def determine_font(self, font_stack):
         'set the font (one of tt, it, rm, cal, bf, sf)'
-        print "sym:", self.sym, self.neighbors.keys()
         self.set_font(font_stack[-1])
         for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
             neighbor = self.neighbors.get(neighbor_type)
@@ -1364,22 +1362,6 @@ class Handler:
         self.symbols.append(sym)
 
         return [sym]
-
-    def over_under(self, s, loc, toks):
-        assert(len(toks)==1)
-        where, sym0, sym1 = toks[0]
-        #keys = ('above', 'below', 'subscript', 'superscript', 'right')
-        print "where:", toks[0]
-        if where==r'\over':
-            sym0.neighbors['above'] = sym1
-        elif where==r'\under':
-            sym0.neighbors['below'] = sym1
-        print sym0.neighbors.keys()
-            
-        self.symbols.append(sym0)
-        self.symbols.append(sym1)
-
-        return [sym0]
 
     def accent(self, s, loc, toks):
 
