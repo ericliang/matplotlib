@@ -1088,6 +1088,7 @@ class SpaceElement(Element):
         return self.oy + self.height()
 
     def determine_font(self, font_stack):
+        print "Space"
         # space doesn't care about font, only size
         for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
             neighbor = self.neighbors.get(neighbor_type)
@@ -1109,6 +1110,7 @@ class SymbolElement(Element):
 
     def determine_font(self, font_stack):
         'set the font (one of tt, it, rm, cal, bf, sf)'
+        print "sym:", self.sym, self.neighbors.keys()
         self.set_font(font_stack[-1])
         for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
             neighbor = self.neighbors.get(neighbor_type)
@@ -1208,6 +1210,10 @@ class GroupElement(Element):
         font_stack.append(font_stack[-1])
         for element in self.elements:
             element.determine_font(font_stack)
+        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
+            neighbor = self.neighbors.get(neighbor_type)
+            if neighbor is not None:
+                neighbor.determine_font(font_stack)
         font_stack.pop()
 
     def set_font(self, font):
@@ -1359,16 +1365,17 @@ class Handler:
 
         return [sym]
 
-    def composite(self, s, loc, toks):
-
+    def over_under(self, s, loc, toks):
         assert(len(toks)==1)
         where, sym0, sym1 = toks[0]
         #keys = ('above', 'below', 'subscript', 'superscript', 'right')
+        print "where:", toks[0]
         if where==r'\over':
             sym0.neighbors['above'] = sym1
         elif where==r'\under':
             sym0.neighbors['below'] = sym1
-
+        print sym0.neighbors.keys()
+            
         self.symbols.append(sym0)
         self.symbols.append(sym1)
 
@@ -1440,8 +1447,10 @@ class Handler:
     }
 
     _subsuperscript_indices = {
-        '_': (0, 1),
-        '^': (1, 0)
+        '_'      : ('normal', (0, 1)),
+        '^'      : ('normal', (1, 0)),
+        'over'   : ('overUnder', (0, 1)),
+        'under'  : ('overUnder', (1, 0))
     }
          
     def subsuperscript(self, s, loc, toks):
@@ -1458,17 +1467,17 @@ class Handler:
         else:
             raise ParseException("Unable to parse subscript/superscript construct.")
 
-        index, other_index = self._subsuperscript_indices[op]
+        relation_type, (index, other_index) = self._subsuperscript_indices[op]
         if self.is_overunder(prev):
-            names = self._subsuperscript_names['overUnder']
-        else:
-            names = self._subsuperscript_names['normal']
+            relation_type = 'overUnder'
+        names = self._subsuperscript_names[relation_type]
 
         prev.neighbors[names[index]] = next
 
         for compound in self._subsuperscript_names.values():
             if compound[other_index] in next.neighbors:
-                prev.neighbors[names[other_index]] = next.neighbors[compound[other_index]]
+                prev.neighbors[names[other_index]] = \
+                    next.neighbors[compound[other_index]]
                 del next.neighbors[compound[other_index]]
             elif compound[index] in next.neighbors:
                 raise ValueError(
@@ -1486,6 +1495,7 @@ font = Forward().setParseAction(handler.font).setName("font")
 latexfont = Forward().setParseAction(handler.latexfont).setName("latexfont")
 subsuper = Forward().setParseAction(handler.subsuperscript).setName("subsuper")
 placeable = Forward().setName("placeable")
+simple = Forward().setName("simple")
 expression = Forward().setParseAction(handler.expression).setName("expression")
 
 lbrace       = Literal('{').suppress()
@@ -1498,9 +1508,6 @@ grouping     =(lbrack
              | rbrack 
              | lparen 
              | rparen)
-
-subscript    = Literal('_')
-superscript  = Literal('^')
 
 bslash       = Literal('\\')
 
@@ -1528,11 +1535,6 @@ misc         =(exclamation
              | at
              | percent
              | ampersand)
-
-over         = Literal('over')
-under        = Literal('under')
-overUnder    =(over
-             | under)
 
 accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
                      "\" ` ' ~ . ^")
@@ -1602,10 +1604,7 @@ function     =(Suppress(bslash)
 group        = Group(
                  lbrace
                + OneOrMore(
-                   space
-                 | font
-                 | latexfont
-                 | subsuper
+                   simple
                  )
                + rbrace
              ).setParseAction(handler.group).setName("group")
@@ -1618,40 +1617,36 @@ latexfont   << Group(
                + latex2efont
                + group)
 
-composite    = Group(
-                 Combine(
-                   bslash
-                 + overUnder
-                 )
-               + group
-               + group
-             ).setParseAction(handler.composite).setName("composite")
-
 placeable   <<(accent
              ^ function  
              ^ symbol
              ^ group
-             ^ composite
              )
+
+simple      <<(space
+             | font
+             | latexfont
+             | subsuper)
+
+subsuperop   =(Literal("_")
+             | Literal("^")
+             | (Suppress(bslash) + Literal("under"))
+             | (Suppress(bslash) + Literal("over"))
+             )   
 
 subsuper    << Group(
                  (
                    placeable
                  + ZeroOrMore(
-                    ( subscript
-                    | superscript
-                    )
+                     subsuperop
                    + subsuper
                    )
                  )
-               | (( subscript | superscript) + placeable)
+               | (subsuperop + placeable)
              )
 
 math         = OneOrMore(
-                 space
-               | font
-               | latexfont
-               | subsuper
+               simple
              ).setParseAction(handler.math).setName("math")
 
 math_delim   =(~bslash
@@ -1669,7 +1664,6 @@ expression  <<(
                  + non_math
                  )
                )
-                     
 
 ####
 
