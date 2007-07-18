@@ -1311,7 +1311,10 @@ class Handler:
 
     def non_math(self, s, loc, toks):
         #~ print "non_math", toks
-        symbols = [SymbolElement(c) for c in toks[0]]
+        # This is a hack, but it allows the system to use the
+        # proper amount of advance when going from non-math to math
+        s = toks[0] + ' '
+        symbols = [SymbolElement(c) for c in s]
         self.symbols.extend(symbols)
         non_math = NonMathGroupElement(symbols)
         return [non_math]
