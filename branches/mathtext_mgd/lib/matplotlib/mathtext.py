@@ -145,7 +145,8 @@ from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
      operatorPrecedence, opAssoc, ParseResults, Or, Suppress, oneOf
 
 from matplotlib.afm import AFM
-from matplotlib.cbook import enumerate, iterable, Bunch, get_realpath_and_stat
+from matplotlib.cbook import enumerate, iterable, Bunch, get_realpath_and_stat, \
+    is_string_like
 from matplotlib.ft2font import FT2Font
 from matplotlib.font_manager import fontManager, FontProperties
 from matplotlib._mathtext_data import latex_to_bakoma, cmkern, \
@@ -694,7 +695,7 @@ class BakomaFonts(Fonts):
         assert len(self.fonts)
         font = self.fonts.values()[0]
         print "filled rect:", x1, y1, x2, y2
-        font.font.draw_rect_filled(x1, y1, x2, y2)
+        font.font.draw_rect_filled(x1, y1, x2 - 1, y2 - 1)
         
     def _old_get_kern(self, font, symleft, symright, fontsize, dpi):
         """
@@ -1027,7 +1028,7 @@ class List(Box):
                 elem = next
 
     def __repr__(self):
-        s = '[' + self.__internal_repr__()
+        s = '[' + self.__internal_repr__() + "%f %d %d " % (self.glue_set, self.glue_sign, self.glue_order)
         if self.list_head:
             s += ' ' + self.list_head.__repr__()
         s += ']'
@@ -1039,7 +1040,7 @@ class List(Box):
         """A helper function to determine the highest order of glue
         used by the members of this list.  Used by vpack and hpack."""
         o = 0
-        for i in range(len(totals), 0, -1):
+        for i in range(len(totals) - 1, 0, -1):
             if totals[i] != 0.0:
                 o = i
                 break
@@ -1124,7 +1125,8 @@ class Hlist(List):
             w += x
         self.width = w
         x = w - x
-        
+
+        print "total_stretch:", total_stretch
         if x == 0.:
             self.glue_sign = 0
             self.glue_order = 0
@@ -1154,7 +1156,7 @@ class Hlist(List):
             if o == 0:
                 if self.list_head is not None:
                     warn("Underfull vbox: %r" % self, MathTextWarning)
-
+                    
 class Vlist(List):
     """A vertical list of boxes.
     §137"""
@@ -1311,14 +1313,36 @@ class GlueSpec(object):
             self.shrink,
             self.shrink_order)
         
-    def factory(glue_type):
-        return self._types[glue_type]
-    factory = staticmethod(factory)
+    def factory(cls, glue_type):
+        return cls._types[glue_type]
+    factory = classmethod(factory)
 
 GlueSpec._types = {
-    'lineskip': GlueSpec(0, 0, 0, 0, 0)
+    'fil':     GlueSpec(0., 1., 1, 0., 0),
+    'fill':     GlueSpec(0., 1., 2, 0., 0),
+    'filll':     GlueSpec(0., 1., 3, 0., 0)
 }
-    
+
+# Some convenient ways to get common kinds of glue
+
+class Fil(Glue):
+    def __init__(self):
+        Glue.__init__(self, 'fil')
+
+class Fill(Glue):
+    def __init__(self):
+        Glue.__init__(self, 'fill')
+
+class Filll(Glue):
+    def __init__(self):
+        Glue.__init__(self, 'filll')
+
+class HCentered(Hlist):
+    """A convenience class to create an Hlist whose contents are centered
+    within its enclosing box."""
+    def __init__(self, elements):
+        Hlist.__init__(self, [Fill()] + elements + [Fill()])
+        
 class Kern(Node):
     """A Kern node has a width field to specify a (normally negative)
     amount of spacing. This spacing correction appears in horizontal lists
@@ -1334,15 +1358,7 @@ class Kern(Node):
 
 class Unset(Node):
     pass
-        
-# MGDTODO: Move this to cbook    
-def clamp(value, min, max):
-    if value < min:
-        return min
-    if value > max:
-        return max
-    return value
-        
+
 class Ship(object):
     """Since boxes can be inside of boxes inside of boxes, the main
     work of Ship is done by two mutually recursive routines, hlist_out
@@ -1359,6 +1375,14 @@ class Ship(object):
         self.off_h       = ox
         self.off_v       = oy + box.height
         self.hlist_out(box)
+
+    def clamp(value):
+        if value < -1000000000.:
+            return -1000000000.
+        if value > 1000000000.:
+            return 1000000000.
+        return value
+    clamp = staticmethod(clamp)
         
     def hlist_out(self, box):
         cur_g         = 0
@@ -1389,6 +1413,7 @@ class Ship(object):
                     if isinstance(p, Hlist):
                         self.hlist_out(p)
                     else:
+                        p.vpack(box.height, 'exactly')
                         self.vlist_out(p)
                     self.cur_h = edge + p.width
                     self.cur_v = base_line
@@ -1412,18 +1437,14 @@ class Ship(object):
                 # §625
                 glue_spec = p.glue_spec
                 rule_width = glue_spec.width - cur_g
-                if g_sign != 0: # normal
-                    if g_sign == 1: # stretching
+                if glue_sign != 0: # normal
+                    if glue_sign == 1: # stretching
                         if glue_spec.stretch_order == glue_order:
                             cur_glue += glue_spec.stretch
-                            glue_temp = clamp(float(box.glue_set) * cur_glue,
-                                             1000000000., -10000000000.)
-                            cur_g = round(glue_temp)
+                            cur_g = round(self.clamp(float(box.glue_set) * cur_glue))
                     elif glue_spec.shrink_order == glue_order:
                         cur_glue += glue_spec.shrink
-                        glue_temp = clamp(float(box.glue_set) * cur_glue,
-                                         1000000000., -10000000000.)
-                        cur_g = round(glue_temp)
+                        cur_g = round(self.clamp(float(box.glue_set) * cur_glue))
                 rule_width += cur_g
                 self.cur_h += rule_width
             elif isinstance(p, Kern):
@@ -1453,7 +1474,9 @@ class Ship(object):
                     self.cur_v += p.height
                     self.cur_h = left_edge + p.shift_amount
                     save_v = self.cur_v
+                    p.width = box.width
                     if isinstance(p, Hlist):
+                        p.hpack(box.width, 'exactly')
                         self.hlist_out(p)
                     else:
                         self.vlist_out(p)
@@ -1474,18 +1497,14 @@ class Ship(object):
             elif isinstance(p, Glue):
                 glue_spec = p.glue_spec
                 rule_height = glue_spec.width - cur_g
-                if g_sign != 0: # normal
-                    if g_sign == 1: # stretching
+                if glue_sign != 0: # normal
+                    if glue_sign == 1: # stretching
                         if glue_spec.stretch_order == glue_order:
                             cur_glue += glue_spec.stretch
-                            glue_temp = clamp(float(box.glue_set) * cur_glue,
-                                             1000000000., -10000000000.)
-                            cur_g = round(glue_temp)
+                            cur_g = round(self.clamp(float(box.glue_set) * cur_glue))
                     elif glue_spec.shrink_order == glue_order: # shrinking
                         cur_glue += glue_spec.shrink
-                        glue_temp = clamp(float(box.glue_set) * cur_glue,
-                                         1000000000., -10000000000.)
-                        cur_g = round(glue_temp)
+                        cur_g = round(self.clamp(float(box.glue_set) * cur_glue))
                 rule_height += cur_g
                 self.cur_v += rule_height
             elif isinstance(p, Kern):
@@ -1968,7 +1987,12 @@ class Parser:
         #~ print 'subsuperscript', toks
         
         top, bottom = toks[0]
-        vlist = Vlist([bottom, Hrule(self.get_state()), top])
+        vlist = Vlist([HCentered([top]),
+                       Kern(4.0),
+                       Hrule(self.get_state()),
+                       Kern(4.0),
+                       HCentered([bottom])
+                       ])
         # vlist.shift_amount = 8
         return [vlist]
 
