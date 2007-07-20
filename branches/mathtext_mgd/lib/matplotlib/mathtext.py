@@ -127,6 +127,7 @@ STATUS:
   math text yet.  They are most likely broken. -- Michael Droettboom, July 2007
  
 Author    : John Hunter <jdhunter@ace.bsd.uchicago.edu>
+            Michael Droettboom <mdroe@stsci.edu> (rewrite based on TeX algorithms)
 Copyright : John Hunter (2004,2005)
 License   : matplotlib license (PSF compatible)
 
@@ -135,6 +136,7 @@ from __future__ import division
 import os, sys
 from cStringIO import StringIO
 from sets import Set
+from warnings import warn
 
 from matplotlib import verbose
 from matplotlib.pyparsing import Literal, Word, OneOrMore, ZeroOrMore, \
@@ -152,11 +154,12 @@ from matplotlib.numerix import absolute
 from matplotlib import get_data_path, rcParams
 
 # symbols that have the sub and superscripts over/under
-overunder = { r'\sum'    : 1,
-              r'\int'    : 1,
-              r'\prod'   : 1,
-              r'\coprod' : 1,
-              }
+overunder_symbols = {
+    r'\sum'    : 1,
+    r'\int'    : 1,
+    r'\prod'   : 1,
+    r'\coprod' : 1,
+    }
 # a character over another character
 charOverChars = {
     # The first 2 entires in the tuple are (font, char, sizescale) for
@@ -165,6 +168,8 @@ charOverChars = {
     r'\angstrom' : (  ('rm', 'A', 1.0), (None, '\circ', 0.5), 0.0 ),
     }
 
+##############################################################################
+# FONTS
 
 def font_open(filename):
     ext = filename.rsplit('.',1)[1]
@@ -269,6 +274,9 @@ class Fonts:
     def render(self, ox, oy, facename, sym, fontsize, dpi):
         pass
 
+    def render_rect_filled(self, x1, y1, x2, y2):
+        pass
+        
     def get_used_characters(self):
         return {}
     
@@ -659,6 +667,9 @@ class BakomaFonts(Fonts):
             xmax = xmax,
             ymin = ymin+offset,
             ymax = ymax+offset,
+            # iceberg is the amount of character that floats above the baseline
+            # This is equivalent to TeX' "height"
+            iceberg = glyph.horiBearingY/64.0
             )
         
         self.glyphd[key] = basename, font, metrics, symbol_name, num, glyph, offset
@@ -673,11 +684,18 @@ class BakomaFonts(Fonts):
 
     def render(self, ox, oy, font, sym, fontsize, dpi):
         basename, font, metrics, symbol_name, num, glyph, offset = \
-                self._get_info(font, sym, fontsize, dpi)
+            self._get_info(font, sym, fontsize, dpi)
 
+        font.draw_rect(0, 0, self.width - 1, self.height - 1)
         font.draw_glyph_to_bitmap(
-            int(ox),  int(self.height - oy - metrics.ymax), glyph)
+            int(ox),  int(oy - metrics.ymax), glyph)
 
+    def render_rect_filled(self, x1, y1, x2, y2):
+        assert len(self.fonts)
+        font = self.fonts.values()[0]
+        print "filled rect:", x1, y1, x2, y2
+        font.font.draw_rect_filled(x1, y1, x2, y2)
+        
     def _old_get_kern(self, font, symleft, symright, fontsize, dpi):
         """
         Get the kerning distance for font between symleft and symright.
@@ -699,6 +717,11 @@ class BakomaFonts(Fonts):
 
     def get_used_characters(self):
         return self.used_characters
+
+    def get_xheight(self, font):
+        basename, cached_font = self._get_font(font)
+        pclt = cached_font.font.get_sfnt_table('pclt')
+        return pclt['xHeight'] / 64.0 
     
 class BakomaPSFonts(BakomaFonts):
     """
@@ -885,443 +908,905 @@ setfont
             basename, font = self._get_font(font)
             return font.get_kern_dist(glyph1, glyph2) * 0.001 * fontsize
         return 0
-    
-class Element:
-    fontsize = 12
-    dpi = 72
-    _padx, _pady = 2, 2  # the x and y padding in points
-    _scale = 1.0
 
+##############################################################################
+# TeX-LIKE BOX MODEL
+
+# The following is based directly on the document 'woven' from the
+# TeX82 source code.  This information is also available in printed
+# form:
+#
+#    Knuth, Donald E.. 1986.  Computers and Typesetting, Volume B:
+#    TeX: The Program.  Addison-Wesley Professional.
+#
+# The most relevant "chapters" are:
+#    Data structures for boxes and their friends
+#    Shipping pages out (Ship class)
+#    Packaging (hpack and vpack)
+#    Data structures for math mode
+#    Subroutines for math mode
+#    Typesetting math formulas
+#
+# Many of the docstrings below refer to a numbered "node" in that
+# book, e.g. §123
+#
+# Note that (as TeX) y increases downward, unlike many other parts of
+# matplotlib.
+
+class MathTextWarning(Warning):
+    pass
+    
+class Node(object):
+    """A node in a linked list.
+    §133
+    """
     def __init__(self):
-        # a dict mapping the keys above, below, subscript,
-        # superscript, right to Elements in that position
-        self.neighbors = {}
-        self.ox, self.oy = 0, 0
-
-    def advance(self):
-        'get the horiz advance'
-        raise NotImplementedError('derived must override')
-
-    def height(self):
-        'get the element height: ymax-ymin'
-        raise NotImplementedError('derived must override')
-
-    def width(self):
-        'get the element width: xmax-xmin'
-        raise NotImplementedError('derived must override')
-
-    def xmin(self):
-        'get the xmin of ink rect'
-        raise NotImplementedError('derived must override')
-
-    def xmax(self):
-        'get the xmax of ink rect'
-        raise NotImplementedError('derived must override')
-
-    def ymin(self):
-        'get the ymin of ink rect'
-        raise NotImplementedError('derived must override')
-
-    def ymax(self):
-        'get the ymax of ink rect'
-        raise NotImplementedError('derived must override')
-
-    def determine_font(self, font_stack):
-        'a first pass to determine the font of this element (one of tt, it, rm , cal, bf, sf)'
-        raise NotImplementedError('derived must override')
-
-    def set_font(self, font):
-        'set the font (one of tt, it, rm, cal, bf, sf)'
-        raise NotImplementedError('derived must override')
-    
-    def render(self):
-        'render to the fonts canvas'
-        for element in self.neighbors.values():
-            element.render()
-
-    def set_origin(self, ox, oy):
-        self.ox, self.oy = ox, oy
-
-        # order matters! right needs to be evaled last
-        keys = ('above', 'below', 'subscript', 'superscript', 'right')
-        for loc in keys:
-            element = self.neighbors.get(loc)
-            if element is None: continue
-
-            if loc=='above':
-                nx = self.centerx() - element.width()/2.0
-                ny = self.ymax() + self.pady() + (element.oy - element.ymax() + element.height())
-                #print element, self.ymax(), element.height(), element.ymax(), element.ymin(), ny
-            elif loc=='below':
-                nx = self.centerx() - element.width()/2.0
-                ny = self.ymin() - self.pady() - element.height()
-            elif loc=='superscript':
-                nx = self.xmax()
-                ny = self.ymax() - self.pady()
-            elif loc=='subscript':
-                nx = self.xmax()
-                ny = self.oy - 0.5*element.height()
-            elif loc=='right':
-                nx = self.ox + self.advance()
-                if self.neighbors.has_key('subscript'):
-                    o = self.neighbors['subscript']
-                    nx = max(nx, o.ox + o.advance())
-                if self.neighbors.has_key('superscript'):
-                    o = self.neighbors['superscript']
-                    nx = max(nx, o.ox + o.advance())
-
-                ny = self.oy
-            element.set_origin(nx, ny)
-
-    def set_size_info(self, fontsize, dpi):
-        self.fontsize = self._scale*fontsize
-        self.dpi = dpi
-        for loc, element in self.neighbors.items():
-            if loc in ('subscript', 'superscript'):
-                element.set_size_info(0.7*self.fontsize, dpi)
-            else:
-                element.set_size_info(self.fontsize, dpi)
-
-    def pady(self):
-        return self.dpi/72.0*self._pady
-
-    def padx(self):
-        return self.dpi/72.0*self._padx
-
-    def set_padx(self, pad):
-        'set the y padding in points'
-        self._padx = pad
-
-    def set_pady(self, pad):
-        'set the y padding in points'
-        self._pady = pad
-
-    def set_scale(self, scale):
-        'scale the element by scale'
-        self._scale = scale
-
-    def centerx(self):
-        return 0.5 * (self.xmax() + self.xmin() )
-
-    def centery(self):
-        return 0.5 * (self.ymax() + self.ymin() )
-
+        self.link = None
+        
     def __repr__(self):
-        return str(self.__class__) + str(self.neighbors)
+        s = self.__internal_repr__()
+        if self.link:
+            s += ' ' + self.link.__repr__()
+        return s
 
-class FontElement(Element):
-    def __init__(self, name):
-        Element.__init__(self)
-        self.name = name
+    def __internal_repr__(self):
+        return self.__class__.__name__
 
-    def advance(self):
-        'get the horiz advance'
-        return 0
-        
-    def height(self):
-        'get the element height: ymax-ymin'
-        return 0
-        
-    def width(self):
-        'get the element width: xmax-xmin'
-        return 0
-        
-    def xmin(self):
-        'get the xmin of ink rect'
-        return 0
-        
-    def xmax(self):
-        'get the xmax of ink rect'
-        return 0
-        
-    def ymin(self):
-        'get the ymin of ink rect'
-        return 0
-        
-    def ymax(self):
-        'get the ymax of ink rect'
-        return 0
-        
-    def determine_font(self, font_stack):
-        font_stack[-1] = self.name
-
-    def set_font(self, font):
-        return
-        
-class SpaceElement(Element):
-    'blank horizontal space'
-    def __init__(self, space, height=0):
-        """
-        space is the amount of blank space in fraction of fontsize
-        height is the height of the space in fraction of fontsize
-        """
-        Element.__init__(self)
-        self.space = space
-        self._height = height
-
-    def advance(self):
-        'get the horiz advance'
-        return self.dpi/72.0*self.space*self.fontsize
-
-    def height(self):
-        'get the element height: ymax-ymin'
-        return self._height*self.dpi/72.0*self.fontsize
-
-    def width(self):
-        'get the element width: xmax-xmin'
-        return self.advance()
-
-    def xmin(self):
-        'get the minimum ink in x'
-        return self.ox
-
-    def xmax(self):
-        'get the max ink in x'
-        return self.ox + self.advance()
-
-    def ymin(self):
-        'get the minimum ink in y'
-        return self.oy
-
-    def ymax(self):
-        'get the max ink in y'
-        return self.oy + self.height()
-
-    def determine_font(self, font_stack):
-        # space doesn't care about font, only size
-        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
-            neighbor = self.neighbors.get(neighbor_type)
-            if neighbor is not None:
-                neighbor.determine_font(font_stack)
-
-    def set_font(self, font_stack):
-        # space doesn't care about font, only size
+    def get_kerning(self, next):
+        return 0.0
+    
+    def set_link(self, other):
+        self.link = other
+    
+    def render(self, x, y):
         pass
+
+class Box(Node):
+    """Represents any node with a physical location.
+    §135"""
+    def __init__(self, width, height, depth):
+        Node.__init__(self)
+        self.width        = width
+        self.height       = height
+        self.depth        = depth
     
-class SymbolElement(Element):
-    hardcoded_font = False
-
-    def __init__(self, sym):
-        Element.__init__(self)
-        self.sym = sym
-        self.kern = None
-        self.widthm = 1  # the width of an m; will be resized below
-
-    def determine_font(self, font_stack):
-        'set the font (one of tt, it, rm, cal, bf, sf)'
-        self.set_font(font_stack[-1])
-        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
-            neighbor = self.neighbors.get(neighbor_type)
-            if neighbor is not None:
-                neighbor.determine_font(font_stack)
+class CharNode(Box):
+    """Represents a single character.  Unlike TeX, the font
+    information and metrics are stored with each CharNode to make it
+    easier to lookup the font metrics when needed.  Note that TeX
+    boxes have a width, height, and depth, unlike Type1 and Truetype
+    which use a full bounding box and an advance in the x-direction.
+    The metrics must be converted to the TeX way, and the advance (if
+    different from width) must be converted into a Kern node when the
+    CharNode is added to its parent Hlist.
+    §134"""
+    def __init__(self, c, state):
+        self.c = c
+        self.font_manager = state.font_manager
+        self.font = state.font
+        self.fontsize = state.fontsize
+        self.dpi = state.dpi
+        metrics = self._metrics = self.font_manager.get_metrics(
+            self.font, self.c, self.fontsize, self.dpi)
+        Box.__init__(self, metrics.width, metrics.iceberg,
+                     -(metrics.iceberg - metrics.height))
         
-    def set_font(self, font, hardcoded=False):
-        if hardcoded:
-            self.hardcoded_font = True
-            self.font = font
-        if not self.hardcoded_font:
-            assert not hasattr(self, 'font')
-            self.font = font
+    def __internal_repr__(self):
+        return self.c
+
+    def get_kerning(self, next):
+        """Return the amount of kerning between this and the given
+        character.  Called when characters are strung together into
+        Hlists to create Kern nodes."""
+        # MGDTODO: Actually use kerning pairs
+        return self._metrics.advance - self.width
+    
+    def render(self, x, y):
+        """Render the character to the canvas"""
+        self.font_manager.render(
+            x, y,
+            self.font, self.c, self.fontsize, self.dpi)
         
-    def set_origin(self, ox, oy):
-        Element.set_origin(self, ox, oy)
-
-    def set_size_info(self, fontsize, dpi):
-        Element.set_size_info(self, fontsize, dpi)
-        self.metrics = Element.fonts.get_metrics(
-            self.font, self.sym, self.fontsize, dpi)
-
-        mmetrics = Element.fonts.get_metrics(
-            self.font, 'm', self.fontsize, dpi)
-        self.widthm = mmetrics.width
-        #print self.widthm
-
-    def advance(self):
-        'get the horiz advance'
-        if self.kern is None:
-            self.kern = 0
-            if self.neighbors.has_key('right'):
-                sym = None
-                o = self.neighbors['right']
-                if hasattr(o, 'sym'):
-                    sym = o.sym
-                elif isinstance(o, SpaceElement):
-                    sym = ' '
-                if sym is not None:
-                    self.kern = Element.fonts.get_kern(
-                        self.font, self.sym, sym, self.fontsize, self.dpi)
-        return self.metrics.advance + self.kern
-        #return self.metrics.advance # how to handle cm units?+ self.kern*self.widthm
-
-
-    def height(self):
-        'get the element height: ymax-ymin'
-        return self.metrics.height
-
-    def width(self):
-        'get the element width: xmax-xmin'
-        return self.metrics.width
-
-    def xmin(self):
-        'get the minimum ink in x'
-        return self.ox + self.metrics.xmin
-
-    def xmax(self):
-        'get the max ink in x'
-        return self.ox + self.metrics.xmax
-
-    def ymin(self):
-        'get the minimum ink in y'
-        return self.oy + self.metrics.ymin
-
-    def ymax(self):
-        'get the max ink in y'
-        return self.oy + self.metrics.ymax
-
-    def render(self):
-        'render to the fonts canvas'
-        Element.fonts.render(
-            self.ox, self.oy,
-            self.font, self.sym, self.fontsize, self.dpi)
-        Element.render(self)
+class List(Box):
+    """A list of nodes (either horizontal or vertical).
+    §135"""
+    def __init__(self, elements):
+        Box.__init__(self, 0., 0., 0.)
+        self.shift_amount = 0.   # An arbitrary offset
+        self.list_head    = None # The head of a linked list of Nodes in this box
+        # The following parameters are set in the vpack and hpack functions
+        self.glue_set     = 0.   # The glue setting of this list
+        self.glue_sign    = 0    # 0: normal, -1: shrinking, 1: stretching
+        self.glue_order   = 0    # The order of infinity (0 - 3) for the glue
+        
+        # Convert the Python list to a linked list
+        if len(elements):
+            elem = self.list_head = elements[0]
+            for next in elements[1:]:
+                elem.set_link(next)
+                elem = next
 
     def __repr__(self):
-        return self.sym
+        s = '[' + self.__internal_repr__()
+        if self.list_head:
+            s += ' ' + self.list_head.__repr__()
+        s += ']'
+        if self.link:
+            s += ' ' + self.link.__repr__()
+        return s
 
-class AccentElement(SymbolElement):
+    def _determine_order(self, totals):
+        """A helper function to determine the highest order of glue
+        used by the members of this list.  Used by vpack and hpack."""
+        o = 0
+        for i in range(len(totals), 0, -1):
+            if totals[i] != 0.0:
+                o = i
+                break
+        return o
+    
+class Hlist(List):
+    """A horizontal list of boxes.
+    §135"""
+    def __init__(self, elements, w=0., m='additional'):
+        List.__init__(self, elements)
+        self.do_kerning()
+        self.hpack(w, m)
+
+    def do_kerning(self):
+        """Insert Kern nodes between CharNodes to set kerning.  The
+        CharNodes themselves determine the amount of kerning they need
+        (in get_kerning), and this function just creates the linked
+        list in the correct way."""
+        elem = self.list_head
+        while elem is not None:
+            next = elem.link
+            kerning_distance = elem.get_kerning(next)
+            if kerning_distance != 0.:
+                kern = Kern(kerning_distance)
+                elem.link = kern
+                kern.link = next
+            elem = next
+        
+    def hpack(self, w=0., m='additional'):
+        """The main duty of hpack is to compute the dimensions of the
+        resulting boxes, and to adjust the glue if one of those dimensions is
+        pre-specified. The computed sizes normally enclose all of the material
+        inside the new box; but some items may stick out if negative glue is
+        used, if the box is overfull, or if a \vbox includes other boxes that
+        have been shifted left.
+
+        w: specifies a width
+        m: is either 'exactly' or 'additional'.
+
+        Thus, hpack(w, exactly) produces a box whose width is exactly w, while
+        hpack (w, additional ) yields a box whose width is the natural width
+        plus w.  The default values produce a box with the natural width.
+        §644, §649"""
+        self.shift_amount = 0.
+        h = 0.
+        d = 0.
+        x = 0.
+        total_stretch = [0.] * 4
+        total_shrink = [0.] * 4
+        p = self.list_head
+        while p is not None:
+            # Layout characters in a tight inner loop (common case)
+            while isinstance(p, CharNode):
+                x += p.width
+                h = max(h, p.height)
+                d = max(d, p.depth)
+                p = p.link
+            if p is None:
+                break
+            
+            if isinstance(p, (List, Rule, Unset)):
+                x += p.width
+                if hasattr(p, 'shift_amount'):
+                    s = p.shift_amount
+                else:
+                    s = 0.
+                if p.height is not None and p.depth is not None:
+                    h = max(h, p.height - s)
+                    d = max(d, p.depth + s)
+            elif isinstance(p, Glue):
+                glue_spec = p.glue_spec
+                x += glue_spec.width
+                total_stretch[glue_spec.stretch_order] += glue_spec.stretch
+                total_shrink[glue_spec.shrink_order] += glue_spec.shrink
+            elif isinstance(p, Kern):
+                x += p.width
+            p = p.link
+        self.height = h
+        self.depth = d
+
+        if m == 'additional':
+            w += x
+        self.width = w
+        x = w - x
+        
+        if x == 0.:
+            self.glue_sign = 0
+            self.glue_order = 0
+            self.glue_ratio = 0.
+            return
+        if x > 0.:
+            o = self._determine_order(total_stretch)
+            self.glue_order = o
+            self.glue_sign = 1
+            if total_stretch[o] != 0.:
+                self.glue_set = x / total_stretch[o]
+            else:
+                self.glue_sign = 0
+                self.glue_ratio = 0.
+            if o == 0:
+                if self.list_head is not None:
+                    warn("Overfull hbox: %r" % self, MathTextWarning)
+        else:
+            o = self._determine_order(total_shrink)
+            self.glue_order = o
+            self.glue_sign = -1
+            if total_shrink[o] != 0.:
+                self.glue_set = x / total_shrink[o]
+            else:
+                self.glue_sign = 0
+                self.glue_ratio = 0.
+            if o == 0:
+                if self.list_head is not None:
+                    warn("Underfull vbox: %r" % self, MathTextWarning)
+
+class Vlist(List):
+    """A vertical list of boxes.
+    §137"""
+    def __init__(self, elements, h=0., m='additional'):
+        List.__init__(self, elements)
+        self.vpack(h, m)
+
+    def vpack(self, h=0., m='additional', l=float('inf')):
+        """The main duty of vpack is to compute the dimensions of the
+        resulting boxes, and to adjust the glue if one of those dimensions is
+        pre-specified.
+
+        h: specifies a height
+        m: is either 'exactly' or 'additional'.
+        l: a maximum height
+
+        Thus, vpack(h, exactly) produces a box whose width is exactly w, while
+        hpack (w, additional ) yields a box whose width is the natural width
+        plus w.  The default values produce a box with the natural width.
+        §644, §668"""
+        self.shift_amount = 0.
+        w = 0.
+        d = 0.
+        x = 0.
+        total_stretch = [0.] * 4
+        total_shrink = [0.] * 4
+        p = self.list_head
+        while p is not None:
+            if isinstance(p, CharNode):
+                raise RuntimeError("Internal error in mathtext")
+            elif isinstance(p, (List, Rule, Unset)):
+                x += d + p.height
+                d = p.depth
+                if hasattr(p, 'shift_amount'):
+                    s = p.shift_amount
+                else:
+                    s = 0.
+                if p.width is not None:
+                    w = max(w, p.width + s)
+            elif isinstance(p, Glue):
+                x += d
+                d = 0.
+                glue_spec = p.glue_spec
+                x += glue_spec.width
+                total_stretch[glue_spec.stretch_order] += glue_spec.stretch
+                total_shrink[glue_spec.shrink_order] += glue_spec.shrink
+            elif isinstance(p, Kern):
+                x += d + p.width
+                d = 0.
+            p = p.link
+
+        self.width = w
+        if d > l:
+            x += d - l
+            self.depth = l
+        else:
+            self.depth = d
+
+        if m == 'additional':
+            h += x
+        self.height = h
+        x = h - x
+
+        if x == 0:
+            self.glue_sign = 0
+            self.glue_order = 0
+            self.glue_ratio = 0.
+            return
+        if x > 0.:
+            o = self._determine_order(total_stretch)
+            self.glue_order = o
+            self.glue_sign = 1
+            if total_stretch[o] != 0.:
+                self.glue_set = x / total_stretch[o]
+            else:
+                self.glue_sign = 0
+                self.glue_ratio = 0.
+            if o == 0:
+                if self.list_head is not None:
+                    warn("Overfull vbox: %r" % self, MathTextWarning)
+        else:
+            o = self._determine_order(total_shrink)
+            self.glue_order = o
+            self.glue_sign = -1
+            if total_shrink[o] != 0.:
+                self.glue_set = x / total_shrink[o]
+            else:
+                self.glue_sign = 0
+                self.glue_ratio = 0.
+            if o == 0:
+                if self.list_head is not None:
+                    warn("Underfull vbox: %r" % self, MathTextWarning)
+                    
+class Rule(Box):
+    """A Rule node stands for a solid black rectangle; it has width,
+    depth, and height fields just as in an Hlist. However, if any of these
+    dimensions is None, the actual value will be determined by running the
+    rule up to the boundary of the innermost enclosing box. This is called
+    a “running dimension.” The width is never running in an Hlist; the
+    height and depth are never running in a Vlist.
+    §138"""
+    def __init__(self, width, height, depth, state):
+        Box.__init__(self, width, height, depth)
+        self.font_manager = state.font_manager
+    
+    def render(self, x, y, w, h):
+        self.font_manager.render_rect_filled(x, y, x + w, y + h)
+    
+class Hrule(Rule):
+    """Convenience class to create a horizontal rule."""
+    def __init__(self, state):
+        # MGDTODO: Get the line width from the font information
+        Rule.__init__(self, None, 0.5, 0.5, state)
+
+class Vrule(Rule):
+    """Convenience class to create a vertical rule."""
+    def __init__(self, state):
+        # MGDTODO: Get the line width from the font information
+        Rule.__init__(self, 1.0, None, None, state)
+        
+class Glue(Node):
+    """Most of the information in this object is stored in the underlying
+    GlueSpec class, which is shared between multiple glue objects.  (This
+    is a memory optimization which probably doesn't matter anymore, but it's
+    easier to stick to what TeX does.)
+    §149, §152"""
+    def __init__(self, glue_type, copy=False):
+        Node.__init__(self)
+        self.glue_subtype   = 'normal'
+        if is_string_like(glue_type):
+            glue_spec = GlueSpec.factory(glue_type)
+        elif isinstance(glue_type, GlueSpec):
+            glue_spec = glue_type
+        else:
+            raise ArgumentError("glue_type must be a glue spec name or instance.")
+        if copy:
+            glue_spec = glue_spec.copy()
+        self.glue_spec      = glue_spec
+
+class GlueSpec(object):
+    """§150, §151"""
+    def __init__(self, width=0., stretch=0., stretch_order=0, shrink=0., shrink_order=0):
+        self.width         = width
+        self.stretch       = stretch
+        self.stretch_order = stretch_order
+        self.shrink        = shrink
+        self.shrink_order  = shrink_order
+
+    def copy(self):
+        return GlueSpec(
+            self.width,
+            self.stretch,
+            self.stretch_order,
+            self.shrink,
+            self.shrink_order)
+        
+    def factory(glue_type):
+        return self._types[glue_type]
+    factory = staticmethod(factory)
+
+GlueSpec._types = {
+    'lineskip': GlueSpec(0, 0, 0, 0, 0)
+}
+    
+class Kern(Node):
+    """A Kern node has a width field to specify a (normally negative)
+    amount of spacing. This spacing correction appears in horizontal lists
+    between letters like A and V when the font designer said that it looks
+    better to move them closer together or further apart. A kern node can
+    also appear in a vertical list, when its ‘width ’ denotes additional
+    spacing in the vertical direction.
+    §155"""
+    def __init__(self, width, subtype='normal'):
+        Node.__init__(self)
+        self.width = width
+        self.subtype = subtype
+
+class Unset(Node):
+    pass
+        
+# MGDTODO: Move this to cbook    
+def clamp(value, min, max):
+    if value < min:
+        return min
+    if value > max:
+        return max
+    return value
+        
+class Ship(object):
+    """Since boxes can be inside of boxes inside of boxes, the main
+    work of Ship is done by two mutually recursive routines, hlist_out
+    and vlist_out , which traverse the Hlists and Vlists inside of
+    horizontal and vertical boxes.  The global variables used in TeX to
+    store state as it processes have become member variables here.
+    §592."""
+    def __call__(self, ox, oy, box):
+        self.max_push    = 0 # Deepest nesting of push commands so far
+        self.cur_s       = 0
+        self.cur_v       = 0.
+        self.cur_h       = 0.
+        print box
+        self.off_h       = ox
+        self.off_v       = oy + box.height
+        self.hlist_out(box)
+        
+    def hlist_out(self, box):
+        cur_g         = 0
+        cur_glue      = 0.
+        glue_order    = box.glue_order
+        glue_sign     = box.glue_sign
+        p             = box.list_head
+        base_line     = self.cur_v
+        left_edge     = self.cur_h
+        self.cur_s    += 1
+        self.max_push = max(self.cur_s, self.max_push)
+
+        while p:
+            while isinstance(p, CharNode):
+                p.render(self.cur_h + self.off_h, self.cur_v + self.off_v)
+                self.cur_h += p.width
+                p = p.link
+            if p is None:
+                break
+                
+            if isinstance(p, List):
+                # §623
+                if p.list_head is None:
+                    self.cur_h += p.width
+                else:
+                    edge = self.cur_h
+                    self.cur_v = base_line + p.shift_amount
+                    if isinstance(p, Hlist):
+                        self.hlist_out(p)
+                    else:
+                        self.vlist_out(p)
+                    self.cur_h = edge + p.width
+                    self.cur_v = base_line
+            elif isinstance(p, Rule):
+                # §624
+                rule_height = p.height
+                rule_depth  = p.depth
+                rule_width  = p.width
+                if rule_height is None:
+                    rule_height = box.height
+                if rule_depth is None:
+                    rule_depth = box.depth
+                if rule_height > 0 and rule_width > 0:
+                    self.cur_v = baseline + rule_depth
+                    p.render(self.cur_h + self.off_h,
+                             self.cur_v + self.off_v,
+                             rule_width, rule_height)
+                    self.cur_v = baseline
+                self.cur_h += rule_width
+            elif isinstance(p, Glue):
+                # §625
+                glue_spec = p.glue_spec
+                rule_width = glue_spec.width - cur_g
+                if g_sign != 0: # normal
+                    if g_sign == 1: # stretching
+                        if glue_spec.stretch_order == glue_order:
+                            cur_glue += glue_spec.stretch
+                            glue_temp = clamp(float(box.glue_set) * cur_glue,
+                                             1000000000., -10000000000.)
+                            cur_g = round(glue_temp)
+                    elif glue_spec.shrink_order == glue_order:
+                        cur_glue += glue_spec.shrink
+                        glue_temp = clamp(float(box.glue_set) * cur_glue,
+                                         1000000000., -10000000000.)
+                        cur_g = round(glue_temp)
+                rule_width += cur_g
+                self.cur_h += rule_width
+            elif isinstance(p, Kern):
+                self.cur_h += p.width
+            p = p.link
+        self.cur_s -= 1
+
+    def vlist_out(self, box):
+        cur_g         = 0
+        cur_glue      = 0.
+        glue_order    = box.glue_order
+        glue_sign     = box.glue_sign
+        p             = box.list_head
+        self.cur_s    += 1
+        self.max_push = max(self.max_push, self.cur_s)
+        left_edge     = self.cur_h
+        self.cur_v    -= box.height
+        top_edge      = self.cur_v
+
+        while p:
+            if isinstance(p, CharNode):
+                raise RuntimeError("Internal error in mathtext")
+            elif isinstance(p, List):
+                if p.list_head is None:
+                    self.cur_v += p.height + p.depth
+                else:
+                    self.cur_v += p.height
+                    self.cur_h = left_edge + p.shift_amount
+                    save_v = self.cur_v
+                    if isinstance(p, Hlist):
+                        self.hlist_out(p)
+                    else:
+                        self.vlist_out(p)
+                    self.cur_v = save_v + p.depth
+                    self.cur_h = left_edge
+            elif isinstance(p, Rule):
+                rule_height = p.height
+                rule_depth = p.depth
+                rule_width = p.width
+                if rule_width is None:
+                    rule_width = box.width
+                rule_height += rule_depth
+                if rule_height > 0 and rule_depth > 0:
+                    self.cur_v += rule_height
+                    p.render(self.cur_h + self.off_h,
+                             self.cur_v + self.off_v,
+                             rule_width, rule_height)
+            elif isinstance(p, Glue):
+                glue_spec = p.glue_spec
+                rule_height = glue_spec.width - cur_g
+                if g_sign != 0: # normal
+                    if g_sign == 1: # stretching
+                        if glue_spec.stretch_order == glue_order:
+                            cur_glue += glue_spec.stretch
+                            glue_temp = clamp(float(box.glue_set) * cur_glue,
+                                             1000000000., -10000000000.)
+                            cur_g = round(glue_temp)
+                    elif glue_spec.shrink_order == glue_order: # shrinking
+                        cur_glue += glue_spec.shrink
+                        glue_temp = clamp(float(box.glue_set) * cur_glue,
+                                         1000000000., -10000000000.)
+                        cur_g = round(glue_temp)
+                rule_height += cur_g
+                self.cur_v += rule_height
+            elif isinstance(p, Kern):
+                self.cur_v += p.width
+                            
+            p = p.link
+        self.cur_s -= 1
+        
+ship = Ship()
+
+# TODO: Ligature nodes? (143)
+
+# TODO: Unset box?
+
+##############################################################################
+# NOADS
+
+class Noad:
+    def __init__(self, nucleus=None, subscr=None, superscr=None):
+        self.link = None
+        self.nucleus = nucleus
+        self.subscr = subscr
+        self.superscr = superscr
+
+class OrdNoad(Noad):
     pass
 
-class GroupElement(Element):
-    """
-    A group is a collection of elements
-    """
-    def __init__(self, elements):
-        Element.__init__(self)
-        if not isinstance(elements, list):
-            elements = elements.asList()
-        self.elements = elements
-        for i in range(len(elements)-1):
-            self.elements[i].neighbors['right'] = self.elements[i+1]
+class OpNoad(Noad):
+    pass
 
-    def determine_font(self, font_stack):
-        'set the font (one of tt, it, rm , cal)'
-        font_stack.append(font_stack[-1])
-        for element in self.elements:
-            element.determine_font(font_stack)
-        for neighbor_type in ('above', 'below', 'subscript', 'superscript'):
-            neighbor = self.neighbors.get(neighbor_type)
-            if neighbor is not None:
-                neighbor.determine_font(font_stack)
-        font_stack.pop()
+class BinNoad(Noad):
+    pass
 
-    def set_font(self, font):
-        return
+class RelNoad(Noad):
+    pass
 
-    def set_size_info(self, fontsize, dpi):
-        if len(self.elements):
-            self.elements[0].set_size_info(self._scale*fontsize, dpi)
-        Element.set_size_info(self, fontsize, dpi)
-        #print 'set size'
+class OpenNoad(Noad):
+    pass
 
+class CloseNoad(Noad):
+    pass
 
-    def set_origin(self, ox, oy):
-        if len(self.elements):
-            self.elements[0].set_origin(ox, oy)
-        Element.set_origin(self, ox, oy)
+class PunctNoad(Noad):
+    pass
 
+class InnerNoad(Noad):
+    pass
 
-    def advance(self):
-        'get the horiz advance'
-        if len(self.elements):
-            return self.elements[-1].xmax() - self.elements[0].ox
-        return 0
+class RadicalNoad(Noad):
+    def __init__(self, nucleus=None, subscr=None, superscr=None, left_delim_font=None, left_delim_char=None):
+        Noad.__init__(self, nucleus, subscr, superscr)
+        self.left_delim = left_delim
 
+class NoadField:
+    def __init__(self):
+        pass
 
-    def height(self):
-        'get the element height: ymax-ymin'
-        ymax = max([e.ymax() for e in self.elements])
-        ymin = min([e.ymin() for e in self.elements])
-        return ymax-ymin
+class MathChar(NoadField):
+    def __init__(self, char, font):
+        self.char = char
+        self.font = font
 
-    def width(self):
-        'get the element width: xmax-xmin'
-        xmax = max([e.xmax() for e in self.elements])
-        xmin = min([e.xmin() for e in self.elements])
-        return xmax-xmin
+class SubMlist(NoadField):
+    def __init__(self):
+        pass
 
-    def render(self):
-        'render to the fonts canvas'
-        if len(self.elements):
-            self.elements[0].render()
-        Element.render(self)
+##############################################################################
+# PARSER
+    
+class Parser:
+    class State:
+        def __init__(self, font_manager, font, fontsize, dpi):
+            self.font_manager = font_manager
+            self.font = font
+            self.fontsize = fontsize
+            self.dpi = dpi
 
-    def xmin(self):
-        'get the minimum ink in x'
-        return min([e.xmin() for e in self.elements])
+        def copy(self):
+            return Parser.State(
+                self.font_manager,
+                self.font,
+                self.fontsize,
+                self.dpi)
+            
+    def __init__(self):
+        # All forward declarations are here
+        font = Forward().setParseAction(self.font).setName("font")
+        latexfont = Forward().setParseAction(self.latexfont).setName("latexfont")
+        subsuper = Forward().setParseAction(self.subsuperscript).setName("subsuper")
+        overunder = Forward().setParseAction(self.overunder).setName("overunder")
+        placeable = Forward().setName("placeable")
+        simple = Forward().setName("simple")
+        self._expression = Forward().setParseAction(self.finish).setName("finish")
 
-    def xmax(self):
-        'get the max ink in x'
-        return max([e.xmax() for e in self.elements])
+        lbrace       = Literal('{').suppress().setParseAction(self.start_group).setName("start_group")
+        rbrace       = Literal('}').suppress().setParseAction(self.end_group).setName("end_group")
+        lbrack       = Literal('[')
+        rbrack       = Literal(']')
+        lparen       = Literal('(')
+        rparen       = Literal(')')
+        grouping     =(lbrack 
+                     | rbrack 
+                     | lparen 
+                     | rparen)
 
-    def ymin(self):
-        'get the minimum ink in y'
-        return max([e.ymin() for e in self.elements])
+        bslash       = Literal('\\')
 
-    def ymax(self):
-        'get the max ink in y'
-        return max([e.ymax() for e in self.elements])
+        langle       = Literal('<')
+        rangle       = Literal('>')
+        equals       = Literal('=')
+        relation     =(langle
+                     | rangle
+                     | equals)
 
-    def __repr__(self):
-        return 'Group: [ %s ]' % ' '.join([str(e) for e in self.elements])
+        colon        = Literal(':')
+        comma        = Literal(',')
+        period       = Literal('.')
+        semicolon    = Literal(';')
+        exclamation  = Literal('!')
+        punctuation  =(colon
+                     | comma
+                     | period
+                     | semicolon)
 
-class MathGroupElement(GroupElement):
-    def determine_font(self, font_stack):
-        font_stack.append('it')
-        for element in self.elements:
-            element.determine_font(font_stack)
-        font_stack.pop()
+        at           = Literal('@')
+        percent      = Literal('%')
+        ampersand    = Literal('&')
+        misc         =(exclamation
+                     | at
+                     | percent
+                     | ampersand)
 
-class NonMathGroupElement(GroupElement):
-    def determine_font(self, font_stack):
-        for element in self.elements:
-            element.determine_font(font_stack)
+        accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
+                             "\" ` ' ~ . ^")
+
+        function     = oneOf("arccos csc ker min arcsin deg lg Pr arctan det lim sec "
+                             "arg dim liminf sin cos exp limsup sinh cosh gcd ln sup "
+                             "cot hom log tan coth inf max tanh")
+
+        number       = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
+
+        plus         = Literal('+')
+        minus        = Literal('-')
+        times        = Literal('*')
+        div          = Literal('/')
+        binop        =(plus 
+                     | minus
+                     | times
+                     | div)
+
+        fontname     = oneOf("rm cal it tt sf bf")
+        latex2efont  = oneOf("mathrm mathcal mathit mathtt mathsf mathbf")
+
+        texsym       = Combine(bslash + Word(alphanums) + NotAny("{"))
+
+        char         = Word(alphanums + ' ', exact=1).leaveWhitespace()
+
+        space        =(FollowedBy(bslash)
+                     +   (Literal(r'\ ')
+                       |  Literal(r'\/')
+                       |  Group(Literal(r'\hspace{') + number + Literal('}'))
+                         )
+                      ).setParseAction(self.space).setName('space')
+
+        symbol       = Regex("(" + ")|(".join(
+                       [
+                         r"\\[a-zA-Z0-9]+(?!{)",
+                         r"[a-zA-Z0-9 ]",
+                         r"[+\-*/]",
+                         r"[<>=]",
+                         r"[:,.;!]",
+                         r"[!@%&]",
+                         r"[[\]()]",
+                         r"\\\$"
+                       ])
+                     + ")"
+                     ).setParseAction(self.symbol).leaveWhitespace()
+
+        _symbol      =(texsym
+                     | char
+                     | binop
+                     | relation
+                     | punctuation
+                     | misc
+                     | grouping
+                     ).setParseAction(self.symbol).leaveWhitespace()
+
+        accent       = Group(
+                         Combine(bslash + accent)
+                       + Optional(lbrace)
+                       + symbol
+                       + Optional(rbrace)
+                     ).setParseAction(self.accent).setName("accent")
+
+        function     =(Suppress(bslash)
+                     + function).setParseAction(self.function).setName("function")
+
+        group        = Group(
+                         lbrace
+                       + OneOrMore(
+                           simple
+                         )
+                       + rbrace
+                     ).setParseAction(self.group).setName("group")
+
+        font        <<(Suppress(bslash)
+                     + fontname)
+
+        latexfont   << Group(
+                         Suppress(bslash)
+                       + latex2efont
+                       + group)
+
+        frac         = Group(
+                       Suppress(
+                         bslash
+                       + Literal("frac")
+                       )
+                     + group
+                     + group
+                     ).setParseAction(self.frac).setName("frac")
+
+        placeable   <<(accent
+                     ^ function  
+                     ^ symbol
+                     ^ group
+                     ^ frac
+                     )
+
+        simple      <<(space
+                     | font
+                     | latexfont
+                     | overunder)
+
+        subsuperop   =(Literal("_")
+                     | Literal("^")
+                     )   
+
+        subsuper    << Group(
+                         (
+                           placeable
+                         + ZeroOrMore(
+                             subsuperop
+                           + subsuper
+                           )
+                         )
+                       | (subsuperop + placeable)
+                     )
+
+        overunderop  =(
+                        ( Suppress(bslash)
+                        + Literal(r"over")
+                        )
+                     |  ( Suppress(bslash)
+                        + Literal(r"under")
+                        )
+                     )   
+
+        overunder   << Group(
+                         (
+                           subsuper
+                         + ZeroOrMore(
+                             overunderop
+                           + overunder
+                           )
+                         )
+                     )
+
+        math         = OneOrMore(
+                       simple
+                     ).setParseAction(self.math).setName("math")
+
+        math_delim   =(~bslash
+                     + Literal('$'))
+
+        non_math     = Regex(r"(?:[^$]|(?:\\\$))*"
+                     ).setParseAction(self.non_math).setName("non_math").leaveWhitespace()
+
+        self._expression  <<(
+                         non_math
+                       + ZeroOrMore(
+                           Suppress(math_delim)
+                         + math
+                         + Suppress(math_delim)
+                         + non_math
+                         )
+                       )
+
+    def parse(self, s, fonts_object, default_font, fontsize, dpi):
+        self._state_stack = [self.State(fonts_object, default_font, fontsize, dpi)]
+        self._expression.parseString(s)
+        return self._expr
         
-class ExpressionElement(GroupElement):
-    """
-    The entire mathtext expression
-    """
+    def get_state(self):
+        return self._state_stack[-1]
 
-    def __repr__(self):
-        return 'Expression: [ %s ]' % ' '.join([str(e) for e in self.elements])
+    def pop_state(self):
+        self._state_stack.pop()
 
-    def determine_font(self, font_stack):
-        GroupElement.determine_font(self, font_stack)
-
-class Handler:
-    symbols = []
-
-    def clear(self):
-        self.symbols = []
-
-    def expression(self, s, loc, toks):
-        #~ print "expr", toks
-        self.expr = ExpressionElement(toks)
-        return [self.expr]
-
+    def push_state(self):
+        self._state_stack.append(self.get_state().copy())
+        
+    def finish(self, s, loc, toks):
+        self._expr = Hlist(toks)
+        return [self._expr]
+        
     def math(self, s, loc, toks):
-        #~ print "math", toks
-        math = MathGroupElement(toks)
-        return [math]
+        hlist = Hlist(toks)
+        self.pop_state()
+        return [hlist]
 
     def non_math(self, s, loc, toks):
         #~ print "non_math", toks
         # This is a hack, but it allows the system to use the
         # proper amount of advance when going from non-math to math
         s = toks[0] + ' '
-        symbols = [SymbolElement(c) for c in s]
-        self.symbols.extend(symbols)
-        non_math = NonMathGroupElement(symbols)
-        return [non_math]
+        symbols = [CharNode(c, self.get_state()) for c in s]
+        hlist = Hlist(symbols)
+        self.push_state()
+        self.get_state().font = 'it'
+        return [hlist]
     
     def space(self, s, loc, toks):
         assert(len(toks)==1)
@@ -1335,36 +1820,40 @@ class Handler:
         self.symbols.append(element)
         return [element]
 
-    def symbol(self, s, loc, toks):
-        assert(len(toks)==1)
-        #print "symbol", toks
+#     def symbol(self, s, loc, toks):
+#         assert(len(toks)==1)
+#         #print "symbol", toks
         
-        s  = toks[0]
-        if charOverChars.has_key(s):
-            under, over, pad = charOverChars[s]
-            font, tok, scale = under
-            sym = SymbolElement(tok)
-            if font is not None:
-                sym.set_font(font, hardcoded=True)
-            sym.set_scale(scale)
-            sym.set_pady(pad)
+#         s  = toks[0]
+#         if charOverChars.has_key(s):
+#             under, over, pad = charOverChars[s]
+#             font, tok, scale = under
+#             sym = SymbolElement(tok)
+#             if font is not None:
+#                 sym.set_font(font, hardcoded=True)
+#             sym.set_scale(scale)
+#             sym.set_pady(pad)
 
-            font, tok, scale = over
-            sym2 = SymbolElement(tok)
-            if font is not None:
-                sym2.set_font(font, hardcoded=True)
-            sym2.set_scale(scale)
+#             font, tok, scale = over
+#             sym2 = SymbolElement(tok)
+#             if font is not None:
+#                 sym2.set_font(font, hardcoded=True)
+#             sym2.set_scale(scale)
 
-            sym.neighbors['above'] = sym2
-            self.symbols.append(sym2)
-        else:
-            sym = SymbolElement(toks[0])
-        self.symbols.append(sym)
+#             sym.neighbors['above'] = sym2
+#             self.symbols.append(sym2)
+#         else:
+#             sym = SymbolElement(toks[0], self.current_font)
+#         self.symbols.append(sym)
 
-        return [sym]
+#         return [sym]
 
+    def symbol(self, s, loc, toks):
+        return [CharNode(toks[0], self.get_state())]
+
+    space = symbol
+    
     def accent(self, s, loc, toks):
-
         assert(len(toks)==1)
         accent, sym = toks[0]
 
@@ -1399,19 +1888,22 @@ class Handler:
             symbols.append(sym)
             self.symbols.append(sym)
         return [GroupElement(symbols)]
+
+    def start_group(self, s, loc, toks):
+        self.push_state()
     
     def group(self, s, loc, toks):
-        assert(len(toks)==1)
-        #print 'grp', toks
-        grp = GroupElement(toks[0])
+        grp = Hlist(toks[0])
         return [grp]
 
+    def end_group(self, s, loc, toks):
+        self.pop_state()
+        
     def font(self, s, loc, toks):
         assert(len(toks)==1)
         name = toks[0]
-        #print 'fontgrp', toks
-        font = FontElement(name)
-        return [font]
+        self.get_state().font = name
+        return []
 
     def latexfont(self, s, loc, toks):
         assert(len(toks)==1)
@@ -1468,188 +1960,25 @@ class Handler:
         return [prev]
 
     def is_overunder(self, prev):
-        return isinstance(prev, SymbolElement) and overunder.has_key(prev.sym)
+        return isinstance(prev, SymbolElement) and overunder_symbols.has_key(prev.sym)
 
-handler = Handler()
+    def frac(self, s, loc, toks):
+        assert(len(toks)==1)
+        assert(len(toks[0])==2)
+        #~ print 'subsuperscript', toks
+        
+        top, bottom = toks[0]
+        vlist = Vlist([bottom, Hrule(self.get_state()), top])
+        # vlist.shift_amount = 8
+        return [vlist]
 
-# All forward declarations are here
-font = Forward().setParseAction(handler.font).setName("font")
-latexfont = Forward().setParseAction(handler.latexfont).setName("latexfont")
-subsuper = Forward().setParseAction(handler.subsuperscript).setName("subsuper")
-placeable = Forward().setName("placeable")
-simple = Forward().setName("simple")
-expression = Forward().setParseAction(handler.expression).setName("expression")
-
-lbrace       = Literal('{').suppress()
-rbrace       = Literal('}').suppress()
-lbrack       = Literal('[')
-rbrack       = Literal(']')
-lparen       = Literal('(')
-rparen       = Literal(')')
-grouping     =(lbrack 
-             | rbrack 
-             | lparen 
-             | rparen)
-
-bslash       = Literal('\\')
-
-langle       = Literal('<')
-rangle       = Literal('>')
-equals       = Literal('=')
-relation     =(langle
-             | rangle
-             | equals)
-
-colon        = Literal(':')
-comma        = Literal(',')
-period       = Literal('.')
-semicolon    = Literal(';')
-exclamation  = Literal('!')
-punctuation  =(colon
-             | comma
-             | period
-             | semicolon)
-
-at           = Literal('@')
-percent      = Literal('%')
-ampersand    = Literal('&')
-misc         =(exclamation
-             | at
-             | percent
-             | ampersand)
-
-accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
-                     "\" ` ' ~ . ^")
-
-function     = oneOf("arccos csc ker min arcsin deg lg Pr arctan det lim sec "
-                     "arg dim liminf sin cos exp limsup sinh cosh gcd ln sup "
-                     "cot hom log tan coth inf max tanh")
-
-number       = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
-
-plus         = Literal('+')
-minus        = Literal('-')
-times        = Literal('*')
-div          = Literal('/')
-binop        =(plus 
-             | minus
-             | times
-             | div)
-
-fontname     = oneOf("rm cal it tt sf bf")
-latex2efont  = oneOf("mathrm mathcal mathit mathtt mathsf mathbf")
-
-texsym       = Combine(bslash + Word(alphanums) + NotAny("{"))
-
-char         = Word(alphanums + ' ', exact=1).leaveWhitespace()
-
-space        =(FollowedBy(bslash)
-             +   (Literal(r'\ ')
-               |  Literal(r'\/')
-               |  Group(Literal(r'\hspace{') + number + Literal('}'))
-                 )
-              ).setParseAction(handler.space).setName('space')
-
-symbol       = Regex("(" + ")|(".join(
-               [
-                 r"\\[a-zA-Z0-9]+(?!{)",
-                 r"[a-zA-Z0-9 ]",
-                 r"[+\-*/]",
-                 r"[<>=]",
-                 r"[:,.;!]",
-                 r"[!@%&]",
-                 r"[[\]()]",
-                 r"\\\$"
-               ])
-             + ")"
-             ).setParseAction(handler.symbol).leaveWhitespace()
-
-_symbol      =(texsym
-             | char
-             | binop
-             | relation
-             | punctuation
-             | misc
-             | grouping
-             ).setParseAction(handler.symbol).leaveWhitespace()
-
-accent       = Group(
-                 Combine(bslash + accent)
-               + Optional(lbrace)
-               + symbol
-               + Optional(rbrace)
-             ).setParseAction(handler.accent).setName("accent")
-
-function     =(Suppress(bslash)
-             + function).setParseAction(handler.function).setName("function")
-
-group        = Group(
-                 lbrace
-               + OneOrMore(
-                   simple
-                 )
-               + rbrace
-             ).setParseAction(handler.group).setName("group")
-
-font        <<(Suppress(bslash)
-             + fontname)
-
-latexfont   << Group(
-                 Suppress(bslash)
-               + latex2efont
-               + group)
-
-placeable   <<(accent
-             ^ function  
-             ^ symbol
-             ^ group
-             )
-
-simple      <<(space
-             | font
-             | latexfont
-             | subsuper)
-
-subsuperop   =(Literal("_")
-             | Literal("^")
-             | (Suppress(bslash) + Literal("under"))
-             | (Suppress(bslash) + Literal("over"))
-             )   
-
-subsuper    << Group(
-                 (
-                   placeable
-                 + ZeroOrMore(
-                     subsuperop
-                   + subsuper
-                   )
-                 )
-               | (subsuperop + placeable)
-             )
-
-math         = OneOrMore(
-               simple
-             ).setParseAction(handler.math).setName("math")
-
-math_delim   =(~bslash
-             + Literal('$'))
-
-non_math     = Regex(r"(?:[^$]|(?:\\\$))*"
-             ).setParseAction(handler.non_math).setName("non_math").leaveWhitespace()
-
-expression  <<(
-                 non_math
-               + ZeroOrMore(
-                   Suppress(math_delim)
-                 + math
-                 + Suppress(math_delim)
-                 + non_math
-                 )
-               )
+    overunder = subsuperscript
+    
 
 ####
 
-
+##############################################################################
+# MAIN
 
 class math_parse_s_ft2font_common:
     """
@@ -1664,6 +1993,8 @@ class math_parse_s_ft2font_common:
     if major==2 and minor1==2:
         raise SystemExit('mathtext broken on python2.2.  We hope to get this fixed soon')
 
+    parser = None
+    
     def __init__(self, output):
         self.output = output
         self.cache = {}
@@ -1676,27 +2007,20 @@ class math_parse_s_ft2font_common:
 
         use_afm = False
         if self.output == 'SVG':
-            self.font_object = BakomaSVGFonts()
-            #self.font_object = MyUnicodeFonts(output='SVG')
+            font_manager = BakomaSVGFonts()
         elif self.output == 'Agg':
-            self.font_object = BakomaFonts()
-            #self.font_object = MyUnicodeFonts()
+            font_manager = BakomaFonts()
         elif self.output == 'PS':
             if rcParams['ps.useafm']:
-                self.font_object = StandardPSFonts()
+                font_manager = StandardPSFonts()
                 use_afm = True
             else:
-                self.font_object = BakomaPSFonts()
-                #self.font_object = MyUnicodeFonts(output='PS')
+                font_manager = BakomaPSFonts()
         elif self.output == 'PDF':
-            self.font_object = BakomaPDFFonts()
-        Element.fonts = self.font_object
+            font_manager = BakomaPDFFonts()
         
         fontsize = prop.get_size_in_points()
             
-        handler.clear()
-        expression.parseString( s )
-
         if use_afm:
             fname = fontManager.findfont(prop, fontext='afm')
             default_font = AFM(file(fname, 'r'))
@@ -1704,49 +2028,29 @@ class math_parse_s_ft2font_common:
         else:
             fname = fontManager.findfont(prop)
             default_font = FT2Font(fname)
-        
-        handler.expr.determine_font([default_font])
-        handler.expr.set_size_info(fontsize, dpi)
-        
-        # set the origin once to allow w, h compution
-        handler.expr.set_origin(0, 0)
-        xmin = min([e.xmin() for e in handler.symbols])
-        xmax = max([e.xmax() for e in handler.symbols])
-        ymin = min([e.ymin() for e in handler.symbols])
-        ymax = max([e.ymax() for e in handler.symbols])
-        
-        # now set the true origin - doesn't affect with and height
-        w, h =  xmax-xmin, ymax-ymin
-        # a small pad for the canvas size
-        w += 2
-        h += 2
 
-        handler.expr.set_origin(0, h-ymax)
-
-        if self.output in ('SVG', 'Agg'):
-            Element.fonts.set_canvas_size(w,h)
-        elif self.output == 'PS':
-            pswriter = StringIO()
-            Element.fonts.set_canvas_size(w, h, pswriter)
-        elif self.output == 'PDF':
-            pswriter = list()
-            Element.fonts.set_canvas_size(w, h, pswriter)
-
-        handler.expr.render()
-        handler.clear()
+        if self.parser is None:
+            self.__class__.parser = Parser()
+        box = self.parser.parse(s, font_manager, default_font, fontsize, dpi)
+        w, h = box.width, box.height + box.depth
+        w += 4
+        h += 4
+        font_manager.set_canvas_size(w,h)
+        
+        ship(2, 2, box)
         
         if self.output == 'SVG':
             # The empty list at the end is for lines
-            svg_elements = Bunch(svg_glyphs=self.font_object.svg_glyphs,
+            svg_elements = Bunch(svg_glyphs=self.font_manager.svg_glyphs,
                     svg_lines=[])
             self.cache[cacheKey] = \
-                w, h, svg_elements, Element.fonts.get_used_characters()
+                w, h, svg_elements, font_manager.get_used_characters()
         elif self.output == 'Agg':
             self.cache[cacheKey] = \
-                w, h, self.font_object.get_fonts(), Element.fonts.get_used_characters()
+                w, h, font_manager.get_fonts(), font_manager.get_used_characters()
         elif self.output in ('PS', 'PDF'):
             self.cache[cacheKey] = \
-                w, h, pswriter, Element.fonts.get_used_characters()
+                w, h, pswriter, font_manager.get_used_characters()
         return self.cache[cacheKey]
             
 if rcParams["mathtext.mathtext2"]:
@@ -1788,7 +2092,7 @@ if 0: #__name__=='___main__':
 
     #w, h, fonts = math_parse_s_ps(s, 20, 72)
 
-
+# MGDTODO: Below here is out-of-date
 if __name__=='__main__':
     Element.fonts = DummyFonts()
     for i in range(5,20):
