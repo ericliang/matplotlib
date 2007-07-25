@@ -699,7 +699,6 @@ class BakomaFonts(Fonts):
         basename, font, metrics, symbol_name, num, glyph, offset = \
             self._get_info(font, sym, fontsize, dpi)
 
-        font.draw_rect(0, 0, self.width - 1, self.height - 1)
         font.draw_glyph_to_bitmap(
             int(ox),  int(oy - metrics.ymax), glyph)
 
@@ -711,16 +710,16 @@ class BakomaFonts(Fonts):
     def get_used_characters(self):
         return self.used_characters
 
-    def get_xheight(self, font, fontsize):
+    def get_xheight(self, font, fontsize, dpi):
         basename, cached_font = self._get_font(font)
-        cached_font.font.set_size(fontsize)
+        cached_font.font.set_size(fontsize, dpi)
         pclt = cached_font.font.get_sfnt_table('pclt')
         xHeight = pclt['xHeight'] / 64.0
         return xHeight
 
-    def get_underline_thickness(self, font, fontsize):
+    def get_underline_thickness(self, font, fontsize, dpi):
         basename, cached_font = self._get_font(font)
-        cached_font.font.set_size(fontsize)
+        cached_font.font.set_size(fontsize, dpi)
         return max(1.0, cached_font.font.underline_thickness / 64.0)
 
     def get_kern(self, fontleft, symleft, fontsizeleft,
@@ -944,11 +943,11 @@ setfont
         ps = "%f %f %f %f rectfill" % (x1, self.height - y2, x2 - x1, y2 - y1)
         self.pswriter.write(ps)
 
-    def get_xheight(self, font, fontsize):
+    def get_xheight(self, font, fontsize, dpi):
         basename, cached_font = self._get_font(font)
         return cached_font.get_xheight() * 0.001 * fontsize
 
-    def get_underline_thickness(self, font, fontsize):
+    def get_underline_thickness(self, font, fontsize, dpi):
         basename, cached_font = self._get_font(font)
         return cached_font.get_underline_thickness() * 0.001 * fontsize
     
@@ -1367,7 +1366,7 @@ class Hrule(Rule):
     """Convenience class to create a horizontal rule."""
     def __init__(self, state):
         thickness = state.font_output.get_underline_thickness(
-            state.font, state.fontsize)
+            state.font, state.fontsize, state.dpi)
         height = depth = thickness * 0.5
         Rule.__init__(self, None, height, depth, state)
 
@@ -1375,7 +1374,7 @@ class Vrule(Rule):
     """Convenience class to create a vertical rule."""
     def __init__(self, state):
         thickness = state.font_output.get_underline_thickness(
-            state.font, state.fontsize)
+            state.font, state.fontsize, state.dpi)
         Rule.__init__(self, thickness, None, None, state)
         
 class Glue(Node):
@@ -1950,6 +1949,7 @@ class Parser:
         return [box]
 
     def symbol(self, s, loc, toks):
+        # print "symbol", toks
         c = toks[0]
         if c in self._spaced_symbols:
             return [Hlist([self._make_space(0.3),
@@ -1982,7 +1982,7 @@ class Parser:
         assert(len(toks)==1)
         state = self.get_state()
         thickness = state.font_output.get_underline_thickness(
-            state.font, state.fontsize)
+            state.font, state.fontsize, state.dpi)
         accent, sym = toks[0]
         accent = Accent(self._accent_map[accent], self.get_state())
         centered = HCentered([accent])
@@ -2067,11 +2067,12 @@ class Parser:
                 sub = next2
         else:
             raise ParseFatalException("Subscript/superscript string is too long.")
-
+        
         state = self.get_state()
         rule_thickness = state.font_output.get_underline_thickness(
-            state.font, state.fontsize)
-        xHeight = state.font_output.get_xheight(state.font, state.fontsize)
+            state.font, state.fontsize, state.dpi)
+        xHeight = state.font_output.get_xheight(
+            state.font, state.fontsize, state.dpi)
         
         if self.is_overunder(nucleus):
             vlist = []
@@ -2155,7 +2156,7 @@ class Parser:
         cden.hpack(width, 'exactly')
         state = self.get_state()
         thickness = state.font_output.get_underline_thickness(
-            state.font, state.fontsize)
+            state.font, state.fontsize, state.dpi)
         space = thickness * 3.0
         vlist = Vlist([cnum,
                        FixedGlue(thickness * 2.0),
@@ -2243,7 +2244,7 @@ class math_parse_s_ft2font_common:
             pswriter = list()
             font_output.set_canvas_size(w, h, pswriter)
         ship(2, 2, box)
-        
+
         if self.output == 'SVG':
             # The empty list at the end is for lines
             svg_elements = Bunch(svg_glyphs=font_output.svg_glyphs,
