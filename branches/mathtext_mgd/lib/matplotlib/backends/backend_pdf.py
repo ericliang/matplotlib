@@ -1100,25 +1100,27 @@ class RendererPdf(RendererBase):
         self.file.output(Op.begin_text)
         prev_font = None, None
         oldx, oldy = 0, 0
-        for ox, oy, fontname, fontsize, glyph in pswriter:
-            a = angle / 180.0 * pi
-            newx = x + cos(a)*ox - sin(a)*oy
-            newy = y + sin(a)*ox + cos(a)*oy
-            self._setup_textpos(newx, newy, angle, oldx, oldy)
-            oldx, oldy = newx, newy
-            if (fontname, fontsize) != prev_font:
-                self.file.output(self.file.fontName(fontname), fontsize,
-                                 Op.selectfont)
-                prev_font = fontname, fontsize
+        for record in pswriter:
+            if record[0] == 'glyph':
+                rec_type, ox, oy, fontname, fontsize, glyph = record
+                a = angle / 180.0 * pi
+                newx = x + cos(a)*ox - sin(a)*oy
+                newy = y + sin(a)*ox + cos(a)*oy
+                self._setup_textpos(newx, newy, angle, oldx, oldy)
+                oldx, oldy = newx, newy
+                if (fontname, fontsize) != prev_font:
+                    self.file.output(self.file.fontName(fontname), fontsize,
+                                     Op.selectfont)
+                    prev_font = fontname, fontsize
 
-            #if fontname.endswith('cmsy10.ttf') or \
-            #fontname.endswith('cmmi10.ttf') or \
-            #fontname.endswith('cmex10.ttf'):
-            #        string = '\0' + chr(glyph)
-
-            string = chr(glyph)
-            self.file.output(string, Op.show)
+                string = chr(glyph)
+                self.file.output(string, Op.show)
         self.file.output(Op.end_text)
+
+        for record in pswriter:
+            if record[0] == 'rect':
+                rec_type, ox, oy, width, height = record
+                self.file.output(Op.gsave, x + ox, y + oy, width, height, Op.rectangle, Op.fill, Op.grestore)
 
     def _draw_tex(self, gc, x, y, s, prop, angle):
         # Rename to draw_tex to enable, but note the following:

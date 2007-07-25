@@ -338,7 +338,7 @@ class RendererSVG(RendererBase):
         width, height, svg_elements, used_characters = \
             math_parse_s_ft2font_svg(s, 72, prop)
         svg_glyphs = svg_elements.svg_glyphs
-        svg_lines = svg_elements.svg_lines
+        svg_rects = svg_elements.svg_rects
         color = rgb2hex(gc.get_rgb())
 
         self.open_group("mathtext")
@@ -354,7 +354,7 @@ class RendererSVG(RendererBase):
 
             for font, fontsize, thetext, new_x, new_y_mtc, metrics in svg_glyphs:
                 charid = self._add_char_def(font, thetext)
-
+                
                 svg.append('<use xlink:href="#%s" transform="translate(%s, %s) scale(%s)"/>\n' % 
                            (charid, new_x, -new_y_mtc, fontsize / self.FONT_SCALE))
             svg.append('</g>\n')
@@ -368,7 +368,7 @@ class RendererSVG(RendererBase):
 
             curr_x,curr_y = 0.0,0.0
 
-            for fontname, fontsize, thetext, new_x, new_y_mtc, metrics in svg_glyphs:
+            for font, fontsize, thetext, new_x, new_y_mtc, metrics in svg_glyphs:
                 if rcParams["mathtext.mathtext2"]:
                     new_y = new_y_mtc - height
                 else:
@@ -394,13 +394,20 @@ class RendererSVG(RendererBase):
 
             svg.append('</text>\n')
 
+        if len(svg_rects):
+            svg.append('<g style="fill: black; stroke: none" transform="')
+            if angle != 0:
+                svg.append('translate(%f,%f) rotate(%1.1f)'
+                           % (x,y,-angle) )
+            else:
+                svg.append('translate(%f,%f)' % (x, y))
+            svg.append('">\n')
+
+            for x, y, width, height in svg_rects:
+                svg.append('<rect x="%s" y="%s" width="%s" height="%s" fill="black" stroke="none" />' % (x, -y + height, width, height))
+            svg.append("</g>")
+                
         self._svgwriter.write (''.join(svg))
-        rgbFace = gc.get_rgb()
-        for xmin, ymin, xmax, ymax in svg_lines:
-            newx, newy = x + xmin, y + height - ymax#-(ymax-ymin)/2#-height
-            self.draw_rectangle(gc, rgbFace, newx, newy, xmax-xmin, ymax-ymin)
-            #~ self.draw_line(gc, x + xmin, y + ymin,# - height,
-                                     #~ x + xmax, y + ymax)# - height)
         self.close_group("mathtext")
 
     def finish(self):
