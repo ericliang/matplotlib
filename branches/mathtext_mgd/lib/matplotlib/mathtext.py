@@ -739,12 +739,6 @@ class BakomaPSFonts(BakomaFonts):
     Use the Bakoma postscript fonts for rendering to backend_ps
     """
 
-    def _get_offset(self, basename, cached_font, glyph, fontsize, dpi):
-        head = cached_font.font.get_sfnt_table("head")
-        if basename.lower() == 'cmex10':
-            return -(head['yMin']+512)/head['unitsPerEm']*10.
-        return 0.
-    
     def set_canvas_size(self, w, h, pswriter):
         'Dimension the drawing canvas; may be a noop'
         self.width  = w
@@ -756,7 +750,7 @@ class BakomaPSFonts(BakomaFonts):
                 self._get_info(font, sym, fontsize, dpi)
         oy = self.height - oy
         if basename.lower() == 'cmex10':
-            oy += offset - 512/2048.*10.
+            oy += offset
             
         ps = """/%(basename)s findfont
 %(fontsize)s scalefont
@@ -1067,7 +1061,7 @@ class Char(Node):
         self._update_metrics()
         
     def __internal_repr__(self):
-        return repr(self.c)
+        return '`%s`' % self.c
 
     def _update_metrics(self):
         metrics = self._metrics = self.font_output.get_metrics(
@@ -1097,7 +1091,7 @@ class Char(Node):
         if self.size < NUM_SIZE_LEVELS:
             self.fontsize *= SHRINK_FACTOR
             self._update_metrics()
-        
+
 class Accent(Char):
     """The font metrics need to be dealt with differently for accents, since they
     are already offset correctly from the baseline in TrueType fonts."""
@@ -1305,7 +1299,7 @@ class Vlist(List):
         p = self.list_head
         while p is not None:
             if isinstance(p, Char):
-                raise RuntimeError("Internal error in mathtext")
+                raise RuntimeError("Internal mathtext error: Char node found in Vlist.")
             elif isinstance(p, Box):
                 x += d + p.height
                 d = p.depth
@@ -1504,6 +1498,19 @@ class SubSuperCluster(Hlist):
         self.super = None
         Hlist.__init__(self, [])
 
+class AutoSizedDelim(Hlist):
+    def __init__(self, c, height, depth, state):
+        char = Char(c, state)
+        shift = 0.
+        if char.height + char.depth < height + depth:
+            factor = (height + depth) / (char.height + char.depth)
+            fontsize = char.fontsize * factor
+            state = state.copy()
+            state.fontsize = fontsize
+            char = Char(c, state)
+            shift = (depth - char.depth)
+        Hlist.__init__(self, [char])
+        self.shift_amount = shift
         
 class Ship(object):
     """Once the boxes have been set up, this sends them to output.
@@ -1612,7 +1619,7 @@ class Ship(object):
 
         while p:
             if isinstance(p, Char):
-                raise RuntimeError("Internal error in mathtext")
+                raise RuntimeError("Internal mathtext error: Char node found in vlist")
             elif isinstance(p, List):
                 if p.list_head is None:
                     self.cur_v += p.height + p.depth
@@ -1663,7 +1670,7 @@ ship = Ship()
 ##############################################################################
 # PARSER
 
-class Parser:
+class Parser(object):
     _binary_operators = Set(r'''
       + - *
       \pm             \sqcap                   \rhd
@@ -1707,7 +1714,7 @@ class Parser:
 
     _spaced_symbols = _binary_operators | _relation_symbols | _arrow_symbols
 
-    _delimiter_symbols = Set(r', ; . !'.split())
+    _punctuation_symbols = Set(r', ; . !'.split())
     
     def __init__(self):
         # All forward declarations are here
@@ -1716,6 +1723,7 @@ class Parser:
         subsuper = Forward().setParseAction(self.subsuperscript).setName("subsuper")
         placeable = Forward().setName("placeable")
         simple = Forward().setName("simple")
+        autoDelim = Forward().setParseAction(self.auto_sized_delimiter)
         self._expression = Forward().setParseAction(self.finish).setName("finish")
 
         lbrace       = Literal('{').suppress()
@@ -1724,41 +1732,8 @@ class Parser:
         start_group.setParseAction(self.start_group)
         end_group    = rbrace
         end_group.setParseAction(self.end_group)
-        lbrack       = Literal('[')
-        rbrack       = Literal(']')
-        lparen       = Literal('(')
-        rparen       = Literal(')')
-        grouping     =(lbrack 
-                     | rbrack 
-                     | lparen 
-                     | rparen)
 
         bslash       = Literal('\\')
-
-        langle       = Literal('<')
-        rangle       = Literal('>')
-        equals       = Literal('=')
-        relation     =(langle
-                     | rangle
-                     | equals)
-
-        colon        = Literal(':')
-        comma        = Literal(',')
-        period       = Literal('.')
-        semicolon    = Literal(';')
-        exclamation  = Literal('!')
-        punctuation  =(colon
-                     | comma
-                     | period
-                     | semicolon)
-
-        at           = Literal('@')
-        percent      = Literal('%')
-        ampersand    = Literal('&')
-        misc         =(exclamation
-                     | at
-                     | percent
-                     | ampersand)
 
         accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
                              "\" ` ' ~ . ^")
@@ -1794,7 +1769,7 @@ class Parser:
 
         symbol       = Regex("(" + ")|(".join(
                        [
-                         r"\\[a-zA-Z0-9]+(?!{)",
+                         r"\\(?!right)(?!left)[a-zA-Z0-9]+(?!{)",
                          r"[a-zA-Z0-9 ]",
                          r"[+\-*/]",
                          r"[<>=]",
@@ -1845,7 +1820,8 @@ class Parser:
 
         simple      <<(space
                      | font
-                     | subsuper)
+                     | subsuper
+                     )
 
         subsuperop   =(Literal("_")
                      | Literal("^")
@@ -1861,8 +1837,22 @@ class Parser:
                        | placeable
                      )
 
+        ambiDelim    = oneOf(r"| \| / \backslash \uparrow \downarrow \updownarrow \Uparrow \Downarrow \Updownarrow")
+        leftDelim    = oneOf(r"( [ { \lfloor \langle \lceil")
+        rightDelim   = oneOf(r") ] } \rfloot \rangle \rceil")
+
+        autoDelim   <<(Suppress(Literal(r"\left"))
+                     + (leftDelim | ambiDelim)
+                     + Group(
+                         autoDelim
+                       ^ OneOrMore(simple))
+                     + Suppress(Literal(r"\right"))
+                     + (rightDelim | ambiDelim)  
+                     )
+        
         math         = OneOrMore(
-                       simple
+                       autoDelim
+                     | simple
                      ).setParseAction(self.math).setName("math")
 
         math_delim   =(~bslash
@@ -1955,7 +1945,7 @@ class Parser:
             return [Hlist([self._make_space(0.3),
                           Char(c, self.get_state()),
                           self._make_space(0.3)])]
-        elif c in self._delimiter_symbols:
+        elif c in self._punctuation_symbols:
             return [Hlist([Char(c, self.get_state()),
                            self._make_space(0.3)])]
         return [Char(toks[0], self.get_state())]
@@ -2173,8 +2163,17 @@ class Parser:
         hlist = Hlist([vlist, FixedGlue(thickness * 2.)])
         return [hlist]
 
+    def auto_sized_delimiter(self, s, loc, toks):
+        front, middle, back = toks
+        state = self.get_state()
+        height = max([x.height for x in middle])
+        depth = max([x.depth for x in middle])
+        hlist = Hlist(
+            [AutoSizedDelim(front, height, depth, state)] +
+            middle.asList() +
+            [AutoSizedDelim(back, height, depth, state)])
+        return hlist
     
-
 ####
 
 ##############################################################################
