@@ -1728,23 +1728,15 @@ class Parser(object):
 
         bslash       = Literal('\\')
 
-        accent       = oneOf("hat check dot breve acute ddot grave tilde bar vec "
-                             "\" ` ' ~ . ^")
+        accent       = oneOf("hat check dot breve acute ddot grave tilde bar "
+                             "vec \" ` ' ~ . ^")
 
-        function     = oneOf("arccos csc ker min arcsin deg lg Pr arctan det lim sec "
-                             "arg dim liminf sin cos exp limsup sinh cosh gcd ln sup "
-                             "cot hom log tan coth inf max tanh")
+        function     = oneOf("arccos csc ker min arcsin deg lg Pr arctan det "
+                             "lim sec arg dim liminf sin cos exp limsup sinh "
+                             "cosh gcd ln sup cot hom log tan coth inf max "
+                             "tanh")
 
         number       = Combine(Word(nums) + Optional(Literal('.')) + Optional( Word(nums) ))
-
-        plus         = Literal('+')
-        minus        = Literal('-')
-        times        = Literal('*')
-        div          = Literal('/')
-        binop        =(plus 
-                     | minus
-                     | times
-                     | div)
 
         fontname     = oneOf("rm cal it tt sf bf")
         latex2efont  = oneOf("mathrm mathcal mathit mathtt mathsf mathbf")
@@ -1784,7 +1776,9 @@ class Parser(object):
 
         group        = Group(
                          start_group
-                       + OneOrMore(simple)
+                       + OneOrMore(
+                           autoDelim
+                         | simple)
                        + end_group
                      ).setParseAction(self.group).setName("group")
 
@@ -1833,8 +1827,7 @@ class Parser(object):
                                  \updownarrow \Uparrow \Downarrow
                                  \Updownarrow""")
         leftDelim    = oneOf(r"( [ { \lfloor \langle \lceil")
-        rightDelim   = oneOf(r") ] } \rfloot \rangle \rceil")
-
+        rightDelim   = oneOf(r") ] } \rfloor \rangle \rceil")
         autoDelim   <<(Suppress(Literal(r"\left"))
                      + (leftDelim | ambiDelim)
                      + Group(

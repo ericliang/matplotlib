@@ -10,7 +10,7 @@ stests = [
     r'$x\leftarrow y\ x\forall y$',
     r'$x \sf x \bf x {\cal X} \rm x$',
     r'$\{ \rm braces \}$',
-    r'$\left[\left\lfloor\frac{5}{\frac{3}{4}} y\right)\right]$',
+    r'$\left[\left\lfloor\frac{5}{\frac{\left(3\right)}{4}} y\right)\right]$',
     r'$\left(x\right)$',
     r'$\sin(x)$',
     r'$x_2$',
