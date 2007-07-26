@@ -59,16 +59,9 @@ USAGE:
            ^
         use raw strings
 
-  The $ symbols must be the first and last symbols in the string.  Eg,
-  you cannot do
+  Math and non-math can be interpresed in the same string.  E.g.,
 
     r'My label $x_i$'.
-
-  but you can change fonts, as in
-
-    r'$\rm{My label} x_i$'
-
-  to achieve the same effect.
 
   A large set of the TeX symbols are provided.  Subscripting and
   superscripting are supported, as well as the over/under style of
@@ -1714,7 +1707,7 @@ class Parser(object):
 
     _spaced_symbols = _binary_operators | _relation_symbols | _arrow_symbols
 
-    _punctuation_symbols = Set(r', ; . !'.split())
+    _punctuation_symbols = Set(r', ; . ! \ldotp \cdotp'.split())
     
     def __init__(self):
         # All forward declarations are here
@@ -1769,15 +1762,14 @@ class Parser(object):
 
         symbol       = Regex("(" + ")|(".join(
                        [
-                         r"\\(?!right)(?!left)[a-zA-Z0-9]+(?!{)",
+                         r"\\(?!left[^a-z])(?!right[^a-z])[a-zA-Z0-9]+(?!{)",
                          r"[a-zA-Z0-9 ]",
                          r"[+\-*/]",
                          r"[<>=]",
                          r"[:,.;!]",
                          r"[!@%&]",
                          r"[[\]()]",
-                         r"\\\$",
-                         r"\\\%"
+                         r"\\[$%{}]",
                        ])
                      + ")"
                      ).setParseAction(self.symbol).leaveWhitespace()
@@ -1828,7 +1820,7 @@ class Parser(object):
                      )   
 
         subsuper    << Group(
-                         ( placeable
+                         ( Optional(placeable)
                          + OneOrMore(
                              subsuperop
                            + placeable
@@ -1837,7 +1829,9 @@ class Parser(object):
                        | placeable
                      )
 
-        ambiDelim    = oneOf(r"| \| / \backslash \uparrow \downarrow \updownarrow \Uparrow \Downarrow \Updownarrow")
+        ambiDelim    = oneOf(r"""| \| / \backslash \uparrow \downarrow
+                                 \updownarrow \Uparrow \Downarrow
+                                 \Updownarrow""")
         leftDelim    = oneOf(r"( [ { \lfloor \langle \lceil")
         rightDelim   = oneOf(r") ] } \rfloot \rangle \rceil")
 
@@ -1861,9 +1855,9 @@ class Parser(object):
         non_math     = Regex(r"(?:[^$]|(?:\\\$))*"
                      ).setParseAction(self.non_math).setName("non_math").leaveWhitespace()
 
-        self._expression  <<(
+        self._expression <<(
                          non_math
-                       + ZeroOrMore(
+                       + OneOrMore(
                            Suppress(math_delim)
                          + math
                          + Suppress(math_delim)
@@ -1908,6 +1902,7 @@ class Parser(object):
         return [self._expr]
         
     def math(self, s, loc, toks):
+        #~ print "math", toks
         hlist = Hlist(toks)
         self.pop_state()
         return [hlist]
@@ -2164,6 +2159,7 @@ class Parser(object):
         return [hlist]
 
     def auto_sized_delimiter(self, s, loc, toks):
+        #~ print "auto_sized_delimiter", toks
         front, middle, back = toks
         state = self.get_state()
         height = max([x.height for x in middle])

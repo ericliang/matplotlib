@@ -52,7 +52,7 @@ if '--latex' in sys.argv:
     os.system("pdflatex mathtext_examples.ltx")
 else:
     for i, s in enumerate(stests):
-        print s
+        print "%02d: %s" % (i, s)
         plot([1,2,3], 'r')
         x = arange(0.0, 3.0, 0.1)
 
