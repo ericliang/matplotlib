@@ -34,7 +34,7 @@ class DailyData:
             converters={0:datestr2num},
             skiprows=1, unpack=True)            
 
-if 0:  # pay the load only once in interactive mode
+if 1:  # pay the load only once in interactive mode
     tickerd = dict()
     for ticker in tickers:
         tickerd[ticker] = DailyData(ticker)
@@ -138,8 +138,7 @@ class DailyPoint(ScatterPoint):
 
         fig.subplots_adjust(bottom=0.15, hspace=0.05)        
 
-
-        draw()
+        fig.canvas.manager.show()
 
 class ScatterPoints:
     def __init__(self, ax, pnts, **kwargs):
