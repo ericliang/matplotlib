@@ -4,6 +4,8 @@ This now uses the imshow command instead of pcolor which *is much
 faster*
 """
 from __future__ import division
+import numpy
+
 from pylab import *
 from matplotlib.lines import Line2D
 from matplotlib.transforms import get_bbox_transform, Point, Value, Bbox,\
@@ -14,7 +16,7 @@ from matplotlib.transforms import get_bbox_transform, Point, Value, Bbox,\
 if 1:   # load the data
     # data are 256x256 16 bit integers
     dfile = 'data/s1045.ima'
-    im = fromstring(file(dfile, 'rb').read(), UInt16).astype(Float)
+    im = fromstring(file(dfile, 'rb').read(), numpy.uint16).astype(numpy.float)
     im.shape = 256, 256
 
 if 1: # plot the MRI in pcolor
@@ -62,17 +64,17 @@ if 1:   # plot the EEG
 
     for i in range(numRows):
         # effectively a copy of transData
-        trans = get_bbox_transform(boxin, boxout) 
+        trans = get_bbox_transform(boxin, boxout)
         offset = (i+1)/(numRows+1)
 
         trans.set_offset( (0, offset), transOffset)
-        
+
         thisLine = Line2D(
             t, data[:,i]-data[0,i],
             )
-        
+
         thisLine.set_transform(trans)
-        
+
         ax.add_line(thisLine)
         ticklocs.append(offset)
 
@@ -85,10 +87,10 @@ if 1:   # plot the EEG
     ax.set_yticks(ticklocs)
     for tick in ax.yaxis.get_major_ticks():
         tick.label1.set_transform(ax.transAxes)
-        tick.label2.set_transform(ax.transAxes)        
+        tick.label2.set_transform(ax.transAxes)
         tick.tick1line.set_transform(ax.transAxes)
-        tick.tick2line.set_transform(ax.transAxes)        
-        tick.gridline.set_transform(ax.transAxes)                
+        tick.tick2line.set_transform(ax.transAxes)
+        tick.gridline.set_transform(ax.transAxes)
 
 
     xlabel('time (s)')

@@ -7,29 +7,30 @@ import sys, os
 default = 'Agg'
 # do not remove the pngs - some are screenshots!
 files = {
-    'wheeler_demo.py'   : default,            
-    'layer_images.py'   : default,        
-    'finance_work2.py'  : default,    
-    'simple_plot.py'    : default, 
-    'axes_demo.py'      : default, 
-    'histogram_demo.py' : default, 
+    'wheeler_demo.py'   : default,
+    'layer_images.py'   : default,
+    'finance_work2.py'  : default,
+    'simple_plot.py'    : default,
+    'axes_demo.py'      : default,
+    'histogram_demo.py' : default,
     'mri_with_eeg.py'   : default,
     'fill_demo.py'      : default,
-    'date_demo.py'      : default,         
+    'date_demo.py'      : default,
     'barchart_demo.py'  : default,
     'table_demo.py'     : default,
-    'tex_demo.py'     : default, 
+    'tex_demo.py'     : default,
     'legend_demo.py'    : default,
-    'slider_demo.py'    : default,    
-    'mathtext_demo.py'  : default,     
-    'pcolor_demo.py'    : default, 
-    'text_themes.py'    : default, 
+    'slider_demo.py'    : default,
+    'mathtext_demo.py'  : default,
+    'mathtext_examples.py'  : default,
+    'pcolor_demo.py'    : default,
+    'text_themes.py'    : default,
     'log_shot.py'       : default,
-    'align_text.py'     : default,          
-    'scatter_demo2.py'  : default, 
+    'align_text.py'     : default,
+    'scatter_demo2.py'  : default,
     'polar_demo.py'     : default,
     'pie_demo.py'     : default,
-    'plotmap.py'     : default,         
+    'plotmap.py'     : default,
     'hstdemo.py' : default,
     }
 
@@ -43,7 +44,7 @@ def make_shot(fname, backend):
         'matplotlib.use("%s")\n' % backend,
         'from pylab import *\n'
         ]
-    
+
     print '\tdriving %s' % fname
     for line in file(fname):
         if line.strip().startswith('from __future__ import division'): continue
@@ -59,7 +60,7 @@ def make_shot(fname, backend):
     file(tmpfile, 'w').write(''.join(lines))
     os.system('python %s' % tmpfile)
     #os.remove(tmpfile)
-    
+
 for fname, backend in files.items():
     make_shot(fname, backend)
 

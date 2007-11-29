@@ -1,8 +1,53 @@
 # To update, add a new entry to the versioninfo dictionary using the
-# version string as a key. The value of the dict entry should be a 
+# version string as a key. The value of the dict entry should be a
 # tuple of (name, description) tuples
 
 versioninfo = {}
+
+versioninfo['0.91.0'] = (
+
+('enhanced mathtext', """Complete revamp of matplotlib's internal math layout and rendering
+engine.  Michael Droetboom has improved the TeX parser to
+significantly expand it's coverege, and implemeted Knuth's box layout
+algorithms.  Additionally, the much anticipated <a
+href=http://www.stixfonts.org/>STIX fonts</a> for math expressions
+have come online and ship with matplotlib.  See a sample of the new mathtext at <a
+href=screenshots.html#mathtext_examples>mathtext_examples</a>.
+"""),
+
+
+('better configuration', """Darren Dale has provided support for a site.cfg configuration file to
+enable users and package maintainers to have better control over the
+matplotlib build process.  He has also provided a (currently optional)
+<a href=http://code.enthought.com/traits/>enthought.traits</a> enabled property configuration to replace
+matplotlib's <a href=matplotlibrc>rc</a> configuration using a <a href=http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/lib/matplotlib/mpl-data/matplotlib.conf.template?view=markup>maplotlib.conf</a> file
+
+"""
+)
+
+('writing to file-like objects', """You can now pass file like objects (eg StringIO) to all backends for hardcopy.
+This has been a much requested feature for usage in web application servers.
+""")
+
+('record array support', """New functions for loading, displaying and saving numpy record arrays in <a href=matplotlib.html>matplotlib.mlab</a>.  See for example, <a href=examples/loadrec.py>loadrec.py</a>
+"""),
+
+('pyplot', """Added a module <a href=matplotlib.pyplot.html>matplotlib.pyplot</a> which has all of pylab's plotting functions (eg figure, plot, show, close) but does not import the numpy namepace.  This is useful for those who want to use the pylab functionality w/o the namespace clutter.
+"""),
+
+('maskedarray', """Added optional support for the scipy sandbox masked array packaged.  Configurable with an rc setting.
+"""),
+
+('plotfile', """Added new pylab/pyplot command <a
+href=matplotlib.pylab.html#-plotfile>plotfile</a> for gnuplot style file plotting
+"""),
+
+
+('tons of bugfixes and minor enhancements', """See the <a href=CHANGELOG>CHANGELOG<a/> and <a href=API_CHANGES>API_CHANGES<a/> for details.
+"""),
+
+
+)
 
 versioninfo['0.90.1'] = (
 
@@ -68,7 +113,7 @@ marker and image capabilities"""),
 columns are plotted as in Matlab"""),
 
 ('pcolor now supports vectors', """Made pcolor support vector X and/or Y instead of
-requiring 2-D arrays."""), 
+requiring 2-D arrays."""),
 
 ('logarithmic color scaling', """Added LogNorm to colors.py as illustrated by
 <a href=examples/pcolor_log.py>pcolor_log.py</a>, based on suggestion by
@@ -220,7 +265,7 @@ tests.
 
   ('Bugs fixed / small features', """\
 Applied SF patches 1242648, 1244732.  Fixes SF bugs 1238412, 1231611,
-1209354, subplot (2,1,1) bug, 
+1209354, subplot (2,1,1) bug,
 """),
 
 
@@ -272,7 +317,7 @@ properties
     lines.solid_joinstyle : miter       # miter|round|bevel
     lines.solid_capstyle : projecting   # butt|round|projecting
 </pre>
-  
+
 """),
 
   ('Axes kwargs', """\
@@ -282,7 +327,7 @@ example
 <pre>
   subplot(111, xlabel='time', ylabel='volts', autoscale_on=False,
          xlim=(-1,1), ylim =(0,10) )
-</pre>         
+</pre>
 
 """),
 
@@ -437,7 +482,7 @@ versioninfo['0.72'] = (
 Heavy optimizations in line marker drawing eg <tt>plot(x,y,'+')</tt> or any
 other line marker.  Here are some numbers, where N is the number of
 symbols
-    
+
 <pre>
                    0.71     0.72    speedup
        -----------------------------------
@@ -449,7 +494,7 @@ symbols
     N = 500000 | 48.81s  |  2.32s | 21.03x
 </pre>
 """),
-  
+
  ('log plot enhancements', """\
 Lots of work making log plots <i>just work</i>.  You can toggle log y
 axes with the <tt>l</tt> ("ell") keypress -- nonpositive data are simply
@@ -484,7 +529,7 @@ Baptiste!"""),
 
 ('Key press actions over axes', """\
 Default key presses over axes: 'g' toggles grid, 'l' toggles logy"""),
-  
+
 
 ('little features', """\
 Calls to subplot with overlap other subplots now delete the overlapped
@@ -511,16 +556,16 @@ of symbols provided
     >>> import matplotlib.pylab
     >>> matplotlib.pylab.__all__
 </pre>
-"""),	
+"""),
 
   ('contour zigzag bug fixed', """\
-Thanks Nadia for the blood, sweat and tears, and Dominique for the report."""),	
+Thanks Nadia for the blood, sweat and tears, and Dominique for the report."""),
 
   ('contour colormaps', """\
-Contour now uses the current colormap if colors is not provided, and works with  colorbars.  See <a href=examples/contour_demo2.py>contour_demo2.py</a>"""),	
+Contour now uses the current colormap if colors is not provided, and works with  colorbars.  See <a href=examples/contour_demo2.py>contour_demo2.py</a>"""),
 
   ('colorbar enhancements', """\
-Horizontal colorbars supported with keyword arg <tt>orientation='horizontal'</tt> and colorbars can be placed in an arbitrary axes with keyword arg <tt>cax</tt>.  See <a href=matplotlib.pylab.html#-colorbar>colorbar</a>"""),	
+Horizontal colorbars supported with keyword arg <tt>orientation='horizontal'</tt> and colorbars can be placed in an arbitrary axes with keyword arg <tt>cax</tt>.  See <a href=matplotlib.pylab.html#-colorbar>colorbar</a>"""),
 
   ('accents in mathtext', """\
 Added accents to mathtext: <tt>\hat, \breve, \grave, \bar, \acute, \tilde,
@@ -545,11 +590,11 @@ matlab-compatible load function, exposed vbox attr in
 FigureManagerGTK.
 """),
 
-  
 
-  
 
-  
+
+
+
 
 
 
@@ -558,11 +603,11 @@ versioninfo['0.70'] = (
 
   ('Users guide', """\
 Though still not complete, there's enough to be useful -- <a href=users_guide.pdf>users_guide.pdf</a>.
-"""),	
+"""),
 
   ('pie charts', """\
 See <a href=screenshots.html#pie_demo>pie screenshot</a>.
-"""),	
+"""),
 
   ('object picking', """\
 
@@ -572,10 +617,10 @@ test this out and we settle on an interface, this will probably become
 part of the core, as will other keypress functionality for navigation,
 grid toogle, zoom toggle etc.
 """),
-  
+
   ('wx/wxagg coords notification', """\
 The wx toolbar now reports the x,y coords of the mouse
-"""),	
+"""),
 
   ('key events', """\
 Key press and release event supported across backends -- see
@@ -584,7 +629,7 @@ Key press and release event supported across backends -- see
 
   ('shadow effect', """\
 <a href=matplotlib.patches.html#Shadow>Shadow</a> patch class provides
-a shadow effect for polygons, legends, pie charts - eg, 
+a shadow effect for polygons, legends, pie charts - eg,
 <a href=screenshots.html#legend_demo>legend screenshot</a>.
 """),
 
@@ -637,7 +682,7 @@ settable properties and their values.  See <a
 href=examples/set_and_get.py>set_and_get.py</a>.  Sample usage
 
 <pre>
-   >>> lines = plot([1,2,3])  
+   >>> lines = plot([1,2,3])
    >>> set(lines)
        alpha: float
        antialiased or aa: [True | False]
@@ -646,13 +691,13 @@ href=examples/set_and_get.py>set_and_get.py</a>.  Sample usage
        alpha = 1.0
        antialiased or aa = True
        ...snip lots more...
-</pre>  
+</pre>
   """),
 
   ('colormaps out the wazoo', """\
 Added many new matlab compatible colormaps - autumn bone cool
 copper flag gray hot hsv jet pink prism spring summer winter -
-Thanks Perry!  
+Thanks Perry!
   """),
 
   ('zordering', """\
@@ -694,7 +739,7 @@ rectanglular bounding box.  Example usage
 <pre>
     title('hi mom', bbox={'facecolor':'r', 'alpha':0.5})
 </pre>
-  
+
   """),
 
   ('legend properties exposed as keyword arguments', """
@@ -748,7 +793,7 @@ href=examples/polar_demo.py>polar_demo.py</a>, <a
 href=examples/polar_scatter.py>polar_scatter.py</a> and <a
 href=screenshots.html#polar_demo>polar_demo<a/>."""),
 
-  
+
   ('cairo backend', """\
 Steve Chaplin has contributed a cairo and a gtkcairo backend - <a
 href=http://cairographics.org>cairographics</a>.  Cairo is a vector
@@ -882,7 +927,7 @@ with <tt>ipython -pylab</tt>, which detects your backend and loads the
 appropriate interactive, threaded shell, as well as all of
 matplotlib.matlab and numerix.  Requires ipython-0.6.3.  Backend
 status summary: linux (all backends working), OSX (tkagg and gtk*
-work), win32 (tkagg only).  Thanks Fernando Perez!			   
+work), win32 (tkagg only).  Thanks Fernando Perez!
 """),
 
     ('Log ticking and formatting', """Excellent improvements in log
@@ -987,27 +1032,27 @@ lot of keys!  For lines, these abbrevs were added
 
 Thus you can type --not necessarily recommended for readability in
 scripts or apps but great for throwaway use in interactive shells
-<pre>    
+<pre>
     # no antialiasing, thick green markeredge lines
     >>> plot(range(10), 'ro', aa=False, mew=2, mec='g')
 </pre>
 
 Analogs in matplotlib.patches
 
-<pre>    
+<pre>
     aa  : antialiased
     lw  : linewidth
     ec  : edgecolor
     fc  : facecolor
-</pre>    
+</pre>
 """),
-    
+
     ('local rc files', """\
 You can put a matplotlibrc file in a dir to override the one in your
 HOME dir.  If you have a project, say a book, and you want to make a
 bunch of images with the same look and feel for the book, you can
 place a custom rc file in the code dir for that book and this won't
-affect the configs you use for normal, interactive use."""), 
+affect the configs you use for normal, interactive use."""),
 
     ('Installing', """\
 Updated installing instructions at <a
@@ -1064,7 +1109,7 @@ the figure - use this in place of multiple calls to show.  This is
 equivalent to doing get_current_fig_manager().canvas.draw(), but takes
 less typing :-)
 """),
-    
+
     ('Elaborate finance demo', """\
 New finance demo shows off may of the features of matplotlib - see
 screenshot at <a href=screenshots.html#finance_work2>finance_work2</a>"""),
@@ -1164,7 +1209,7 @@ axes.hold        :   True    # whether to clear the axes by default on
                              #  each plot command.  Toggle with hold command
 grid.color       :   k       # grid color
 grid.linestyle   :   :       # dotted
-grid.linewidth   :   0.5     # in points            
+grid.linewidth   :   0.5     # in points
 
 tick.major.pad      : 4       # distance to major tick label in points
 tick.minor.pad      : 4       # distance to the minor tick label in points
@@ -1182,7 +1227,7 @@ instinctively try and click on the missing buttons, but I'm used
 to it now.
 """),
 
-    ('Properly aligned text with arbitrary alignments', 
+    ('Properly aligned text with arbitrary alignments',
 """You can now expect horizontal and vertical alignment specifications
 to work with text at an arbitrary angle, eg, 45 degrees.  See <a href=examples/alignment_test.py>alignment_test.py</a>
 """),
@@ -1250,7 +1295,7 @@ href=examples/date_demo2.py>date_demo2.py</a>.  The <a
 href=matplotlib.dates.html>dates documentation</a> provides an
 overview and guide to with dates."""),
 
-    
+
     ('Ported image support to numarray and postscript backend', """
 The image module now works with Numeric or numarray, and now works in
 the postscript backend as well as GTKAgg, TkAgg, WXAgg, Agg, and GTK.
@@ -1290,7 +1335,7 @@ a finance guy!  See <a href=screenshots.html#date_demo>date demo</a>.
 """
      ),
     )
-#######################################################################################    
+#######################################################################################
 
 versioninfo['0.52'] = (
     ('Image support', """
@@ -1358,7 +1403,7 @@ disappear.""" ),
 
     ('GTKAgg', """GTK widgets with antigrain rendering.  See the <a
 href=backends.html#GTKAgg>GTKAgg backend</a>.""" ),
-    
+
     ('freetype2 support added for agg backend', """With freetype2,
 agg now renders fonts nicely even at very small raster sizes.""" ),
 
@@ -1467,14 +1512,14 @@ screenshot <a href=screenshots.html#table_demo>table_demo</a>."""),
 'x' linestyle.  Thanks Matt! """ ),
 
 	('Exposed legend properties', """Added methods to access the legend primities: text, lines, and rectangles to allow fine-grained control over legend properties; see <a href=examples/legend_demo.py>legend_demo.py</a>""" ),
-	
+
 	('gd module on win32', """\
 With much weeping and gnashing of teeth and help from half the people
 on this globe, built a gdmodule win32 installer.  Special thanks to
 Stefan Kuzminski for putting up with my endless windows confusions.
 See the win32 quickstart at <a
 href=backends.html#GDWIN32>installing</a> the GD backend."""
-),	
+),
 
 	('GD supports clipping and antialiased line drawing', """\
 See instructions about upgrading gd and gdmodule at <a
@@ -1530,8 +1575,8 @@ migrating applications to the new API."""),
   this should give better agreement with other backends with he
   relative sizes of objects</li>
 
-  <li> GTK : Dash spacing was not properly scaling with DPI</li> 
-  <li> GTK : Rotated text did not display correctly in some cases</li> 
+  <li> GTK : Dash spacing was not properly scaling with DPI</li>
+  <li> GTK : Rotated text did not display correctly in some cases</li>
 
   <li> GTK : Lots of optimizations using cacheing in GTK backend for
   improved performace for monitoring / animation scripts.  Discovered
@@ -1556,7 +1601,7 @@ work better interactively from a python shell</li>
 ########################################################################
 
 versioninfo['0.42'] = (
-	('EPS output from PS backend', 
+	('EPS output from PS backend',
 """Just add an eps extension"""),
 
 	('PS and EPS save from GTK and WX backends with bugs fixed',
@@ -1566,9 +1611,9 @@ backend have been cleared up.  A fairly substantial refactoring of the
 Text class enabled this.  Text is now backend independent and behaves
 like the other artists in the figure (lines, patches, etc).
 Additionally, PS and EPS save from WX backend work
-"""),	
+"""),
 
-	('Object picker example', 
+	('Object picker example',
 """The file examples/object_picker.py is a template showing how to
 select objects in the figure with the mouse(eg, text, lines).  If you
 click on the line, a properties dialog will pop up.  You can edit the
@@ -1583,7 +1628,7 @@ you to move objects in the figure, etc..."""),
 ########################################################################
 
 versioninfo['0.41'] = (
-('Pcolor optimizations', 
+('Pcolor optimizations',
 """Several optimizations have improved the performance of pcolor
 across all backends, 4x on the GTK backend"""),
 
@@ -1593,24 +1638,24 @@ An alpha version of the PS export functionality from the GTK backend.
 Mostly works with a few know problems.  You can simply call
 savefig('somefile.ps') or use the PS extension when saving from the
 GUI.
-"""),	
+"""),
 
 	('Bug fixes',
 """
 Fixed bugs in semilogy and in setting dashes under some versions of
 Numeric
-"""),	
+"""),
 
 	('bar takes (optional)multiple color args',
 """
 You can now pass bar a len(x) list of color args to have bars with
 different colors.
-"""),	
+"""),
 )
 ##############################################################################
 
 versioninfo['0.40'] = (
-('Wx python backend', 
+('Wx python backend',
 """ Jeremy O'Donoghue has done an amazing job implementing the backend
 for <a href=http://www.wxpython.org>wxpython</a>.  See <a
 href=matplotlib.backends.backend_wx.html>backend_wx</a> for a status
@@ -1625,7 +1670,7 @@ plots the cross spectral density of two time series, and <a
 href=matplotlib.pylab.html#-cohere>cohere</a> plots the coherence.
 See the examples <a href=examples/psd_demo.py>psd_demo.py</a> and <a
 href=examples/csd_demo.py>csd_demo.py</a>
-"""),	
+"""),
 
 	('Expanded legend capabilities',
 """
@@ -1676,7 +1721,7 @@ yourscript.py -dWX</tt> and please report any bugs not listed in the
 KNOWN BUGS section of the wx src to the <a
 href=http://sourceforge.net/mailarchive/forum.php?forum_id=36187>matplotlib-devel</a>
 mailing list.
-"""),	
+"""),
 	('Pseudo color plots',
 """
 The <a href=matplotlib.pylab.html#-pcolor>pcolor</a> command
@@ -1692,7 +1737,7 @@ Fixed reversed zoom tools, bug in ticklabel setting, bug in AFM font
 path setting for PS backend, fixed a label position bug
 """),
         )
-###############################################################################        
+###############################################################################
 
 versioninfo['0.29.2'] = (
     ('Log scaling',
@@ -1727,7 +1772,7 @@ href=examples/color_demo.py>color_demo.py</a>
 ##############################################################################
 
 versioninfo['0.29'] = (
-	('Multiple output devices', 
+	('Multiple output devices',
 """The major improvement in matplotlib with this release is that the
 library no longer requires pygtk or GTK, and instead renders to an
 abstract drawing interface.  This allows you to use matplotlib even in
@@ -1802,10 +1847,10 @@ subplots.  See <a href="examples/figtext.py">figtext.py</a>
 All drawing is done to a pixmap and then updated.  This allows flicker
 free updates of the figure.  You can use this, for example, to build a
 system monitor, which continuously shows system resources such as RAM,
-CPU, etc...  See <a href="examples/system_monitor.py">system_monitor.py</a> for a demo. 
+CPU, etc...  See <a href="examples/system_monitor.py">system_monitor.py</a> for a demo.
 """),
     )
-############################################################################    
+############################################################################
 
 versioninfo['0.2'] = (
 ('Font handling',
@@ -1831,7 +1876,7 @@ threads.  See <a href=interactive.html>Using matplotlib
 interactively</a>.
 """),
 
-('Saving figures', 
+('Saving figures',
 """ Ability to save figures in arbitrary resolution PNG or JPEG with a
 bug fix that caused saved figures to be corrupted by anything blocking
 the figure window.  A GUI widget has been added to the figure toolbar

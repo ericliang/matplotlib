@@ -1,5 +1,4 @@
 from matplotlib import rcParams
-rcParams['text.fontname'] = 'cmr10'
 from pylab import *
 
 

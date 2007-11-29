@@ -60,7 +60,8 @@ matplotlib was written by John Hunter<p>
   log plots, added improved support for scalar formatting, and did a
   lot of work to clean up the <a
   href=http://www.ctan.org/tex-archive/help/Catalogue/entries/psfrag.html?action=/tex-archive/macros/latex/contrib/supported/psfrag/>psfrag</a>
-  LaTeX output. </li>
+  LaTeX output. He wrote the site.cfg and matplotlib.conf
+  configuration support</li>
 
   <li>Paul Mcguire provided the pyparsing module on which mathtext
   relies, and made a number of optimizations to the matplotlib
@@ -107,6 +108,18 @@ matplotlib was written by John Hunter<p>
  <li>The <a href=http://brainvisa.info>brainvisa</a> Orsay team and
  Fernando Perez added Qt support to <a
  href=http://ipython.scipy.org>ipython</a>/pylab.</li>
+
+
+ <li>Charlie Moad contributed work to matplotlib's Cocoa support and
+ does the binary builds and releases</li>
+
+  <li>Jouni K. Seppaenen wrote the PDF backend</li>
+
+  <li>Michael Droettboom wrote the enhanced mathtext support,
+implementing Knuth's box layout algorithms, and is responsible for
+numerous bug-fixes, better font support, and feature enhancements
+across the matplotlib backends</li>
+
 
 
 </ul>
