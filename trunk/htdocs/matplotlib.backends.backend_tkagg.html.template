@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_tkagg</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_tkagg.py">/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_tkagg.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_tkagg.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_tkagg.py</a></font></td></tr></table>
     <p><tt>#&nbsp;Todd&nbsp;Miller&nbsp;&nbsp;&nbsp;jmiller@stsci.edu</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -113,15 +113,13 @@ is&nbsp;intended&nbsp;to&nbsp;hide&nbsp;that&nbsp;fact.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-motion_notify_event"><strong>motion_notify_event</strong></a>(self, event)</dt></dl>
 
-<dl><dt><a name="FigureCanvasTkAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt></dl>
-
 <dl><dt><a name="FigureCanvasTkAgg-resize"><strong>resize</strong></a>(self, event)</dt></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-show"><strong>show</strong></a> = <a href="#FigureCanvasTkAgg-draw">draw</a>(self)</dt></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>keyvald</strong> = {65361: 'left', 65362: 'up', 65363: 'right', 65364: 'down', 65505: 'shift', 65506: 'shift', 65507: 'control', 65508: 'control', 65513: 'alt', 65514: 'alt'}</dl>
+<dl><dt><strong>keyvald</strong> = {65288: 'backspace', 65293: 'enter', 65299: 'break', 65300: 'scroll_lock', 65307: 'escape', 65360: 'home', 65361: 'left', 65362: 'up', 65363: 'right', 65364: 'down', ...}</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backends.backend_agg.html#FigureCanvasAgg">matplotlib.backends.backend_agg.FigureCanvasAgg</a>:<br>
@@ -129,7 +127,15 @@ Methods inherited from <a href="matplotlib.backends.backend_agg.html#FigureCanva
 
 <dl><dt><a name="FigureCanvasTkAgg-copy_from_bbox"><strong>copy_from_bbox</strong></a>(self, bbox)</dt></dl>
 
+<dl><dt><a name="FigureCanvasTkAgg-get_default_filetype"><strong>get_default_filetype</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="FigureCanvasTkAgg-get_renderer"><strong>get_renderer</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_png"><strong>print_png</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_raw"><strong>print_raw</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_rgba"><strong>print_rgba</strong></a> = print_raw(self, filename, *args, **kwargs)</dt></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-restore_region"><strong>restore_region</strong></a>(self, region)</dt></dl>
 
@@ -143,6 +149,10 @@ Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">
 native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-get_supported_filetypes"><strong>get_supported_filetypes</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-get_supported_filetypes_grouped"><strong>get_supported_filetypes_grouped</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-get_width_height"><strong>get_width_height</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;points&nbsp;or&nbsp;pixels<br>
 (depending&nbsp;on&nbsp;the&nbsp;backend),&nbsp;truncated&nbsp;to&nbsp;integers</tt></dd></dl>
@@ -163,8 +173,9 @@ where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbs
 'key_release_event',<br>
 'button_press_event',<br>
 'button_release_event',<br>
+'scroll_event',<br>
 'motion_notify_event',<br>
-'pick_event',&nbsp;<br>
+'pick_event',<br>
 &nbsp;<br>
 &nbsp;<br>
 For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
@@ -178,10 +189,56 @@ mpl_disconnect</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasTkAgg-onHilite"><strong>onHilite</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;highlights&nbsp;the&nbsp;artists<br>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;motion_notify_event<br>
+using&nbsp;canvas.<a href="#FigureCanvasTkAgg-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-onRemove"><strong>onRemove</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;removes&nbsp;the&nbsp;top&nbsp;artist<br>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;mouse_press_event<br>
+using&nbsp;canvas.<a href="#FigureCanvasTkAgg-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-pick"><strong>pick</strong></a>(self, mouseevent)</dt></dl>
+
 <dl><dt><a name="FigureCanvasTkAgg-pick_event"><strong>pick_event</strong></a>(self, mouseevent, artist, **kwargs)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;by&nbsp;artists&nbsp;who&nbsp;are&nbsp;picked&nbsp;and&nbsp;will<br>
 fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasTkAgg-print_bmp"><strong>print_bmp</strong></a> = print_raw(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_emf"><strong>print_emf</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_eps"><strong>print_eps</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, format<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;to&nbsp;hardcopy.&nbsp;Set&nbsp;the&nbsp;figure&nbsp;patch&nbsp;face&nbsp;and&nbsp;edge<br>
+colors.&nbsp;&nbsp;This&nbsp;is&nbsp;useful&nbsp;because&nbsp;some&nbsp;of&nbsp;the&nbsp;GUIs&nbsp;have&nbsp;a&nbsp;gray&nbsp;figure<br>
+face&nbsp;color&nbsp;background&nbsp;and&nbsp;you'll&nbsp;probably&nbsp;want&nbsp;to&nbsp;override&nbsp;this&nbsp;on<br>
+hardcopy.<br>
+&nbsp;<br>
+filename&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;can&nbsp;also&nbsp;be&nbsp;a&nbsp;file&nbsp;object&nbsp;on&nbsp;image&nbsp;backends<br>
+orientation&nbsp;-&nbsp;only&nbsp;currently&nbsp;applies&nbsp;to&nbsp;PostScript&nbsp;printing.<br>
+dpi&nbsp;-&nbsp;the&nbsp;dots&nbsp;per&nbsp;inch&nbsp;to&nbsp;save&nbsp;the&nbsp;figure&nbsp;in;&nbsp;if&nbsp;None,&nbsp;use&nbsp;savefig.dpi<br>
+facecolor&nbsp;-&nbsp;the&nbsp;facecolor&nbsp;of&nbsp;the&nbsp;figure<br>
+edgecolor&nbsp;-&nbsp;the&nbsp;edgecolor&nbsp;of&nbsp;the&nbsp;figure<br>
+orientation&nbsp;-&nbsp;'landscape'&nbsp;|&nbsp;'portrait'&nbsp;(not&nbsp;supported&nbsp;on&nbsp;all&nbsp;backends)<br>
+format&nbsp;-&nbsp;when&nbsp;set,&nbsp;forcibly&nbsp;set&nbsp;the&nbsp;file&nbsp;format&nbsp;to&nbsp;save&nbsp;to</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_pdf"><strong>print_pdf</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_ps"><strong>print_ps</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_rgb"><strong>print_rgb</strong></a> = print_raw(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_svg"><strong>print_svg</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-print_svgz"><strong>print_svgz</strong></a>(self, *args, **kwargs)</dt></dl>
+
 <dl><dt><a name="FigureCanvasTkAgg-resize_event"><strong>resize_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-scroll_event"><strong>scroll_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
+scroll&nbsp;wheel&nbsp;event.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,<br>
+left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasTkAgg-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt><dd><tt>Set&nbsp;the&nbsp;title&nbsp;text&nbsp;of&nbsp;the&nbsp;window&nbsp;containing&nbsp;the&nbsp;figure.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;has&nbsp;no&nbsp;effect&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;window&nbsp;(eg,&nbsp;a&nbsp;PS&nbsp;backend).</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasTkAgg-switch_backends"><strong>switch_backends</strong></a>(self, FigureCanvasClass)</dt><dd><tt>instantiate&nbsp;an&nbsp;instance&nbsp;of&nbsp;FigureCanvasClass<br>
 &nbsp;<br>
@@ -192,7 +249,9 @@ figure&nbsp;size&nbsp;or&nbsp;line&nbsp;props),&nbsp;will&nbsp;be&nbsp;reflected
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
-<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'motion_notify_event', 'pick_event')</dl>
+<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event')</dl>
+
+<dl><dt><strong>filetypes</strong> = {'emf': 'Enhanced Metafile', 'eps': 'Encapsulated Postscript', 'pdf': 'Portable Document Format', 'png': 'Portable Network Graphics', 'ps': 'Postscript', 'raw': 'Raw RGBA bitmap', 'rgba': 'Raw RGBA bitmap', 'svg': 'Scalable Vector Graphics', 'svgz': 'Scalable Vector Graphics'}</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -214,6 +273,8 @@ window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;tk.Window<br>&nbsp;</t
 <dl><dt><a name="FigureManagerTkAgg-destroy"><strong>destroy</strong></a>(self, *args)</dt></dl>
 
 <dl><dt><a name="FigureManagerTkAgg-resize"><strong>resize</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="FigureManagerTkAgg-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt></dl>
 
 <dl><dt><a name="FigureManagerTkAgg-show"><strong>show</strong></a>(self)</dt><dd><tt>this&nbsp;function&nbsp;doesn't&nbsp;segfault&nbsp;but&nbsp;causes&nbsp;the<br>
 PyEval_RestoreThread:&nbsp;NULL&nbsp;state&nbsp;bug&nbsp;on&nbsp;win32</tt></dd></dl>
@@ -246,6 +307,8 @@ window&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;The&nbsp;tk.Window<br>&nbsp;</t
 <dl><dt><a name="FigureManagerTkAgg-destroy"><strong>destroy</strong></a>(self, *args)</dt></dl>
 
 <dl><dt><a name="FigureManagerTkAgg-resize"><strong>resize</strong></a>(self, event)</dt></dl>
+
+<dl><dt><a name="FigureManagerTkAgg-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt></dl>
 
 <dl><dt><a name="FigureManagerTkAgg-show"><strong>show</strong></a>(self)</dt><dd><tt>this&nbsp;function&nbsp;doesn't&nbsp;segfault&nbsp;but&nbsp;causes&nbsp;the<br>
 PyEval_RestoreThread:&nbsp;NULL&nbsp;state&nbsp;bug&nbsp;on&nbsp;win32</tt></dd></dl>
@@ -1025,6 +1088,8 @@ Methods defined here:<br>
 
 <dl><dt><a name="NavigationToolbar2TkAgg-configure_subplots"><strong>configure_subplots</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2TkAgg-destroy"><strong>destroy</strong></a>(self, *args)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2TkAgg-draw_rubberband"><strong>draw_rubberband</strong></a>(self, event, x0, y0, x1, y1)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2TkAgg-dynamic_update"><strong>dynamic_update</strong></a>(self)</dt><dd><tt>update&nbsp;drawing&nbsp;area&nbsp;only&nbsp;if&nbsp;idle</tt></dd></dl>
@@ -1072,10 +1137,6 @@ Methods inherited from <a href="matplotlib.backend_bases.html#NavigationToolbar2
 <dl><dt><a name="NavigationToolbar2TkAgg-set_history_buttons"><strong>set_history_buttons</strong></a>(self)</dt><dd><tt>enable&nbsp;or&nbsp;disable&nbsp;back/forward&nbsp;button</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2TkAgg-zoom"><strong>zoom</strong></a>(self, *args)</dt><dd><tt>activate&nbsp;zoom&nbsp;to&nbsp;rect&nbsp;mode</tt></dd></dl>
-
-<hr>
-Methods inherited from <a href="Tkinter.html#BaseWidget">Tkinter.BaseWidget</a>:<br>
-<dl><dt><a name="NavigationToolbar2TkAgg-destroy"><strong>destroy</strong></a>(self)</dt><dd><tt>Destroy&nbsp;this&nbsp;and&nbsp;all&nbsp;descendants&nbsp;widgets.</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="Tkinter.html#Misc">Tkinter.Misc</a>:<br>
@@ -1798,8 +1859,8 @@ interactive&nbsp;mode&nbsp;to&nbsp;True,&nbsp;as&nbsp;detailed&nbsp;on<br>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 75<br>
 <strong>backend_version</strong> = 8.4000000000000004<br>
 <strong>cursord</strong> = {0: 'hand2', 1: 'arrow', 2: 'tcross', 3: 'fleur'}<br>
-<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xb4c903cc&gt;<br>
+<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0x88af3ac&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7ab38ec&gt;</td></tr></table>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
 @footer@

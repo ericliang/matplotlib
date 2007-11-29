@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.table</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/table.py">/usr/local/lib/python2.5/site-packages/matplotlib/table.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/table.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/table.py</a></font></td></tr></table>
     <p><tt>Place&nbsp;a&nbsp;table&nbsp;below&nbsp;the&nbsp;x-axis&nbsp;at&nbsp;location&nbsp;loc.<br>
 &nbsp;<br>
 The&nbsp;table&nbsp;consists&nbsp;of&nbsp;a&nbsp;grid&nbsp;of&nbsp;cells.<br>
@@ -71,7 +71,7 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license</tt></p>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Cell-__init__"><strong>__init__</strong></a>(self, xy, width, height, edgecolor<font color="#909090">='k'</font>, facecolor<font color="#909090">='w'</font>, fill<font color="#909090">=True</font>, text<font color="#909090">=''</font>, loc<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="Cell-__init__"><strong>__init__</strong></a>(self, xy, width, height, edgecolor<font color="#909090">='k'</font>, facecolor<font color="#909090">='w'</font>, fill<font color="#909090">=True</font>, text<font color="#909090">=''</font>, loc<font color="#909090">=None</font>, fontproperties<font color="#909090">=None</font>)</dt></dl>
 
 <dl><dt><a name="Cell-auto_set_font_size"><strong>auto_set_font_size</strong></a>(self, renderer)</dt><dd><tt>Shrink&nbsp;font&nbsp;size&nbsp;until&nbsp;text&nbsp;fits.</tt></dd></dl>
 
@@ -99,6 +99,8 @@ Data and other attributes defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Rectangle">matplotlib.patches.Rectangle</a>:<br>
+<dl><dt><a name="Cell-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Cell-get_height"><strong>get_height</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
@@ -131,6 +133,10 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">matplotlib.patches.Patch</a>:<br>
+<dl><dt><a name="Cell-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Cell-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
@@ -152,8 +158,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">matplotlib.patche
 <dl><dt><a name="Cell-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Cell-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -230,6 +234,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Cell-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Cell-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -244,13 +250,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Cell-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Cell-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Cell-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Cell-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Cell-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Cell-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Cell-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Cell-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Cell-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Cell-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -280,6 +302,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Cell-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Cell-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
@@ -362,11 +393,17 @@ up&nbsp;the&nbsp;table<br>&nbsp;</tt></td></tr>
 
 <dl><dt><a name="Table-auto_set_font_size"><strong>auto_set_font_size</strong></a>(self, value<font color="#909090">=True</font>)</dt><dd><tt>Automatically&nbsp;set&nbsp;font&nbsp;size.</tt></dd></dl>
 
+<dl><dt><a name="Table-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;table.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Table-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Table-get_celld"><strong>get_celld</strong></a>(self)</dt><dd><tt>return&nbsp;a&nbsp;dict&nbsp;of&nbsp;cells&nbsp;in&nbsp;the&nbsp;table</tt></dd></dl>
 
-<dl><dt><a name="Table-get_child_artists"><strong>get_child_artists</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;Artists&nbsp;cintained&nbsp;by&nbsp;the&nbsp;table</tt></dd></dl>
+<dl><dt><a name="Table-get_child_artists"><strong>get_child_artists</strong></a> = <a href="#Table-get_children">get_children</a>(self)</dt></dl>
+
+<dl><dt><a name="Table-get_children"><strong>get_children</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;Artists&nbsp;contained&nbsp;by&nbsp;the&nbsp;table</tt></dd></dl>
 
 <dl><dt><a name="Table-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer)</dt><dd><tt>Return&nbsp;the&nbsp;bounding&nbsp;box&nbsp;of&nbsp;the&nbsp;table&nbsp;in&nbsp;window&nbsp;coords</tt></dd></dl>
 
@@ -407,6 +444,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Table-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Table-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Table-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Table-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -421,16 +460,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Table-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Table-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Table-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Table-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Table-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="Table-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>the&nbsp;user&nbsp;picked&nbsp;location&nbsp;x,y;&nbsp;if&nbsp;this&nbsp;<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;is&nbsp;within&nbsp;picker<br>
-"pick&nbsp;epsilon"&nbsp;of&nbsp;x,y&nbsp;fire&nbsp;off&nbsp;a&nbsp;pick&nbsp;event</tt></dd></dl>
+<dl><dt><a name="Table-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Table-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
 <dl><dt><a name="Table-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Table-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Table-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -460,6 +512,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Table-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Table-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Table-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -551,8 +612,6 @@ Thanks&nbsp;to&nbsp;John&nbsp;Gill&nbsp;for&nbsp;providing&nbsp;the&nbsp;class&n
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
-<strong>add</strong> = &lt;ufunc 'add'&gt;<br>
-<strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82528ec&gt;</td></tr></table>
+<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x826eb6c&gt;</td></tr></table>
 @footer@

@@ -80,10 +80,10 @@ The pylab interface provides 4 commands that are useful for
 interactive control.  Note again that the interactgive setting
 primarily controls whether the figure is redrawn with each plotting
 command.  <a
-href=matplotlib.pylab.html#-isinteractive>isinteractive</a> returns
-the interactive setting, <a href=matplotlib.pylab.html#-ion>ion</a>
-turns interactive on, <a href=matplotlib.pylab.html#-ioff>ioff</a>
-turns it off, and <a href=matplotlib.pylab.html#-draw>draw</a> forces
+href=matplotlib.pyplot.html#-isinteractive>isinteractive</a> returns
+the interactive setting, <a href=matplotlib.pyplot.html#-ion>ion</a>
+turns interactive on, <a href=matplotlib.pyplot.html#-ioff>ioff</a>
+turns it off, and <a href=matplotlib.pyplot.html#-draw>draw</a> forces
 a redraw of the entire figure.  Thus when working with a big figure in
 which drawing is expensive, you may want to turn matplotlib's
 interactive setting off temporarily to avoid the performance hit

@@ -4,8 +4,8 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.dates</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/dates.py">/usr/local/lib/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
-    <p><tt>Matplotlib&nbsp;provides&nbsp;sophisticated&nbsp;date&nbsp;plotting&nbsp;capabilites,&nbsp;standing<br>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
+    <p><tt>Matplotlib&nbsp;provides&nbsp;sophisticated&nbsp;date&nbsp;plotting&nbsp;capabilities,&nbsp;standing<br>
 on&nbsp;the&nbsp;shoulders&nbsp;of&nbsp;python&nbsp;datetime,&nbsp;the&nbsp;add-on&nbsp;modules&nbsp;pytz&nbsp;and<br>
 dateutils.&nbsp;&nbsp;datetime&nbsp;objects&nbsp;are&nbsp;converted&nbsp;to&nbsp;floating&nbsp;point&nbsp;numbers<br>
 which&nbsp;represent&nbsp;the&nbsp;number&nbsp;of&nbsp;days&nbsp;since&nbsp;0001-01-01&nbsp;UTC.&nbsp;&nbsp;The&nbsp;helper<br>
@@ -21,12 +21,13 @@ All&nbsp;the&nbsp;matplotlib&nbsp;date&nbsp;converters,&nbsp;tickers&nbsp;and&nb
 timezone&nbsp;aware,&nbsp;and&nbsp;the&nbsp;default&nbsp;timezone&nbsp;is&nbsp;given&nbsp;by&nbsp;the&nbsp;timezone<br>
 parameter&nbsp;in&nbsp;your&nbsp;matplotlibrc&nbsp;file.&nbsp;&nbsp;If&nbsp;you&nbsp;leave&nbsp;out&nbsp;a&nbsp;tz&nbsp;timezone<br>
 instance,&nbsp;the&nbsp;default&nbsp;from&nbsp;your&nbsp;rc&nbsp;file&nbsp;will&nbsp;be&nbsp;assumed.&nbsp;&nbsp;If&nbsp;you&nbsp;want<br>
-to&nbsp;use&nbsp;a&nbsp;custom&nbsp;time&nbsp;zone,&nbsp;pass&nbsp;a&nbsp;matplotlib.pytz.timezone&nbsp;instance<br>
+to&nbsp;use&nbsp;a&nbsp;custom&nbsp;time&nbsp;zone,&nbsp;pass&nbsp;a&nbsp;pytz.timezone&nbsp;instance<br>
 with&nbsp;the&nbsp;tz&nbsp;keyword&nbsp;argument&nbsp;to&nbsp;num2date,&nbsp;plot_date,&nbsp;and&nbsp;any&nbsp;custom<br>
 date&nbsp;tickers&nbsp;or&nbsp;locators&nbsp;you&nbsp;create.&nbsp;&nbsp;See&nbsp;<a href="http://pytz.sourceforge.net">http://pytz.sourceforge.net</a><br>
 for&nbsp;information&nbsp;on&nbsp;pytz&nbsp;and&nbsp;timezone&nbsp;handling.<br>
 &nbsp;<br>
-dateutils&nbsp;https://moin.conectiva.com.br/DateUtil&nbsp;the&nbsp;code&nbsp;to&nbsp;handle<br>
+The&nbsp;dateutil&nbsp;module&nbsp;(<a href="http://labix.org/python-dateutil">http://labix.org/python-dateutil</a>)<br>
+provides&nbsp;additional&nbsp;code&nbsp;to&nbsp;handle<br>
 date&nbsp;ticking,&nbsp;making&nbsp;it&nbsp;easy&nbsp;to&nbsp;place&nbsp;ticks&nbsp;on&nbsp;any&nbsp;kinds&nbsp;of&nbsp;dates&nbsp;-<br>
 see&nbsp;examples&nbsp;below.<br>
 &nbsp;<br>
@@ -84,14 +85,19 @@ Date&nbsp;formatters<br>
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+<a href="datetime.html">datetime</a><br>
 <a href="dateutil.html">dateutil</a><br>
-</td><td width="25%" valign=top><a href="locale.html">locale</a><br>
-<a href="math.html">math</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
-<a href="re.html">re</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="locale.html">locale</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="matplotlib.html">matplotlib</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="pytz.html">pytz</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<a href="sys.html">sys</a><br>
+<a href="matplotlib.ticker.html">matplotlib.ticker</a><br>
 <a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.units.html">matplotlib.units</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -169,7 +175,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x845b530&gt;</dl>
+<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x84b5530&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>

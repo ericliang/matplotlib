@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.texmanager</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/texmanager.py">/usr/local/lib/python2.5/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/texmanager.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/texmanager.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;supports&nbsp;embedded&nbsp;TeX&nbsp;expressions&nbsp;in&nbsp;matplotlib&nbsp;via&nbsp;dvipng<br>
 and&nbsp;dvips&nbsp;for&nbsp;the&nbsp;raster&nbsp;and&nbsp;postscript&nbsp;backends.&nbsp;&nbsp;The&nbsp;tex&nbsp;and<br>
 dvipng/dvips&nbsp;information&nbsp;is&nbsp;cached&nbsp;in&nbsp;~/.matplotlib/tex.cache&nbsp;for&nbsp;reuse&nbsp;between<br>
@@ -22,9 +22,9 @@ Requirements:<br>
 Backends:<br>
 &nbsp;<br>
 &nbsp;&nbsp;Only&nbsp;supported&nbsp;on&nbsp;*Agg&nbsp;and&nbsp;PS&nbsp;backends&nbsp;currently<br>
-&nbsp;&nbsp;<br>
 &nbsp;<br>
-For&nbsp;raster&nbsp;output,&nbsp;you&nbsp;can&nbsp;get&nbsp;RGBA&nbsp;numerix&nbsp;arrays&nbsp;from&nbsp;TeX&nbsp;expressions<br>
+&nbsp;<br>
+For&nbsp;raster&nbsp;output,&nbsp;you&nbsp;can&nbsp;get&nbsp;RGBA&nbsp;numpy&nbsp;arrays&nbsp;from&nbsp;TeX&nbsp;expressions<br>
 as&nbsp;follows<br>
 &nbsp;<br>
 &nbsp;&nbsp;texmanager&nbsp;=&nbsp;<a href="#TexManager">TexManager</a>()<br>
@@ -43,11 +43,14 @@ rc('text',&nbsp;usetex=True)</tt></p>
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="glob.html">glob</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
+<a href="glob.html">glob</a><br>
 <a href="md5.html">md5</a><br>
-</td><td width="25%" valign=top><a href="os.html">os</a><br>
-<a href="shutil.html">shutil</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="shutil.html">shutil</a><br>
+<a href="sys.html">sys</a><br>
 <a href="warnings.html">warnings</a><br>
 </td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -74,7 +77,9 @@ working&nbsp;dir<br>&nbsp;</tt></td></tr>
 
 <dl><dt><a name="TexManager-get_basefile"><strong>get_basefile</strong></a>(self, tex, fontsize, dpi<font color="#909090">=None</font>)</dt></dl>
 
-<dl><dt><a name="TexManager-get_font_config"><strong>get_font_config</strong></a>(self)</dt></dl>
+<dl><dt><a name="TexManager-get_custom_preamble"><strong>get_custom_preamble</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TexManager-get_font_config"><strong>get_font_config</strong></a>(self)</dt><dd><tt>Reinitializes&nbsp;self&nbsp;if&nbsp;rcParams&nbsp;self&nbsp;depends&nbsp;on&nbsp;have&nbsp;changed.</tt></dd></dl>
 
 <dl><dt><a name="TexManager-get_font_preamble"><strong>get_font_preamble</strong></a>(self)</dt></dl>
 
@@ -82,14 +87,14 @@ working&nbsp;dir<br>&nbsp;</tt></td></tr>
 
 <dl><dt><a name="TexManager-get_rgba"><strong>get_rgba</strong></a>(self, tex, fontsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, rgb<font color="#909090">=(0, 0, 0)</font>)</dt><dd><tt>Return&nbsp;tex&nbsp;string&nbsp;as&nbsp;an&nbsp;rgba&nbsp;array</tt></dd></dl>
 
-<dl><dt><a name="TexManager-get_shell_cmd"><strong>get_shell_cmd</strong></a>(self, *args)</dt><dd><tt>On&nbsp;windows,&nbsp;changing&nbsp;directories&nbsp;can&nbsp;be&nbsp;complicated&nbsp;by&nbsp;the&nbsp;presence&nbsp;of&nbsp;<br>
+<dl><dt><a name="TexManager-get_shell_cmd"><strong>get_shell_cmd</strong></a>(self, *args)</dt><dd><tt>On&nbsp;windows,&nbsp;changing&nbsp;directories&nbsp;can&nbsp;be&nbsp;complicated&nbsp;by&nbsp;the&nbsp;presence&nbsp;of<br>
 multiple&nbsp;drives.&nbsp;get_shell_cmd&nbsp;deals&nbsp;with&nbsp;this&nbsp;issue.</tt></dd></dl>
 
-<dl><dt><a name="TexManager-make_dvi"><strong>make_dvi</strong></a>(self, tex, fontsize, force<font color="#909090">=0</font>)</dt></dl>
+<dl><dt><a name="TexManager-make_dvi"><strong>make_dvi</strong></a>(self, tex, fontsize)</dt></dl>
 
-<dl><dt><a name="TexManager-make_png"><strong>make_png</strong></a>(self, tex, fontsize, dpi, force<font color="#909090">=0</font>)</dt></dl>
+<dl><dt><a name="TexManager-make_png"><strong>make_png</strong></a>(self, tex, fontsize, dpi)</dt></dl>
 
-<dl><dt><a name="TexManager-make_ps"><strong>make_ps</strong></a>(self, tex, fontsize, force<font color="#909090">=0</font>)</dt></dl>
+<dl><dt><a name="TexManager-make_ps"><strong>make_ps</strong></a>(self, tex, fontsize)</dt></dl>
 
 <dl><dt><a name="TexManager-make_tex"><strong>make_tex</strong></a>(self, tex, fontsize)</dt></dl>
 
@@ -103,11 +108,15 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>dvipngVersion</strong> = '1.9'</dl>
 
+<dl><dt><strong>font_families</strong> = ('serif', 'sans-serif', 'cursive', 'monospace')</dl>
+
 <dl><dt><strong>font_family</strong> = 'serif'</dl>
 
-<dl><dt><strong>font_info</strong> = {'avant garde': ('pag', r'\usepackage{avant}'), 'bookman': ('pbk', r'\renewcommand{\rmdefault}{pbk}'), 'charter': ('pch', r'\usepackage{charter}'), 'computer modern roman': ('cmr', ''), 'computer modern sans serif': ('cmss', ''), 'computer modern typewriter': ('cmtt', ''), 'courier': ('pcr', r'\usepackage{courier}'), 'helvetica': ('phv', r'\usepackage{helvet}'), 'monospace': ('cmtt', ''), 'new century schoolbook': ('pnc', r'\renewcommand{\rmdefault}{pnc}'), ...}</dl>
+<dl><dt><strong>font_info</strong> = {'avant garde': ('pag', r'\usepackage{avant}'), 'bookman': ('pbk', r'\renewcommand{\rmdefault}{pbk}'), 'charter': ('pch', r'\usepackage{charter}'), 'computer modern roman': ('cmr', ''), 'computer modern sans serif': ('cmss', ''), 'computer modern typewriter': ('cmtt', ''), 'courier': ('pcr', r'\usepackage{courier}'), 'cursive': ('pzc', r'\usepackage{chancery}'), 'helvetica': ('phv', r'\usepackage{helvet}'), 'monospace': ('cmtt', ''), ...}</dl>
 
 <dl><dt><strong>monospace</strong> = ('cmtt', '')</dl>
+
+<dl><dt><strong>n</strong> = 'monospace'</dl>
 
 <dl><dt><strong>oldcache</strong> = '/home/jdhunter/.tex.cache'</dl>
 
@@ -139,11 +148,7 @@ Data and other attributes defined here:<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
-<strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
+<td width="100%"><strong>DEBUG</strong> = False<br>
 <strong>cmd_split</strong> = ';'<br>
-<strong>debug</strong> = False<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b00fec&gt;</td></tr></table>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}</td></tr></table>
 @footer@

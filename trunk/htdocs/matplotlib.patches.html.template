@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.patches</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/patches.py">/usr/local/lib/python2.5/site-packages/matplotlib/patches.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/patches.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/patches.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -13,10 +13,19 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
-</td><td width="25%" valign=top><a href="math.html">math</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.agg.html">matplotlib.agg</a><br>
+<a href="matplotlib.artist.html">matplotlib.artist</a><br>
+<a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.colors.html">matplotlib.colors</a><br>
+<a href="matplotlib.lines.html">matplotlib.lines</a><br>
+<a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.mlab.html">matplotlib.mlab</a><br>
+<a href="matplotlib.html">matplotlib</a><br>
+<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
+<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -97,12 +106,18 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Arrow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
 <dl><dt><a name="Arrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Arrow-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Arrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Arrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -126,8 +141,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Arrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Arrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -204,6 +217,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Arrow-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Arrow-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -218,13 +233,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Arrow-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Arrow-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Arrow-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Arrow-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Arrow-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Arrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Arrow-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Arrow-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Arrow-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Arrow-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -254,6 +285,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Arrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -337,6 +377,7 @@ Methods defined here:<br>
 <dl><dt><a name="Circle-__init__"><strong>__init__</strong></a>(self, xy, radius<font color="#909090">=5</font>, **kwargs)</dt><dd><tt>Create&nbsp;true&nbsp;circle&nbsp;at&nbsp;center&nbsp;xy=(x,y)&nbsp;with&nbsp;given&nbsp;radius;<br>
 unlike&nbsp;circle&nbsp;polygon&nbsp;which&nbsp;is&nbsp;a&nbsp;polygonal&nbsp;approcimation,&nbsp;this<br>
 uses&nbsp;splines&nbsp;and&nbsp;is&nbsp;much&nbsp;closer&nbsp;to&nbsp;a&nbsp;scale&nbsp;free&nbsp;circle<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -355,11 +396,23 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Circle-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
+<dl><dt><a name="Circle-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
+
 <dl><dt><a name="Circle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Circle-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
+<dl><dt><strong>circle</strong> = array([[-1.        ,  0.        ],
+       [-1.  ... 0.        ],
+       [-1.        ,  0.        ]])</dl>
+
+<dl><dt><strong>offset</strong> = 0.552284749831</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -384,8 +437,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Circle-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Circle-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -462,6 +513,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Circle-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Circle-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -476,13 +529,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Circle-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Circle-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Circle-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Circle-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Circle-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Circle-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Circle-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Circle-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Circle-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Circle-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -512,6 +581,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Circle-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Circle-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -593,6 +671,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <hr>
 Methods defined here:<br>
 <dl><dt><a name="CirclePolygon-__init__"><strong>__init__</strong></a>(self, xy, radius<font color="#909090">=5</font>, resolution<font color="#909090">=20</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;circle&nbsp;at&nbsp;xy=(x,y)&nbsp;with&nbsp;radius&nbsp;given&nbsp;by&nbsp;'radius'<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -611,12 +690,18 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="CirclePolygon-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>:<br>
 <dl><dt><a name="CirclePolygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="CirclePolygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="CirclePolygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -640,8 +725,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="CirclePolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="CirclePolygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -718,6 +801,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="CirclePolygon-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="CirclePolygon-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -732,13 +817,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="CirclePolygon-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="CirclePolygon-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="CirclePolygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#CirclePolygon-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="CirclePolygon-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -768,6 +869,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="CirclePolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="CirclePolygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -855,9 +965,21 @@ angle&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees&nbsp;(anti-clockwise)<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 %(<a href="#Patch">Patch</a>)s</tt></dd></dl>
 
+<dl><dt><a name="Ellipse-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
+
 <dl><dt><a name="Ellipse-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Ellipse-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>circle</strong> = array([[-1.        ,  0.        ],
+       [-1.  ... 0.        ],
+       [-1.        ,  0.        ]])</dl>
+
+<dl><dt><strong>offset</strong> = 0.552284749831</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -882,8 +1004,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Ellipse-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Ellipse-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -960,6 +1080,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Ellipse-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Ellipse-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -974,13 +1096,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Ellipse-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Ellipse-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Ellipse-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Ellipse-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Ellipse-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Ellipse-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -1010,6 +1148,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Ellipse-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Ellipse-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -1120,12 +1267,18 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="FancyArrow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
 <dl><dt><a name="FancyArrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="FancyArrow-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="FancyArrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="FancyArrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -1149,8 +1302,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="FancyArrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="FancyArrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -1227,6 +1378,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="FancyArrow-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="FancyArrow-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -1241,13 +1394,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="FancyArrow-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="FancyArrow-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FancyArrow-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="FancyArrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#FancyArrow-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="FancyArrow-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -1277,6 +1446,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="FancyArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="FancyArrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -1371,6 +1549,12 @@ transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br
 visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Patch-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Patch-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Patch-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Patch-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -1396,8 +1580,6 @@ zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Patch-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;patch</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Patch-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Patch-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -1474,6 +1656,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Patch-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Patch-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -1488,13 +1672,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Patch-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Patch-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Patch-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Patch-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Patch-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Patch-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Patch-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Patch-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Patch-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Patch-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -1524,6 +1724,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Patch-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Patch-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Patch-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -1604,6 +1813,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <hr>
 Methods defined here:<br>
 <dl><dt><a name="Polygon-__init__"><strong>__init__</strong></a>(self, xy, **kwargs)</dt><dd><tt>xy&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(x,y)&nbsp;2&nbsp;tuples<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -1624,10 +1834,16 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
 See&nbsp;<a href="#Patch">Patch</a>&nbsp;documentation&nbsp;for&nbsp;additional&nbsp;kwargs</tt></dd></dl>
 
+<dl><dt><a name="Polygon-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Polygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Polygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Polygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Polygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -1651,8 +1867,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Polygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Polygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -1729,6 +1943,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Polygon-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Polygon-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -1743,13 +1959,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Polygon-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Polygon-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Polygon-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Polygon-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Polygon-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Polygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Polygon-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Polygon-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Polygon-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Polygon-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -1779,6 +2011,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Polygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Polygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -1864,6 +2105,8 @@ Key-bindings<br>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="PolygonInteractor-__init__"><strong>__init__</strong></a>(self, poly)</dt></dl>
 
+<dl><dt><a name="PolygonInteractor-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="PolygonInteractor-button_press_callback"><strong>button_press_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
 
 <dl><dt><a name="PolygonInteractor-button_release_callback"><strong>button_release_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;released</tt></dd></dl>
@@ -1900,8 +2143,11 @@ width&nbsp;and&nbsp;height<br>&nbsp;</tt></td></tr>
 <hr>
 Methods defined here:<br>
 <dl><dt><a name="Rectangle-__init__"><strong>__init__</strong></a>(self, xy, width, height, **kwargs)</dt><dd><tt>xy&nbsp;is&nbsp;an&nbsp;x,y&nbsp;tuple&nbsp;lower,&nbsp;left<br>
+&nbsp;<br>
 width&nbsp;and&nbsp;height&nbsp;are&nbsp;width&nbsp;and&nbsp;height&nbsp;of&nbsp;rectangle<br>
+&nbsp;<br>
 fill&nbsp;is&nbsp;a&nbsp;boolean&nbsp;indicating&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;rectangle<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -1919,6 +2165,8 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Rectangle-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_height"><strong>get_height</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
@@ -1952,6 +2200,10 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Rectangle-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -1975,8 +2227,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Rectangle-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Rectangle-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -2053,6 +2303,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Rectangle-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -2067,13 +2319,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Rectangle-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Rectangle-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Rectangle-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Rectangle-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -2103,6 +2371,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Rectangle-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Rectangle-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -2186,6 +2463,7 @@ Methods defined here:<br>
 numVertices&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;vertices.<br>
 radius&nbsp;is&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;center&nbsp;to&nbsp;each&nbsp;of&nbsp;the&nbsp;vertices.<br>
 orientation&nbsp;is&nbsp;in&nbsp;radians&nbsp;and&nbsp;rotates&nbsp;the&nbsp;polygon.<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -2204,10 +2482,16 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="RegularPolygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="RegularPolygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -2231,8 +2515,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="RegularPolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="RegularPolygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -2309,6 +2591,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -2323,13 +2607,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="RegularPolygon-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#RegularPolygon-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="RegularPolygon-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -2359,6 +2659,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="RegularPolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="RegularPolygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -2439,6 +2748,7 @@ Methods defined here:<br>
 <dl><dt><a name="Shadow-__init__"><strong>__init__</strong></a>(self, patch, ox, oy, props<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;shadow&nbsp;of&nbsp;the&nbsp;patch&nbsp;offset&nbsp;by&nbsp;ox,&nbsp;oy.&nbsp;&nbsp;props,&nbsp;if&nbsp;not&nbsp;None&nbsp;is<br>
 a&nbsp;patch&nbsp;property&nbsp;update&nbsp;dictionary.&nbsp;&nbsp;If&nbsp;None,&nbsp;the&nbsp;shadow&nbsp;will&nbsp;have<br>
 have&nbsp;the&nbsp;same&nbsp;color&nbsp;as&nbsp;the&nbsp;face,&nbsp;but&nbsp;darkened<br>
+&nbsp;<br>
 kwargs&nbsp;are<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -2457,10 +2767,16 @@ kwargs&nbsp;are<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Shadow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Shadow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Shadow-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Shadow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Shadow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -2484,8 +2800,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Shadow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Shadow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -2562,6 +2876,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Shadow-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Shadow-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -2576,13 +2892,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Shadow-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Shadow-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Shadow-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Shadow-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Shadow-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Shadow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Shadow-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Shadow-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Shadow-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Shadow-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -2612,6 +2944,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Shadow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Shadow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -2690,9 +3031,11 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Wedge-__init__"><strong>__init__</strong></a>(self, center, r, theta1, theta2, dtheta<font color="#909090">=0.10000000000000001</font>, **kwargs)</dt><dd><tt>Draw&nbsp;a&nbsp;wedge&nbsp;centered&nbsp;at&nbsp;x,y&nbsp;tuple&nbsp;center&nbsp;with&nbsp;radius&nbsp;r&nbsp;that<br>
+<dl><dt><a name="Wedge-__init__"><strong>__init__</strong></a>(self, center, r, theta1, theta2, dtheta<font color="#909090">=5.0</font>, **kwargs)</dt><dd><tt>Draw&nbsp;a&nbsp;wedge&nbsp;centered&nbsp;at&nbsp;x,y&nbsp;tuple&nbsp;center&nbsp;with&nbsp;radius&nbsp;r&nbsp;that<br>
 sweeps&nbsp;theta1&nbsp;to&nbsp;theta2&nbsp;(angles)<br>
+&nbsp;<br>
 dtheta&nbsp;is&nbsp;the&nbsp;resolution&nbsp;in&nbsp;degrees<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -2711,12 +3054,18 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="Wedge-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
 <dl><dt><a name="Wedge-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Wedge-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="Wedge-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="Wedge-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -2740,8 +3089,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Wedge-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="Wedge-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -2818,6 +3165,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Wedge-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Wedge-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -2832,13 +3181,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Wedge-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Wedge-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Wedge-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Wedge-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Wedge-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Wedge-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Wedge-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Wedge-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Wedge-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Wedge-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -2868,6 +3233,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Wedge-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Wedge-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -2957,6 +3331,7 @@ dpi&nbsp;:&nbsp;the&nbsp;figure&nbsp;dpi&nbsp;instance&nbsp;(fig.dpi)<br>
 width&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;arrow&nbsp;in&nbsp;points<br>
 frac&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;arrow&nbsp;length&nbsp;occupied&nbsp;by&nbsp;the&nbsp;head<br>
 headwidth&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;base&nbsp;of&nbsp;the&nbsp;arrow&nbsp;head&nbsp;in&nbsp;points<br>
+&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -2975,6 +3350,8 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
+<dl><dt><a name="YAArrow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="YAArrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-getpoints"><strong>getpoints</strong></a>(self, x1, y1, x2, y2, k)</dt><dd><tt>for&nbsp;line&nbsp;segment&nbsp;defined&nbsp;by&nbsp;x1,y1&nbsp;and&nbsp;x2,y2,&nbsp;return&nbsp;the&nbsp;points&nbsp;on<br>
@@ -2983,6 +3360,10 @@ and&nbsp;the&nbsp;distance&nbsp;from&nbsp;x2,y2&nbsp;ot&nbsp;the&nbsp;returned&n
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="YAArrow-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
 <dl><dt><a name="YAArrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="YAArrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
@@ -3006,8 +3387,6 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="YAArrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
-
-<dl><dt><a name="YAArrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>if&nbsp;the&nbsp;mouse&nbsp;click&nbsp;is&nbsp;inside&nbsp;the&nbsp;vertices&nbsp;defining&nbsp;the&nbsp;patch,&nbsp;fire&nbsp;off&nbsp;a&nbsp;backend_bases.PickEvent</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
@@ -3084,6 +3463,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="YAArrow-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="YAArrow-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -3098,13 +3479,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="YAArrow-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="YAArrow-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="YAArrow-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#YAArrow-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="YAArrow-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="YAArrow-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -3134,6 +3531,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="YAArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="YAArrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -3210,30 +3616,10 @@ the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox<br>
 &nbsp;<br>
 props&nbsp;is&nbsp;a&nbsp;dict&nbsp;of&nbsp;rectangle&nbsp;props&nbsp;with&nbsp;the&nbsp;additional&nbsp;property<br>
 'pad'&nbsp;that&nbsp;sets&nbsp;the&nbsp;padding&nbsp;around&nbsp;the&nbsp;bbox&nbsp;in&nbsp;points</tt></dd></dl>
- <dl><dt><a name="-concatenate"><strong>concatenate</strong></a>(...)</dt><dd><tt><a href="#-concatenate">concatenate</a>((a1,&nbsp;a2,&nbsp;...),&nbsp;axis=0)<br>
-&nbsp;<br>
-Join&nbsp;arrays&nbsp;together.<br>
-&nbsp;<br>
-The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
-(default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
-&nbsp;<br>
-Example:<br>
-&nbsp;<br>
-&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
-array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
  <dl><dt><a name="-draw_bbox"><strong>draw_bbox</strong></a>(bbox, renderer, color<font color="#909090">='k'</font>, trans<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
 box&nbsp;returned&nbsp;by&nbsp;get_window_extent&nbsp;of&nbsp;an&nbsp;artist,&nbsp;to&nbsp;test&nbsp;whether<br>
 the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd></dl>
- <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
+ <dl><dt><a name="-inellipse"><strong>inellipse</strong></a>(x, y, cx, cy, a, b, angle)</dt></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -3241,16 +3627,7 @@ NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x8398d2c&gt;<br>
-<strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
-<strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
+<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>k</strong> = 'Ellipse'<br>
-<strong>kwdocd</strong> = {'Arrow': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Artist': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Circle': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'CirclePolygon': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Ellipse': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'FancyArrow': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Line2D': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...y<font color="#c040c0">\n</font>        ydata: array<font color="#c040c0">\n</font>        zorder: any number', 'Patch': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Polygon': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', 'Rectangle': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number', ...}<br>
-<strong>patchdoc</strong> = '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number'<br>
-<strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
-<strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;</td></tr></table>
+<strong>patchdoc</strong> = '    alpha: float<font color="#c040c0">\n</font>    animated: [True | False]<font color="#c040c0">\n</font>  ...   visible: [True | False]<font color="#c040c0">\n</font>    zorder: any number'</td></tr></table>
 @footer@

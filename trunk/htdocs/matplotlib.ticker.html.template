@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.ticker</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/ticker.py">/usr/local/lib/python2.5/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/ticker.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/ticker.py</a></font></td></tr></table>
     <p><tt>Tick&nbsp;locating&nbsp;and&nbsp;formatting<br>
 ============================<br>
 &nbsp;<br>
@@ -117,13 +117,17 @@ multiple&nbsp;axes&nbsp;can&nbsp;share&nbsp;the&nbsp;same&nbsp;locator&nbsp;w/o&
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+<a href="math.html">math</a><br>
+<a href="matplotlib.html">matplotlib</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
+<a href="numpy.html">numpy</a><br>
 <a href="os.html">os</a><br>
 </td><td width="25%" valign=top><a href="re.html">re</a><br>
 <a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top><a href="time.html">time</a><br>
-<a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -1141,7 +1145,7 @@ Methods defined here:<br>
 
 <dl><dt><a name="ScalarFormatter-__init__"><strong>__init__</strong></a>(self, useOffset<font color="#909090">=True</font>, useMathText<font color="#909090">=False</font>)</dt></dl>
 
-<dl><dt><a name="ScalarFormatter-format_data"><strong>format_data</strong></a>(self, value, sign<font color="#909090">=False</font>, mathtext<font color="#909090">=False</font>)</dt><dd><tt>return&nbsp;a&nbsp;formatted&nbsp;string&nbsp;representation&nbsp;of&nbsp;a&nbsp;number</tt></dd></dl>
+<dl><dt><a name="ScalarFormatter-format_data"><strong>format_data</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;formatted&nbsp;string&nbsp;representation&nbsp;of&nbsp;a&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="ScalarFormatter-format_data_short"><strong>format_data_short</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;short&nbsp;formatted&nbsp;string&nbsp;representation&nbsp;of&nbsp;a&nbsp;number</tt></dd></dl>
 
@@ -1158,7 +1162,8 @@ which&nbsp;scientific&nbsp;notation&nbsp;is&nbsp;used&nbsp;for&nbsp;numbers&nbsp
 1e-3&nbsp;or&nbsp;greater&nbsp;than&nbsp;1e4.<br>
 See&nbsp;also&nbsp;<a href="#ScalarFormatter-set_scientific">set_scientific</a>().</tt></dd></dl>
 
-<dl><dt><a name="ScalarFormatter-set_scientific"><strong>set_scientific</strong></a>(self, b)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;to&nbsp;turn&nbsp;scientific&nbsp;notation&nbsp;on&nbsp;or&nbsp;off;&nbsp;see&nbsp;also&nbsp;<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>()</tt></dd></dl>
+<dl><dt><a name="ScalarFormatter-set_scientific"><strong>set_scientific</strong></a>(self, b)</dt><dd><tt>True&nbsp;or&nbsp;False&nbsp;to&nbsp;turn&nbsp;scientific&nbsp;notation&nbsp;on&nbsp;or&nbsp;off<br>
+see&nbsp;also&nbsp;<a href="#ScalarFormatter-set_powerlimits">set_powerlimits</a>()</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatter">Formatter</a>:<br>

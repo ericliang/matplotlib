@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.lines</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/lines.py">/usr/local/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/lines.py</a></font></td></tr></table>
     <p><tt>This&nbsp;module&nbsp;contains&nbsp;all&nbsp;the&nbsp;2D&nbsp;line&nbsp;class&nbsp;which&nbsp;can&nbsp;draw&nbsp;with&nbsp;a<br>
 variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p>
 <p>
@@ -18,9 +18,10 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
 <a href="matplotlib.artist.html">matplotlib.artist</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.numerix.ma.html">matplotlib.numerix.ma</a><br>
 <a href="math.html">math</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
-<a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -43,7 +44,7 @@ variety&nbsp;of&nbsp;line&nbsp;styles,&nbsp;markers&nbsp;and&nbsp;colors</tt></p
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;<a href="#Line2D">Line2D</a>&nbsp;instance&nbsp;with&nbsp;x&nbsp;and&nbsp;y&nbsp;data&nbsp;in&nbsp;sequences&nbsp;xdata,<br>
+<dl><dt><a name="Line2D-__init__"><strong>__init__</strong></a>(self, xdata, ydata, linewidth<font color="#909090">=None</font>, linestyle<font color="#909090">=None</font>, color<font color="#909090">=None</font>, marker<font color="#909090">=None</font>, markersize<font color="#909090">=None</font>, markeredgewidth<font color="#909090">=None</font>, markeredgecolor<font color="#909090">=None</font>, markerfacecolor<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, dash_capstyle<font color="#909090">=None</font>, solid_capstyle<font color="#909090">=None</font>, dash_joinstyle<font color="#909090">=None</font>, solid_joinstyle<font color="#909090">=None</font>, pickradius<font color="#909090">=5</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;<a href="#Line2D">Line2D</a>&nbsp;instance&nbsp;with&nbsp;x&nbsp;and&nbsp;y&nbsp;data&nbsp;in&nbsp;sequences&nbsp;xdata,<br>
 ydata<br>
 &nbsp;<br>
 The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
@@ -56,7 +57,7 @@ The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
 &nbsp;&nbsp;dash_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'projecting']<br>
 &nbsp;&nbsp;dash_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
 &nbsp;&nbsp;dashes:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;data:&nbsp;(array&nbsp;xdata,&nbsp;array&nbsp;ydata)<br>
+&nbsp;&nbsp;data:&nbsp;(npy.array&nbsp;xdata,&nbsp;npy.array&nbsp;ydata)<br>
 &nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
 &nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
 &nbsp;&nbsp;linestyle&nbsp;or&nbsp;ls:&nbsp;[&nbsp;'-'&nbsp;|&nbsp;'--'&nbsp;|&nbsp;'-.'&nbsp;|&nbsp;':'&nbsp;|&nbsp;'steps'&nbsp;|&nbsp;'None'&nbsp;|&nbsp;'&nbsp;'&nbsp;|&nbsp;''&nbsp;]<br>
@@ -64,16 +65,28 @@ The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
 &nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
 &nbsp;&nbsp;marker:&nbsp;[&nbsp;'+'&nbsp;|&nbsp;','&nbsp;|&nbsp;'.'&nbsp;|&nbsp;'1'&nbsp;|&nbsp;'2'&nbsp;|&nbsp;'3'&nbsp;|&nbsp;'4'<br>
 &nbsp;&nbsp;markeredgecolor&nbsp;or&nbsp;mec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;markeredgewidth&nbsp;or&nbsp;mew:&nbsp;float&nbsp;value&nbsp;in&nbsp;points<br>
+&nbsp;&nbsp;markeredgewidth&nbsp;or&nbsp;mew:&nbsp;float&nbsp;value&nbsp;in&nbsp;points&nbsp;(default&nbsp;5)<br>
 &nbsp;&nbsp;markerfacecolor&nbsp;or&nbsp;mfc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
 &nbsp;&nbsp;markersize&nbsp;or&nbsp;ms:&nbsp;float<br>
+&nbsp;&nbsp;pickradius:&nbsp;mouse&nbsp;event&nbsp;radius&nbsp;for&nbsp;pick&nbsp;items&nbsp;in&nbsp;points&nbsp;(default&nbsp;5)<br>
 &nbsp;&nbsp;solid_capstyle:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;&nbsp;'projecting']<br>
 &nbsp;&nbsp;solid_joinstyle:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']<br>
 &nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
 &nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;xdata:&nbsp;array<br>
-&nbsp;&nbsp;ydata:&nbsp;array<br>
+&nbsp;&nbsp;xdata:&nbsp;npy.array<br>
+&nbsp;&nbsp;ydata:&nbsp;npy.array<br>
 &nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Line2D-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Line2D-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;on&nbsp;the&nbsp;line.&nbsp;&nbsp;The&nbsp;pick&nbsp;radius&nbsp;determines<br>
+the&nbsp;precision&nbsp;of&nbsp;the&nbsp;location&nbsp;test&nbsp;(usually&nbsp;within&nbsp;five&nbsp;points&nbsp;of&nbsp;the&nbsp;value).&nbsp;&nbsp;Use<br>
+get/set&nbsp;pickradius()&nbsp;to&nbsp;view&nbsp;or&nbsp;modify&nbsp;it.<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;if&nbsp;any&nbsp;values&nbsp;are&nbsp;within&nbsp;the&nbsp;radius&nbsp;along&nbsp;with&nbsp;{'ind':&nbsp;pointlist},<br>
+npy.where&nbsp;pointlist&nbsp;is&nbsp;the&nbsp;set&nbsp;of&nbsp;points&nbsp;within&nbsp;the&nbsp;radius.<br>
+&nbsp;<br>
+TODO:&nbsp;sort&nbsp;returned&nbsp;indices&nbsp;by&nbsp;distance</tt></dd></dl>
 
 <dl><dt><a name="Line2D-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -115,6 +128,8 @@ The&nbsp;kwargs&nbsp;are&nbsp;<a href="#Line2D">Line2D</a>&nbsp;properties:<br>
 
 <dl><dt><a name="Line2D-get_ms"><strong>get_ms</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_markersize</tt></dd></dl>
 
+<dl><dt><a name="Line2D-get_pickradius"><strong>get_pickradius</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;pick&nbsp;radius&nbsp;used&nbsp;for&nbsp;containment&nbsp;tests</tt></dd></dl>
+
 <dl><dt><a name="Line2D-get_solid_capstyle"><strong>get_solid_capstyle</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;cap&nbsp;style&nbsp;for&nbsp;solid&nbsp;linestyles</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_solid_joinstyle"><strong>get_solid_joinstyle</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;join&nbsp;style&nbsp;for&nbsp;solid&nbsp;linestyles</tt></dd></dl>
@@ -128,10 +143,6 @@ else&nbsp;the&nbsp;processed&nbsp;data</tt></dd></dl>
 else&nbsp;the&nbsp;processed&nbsp;data</tt></dd></dl>
 
 <dl><dt><a name="Line2D-is_dashed"><strong>is_dashed</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;line&nbsp;is&nbsp;dashstyle</tt></dd></dl>
-
-<dl><dt><a name="Line2D-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>If&nbsp;mouseevent&nbsp;is&nbsp;over&nbsp;data&nbsp;that&nbsp;satisifies&nbsp;the&nbsp;picker,&nbsp;fire<br>
-off&nbsp;a&nbsp;backend_bases.PickEvent&nbsp;with&nbsp;the&nbsp;additional&nbsp;attribute"ind"<br>
-which&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;indices&nbsp;into&nbsp;the&nbsp;data&nbsp;that&nbsp;meet&nbsp;the&nbsp;criteria</tt></dd></dl>
 
 <dl><dt><a name="Line2D-recache"><strong>recache</strong></a>(self)</dt></dl>
 
@@ -163,7 +174,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;on/off&nbsp;ink&nbsp;in&nbsp;points</tt></dd
 
 <dl><dt><a name="Line2D-set_data"><strong>set_data</strong></a>(self, *args)</dt><dd><tt>Set&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;data<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;(array&nbsp;xdata,&nbsp;array&nbsp;ydata)</tt></dd></dl>
+ACCEPTS:&nbsp;(npy.array&nbsp;xdata,&nbsp;npy.array&nbsp;ydata)</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_linestyle"><strong>set_linestyle</strong></a>(self, linestyle)</dt><dd><tt>Set&nbsp;the&nbsp;linestyle&nbsp;of&nbsp;the&nbsp;line<br>
 &nbsp;<br>
@@ -209,25 +220,37 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_ms"><strong>set_ms</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_markersize</tt></dd></dl>
 
+<dl><dt><a name="Line2D-set_picker"><strong>set_picker</strong></a>(self, p)</dt><dd><tt>Sets&nbsp;the&nbsp;event&nbsp;picker&nbsp;details&nbsp;for&nbsp;the&nbsp;line.<br>
+&nbsp;<br>
+Accepts:&nbsp;float&nbsp;distance&nbsp;in&nbsp;points&nbsp;or&nbsp;callable&nbsp;pick&nbsp;function&nbsp;fn(artist,event)</tt></dd></dl>
+
+<dl><dt><a name="Line2D-set_pickradius"><strong>set_pickradius</strong></a>(self, d)</dt><dd><tt>Sets&nbsp;the&nbsp;pick&nbsp;radius&nbsp;used&nbsp;for&nbsp;containment&nbsp;tests<br>
+&nbsp;<br>
+Accepts:&nbsp;float&nbsp;distance&nbsp;in&nbsp;points.</tt></dd></dl>
+
 <dl><dt><a name="Line2D-set_solid_capstyle"><strong>set_solid_capstyle</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;cap&nbsp;style&nbsp;for&nbsp;solid&nbsp;linestyles<br>
 ACCEPTS:&nbsp;['butt'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;&nbsp;'projecting']</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_solid_joinstyle"><strong>set_solid_joinstyle</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;join&nbsp;style&nbsp;for&nbsp;solid&nbsp;linestyles<br>
 ACCEPTS:&nbsp;['miter'&nbsp;|&nbsp;'round'&nbsp;|&nbsp;'bevel']</tt></dd></dl>
 
-<dl><dt><a name="Line2D-set_xdata"><strong>set_xdata</strong></a>(self, x)</dt><dd><tt>Set&nbsp;the&nbsp;data&nbsp;array&nbsp;for&nbsp;x<br>
+<dl><dt><a name="Line2D-set_xdata"><strong>set_xdata</strong></a>(self, x)</dt><dd><tt>Set&nbsp;the&nbsp;data&nbsp;npy.array&nbsp;for&nbsp;x<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;array</tt></dd></dl>
+ACCEPTS:&nbsp;npy.array</tt></dd></dl>
 
-<dl><dt><a name="Line2D-set_ydata"><strong>set_ydata</strong></a>(self, y)</dt><dd><tt>Set&nbsp;the&nbsp;data&nbsp;array&nbsp;for&nbsp;y<br>
+<dl><dt><a name="Line2D-set_ydata"><strong>set_ydata</strong></a>(self, y)</dt><dd><tt>Set&nbsp;the&nbsp;data&nbsp;npy.array&nbsp;for&nbsp;y<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;array</tt></dd></dl>
+ACCEPTS:&nbsp;npy.array</tt></dd></dl>
 
 <dl><dt><a name="Line2D-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
 <dl><dt><strong>filled_markers</strong> = ('o', '^', 'v', '&lt;', '&gt;', 's', 'd', 'D', 'h', 'H', 'p')</dl>
+
+<dl><dt><strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}</dl>
+
+<dl><dt><strong>markers</strong> = {0: '_draw_tickleft', 1: '_draw_tickright', 2: '_draw_tickup', 3: '_draw_tickdown', 4: '_draw_caretleft', 5: '_draw_caretright', 6: '_draw_caretup', 7: '_draw_caretdown', '': '_draw_nothing', ' ': '_draw_nothing', ...}</dl>
 
 <dl><dt><strong>validCap</strong> = ('butt', 'round', 'projecting')</dl>
 
@@ -258,6 +281,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Line2D-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Line2D-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Line2D-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -272,13 +297,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Line2D-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Line2D-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Line2D-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Line2D-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Line2D-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
+<dl><dt><a name="Line2D-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Line2D-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
 <dl><dt><a name="Line2D-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Line2D-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Line2D-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -305,6 +346,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
 
+<dl><dt><a name="Line2D-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
+
 <dl><dt><a name="Line2D-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
@@ -318,36 +368,6 @@ things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;
 their&nbsp;contents&nbsp;accordingly<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
-
-<dl><dt><a name="Line2D-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
-&nbsp;<br>
-picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
-&nbsp;<br>
-&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
-&nbsp;<br>
-&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
-&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
-&nbsp;<br>
-&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
-&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
-&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;<br>
-&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
-&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
 <dl><dt><a name="Line2D-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
@@ -374,44 +394,35 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-concatenate"><strong>concatenate</strong></a>(...)</dt><dd><tt><a href="#-concatenate">concatenate</a>((a1,&nbsp;a2,&nbsp;...),&nbsp;axis=0)<br>
+<td width="100%"><dl><dt><a name="-segment_hits"><strong>segment_hits</strong></a>(cx, cy, x, y, radius)</dt><dd><tt>Determine&nbsp;if&nbsp;any&nbsp;line&nbsp;segments&nbsp;are&nbsp;within&nbsp;radius&nbsp;of&nbsp;a&nbsp;point.&nbsp;Returns<br>
+the&nbsp;list&nbsp;of&nbsp;line&nbsp;segments&nbsp;that&nbsp;are&nbsp;within&nbsp;that&nbsp;radius.</tt></dd></dl>
+ <dl><dt><a name="-unmasked_index_ranges"><strong>unmasked_index_ranges</strong></a>(mask, compressed<font color="#909090">=True</font>)</dt><dd><tt>Calculate&nbsp;the&nbsp;good&nbsp;data&nbsp;ranges&nbsp;in&nbsp;a&nbsp;masked&nbsp;1-D&nbsp;npy.array,&nbsp;based&nbsp;on&nbsp;mask.<br>
 &nbsp;<br>
-Join&nbsp;arrays&nbsp;together.<br>
-&nbsp;<br>
-The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
-(default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
-&nbsp;<br>
-Example:<br>
-&nbsp;<br>
-&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
-array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
- <dl><dt><a name="-unmasked_index_ranges"><strong>unmasked_index_ranges</strong></a>(mask, compressed<font color="#909090">=True</font>)</dt><dd><tt>Calculate&nbsp;the&nbsp;good&nbsp;data&nbsp;ranges&nbsp;in&nbsp;a&nbsp;masked&nbsp;1-D&nbsp;array,&nbsp;based&nbsp;on&nbsp;mask.<br>
-&nbsp;<br>
-Returns&nbsp;Nx2&nbsp;array&nbsp;with&nbsp;each&nbsp;row&nbsp;the&nbsp;start&nbsp;and&nbsp;stop&nbsp;indices<br>
-for&nbsp;slices&nbsp;of&nbsp;the&nbsp;compressed&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;each&nbsp;of&nbsp;N<br>
+Returns&nbsp;Nx2&nbsp;npy.array&nbsp;with&nbsp;each&nbsp;row&nbsp;the&nbsp;start&nbsp;and&nbsp;stop&nbsp;indices<br>
+for&nbsp;slices&nbsp;of&nbsp;the&nbsp;compressed&nbsp;npy.array&nbsp;corresponding&nbsp;to&nbsp;each&nbsp;of&nbsp;N<br>
 uninterrupted&nbsp;runs&nbsp;of&nbsp;unmasked&nbsp;values.<br>
 If&nbsp;optional&nbsp;argument&nbsp;compressed&nbsp;is&nbsp;False,&nbsp;it&nbsp;returns&nbsp;the<br>
-start&nbsp;and&nbsp;stop&nbsp;indices&nbsp;into&nbsp;the&nbsp;original&nbsp;array,&nbsp;not&nbsp;the<br>
-compressed&nbsp;array.<br>
+start&nbsp;and&nbsp;stop&nbsp;indices&nbsp;into&nbsp;the&nbsp;original&nbsp;npy.array,&nbsp;not&nbsp;the<br>
+compressed&nbsp;npy.array.<br>
 Returns&nbsp;None&nbsp;if&nbsp;there&nbsp;are&nbsp;no&nbsp;unmasked&nbsp;values.<br>
 &nbsp;<br>
 Example:<br>
 &nbsp;<br>
-y&nbsp;=&nbsp;ma.array(arange(5),&nbsp;mask&nbsp;=&nbsp;[0,0,1,0,0])<br>
+y&nbsp;=&nbsp;ma.array(npy.arange(5),&nbsp;mask&nbsp;=&nbsp;[0,0,1,0,0])<br>
 #ii&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(y.mask())<br>
 ii&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(ma.getmask(y))<br>
 &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;[[0,2,]&nbsp;[2,4,]]<br>
 &nbsp;<br>
 y.compressed().filled()[ii[1,0]:ii[1,1]]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[3,4,]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;(The&nbsp;'filled()'&nbsp;method&nbsp;converts&nbsp;the&nbsp;masked&nbsp;array&nbsp;to&nbsp;a&nbsp;numerix&nbsp;array.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;npy.array&nbsp;[3,4,]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;(The&nbsp;'filled()'&nbsp;method&nbsp;converts&nbsp;the&nbsp;masked&nbsp;npy.array&nbsp;to&nbsp;a&nbsp;numerix&nbsp;npy.array.)<br>
 &nbsp;<br>
 #i0,&nbsp;i1&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(y.mask(),&nbsp;compressed=False)<br>
 i0,&nbsp;i1&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(ma.getmask(y),&nbsp;compressed=False)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;[[0,3,]&nbsp;[2,5,]]<br>
 &nbsp;<br>
 y.filled()[ii[1,0]:ii[1,1]]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[3,4,]</tt></dd></dl>
+&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;returns&nbsp;npy.array&nbsp;[3,4,]</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -419,25 +430,19 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
+<td width="100%"><strong>CARETDOWN</strong> = 7<br>
+<strong>CARETLEFT</strong> = 4<br>
+<strong>CARETRIGHT</strong> = 5<br>
+<strong>CARETUP</strong> = 6<br>
 <strong>LOG10</strong> = 1<br>
-<strong>NewAxis</strong> = None<br>
 <strong>TICKDOWN</strong> = 3<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x84b6aac&gt;<br>
-<strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x85867ac&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
-<strong>less</strong> = &lt;ufunc 'less'&gt;<br>
-<strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
-<strong>lineMarkers</strong> = {0: '_draw_tickleft', 1: '_draw_tickright', 2: '_draw_tickup', 3: '_draw_tickdown', '': '_draw_nothing', ' ': '_draw_nothing', '+': '_draw_plus', ',': '_draw_pixel', '.': '_draw_point', '1': '_draw_tri_down', ...}<br>
+<strong>lineMarkers</strong> = {0: '_draw_tickleft', 1: '_draw_tickright', 2: '_draw_tickup', 3: '_draw_tickdown', 4: '_draw_caretleft', 5: '_draw_caretright', 6: '_draw_caretup', 7: '_draw_caretdown', '': '_draw_nothing', ' ': '_draw_nothing', ...}<br>
 <strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}<br>
-<strong>logical_and</strong> = &lt;ufunc 'logical_and'&gt;<br>
-<strong>pi</strong> = 3.1415926535897931<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
-<strong>sqrt</strong> = &lt;ufunc 'sqrt'&gt;<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82528ec&gt;</td></tr></table>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x826eb6c&gt;</td></tr></table>
 @footer@

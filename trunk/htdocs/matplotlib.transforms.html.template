@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.transforms</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/transforms.py">/usr/local/lib/python2.5/site-packages/matplotlib/transforms.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/transforms.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/transforms.py</a></font></td></tr></table>
     <p><tt>The&nbsp;transforms&nbsp;module&nbsp;is&nbsp;broken&nbsp;into&nbsp;two&nbsp;parts,&nbsp;a&nbsp;collection&nbsp;of<br>
 classes&nbsp;written&nbsp;in&nbsp;the&nbsp;extension&nbsp;module&nbsp;_transforms&nbsp;to&nbsp;handle<br>
 efficient&nbsp;transformation&nbsp;of&nbsp;data,&nbsp;and&nbsp;some&nbsp;helper&nbsp;functions&nbsp;in<br>
@@ -132,6 +132,21 @@ components,&nbsp;and&nbsp;alpha&nbsp;is&nbsp;the&nbsp;rotation<br>
 &nbsp;&nbsp;&nbsp;c&nbsp;=&nbsp;sy*sin(alpha);<br>
 &nbsp;&nbsp;&nbsp;d&nbsp;=&nbsp;sy*cos(alpha);<br>
 &nbsp;<br>
+The&nbsp;affine&nbsp;transformation&nbsp;can&nbsp;be&nbsp;accomplished&nbsp;for&nbsp;row&nbsp;vectors&nbsp;with&nbsp;a<br>
+single&nbsp;matrix&nbsp;multiplication<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;X_new&nbsp;=&nbsp;X_old&nbsp;*&nbsp;M<br>
+where<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;M&nbsp;=&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;a&nbsp;&nbsp;b&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;c&nbsp;&nbsp;d&nbsp;&nbsp;0<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tx&nbsp;ty&nbsp;1]<br>
+and&nbsp;each&nbsp;X&nbsp;is&nbsp;the&nbsp;row&nbsp;vector&nbsp;[x,&nbsp;y,&nbsp;1].&nbsp;&nbsp;Hence&nbsp;M&nbsp;is<br>
+the&nbsp;transpose&nbsp;of&nbsp;the&nbsp;matrix&nbsp;representation&nbsp;given&nbsp;in<br>
+<a href="http://en.wikipedia.org/wiki/Affine_transformation">http://en.wikipedia.org/wiki/Affine_transformation</a>,<br>
+which&nbsp;is&nbsp;for&nbsp;the&nbsp;more&nbsp;usual&nbsp;column-vector&nbsp;representation<br>
+of&nbsp;the&nbsp;position.)<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
 From&nbsp;a&nbsp;user&nbsp;perspective,&nbsp;the&nbsp;most&nbsp;important&nbsp;Tranformation&nbsp;methods&nbsp;are<br>
 &nbsp;<br>
 All&nbsp;transformations<br>
@@ -245,7 +260,8 @@ and&nbsp;attributes&nbsp;to&nbsp;Bbox&nbsp;and/or&nbsp;putting&nbsp;them&nbsp;el
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -449,11 +465,7 @@ another</tt></dd></dl>
  <dl><dt><a name="-identity_affine"><strong>identity_affine</strong></a>()</dt><dd><tt>Get&nbsp;an&nbsp;affine&nbsp;transformation&nbsp;that&nbsp;maps&nbsp;x,y&nbsp;-&gt;&nbsp;x,y</tt></dd></dl>
  <dl><dt><a name="-identity_transform"><strong>identity_transform</strong></a>()</dt><dd><tt>Get&nbsp;an&nbsp;affine&nbsp;transformation&nbsp;that&nbsp;maps&nbsp;x,y&nbsp;-&gt;&nbsp;x,y</tt></dd></dl>
  <dl><dt><a name="-inverse_transform_bbox"><strong>inverse_transform_bbox</strong></a>(trans, bbox)</dt><dd><tt>inverse&nbsp;transform&nbsp;the&nbsp;bbox</tt></dd></dl>
- <dl><dt><a name="-invert_vec6"><strong>invert_vec6</strong></a>(v)</dt><dd><tt>v&nbsp;is&nbsp;a,b,c,d,tx,ty&nbsp;vec6&nbsp;repr&nbsp;of&nbsp;a&nbsp;matrix<br>
-[&nbsp;a&nbsp;&nbsp;b&nbsp;&nbsp;0<br>
-&nbsp;&nbsp;c&nbsp;&nbsp;d&nbsp;&nbsp;0<br>
-&nbsp;&nbsp;tx&nbsp;ty&nbsp;1]<br>
-&nbsp;<br>
+ <dl><dt><a name="-invert_vec6"><strong>invert_vec6</strong></a>(v)</dt><dd><tt>v&nbsp;is&nbsp;a,b,c,d,tx,ty&nbsp;vec6&nbsp;repr&nbsp;of&nbsp;an&nbsp;affine&nbsp;transformation.<br>
 Return&nbsp;the&nbsp;inverse&nbsp;of&nbsp;v&nbsp;as&nbsp;a&nbsp;vec6</tt></dd></dl>
  <dl><dt><a name="-lbwh_to_bbox"><strong>lbwh_to_bbox</strong></a>(l, b, w, h)</dt></dl>
  <dl><dt><a name="-multiply_affines"><strong>multiply_affines</strong></a>(v1, v2)</dt><dd><tt>v1&nbsp;and&nbsp;v2&nbsp;are&nbsp;Affine&nbsp;instances</tt></dd></dl>
@@ -463,7 +475,8 @@ Return&nbsp;the&nbsp;inverse&nbsp;of&nbsp;v&nbsp;as&nbsp;a&nbsp;vec6</tt></dd></
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;maximum&nbsp;absolute&nbsp;value.<br>
 &nbsp;<br>
 If&nbsp;they&nbsp;are&nbsp;too&nbsp;close,&nbsp;each&nbsp;will&nbsp;be&nbsp;moved&nbsp;by&nbsp;the&nbsp;'expander'.<br>
-If&nbsp;'increasing'&nbsp;is&nbsp;True&nbsp;and&nbsp;vmin&nbsp;&gt;&nbsp;vmax,&nbsp;they&nbsp;will&nbsp;be&nbsp;swapped.</tt></dd></dl>
+If&nbsp;'increasing'&nbsp;is&nbsp;True&nbsp;and&nbsp;vmin&nbsp;&gt;&nbsp;vmax,&nbsp;they&nbsp;will&nbsp;be&nbsp;swapped,<br>
+regardless&nbsp;of&nbsp;whether&nbsp;they&nbsp;are&nbsp;too&nbsp;close.</tt></dd></dl>
  <dl><dt><a name="-offset_copy"><strong>offset_copy</strong></a>(trans, fig<font color="#909090">=None</font>, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>, units<font color="#909090">='inches'</font>)</dt><dd><tt>Return&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;a&nbsp;transform&nbsp;with&nbsp;an&nbsp;added&nbsp;offset.<br>
 &nbsp;&nbsp;args:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;trans&nbsp;is&nbsp;any&nbsp;transform<br>
@@ -491,8 +504,7 @@ instances&nbsp;(Values&nbsp;or&nbsp;binary&nbsp;operations&nbsp;on&nbsp;values)<
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
-<strong>IDENTITY</strong> = 0<br>
+<td width="100%"><strong>IDENTITY</strong> = 0<br>
 <strong>LOG10</strong> = 1<br>
 <strong>POLAR</strong> = 0<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>

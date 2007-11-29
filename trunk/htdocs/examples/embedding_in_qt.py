@@ -11,7 +11,7 @@
 import sys, os, random
 from qt import *
 
-from matplotlib.numerix import arange, sin, pi
+from numpy import arange, sin, pi
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 
@@ -25,7 +25,7 @@ progversion = "0.1"
 
 # Note: color-intensive applications may require a different color allocation
 # strategy.
-QApplication.setColorSpec(QApplication.NormalColor)
+#QApplication.setColorSpec(QApplication.NormalColor)
 app = QApplication(sys.argv)
 
 class MyMplCanvas(FigureCanvas):
@@ -37,7 +37,7 @@ class MyMplCanvas(FigureCanvas):
         self.axes.hold(False)
 
         self.compute_initial_figure()
-        
+
         FigureCanvas.__init__(self, self.fig)
         self.reparent(parent, QPoint(0, 0))
 
@@ -129,12 +129,8 @@ modified versions may be distributed without limitation."""
                           % {"prog": progname, "version": progversion})
 
 
-def main():
-    aw = ApplicationWindow()
-    aw.setCaption("%s" % progname)
-    qApp.setMainWidget(aw)
-    aw.show()
-    sys.exit(qApp.exec_loop())
-
-
-if __name__ == "__main__": main()
+aw = ApplicationWindow()
+aw.setCaption("%s" % progname)
+qApp.setMainWidget(aw)
+aw.show()
+sys.exit(qApp.exec_loop())

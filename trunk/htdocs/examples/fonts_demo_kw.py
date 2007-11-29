@@ -4,7 +4,7 @@ Same as fonts_demo using kwargs.  If you prefer a more pythonic, OO
 style of coding, see examples/fonts_demo.py.
 
 """
-from matplotlib.font_manager import fontManager, FontProperties
+from matplotlib.font_manager import FontProperties
 from pylab import *
 
 subplot(111, axisbg='w')
@@ -20,7 +20,7 @@ yp = [0.7, 0.5, 0.3, 0.1, -0.1, -0.3, -0.5]
 for k in range(5):
     if k == 2:
         t = text(-0.8, yp[k], family[k], family=family[k],
-                 name='Script MT', **alignment)        
+                 name='Script MT', **alignment)
     else:
         t = text(-0.8, yp[k], family[k], family=family[k], **alignment)
 
@@ -68,7 +68,7 @@ for k in range(7):
 x = 0
 ###  Show bold italic
 t = text(x, 0.1, 'bold italic', style='italic',
-         weight='bold', size='x-small',    
+         weight='bold', size='x-small',
          **alignment)
 
 t = text(x, 0.2, 'bold italic',

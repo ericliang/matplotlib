@@ -66,6 +66,7 @@ def get_mpl_commands():
     plot_commands = []
     # parse the header for the commands provided commands
     import inspect
+    these = []
     for line in inspect.getsourcelines(matplotlib.pylab)[0]:
         line = line.strip()
         if not len(line): continue

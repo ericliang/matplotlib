@@ -38,7 +38,7 @@ if 1:  # plot the histogram of MRI intensity
 if 1:   # plot the EEG
     # load the data
     numSamples, numRows = 800,4
-    data = fromstring(file('data/eeg.dat', 'rb').read(), Float)
+    data = fromstring(file('data/eeg.dat', 'rb').read(), numpy.float)
     data.shape = numSamples, numRows
     t = arange(numSamples)/float(numSamples)*10.0
     ticklocs = []

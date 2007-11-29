@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.colors</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/colors.py">/usr/local/lib/python2.5/site-packages/matplotlib/colors.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colors.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colors.py</a></font></td></tr></table>
     <p><tt>A&nbsp;class&nbsp;for&nbsp;converting&nbsp;color&nbsp;arguments&nbsp;to&nbsp;RGB&nbsp;or&nbsp;RGBA<br>
 &nbsp;<br>
 This&nbsp;class&nbsp;instantiates&nbsp;a&nbsp;single&nbsp;instance&nbsp;colorConverter&nbsp;that&nbsp;is&nbsp;used<br>
@@ -45,11 +45,12 @@ Finally,&nbsp;legal&nbsp;html&nbsp;names&nbsp;for&nbsp;colors,&nbsp;like&nbsp;'r
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.numerix.ma.html">matplotlib.numerix.ma</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.numerix.html">matplotlib.numerix</a><br>
-</td><td width="25%" valign=top><a href="re.html">re</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+<a href="matplotlib.numerix.npyma.html">matplotlib.numerix.npyma</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="re.html">re</a><br>
 </td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -128,13 +129,15 @@ Important&nbsp;methods:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Colormap-set_over">set_over</a>()<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Colormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
+<dl><dt><a name="Colormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
 If&nbsp;scalar,&nbsp;a&nbsp;tuple&nbsp;of&nbsp;rgba&nbsp;values&nbsp;is&nbsp;returned,&nbsp;otherwise<br>
 an&nbsp;array&nbsp;with&nbsp;the&nbsp;new&nbsp;shape&nbsp;=&nbsp;oldshape+(4,).&nbsp;If&nbsp;the&nbsp;X-values<br>
 are&nbsp;integers,&nbsp;then&nbsp;they&nbsp;are&nbsp;used&nbsp;as&nbsp;indices&nbsp;into&nbsp;the&nbsp;array.<br>
 If&nbsp;they&nbsp;are&nbsp;floating&nbsp;point,&nbsp;then&nbsp;they&nbsp;must&nbsp;be&nbsp;in&nbsp;the<br>
 interval&nbsp;(0.0,&nbsp;1.0).<br>
-Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.</tt></dd></dl>
+Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.<br>
+If&nbsp;bytes&nbsp;is&nbsp;False,&nbsp;the&nbsp;rgba&nbsp;values&nbsp;will&nbsp;be&nbsp;floats&nbsp;on&nbsp;a<br>
+0-1&nbsp;scale;&nbsp;if&nbsp;True,&nbsp;they&nbsp;will&nbsp;be&nbsp;uint8,&nbsp;0-255.</tt></dd></dl>
 
 <dl><dt><a name="Colormap-__init__"><strong>__init__</strong></a>(self, name, N<font color="#909090">=256</font>)</dt><dd><tt>Public&nbsp;class&nbsp;attributes:<br>
 self.<strong>N</strong>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;number&nbsp;of&nbsp;rgb&nbsp;quantization&nbsp;levels<br>
@@ -174,13 +177,15 @@ See&nbsp;makeMappingArray&nbsp;for&nbsp;details</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Colormap">Colormap</a>:<br>
-<dl><dt><a name="LinearSegmentedColormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
+<dl><dt><a name="LinearSegmentedColormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
 If&nbsp;scalar,&nbsp;a&nbsp;tuple&nbsp;of&nbsp;rgba&nbsp;values&nbsp;is&nbsp;returned,&nbsp;otherwise<br>
 an&nbsp;array&nbsp;with&nbsp;the&nbsp;new&nbsp;shape&nbsp;=&nbsp;oldshape+(4,).&nbsp;If&nbsp;the&nbsp;X-values<br>
 are&nbsp;integers,&nbsp;then&nbsp;they&nbsp;are&nbsp;used&nbsp;as&nbsp;indices&nbsp;into&nbsp;the&nbsp;array.<br>
 If&nbsp;they&nbsp;are&nbsp;floating&nbsp;point,&nbsp;then&nbsp;they&nbsp;must&nbsp;be&nbsp;in&nbsp;the<br>
 interval&nbsp;(0.0,&nbsp;1.0).<br>
-Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.</tt></dd></dl>
+Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.<br>
+If&nbsp;bytes&nbsp;is&nbsp;False,&nbsp;the&nbsp;rgba&nbsp;values&nbsp;will&nbsp;be&nbsp;floats&nbsp;on&nbsp;a<br>
+0-1&nbsp;scale;&nbsp;if&nbsp;True,&nbsp;they&nbsp;will&nbsp;be&nbsp;uint8,&nbsp;0-255.</tt></dd></dl>
 
 <dl><dt><a name="LinearSegmentedColormap-is_gray"><strong>is_gray</strong></a>(self)</dt></dl>
 
@@ -216,13 +221,15 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Colormap">Colormap</a>:<br>
-<dl><dt><a name="ListedColormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
+<dl><dt><a name="ListedColormap-__call__"><strong>__call__</strong></a>(self, X, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>X&nbsp;is&nbsp;either&nbsp;a&nbsp;scalar&nbsp;or&nbsp;an&nbsp;array&nbsp;(of&nbsp;any&nbsp;dimension).<br>
 If&nbsp;scalar,&nbsp;a&nbsp;tuple&nbsp;of&nbsp;rgba&nbsp;values&nbsp;is&nbsp;returned,&nbsp;otherwise<br>
 an&nbsp;array&nbsp;with&nbsp;the&nbsp;new&nbsp;shape&nbsp;=&nbsp;oldshape+(4,).&nbsp;If&nbsp;the&nbsp;X-values<br>
 are&nbsp;integers,&nbsp;then&nbsp;they&nbsp;are&nbsp;used&nbsp;as&nbsp;indices&nbsp;into&nbsp;the&nbsp;array.<br>
 If&nbsp;they&nbsp;are&nbsp;floating&nbsp;point,&nbsp;then&nbsp;they&nbsp;must&nbsp;be&nbsp;in&nbsp;the<br>
 interval&nbsp;(0.0,&nbsp;1.0).<br>
-Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.</tt></dd></dl>
+Alpha&nbsp;must&nbsp;be&nbsp;a&nbsp;scalar.<br>
+If&nbsp;bytes&nbsp;is&nbsp;False,&nbsp;the&nbsp;rgba&nbsp;values&nbsp;will&nbsp;be&nbsp;floats&nbsp;on&nbsp;a<br>
+0-1&nbsp;scale;&nbsp;if&nbsp;True,&nbsp;they&nbsp;will&nbsp;be&nbsp;uint8,&nbsp;0-255.</tt></dd></dl>
 
 <dl><dt><a name="ListedColormap-is_gray"><strong>is_gray</strong></a>(self)</dt></dl>
 
@@ -250,13 +257,16 @@ Requires&nbsp;norm.clip&nbsp;=&nbsp;False</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Normalize">Normalize</a>:<br>
-<dl><dt><a name="LogNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=True</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
+<dl><dt><a name="LogNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=False</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
 minimum&nbsp;and&nbsp;maximum&nbsp;value&nbsp;respectively.&nbsp;&nbsp;If&nbsp;clip&nbsp;is&nbsp;True&nbsp;and<br>
 the&nbsp;given&nbsp;value&nbsp;falls&nbsp;outside&nbsp;the&nbsp;range,&nbsp;the&nbsp;returned&nbsp;value<br>
 will&nbsp;be&nbsp;0&nbsp;or&nbsp;1,&nbsp;whichever&nbsp;is&nbsp;closer.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;vmin==vmax.<br>
 Works&nbsp;with&nbsp;scalars&nbsp;or&nbsp;arrays,&nbsp;including&nbsp;masked&nbsp;arrays.&nbsp;&nbsp;If<br>
 clip&nbsp;is&nbsp;True,&nbsp;masked&nbsp;values&nbsp;are&nbsp;set&nbsp;to&nbsp;1;&nbsp;otherwise&nbsp;they<br>
-remain&nbsp;masked.</tt></dd></dl>
+remain&nbsp;masked.&nbsp;&nbsp;Clipping&nbsp;silently&nbsp;defeats&nbsp;the&nbsp;purpose&nbsp;of&nbsp;setting<br>
+the&nbsp;over,&nbsp;under,&nbsp;and&nbsp;masked&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap,&nbsp;so&nbsp;it&nbsp;is<br>
+likely&nbsp;to&nbsp;lead&nbsp;to&nbsp;surprises;&nbsp;therefore&nbsp;the&nbsp;default&nbsp;is<br>
+clip=False.</tt></dd></dl>
 
 <dl><dt><a name="LogNorm-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
 
@@ -281,13 +291,16 @@ want&nbsp;to&nbsp;use&nbsp;indices&nbsp;directly&nbsp;in&nbsp;a&nbsp;ScalarMappa
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Normalize">Normalize</a>:<br>
-<dl><dt><a name="NoNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=True</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
+<dl><dt><a name="NoNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=False</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
 minimum&nbsp;and&nbsp;maximum&nbsp;value&nbsp;respectively.&nbsp;&nbsp;If&nbsp;clip&nbsp;is&nbsp;True&nbsp;and<br>
 the&nbsp;given&nbsp;value&nbsp;falls&nbsp;outside&nbsp;the&nbsp;range,&nbsp;the&nbsp;returned&nbsp;value<br>
 will&nbsp;be&nbsp;0&nbsp;or&nbsp;1,&nbsp;whichever&nbsp;is&nbsp;closer.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;vmin==vmax.<br>
 Works&nbsp;with&nbsp;scalars&nbsp;or&nbsp;arrays,&nbsp;including&nbsp;masked&nbsp;arrays.&nbsp;&nbsp;If<br>
 clip&nbsp;is&nbsp;True,&nbsp;masked&nbsp;values&nbsp;are&nbsp;set&nbsp;to&nbsp;1;&nbsp;otherwise&nbsp;they<br>
-remain&nbsp;masked.</tt></dd></dl>
+remain&nbsp;masked.&nbsp;&nbsp;Clipping&nbsp;silently&nbsp;defeats&nbsp;the&nbsp;purpose&nbsp;of&nbsp;setting<br>
+the&nbsp;over,&nbsp;under,&nbsp;and&nbsp;masked&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap,&nbsp;so&nbsp;it&nbsp;is<br>
+likely&nbsp;to&nbsp;lead&nbsp;to&nbsp;surprises;&nbsp;therefore&nbsp;the&nbsp;default&nbsp;is<br>
+clip=False.</tt></dd></dl>
 
 <dl><dt><a name="NoNorm-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
 
@@ -307,13 +320,16 @@ remain&nbsp;masked.</tt></dd></dl>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Normalize-__call__"><strong>__call__</strong></a>(self, value, clip<font color="#909090">=None</font>)</dt></dl>
 
-<dl><dt><a name="Normalize-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=True</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
+<dl><dt><a name="Normalize-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=False</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
 minimum&nbsp;and&nbsp;maximum&nbsp;value&nbsp;respectively.&nbsp;&nbsp;If&nbsp;clip&nbsp;is&nbsp;True&nbsp;and<br>
 the&nbsp;given&nbsp;value&nbsp;falls&nbsp;outside&nbsp;the&nbsp;range,&nbsp;the&nbsp;returned&nbsp;value<br>
 will&nbsp;be&nbsp;0&nbsp;or&nbsp;1,&nbsp;whichever&nbsp;is&nbsp;closer.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;vmin==vmax.<br>
 Works&nbsp;with&nbsp;scalars&nbsp;or&nbsp;arrays,&nbsp;including&nbsp;masked&nbsp;arrays.&nbsp;&nbsp;If<br>
 clip&nbsp;is&nbsp;True,&nbsp;masked&nbsp;values&nbsp;are&nbsp;set&nbsp;to&nbsp;1;&nbsp;otherwise&nbsp;they<br>
-remain&nbsp;masked.</tt></dd></dl>
+remain&nbsp;masked.&nbsp;&nbsp;Clipping&nbsp;silently&nbsp;defeats&nbsp;the&nbsp;purpose&nbsp;of&nbsp;setting<br>
+the&nbsp;over,&nbsp;under,&nbsp;and&nbsp;masked&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap,&nbsp;so&nbsp;it&nbsp;is<br>
+likely&nbsp;to&nbsp;lead&nbsp;to&nbsp;surprises;&nbsp;therefore&nbsp;the&nbsp;default&nbsp;is<br>
+clip=False.</tt></dd></dl>
 
 <dl><dt><a name="Normalize-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
 
@@ -340,13 +356,16 @@ want&nbsp;to&nbsp;use&nbsp;indices&nbsp;directly&nbsp;in&nbsp;a&nbsp;ScalarMappa
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Normalize">Normalize</a>:<br>
-<dl><dt><a name="NoNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=True</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
+<dl><dt><a name="NoNorm-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=False</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
 minimum&nbsp;and&nbsp;maximum&nbsp;value&nbsp;respectively.&nbsp;&nbsp;If&nbsp;clip&nbsp;is&nbsp;True&nbsp;and<br>
 the&nbsp;given&nbsp;value&nbsp;falls&nbsp;outside&nbsp;the&nbsp;range,&nbsp;the&nbsp;returned&nbsp;value<br>
 will&nbsp;be&nbsp;0&nbsp;or&nbsp;1,&nbsp;whichever&nbsp;is&nbsp;closer.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;vmin==vmax.<br>
 Works&nbsp;with&nbsp;scalars&nbsp;or&nbsp;arrays,&nbsp;including&nbsp;masked&nbsp;arrays.&nbsp;&nbsp;If<br>
 clip&nbsp;is&nbsp;True,&nbsp;masked&nbsp;values&nbsp;are&nbsp;set&nbsp;to&nbsp;1;&nbsp;otherwise&nbsp;they<br>
-remain&nbsp;masked.</tt></dd></dl>
+remain&nbsp;masked.&nbsp;&nbsp;Clipping&nbsp;silently&nbsp;defeats&nbsp;the&nbsp;purpose&nbsp;of&nbsp;setting<br>
+the&nbsp;over,&nbsp;under,&nbsp;and&nbsp;masked&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap,&nbsp;so&nbsp;it&nbsp;is<br>
+likely&nbsp;to&nbsp;lead&nbsp;to&nbsp;surprises;&nbsp;therefore&nbsp;the&nbsp;default&nbsp;is<br>
+clip=False.</tt></dd></dl>
 
 <dl><dt><a name="NoNorm-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
 
@@ -366,13 +385,16 @@ remain&nbsp;masked.</tt></dd></dl>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Normalize-__call__"><strong>__call__</strong></a>(self, value, clip<font color="#909090">=None</font>)</dt></dl>
 
-<dl><dt><a name="Normalize-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=True</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
+<dl><dt><a name="Normalize-__init__"><strong>__init__</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, clip<font color="#909090">=False</font>)</dt><dd><tt>If&nbsp;vmin&nbsp;or&nbsp;vmax&nbsp;is&nbsp;not&nbsp;given,&nbsp;they&nbsp;are&nbsp;taken&nbsp;from&nbsp;the&nbsp;input's<br>
 minimum&nbsp;and&nbsp;maximum&nbsp;value&nbsp;respectively.&nbsp;&nbsp;If&nbsp;clip&nbsp;is&nbsp;True&nbsp;and<br>
 the&nbsp;given&nbsp;value&nbsp;falls&nbsp;outside&nbsp;the&nbsp;range,&nbsp;the&nbsp;returned&nbsp;value<br>
 will&nbsp;be&nbsp;0&nbsp;or&nbsp;1,&nbsp;whichever&nbsp;is&nbsp;closer.&nbsp;Returns&nbsp;0&nbsp;if&nbsp;vmin==vmax.<br>
 Works&nbsp;with&nbsp;scalars&nbsp;or&nbsp;arrays,&nbsp;including&nbsp;masked&nbsp;arrays.&nbsp;&nbsp;If<br>
 clip&nbsp;is&nbsp;True,&nbsp;masked&nbsp;values&nbsp;are&nbsp;set&nbsp;to&nbsp;1;&nbsp;otherwise&nbsp;they<br>
-remain&nbsp;masked.</tt></dd></dl>
+remain&nbsp;masked.&nbsp;&nbsp;Clipping&nbsp;silently&nbsp;defeats&nbsp;the&nbsp;purpose&nbsp;of&nbsp;setting<br>
+the&nbsp;over,&nbsp;under,&nbsp;and&nbsp;masked&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap,&nbsp;so&nbsp;it&nbsp;is<br>
+likely&nbsp;to&nbsp;lead&nbsp;to&nbsp;surprises;&nbsp;therefore&nbsp;the&nbsp;default&nbsp;is<br>
+clip=False.</tt></dd></dl>
 
 <dl><dt><a name="Normalize-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
 
@@ -407,9 +429,6 @@ the&nbsp;given&nbsp;mapping&nbsp;points&nbsp;are&nbsp;determined&nbsp;by&nbsp;si
 &nbsp;<br>
 The&nbsp;function&nbsp;returns&nbsp;an&nbsp;array&nbsp;"result"&nbsp;where&nbsp;result[x*(N-1)]<br>
 gives&nbsp;the&nbsp;closest&nbsp;value&nbsp;for&nbsp;values&nbsp;of&nbsp;x&nbsp;between&nbsp;0&nbsp;and&nbsp;1.</tt></dd></dl>
- <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)&nbsp;sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where<br>
-mask.flat[n]&nbsp;is&nbsp;true.&nbsp;&nbsp;If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;of&nbsp;a&nbsp;and&nbsp;mask&nbsp;then<br>
-it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavior&nbsp;than&nbsp;a[mask]&nbsp;=&nbsp;values.</tt></dd></dl>
  <dl><dt><a name="-rgb2hex"><strong>rgb2hex</strong></a>(rgb)</dt><dd><tt>Given&nbsp;a&nbsp;len&nbsp;3&nbsp;rgb&nbsp;tuple&nbsp;of&nbsp;0-1&nbsp;floats,&nbsp;return&nbsp;the&nbsp;hex&nbsp;string</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -418,14 +437,9 @@ it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavio
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>Float</strong> = 'd'<br>
-<strong>Int</strong> = 'l'<br>
-<strong>cnames</strong> = {'aliceblue': '#F0F8FF', 'antiquewhite': '#FAEBD7', 'aqua': '#00FFFF', 'aquamarine': '#7FFFD4', 'azure': '#F0FFFF', 'beige': '#F5F5DC', 'bisque': '#FFE4C4', 'black': '#000000', 'blanchedalmond': '#FFEBCD', 'blue': '#0000FF', ...}<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x831e58c&gt;<br>
-<strong>divide</strong> = &lt;ufunc 'divide'&gt;<br>
-<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xb7a95f20&gt;<br>
+<td width="100%"><strong>cnames</strong> = {'aliceblue': '#F0F8FF', 'antiquewhite': '#FAEBD7', 'aqua': '#00FFFF', 'aquamarine': '#7FFFD4', 'azure': '#F0FFFF', 'beige': '#F5F5DC', 'bisque': '#FFE4C4', 'black': '#000000', 'blanchedalmond': '#FFEBCD', 'blue': '#0000FF', ...}<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x85d92cc&gt;<br>
+<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0x853b660&gt;<br>
 <strong>k</strong> = 'peachpuff'<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
 <strong>v</strong> = '#FFDAB9'</td></tr></table>
 @footer@

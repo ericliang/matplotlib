@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.artist</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/artist.py">/usr/local/lib/python2.5/site-packages/matplotlib/artist.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/artist.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/artist.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -13,9 +13,10 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.units.html">matplotlib.units</a><br>
-</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -40,6 +41,12 @@
 
 <dl><dt><a name="Artist-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
+<dl><dt><a name="Artist-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;artist&nbsp;contains&nbsp;the&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;truth&nbsp;value&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;artist&nbsp;specific&nbsp;details&nbsp;of<br>
+selection,&nbsp;such&nbsp;as&nbsp;which&nbsp;points&nbsp;are&nbsp;contained&nbsp;in&nbsp;the&nbsp;pick&nbsp;radius.&nbsp;&nbsp;See<br>
+individual&nbsp;artists&nbsp;for&nbsp;details.</tt></dd></dl>
+
 <dl><dt><a name="Artist-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
 convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
 
@@ -61,6 +68,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Artist-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
+<dl><dt><a name="Artist-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
 <dl><dt><a name="Artist-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Artist-get_label"><strong>get_label</strong></a>(self)</dt></dl>
@@ -75,16 +84,29 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Artist-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
+<dl><dt><a name="Artist-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
 <dl><dt><a name="Artist-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Artist-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
 
 <dl><dt><a name="Artist-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="Artist-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>the&nbsp;user&nbsp;picked&nbsp;location&nbsp;x,y;&nbsp;if&nbsp;this&nbsp;<a href="#Artist">Artist</a>&nbsp;is&nbsp;within&nbsp;picker<br>
-"pick&nbsp;epsilon"&nbsp;of&nbsp;x,y&nbsp;fire&nbsp;off&nbsp;a&nbsp;pick&nbsp;event</tt></dd></dl>
+<dl><dt><a name="Artist-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Artist-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
 <dl><dt><a name="Artist-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Artist-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Artist-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
@@ -114,6 +136,15 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 <dl><dt><a name="Artist-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Artist-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
 <dl><dt><a name="Artist-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
 &nbsp;<br>
@@ -188,7 +219,7 @@ Data and other attributes defined here:<br>
 <font color="#000000" face="helvetica, arial"><a name="ArtistInspector">class <strong>ArtistInspector</strong></a></font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>A&nbsp;helper&nbsp;class&nbsp;to&nbsp;insect&nbsp;an&nbsp;<a href="#Artist">Artist</a>&nbsp;and&nbsp;return&nbsp;information&nbsp;about<br>
+<td colspan=2><tt>A&nbsp;helper&nbsp;class&nbsp;to&nbsp;inspect&nbsp;an&nbsp;<a href="#Artist">Artist</a>&nbsp;and&nbsp;return&nbsp;information&nbsp;about<br>
 it's&nbsp;settable&nbsp;properties&nbsp;and&nbsp;their&nbsp;current&nbsp;values<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
@@ -319,5 +350,5 @@ python&nbsp;kwargs.&nbsp;&nbsp;For&nbsp;example,&nbsp;the&nbsp;following&nbsp;ar
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>kwdocd</strong> = {'Artist': '        alpha: float<font color="#c040c0">\n</font>        animated: [True | F...isible: [True | False]<font color="#c040c0">\n</font>        zorder: any number'}</td></tr></table>
+<strong>kwdocd</strong> = {'Artist': '    alpha: float<font color="#c040c0">\n</font>    animated: [True | False]<font color="#c040c0">\n</font>  ...   visible: [True | False]<font color="#c040c0">\n</font>    zorder: any number'}</td></tr></table>
 @footer@

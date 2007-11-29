@@ -1,0 +1,263 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.contour</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/contour.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/contour.py</a></font></td></tr></table>
+    <p><tt>These&nbsp;are&nbsp;&nbsp;classes&nbsp;to&nbsp;support&nbsp;contour&nbsp;plotting&nbsp;and<br>
+labelling&nbsp;for&nbsp;the&nbsp;axes&nbsp;class</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib._cntr.html">matplotlib._cntr</a><br>
+<a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+<a href="matplotlib.cm.html">matplotlib.cm</a><br>
+<a href="matplotlib.collections.html">matplotlib.collections</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.colors.html">matplotlib.colors</a><br>
+<a href="matplotlib.font_manager.html">matplotlib.font_manager</a><br>
+<a href="matplotlib.numerix.npyma.html">matplotlib.numerix.npyma</a><br>
+<a href="matplotlib.html">matplotlib</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="matplotlib.text.html">matplotlib.text</a><br>
+<a href="matplotlib.ticker.html">matplotlib.ticker</a><br>
+<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.contour.html#ContourSet">ContourSet</a>(<a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>, <a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>)
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.contour.html#ContourSet">ContourSet</a>(<a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>, <a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>)
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ContourLabeler">class <strong>ContourLabeler</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Mixin&nbsp;to&nbsp;provide&nbsp;labelling&nbsp;capability&nbsp;to&nbsp;<a href="#ContourSet">ContourSet</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ContourLabeler-break_linecontour"><strong>break_linecontour</strong></a>(self, linecontour, rot, labelwidth, ind)</dt><dd><tt>break&nbsp;a&nbsp;contour&nbsp;in&nbsp;two&nbsp;contours&nbsp;at&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#ContourLabeler-clabel">clabel</a>(CS,&nbsp;**kwargs)&nbsp;-&nbsp;add&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;CS,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;CS&nbsp;is&nbsp;a&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;object&nbsp;returned&nbsp;by&nbsp;contour.<br>
+&nbsp;<br>
+<a href="#ContourLabeler-clabel">clabel</a>(CS,&nbsp;V,&nbsp;**kwargs)&nbsp;-&nbsp;only&nbsp;label&nbsp;contours&nbsp;listed&nbsp;in&nbsp;V<br>
+&nbsp;<br>
+keyword&nbsp;arguments:<br>
+&nbsp;<br>
+*&nbsp;fontsize&nbsp;=&nbsp;None:&nbsp;as&nbsp;described&nbsp;in&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+&nbsp;<br>
+*&nbsp;colors&nbsp;=&nbsp;None:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;colors&nbsp;=&nbsp;'r'&nbsp;or&nbsp;colors&nbsp;=&nbsp;'red',&nbsp;all&nbsp;labels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;colors&nbsp;==&nbsp;None,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;<br>
+*&nbsp;inline&nbsp;=&nbsp;True:&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inline&nbsp;=&nbsp;True)&nbsp;or&nbsp;not&nbsp;(False)<br>
+&nbsp;<br>
+*&nbsp;fmt&nbsp;=&nbsp;'%1.3f':&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-get_label_coords"><strong>get_label_coords</strong></a>(self, distances, XX, YY, ysize, lw)</dt><dd><tt>labels&nbsp;are&nbsp;ploted&nbsp;at&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;smallest<br>
+dispersion&nbsp;of&nbsp;the&nbsp;contour&nbsp;from&nbsp;a&nbsp;straight&nbsp;line<br>
+unless&nbsp;there's&nbsp;another&nbsp;label&nbsp;nearby,&nbsp;in&nbsp;which&nbsp;case<br>
+the&nbsp;second&nbsp;best&nbsp;place&nbsp;on&nbsp;the&nbsp;contour&nbsp;is&nbsp;picked&nbsp;up<br>
+if&nbsp;there's&nbsp;no&nbsp;good&nbsp;place&nbsp;a&nbsp;label&nbsp;isplotted&nbsp;at&nbsp;the<br>
+beginning&nbsp;of&nbsp;the&nbsp;contour</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-get_label_width"><strong>get_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;label&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-get_text"><strong>get_text</strong></a>(self, lev, fmt)</dt><dd><tt>get&nbsp;the&nbsp;text&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-labels"><strong>labels</strong></a>(self, inline)</dt></dl>
+
+<dl><dt><a name="ContourLabeler-locate_label"><strong>locate_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>find&nbsp;a&nbsp;good&nbsp;place&nbsp;to&nbsp;plot&nbsp;a&nbsp;label&nbsp;(relatively&nbsp;flat<br>
+part&nbsp;of&nbsp;the&nbsp;contour)&nbsp;and&nbsp;the&nbsp;angle&nbsp;of&nbsp;rotation&nbsp;for&nbsp;the<br>
+text&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-print_label"><strong>print_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>if&nbsp;contours&nbsp;are&nbsp;too&nbsp;short,&nbsp;don't&nbsp;plot&nbsp;a&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-set_label_props"><strong>set_label_props</strong></a>(self, label, text, color)</dt><dd><tt>set&nbsp;the&nbsp;label&nbsp;properties&nbsp;-&nbsp;color,&nbsp;fontsize,&nbsp;text</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-too_close"><strong>too_close</strong></a>(self, x, y, lw)</dt><dd><tt>if&nbsp;there's&nbsp;a&nbsp;label&nbsp;already&nbsp;nearby,&nbsp;find&nbsp;a&nbsp;better&nbsp;place</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ContourSet">class <strong>ContourSet</strong></a>(<a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>, <a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Create&nbsp;and&nbsp;store&nbsp;a&nbsp;set&nbsp;of&nbsp;contour&nbsp;lines&nbsp;or&nbsp;filled&nbsp;regions.<br>
+&nbsp;<br>
+User-callable&nbsp;method:&nbsp;clabel<br>
+&nbsp;<br>
+Useful&nbsp;attributes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ax&nbsp;-&nbsp;the&nbsp;axes&nbsp;object&nbsp;in&nbsp;which&nbsp;the&nbsp;contours&nbsp;are&nbsp;drawn<br>
+&nbsp;&nbsp;&nbsp;&nbsp;collections&nbsp;-&nbsp;a&nbsp;silent_list&nbsp;of&nbsp;LineCollections&nbsp;or&nbsp;PolyCollections<br>
+&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;-&nbsp;contour&nbsp;levels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;layers&nbsp;-&nbsp;same&nbsp;as&nbsp;levels&nbsp;for&nbsp;line&nbsp;contours;&nbsp;half-way&nbsp;between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;for&nbsp;filled&nbsp;contours.&nbsp;&nbsp;See&nbsp;_process_colors&nbsp;method.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.contour.html#ContourSet">ContourSet</a></dd>
+<dd><a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a></dd>
+<dd><a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="ContourSet-__init__"><strong>__init__</strong></a>(self, ax, *args, **kwargs)</dt><dd><tt>Draw&nbsp;contour&nbsp;lines&nbsp;or&nbsp;filled&nbsp;regions,&nbsp;depending&nbsp;on<br>
+whether&nbsp;keyword&nbsp;arg&nbsp;'filled'&nbsp;is&nbsp;False&nbsp;(default)&nbsp;or&nbsp;True.<br>
+&nbsp;<br>
+The&nbsp;first&nbsp;argument&nbsp;of&nbsp;the&nbsp;initializer&nbsp;must&nbsp;be&nbsp;an&nbsp;axes<br>
+object.&nbsp;&nbsp;The&nbsp;remaining&nbsp;arguments&nbsp;and&nbsp;keyword&nbsp;arguments<br>
+are&nbsp;described&nbsp;in&nbsp;<a href="#ContourSet">ContourSet</a>.contour_doc.</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-changed"><strong>changed</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="ContourSet-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>For&nbsp;compatibility&nbsp;with&nbsp;artists,&nbsp;return&nbsp;self.<strong>alpha</strong></tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>For&nbsp;compatibility&nbsp;with&nbsp;artists,&nbsp;set&nbsp;self.<strong>alpha</strong></tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>contour_doc</strong> = '<font color="#c040c0">\n</font>        contour and contourf draw contour lines...   boundaries unless antialiased = False<font color="#c040c0">\n</font>        '</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
+<dl><dt><a name="ContourSet-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
+that&nbsp;are&nbsp;set&nbsp;to&nbsp;True&nbsp;when&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-add_observer"><strong>add_observer</strong></a>(self, mappable)</dt><dd><tt>whenever&nbsp;the&nbsp;norm,&nbsp;clim&nbsp;or&nbsp;cmap&nbsp;is&nbsp;set,&nbsp;call&nbsp;the&nbsp;notify<br>
+instance&nbsp;of&nbsp;the&nbsp;mappable&nbsp;observer&nbsp;with&nbsp;self.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;designed&nbsp;to&nbsp;allow&nbsp;one&nbsp;image&nbsp;to&nbsp;follow&nbsp;changes&nbsp;in&nbsp;the<br>
+cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-check_update"><strong>check_update</strong></a>(self, checker)</dt><dd><tt>If&nbsp;mappable&nbsp;has&nbsp;changed&nbsp;since&nbsp;the&nbsp;last&nbsp;check,<br>
+return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;called&nbsp;then&nbsp;we&nbsp;are&nbsp;pegged&nbsp;to&nbsp;another&nbsp;mappable.<br>
+Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&nbsp;mappable.</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;A</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_norm"><strong>set_norm</strong></a>(self, norm)</dt><dd><tt>set&nbsp;the&nbsp;normalization&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;x.<br>
+If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;alpha;&nbsp;if&nbsp;it&nbsp;is<br>
+already&nbsp;rgba,&nbsp;return&nbsp;it&nbsp;unchanged.<br>
+If&nbsp;bytes&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as&nbsp;4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>:<br>
+<dl><dt><a name="ContourSet-break_linecontour"><strong>break_linecontour</strong></a>(self, linecontour, rot, labelwidth, ind)</dt><dd><tt>break&nbsp;a&nbsp;contour&nbsp;in&nbsp;two&nbsp;contours&nbsp;at&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#ContourSet-clabel">clabel</a>(CS,&nbsp;**kwargs)&nbsp;-&nbsp;add&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;CS,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;CS&nbsp;is&nbsp;a&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;object&nbsp;returned&nbsp;by&nbsp;contour.<br>
+&nbsp;<br>
+<a href="#ContourSet-clabel">clabel</a>(CS,&nbsp;V,&nbsp;**kwargs)&nbsp;-&nbsp;only&nbsp;label&nbsp;contours&nbsp;listed&nbsp;in&nbsp;V<br>
+&nbsp;<br>
+keyword&nbsp;arguments:<br>
+&nbsp;<br>
+*&nbsp;fontsize&nbsp;=&nbsp;None:&nbsp;as&nbsp;described&nbsp;in&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+&nbsp;<br>
+*&nbsp;colors&nbsp;=&nbsp;None:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;colors&nbsp;=&nbsp;'r'&nbsp;or&nbsp;colors&nbsp;=&nbsp;'red',&nbsp;all&nbsp;labels<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;colors&nbsp;==&nbsp;None,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;<br>
+*&nbsp;inline&nbsp;=&nbsp;True:&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inline&nbsp;=&nbsp;True)&nbsp;or&nbsp;not&nbsp;(False)<br>
+&nbsp;<br>
+*&nbsp;fmt&nbsp;=&nbsp;'%1.3f':&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-get_label_coords"><strong>get_label_coords</strong></a>(self, distances, XX, YY, ysize, lw)</dt><dd><tt>labels&nbsp;are&nbsp;ploted&nbsp;at&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;smallest<br>
+dispersion&nbsp;of&nbsp;the&nbsp;contour&nbsp;from&nbsp;a&nbsp;straight&nbsp;line<br>
+unless&nbsp;there's&nbsp;another&nbsp;label&nbsp;nearby,&nbsp;in&nbsp;which&nbsp;case<br>
+the&nbsp;second&nbsp;best&nbsp;place&nbsp;on&nbsp;the&nbsp;contour&nbsp;is&nbsp;picked&nbsp;up<br>
+if&nbsp;there's&nbsp;no&nbsp;good&nbsp;place&nbsp;a&nbsp;label&nbsp;isplotted&nbsp;at&nbsp;the<br>
+beginning&nbsp;of&nbsp;the&nbsp;contour</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-get_label_width"><strong>get_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;label&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-get_text"><strong>get_text</strong></a>(self, lev, fmt)</dt><dd><tt>get&nbsp;the&nbsp;text&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-labels"><strong>labels</strong></a>(self, inline)</dt></dl>
+
+<dl><dt><a name="ContourSet-locate_label"><strong>locate_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>find&nbsp;a&nbsp;good&nbsp;place&nbsp;to&nbsp;plot&nbsp;a&nbsp;label&nbsp;(relatively&nbsp;flat<br>
+part&nbsp;of&nbsp;the&nbsp;contour)&nbsp;and&nbsp;the&nbsp;angle&nbsp;of&nbsp;rotation&nbsp;for&nbsp;the<br>
+text&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-print_label"><strong>print_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>if&nbsp;contours&nbsp;are&nbsp;too&nbsp;short,&nbsp;don't&nbsp;plot&nbsp;a&nbsp;label</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-set_label_props"><strong>set_label_props</strong></a>(self, label, text, color)</dt><dd><tt>set&nbsp;the&nbsp;label&nbsp;properties&nbsp;-&nbsp;color,&nbsp;fontsize,&nbsp;text</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-too_close"><strong>too_close</strong></a>(self, x, y, lw)</dt><dd><tt>if&nbsp;there's&nbsp;a&nbsp;label&nbsp;already&nbsp;nearby,&nbsp;find&nbsp;a&nbsp;better&nbsp;place</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
+@footer@

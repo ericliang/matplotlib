@@ -116,7 +116,7 @@ class OutputStream:
   def __init__(self,view,old_out,style):
     self.view = view
     self.buffer = view.get_buffer()
-    self.mark = self.buffer.create_mark("End",self.buffer.get_end_iter(), gtk.FALSE )
+    self.mark = self.buffer.create_mark("End",self.buffer.get_end_iter(), False )
     self.out = old_out
     self.style = style
     self.tee = 1
@@ -128,7 +128,7 @@ class OutputStream:
     end = self.buffer.get_end_iter()
 
     if not self.view  == None:
-      self.view.scroll_to_mark(self.mark, 0, gtk.TRUE, 1, 1)
+      self.view.scroll_to_mark(self.mark, 0, True, 1, 1)
 
     self.buffer.insert_with_tags(end,text,self.style)
 
@@ -142,7 +142,7 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
     self.set_policy (gtk.POLICY_AUTOMATIC,gtk.POLICY_AUTOMATIC)
 
     self.text = gtk.TextView()
-    self.text.set_wrap_mode(gtk.TRUE)
+    self.text.set_wrap_mode(True)
 
     self.interpreter = code.InteractiveInterpreter()
 
@@ -158,7 +158,7 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
 
     self.current_history = -1
 
-    self.mark = self.text.get_buffer().create_mark("End",self.text.get_buffer().get_end_iter(), gtk.FALSE )
+    self.mark = self.text.get_buffer().create_mark("End",self.text.get_buffer().get_end_iter(), False )
 
             #setup colors
     self.style_banner = gtk.TextTag("banner")
@@ -166,12 +166,12 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
 
     self.style_ps1 = gtk.TextTag("ps1")
     self.style_ps1.set_property( "foreground", "DarkOrchid4" )
-    self.style_ps1.set_property( "editable", gtk.FALSE )
+    self.style_ps1.set_property( "editable", False )
     self.style_ps1.set_property("font", "courier" )
 
     self.style_ps2 = gtk.TextTag("ps2")
     self.style_ps2.set_property( "foreground", "DarkOliveGreen" )
-    self.style_ps2.set_property( "editable", gtk.FALSE  )
+    self.style_ps2.set_property( "editable", False  )
     self.style_ps2.set_property("font", "courier" )
 
     self.style_out = gtk.TextTag("stdout")
@@ -222,7 +222,7 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
     else:
       self.text.get_buffer().insert_with_tags(end,text,style)
 
-    self.text.scroll_to_mark(self.mark, 0, gtk.TRUE, 1, 1)
+    self.text.scroll_to_mark(self.mark, 0, True, 1, 1)
 
   def push(self, line):
 
@@ -257,21 +257,21 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
       l = self.text.get_buffer().get_line_count() - 1
       start = self.text.get_buffer().get_iter_at_line_offset(l,4)
       self.text.get_buffer().place_cursor(start)
-      return gtk.TRUE
+      return True
     elif event.keyval == gtk.gdk.keyval_from_name( 'space') and event.state & gtk.gdk.CONTROL_MASK:
       return self.complete_line()
-    return gtk.FALSE
+    return False
 
   def show_history(self):
     if self.current_history == 0:
-      return gtk.TRUE
+      return True
     else:
       self.replace_line( self.history[self.current_history] )
-      return gtk.TRUE
+      return True
 
   def current_line(self):
     start,end = self.current_line_bounds()
-    return self.text.get_buffer().get_text(start,end, gtk.TRUE)
+    return self.text.get_buffer().get_text(start,end, True)
 
   def current_line_bounds(self):
     txt_buffer = self.text.get_buffer()
@@ -294,7 +294,7 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
       self.write_line("\n")
     else:
       self.write_line(line + "\n")
-      
+
 
     more = self.push(line)
 
@@ -307,10 +307,10 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
 
 
     self.current_history = 0
-    
+
     self.window.raise_()
 
-    return gtk.TRUE
+    return True
 
   def complete_line(self):
     line = self.current_line()
@@ -334,7 +334,7 @@ class GTKInterpreterConsole(gtk.ScrolledWindow):
       line = line[0:i] + completions[0]
       self.replace_line(line)
 
-    return gtk.TRUE
+    return True
 
 
 def main():
@@ -342,15 +342,15 @@ def main():
   console = GTKInterpreterConsole()
   console.set_size_request(640,480)
   w.add(console)
-  
+
   def destroy(arg=None):
       gtk.main_quit()
-  
+
   def key_event(widget,event):
       if gtk.gdk.keyval_name( event.keyval) == 'd' and \
              event.state & gtk.gdk.CONTROL_MASK:
           destroy()
-      return gtk.FALSE
+      return False
 
   w.connect("destroy", destroy)
 
@@ -359,7 +359,7 @@ def main():
   w.show_all()
 
   console.execute_line('import matplotlib')
-  console.execute_line("matplotlib.use('GTKAgg')")  
+  console.execute_line("matplotlib.use('GTKAgg')")
   console.execute_line('matplotlib.interactive(1)')
   console.execute_line('from pylab import *')
 
@@ -370,7 +370,7 @@ def main():
       print >> sys.stderr, '%s does not exist' % fname
     for line in file(fname):
       line = line.strip()
-      
+
       console.execute_line(line)
   gtk.main()
 

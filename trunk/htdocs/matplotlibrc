@@ -26,9 +26,11 @@
 #### CONFIGURATION BEGINS HERE
 # the default backend; one of GTK GTKAgg GTKCairo FltkAgg QtAgg TkAgg
 #     Agg Cairo GD GDK Paint PS PDF SVG Template
-backend      : TkAgg
+backend      : GTKAgg
 numerix      : numpy  # numpy, Numeric or numarray
-units        : True
+#maskedarray : False       # True to use external maskedarray module
+                           # instead of numpy.ma; this is a temporary
+                           # setting for testing maskedarray.
 #interactive  : False      # see http://matplotlib.sourceforge.net/interactive.html
 #toolbar      : toolbar2   # None | classic | toolbar2
 #timezone     : UTC        # a pytz timezone string, eg US/Central or Europe/Paris
@@ -123,31 +125,54 @@ units        : True
 #text.color          : black
 
 ### LaTeX customizations. See http://www.scipy.org/Wiki/Cookbook/Matplotlib/UsingTex
-#text.usetex         : False  # use latex for all text handling. The following fonts 
+#text.usetex         : False  # use latex for all text handling. The following fonts
                               # are supported through the usual rc parameter settings:
                               # new century schoolbook, bookman, times, palatino,
-                              # zapf chancery, charter, serif, sans-serif, helvetica, 
-                              # avant garde, courier, monospace, computer modern roman, 
+                              # zapf chancery, charter, serif, sans-serif, helvetica,
+                              # avant garde, courier, monospace, computer modern roman,
                               # computer modern sans serif, computer modern typewriter
                               # If another font is desired which can loaded using the
-                              # LaTeX \usepackage command, please inquire at the 
+                              # LaTeX \usepackage command, please inquire at the
                               # matplotlib mailing list
 #text.latex.unicode : False # use "ucs" and "inputenc" LaTeX packages for handling
                             # unicode strings.
 #text.latex.preamble :  # IMPROPER USE OF THIS FEATURE WILL LEAD TO LATEX FAILURES
                             # AND IS THEREFORE UNSUPPORTED. PLEASE DO NOT ASK FOR HELP
                             # IF THIS FEATURE DOES NOT DO WHAT YOU EXPECT IT TO.
-                            # preamble is a comma separated list of LaTeX statements 
-                            # that are included in the LaTeX document preamble. 
+                            # preamble is a comma separated list of LaTeX statements
+                            # that are included in the LaTeX document preamble.
                             # An example:
                             # text.latex.preamble : \usepackage{bm},\usepackage{euler}
-                            # The following packages are always loaded with usetex, so 
-                            # beware of package collisions: color, geometry, graphicx, 
-                            # type1cm, textcomp. Adobe Postscript (PSSNFS) font packages 
+                            # The following packages are always loaded with usetex, so
+                            # beware of package collisions: color, geometry, graphicx,
+                            # type1cm, textcomp. Adobe Postscript (PSSNFS) font packages
                             # may also be loaded, depending on your font settings
 #text.dvipnghack     : False  # some versions of dvipng don't handle
                              # alpha channel properly.  Use True to correct and flush
                              # ~/.matplotlib/tex.cache before testing
+#text.markup         : 'plain'  # Affects how text, such as titles and labels, are
+                                # interpreted by default.
+                                # 'plain': As plain, unformatted text
+				# 'tex': As TeX-like text.  Text between $'s will be
+				# formatted as a TeX math expression.
+				# This setting has no effect when text.usetex is True.
+				# In that case, all text will be sent to TeX for 
+				# processing.
+
+# The following settings allow you to select the fonts in math mode.
+# They map from a TeX font name to a fontconfig font pattern.
+# These settings are only used if mathtext.fontset is 'custom'.
+#mathtext.cal : cursive
+#mathtext.rm  : serif
+#mathtext.tt  : monospace
+#mathtext.it  : serif:italic
+#mathtext.bf  : serif:bold
+#mathtext.sf  : sans
+#mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
+                       # 'stixsans' or 'custom'
+#mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern
+			         # fonts when a symbol can not be found in one of 
+				 # the custom math fonts.
 
 ### AXES
 # default face and edge color, default tick sizes,
@@ -232,7 +257,7 @@ units        : True
 
 
 ### CONTOUR PLOTS
-#contour.negative_linestyle :  6.0, 6.0 # negative contour dashstyle (size in points)
+#contour.negative_linestyle :  dashed # dashed | solid
 
 ### SAVING FIGURES
 # the default savefig params can be different for the GUI backends.
@@ -241,6 +266,8 @@ units        : True
 #savefig.dpi       : 100      # figure dots per inch
 #savefig.facecolor : white    # figure facecolor when saving
 #savefig.edgecolor : white    # figure edgecolor when saving
+
+#cairo.format      : png      # png, ps, pdf, svg
 
 # tk backend params
 #tk.window_focus   : False    # Maintain shell focus for TkAgg
@@ -254,17 +281,20 @@ units        : True
                                           # xpdf intended for production of publication quality files,
                                           # but requires ghostscript, xpdf and ps2eps
 #ps.distiller.res  : 6000      # dpi
+#ps.fonttype       : 3         # Output Type 3 (Type3) or Type 42 (TrueType)
 
 # pdf backend params
 #pdf.compression   : 6 # integer from 0 to 9
-		      # 0 disables compression (good for debugging)
+                       # 0 disables compression (good for debugging)
+#pdf.fonttype       : 3         # Output Type 3 (Type3) or Type 42 (TrueType)
 
 # svg backend params
 #svg.image_inline : True       # write raster image data directly into the svg file
 #svg.image_noscale : False     # suppress scaling of raster data embedded in SVG
+#svg.embed_chars : True       # embed character outlines in the SVG file
 
 # Set the verbose flags.  This controls how much information
-# matplotlib gives you at runtime and where it goes.  Ther verbosity
+# matplotlib gives you at runtime and where it goes.  The verbosity
 # levels are: silent, helpful, debug, debug-annoying.  Any level is
 # inclusive of all the levels below it.  If you setting is debug,
 # you'll get all the debug and helpful messages.  When submitting

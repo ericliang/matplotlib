@@ -15,7 +15,7 @@ from matplotlib.transforms import get_bbox_transform, Point, Value, Bbox,\
 if 1:   # load the data
     # data are 256x256 16 bit integers
     dfile = 'data/s1045.ima'
-    im = fromstring(file(dfile, 'rb').read(), UInt16).astype(Float)
+    im = fromstring(file(dfile, 'rb').read(), uint16).astype(float)
     im.shape = 256, 256
 
 if 1: # plot the MRI in pcolor
@@ -37,7 +37,7 @@ if 1:  # plot the histogram of MRI intensity
 if 1:   # plot the EEG
     # load the data
     numSamples, numRows = 800,4
-    data = fromstring(file('data/eeg.dat', 'rb').read(), Float)
+    data = fromstring(file('data/eeg.dat', 'rb').read(), float)
     data.shape = numSamples, numRows
     t = arange(numSamples)/float(numSamples)*10.0
     ticklocs = []
@@ -63,33 +63,33 @@ if 1:   # plot the EEG
 
     for i in range(numRows):
         # effectively a copy of transData
-        trans = get_bbox_transform(boxin, boxout) 
+        trans = get_bbox_transform(boxin, boxout)
         offset = (i+1)/(numRows+1)
 
         trans.set_offset( (0, offset), transOffset)
-        
+
         thisLine = Line2D(
             t, data[:,i]-data[0,i],
             )
-        
+
         thisLine.set_transform(trans)
-        
+
         ax.add_line(thisLine)
         ticklocs.append(offset)
 
     xlim(0,10)
     xticks(arange(10))
 
-    setp(gca(), 'yticklabels', ['PG3', 'PG5', 'PG7', 'PG9']) 
+    setp(gca(), 'yticklabels', ['PG3', 'PG5', 'PG7', 'PG9'])
 
     # set the yticks to use axes coords on the y axis
     ax.set_yticks(ticklocs)
     for tick in ax.yaxis.get_major_ticks():
         tick.label1.set_transform(ax.transAxes)
-        tick.label2.set_transform(ax.transAxes)        
+        tick.label2.set_transform(ax.transAxes)
         tick.tick1line.set_transform(ax.transAxes)
-        tick.tick2line.set_transform(ax.transAxes)        
-        tick.gridline.set_transform(ax.transAxes)                
+        tick.tick2line.set_transform(ax.transAxes)
+        tick.gridline.set_transform(ax.transAxes)
 
 
     xlabel('time (s)')

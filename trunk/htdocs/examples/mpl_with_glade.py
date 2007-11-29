@@ -6,9 +6,9 @@ from matplotlib.figure import Figure
 from matplotlib.axes import Subplot
 from matplotlib.backends.backend_gtkagg import FigureCanvasGTKAgg as FigureCanvas
 from matplotlib.backends.backend_gtkagg import NavigationToolbar2GTKAgg as NavigationToolbar
-from matplotlib.widgets import HorizontalSpanSelector
+from matplotlib.widgets import SpanSelector
 
-from matplotlib.numerix import arange, sin, pi
+from numpy import arange, sin, pi
 import gtk
 import gtk.glade
 
@@ -45,7 +45,7 @@ class WidgetsWrapper:
         self['windowMain'].move(10,10)
         self.figure = Figure(figsize=(8,6), dpi=72)
         self.axis = self.figure.add_subplot(111)
-        
+
         t = arange(0.0,3.0,0.01)
         s = sin(2*pi*t)
         self.axis.plot(t,s)
@@ -56,9 +56,9 @@ class WidgetsWrapper:
         self.canvas.show()
         self.canvas.set_size_request(600, 400)
         self.canvas.set_events(
-            gtk.gdk.BUTTON_PRESS_MASK      |            
+            gtk.gdk.BUTTON_PRESS_MASK      |
             gtk.gdk.KEY_PRESS_MASK      |
-            gtk.gdk.KEY_RELEASE_MASK    
+            gtk.gdk.KEY_RELEASE_MASK
             )
         self.canvas.set_flags(gtk.HAS_FOCUS|gtk.CAN_FOCUS)
         self.canvas.grab_focus()
@@ -69,18 +69,18 @@ class WidgetsWrapper:
             print 'button press'
 
         self.canvas.connect('key_press_event', keypress)
-        self.canvas.connect('button_press_event', buttonpress)      
+        self.canvas.connect('button_press_event', buttonpress)
 
         def onselect(xmin, xmax):
             print xmin, xmax
 
-        span = HorizontalSpanSelector(self.axis, onselect, useblit=False,
-                                          rectprops=dict(alpha=0.5, facecolor='red') )
+        span = SpanSelector(self.axis, onselect, 'horizontal', useblit=False,
+                            rectprops=dict(alpha=0.5, facecolor='red') )
 
 
         self['vboxMain'].pack_start(self.canvas, True, True)
         self['vboxMain'].show()
-        
+
         # below is optional if you want the navigation toolbar
         self.navToolbar = NavigationToolbar(self.canvas, self['windowMain'])
         self.navToolbar.lastDir = '/var/tmp/'

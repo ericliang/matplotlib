@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_wx</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_wx.py">/usr/local/lib/python2.5/site-packages/matplotlib/backends/backend_wx.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_wx.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_wx.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -157,18 +157,36 @@ Setup&nbsp;Dialog.</tt></dd></dl>
 <dl><dt><a name="FigureCanvasWx-draw"><strong>draw</strong></a>(self, repaint<font color="#909090">=True</font>)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;using&nbsp;<a href="#RendererWx">RendererWx</a>&nbsp;instance&nbsp;renderer,&nbsp;or&nbsp;using&nbsp;a<br>
 previously&nbsp;defined&nbsp;renderer&nbsp;if&nbsp;none&nbsp;is&nbsp;specified.</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasWx-get_default_filetype"><strong>get_default_filetype</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="FigureCanvasWx-gui_repaint"><strong>gui_repaint</strong></a>(self, drawDC<font color="#909090">=None</font>)</dt><dd><tt>Performs&nbsp;update&nbsp;of&nbsp;the&nbsp;displayed&nbsp;image&nbsp;on&nbsp;the&nbsp;GUI&nbsp;canvas,&nbsp;using&nbsp;the<br>
 supplied&nbsp;device&nbsp;context.&nbsp;&nbsp;If&nbsp;drawDC&nbsp;is&nbsp;None,&nbsp;a&nbsp;ClientDC&nbsp;will&nbsp;be&nbsp;used&nbsp;to<br>
 redraw&nbsp;the&nbsp;image.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWx-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, **kwargs)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;to&nbsp;hardcopy</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWx-print_bmp"><strong>print_bmp</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_jpeg"><strong>print_jpeg</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_jpg"><strong>print_jpg</strong></a> = <a href="#FigureCanvasWx-print_jpeg">print_jpeg</a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_pcx"><strong>print_pcx</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_png"><strong>print_png</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_tif"><strong>print_tif</strong></a> = <a href="#FigureCanvasWx-print_tiff">print_tiff</a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_tiff"><strong>print_tiff</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_xpm"><strong>print_xpm</strong></a>(self, filename, *args, **kwargs)</dt></dl>
 
 <dl><dt><a name="FigureCanvasWx-realize"><strong>realize</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;when&nbsp;the&nbsp;system&nbsp;is&nbsp;ready&nbsp;to&nbsp;draw,<br>
 eg&nbsp;when&nbsp;a&nbsp;GUI&nbsp;window&nbsp;is&nbsp;realized</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>keyvald</strong> = {306: 'shift', 307: 'alt', 308: 'control', 316: 'left', 317: 'up', 318: 'right', 319: 'down'}</dl>
+<dl><dt><strong>filetypes</strong> = {'bmp': 'Windows bitmap', 'emf': 'Enhanced Metafile', 'eps': 'Encapsulated Postscript', 'jpeg': 'JPEG', 'jpg': 'JPEG', 'pcx': 'PCX', 'pdf': 'Portable Document Format', 'png': 'Portable Network Graphics', 'ps': 'Postscript', 'raw': 'Raw RGBA bitmap', ...}</dl>
+
+<dl><dt><strong>keyvald</strong> = {8: 'backspace', 13: 'enter', 27: 'escape', 127: 'delete', 306: 'shift', 307: 'alt', 308: 'control', 310: 'break', 312: 'pageup', 313: 'pagedown', ...}</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
@@ -188,6 +206,10 @@ native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt>
 <dl><dt><a name="FigureCanvasWx-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt></dl>
 
 <dl><dt><a name="FigureCanvasWx-draw_idle"><strong>draw_idle</strong></a>(self, *args, **kwargs)</dt><dd><tt>draw&nbsp;only&nbsp;if&nbsp;idle;&nbsp;defaults&nbsp;to&nbsp;draw&nbsp;but&nbsp;backends&nbsp;can&nbsp;overrride</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-get_supported_filetypes"><strong>get_supported_filetypes</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-get_supported_filetypes_grouped"><strong>get_supported_filetypes_grouped</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FigureCanvasWx-get_width_height"><strong>get_width_height</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;points&nbsp;or&nbsp;pixels<br>
 (depending&nbsp;on&nbsp;the&nbsp;backend),&nbsp;truncated&nbsp;to&nbsp;integers</tt></dd></dl>
@@ -212,8 +234,9 @@ where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbs
 'key_release_event',<br>
 'button_press_event',<br>
 'button_release_event',<br>
+'scroll_event',<br>
 'motion_notify_event',<br>
-'pick_event',&nbsp;<br>
+'pick_event',<br>
 &nbsp;<br>
 &nbsp;<br>
 For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
@@ -227,12 +250,58 @@ mpl_disconnect</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasWx-onHilite"><strong>onHilite</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;highlights&nbsp;the&nbsp;artists<br>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;motion_notify_event<br>
+using&nbsp;canvas.<a href="#FigureCanvasWx-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-onRemove"><strong>onRemove</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;removes&nbsp;the&nbsp;top&nbsp;artist<br>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;mouse_press_event<br>
+using&nbsp;canvas.<a href="#FigureCanvasWx-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-pick"><strong>pick</strong></a>(self, mouseevent)</dt></dl>
+
 <dl><dt><a name="FigureCanvasWx-pick_event"><strong>pick_event</strong></a>(self, mouseevent, artist, **kwargs)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;by&nbsp;artists&nbsp;who&nbsp;are&nbsp;picked&nbsp;and&nbsp;will<br>
 fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_emf"><strong>print_emf</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_eps"><strong>print_eps</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_figure"><strong>print_figure</strong></a>(self, filename, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">='w'</font>, edgecolor<font color="#909090">='w'</font>, orientation<font color="#909090">='portrait'</font>, format<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;to&nbsp;hardcopy.&nbsp;Set&nbsp;the&nbsp;figure&nbsp;patch&nbsp;face&nbsp;and&nbsp;edge<br>
+colors.&nbsp;&nbsp;This&nbsp;is&nbsp;useful&nbsp;because&nbsp;some&nbsp;of&nbsp;the&nbsp;GUIs&nbsp;have&nbsp;a&nbsp;gray&nbsp;figure<br>
+face&nbsp;color&nbsp;background&nbsp;and&nbsp;you'll&nbsp;probably&nbsp;want&nbsp;to&nbsp;override&nbsp;this&nbsp;on<br>
+hardcopy.<br>
+&nbsp;<br>
+filename&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;can&nbsp;also&nbsp;be&nbsp;a&nbsp;file&nbsp;object&nbsp;on&nbsp;image&nbsp;backends<br>
+orientation&nbsp;-&nbsp;only&nbsp;currently&nbsp;applies&nbsp;to&nbsp;PostScript&nbsp;printing.<br>
+dpi&nbsp;-&nbsp;the&nbsp;dots&nbsp;per&nbsp;inch&nbsp;to&nbsp;save&nbsp;the&nbsp;figure&nbsp;in;&nbsp;if&nbsp;None,&nbsp;use&nbsp;savefig.dpi<br>
+facecolor&nbsp;-&nbsp;the&nbsp;facecolor&nbsp;of&nbsp;the&nbsp;figure<br>
+edgecolor&nbsp;-&nbsp;the&nbsp;edgecolor&nbsp;of&nbsp;the&nbsp;figure<br>
+orientation&nbsp;-&nbsp;'landscape'&nbsp;|&nbsp;'portrait'&nbsp;(not&nbsp;supported&nbsp;on&nbsp;all&nbsp;backends)<br>
+format&nbsp;-&nbsp;when&nbsp;set,&nbsp;forcibly&nbsp;set&nbsp;the&nbsp;file&nbsp;format&nbsp;to&nbsp;save&nbsp;to</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_pdf"><strong>print_pdf</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_ps"><strong>print_ps</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_raw"><strong>print_raw</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_rgb"><strong>print_rgb</strong></a> = print_raw(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_svg"><strong>print_svg</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-print_svgz"><strong>print_svgz</strong></a>(self, *args, **kwargs)</dt></dl>
 
 <dl><dt><a name="FigureCanvasWx-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>set&nbsp;the&nbsp;canvas&nbsp;size&nbsp;in&nbsp;pixels</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-resize_event"><strong>resize_event</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FigureCanvasWx-scroll_event"><strong>scroll_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
+scroll&nbsp;wheel&nbsp;event.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,<br>
+left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWx-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt><dd><tt>Set&nbsp;the&nbsp;title&nbsp;text&nbsp;of&nbsp;the&nbsp;window&nbsp;containing&nbsp;the&nbsp;figure.&nbsp;&nbsp;Note&nbsp;that<br>
+this&nbsp;has&nbsp;no&nbsp;effect&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;window&nbsp;(eg,&nbsp;a&nbsp;PS&nbsp;backend).</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-switch_backends"><strong>switch_backends</strong></a>(self, FigureCanvasClass)</dt><dd><tt>instantiate&nbsp;an&nbsp;instance&nbsp;of&nbsp;FigureCanvasClass<br>
 &nbsp;<br>
@@ -243,7 +312,7 @@ figure&nbsp;size&nbsp;or&nbsp;line&nbsp;props),&nbsp;will&nbsp;be&nbsp;reflected
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
-<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'motion_notify_event', 'pick_event')</dl>
+<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event')</dl>
 
 <hr>
 Methods inherited from <a href="wx._windows.html#Panel">wx._windows.Panel</a>:<br>
@@ -339,7 +408,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -354,7 +423,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -3076,6 +3145,8 @@ window&nbsp;-&nbsp;a&nbsp;wxFrame&nbsp;instance&nbsp;-&nbsp;<a href="http://www.
 
 <dl><dt><a name="FigureManagerWx-destroy"><strong>destroy</strong></a>(self, *args)</dt></dl>
 
+<dl><dt><a name="FigureManagerWx-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt></dl>
+
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureManagerBase">matplotlib.backend_bases.FigureManagerBase</a>:<br>
 <dl><dt><a name="FigureManagerWx-full_screen_toggle"><strong>full_screen_toggle</strong></a>(self)</dt></dl>
@@ -3109,6 +3180,8 @@ window&nbsp;-&nbsp;a&nbsp;wxFrame&nbsp;instance&nbsp;-&nbsp;<a href="http://www.
 <dl><dt><a name="FigureManagerWx-__init__"><strong>__init__</strong></a>(self, canvas, num, frame)</dt></dl>
 
 <dl><dt><a name="FigureManagerWx-destroy"><strong>destroy</strong></a>(self, *args)</dt></dl>
+
+<dl><dt><a name="FigureManagerWx-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureManagerBase">matplotlib.backend_bases.FigureManagerBase</a>:<br>
@@ -3785,7 +3858,7 @@ Get&nbsp;the&nbsp;width,&nbsp;height,&nbsp;decent&nbsp;and&nbsp;leading&nbsp;of&
 current&nbsp;or&nbsp;specified&nbsp;font.&nbsp;Works&nbsp;for&nbsp;single&nbsp;as&nbsp;well&nbsp;as&nbsp;multi-line<br>
 strings.</tt></dd></dl>
 
-<dl><dt><a name="GraphicsContextWx-GetOptimization"><strong>GetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;GetOptimization&nbsp;at&nbsp;0xb68ecc34&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="GraphicsContextWx-GetOptimization"><strong>GetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;GetOptimization&nbsp;at&nbsp;0x865b064&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextWx-GetPPI"><strong>GetPPI</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#GraphicsContextWx-GetPPI">GetPPI</a>(self)&nbsp;-&gt;&nbsp;Size<br>
 &nbsp;<br>
@@ -4049,7 +4122,7 @@ mapping&nbsp;mode&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;wx.MM_TEXT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Each&nbsp;logical&nbsp;unit&nbsp;is&nbsp;1&nbsp;pixel.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;================&nbsp;&nbsp;&nbsp;&nbsp;=============================================</tt></dd></dl>
 
-<dl><dt><a name="GraphicsContextWx-SetOptimization"><strong>SetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;SetOptimization&nbsp;at&nbsp;0xb68ecbfc&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="GraphicsContextWx-SetOptimization"><strong>SetOptimization</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;SetOptimization&nbsp;at&nbsp;0x865b02c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="GraphicsContextWx-SetPalette"><strong>SetPalette</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#GraphicsContextWx-SetPalette">SetPalette</a>(self,&nbsp;Palette&nbsp;palette)<br>
 &nbsp;<br>
@@ -4242,7 +4315,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="MenuButtonWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="MenuButtonWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="MenuButtonWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#MenuButtonWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -4257,7 +4330,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="MenuButtonWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="MenuButtonWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="MenuButtonWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#MenuButtonWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -5795,7 +5868,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2Wx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2Wx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2Wx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2Wx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -5810,7 +5883,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2Wx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2Wx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2Wx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2Wx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -7320,7 +7393,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbarWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -7335,7 +7408,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbarWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -8726,7 +8799,7 @@ None)</tt></dd></dl>
 
 <dl><dt><a name="RendererWx-get_gc"><strong>get_gc</strong></a>(self)</dt><dd><tt>Fetch&nbsp;the&nbsp;locally&nbsp;cached&nbsp;gc.</tt></dd></dl>
 
-<dl><dt><a name="RendererWx-get_text_width_height"><strong>get_text_width_height</strong></a>(self, s, prop, ismath)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;display&nbsp;coords&nbsp;of&nbsp;the&nbsp;string&nbsp;s<br>
+<dl><dt><a name="RendererWx-get_text_width_height_descent"><strong>get_text_width_height_descent</strong></a>(self, s, prop, ismath)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;display&nbsp;coords&nbsp;of&nbsp;the&nbsp;string&nbsp;s<br>
 with&nbsp;FontPropertry&nbsp;prop</tt></dd></dl>
 
 <dl><dt><a name="RendererWx-get_wx_font"><strong>get_wx_font</strong></a>(self, s, prop)</dt><dd><tt>Return&nbsp;a&nbsp;wx&nbsp;font.&nbsp;&nbsp;Cache&nbsp;instances&nbsp;in&nbsp;a&nbsp;font&nbsp;dictionary&nbsp;for<br>
@@ -8963,7 +9036,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="StatusBarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="StatusBarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="StatusBarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#StatusBarWx-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -8978,7 +9051,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="StatusBarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="StatusBarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="StatusBarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#StatusBarWx-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -11951,7 +12024,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CenterOnScreen"><strong>CenterOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-Centre"><strong>Centre</strong></a> = Center(*args, **kwargs)</dt><dd><tt><a href="#Toolbar-Center">Center</a>(self,&nbsp;int&nbsp;direction=BOTH)<br>
 &nbsp;<br>
@@ -11966,7 +12039,7 @@ relative&nbsp;to&nbsp;the&nbsp;screen.</tt></dd></dl>
 &nbsp;<br>
 Center&nbsp;with&nbsp;respect&nbsp;to&nbsp;the&nbsp;the&nbsp;parent&nbsp;window</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0xb696941c&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
+<dl><dt><a name="NavigationToolbarWx-CentreOnScreen"><strong>CentreOnScreen</strong></a> = deprecatedWrapper(*args, **kwargs)</dt><dd><tt>&lt;function&nbsp;CenterOnScreen&nbsp;at&nbsp;0x8594e64&gt;&nbsp;is&nbsp;deprecated</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbarWx-ClearBackground"><strong>ClearBackground</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#Toolbar-ClearBackground">ClearBackground</a>(self)<br>
 &nbsp;<br>
@@ -13273,10 +13346,9 @@ into&nbsp;this&nbsp;in&nbsp;a&nbsp;later&nbsp;release.</tt></dd></dl>
 <td width="100%"><strong>PIXELS_PER_INCH</strong> = 75<br>
 <strong>backend_version</strong> = '2.6.3.2'<br>
 <strong>cursord</strong> = {0: 6, 1: 1, 2: 5, 3: 6}<br>
-<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0x866638c&gt;<br>
+<strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0x8d609ac&gt;<br>
 <strong>cvs_id</strong> = '$Id$'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b6d8ec&gt;<br>
-<strong>wxapp</strong> = None</td></tr></table>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
 @footer@

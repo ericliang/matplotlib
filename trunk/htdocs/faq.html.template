@@ -442,20 +442,6 @@ bug-vetting</li>
 </ul>
 """),
 
-    ('NUMARRAY', 'Does matplotlib work with numarray?', """ 
-Yes.  Todd Miller has added a numerix module which allows you to
-choose between Numeric or numarray at the prompt or in a config file.
-See <a href=matplotlib.numerix.html>numerix module</a> for more
-information.<p>
-
-Some of the matplotlib extension code operates on Numeric/numarray
-arrays, eg the image and transforms modules.  To get optimum
-performance, you need to compile matplotlib with the package you want
-to use.  matplotlib setup.py will automatically detect whether you
-have Numeric or numarray or both at compile time, and will compile the
-appropriate extensions to work with one or both, if present.  The
-actual extension chosen at runtime will be determined by your
-'numerix' <a href=matplotlibrc>matplotlibrc</a> setting."""),
 
     ('SLOW', 'matplotlib seems painfully slow, am I doing something wrong?',
 
@@ -463,14 +449,6 @@ actual extension chosen at runtime will be determined by your
 Hopefully, yes.  A lot of work has gone into making matplotlib
 reasonably fast plotting largish arrays and image data.  If things
 seem exceptionally pokey, it may indicate a problem in your setup.
-Before matplotlib-0.64, the most common cause is getting your numerix
-settings out of kilter.  As indicated in <a href=faq.html#NUMARRAY>the
-numarray faq</a>, it is important that the Numeric/numarray extension
-you want to use is available at the time you compile matplotlib, since
-the appropriate extensions are determined automatically when
-matplotlib is compiled.  Both Numeric and numarray extensions are
-available in the windows installer .  Failure to do so can cause up to
-a 30-fold performance hit in some cases.<p>
 
 Also, if you are running a python script, make sure your interactive
 setting in your <a href=matplotlibrc>matplotlibrc</a> is <tt>False</tt>;
@@ -478,20 +456,6 @@ otherwise the figure will be redrawn with every plotting command when
 what you want if for the figure to be drawn only once at the end of
 the script.  See <a href=interactive.html>interactive</a> and <a
 href=faq.html#SHOW>what's up with show?</a> for more information.<p>
-
-For images, matplotlib-0.70 added a number of optimizations that
-delivered approximately a 4x performance boost over earlier versions.
-So if you need fast image support, make sure you are using the latest
-release.  Also, the matplotlib normalization code, which converts
-image data on an arbitrary scale to the unit interval, may be
-unnecessary if your data is already scaled to the unit interval.  You
-can avoid this cose by writing a do-nothing normalization function.
-<pre>
-class mynorm(normalize):
-    def __call__(self, X):
-        return X
-imshow(X, norm=mynorm())
-</pre>
 
 Another possibility to speed things up is to use <a
 href=matplotlib.collections.html>collections</a>, which were designed
@@ -635,7 +599,7 @@ py2exe wiki entry</a>.
     r"""
 If you want to customize a session of matplotlib, eg, the default font,
 linewidth, fontsize, etc, use the <a
-href=matplotlib.pylab.html#-rc>rc</a> command.  This changes the
+href=matplotlib.pyplot.html#-rc>rc</a> command.  This changes the
 default for the rest of the session, or until you issue another rc
 command.  See <a examples/customize_rc.py>customize_rc.py</a> for
 example usage."""),
@@ -692,7 +656,7 @@ use the <a href=http://antigrain.com>agg</a> backend because:
   <li>there are clipping issues with GD and Paint </li>
   <li>it supports fast antialiased drawing and alpha blending </li>
   <li>it supports <a href=matplotlib.mathtext.html>mathtext</a></li>
-  <li>it supports images with <a href=matplotlib.pylab.html#-imshow>imshow</a></li>
+  <li>it supports images with <a href=matplotlib.pyplot.html#-imshow>imshow</a></li>
 </ul>
 
 It is likely that with time many of these limitiations or problems
@@ -839,7 +803,7 @@ interactively from the shell.
 <b>IMPORTANT: show should called at most once per script and it should
 be the last line of your script.  At that point, the GUI takes control
 of the interpreter.  If you want to force a figure draw, use <a
-href=matplotlib.pylab.html#-draw>draw</a> instead.</b> """),
+href=matplotlib.pyplot.html#-draw>draw</a> instead.</b> """),
  
     ('PSGUI',
      'Can I save PS/EPS from a GUI backend?',
@@ -856,7 +820,7 @@ work properly."""),
    """
 The default subplots take up a lot of room.  If you need extra space
 for particularly large labels and titles, consider using custom <a
-href=matplotlib.pylab.html#-axes>axes</a>, eg, <tt>axes([0.3, 0.3, 0.6,
+href=matplotlib.pyplot.html#-axes>axes</a>, eg, <tt>axes([0.3, 0.3, 0.6,
 0.6])</tt> gives you more room to the left and at the bottom than the
 standard axes.</p>
 
@@ -890,7 +854,7 @@ href=examples/system_monitor.py>system_monitor.py</a>"""),
 subplot is just a helper function to generate regularly spaced axes.
 For more fine-grained control, you can position axes anywhere you want
 in any size using the axes command.  See
-the <a href=matplotlib.pylab.html#-axes>axes command</a> and the example
+the <a href=matplotlib.pyplot.html#-axes>axes command</a> and the example
 <a href=examples/axes_demo.py>axes_demo.py<a/>.<p>
 
 """),
@@ -899,8 +863,8 @@ the <a href=matplotlib.pylab.html#-axes>axes command</a> and the example
     'Can matplotlib handle image data?',
      """
 Yes - you can now plot images from numerix arraysq with <a
-href=matplotlib.pylab.html#-imshow>imshow</a>.  You can load png
-files into arrays <a href=matplotlib.pylab.html#-imread>imread</a>;
+href=matplotlib.pyplot.html#-imshow>imshow</a>.  You can load png
+files into arrays <a href=matplotlib.pyplot.html#-imread>imread</a>;
 image loaders coming soon."""),
 
     ('ROTATETICKS',
@@ -978,8 +942,8 @@ docs</a> for details.
 """ ),
 
  ('SVG-BAKOMA-FONTS-MATHTEXT',
-      "My SVG viewer doesn't properly display special (TeX) characters
-      ('\sum', '\infty',etc.) generated by mathtext.  Is this a bug?",
+      """My SVG viewer doesn't properly display special (TeX) characters
+      ('\sum', '\infty',etc.) generated by mathtext.  Is this a bug?""",
     """
 You need to install the BaKoMa fonts (TrueType version of the Computer
 Modern fonts) on your system. The BaKoMa fonts come packaged with
@@ -1037,8 +1001,8 @@ not an exhaustive list.
 """),
 
       ('LEAKS2',
-       'I\'d like to help diagnose a memory leak, rather than just
-       report it.  How do you recommend I do that?',
+       """I'd like to help diagnose a memory leak, rather than just
+       report it.  How do you recommend I do that?""",
 """\
 I thought you'd never ask!  Python memory leaks tend to fall into one
        of the following categories:

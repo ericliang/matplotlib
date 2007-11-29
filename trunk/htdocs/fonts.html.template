@@ -133,7 +133,7 @@ accept it, it scales to arbitrary resolutions, you can import it
 directly into LaTeX document, and send it directly to postscript
 printers.<p>
 
-The only requirement to generate postscript output is the Numeric
+The only requirement to generate postscript output is the numpy
 module and some AFM fonts on your system.  Even the latter is only a
 quasi-requirement, because matplotlib ships with some of the most
 popular font files.  These are <it>Adobe Font Metric</it> files, which

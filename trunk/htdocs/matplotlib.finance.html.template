@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.finance</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/finance.py">/usr/local/lib/python2.5/site-packages/matplotlib/finance.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/finance.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/finance.py</a></font></td></tr></table>
     <p><tt>A&nbsp;collection&nbsp;of&nbsp;modules&nbsp;for&nbsp;collecting,&nbsp;analyzing&nbsp;and&nbsp;plotting<br>
 financial&nbsp;data.&nbsp;&nbsp;&nbsp;User&nbsp;contributions&nbsp;welcome!</tt></p>
 <p>
@@ -16,7 +16,7 @@ financial&nbsp;data.&nbsp;&nbsp;&nbsp;User&nbsp;contributions&nbsp;welcome!</tt>
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
 <a href="md5.html">md5</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.numerix.html">matplotlib.numerix</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
 <a href="os.html">os</a><br>
 </td><td width="25%" valign=top><a href="time.html">time</a><br>
 <a href="warnings.html">warnings</a><br>
@@ -171,7 +171,7 @@ alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt>
 <td width="100%"><strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>cachedir</strong> = '/home/jdhunter/.matplotlib/finance.cache'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x834cdcc&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x867beac&gt;<br>
 <strong>configdir</strong> = '/home/jdhunter/.matplotlib'<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7b2e8ec&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
 @footer@

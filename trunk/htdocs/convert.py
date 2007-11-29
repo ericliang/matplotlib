@@ -20,7 +20,7 @@ def exception_to_str(s = None):
 class NewsBox:
     def __init__(self, body, title='News Flash'):
         self.body = body
-        self.title
+        self.title = title
 
     def format_header(self):
         return """
@@ -187,17 +187,9 @@ def isNewEntry(line):
 # re-add news to the params dict 'tables' entry below for news
 
 news1 = NewsBox("""matplotlib <a
-href="http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474">0.90.1</a>
-is out.  The 0.90 series is the last release that will continue to
-support Numeric, numarray and numpy.  At 0.91, we will be using numpy
-only internally, though we will continue to provide the <a
-href=matplotlib.numerix.html>numerix</a> compaitibility layer for
-external use.  """, title='New release')
+href="http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474">0.91.0</a>
+is out.  See <a href=whats_new.html>what's new</a> for a summary of new features.  """, title='New release')
 
-
-news2 = NewsBox("""
-If you are upgrading matplotlib from an earlier version, please make sure you are using the most recent matplotlib configuration file because we have made a number of organizational changes.  See <a href=matplotlibrc>matplotlibrc<a/> for information about typical locations of your configuration files and directories.  See also the <a href=faq.html#FONTMISSING>missing fonts FAQ</a>.
-""", title='Missing fonts')
 
 table1 =  LinkBox(header='Matplotlib', links=(
     ('Home', 'http://matplotlib.sourceforge.net'),
@@ -233,7 +225,7 @@ table3 =  LinkBox(header='Other', links=(
 
 params = {
     'myemail' : '<a href=mailto:jdhunter@ace.bsd.uchicago.edu> (jdhunter@ace.bsd.uchicago.edu)</a>',
-    'tables' : (news1, news2, table1, table2, table3),
+    'tables' : (news1, table1, table2, table3),
     'default_table' :  'border=1 cellpadding=3 cellspacing=2', 
           }
 

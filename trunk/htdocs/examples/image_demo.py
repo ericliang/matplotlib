@@ -9,8 +9,8 @@ Z2 = bivariate_normal(X, Y, 1.5, 0.5, 1, 1)
 Z = Z2-Z1  # difference of Gaussians
 
 im = imshow(Z, interpolation='bilinear', cmap=cm.gray,
-	    origin='lower', extent=[-3,3,-3,3])
+            origin='lower', extent=[-3,3,-3,3])
 
-savefig('image_demo')
+#savefig('image_demo')
 show()
 

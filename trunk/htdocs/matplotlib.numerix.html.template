@@ -2,9 +2,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.3.dev3736)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.4.dev4009)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/usr/local/lib/python2.5/site-packages/matplotlib/numerix/__init__.py">/usr/local/lib/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/numerix/__init__.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
 &nbsp;<br>
 0.&nbsp;&nbsp;If&nbsp;the&nbsp;value&nbsp;"--numpy","--numarray"&nbsp;or&nbsp;"--Numeric"&nbsp;is&nbsp;specified&nbsp;on&nbsp;the<br>
@@ -29,13 +29,14 @@ and&nbsp;the&nbsp;default&nbsp;array&nbsp;package&nbsp;is&nbsp;Numeric.</tt></p>
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.numerix._na_imports.html">_na_imports</a><br>
 <a href="matplotlib.numerix._nc_imports.html">_nc_imports</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.numerix._sp_imports.html">_sp_imports</a><br>
-<a href="matplotlib.numerix.fft.html"><strong>fft</strong>&nbsp;(package)</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.numerix.linear_algebra.html"><strong>linear_algebra</strong>&nbsp;(package)</a><br>
+<a href="matplotlib.numerix._sp_imports.html">_sp_imports</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.numerix.fft.html"><strong>fft</strong>&nbsp;(package)</a><br>
+<a href="matplotlib.numerix.linear_algebra.html"><strong>linear_algebra</strong>&nbsp;(package)</a><br>
 <a href="matplotlib.numerix.ma.html"><strong>ma</strong>&nbsp;(package)</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.numerix.mlab.html"><strong>mlab</strong>&nbsp;(package)</a><br>
+<a href="matplotlib.numerix.npyma.html"><strong>npyma</strong>&nbsp;(package)</a><br>
 <a href="matplotlib.numerix.random_array.html"><strong>random_array</strong>&nbsp;(package)</a><br>
-</td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -137,7 +138,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>UnsignedInt32</strong> = 'I'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.0.3.dev3736'<br>
+<strong>__version__</strong> = '1.0.4.dev4009'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -163,14 +164,14 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>floor</strong> = &lt;ufunc 'floor'&gt;<br>
 <strong>floor_divide</strong> = &lt;ufunc 'floor_divide'&gt;<br>
 <strong>fmod</strong> = &lt;ufunc 'fmod'&gt;<br>
-<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xb68babc4&gt;, 'Float': 'd', ...}<br>
+<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x855da74&gt;, 'Float': 'd', ...}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
 <strong>infinity</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
-<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xb68babc4&gt;, 'Float': 'd', ...}<br>
+<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x855da74&gt;, 'Float': 'd', ...}<br>
 <strong>left_shift</strong> = &lt;ufunc 'left_shift'&gt;<br>
 <strong>less</strong> = &lt;ufunc 'less'&gt;<br>
 <strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
@@ -187,10 +188,10 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0xb68a7b0c&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x855314c&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
-<strong>rcParams</strong> = {'axes.axisbelow': False, 'axes.edgecolor': 'k', 'axes.facecolor': 'w', 'axes.formatter.limits': (-7, 7), 'axes.grid': False, 'axes.hold': True, 'axes.labelcolor': 'k', 'axes.labelsize': 12, 'axes.linewidth': 1.0, 'axes.titlesize': 14, ...}<br>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>
@@ -202,7 +203,8 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>tanh</strong> = &lt;ufunc 'tanh'&gt;<br>
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xb7a8d8ec&gt;<br>
-<strong>version</strong> = 'numpy 1.0.3.dev3736'<br>
+<strong>use_maskedarray</strong> = False<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;<br>
+<strong>version</strong> = 'numpy 1.0.4.dev4009'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@

@@ -4,8 +4,8 @@
 
 The matplotlib core graphics routines interact with an abstract
 renderer and graphics context to allow device independent ouput.
-Currently, output to pygtk, wxPython, Tkinter, postscript, gdmodule,
-libart/paint, svg, agg (antigrain geometry) and Cairo are supported.  With
+Currently, output to pygtk, wxPython, Tkinter, postscript,
+pdf, svg, agg (antigrain geometry) and Cairo are supported.  With
 not too much effort, you can port matplotlib to your favorite display;
 high on my list of priorities are PDF and PIL.  If you are interested
 in porting to one of these platforms, please contact me!<p>
@@ -35,24 +35,22 @@ command, the backend can be chosen from the command line with the
 > python subplot_demo.py -dAgg     # antigrain geometry backend image
 > python subplot_demo.py -dCairo   # Cairo backend
 > python subplot_demo.py -dPS      # postscript backend
+> python subplot_demo.py -dPDF     # pdf backend
 > python subplot_demo.py -dSVG     # SVG backend
-> python subplot_demo.py -dGD      # GD backend
-> python subplot_demo.py -dPaint   # Paint backend
-> python subplot_demo.py -dEMF     # EMF backend
 </pre>
 
 
 For backends that do not have a GUI, no output will be produced unless
-a call to <a href=matplotlib.pylab.html#-savefig>savefig</a> is made.
+a call to <a href=matplotlib.pyplot.html#-savefig>savefig</a> is made.
 The recommended way to use the savefig function is to not give an
 extension.  The backends will choose the proper extension.  This
 allows you to write a single script and select the output format from
 the command line.  So a script containing <tt>savefig('somefile')</tt>
 will create <tt>somefile.ps</tt> if called with <tt>-dPS</tt> and
-<tt>somefile.png</tt> if called with <tt>-dGD</tt>, and so on.<p>
+<tt>somefile.png</tt> if called with <tt>-dAgg</tt>, and so on.<p>
 
 Alternatively, you can select the backend renderer in your script by
-calling the matplotlib <a href=matplotlib.pylab.html#-use>use</a>
+calling the matplotlib <a href=matplotlib.pyplot.html#-use>use</a>
 function.  At the top of your script (before you <tt>import
 matplotlib.pylab</tt>, just do, for example
 
@@ -69,12 +67,11 @@ href=matplotlib.backends.backend_gtk.html>GTK</a>, <a
 href=matplotlib.backends.backend_gtkagg.html>GTKAgg</a>, <a
 href=matplotlib.backends.backend_gtkcairo.html>GTKCairo</a>, <a
 href=matplotlib.backends.backend_ps.html>PS</a>, <a
+href=matplotlib.backends.backend_pdf.html>PDF</a>, <a
+href=matplotlib.backends.backend_svg.html>SVG</a>, <a
 href=matplotlib.backends.backend_tkagg.html>TkAgg</a>, <a
 href=matplotlib.backends.backend_wx.html>WX</a>, <a
 href=matplotlib.backends.backend_wxagg.html>WXAgg</a>, <a
-href=matplotlib.backends.backend_paint.html>Paint</a>, <a
-href=matplotlib.backends.backend_gd.html>GD</a>, <a
-href=matplotlib.backends.backend_emf.html>EMF</a> and <a
 href=matplotlib.backends.backend_template.html>Template</a>.
 
 The default is GTKAgg.  Template is a do nothing backend that serves as a
@@ -87,11 +84,8 @@ href="fonts.html">fonts</a> for more information.<p>
 <h2>Backend requirements</h2>
 
 Each of the backends have a different set of requirements, listed
-below.  All require the <a
-href=http://sourceforge.net/projects/numpy>Numeric or numarray</a>
-modules.  Note, matplotlib can also be made to work with numarray with
-minor changes; see the <a href=faq.html#NUMARRAY>FAQ</a>.<p>
-
+below.  All require <a href=http://numpy.scipy.org/>numpy</a>
+modules.
 
 Specific information for installing the other backends can be found on
 this page below or by clicking
@@ -105,9 +99,6 @@ this page below or by clicking
 <li><a href=backends.html#WX>WX</a></li>
 <li><a href=backends.html#WXAgg>WXAgg</a></li>
 <li><a href=backends.html#PS>PS</a></li>
-<li><a href=backends.html#Paint>Paint</a></li>
-<li><a href=backends.html#GD>GD</a></li>
-<li><a href=backends.html#EMF>EMF</a></li>
 </ul>
 
 
@@ -144,7 +135,7 @@ This was the first backend supported by matplotlib; it requires
 
 <ul> 
 
-  <li><a href=http://www.pfdubois.com/numpy>Numeric/numarray</a></li>
+  <li><a href=http://numpy.scipy.org/>numpy</a></li>
 
   <li><a href=http://prdownloads.sourceforge.net/gtk-win>
 GTK runtime</a></li> 
@@ -175,9 +166,7 @@ you encounter troubles, please see <a
 href=http://matplotlib.sourceforge.net/faq.html#GTKPATH>the
 FAQ</a><ul>
 
-<li>Install <a
-href=http://sourceforge.net/project/showfiles.php?group_id=1369&release_id=176455>
-Numeric/numarray</a>. If you are using the enthought edition of
+<li>Install <a href=http://numpy.scipy.org/>numpy</a>. If you are using the enthought edition of
 python, you can skip this step.</li>
 
 <li>Install the <a href=http://prdownloads.sourceforge.net/gtk-win>
@@ -203,7 +192,7 @@ ref=http://sourceforge.net/projects/matplotlib>download page<a></li>
 Requires <a href=http://www.wxpython.org>wxpython</a>.  Windows users
 may want to consider the <a
 href=http://www.enthought.com/python>enthought edition</a> of python,
-which comes with wxpython and Numeric built in, so matplotlib will
+which comes with wxpython and numpy built in, so matplotlib will
 work right out of the box.  matplotlib under WX has been tested on
 linux, win32 and OSX.<p>
 
@@ -212,7 +201,7 @@ linux, win32 and OSX.<p>
 Requires <a href=http://www.wxpython.org>wxpython</a>.  Windows users
 may want to consider the <a
 href=http://www.enthought.com/python>enthought edition</a> of python,
-which comes with wxpython and Numeric built in, so matplotlib will
+which comes with wxpython and numpy built in, so matplotlib will
 work right out of the box.  matplotlib under WXAgg has been tested on
 linux, win32 and OSX.<p>
 
@@ -278,89 +267,16 @@ href=http://www.scintilla.org>scintilla</a> This indicates to me that
 the same problem with Tkinter may be affecting both (SciTE and
 Pythonwin)... but I am out on a limb.<p>
 
-<h3><a name=GD>GD output</a></h3>
-
-The recommended image backend is Agg.  If you are sure you want to use
-GD, read on.<p>
-  
-The GD module can be used to create images with no X11 server, and is
-particularly useful for web application developers who want dynamic
-graphing capabilities.  There are a number of prerequisites but they
-are easy to install (Windows users should skip ahead to the win32
-section).<p>
-
-The GD backend depends on Numeric/numarray, gdmodule, and gd.  To ease
-installation, the latter two packages now ship with matplotlib.  Below
-are instructions for building gdmodule.
-	
-  <ul>
-
-  <li><a href=http://www.pfdubois.com/numpy>Numeric/numarray</a>  --
-  Numeric processing in python</li>
-
-  <li><a href=http://www.boutell.com/gd>GD lib</a> -- The GD library.
-  Note if you are using linux and have this installed in /usr/lib, you
-  will need to install the latest version over the existing install
-  unless you have gd-2.0.22 or later</li>
-
-  <li><a
-  href=http://newcenturycomputers.net/projects/gdmodule.html>gdmodule-0.52</a>
-  -- The python interface to the gd module.</li>
-
-  </ul>
-
-<h4><a name=GDWIN32>Quick install guide for GD output: Windows</a></h4>
-
-In addition to Numeric, you'll need
-
-<ul>
-
-<li> The GD DLL <a href=gd/bgd.dll>bgd.dll</a> somewhere in your
-PATH</li>
-
-<li> gdmodule for win32 and python2.3 <a href=gd/gdmodule-0.52a.win32-py2.3.exe >gdmodule-0.52a</a>.</li>
-
-</ul>
 
 <a name=PS><h3>Postscript</h3></a>
 
-The only requirement is <a
-href=http://sourceforge.net/projects/numpy>Numeric/numarray</a><p>
+The only requirement is <a href=http://numpy.scipy.org/>numpy</a><p>
 
 See the <a href=fonts.html#PSFONTS>fonts page</a> for more information
 about getting the postscript backend setup for proper font rendering;
 notably, you must make sure there are some '*.afm' files in your
 <tt>AFMPATH</tt> if you want to use fonts other than the ones that
 ship with matplotlib.
-
-
-<a name=Paint><h3>Paint</h3></a>
-
-David Moore has written a paint backend for matplotlib.  paint is a <a
-href=http://www.levien.com/libart>libart</a> wrapper</a>. In a
-nutshell, libart is a svg oriented, high performance, 2D graphics
-engine that supports lots of nifty features.  The paint backend
-exposes some of them, and David has been extending it to expose more.<p>
-
-The paint backend requires <a
-href=http://sourceforge.net/projects/numpy>Numeric/numarray</a>, <a
-href=http://sourceforge.net/projects/pypaint>pypaint</a> version 0.3.
-
-libart is highly portable, and the paint backend has been confirmed to
-work on win32 and linux.  The pypaint web site has a src distribution
-and a windows installer.<p>
-
-
-
-<a name=EMF><h3>EMF</h3></a>
-
-Rob McMullen has written an Enhanced Metafile (EMF) backend for
-matplotlib, which requires <a
-href="http://pyemf.sourceforge.net">pyemf</a> version 2.0.0b1 (or
-newer).  EMF is a vector graphics format supported by the
-cross-platform OpenOffice suite as well as most Windows office
-applications.  EMF images can also be embedded within Rich Text Format
-(.rtf) files to create a single document with multiple plots. <p>
 
 
 

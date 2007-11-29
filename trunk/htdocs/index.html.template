@@ -43,7 +43,7 @@ src=screenshots/contour_small.png></a>
   + for command, desc in commands:
     <tr>
       <th align="left">
-        <a href=matplotlib.pylab.html#-@command@>@command@</a>
+        <a href=matplotlib.pyplot.html#-@command@>@command@</a>
       </th>
 
       <td align="left">

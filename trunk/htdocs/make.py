@@ -2,7 +2,7 @@ import os, sys, glob, shutil
 import matplotlib
 
 MPL_SRC = os.environ.get('MPL_SRC', '/home/darren/src/matplotlib/matplotlib')
-#MPL_SRC = '/home/jdhunter/mpl'
+MPL_SRC = '/home/jdhunter/mpl'
 
 #copy all the examples to the htdocs examples dir
 for fname in glob.glob('examples/*.py*'):
@@ -36,8 +36,7 @@ os.system('zip -r -o matplotlib_examples_%s.zip examples'%matplotlib.__version__
 
 os.system('cp ../users_guide/users_guide.pdf users_guide_%s.pdf'%matplotlib.__version__)
 
-filenames = ( 'INSTALL', 'CHANGELOG',
-              'NUMARRAY_ISSUES', 'API_CHANGES',)
+filenames = ( 'INSTALL', 'CHANGELOG', 'API_CHANGES',)
 for fname in filenames:
     oldname = os.path.join(MPL_SRC,fname)
     print 'copying %s to %s' % (oldname, fname)
@@ -56,8 +55,8 @@ print 'Making screenshots'
 print 'Making tutorial images'
 #os.system('cd tut; python runall.py')
 
-print 'Running process_docs'
-os.system('python process_docs.py')
+#print 'Running process_docs'
+#os.system('python process_docs.py')
 
 print 'Running convert'
 os.system('python convert.py')

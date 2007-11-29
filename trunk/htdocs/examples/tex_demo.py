@@ -11,8 +11,8 @@ time, the run may be silent, as a lot of the information is cached in
 
 """
 from matplotlib import rc
-from matplotlib.numerix import arange, cos, pi
-from pylab import figure, axes, plot, xlabel, ylabel, title, \
+from numpy import arange, cos, pi
+from matplotlib.pyplot import figure, axes, plot, xlabel, ylabel, title, \
      grid, savefig, show
 
 
@@ -25,7 +25,7 @@ plot(t, s)
 
 xlabel(r'\textbf{time (s)}')
 ylabel(r'\textit{voltage (mV)}',fontsize=16)
-title(r"\TeX\ is Number $\displaystyle\sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$!", 
+title(r"\TeX\ is Number $\displaystyle\sum_{n=1}^\infty\frac{-e^{i\pi}}{2^n}$!",
       fontsize=16, color='r')
 grid(True)
 savefig('tex_demo')

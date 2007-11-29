@@ -18,7 +18,7 @@ modfiles = (
     ('lines', 'The Line2D classes'), 
     ('mathtext', 'Use TeX expressions in text'),     
     ('mlab', 'Non-graphical matlab&reg funcs to compliment MLab'), 
-    ('numerix', 'Choose Numeric or numarray'),
+    ('numerix', 'Choose Numeric, numarray or numpy'),
     ('patches', 'Rectangles, polygons, circles, etc...'),
     ('pylab', 'The matlab&reg functional interface'),
     ('table', 'Table class'), 
