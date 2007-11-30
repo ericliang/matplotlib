@@ -2,7 +2,7 @@
 FAQs = (
 
 
-    ('BUGREPORT', 
+    ('BUGREPORT',
      'How do I report a problem?',
 """\
 OK, this is not a FAQ, but I wish it were <wink>.<p>
@@ -13,7 +13,7 @@ to <tt>setup.py</tt> or <tt>setupext.py</tt>, and the output of
 
 <pre>
   > rm -rf build
-  > python setup.py build 
+  > python setup.py build
 </pre>
 
 
@@ -110,7 +110,7 @@ bug</a>.  The patch is in pygtk CVS.  You basically need to add the
 
 
     ('CLICKMAPS', "Can I use matplotlib to make clickable images?" ,
-    """\ 
+    """
 Yes.  Andrew Dalke of <a href=http://www.dalkescientific.com>Dalke
 Scientific</a> has written a nice <a
 href=http://www.dalkescientific.com/writings/diary/archive/2005/04/24/interactive_html.html>article</a>
@@ -188,7 +188,7 @@ and viewport scaling appropriately from the outset.  This is the
 approach taken in <a href=examples/log_bar.py>log_bar.py</a>.
 """),
 
-    ('EQUAL', 
+    ('EQUAL',
      'How do I make my figure square / axes sides equal?',
      """\
 There are three considerations: the width/height of the figure, of the
@@ -210,7 +210,7 @@ If you really want square on a display with different horizontal and
 vertical resolutions, you can do a little hack on the figure width and
 height to correct for the display differences.
 """),
-    
+
     ('FREEZE',
     'My matplotlib window is freezing',
 
@@ -270,7 +270,7 @@ mencoder 'mf://*.png' -mf type=png:fps=10 -ovc \\
 
 The swiss army knife of image tools, ImageMagick's <a
 href=http://imagemagick.sourceforge.net/www/convert.html>convert</a>,
-works for this as well.<p> 
+works for this as well.<p>
 
 Here is a simple example script that saves some PNGs, makes them into
 a movie, and then cleans up.
@@ -299,10 +299,10 @@ for fname in files: os.remove(fname)
 
 </pre>
 """),
-	
+
     ('FONTMISSING', "When I start matplotlib, I am getting warnings about not being able to find fonts?",
 """
-matplotlib uses a cache file to store information about your system fonts, and occasionally we reorganize our direcotroy schemes or your system may have changed.  When you get warnings about missing fonts, try removing your font cache directory "ttffont.cache" which is located in your ".matplotlib" configuration directory.  Where this is depends on your operating system but see the prolog of <a href=matplotlibrc>matplotlibrc</a> for information on where this is stored.  You can also run a test pylab script with <tt>--verbose-helpful</tt> or <tt>--verbose-debug</tt>, eg
+matplotlib uses a cache file to store information about your system fonts, and occasionally we reorganize our directory schemes or your system may have changed.  When you get warnings about missing fonts, try removing your font cache directory "fontManager.cache" which is located in your ".matplotlib" configuration directory.  Where this is depends on your operating system but see the prolog of <a href=matplotlibrc>matplotlibrc</a> for information on where this is stored.  You can also run a test pylab script with <tt>--verbose-helpful</tt> or <tt>--verbose-debug</tt>, eg
 
 <pre>
 > python test.py --verbose-helpful
@@ -326,13 +326,13 @@ site-packages/matplotlib.  If not, something is wrong with your
 install.  You may want to try rebuilding with
 <pre>
    > rm -rf build
-   > python setup.py build > build.out 
+   > python setup.py build > build.out
 </pre>
 
 and post the results to the matplotlib-devel or matplotlib-users
 <a href=http://sourceforge.net/mail/?group_id=80706>mailing lists</a>.
 """),
-    
+
 
     ('EXAMPLES',
     'Where can I find information about what matplotlib can do?',
@@ -366,39 +366,22 @@ capabilities and customizations are supported.<p>
     ('LARGEPS',
     "My PS/EPS files are huge; what's wrong?",
 """
-With matplotlib-0.61, Paul Barrett introduced truetype fonts in
-backend_ps, primarily in order to support mathtext.  Because he was
-unable to get the individual glyphs from freetype, he had to dump the
-entire font into the PS file.  A typical font takes about 300K of
-noncompressed space.  This, however, is a fixed cost and does not
-increase with the complexity of the figure or number of points
-plotted.  It would, however, increase if you use multiple fonts, eg in
-mathtext.<p>
+As of matplotlib-0.91.0, only the glyphs that are needed for the plot
+are saved in the Postscript file.  This significantly reduces file
+sizes.  To revert to the old behavior, where entire font files are
+saved in the Postscript file, you can set the parameter 'ps.fonttype'
+to 42.
 
-Before 0.61, we used the afm fonts that ship with matplotlib and
-matplotlib has its own <a href=matplotlib.afm.html>AFM parser</a>
-which handles character metrics, kerning, etc.  It would not be too
-much work to have an option (eg in the matplotlib rc file) which
-allows users to simply use AFM fonts when possible (eg when not using
-mathtext) in which case you wouldn't see these big eps files.  The
-other advantage to this approach is that they seem to render nicer in
-some viewers, eg xdvi.<p>
-
-One nice thing about dumping the truetype into the ps files is that
-the text is the same across backends.  The ideal solution would be
-able to dump just the glyphs needed, which presumably would be much
-smaller, but we haven't figured this out yet.<p>
-
-Given that the 300K is a fixed cost (118K gzipped), if you still find
-the size sufficiently troublesome that it justifies the extra work (on
-our end) to provide an option to revert to AFM fonts, please let us
-know on the mailing list.
+Starting with matplotlib-0.87, it is also possible to reduce
+Postscript file sizes by using the standard Postscript fonts, rather
+than embedding Truetype files.  Just set the parameter 'ps.useafm' to
+True.
 """),
 
    ('PROMPT',
     "After my matplotlib script runs, I get a python shell prompt. What's going on?",
 """
-Tkinter, used by the default windows backend TkAgg not have a mainloop
+Tkinter, used by the default windows backend TkAgg does not have a mainloop
 like GTK or WX.  We needed a way to keep the figure open, and decided
 the best way was to switch into interactive mode in python.  This has
 the additional benefit that you can issue additional python commands
@@ -453,7 +436,7 @@ seem exceptionally pokey, it may indicate a problem in your setup.
 Also, if you are running a python script, make sure your interactive
 setting in your <a href=matplotlibrc>matplotlibrc</a> is <tt>False</tt>;
 otherwise the figure will be redrawn with every plotting command when
-what you want if for the figure to be drawn only once at the end of
+what you want is for the figure to be drawn only once at the end of
 the script.  See <a href=interactive.html>interactive</a> and <a
 href=faq.html#SHOW>what's up with show?</a> for more information.<p>
 
@@ -473,16 +456,16 @@ are using, the size of the data arrays you are plotting, and the
 output of <tt>python yourscript.py --verbose-helpful</tt>.
 """),
 
-    ('MATPLOTLIBRC', 
-     'How do I customize the default behavior of matplotib?', 
+    ('MATPLOTLIBRC',
+     'How do I customize the default behavior of matplotib?',
 """
 Recent versions of matplotlib (0.51 or later) use a configuration file
 to set everything from the default font, to the figure size, to the
 default line width.  See <a href=matplotlibrc>matplotlibrc</a> for a
 sample config file and information on how to use it.  """),
 
-    ('OO', 
-     'Is there any guide to using matplotlib with pythonic / OO /API rather than the pylab interface?', 
+    ('OO',
+     'Is there any guide to using matplotlib with pythonic / OO /API rather than the pylab interface?',
 
 """
 
@@ -500,10 +483,10 @@ There is no official documentation yet, but there are a few resources
 
   <li>Many examples in the <a href=examples>examples</a> directory in
       the matplotlib src distribution illustrate the use of the API.
-      Eg, 
+      Eg,
 
      <pre>
-    
+
       > grep -l FigureCanvas *.py
 
       agg_oo.py dynamic_demo_wx.py dynamic_image_wxagg.py
@@ -604,7 +587,7 @@ default for the rest of the session, or until you issue another rc
 command.  See <a examples/customize_rc.py>customize_rc.py</a> for
 example usage."""),
 
-	
+
     ('GTKPATH',
     'I cannot import gtk / gdk / gobject',
     """
@@ -612,7 +595,7 @@ example usage."""),
 Basically, there are 3 things that I've seen cause failure (relative
 likelihood in parentheses):
 
- <ul> 
+ <ul>
 
  <li> You didn't set the path properly (95% of the time).
  <it>Solution:</it> Add the lib and bin subdirs of your GTK install
@@ -635,62 +618,14 @@ href=http://www.mail-archive.com/pygtk@daa.com.au/msg07324.html>this
 thread</a>, which is filled with good troubleshooting advice.
 
 """ ),
-	
+
 
     ('WHICHBACKEND',
      'Which backend should I use?',
      """
-Each of the backends offers different strengths.  I'll summarize some
-of them. 
-
-<h4>Image generation</h4>
-
-For pure image generation (no GUI) you can choose from the Agg, Cairo,
-PS, SVG, Paint, GD or EMF backends.  At this point, I advise people to
-use the <a href=http://antigrain.com>agg</a> backend because:
-
-<ul>
-  <li>it's the fastest</li>
-  <li>it uses freetype2 (as does GD) which renders nicely even
-      at small resolutions </li>
-  <li>there are clipping issues with GD and Paint </li>
-  <li>it supports fast antialiased drawing and alpha blending </li>
-  <li>it supports <a href=matplotlib.mathtext.html>mathtext</a></li>
-  <li>it supports images with <a href=matplotlib.pyplot.html#-imshow>imshow</a></li>
-</ul>
-
-It is likely that with time many of these limitiations or problems
-will be fixed on the other backends.<p>
-
-For publication submission or use with TeX, however, the postscript
-backend is naturally a good choice.
-
-<h4>GUI</h4>
-
-Currently there are several choices for GUIs: GTK, GTKAgg, GTKCairo, WX,
-WXAgg, TkAgg and FltkAgg, with different advantages.
-
-<ul>
-
-<li>Speed: TkAgg and GTKAgg are likely to be the fastest since most of Agg is renderered in C extension code</li>
-
-<li>Stability: GTK was the first backend and thus has been most thoroughly
-vetted for bugs.  The GTKAgg and GTKCairo backends reuse the GTK widget code,
-so should likewise be quite stable</li>
-
-<li>Interactivity: All of the GUI backends can be used interactively
-from a python shell (see <a href=interactive.html>interactive</a>) but
-TkAgg is the hands-down winner here since it can be use from any
-python shell whereas the GTK and Wx backends require a GUI specific
-shell </li>
-
-<li>Pretty widgets: If you want to embed matplotlib in an application and
-pretty GUIs are important to you, Wx, GTK, GTKAgg or GTKCairo are probably
-your best best.  Tk widgets are not visually stunning. </li>
-
-</ul>
-
-
+Each of the backends offers different strengths.  See the
+     <a href="backends.html#comparison">comparison of backends for a
+       discussion of the issues.</p>
 """),
 
     ('DATES',
@@ -711,19 +646,19 @@ href=examples/two_scalers.py>two_scales.py</a>.
      'Can I include math expressions in my figures?',
      r"""As of matplotlib-0.51, you can use TeX markup in any text element.
 Just use raw strings and enclose the strings with dollar signs, as in
-<tt>title(r'$\\alpha > \\beta_i$')</tt>.  See <a
+<tt>title(r'$\alpha > \beta_i$')</tt>.  See <a
 href=screenshots.html#mathtext_demo>screenshot</a> and the <a
 href=matplotlib.mathtext.html>mathtext</a> documentation for usage,
 requirements and backend information.
 """),
-    
+
     ('BATCHMODE',
      'Can I just generate images without having a window popup?',
      """
 The easiest way to do this is use an image backend, either <a
-href=backends.html#Agg>Agg</a>, href=backends.html#Cairo>Cairo</a>, <a
-href=backends.html#GD>GD</a> or <a href=backends.html#Paint>Paint</a>
-if you want to generate PNG images, eg, for use in a web page, or PS
+href=backends.html#Agg>Agg</a>, or <a href=backends.html#Cairo>Cairo</a>,
+if you want to generate PNG images, e.g., for use in a web page, or
+     PS, PDF or SVG
 if you want publication quality, scalable images.  All of these
 backends run on all of the major platforms.  One additional option on
 an X windows platform is to run the GTK backend under an Xvfb, which
@@ -738,10 +673,7 @@ interested setting this up."""),
 Yes.  matplotlb can be used with any web application server that can
 call python.  It has been used with mod_python, xml_rpc, and other
 frameworks.  You'll want to use one of the image backends; <a
-href=faq.html#BATCHMODE>see image backends</a>.  Also to make small
-images appropriate for use on a web page, you may want to consider the
-Agg, Cairo or GD backends, since they render small font rasters using
-freetype2 better than Paint, which currently use freetype1.  You can
+href=faq.html#BATCHMODE>see image backends</a>.  You can
 work around the problem of small raster sizes by making your fonts
 appear larger for a given by decreasing the figure size and increasing
 the dpi. See <a href=fonts.html#TTFFONTS>ttf fonts</a> for more
@@ -773,10 +705,10 @@ the <a href=faq.html#OO>API FAQ</a>.
      """
 
 
-You do not need this function with the image backends (Agg, Cairo, Paint, GD,
-PS) but you do need it with the GUI (GTK, WX, TkAgg, GTKAgg, GTKCairo) backends,
-unless you are running matplotlib in <a
-href=interactive.html>interactive mode</a>.  <p>
+You do not need this function with the image backends (Agg, Cairo, PS,
+PDF, SVG) but you do need it with the GUI (GTK, WX, TkAgg, GTKAgg,
+GTKCairo) backends, unless you are running matplotlib
+in <a href=interactive.html>interactive mode</a>.  <p>
 
 Because it is expensive to draw, I want to avoid redrawing the figure
 many times in a batch script such as the following<p>
@@ -786,7 +718,7 @@ many times in a batch script such as the following<p>
   xlabel('time')           # and here ?
   ylabel('volts')          # and here ?
   title('a simple plot')   # and here ?
-  show()            
+  show()
 </pre>
 
 It is possible to force matplotlib to draw after every command, which
@@ -800,20 +732,22 @@ interactively, it also sets interactive mode.  So you can launch your
 script with <tt>python -i myscript.py -dTkAgg</tt> and then change it
 interactively from the shell.
 
-<b>IMPORTANT: show should called at most once per script and it should
+<b>IMPORTANT: show should be called at most once per script and it should
 be the last line of your script.  At that point, the GUI takes control
 of the interpreter.  If you want to force a figure draw, use <a
 href=matplotlib.pyplot.html#-draw>draw</a> instead.</b> """),
- 
+
     ('PSGUI',
-     'Can I save PS/EPS from a GUI backend?',
+     'Can I save PS/EPS/PDF/SVG etc. from a GUI backend?',
      """
-Yep.  Just choose a filename that contains <tt>ps</tt> in the extension, eg
-<tt>somefile.ps</tt> or <tt>somefile.eps</tt> and matplotlib will try
-and do the right thing.  That is, if it's an eps file, it will include
-a bounding box, if it's a ps file it will output plain postscript.  It
-is recommended you use matplotlib-0.50 or later for this feature to
-work properly."""),
+
+Yep.  Just choose a filename that contains the desired extension and
+matplotlib will try and do the right thing.  That is, if it's an eps
+file, it will include a bounding box, if it's a ps file it will output
+plain postscript.  It is recommended you use matplotlib-0.91 or later
+for this feature to work properly, since far fewer options are
+available for all GUI backends prior to that.
+"""),
 
   ('TEXTOVERLAP',
    'My title or ticklabel or whatever is overlapping some other figure element, what should I do?',
@@ -842,7 +776,7 @@ href=faq.html#CUSTOM>rcParams</a>."""),
 
 
     ('DYNAMIC',
-     'Can matplotlib do dynamic plots, like digital oscilloscopes or animations?', 
+     'Can matplotlib do dynamic plots, like digital oscilloscopes or animations?',
     """
 Absolutely.  See for example, <a href=examples/anim.py>anim.py</a> and <a
 href=examples/system_monitor.py>system_monitor.py</a>"""),
@@ -862,10 +796,10 @@ the <a href=matplotlib.pyplot.html#-axes>axes command</a> and the example
     ('IMAGES',
     'Can matplotlib handle image data?',
      """
-Yes - you can now plot images from numerix arraysq with <a
+Yes - you can now plot images from numpy arrays with <a
 href=matplotlib.pyplot.html#-imshow>imshow</a>.  You can load png
 files into arrays <a href=matplotlib.pyplot.html#-imread>imread</a>;
-image loaders coming soon."""),
+other image loaders coming soon."""),
 
     ('ROTATETICKS',
      'How do I make vertical xticklabels?',
@@ -876,7 +810,7 @@ You can set the rotation of any text instance to vertical
     from pylab import *
     plot([1,2,3,4], [1,4,9,16])
     set(gca(), 'xticks', [1,2,3,4])
-    labels = set(gca(), 'xticklabels', 
+    labels = set(gca(), 'xticklabels',
           ['Frogs', 'Hogs', 'Bogs', 'Slogs'])
     set(labels, 'rotation', 'vertical')
     show()
@@ -892,7 +826,7 @@ new problem.  You can set font aliases in
 C:\GTK\etc\pango\pango.aliases.  Add a line like
 
 <pre>
-times = "times new roman,angsana new,mingliu,simsun,\\ 
+times = "times new roman,angsana new,mingliu,simsun,\\
          gulimche,ms gothic,latha,mangal,code2000"
 </pre>
 
@@ -904,7 +838,7 @@ and noticed that it exhibited the same font problem I've been
 experiencing for ages with matplotlib. I was getting WARNING **:
 
   Couldn't load font "MS Sans Serif 8" falling back to "Sans 8"
-  errors. 
+  errors.
 
 It's addressed in their FAQ,
 http://www2.arnes.si/~sopjsimo/gimp/faq.html>, reproduced here:
@@ -924,20 +858,20 @@ http://www2.arnes.si/~sopjsimo/gimp/faq.html>, reproduced here:
 
 I took option B and now all is well with both Gimp and Matplotlib.
 I'm running Win98 and the Gimp FAQ entry hints that it may be a
-problem in Win98,ME and NT installations. 
+problem in Win98,ME and NT installations.
 </pre>
 
 
-""" 
+"""
 
 ),
 
-     
+
      ('FREETYPE2',
       "Why are my fonts not being rendered properly?",
     """
-This is probably due to an outdated freetype2 library.  The latest
-version is 2.1.9.  See <a href=matplotlib.font_manager.html>font manager
+This is probably due to an outdated freetype2 library.
+See <a href=matplotlib.font_manager.html>font manager
 docs</a> for details.
 """ ),
 
@@ -945,17 +879,15 @@ docs</a> for details.
       """My SVG viewer doesn't properly display special (TeX) characters
       ('\sum', '\infty',etc.) generated by mathtext.  Is this a bug?""",
     """
-You need to install the BaKoMa fonts (TrueType version of the Computer
+As of matplotlib-0.91.0, the glyph outlines for the font are embedded
+directly in the SVG file, so this should not occur.
+
+For matplotlib-0.90.0 and earlier,
+you need to install the BaKoMa fonts (TrueType version of the Computer
 Modern fonts) on your system. The BaKoMa fonts come packaged with
 matplotlib.  They are located in the
 "site-packages/matplotlib/mpl-data/fonts/ttf" dir (the cm*.ttf files).
 Installation of the fonts varies from OS to OS.
-
-Alternatively, as of r3498 (matplotlib > 0.90.1) you can set
-svg.embed_char_paths to True in your matplotlibrc file.  This
-setting makes matplotlib embed all fonts as paths in the SVG file,
-which results in a "portable" SVG file, at the cost of bigger file
-size and uneditable text.
 """ ),
 
       ('LEAKS',
@@ -970,14 +902,13 @@ reporting, you can build a custom Python with
 the <tt>--without-pymalloc</tt> flag, which disables pool allocation.)
 If after sufficient iterations, you still see that memory usage is
 increasing, it is a likely a bonafide memory leak that should be
-reported.
+reported.<p>
 
-</a>
 The unit directory of the source tree contains an example scripts
 useful for diagnosing and reporting memory leaks.  For
-example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii.py?view=markup"><tt>memleak_hawaii.py</tt>
+example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii.py?view=markup"><tt>memleak_hawaii.py</tt></a>
   is useful for finding plotting-related memory leaks,
-  and <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_gui.py?view=markup"><tt>memleak_gui.py</tt>
+  and <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_gui.py?view=markup"><tt>memleak_gui.py</tt></a>
     helps find memory leaks in the GUI-backend.  Please use
 something like these when reporting leaks so we get an idea of the
 magnitude of the problem (i.e. bytes per figure).  Also please provide
@@ -987,12 +918,12 @@ zlib.  It would also help if you posted code so I could look for any
 obvious coding errors vis-a-vis matplotlib.<p>
 
 There are some known memory leaks in matplotlib-0.90.1 when used in
-conjunction with the Tk, Gtk, Wx, Qt and Qt4 GUI backends.  Many of 
-these leaks have resolutions in the current SVN version of matplotlib.  
+conjunction with the Tk, Gtk, Wx, Qt and Qt4 GUI backends.  Many of
+these leaks have resolutions in the current SVN version of matplotlib.
 However, the following library versions are known to have leaks that
 matplotlib triggers.  If you have one of these versions and are
 experiencing memory leaks, you should upgrade your library.  This is
-not an exhaustive list.
+not an exhaustive list.<p>
 
 <ul>
 <li><b>Wx backend:</b>wxPython-2.8.2 or earlier in the 2.8 series
@@ -1028,7 +959,7 @@ I thought you'd never ask!  Python memory leaks tend to fall into one
   This will print out all of the reference cycles that are preventing
   the uncollectable objects from being freed.  The code should then be
   modified to prevent these cycles, or break the cycles during
-  destruction.
+  destruction.<p>
 
   <li><b>Real references:</b> Sometimes objects are legitimately being
     held onto by other Python objects.  When this happens, you would
@@ -1045,7 +976,7 @@ I thought you'd never ask!  Python memory leaks tend to fall into one
 <pre>
                 original_objects = [id(x) for x in gc.get_objects()]
 		# ... do something that leaks objects
-		new_objects = [x for x in gc.get_objects() 
+		new_objects = [x for x in gc.get_objects()
 		               if id(x) not in original_objects]
 </pre>
     You can then determine what is referencing those objects and
@@ -1053,7 +984,7 @@ I thought you'd never ask!  Python memory leaks tend to fall into one
 <pre>
                 print gc.get_referents(x)
 </pre>
-    The code should be modified to prevent these unwanted references.
+    The code should be modified to prevent these unwanted references.<p>
 
    <li><b>C/C++ leaks in extension objects:</b> These is the classic
    problem of objects that are "malloc'd/new'd" and never
@@ -1104,9 +1035,9 @@ matplotlib src distribution or at <a
 href=http://matplotlib.sf.net/examples>examples</a> explaining how to
 embed matplotlib in your GUI of choice.
 """),
-    
+
      )
-     
+
 @header@
 <h2> matplotlib FAQ </h2>
 

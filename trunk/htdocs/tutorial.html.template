@@ -27,10 +27,10 @@ line_props = (
 )
 
 
- 
-@header@ 
 
-<h2>Using matplotlib</h2> 
+@header@
+
+<h2>Using matplotlib</h2>
 
 If you are new to python, I recommend reading the <a
 href=http://docs.python.org/tut/tut.html>python
@@ -190,7 +190,7 @@ href=matplotlib.lines.html>lines</a>.<p>
 There are several ways to set line properties
 <pre>
 # Use keyword args
-plot(x, y, linewidth=2.0)  
+plot(x, y, linewidth=2.0)
 
 # Use the setter methods of the Line2D instance.  plot returns a list
 # of lines; eg line1, line2 = plot(x1,y1,x2,x2).  Below I have only
@@ -202,7 +202,7 @@ line.set_antialiased(False) # turn off antialising
 # Use the set command.  The example below uses matlab handle graphics
 # style command to set multiple properties on a list of lines.  Set
 # works transparently with a list of objects or a single object
-lines = plot(x1, y1, x2, y2) 
+lines = plot(x1, y1, x2, y2)
 setp(lines, color='r', linewidth=2.0)
 
 
@@ -301,8 +301,8 @@ axes and subplots as your heart desires.<p>
 from pylab import *
 
 figure(1)                # the first figure
-plot([1,2,3]) 
-figure(2)                # a second figure 
+plot([1,2,3])
+figure(2)                # a second figure
 plot([4,5,6])
 
 figure(1)                # figure 1 current
@@ -311,7 +311,7 @@ show()
 </pre>
 
 You can clear the current figure with <a
-href=matplotlib.pyplot.html#-clf>clf</a> and the current axes with 
+href=matplotlib.pyplot.html#-clf>clf</a> and the current axes with
 <a
 href=matplotlib.pyplot.html#-cla>cla</a>
 
@@ -448,7 +448,12 @@ requirements and backend information.<p>
 
 Any text element can use math text.  You need to use raw strings
 (preceed the quotes with an <tt>'r'</tt>), and surround the string
-text with dollar signs, as in TeX.
+text with dollar signs, as in TeX.  Regular text and mathtext can be
+interleaved within the same string.<p>
+
+Mathtext can use the Bakoma Computer Modern fonts, STIX fonts or a
+Unicode font that you provide.  The mathtext font can be selected with
+the customization variable "mathtext.fontset".<p>
 
 <pre>
 # plain text
@@ -458,7 +463,7 @@ title('alpha > beta')
 title(r'$\alpha > \beta$')
 </pre>
 
-To make subscripts and superscripts use the '_' and '^' symbols, as in 
+To make subscripts and superscripts use the '_' and '^' symbols, as in
 
 <pre>
 title(r'$\alpha_i > \beta_i$')
@@ -475,17 +480,29 @@ text(1, -0.6, r'$\sum_{i=0}^\infty x_i$')
 </pre>
 
 The default font is <i>italics</i> for mathematical symbols.  To
-change fonts, eg, to write "sin" in a roman font, enclose the text in
+change fonts, eg, to write "sin" in a Roman font, enclose the text in
 a font command, as in
 
 <pre>
-text(1,2, r's(t) = $\cal{A}\rm{sin}(2 \omega t)$')
+text(1,2, r's(t) = $\mathcal{A}\mathrm{sin}(2 \omega t)$')
+</pre>
+
+Even better, many commonly used function names that are typeset in a
+Roman font have shortcuts.  So the expression above could be written
+as follows:
+
+<pre>
+text(1,2, r's(t) = $\mathcal{A}\sin(2 \omega t)$')
 </pre>
 
 Here "s" and "t" are variable in italics font (default), "sin" is in
-roman font, and the amplitude "A" is in caligraphy font. The font
-choices are roman <tt>\rm</tt>, italics <tt>\it</tt>, caligraphy
-<tt>\cal</tt>, and typewriter <tt>\tt</tt> <p>
+Roman font, and the amplitude "A" is in caligraphy font. The font
+choices are Roman <tt>\mathrm</tt>, italics <tt>\mathit</tt>, caligraphy
+<tt>\mathcal</tt>, and typewriter <tt>\mathtt</tt>.  If using the STIX
+fonts, you also have the choice
+of blackboard (double-struck) <tt>\mathbb</tt>,
+circled <tt>\mathcircled</tt>, Fraktur <tt>\mathfrak</tt>, script
+(cursive) <tt>\mathscr</tt> and sans-serif <tt>\mathsf</tt>.<p>
 
 The following accents are provided: <tt>\hat</tt>, <tt>\breve</tt>,
 <tt>\grave</tt>, <tt>\bar</tt>, <tt>\acute</tt>, <tt>\tilde</tt>,
@@ -506,7 +523,7 @@ s = sin(2*pi*t)
 plot(t,s)
 title(r'$\alpha_i > \beta_i$', fontsize=20)
 text(1, -0.6, r'$\sum_{i=0}^\infty x_i$', fontsize=20)
-text(0.6, 0.6, r'$\cal{A}\rm{sin}(2 \omega t)$', 
+text(0.6, 0.6, r'$\mathcal{A}\mathrm{sin}(2 \omega t)$',
      fontsize=20)
 xlabel('time (s)')
 ylabel('volts (mV)')
@@ -526,7 +543,7 @@ All figure windows come with a navigation toolbar, which can be used
 to navigate through the data set.  You can select either the "classic"
 or newfangled toolbar "toolbar2" in your <a
 href=matplotlibrc>matplotlibrc</a> file using the <tt>toolbar</tt>
-setting. 
+setting.
 
 If you want to interact with very large data sets, matplotlib supports
 data clipping where the data is clipped with numerix before they are
@@ -553,7 +570,7 @@ scrolling over <i>either</i> of the left arrow or right arrow buttons,
 so you never have to move the mouse to pan the x-axis left and right.
 If you don't have a wheel mouse, buy one!<p>
 
-<table> 
+<table>
 <tr><td><img src=tut/navcontrols.png></td></tr> <tr><td
 width=400> <i>The left widget that says 'All' on the controls on the
 bottom of the figure is a drop down menu used to select which axes the
@@ -586,7 +603,7 @@ rectangle to define new views.<p>
 
 <b>The Pan/Zoom</b> button has two modes: pan and zoom.  Click this toolbar
 button to activate this mode.  Then put your mouse somewhere over an
-axes.  
+axes.
 
 <ul>
 <li>Pan Mode: Press the left mouse button and hold it, dragging it to
@@ -594,7 +611,7 @@ axes.
   you pressed will be moved to the point where you released.  If you
   press 'x' or 'y' while panning, the motion will be contrained to the
   x or y axis, respectively</li>
-  
+
 <li>Zoom Mode: Press the right mouse button, dragging it to a new
   position.  The x axis will be zoomed in proportionate to the
   rightward movement and zoomed out proportionate to the leftward
@@ -626,7 +643,7 @@ other formats if required.  I can provide a recipe for you.  I prefer
 PNG over JPG and TIFF, which is why I haven't worked too hard to
 include these other image formats in agg.<p>
 
-<table> 
+<table>
 <tr><td><img src=tut/navcontrols2.png></td></tr> <tr><td
 width=400> <i>The new toolbar2</i> </td></tr> </table><br>
 
@@ -687,13 +704,13 @@ subplot(111)
 plot([1,2,3])
 glines = getp(gca(), 'gridlines')
 # make the gridlines blue and thicker
-setp(glines, 'color', 'b', 'linewidth', 2)  
+setp(glines, 'color', 'b', 'linewidth', 2)
 
-# get the patches.Rectangle instance increase 
+# get the patches.Rectangle instance increase
 # the linewidth of the rectangular axis frame
-frame = gca(gca(), 'frame')  
-setp(frame, 'linewidth', 2) 
-                             
+frame = gca(gca(), 'frame')
+setp(frame, 'linewidth', 2)
+
 </pre>
 
 
@@ -770,7 +787,7 @@ def click(event):
     print 'you clicked', event.x, event.y
 
 #register this function with the event handler
-connect('button_press_event', click)  
+connect('button_press_event', click)
 </pre>
 
 Then whenever the user clicks anywhere on the figure canvas, your
@@ -791,7 +808,7 @@ The event instance will have the following attributes defined.
     <tr><td>canvas</td><td>The FigureCanvas instance the event occured in</td></tr>
     <tr><td>key</td><td>The key press if any, eg 'a', 'b', '1'.  Also
     records 'control and 'shift'</td></tr>
-</table>    
+</table>
 You can connect to the following events: 'button_press_event',
 'button_release_event', 'motion_notify_event'.
 
@@ -868,7 +885,7 @@ plots.<p>
 
 <pre>
 # make up some random y values
-s = rand(len(dates)) 
+s = rand(len(dates))
 plot_date(dates, s)
 </pre>
 
@@ -909,10 +926,10 @@ would do instead
 
 <pre>
 # every 5 years
-years    = YearLocator(5)                
+years    = YearLocator(5)
 
 # every quarter
-months   = MonthLocator(range(3,13,3))   
+months   = MonthLocator(range(3,13,3))
 </pre>
 
 The date tick locators MinuteLocator, HourLocator, DayLocator,
@@ -939,7 +956,7 @@ href=examples/date_demo2.py>date_demo2.py</a>.
 </td></tr>
 </table><br>
 
-<h4>timezones with pytz</h4> 
+<h4>timezones with pytz</h4>
 
 Timezone support is provided via the <a
 href=http://pytz.sourceforge.net/>pytz</a> module.  This module
