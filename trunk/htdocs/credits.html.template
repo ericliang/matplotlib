@@ -2,10 +2,13 @@
 
 <h2>Credits</h2>
 
-matplotlib was written by John Hunter<p>
+matplotlib was written by John Hunter and is now developed and
+maintained by a number of
+<a href=http://www.ohloh.net/projects/531/analyses/latest/contributors>active
+developers</a><p>
 
 <h4>Special thanks to those who have made valuable contributions
-(roughly in order of contribution by date)</h4>
+(roughly in order of first contribution by date)</h4>
 
 <ul> 
 
@@ -29,24 +32,27 @@ matplotlib was written by John Hunter<p>
 
   <li>David Moore wrote the paint backend</li>
 
-  <li>Todd Miller contributed the TkAgg backend and the numerix
+  <li>Todd Miller aupported by  <a
+  href=http://www.stsci.edu/>STScI</a> contributed the TkAgg backend and the numerix
   module, which allows matplotlib to work with either numeric or
   numarray.  He also ported image support to the postscript backend,
   with much pain and suffering.</li>
 
-  <li>Paul Barrett overhauled font management to provide an improved,
+  <li>Paul Barrett supported by   <a
+  href=http://www.stsci.edu/>STScI</a> overhauled font management to provide an improved,
   free-standing, platform independent font manager with a WC3
   compliant font finder and cache mechanism and ported truetype and
   mathtext to PS</li>
 
-  <li>Perry Greenfield overhauled and modernized the goals and
-  priorities page, implemented an improved colormap framework, and has
-  provided many suggestions and a lot of insight to the overall design
-  and organization of matplotlib.</li>
+  <li>Perry Greenfield supported by
+  <a href=http://www.stsci.edu/>STScI</a> overhauled and modernized
+  the goals and priorities page, implemented an improved colormap
+  framework, and has provided many suggestions and a lot of insight to
+  the overall design and organization of matplotlib.</li>
 
-  <li>Jared Wahlstrand wrote the SVG backend</li>
+  <li>Jared Wahlstrand wrote the initial SVG backend</li>
 
-  <li>Steve Chaplin is the GTK maintainer and wrote the Cairo and
+  <li>Steve Chaplin served as the GTK maintainer and wrote the Cairo and
   GTKCairo backends</li>
 
   <li>Jim Benson provided the patch to handle vertical mathttext</li>
@@ -57,11 +63,13 @@ matplotlib was written by John Hunter<p>
   ticking</li>
 
   <li>Darren Dale did the work to do mathtext exponential labeling for
-  log plots, added improved support for scalar formatting, and did a
-  lot of work to clean up the <a
-  href=http://www.ctan.org/tex-archive/help/Catalogue/entries/psfrag.html?action=/tex-archive/macros/latex/contrib/supported/psfrag/>psfrag</a>
-  LaTeX output. He wrote the site.cfg and matplotlib.conf
-  configuration support</li>
+  log plots, added improved support for scalar formatting, and did the
+  lions share of the
+  <a href=http://www.ctan.org/tex-archive/help/Catalogue/entries/psfrag.html?action=/tex-archive/macros/latex/contrib/supported/psfrag/>psfrag</a>
+  LaTeX support for postscript. He has made substantial contributions
+  to extending and maintaining the PS and Qt backends, and wrote the
+  site.cfg and matplotlib.conf build and runtime configuration
+  support</li>
 
   <li>Paul Mcguire provided the pyparsing module on which mathtext
   relies, and made a number of optimizations to the matplotlib
@@ -77,33 +85,37 @@ matplotlib was written by John Hunter<p>
   <li>Andrew Dalke of Dalke Scientific Software contributed the
   strftime formatting code to handle years earlier than 1900</li>
 
-  <li>Jochen Voss maintains the PS backend and has contributed several
-  bugfixes.</li>
+  <li>Jochen Voss served as PS backend maintainer and has contributed
+  several bugfixes.</li>
 
-  <li>Nadia Dencheva  of <a
-  href=http://www.stsci.edu/>STSci</a> provided the contouring and
+  <li>Nadia Dencheva  supported by <a
+  href=http://www.stsci.edu/>STScI</a> provided the contouring and
   contour labeling code</li>
 
   <li>Baptiste Carvello provided the key ideas in a patch for proper
   shared axes support that underlies ganged plots and multiscale
   plots</li>
 
-  <li>Jeffrey Whittaker wrote the <a href=toolkits.html>basemap</a>
-  tookit</li>
+  <li>Jeffrey Whittaker at
+  <a href=http://www.boulder.noaa.gov/>NOAA</a> wrote
+  the <a href=toolkits.html>basemap</a> tookit</li>
 
-  <li>Sigve Tjoraand Ted Drain and colleagues at the
+  <li>Sigve Tjoraand, Ted Drain and colleagues at the
   <a href=http://www.jpl.nasa.gov>JPL</a> collaborated on the QtAgg
   backend</li>
 
-  <li>Eric Firing added the contourf function and general contour
-  refactoring and a patch for masked array support for line plots</li>
+  <li>Eric Firing has contributed significantly to contouring, masked
+  array, pcolor, image and quiver support, in addition to ongoing
+  support and enhancements in performance, design and code quality in
+  most aspects of matplotlib.</li>
 
   <li>Daishi Harada added support for "Dashed Text".  See <a
   href=examples/dashpointlabel.py>dashpointlabel.py</a> and <a
   href=matplotlib.text.html#TextWithDash>TextWithDash</a></li>
 
-  <li>Nicolas Young added support for byte images to imshow, which
-  are more efficient in CPU and memory.</li>
+  <li>Nicolas Young added support for byte images to imshow, which are
+  more efficient in CPU and memory, and added support for irregularly
+  sampled images.</li>
   
  <li>The <a href=http://brainvisa.info>brainvisa</a> Orsay team and
  Fernando Perez added Qt support to <a
@@ -115,10 +127,12 @@ matplotlib was written by John Hunter<p>
 
   <li>Jouni K. Seppaenen wrote the PDF backend</li>
 
-  <li>Michael Droettboom wrote the enhanced mathtext support,
-implementing Knuth's box layout algorithms, and is responsible for
-numerous bug-fixes, better font support, and feature enhancements
-across the matplotlib backends</li>
+  <li>Michael Droettboom supported by
+  <a href=http://www.stsci.edu/>STScI</a> wrote the enhanced mathtext
+  support, implementing Knuth's box layout algorithms, saving to
+  file-like objects across backends, and is responsible for numerous
+  bug-fixes, much better font and unicode support, and feature and
+  performance enhancements across the matplotlib code base. </li>
 
 
 
