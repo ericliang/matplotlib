@@ -28,6 +28,9 @@ The following table enumerates the capabilities of the different backends.<p>
       rotated text
     </td>
     <td align="left" valign="top">
+      mathtext
+    </td>
+    <td align="left" valign="top">
       usetex
     </td>
     <td align="left" valign="top">
@@ -62,6 +65,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -72,6 +78,9 @@ The following table enumerates the capabilities of the different backends.<p>
       png,ps,
       svg,
       svgz
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
@@ -112,6 +121,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -122,6 +134,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       ?
+    </td>
+    <td align="left" valign="top">
+      &nbsp;
     </td>
     <td align="left" valign="top">
       ?
@@ -159,6 +174,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -172,6 +190,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       &nbsp;
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       &nbsp;
@@ -210,6 +231,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -222,6 +246,9 @@ The following table enumerates the capabilities of the different backends.<p>
       ps,
       svg,
       svgz
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
@@ -261,6 +288,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -268,6 +298,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       eps,ps
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
@@ -307,6 +340,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       X
     </td>
+    <td align="left" valign="top">
+      X
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -314,6 +350,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       png,raw
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
@@ -343,6 +382,9 @@ The following table enumerates the capabilities of the different backends.<p>
       X
     </td>
     <td align="left" valign="top">
+      X
+    </td>
+    <td align="left" valign="top">
       &nbsp;
     </td>
     <td align="left" valign="top">
@@ -361,6 +403,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       png,raw
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
@@ -406,6 +451,9 @@ The following table enumerates the capabilities of the different backends.<p>
     <td align="left" valign="top">
       &nbsp;
     </td>
+    <td align="left" valign="top">
+      &nbsp;
+    </td>
   </tr>
   <tr>
     <td align="left" valign="top">
@@ -413,6 +461,9 @@ The following table enumerates the capabilities of the different backends.<p>
     </td>
     <td align="left" valign="top">
       png,raw
+    </td>
+    <td align="left" valign="top">
+      X
     </td>
     <td align="left" valign="top">
       X
