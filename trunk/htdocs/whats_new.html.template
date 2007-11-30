@@ -7,8 +7,8 @@ versioninfo = {}
 versioninfo['0.91.0'] = (
 
 ('enhanced mathtext', """Complete revamp of matplotlib's internal math layout and rendering
-engine.  Michael Droetboom has improved the TeX parser to
-significantly expand it's coverege, and implemeted Knuth's box layout
+engine.  Michael Droettboom has improved the TeX parser to
+significantly expand it's coverage, and implemented Knuth's box layout
 algorithms.  Additionally, the much anticipated <a
 href=http://www.stixfonts.org/>STIX fonts</a> for math expressions
 have come online and ship with matplotlib.  See a sample of the new mathtext at <a
@@ -32,7 +32,7 @@ This has been a much requested feature for usage in web application servers.
 ('record array support', """New functions for loading, displaying and saving numpy record arrays in <a href=matplotlib.mlab.html>matplotlib.mlab</a>.  See for example, <a href=examples/loadrec.py>loadrec.py</a>
 """),
 
-('pyplot', """Added a module <a href=matplotlib.pyplot.html>matplotlib.pyplot</a> which has all of pylab's plotting functions (eg figure, plot, show, close) but does not import the numpy namepace.  This is useful for those who want to use the pylab functionality w/o the namespace clutter.
+('pyplot', """Added a module <a href=matplotlib.pyplot.html>matplotlib.pyplot</a> which has all of pylab's plotting functions (eg figure, plot, show, close) but does not import the numpy namespace.  This is useful for those who want to use the pylab functionality w/o the namespace clutter.
 """),
 
 ('maskedarray', """Added optional support for the scipy sandbox masked array packaged.  Configurable with an rc setting.
