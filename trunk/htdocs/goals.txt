@@ -79,7 +79,10 @@ of mathtext for PS
 *******************
 sqrt overlines
 
-not started
+done
+
+Arbitrary radicals at a number of different sizes can now be drawn.
+
 *******************
 add spacing commands
 
@@ -92,13 +95,7 @@ href="whats_new.html#0.54-Enhanced_mathtext">matplotlib-0.54</a>
 *******************
 embedded mathtext
 
-not started
-
-Currently a string is all mathtext or None.  To get roman fonts in a
-mathtext string you can use \rm.  Ideally, we could embed mathtext
-expressions in a regular string, ie, strings like <tt>r"Rate constant
-$5\lambda$"</tt>.  Note if you use the text.usetex rc option, then
-arbitrary TeX/LaTeX expressions can be used
+done
 
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 Regular text
@@ -108,7 +105,7 @@ Relative font sizes
 done
 
 This will allow specification of a font size relative to
-an existing font rather than in absolute terms, which will 
+an existing font rather than in absolute terms, which will
 make scaling all fonts within a plot simpler.
 
 *******************
@@ -141,9 +138,9 @@ Image support
 
 done
 
-AGG support appeared in 
+AGG support appeared in
 <a href="whats_new.html#0.52-Image_support">
-matplotlib-0.52</a>, Postscript image support in 
+matplotlib-0.52</a>, Postscript image support in
 <a href="whats_new.html#0.53-Ported_image_support_to_numarray_and_postscript_backend">
 matplotlib-0.53</a>.
 See <a href="matplotlib.pylab.html#-imshow">
@@ -160,11 +157,11 @@ interface command <a href=matplotlib.pylab.html#-polar>polar</a>
 command.  Note you can make other kinds of plots on polar, axes, eg
 scatter plots, as shown in <a
 href=examples/polar_scatter.py>polar_scatter.py</a>.  See <a
-href=screenshots.html#polar_demo>polar screenshot</a>.  Some work
-remains to be done on making the navigation toolbar behave sanely wih
-polar plots.
+href=screenshots.html#polar_demo>polar screenshot</a>.  Further
+enhancements to polar plots, including rotating/zooming, are
+implemented in the transforms branch.
 
-******************* 
+*******************
 Shared axes
 
 done
@@ -186,20 +183,21 @@ provided in <a href="whats_new.html#0.65-contour">matplotlib-0.65</a>
 .  Work on automatic labeling of contours is underway.  linestyles
 added in matplotlib-0.72.1.  polyfilled contours are planned.
 
-******************* 
+*******************
 Log histogram
 
 not started
 *******************
 General polygon clipping
 
-not started
+mostly done
 
 This will be based on agg's <a
 href=http://www.antigrain.com/demo/index.html#PAGE_DEMO_scanline_boolean>scanline
 boolean algebra</a>, which does not have the licensing restrictions of
 the <a href=http://www.cs.man.ac.uk/aig/staff/alan/software>gpc</a>
-algorithms.
+algorithms.  This currently works in the Agg and Pdf backends.  On the
+transforms branch, it additionally works in the Cairo, Ps and Svg backends.
 
 *******************
 2-D vector plots
@@ -245,7 +243,7 @@ href=tutorial.html#dates>dates tutorial</a>.
 *******************
 Bezier curves, paths
 
-not started
+done on transforms branch
 
 *******************
 3-D visualization
@@ -429,21 +427,11 @@ not started
 *******************
 SVG backend
 
-almost done 
+almost done
 
 Jared Wahlstrand wrote the SVG backend.  As of <a
-href="whats_new.html#0.61-svg_fixes">matplotlib-0.61</a> svg has fast
-rendering, good layout, image support and font support.  Remaining is
-mathtext for svg.
+href="whats_new.html#0.61-svg_fixes">matplotlib-0.91</a> svg has fast
+rendering, good layout, image support, font support and mathtext
+support.  Support for clipping paths is available on the transforms
+branch.
 
-*******************
-Paint clipping problems
-
-very low priority
-
-The problem resides in the underlying libart package (which
-sees little maintenance).
-*******************
-GD color allocation
-
-very low priority
