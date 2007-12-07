@@ -639,7 +639,7 @@ See the <a href=tutorial.html#dates>dates tutorial</a>.
      'Can I plot data with two y axes scales?',
      r"""
 As of matplotlib-0.53, there is support for this.  See <a
-href=examples/two_scalers.py>two_scales.py</a>.
+href=examples/two_scales.py>two_scales.py</a>.
 """),
 
     ('MATHTEXT',
