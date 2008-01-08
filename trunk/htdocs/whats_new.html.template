@@ -4,7 +4,7 @@
 
 versioninfo = {}
 
-versioninfo['0.91.0'] = (
+versioninfo['0.91.2'] = (
 
 ('enhanced mathtext', """Complete revamp of matplotlib's internal math layout and rendering
 engine.  Michael Droettboom has improved the TeX parser to

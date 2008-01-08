@@ -29,13 +29,14 @@ Naming&nbsp;Conventions<br>
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="cairo.html">cairo</a><br>
-<a href="gzip.html">gzip</a><br>
-</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-<a href="os.html">os</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
-<a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.agg.html">matplotlib.agg</a><br>
+<a href="cairo.html">cairo</a><br>
+</td><td width="25%" valign=top><a href="gzip.html">gzip</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -299,6 +300,8 @@ Data and other attributes inherited from <a href="matplotlib.backend_bases.html#
 <dl><dt><a name="RendererCairo-draw_lines"><strong>draw_lines</strong></a>(self, gc, x, y, transform<font color="#909090">=None</font>)</dt></dl>
 
 <dl><dt><a name="RendererCairo-draw_markers_OLD"><strong>draw_markers_OLD</strong></a>(self, gc, path, rgbFace, x, y, transform)</dt></dl>
+
+<dl><dt><a name="RendererCairo-draw_path"><strong>draw_path</strong></a>(self, gc, rgbFace, path)</dt></dl>
 
 <dl><dt><a name="RendererCairo-draw_point"><strong>draw_point</strong></a>(self, gc, x, y)</dt></dl>
 

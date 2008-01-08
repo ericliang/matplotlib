@@ -423,11 +423,11 @@ backends.
 *******************
 PDF backend
 
-not started
+mostly complete
 *******************
 SVG backend
 
-almost done
+mostly complete
 
 Jared Wahlstrand wrote the SVG backend.  As of <a
 href="whats_new.html#0.61-svg_fixes">matplotlib-0.91</a> svg has fast

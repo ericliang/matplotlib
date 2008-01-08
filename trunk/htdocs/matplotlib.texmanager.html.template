@@ -83,6 +83,8 @@ working&nbsp;dir<br>&nbsp;</tt></td></tr>
 
 <dl><dt><a name="TexManager-get_font_preamble"><strong>get_font_preamble</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="TexManager-get_grey"><strong>get_grey</strong></a>(self, tex, fontsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>)</dt></dl>
+
 <dl><dt><a name="TexManager-get_ps_bbox"><strong>get_ps_bbox</strong></a>(self, tex, fontsize)</dt></dl>
 
 <dl><dt><a name="TexManager-get_rgba"><strong>get_rgba</strong></a>(self, tex, fontsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, rgb<font color="#909090">=(0, 0, 0)</font>)</dt><dd><tt>Return&nbsp;tex&nbsp;string&nbsp;as&nbsp;an&nbsp;rgba&nbsp;array</tt></dd></dl>
@@ -100,8 +102,6 @@ multiple&nbsp;drives.&nbsp;get_shell_cmd&nbsp;deals&nbsp;with&nbsp;this&nbsp;iss
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>arrayd</strong> = {}</dl>
-
 <dl><dt><strong>configdir</strong> = '/home/jdhunter/.matplotlib'</dl>
 
 <dl><dt><strong>cursive</strong> = ('pzc', r'\usepackage{chancery}')</dl>
@@ -114,6 +114,8 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>font_info</strong> = {'avant garde': ('pag', r'\usepackage{avant}'), 'bookman': ('pbk', r'\renewcommand{\rmdefault}{pbk}'), 'charter': ('pch', r'\usepackage{charter}'), 'computer modern roman': ('cmr', ''), 'computer modern sans serif': ('cmss', ''), 'computer modern typewriter': ('cmtt', ''), 'courier': ('pcr', r'\usepackage{courier}'), 'cursive': ('pzc', r'\usepackage{chancery}'), 'helvetica': ('phv', r'\usepackage{helvet}'), 'monospace': ('cmtt', ''), ...}</dl>
 
+<dl><dt><strong>grey_arrayd</strong> = {}</dl>
+
 <dl><dt><strong>monospace</strong> = ('cmtt', '')</dl>
 
 <dl><dt><strong>n</strong> = 'monospace'</dl>
@@ -125,6 +127,8 @@ Data and other attributes defined here:<br>
 <dl><dt><strong>postscriptd</strong> = {}</dl>
 
 <dl><dt><strong>pscnt</strong> = 0</dl>
+
+<dl><dt><strong>rgba_arrayd</strong> = {}</dl>
 
 <dl><dt><strong>sans_serif</strong> = ('cmss', '')</dl>
 

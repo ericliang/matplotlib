@@ -18,12 +18,24 @@
 
     <tr><td  bgcolor="red" align="left">
         <font class="tableheading">
+                <b>Donate</b>
+        </font>
+    </td></tr>
+    <tr><td valign="top" bgcolor=#efefef>
+<font color="black">Help support matplotlib development by <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>donating</a> to fund developer sprints and other matplotlib development costs.</font></td></tr>
+</table>
+
+                    <br>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor="red" align="left">
+        <font class="tableheading">
                 <b>New release</b>
         </font>
     </td></tr>
     <tr><td valign="top" bgcolor=#efefef>
 <font color="black">matplotlib <a
-href="http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474">0.91.0</a>
+href=http://sourceforge.net/project/platformdownload.php?group_id=80706>0.91.2</a>
 is out.  See <a href=whats_new.html>what's new</a> for a summary of new features.  </font></td></tr>
 </table>
 
@@ -41,8 +53,9 @@ is out.  See <a href=whats_new.html>what's new</a> for a summary of new features
     <a href=http://sourceforge.net/projects/matplotlib>Download</a><br>
     <a href=installing.html>Installing</a><br>
     <a href=screenshots.html>Screenshots</a><br>
-    <a href=matplotlib_examples_0.91.0.zip>Examples&nbsp;(zip)</a><br>
+    <a href=matplotlib_examples_0.91.2svn.zip>Examples&nbsp;(zip)</a><br>
     <a href=http://sourceforge.net/mail/?group_id=80706>Mailing lists</a><br>
+    <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>Donate</a><br>
 </td></tr>
 </table>
 
@@ -56,7 +69,7 @@ is out.  See <a href=whats_new.html>what's new</a> for a summary of new features
     </td></tr>
       <tr><td valign="top" bgcolor=#efefef>
     <a href=tutorial.html>Tutorial</a><br>
-    <a href=users_guide_0.91.0.pdf>User's&nbsp;Guide&nbsp;(pdf)</a><br>
+    <a href=users_guide_0.91.2svn.pdf>User's&nbsp;Guide&nbsp;(pdf)</a><br>
     <a href=api.pdf>API&nbsp;(pdf)</a><br>
     <a href=faq.html>FAQ</a><br>
     <a href=http://www.scipy.org/wikis/topical_software/MatplotlibCookbook>Cookbook&nbsp;/&nbsp;wiki</a><br>
@@ -113,7 +126,18 @@ is out.  See <a href=whats_new.html>what's new</a> for a summary of new features
 &nbsp;<br>
 &nbsp;&nbsp;s&nbsp;=&nbsp;r'$\mathcal{R}\prod_{i=\alpha\mathcal{B}}^\infty&nbsp;a_i\sin(2&nbsp;\pi&nbsp;f&nbsp;x_i)$'<br>
 &nbsp;<br>
-&nbsp;&nbsp;The&nbsp;fonts&nbsp;\cal,&nbsp;\rm,&nbsp;\it,&nbsp;and&nbsp;\tt&nbsp;are&nbsp;allowed.<br>
+&nbsp;&nbsp;Different&nbsp;fonts&nbsp;may&nbsp;be&nbsp;selected:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathcal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calligraphic&nbsp;fonts<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathrm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roman&nbsp;(upright)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Italic&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathtt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Typewriter&nbsp;(monospaced)&nbsp;font,&nbsp;similar&nbsp;to&nbsp;Courier<br>
+&nbsp;<br>
+&nbsp;&nbsp;Additionally,&nbsp;if&nbsp;using&nbsp;the&nbsp;STIX&nbsp;fonts:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathbb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blackboard&nbsp;(double-struck)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathcircled&nbsp;&nbsp;Circled&nbsp;characters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathfrak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fraktur&nbsp;(Gothic-style)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathscr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Script&nbsp;(cursive)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathsf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sans-serif&nbsp;font<br>
 &nbsp;<br>
 &nbsp;&nbsp;The&nbsp;following&nbsp;accents&nbsp;are&nbsp;provided:&nbsp;\hat,&nbsp;\breve,&nbsp;\grave,&nbsp;\bar,<br>
 &nbsp;&nbsp;\acute,&nbsp;\tilde,&nbsp;\vec,&nbsp;\dot,&nbsp;\ddot.&nbsp;&nbsp;All&nbsp;of&nbsp;them&nbsp;have&nbsp;the&nbsp;same<br>
@@ -167,47 +191,84 @@ USAGE:<br>
 &nbsp;<br>
 &nbsp;&nbsp;Allowed&nbsp;TeX&nbsp;symbols:<br>
 &nbsp;<br>
-&nbsp;&nbsp;[MGDTODO:&nbsp;This&nbsp;list&nbsp;is&nbsp;no&nbsp;longer&nbsp;exhaustive&nbsp;and&nbsp;needs&nbsp;to&nbsp;be&nbsp;updated]<br>
-&nbsp;<br>
-&nbsp;&nbsp;\/&nbsp;\Delta&nbsp;\Downarrow&nbsp;\Gamma&nbsp;\Im&nbsp;\LEFTangle&nbsp;\LEFTbrace&nbsp;\LEFTbracket<br>
-&nbsp;&nbsp;\LEFTparen&nbsp;\Lambda&nbsp;\Leftarrow&nbsp;\Leftbrace&nbsp;\Leftbracket&nbsp;\Leftparen<br>
-&nbsp;&nbsp;\Leftrightarrow&nbsp;\Omega&nbsp;\P&nbsp;\Phi&nbsp;\Pi&nbsp;\Psi&nbsp;\RIGHTangle&nbsp;\RIGHTbrace<br>
-&nbsp;&nbsp;\RIGHTbracket&nbsp;\RIGHTparen&nbsp;\Re&nbsp;\Rightarrow&nbsp;\Rightbrace&nbsp;\Rightbracket<br>
-&nbsp;&nbsp;\Rightparen&nbsp;\S&nbsp;\SQRT&nbsp;\Sigma&nbsp;\Sqrt&nbsp;\Theta&nbsp;\Uparrow&nbsp;\Updownarrow<br>
-&nbsp;&nbsp;\Upsilon&nbsp;\Vert&nbsp;\Xi&nbsp;\aleph&nbsp;\alpha&nbsp;\approx&nbsp;\angstrom&nbsp;\ast&nbsp;\asymp<br>
-&nbsp;&nbsp;\backslash&nbsp;\beta&nbsp;\bigcap&nbsp;\bigcirc&nbsp;\bigcup&nbsp;\bigodot&nbsp;\bigoplus<br>
-&nbsp;&nbsp;\bigotimes&nbsp;\bigtriangledown&nbsp;\bigtriangleup&nbsp;\biguplus&nbsp;\bigvee<br>
-&nbsp;&nbsp;\bigwedge&nbsp;\bot&nbsp;\bullet&nbsp;\cap&nbsp;\cdot&nbsp;\chi&nbsp;\circ&nbsp;\clubsuit&nbsp;\coprod&nbsp;\cup<br>
-&nbsp;&nbsp;\dag&nbsp;\dashv&nbsp;\ddag&nbsp;\delta&nbsp;\diamond&nbsp;\diamondsuit&nbsp;\div&nbsp;\downarrow&nbsp;\ell<br>
-&nbsp;&nbsp;\emptyset&nbsp;\epsilon&nbsp;\equiv&nbsp;\eta&nbsp;\exists&nbsp;\flat&nbsp;\forall&nbsp;\frown&nbsp;\gamma<br>
-&nbsp;&nbsp;\geq&nbsp;\gg&nbsp;\heartsuit&nbsp;\hspace&nbsp;\imath&nbsp;\in&nbsp;\infty&nbsp;\int&nbsp;\iota&nbsp;\jmath<br>
-&nbsp;&nbsp;\kappa&nbsp;\lambda&nbsp;\langle&nbsp;\lbrace&nbsp;\lceil&nbsp;\leftangle&nbsp;\leftarrow<br>
-&nbsp;&nbsp;\leftbrace&nbsp;\leftbracket&nbsp;\leftharpoondown&nbsp;\leftharpoonup&nbsp;\leftparen<br>
-&nbsp;&nbsp;\leftrightarrow&nbsp;\leq&nbsp;\lfloor&nbsp;\ll&nbsp;\mid&nbsp;\mp&nbsp;\mu&nbsp;\nabla&nbsp;\natural<br>
-&nbsp;&nbsp;\nearrow&nbsp;\neg&nbsp;\ni&nbsp;\nu&nbsp;\nwarrow&nbsp;\odot&nbsp;\oint&nbsp;\omega&nbsp;\ominus&nbsp;\oplus<br>
-&nbsp;&nbsp;\oslash&nbsp;\otimes&nbsp;\phi&nbsp;\pi&nbsp;\pm&nbsp;\prec&nbsp;\preceq&nbsp;\prime&nbsp;\prod&nbsp;\propto&nbsp;\psi<br>
-&nbsp;&nbsp;\rangle&nbsp;\rbrace&nbsp;\rceil&nbsp;\rfloor&nbsp;\rho&nbsp;\rightangle&nbsp;\rightarrow<br>
-&nbsp;&nbsp;\rightbrace&nbsp;\rightbracket&nbsp;\rightharpoondown&nbsp;\rightharpoonup<br>
-&nbsp;&nbsp;\rightparen&nbsp;\searrow&nbsp;\sharp&nbsp;\sigma&nbsp;\sim&nbsp;\simeq&nbsp;\slash&nbsp;\smile<br>
-&nbsp;&nbsp;\spadesuit&nbsp;\sqcap&nbsp;\sqcup&nbsp;\sqrt&nbsp;\sqsubseteq&nbsp;\sqsupseteq&nbsp;\subset<br>
-&nbsp;&nbsp;\subseteq&nbsp;\succ&nbsp;\succeq&nbsp;\sum&nbsp;\supset&nbsp;\supseteq&nbsp;\swarrow&nbsp;\tau&nbsp;\theta<br>
-&nbsp;&nbsp;\times&nbsp;\top&nbsp;\triangleleft&nbsp;\triangleright&nbsp;\uparrow&nbsp;\updownarrow<br>
-&nbsp;&nbsp;\uplus&nbsp;\upsilon&nbsp;\varepsilon&nbsp;\varphi&nbsp;\varphi&nbsp;\varrho&nbsp;\varsigma<br>
-&nbsp;&nbsp;\vartheta&nbsp;\vdash&nbsp;\vee&nbsp;\vert&nbsp;\wedge&nbsp;\wp&nbsp;\wr&nbsp;\xi&nbsp;\zeta<br>
-&nbsp;<br>
+&nbsp;&nbsp;$&nbsp;\%&nbsp;\AA&nbsp;\AE&nbsp;\BbbC&nbsp;\BbbN&nbsp;\BbbP&nbsp;\BbbQ&nbsp;\BbbR&nbsp;\BbbZ&nbsp;\Bumpeq&nbsp;\Cap&nbsp;\Colon<br>
+&nbsp;&nbsp;\Cup&nbsp;\Delta&nbsp;\Doteq&nbsp;\Downarrow&nbsp;\Equiv&nbsp;\Finv&nbsp;\Gamma&nbsp;\H&nbsp;\Im&nbsp;\L&nbsp;\Lambda<br>
+&nbsp;&nbsp;\Ldsh&nbsp;\Leftarrow&nbsp;\Leftrightarrow&nbsp;\Lleftarrow&nbsp;\Lsh&nbsp;\Nearrow&nbsp;\Nwarrow<br>
+&nbsp;&nbsp;\O&nbsp;\OE&nbsp;\Omega&nbsp;\P&nbsp;\Phi&nbsp;\Pi&nbsp;\Psi&nbsp;\Rdsh&nbsp;\Re&nbsp;\Rightarrow&nbsp;\Rrightarrow<br>
+&nbsp;&nbsp;\Rsh&nbsp;\S&nbsp;\Searrow&nbsp;\Sigma&nbsp;\Subset&nbsp;\Supset&nbsp;\Swarrow&nbsp;\Theta&nbsp;\Uparrow<br>
+&nbsp;&nbsp;\Updownarrow&nbsp;\Upsilon&nbsp;\Vdash&nbsp;\Vert&nbsp;\Vvdash&nbsp;\Xi&nbsp;\_&nbsp;\__sqrt__&nbsp;\ac<br>
+&nbsp;&nbsp;\acute&nbsp;\acwopencirclearrow&nbsp;\adots&nbsp;\ae&nbsp;\aleph&nbsp;\alpha&nbsp;\angle&nbsp;\approx<br>
+&nbsp;&nbsp;\approxeq&nbsp;\approxident&nbsp;\arceq&nbsp;\ast&nbsp;\asymp&nbsp;\backcong&nbsp;\backprime<br>
+&nbsp;&nbsp;\backsim&nbsp;\backsimeq&nbsp;\backslash&nbsp;\bar&nbsp;\barleftarrow&nbsp;\barwedge&nbsp;\because<br>
+&nbsp;&nbsp;\beta&nbsp;\beth&nbsp;\between&nbsp;\bigcap&nbsp;\bigcirc&nbsp;\bigcup&nbsp;\bigodot&nbsp;\bigoplus<br>
+&nbsp;&nbsp;\bigotimes&nbsp;\bigstar&nbsp;\bigtriangledown&nbsp;\bigtriangleup&nbsp;\biguplus<br>
+&nbsp;&nbsp;\bigvee&nbsp;\bigwedge&nbsp;\blacksquare&nbsp;\blacktriangle&nbsp;\blacktriangledown<br>
+&nbsp;&nbsp;\blacktriangleleft&nbsp;\blacktriangleright&nbsp;\bot&nbsp;\bowtie&nbsp;\boxbar&nbsp;\boxdot<br>
+&nbsp;&nbsp;\boxminus&nbsp;\boxplus&nbsp;\boxtimes&nbsp;\breve&nbsp;\bullet&nbsp;\bumpeq&nbsp;\c&nbsp;\candra&nbsp;\cap<br>
+&nbsp;&nbsp;\carriagereturn&nbsp;\cdot&nbsp;\cdotp&nbsp;\cdots&nbsp;\check&nbsp;\checkmark&nbsp;\chi&nbsp;\circ<br>
+&nbsp;&nbsp;\circeq&nbsp;\circledR&nbsp;\circledS&nbsp;\circledast&nbsp;\circledcirc&nbsp;\circleddash<br>
+&nbsp;&nbsp;\circumflexaccent&nbsp;\clubsuit&nbsp;\clubsuitopen&nbsp;\colon&nbsp;\coloneq<br>
+&nbsp;&nbsp;\combiningacuteaccent&nbsp;\combiningbreve&nbsp;\combiningdiaeresis<br>
+&nbsp;&nbsp;\combiningdotabove&nbsp;\combininggraveaccent&nbsp;\combiningoverline<br>
+&nbsp;&nbsp;\combiningrightarrowabove&nbsp;\combiningtilde&nbsp;\complement&nbsp;\cong&nbsp;\coprod<br>
+&nbsp;&nbsp;\copyright&nbsp;\cup&nbsp;\cupdot&nbsp;\curlyeqprec&nbsp;\curlyeqsucc&nbsp;\curlyvee<br>
+&nbsp;&nbsp;\curlywedge&nbsp;\curvearrowleft&nbsp;\curvearrowright&nbsp;\cwopencirclearrow&nbsp;\d<br>
+&nbsp;&nbsp;\dag&nbsp;\daleth&nbsp;\danger&nbsp;\dashv&nbsp;\ddag&nbsp;\ddddot&nbsp;\dddot&nbsp;\ddot&nbsp;\ddots<br>
+&nbsp;&nbsp;\degree&nbsp;\delta&nbsp;\diamond&nbsp;\diamondsuit&nbsp;\digamma&nbsp;\div&nbsp;\divideontimes<br>
+&nbsp;&nbsp;\dot&nbsp;\doteq&nbsp;\dotminus&nbsp;\dotplus&nbsp;\dots&nbsp;\doublebarwedge&nbsp;?&nbsp;\downarrow<br>
+&nbsp;&nbsp;\downdownarrows&nbsp;\downharpoonleft&nbsp;\downharpoonright&nbsp;\downzigzagarrow<br>
+&nbsp;&nbsp;\ell&nbsp;\emdash&nbsp;\emptyset&nbsp;\endash&nbsp;\enspace&nbsp;\epsilon&nbsp;\eqcirc&nbsp;\eqcolon<br>
+&nbsp;&nbsp;\eqdef&nbsp;\eqgtr&nbsp;\eqless&nbsp;\eqsim&nbsp;\equiv&nbsp;\eta&nbsp;\eth&nbsp;\exists&nbsp;\fallingdotseq<br>
+&nbsp;&nbsp;\flat&nbsp;\forall&nbsp;\frakC&nbsp;\frakZ&nbsp;\frown&nbsp;\gamma&nbsp;\geq&nbsp;\geqq&nbsp;\gg&nbsp;\ggg&nbsp;\gimel<br>
+&nbsp;&nbsp;\gneqq&nbsp;\gnsim&nbsp;\grave&nbsp;\greater&nbsp;\gtrdot&nbsp;\gtreqless&nbsp;\gtrless&nbsp;\gtrsim<br>
+&nbsp;&nbsp;\hat&nbsp;\heartsuit&nbsp;\hookleftarrow&nbsp;\hookrightarrow&nbsp;\i&nbsp;\iiint&nbsp;\iint<br>
+&nbsp;&nbsp;\imageof&nbsp;\imath&nbsp;\in&nbsp;\infty&nbsp;\int&nbsp;\intercal&nbsp;\invnot&nbsp;\iota&nbsp;\jmath&nbsp;\k<br>
+&nbsp;&nbsp;\kappa&nbsp;\kernelcontraction&nbsp;\l&nbsp;\lambda&nbsp;\lambdabar&nbsp;\lasp&nbsp;\lbrace<br>
+&nbsp;&nbsp;\lbrack&nbsp;\lceil&nbsp;\leftangle&nbsp;\leftarrow&nbsp;\leftarrowtail&nbsp;\leftbrace<br>
+&nbsp;&nbsp;\leftharpoonaccent&nbsp;\leftharpoondown&nbsp;\leftharpoonup&nbsp;\leftleftarrows<br>
+&nbsp;&nbsp;\leftparen&nbsp;\leftrightarrow&nbsp;\leftrightarrows&nbsp;\leftrightharpoons<br>
+&nbsp;&nbsp;\leftthreetimes&nbsp;\leq&nbsp;\leqq&nbsp;\less&nbsp;\lessdot&nbsp;\lesseqgtr&nbsp;\lessgtr<br>
+&nbsp;&nbsp;\lesssim&nbsp;\lfloor&nbsp;\ll&nbsp;\llcorner&nbsp;\lll&nbsp;\lneqq&nbsp;\lnsim&nbsp;\looparrowleft<br>
+&nbsp;&nbsp;\looparrowright&nbsp;\lq&nbsp;\lrcorner&nbsp;\ltimes&nbsp;\maltese&nbsp;\mapsdown&nbsp;\mapsfrom<br>
+&nbsp;&nbsp;\mapsto&nbsp;\mapsup&nbsp;\measeq&nbsp;\measuredangle&nbsp;\mho&nbsp;\mid&nbsp;\minus&nbsp;\models&nbsp;\mp<br>
+&nbsp;&nbsp;\mu&nbsp;\multimap&nbsp;\nLeftarrow&nbsp;\nLeftrightarrow&nbsp;\nRightarrow&nbsp;\nVDash<br>
+&nbsp;&nbsp;\nVdash&nbsp;\nabla&nbsp;\napprox&nbsp;\natural&nbsp;\ncong&nbsp;\ne&nbsp;\nearrow&nbsp;\neg&nbsp;\nequiv<br>
+&nbsp;&nbsp;\nexists&nbsp;\ngeq&nbsp;\ngtr&nbsp;\ni&nbsp;\nleftarrow&nbsp;\nleftrightarrow&nbsp;\nleq&nbsp;\nless<br>
+&nbsp;&nbsp;\nmid&nbsp;\not&nbsp;\notin&nbsp;\nparallel&nbsp;\nprec&nbsp;\nrightarrow&nbsp;\nsim&nbsp;\nsime<br>
+&nbsp;&nbsp;\nsubset&nbsp;\nsubseteq&nbsp;\nsucc&nbsp;\nsupset&nbsp;\nsupseteq&nbsp;\ntriangleleft<br>
+&nbsp;&nbsp;\ntrianglelefteq&nbsp;\ntriangleright&nbsp;\ntrianglerighteq&nbsp;\nu&nbsp;\nvDash<br>
+&nbsp;&nbsp;\nvdash&nbsp;\nwarrow&nbsp;\o&nbsp;\obar&nbsp;\ocirc&nbsp;\odot&nbsp;\oe&nbsp;\oiiint&nbsp;\oiint&nbsp;\oint<br>
+&nbsp;&nbsp;\omega&nbsp;\ominus&nbsp;\oplus&nbsp;\origof&nbsp;\oslash&nbsp;\otimes&nbsp;\overarc<br>
+&nbsp;&nbsp;\overleftarrow&nbsp;\overleftrightarrow&nbsp;\parallel&nbsp;\partial&nbsp;\phi&nbsp;\pi<br>
+&nbsp;&nbsp;\pitchfork&nbsp;\pm&nbsp;\prec&nbsp;\preccurlyeq&nbsp;\preceq&nbsp;\precnsim&nbsp;\precsim&nbsp;\prime<br>
+&nbsp;&nbsp;\prod&nbsp;\propto&nbsp;\prurel&nbsp;\psi&nbsp;\quad&nbsp;\questeq&nbsp;\rasp&nbsp;\rbrace&nbsp;\rbrack<br>
+&nbsp;&nbsp;\rceil&nbsp;\rfloor&nbsp;\rho&nbsp;\rightangle&nbsp;\rightarrow&nbsp;\rightarrowbar<br>
+&nbsp;&nbsp;\rightarrowtail&nbsp;\rightbrace&nbsp;\rightharpoonaccent&nbsp;\rightharpoondown<br>
+&nbsp;&nbsp;\rightharpoonup&nbsp;\rightleftarrows&nbsp;\rightleftharpoons&nbsp;\rightparen<br>
+&nbsp;&nbsp;\rightrightarrows&nbsp;\rightthreetimes&nbsp;\rightzigzagarrow&nbsp;\risingdotseq<br>
+&nbsp;&nbsp;\rq&nbsp;\rtimes&nbsp;\scrB&nbsp;\scrE&nbsp;\scrF&nbsp;\scrH&nbsp;\scrI&nbsp;\scrL&nbsp;\scrM&nbsp;\scrR&nbsp;\scre<br>
+&nbsp;&nbsp;\scrg&nbsp;\scro&nbsp;\scurel&nbsp;\searrow&nbsp;\sharp&nbsp;\sigma&nbsp;\sim&nbsp;\simeq&nbsp;\slash<br>
+&nbsp;&nbsp;\smallsetminus&nbsp;\smile&nbsp;\solbar&nbsp;\spadesuit&nbsp;\spadesuitopen<br>
+&nbsp;&nbsp;\sphericalangle&nbsp;\sqcap&nbsp;\sqcup&nbsp;\sqsubset&nbsp;\sqsubseteq&nbsp;\sqsupset<br>
+&nbsp;&nbsp;\sqsupseteq&nbsp;\ss&nbsp;\star&nbsp;\stareq&nbsp;\sterling&nbsp;\subset&nbsp;\subseteq&nbsp;\subsetneq<br>
+&nbsp;&nbsp;\succ&nbsp;\succcurlyeq&nbsp;\succeq&nbsp;\succnsim&nbsp;\succsim&nbsp;\sum&nbsp;\supset&nbsp;\supseteq<br>
+&nbsp;&nbsp;\supsetneq&nbsp;\swarrow&nbsp;\t&nbsp;\tau&nbsp;\textasciiacute&nbsp;\textasciicircum<br>
+&nbsp;&nbsp;\textasciigrave&nbsp;\textasciitilde&nbsp;\textexclamdown&nbsp;\textquestiondown<br>
+&nbsp;&nbsp;\textquotedblleft&nbsp;\textquotedblright&nbsp;\therefore&nbsp;\theta&nbsp;\thickspace<br>
+&nbsp;&nbsp;\thinspace&nbsp;\tilde&nbsp;\times&nbsp;\to&nbsp;\top&nbsp;\triangledown&nbsp;\triangleleft<br>
+&nbsp;&nbsp;\trianglelefteq&nbsp;\triangleq&nbsp;\triangleright&nbsp;\trianglerighteq<br>
+&nbsp;&nbsp;\turnednot&nbsp;\twoheaddownarrow&nbsp;\twoheadleftarrow&nbsp;\twoheadrightarrow<br>
+&nbsp;&nbsp;\twoheaduparrow&nbsp;\ulcorner&nbsp;\underbar&nbsp;\uparrow&nbsp;\updownarrow<br>
+&nbsp;&nbsp;\updownarrowbar&nbsp;\updownarrows&nbsp;\upharpoonleft&nbsp;\upharpoonright&nbsp;\uplus<br>
+&nbsp;&nbsp;\upsilon&nbsp;\upuparrows&nbsp;\urcorner&nbsp;\vDash&nbsp;\varepsilon&nbsp;\varkappa<br>
+&nbsp;&nbsp;\varnothing&nbsp;\varphi&nbsp;\varpi&nbsp;\varrho&nbsp;\varsigma&nbsp;\vartheta&nbsp;\vartriangle<br>
+&nbsp;&nbsp;\vartriangleleft&nbsp;\vartriangleright&nbsp;\vdash&nbsp;\vdots&nbsp;\vec&nbsp;\vee&nbsp;\veebar<br>
+&nbsp;&nbsp;\veeeq&nbsp;\vert&nbsp;\wedge&nbsp;\wedgeq&nbsp;\widehat&nbsp;\widetilde&nbsp;\wp&nbsp;\wr&nbsp;\xi&nbsp;\yen<br>
+&nbsp;&nbsp;\zeta&nbsp;\{&nbsp;\|&nbsp;\}<br>
 &nbsp;<br>
 BACKENDS<br>
 &nbsp;<br>
-&nbsp;&nbsp;mathtext&nbsp;currently&nbsp;works&nbsp;with&nbsp;GTK,&nbsp;Agg,&nbsp;GTKAgg,&nbsp;TkAgg&nbsp;and&nbsp;WxAgg&nbsp;and<br>
-&nbsp;&nbsp;PS,&nbsp;though&nbsp;only&nbsp;horizontal&nbsp;and&nbsp;vertical&nbsp;rotations&nbsp;are&nbsp;supported&nbsp;in<br>
-&nbsp;&nbsp;*Agg<br>
-&nbsp;<br>
-&nbsp;&nbsp;mathtext&nbsp;now&nbsp;embeds&nbsp;the&nbsp;TrueType&nbsp;computer&nbsp;modern&nbsp;fonts&nbsp;into&nbsp;the&nbsp;PS<br>
-&nbsp;&nbsp;file,&nbsp;so&nbsp;what&nbsp;you&nbsp;see&nbsp;on&nbsp;the&nbsp;screen&nbsp;should&nbsp;be&nbsp;what&nbsp;you&nbsp;get&nbsp;on&nbsp;paper.<br>
-&nbsp;<br>
-&nbsp;&nbsp;Backends&nbsp;which&nbsp;don't&nbsp;support&nbsp;mathtext&nbsp;will&nbsp;just&nbsp;render&nbsp;the&nbsp;TeX<br>
-&nbsp;&nbsp;string&nbsp;as&nbsp;a&nbsp;literal.&nbsp;&nbsp;Stay&nbsp;tuned.<br>
-&nbsp;<br>
+&nbsp;&nbsp;mathtext&nbsp;currently&nbsp;works&nbsp;with&nbsp;all&nbsp;backends.<br>
 &nbsp;<br>
 KNOWN&nbsp;ISSUES:<br>
 &nbsp;<br>
@@ -581,7 +642,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x860ee3c&gt;</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
 
 <dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
 
@@ -2146,7 +2207,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x860ee3c&gt;</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
 
 <dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
 
@@ -2227,7 +2288,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x860ee3c&gt;</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
 
 <dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
 
@@ -2366,7 +2427,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x860ee3c&gt;</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
 
 <dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
 
@@ -2445,7 +2506,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x860ee3c&gt;</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
 
 <dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
 
@@ -2748,19 +2809,19 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>alphanums</strong> = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'<br>
 <strong>alphas</strong> = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x86104ec&gt;<br>
+<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x859740c&gt;<br>
 <strong>inf</strong> = inf<br>
 <strong>isinf</strong> = &lt;ufunc 'isinf'&gt;<br>
 <strong>latex_to_bakoma</strong> = {'%': ('cmr10', 48), "'": ('cmsy10', 73), '(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), ...}<br>
 <strong>latex_to_cmex</strong> = {r'\__sqrt__': 112, r'\bigcap': 92, r'\bigcup': 91, r'\bigodot': 75, r'\bigoplus': 77, r'\bigotimes': 79, r'\biguplus': 93, r'\bigvee': 95, r'\bigwedge': 94, r'\coprod': 97, ...}<br>
 <strong>latex_to_standard</strong> = {r'\$': ('pncr8a', 36), r'\%': ('pncr8a', 37), r'\Delta': ('psyr', 68), r'\Diamond': ('psyr', 224), r'\Downarrow': ('psyr', 223), r'\Gamma': ('psyr', 89), r'\Im': ('psyr', 193), r'\Lamda': ('psyr', 76), r'\Leftarrow': ('psyr', 220), r'\Leftrightarrow': ('psyr', 219), ...}<br>
 <strong>nums</strong> = '0123456789'<br>
-<strong>opAssoc</strong> = &lt;matplotlib.pyparsing._Constants object at 0x835e76c&gt;<br>
+<strong>opAssoc</strong> = &lt;matplotlib.pyparsing._Constants object at 0x82e04cc&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>ship</strong> = &lt;matplotlib.mathtext.Ship object at 0x864128c&gt;<br>
+<strong>ship</strong> = &lt;matplotlib.mathtext.Ship object at 0x85bdaac&gt;<br>
 <strong>stix_virtual_fonts</strong> = {'bb': {'bf': [(48, 57, 'rm', 120792), (65, 90, 'bf', 58250), (97, 122, 'bf', 58269), (915, 915, 'bf', 8510), (928, 928, 'bf', 8511), (931, 931, 'bf', 8512), (947, 947, 'bf', 8509), (960, 960, 'bf', 8508)], 'it': [(65, 65, 'it', 57684), (67, 67, 'it', 8450), (68, 68, 'it', 8517), (69, 71, 'it', 57686), (72, 72, 'it', 8461), (73, 77, 'it', 57689), (78, 78, 'it', 8469), (79, 79, 'it', 57694), (80, 81, 'it', 8473), (82, 82, 'it', 8477), (83, 89, 'it', 57695), (90, 90, 'it', 8484), (97, 99, 'it', 57702), (100, 101, 'it', 8518), (102, 104, 'it', 57705), (105, 106, 'it', 8520), (107, 122, 'it', 57708), (915, 915, 'it', 8510), (928, 928, 'it', 8511), (931, 931, 'it', 8512), ...], 'rm': [(48, 57, 'rm', 120792), (65, 66, 'rm', 120120), (67, 67, 'rm', 8450), (68, 71, 'rm', 120123), (72, 72, 'rm', 8461), (73, 77, 'rm', 120128), (78, 78, 'rm', 8469), (79, 79, 'rm', 120134), (80, 81, 'rm', 8473), (82, 82, 'rm', 8477), (83, 89, 'rm', 120138), (90, 90, 'rm', 8484), (97, 122, 'rm', 120146), (915, 915, 'rm', 8510), (928, 928, 'rm', 8511), (931, 931, 'rm', 8512), (947, 947, 'rm', 8509), (960, 960, 'rm', 8508)]}, 'cal': [(65, 90, 'it', 57901)], 'circled': {'bf': [(48, 48, 'bf', 9450), (49, 57, 'bf', 9312), (65, 90, 'bf', 9398), (97, 122, 'bf', 9424)], 'it': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'it', 9398), (97, 122, 'it', 9424)], 'rm': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'rm', 9398), (97, 122, 'rm', 9424)]}, 'frak': {'bf': [(65, 90, 'bf', 120172), (97, 122, 'bf', 120198)], 'it': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)], 'rm': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)]}, 'scr': [(65, 65, 'it', 119964), (66, 66, 'it', 8492), (67, 68, 'it', 119966), (69, 70, 'it', 8496), (71, 71, 'it', 119970), (72, 72, 'it', 8459), (73, 73, 'it', 8464), (74, 75, 'it', 119973), (76, 76, 'it', 8466), (77, 61, 'it', 8467), (78, 81, 'it', 119977), (82, 82, 'it', 8475), (83, 90, 'it', 119982), (97, 100, 'it', 119990), (101, 101, 'it', 8495), (102, 102, 'it', 119995), (103, 103, 'it', 8458), (104, 110, 'it', 119997), (111, 111, 'it', 8500), (112, 122, 'it', 120005)], 'sf': {'bf': [(48, 57, 'bf', 120812), (65, 90, 'bf', 120276), (97, 122, 'bf', 120302), (913, 937, 'bf', 120662), (945, 969, 'bf', 120688), (977, 977, 'bf', 120715), (981, 981, 'bf', 120717), (982, 982, 'bf', 120719), (1008, 1008, 'bf', 120716), (1009, 1009, 'bf', 120718), (1013, 1013, 'bf', 120714), (8706, 8706, 'bf', 120713), (8711, 8711, 'bf', 120687)], 'it': [(48, 57, 'rm', 120802), (65, 90, 'it', 120328), (97, 122, 'it', 120354), (913, 937, 'rm', 57725), (945, 969, 'it', 57816), (977, 977, 'it', 57842), (981, 981, 'it', 57843), (982, 982, 'it', 57845), (1009, 1009, 'it', 57844), (1013, 1013, 'it', 57841)], 'rm': [(48, 57, 'rm', 120802), (65, 90, 'rm', 120224), (97, 122, 'rm', 120250), (913, 937, 'rm', 57725), (945, 969, 'rm', 57750), (977, 977, 'rm', 57776), (981, 981, 'rm', 57777), (982, 982, 'rm', 57779), (1009, 1009, 'rm', 57778), (1013, 1013, 'rm', 57775), (8706, 8706, 'rm', 57724)]}, 'tt': [(48, 57, 'rm', 120822), (65, 90, 'rm', 120432), (97, 122, 'rm', 120458)]}<br>
 <strong>tex2uni</strong> = {'$': 36, '%': 37, 'AA': 8491, 'AE': 198, 'BbbC': 8450, 'BbbN': 8469, 'BbbP': 8473, 'BbbQ': 8474, 'BbbR': 8477, 'BbbZ': 8484, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
     </td>
     </tr>
 </table>

@@ -53,13 +53,13 @@ commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec2csv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;store&nbsp;record&nbsp;array&nbsp;in&nbsp;CSV&nbsp;file<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec2excel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;store&nbsp;record&nbsp;array&nbsp;in&nbsp;excel&nbsp;worksheet&nbsp;-&nbsp;required&nbsp;pyExcelerator<br>
-&nbsp;&nbsp;&nbsp;*&nbsp;rec2gtk&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;put&nbsp;record&nbsp;array&nbsp;in&nbsp;GTK&nbsp;treeview&nbsp;-&nbsp;requires&nbsp;gtk<br>
+&nbsp;<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;csv2rec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;import&nbsp;record&nbsp;array&nbsp;from&nbsp;CSV&nbsp;file&nbsp;with&nbsp;type&nbsp;inspection<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_append_field&nbsp;:&nbsp;add&nbsp;a&nbsp;field/array&nbsp;to&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_drop_fields&nbsp;&nbsp;:&nbsp;drop&nbsp;fields&nbsp;from&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_join&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;join&nbsp;two&nbsp;record&nbsp;arrays&nbsp;on&nbsp;sequence&nbsp;of&nbsp;fields<br>
 &nbsp;<br>
-For&nbsp;the&nbsp;rec&nbsp;viewer&nbsp;clases&nbsp;(rec2csv,&nbsp;rec2excel&nbsp;and&nbsp;rec2gtk),&nbsp;there&nbsp;are<br>
+For&nbsp;the&nbsp;rec&nbsp;viewer&nbsp;clases&nbsp;(rec2csv,&nbsp;rec2excel),&nbsp;there&nbsp;are<br>
 a&nbsp;bunch&nbsp;of&nbsp;Format&nbsp;objects&nbsp;you&nbsp;can&nbsp;pass&nbsp;into&nbsp;the&nbsp;functions&nbsp;that&nbsp;will&nbsp;do<br>
 things&nbsp;like&nbsp;color&nbsp;negative&nbsp;values&nbsp;red,&nbsp;set&nbsp;percent&nbsp;formatting&nbsp;and<br>
 scaling,&nbsp;etc.<br>
@@ -78,7 +78,7 @@ Example&nbsp;usage:<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;rec2excel(r,&nbsp;'test.xls',&nbsp;formatd=formatd)<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#-rec2csv">rec2csv</a>(r,&nbsp;'test.csv',&nbsp;formatd=formatd)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;scroll&nbsp;=&nbsp;<a href="#-rec2gtk">rec2gtk</a>(r,&nbsp;formatd=formatd)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;scroll&nbsp;=&nbsp;rec2gtk(r,&nbsp;formatd=formatd)<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;win&nbsp;=&nbsp;gtk.Window()<br>
 &nbsp;&nbsp;&nbsp;&nbsp;win.set_size_request(600,800)<br>
@@ -96,14 +96,12 @@ Example&nbsp;usage:<br>
 <a href="copy.html">copy</a><br>
 <a href="csv.html">csv</a><br>
 </td><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
-<a href="gobject.html">gobject</a><br>
-<a href="gtk.html">gtk</a><br>
-</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="math.html">math</a><br>
 <a href="numpy.html">numpy</a><br>
-<a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
-</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
+<a href="operator.html">operator</a><br>
 <a href="sys.html">sys</a><br>
-<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -112,12 +110,6 @@ Example&nbsp;usage:<br>
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="gtk.html#ScrolledWindow">gtk.ScrolledWindow</a>(<a href="gtk.html#Bin">gtk.Bin</a>)
-</font></dt><dd>
-<dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#SortedStringsScrolledWindow">SortedStringsScrolledWindow</a>
-</font></dt></dl>
-</dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FIFOBuffer">FIFOBuffer</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatObj">FormatObj</a>
 </font></dt><dd>
@@ -378,732 +370,6 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatFloat">FormatFloat</a
 Methods inherited from <a href="matplotlib.mlab.html#FormatFormatStr">FormatFormatStr</a>:<br>
 <dl><dt><a name="FormatThousands-tostr"><strong>tostr</strong></a>(self, x)</dt></dl>
 
-</td></tr></table> <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#ffc8d8">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="SortedStringsScrolledWindow">class <strong>SortedStringsScrolledWindow</strong></a>(<a href="gtk.html#ScrolledWindow">gtk.ScrolledWindow</a>)</font></td></tr>
-    
-<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>A&nbsp;simple&nbsp;treeview/liststore&nbsp;assuming&nbsp;all&nbsp;columns&nbsp;are&nbsp;strings.<br>
-Supports&nbsp;ascending/descending&nbsp;sort&nbsp;by&nbsp;clicking&nbsp;on&nbsp;column&nbsp;header<br>&nbsp;</tt></td></tr>
-<tr><td>&nbsp;</td>
-<td width="100%"><dl><dt>Method resolution order:</dt>
-<dd><a href="matplotlib.mlab.html#SortedStringsScrolledWindow">SortedStringsScrolledWindow</a></dd>
-<dd><a href="gtk.html#ScrolledWindow">gtk.ScrolledWindow</a></dd>
-<dd><a href="gtk.html#Bin">gtk.Bin</a></dd>
-<dd><a href="gtk.html#Container">gtk.Container</a></dd>
-<dd><a href="gtk.html#Widget">gtk.Widget</a></dd>
-<dd><a href="gtk.html#Object">gtk.Object</a></dd>
-<dd><a href="gobject.html#GObject">gobject.GObject</a></dd>
-<dd><a href="atk.html#ImplementorIface">atk.ImplementorIface</a></dd>
-<dd><a href="gobject.html#GInterface">gobject.GInterface</a></dd>
-<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
-</dl>
-<hr>
-Methods defined here:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-__init__"><strong>__init__</strong></a>(self, colheaders, formatterd<font color="#909090">=None</font>)</dt><dd><tt>xalignd&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dict&nbsp;mapping&nbsp;col&nbsp;header&nbsp;to&nbsp;xalignent&nbsp;(default&nbsp;1)<br>
-&nbsp;<br>
-formatterd&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dict&nbsp;mapping&nbsp;col&nbsp;header&nbsp;to&nbsp;a&nbsp;ColumnFormatter</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add_row"><strong>add_row</strong></a>(self, row)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-clear"><strong>clear</strong></a>(self)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-delete_row"><strong>delete_row</strong></a>(self, row)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-flat"><strong>flat</strong></a>(self, row)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_row"><strong>get_row</strong></a>(self, rownum)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_selected"><strong>get_selected</strong></a>(self)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-update_row"><strong>update_row</strong></a>(self, rownum, newrow)</dt></dl>
-
-<hr>
-Methods inherited from <a href="gtk.html#ScrolledWindow">gtk.ScrolledWindow</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-add_with_viewport"><strong>add_with_viewport</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_hadjustment"><strong>get_hadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_hscrollbar"><strong>get_hscrollbar</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_placement"><strong>get_placement</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_policy"><strong>get_policy</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_shadow_type"><strong>get_shadow_type</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_vadjustment"><strong>get_vadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_vscrollbar"><strong>get_vscrollbar</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_hadjustment"><strong>set_hadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_placement"><strong>set_placement</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_policy"><strong>set_policy</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_shadow_type"><strong>set_shadow_type</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_vadjustment"><strong>set_vadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unset_placement"><strong>unset_placement</strong></a>(...)</dt></dl>
-
-<hr>
-Data and other attributes inherited from <a href="gtk.html#ScrolledWindow">gtk.ScrolledWindow</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkScrolledWindow (140006304)&gt;</dl>
-
-<dl><dt><strong>do_move_focus_out</strong> = &lt;built-in method do_move_focus_out of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_scroll_child</strong> = &lt;built-in method do_scroll_child of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<hr>
-Methods inherited from <a href="gtk.html#Bin">gtk.Bin</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-get_child"><strong>get_child</strong></a>(...)</dt></dl>
-
-<hr>
-Data descriptors inherited from <a href="gtk.html#Bin">gtk.Bin</a>:<br>
-<dl><dt><strong>child</strong></dt>
-</dl>
-<hr>
-Methods inherited from <a href="gtk.html#Container">gtk.Container</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-__nonzero__"><strong>__nonzero__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__nonzero__">__nonzero__</a>()&nbsp;&lt;==&gt;&nbsp;x&nbsp;!=&nbsp;0</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add"><strong>add</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add_with_properties"><strong>add_with_properties</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-check_resize"><strong>check_resize</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_get"><strong>child_get</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_get_property"><strong>child_get_property</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_set"><strong>child_set</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_set_property"><strong>child_set_property</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_type"><strong>child_type</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-children"><strong>children</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-forall"><strong>forall</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-foreach"><strong>foreach</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_border_width"><strong>get_border_width</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_children"><strong>get_children</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_focus_chain"><strong>get_focus_chain</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_focus_hadjustment"><strong>get_focus_hadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_focus_vadjustment"><strong>get_focus_vadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_resize_mode"><strong>get_resize_mode</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-propagate_expose"><strong>propagate_expose</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-remove"><strong>remove</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-resize_children"><strong>resize_children</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_border_width"><strong>set_border_width</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_focus_chain"><strong>set_focus_chain</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_focus_child"><strong>set_focus_child</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_focus_hadjustment"><strong>set_focus_hadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_focus_vadjustment"><strong>set_focus_vadjustment</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_reallocate_redraws"><strong>set_reallocate_redraws</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_resize_mode"><strong>set_resize_mode</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unset_focus_chain"><strong>unset_focus_chain</strong></a>(...)</dt></dl>
-
-<hr>
-Data descriptors inherited from <a href="gtk.html#Container">gtk.Container</a>:<br>
-<dl><dt><strong>border_width</strong></dt>
-</dl>
-<dl><dt><strong>focus_child</strong></dt>
-</dl>
-<dl><dt><strong>has_focus_chain</strong></dt>
-</dl>
-<dl><dt><strong>need_resize</strong></dt>
-</dl>
-<dl><dt><strong>reallocate_redraws</strong></dt>
-</dl>
-<dl><dt><strong>resize_mode</strong></dt>
-</dl>
-<hr>
-Data and other attributes inherited from <a href="gtk.html#Container">gtk.Container</a>:<br>
-<dl><dt><strong>do_add</strong> = &lt;built-in method do_add of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_check_resize</strong> = &lt;built-in method do_check_resize of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_child_type</strong> = &lt;built-in method do_child_type of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_composite_name</strong> = &lt;built-in method do_composite_name of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_get_child_property</strong> = &lt;built-in method do_get_child_property of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_remove</strong> = &lt;built-in method do_remove of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_set_child_property</strong> = &lt;built-in method do_set_child_property of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_set_focus_child</strong> = &lt;built-in method do_set_focus_child of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>install_child_property</strong> = &lt;built-in method install_child_property of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>list_child_properties</strong> = &lt;built-in method list_child_properties of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<hr>
-Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-activate"><strong>activate</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add_accelerator"><strong>add_accelerator</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add_events"><strong>add_events</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-add_mnemonic_label"><strong>add_mnemonic_label</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-can_activate_accel"><strong>can_activate_accel</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_focus"><strong>child_focus</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-child_notify"><strong>child_notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-class_path"><strong>class_path</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-create_pango_context"><strong>create_pango_context</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-create_pango_layout"><strong>create_pango_layout</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-destroy"><strong>destroy</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_begin"><strong>drag_begin</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_check_threshold"><strong>drag_check_threshold</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_add_image_targets"><strong>drag_dest_add_image_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_add_text_targets"><strong>drag_dest_add_text_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_add_uri_targets"><strong>drag_dest_add_uri_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_find_target"><strong>drag_dest_find_target</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_get_target_list"><strong>drag_dest_get_target_list</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_get_track_motion"><strong>drag_dest_get_track_motion</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_set"><strong>drag_dest_set</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_set_proxy"><strong>drag_dest_set_proxy</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_set_target_list"><strong>drag_dest_set_target_list</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_set_track_motion"><strong>drag_dest_set_track_motion</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_dest_unset"><strong>drag_dest_unset</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_get_data"><strong>drag_get_data</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_highlight"><strong>drag_highlight</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_add_image_targets"><strong>drag_source_add_image_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_add_text_targets"><strong>drag_source_add_text_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_add_uri_targets"><strong>drag_source_add_uri_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_get_target_list"><strong>drag_source_get_target_list</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set"><strong>drag_source_set</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set_icon"><strong>drag_source_set_icon</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set_icon_name"><strong>drag_source_set_icon_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set_icon_pixbuf"><strong>drag_source_set_icon_pixbuf</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set_icon_stock"><strong>drag_source_set_icon_stock</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_set_target_list"><strong>drag_source_set_target_list</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_source_unset"><strong>drag_source_unset</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-drag_unhighlight"><strong>drag_unhighlight</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-draw"><strong>draw</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-ensure_style"><strong>ensure_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-event"><strong>event</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-freeze_child_notify"><strong>freeze_child_notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_accessible"><strong>get_accessible</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_action"><strong>get_action</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_allocation"><strong>get_allocation</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_ancestor"><strong>get_ancestor</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_child_requisition"><strong>get_child_requisition</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_child_visible"><strong>get_child_visible</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_clipboard"><strong>get_clipboard</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_colormap"><strong>get_colormap</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_composite_name"><strong>get_composite_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_direction"><strong>get_direction</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_display"><strong>get_display</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_events"><strong>get_events</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_extension_events"><strong>get_extension_events</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_modifier_style"><strong>get_modifier_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_name"><strong>get_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_no_show_all"><strong>get_no_show_all</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_pango_context"><strong>get_pango_context</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_parent"><strong>get_parent</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_parent_window"><strong>get_parent_window</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_pointer"><strong>get_pointer</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_root_window"><strong>get_root_window</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_screen"><strong>get_screen</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_settings"><strong>get_settings</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_size_request"><strong>get_size_request</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_style"><strong>get_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_toplevel"><strong>get_toplevel</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_visual"><strong>get_visual</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-grab_add"><strong>grab_add</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-grab_default"><strong>grab_default</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-grab_focus"><strong>grab_focus</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-grab_remove"><strong>grab_remove</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-has_screen"><strong>has_screen</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-hide"><strong>hide</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-hide_all"><strong>hide_all</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-hide_on_delete"><strong>hide_on_delete</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-input_shape_combine_mask"><strong>input_shape_combine_mask</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-intersect"><strong>intersect</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-is_ancestor"><strong>is_ancestor</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-is_composited"><strong>is_composited</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-is_focus"><strong>is_focus</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-list_mnemonic_labels"><strong>list_mnemonic_labels</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-map"><strong>map</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-menu_get_for_attach_widget"><strong>menu_get_for_attach_widget</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-mnemonic_activate"><strong>mnemonic_activate</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_base"><strong>modify_base</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_bg"><strong>modify_bg</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_fg"><strong>modify_fg</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_font"><strong>modify_font</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_style"><strong>modify_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-modify_text"><strong>modify_text</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-path"><strong>path</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_clear"><strong>queue_clear</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_clear_area"><strong>queue_clear_area</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_draw"><strong>queue_draw</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_draw_area"><strong>queue_draw_area</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_resize"><strong>queue_resize</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-queue_resize_no_redraw"><strong>queue_resize_no_redraw</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-rc_get_style"><strong>rc_get_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-realize"><strong>realize</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-region_intersect"><strong>region_intersect</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-remove_accelerator"><strong>remove_accelerator</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-remove_mnemonic_label"><strong>remove_mnemonic_label</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-render_icon"><strong>render_icon</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-reparent"><strong>reparent</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-reset_rc_styles"><strong>reset_rc_styles</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-reset_shapes"><strong>reset_shapes</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_add_target"><strong>selection_add_target</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_add_targets"><strong>selection_add_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_clear_targets"><strong>selection_clear_targets</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_convert"><strong>selection_convert</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_owner_set"><strong>selection_owner_set</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-selection_remove_all"><strong>selection_remove_all</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-send_expose"><strong>send_expose</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_accel_path"><strong>set_accel_path</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_app_paintable"><strong>set_app_paintable</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_child_visible"><strong>set_child_visible</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_colormap"><strong>set_colormap</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_composite_name"><strong>set_composite_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_direction"><strong>set_direction</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_double_buffered"><strong>set_double_buffered</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_events"><strong>set_events</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_extension_events"><strong>set_extension_events</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_name"><strong>set_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_no_show_all"><strong>set_no_show_all</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_parent"><strong>set_parent</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_parent_window"><strong>set_parent_window</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_redraw_on_allocate"><strong>set_redraw_on_allocate</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_scroll_adjustments"><strong>set_scroll_adjustments</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_sensitive"><strong>set_sensitive</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_size_request"><strong>set_size_request</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_state"><strong>set_state</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_style"><strong>set_style</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_uposition"><strong>set_uposition</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_usize"><strong>set_usize</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-shape_combine_mask"><strong>shape_combine_mask</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-show"><strong>show</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-show_all"><strong>show_all</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-show_now"><strong>show_now</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-size_allocate"><strong>size_allocate</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-size_request"><strong>size_request</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-style_get_property"><strong>style_get_property</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-thaw_child_notify"><strong>thaw_child_notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-translate_coordinates"><strong>translate_coordinates</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unmap"><strong>unmap</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unparent"><strong>unparent</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unrealize"><strong>unrealize</strong></a>(...)</dt></dl>
-
-<hr>
-Data descriptors inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
-<dl><dt><strong>allocation</strong></dt>
-</dl>
-<dl><dt><strong>name</strong></dt>
-</dl>
-<dl><dt><strong>parent</strong></dt>
-</dl>
-<dl><dt><strong>saved_state</strong></dt>
-</dl>
-<dl><dt><strong>state</strong></dt>
-</dl>
-<dl><dt><strong>style</strong></dt>
-</dl>
-<dl><dt><strong>window</strong></dt>
-</dl>
-<hr>
-Data and other attributes inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
-<dl><dt><strong>do_button_press_event</strong> = &lt;built-in method do_button_press_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_button_release_event</strong> = &lt;built-in method do_button_release_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_can_activate_accel</strong> = &lt;built-in method do_can_activate_accel of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_client_event</strong> = &lt;built-in method do_client_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_composited_changed</strong> = &lt;built-in method do_composited_changed of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_configure_event</strong> = &lt;built-in method do_configure_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_delete_event</strong> = &lt;built-in method do_delete_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_destroy_event</strong> = &lt;built-in method do_destroy_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_direction_changed</strong> = &lt;built-in method do_direction_changed of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_begin</strong> = &lt;built-in method do_drag_begin of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_data_delete</strong> = &lt;built-in method do_drag_data_delete of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_data_get</strong> = &lt;built-in method do_drag_data_get of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_data_received</strong> = &lt;built-in method do_drag_data_received of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_drop</strong> = &lt;built-in method do_drag_drop of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_end</strong> = &lt;built-in method do_drag_end of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_leave</strong> = &lt;built-in method do_drag_leave of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_drag_motion</strong> = &lt;built-in method do_drag_motion of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_enter_notify_event</strong> = &lt;built-in method do_enter_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_event</strong> = &lt;built-in method do_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_expose_event</strong> = &lt;built-in method do_expose_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_focus</strong> = &lt;built-in method do_focus of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_focus_in_event</strong> = &lt;built-in method do_focus_in_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_focus_out_event</strong> = &lt;built-in method do_focus_out_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_get_accessible</strong> = &lt;built-in method do_get_accessible of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_grab_broken_event</strong> = &lt;built-in method do_grab_broken_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_grab_focus</strong> = &lt;built-in method do_grab_focus of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_grab_notify</strong> = &lt;built-in method do_grab_notify of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_hide</strong> = &lt;built-in method do_hide of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_hide_all</strong> = &lt;built-in method do_hide_all of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_hierarchy_changed</strong> = &lt;built-in method do_hierarchy_changed of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_key_press_event</strong> = &lt;built-in method do_key_press_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_key_release_event</strong> = &lt;built-in method do_key_release_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_leave_notify_event</strong> = &lt;built-in method do_leave_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_map</strong> = &lt;built-in method do_map of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_map_event</strong> = &lt;built-in method do_map_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_mnemonic_activate</strong> = &lt;built-in method do_mnemonic_activate of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_motion_notify_event</strong> = &lt;built-in method do_motion_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_no_expose_event</strong> = &lt;built-in method do_no_expose_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_parent_set</strong> = &lt;built-in method do_parent_set of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_popup_menu</strong> = &lt;built-in method do_popup_menu of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_property_notify_event</strong> = &lt;built-in method do_property_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_proximity_in_event</strong> = &lt;built-in method do_proximity_in_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_proximity_out_event</strong> = &lt;built-in method do_proximity_out_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_realize</strong> = &lt;built-in method do_realize of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_screen_changed</strong> = &lt;built-in method do_screen_changed of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_scroll_event</strong> = &lt;built-in method do_scroll_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_selection_clear_event</strong> = &lt;built-in method do_selection_clear_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_selection_get</strong> = &lt;built-in method do_selection_get of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_selection_notify_event</strong> = &lt;built-in method do_selection_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_selection_received</strong> = &lt;built-in method do_selection_received of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_selection_request_event</strong> = &lt;built-in method do_selection_request_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_show</strong> = &lt;built-in method do_show of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_show_all</strong> = &lt;built-in method do_show_all of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_show_help</strong> = &lt;built-in method do_show_help of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_size_allocate</strong> = &lt;built-in method do_size_allocate of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_size_request</strong> = &lt;built-in method do_size_request of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_state_changed</strong> = &lt;built-in method do_state_changed of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_style_set</strong> = &lt;built-in method do_style_set of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_unmap</strong> = &lt;built-in method do_unmap of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_unmap_event</strong> = &lt;built-in method do_unmap_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_unrealize</strong> = &lt;built-in method do_unrealize of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_visibility_notify_event</strong> = &lt;built-in method do_visibility_notify_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>do_window_state_event</strong> = &lt;built-in method do_window_state_event of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>get_activate_signal</strong> = &lt;built-in method get_activate_signal of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>set_activate_signal</strong> = &lt;built-in method set_activate_signal of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<dl><dt><strong>set_set_scroll_adjustments_signal</strong> = &lt;built-in method set_set_scroll_adjustments_signal of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<hr>
-Methods inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-flags"><strong>flags</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-remove_data"><strong>remove_data</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-remove_no_notify"><strong>remove_no_notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_flags"><strong>set_flags</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-unset_flags"><strong>unset_flags</strong></a>(...)</dt></dl>
-
-<hr>
-Data and other attributes inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
-<dl><dt><strong>do_destroy</strong> = &lt;built-in method do_destroy of GObjectMeta object at 0x84edf54&gt;</dl>
-
-<hr>
-Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-__gobject_init__"><strong>__gobject_init__</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#SortedStringsScrolledWindow-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-chain"><strong>chain</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-connect"><strong>connect</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-connect_after"><strong>connect_after</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-connect_object"><strong>connect_object</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-connect_object_after"><strong>connect_object_after</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-disconnect"><strong>disconnect</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-disconnect_by_func"><strong>disconnect_by_func</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-emit"><strong>emit</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-emit_stop_by_name"><strong>emit_stop_by_name</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-freeze_notify"><strong>freeze_notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_data"><strong>get_data</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-get_property"><strong>get_property</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_block"><strong>handler_block</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_block_by_func"><strong>handler_block_by_func</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_disconnect"><strong>handler_disconnect</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_is_connected"><strong>handler_is_connected</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_unblock"><strong>handler_unblock</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-handler_unblock_by_func"><strong>handler_unblock_by_func</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-notify"><strong>notify</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_data"><strong>set_data</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-set_property"><strong>set_property</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-stop_emission"><strong>stop_emission</strong></a>(...)</dt></dl>
-
-<dl><dt><a name="SortedStringsScrolledWindow-thaw_notify"><strong>thaw_notify</strong></a>(...)</dt></dl>
-
-<hr>
-Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
-<dl><dt><strong>__dict__</strong></dt>
-</dl>
-<dl><dt><strong>__grefcount__</strong></dt>
-</dl>
-<hr>
-Data and other attributes inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
-<dl><dt><strong>__gdoc__</strong> = 'Object GtkScrolledWindow<font color="#c040c0">\n\n\n</font>        A simple tree...ointer<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
-
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb5c4a400&gt;<dd><tt>T.<a href="#SortedStringsScrolledWindow-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
-
-<dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x864e30c&gt;</dl>
-
-<hr>
-Methods inherited from <a href="atk.html#ImplementorIface">atk.ImplementorIface</a>:<br>
-<dl><dt><a name="SortedStringsScrolledWindow-ref_accessible"><strong>ref_accessible</strong></a>(...)</dt></dl>
-
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -1132,7 +398,7 @@ converted&nbsp;to&nbsp;a&nbsp;Python&nbsp;float.</tt></dd></dl>
 &nbsp;<br>
 if&nbsp;dim=1&nbsp;operate&nbsp;on&nbsp;columns&nbsp;instead&nbsp;of&nbsp;rows.&nbsp;&nbsp;(dim&nbsp;is&nbsp;opposite<br>
 to&nbsp;the&nbsp;numpy&nbsp;axis&nbsp;kwarg.)</tt></dd></dl>
- <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x84b3b8c&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
+ <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
 &nbsp;<br>
 Cxy&nbsp;=&nbsp;|Pxy|^2/(Pxx*Pyy)<br>
@@ -1143,7 +409,7 @@ about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;window
 well&nbsp;as&nbsp;the&nbsp;methods&nbsp;used&nbsp;to&nbsp;compute&nbsp;Pxy,&nbsp;Pxx&nbsp;and&nbsp;Pyy.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Cxy,&nbsp;freqs</tt></dd></dl>
- <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x84b3b8c&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0x84b3f0c&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
+ <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0x8532bc4&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
 &nbsp;<br>
 Compute&nbsp;the&nbsp;coherence&nbsp;for&nbsp;all&nbsp;pairs&nbsp;in&nbsp;ij.&nbsp;&nbsp;X&nbsp;is&nbsp;a<br>
 numSamples,numCols&nbsp;numpy&nbsp;array.&nbsp;&nbsp;ij&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples&nbsp;(i,j).<br>
@@ -1214,7 +480,7 @@ Numpy&nbsp;arrays&nbsp;can&nbsp;be&nbsp;real&nbsp;or&nbsp;complex<br>
 The&nbsp;correlation&nbsp;matrix&nbsp;is&nbsp;defined&nbsp;from&nbsp;the&nbsp;covariance&nbsp;matrix&nbsp;C&nbsp;as<br>
 &nbsp;<br>
 r(i,j)&nbsp;=&nbsp;C[i,j]&nbsp;/&nbsp;sqrt(C[i,i]*C[j,j])</tt></dd></dl>
- <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x84b3b8c&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
+ <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
 method.&nbsp;&nbsp;The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length<br>
 segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and<br>
 windowed&nbsp;by&nbsp;function&nbsp;window.&nbsp;&nbsp;noverlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the<br>
@@ -1234,7 +500,7 @@ Returns&nbsp;the&nbsp;tuple&nbsp;Pxy,&nbsp;freqs<br>
 Refs:<br>
 &nbsp;&nbsp;Bendat&nbsp;&amp;&nbsp;Piersol&nbsp;--&nbsp;Random&nbsp;Data:&nbsp;Analysis&nbsp;and&nbsp;Measurement<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Procedures,&nbsp;John&nbsp;Wiley&nbsp;&amp;&nbsp;Sons&nbsp;(1986)</tt></dd></dl>
- <dl><dt><a name="-csv2rec"><strong>csv2rec</strong></a>(fname, comments<font color="#909090">='#'</font>, skiprows<font color="#909090">=0</font>, checkrows<font color="#909090">=5</font>, delimiter<font color="#909090">=','</font>, converterd<font color="#909090">=None</font>, names<font color="#909090">=None</font>, missing<font color="#909090">=None</font>)</dt><dd><tt>Load&nbsp;data&nbsp;from&nbsp;comma/space/tab&nbsp;delimited&nbsp;file&nbsp;in&nbsp;fname&nbsp;into&nbsp;a<br>
+ <dl><dt><a name="-csv2rec"><strong>csv2rec</strong></a>(fname, comments<font color="#909090">='#'</font>, skiprows<font color="#909090">=0</font>, checkrows<font color="#909090">=0</font>, delimiter<font color="#909090">=','</font>, converterd<font color="#909090">=None</font>, names<font color="#909090">=None</font>, missing<font color="#909090">=None</font>)</dt><dd><tt>Load&nbsp;data&nbsp;from&nbsp;comma/space/tab&nbsp;delimited&nbsp;file&nbsp;in&nbsp;fname&nbsp;into&nbsp;a<br>
 numpy&nbsp;record&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;record&nbsp;array.<br>
 &nbsp;<br>
 If&nbsp;names&nbsp;is&nbsp;None,&nbsp;a&nbsp;header&nbsp;row&nbsp;is&nbsp;required&nbsp;to&nbsp;automatically&nbsp;assign<br>
@@ -1261,7 +527,7 @@ munged&nbsp;column&nbsp;name&nbsp;to&nbsp;a&nbsp;converter&nbsp;function<br>
 names,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;names.&nbsp;&nbsp;In&nbsp;this&nbsp;case,&nbsp;no<br>
 header&nbsp;will&nbsp;be&nbsp;read&nbsp;from&nbsp;the&nbsp;file<br>
 &nbsp;<br>
-if&nbsp;no&nbsp;rows&nbsp;are&nbsp;found,&nbsp;None&nbsp;is&nbsp;returned&nbsp;See&nbsp;examples/loadrec.py</tt></dd></dl>
+if&nbsp;no&nbsp;rows&nbsp;are&nbsp;found,&nbsp;None&nbsp;is&nbsp;returned&nbsp;--&nbsp;see&nbsp;examples/loadrec.py</tt></dd></dl>
  <dl><dt><a name="-csvformat_factory"><strong>csvformat_factory</strong></a>(format)</dt></dl>
  <dl><dt><a name="-demean"><strong>demean</strong></a>(x, axis<font color="#909090">=0</font>)</dt><dd><tt>Return&nbsp;x&nbsp;minus&nbsp;its&nbsp;mean&nbsp;along&nbsp;the&nbsp;specified&nbsp;axis</tt></dd></dl>
  <dl><dt><a name="-detrend"><strong>detrend</strong></a>(x, key<font color="#909090">=None</font>)</dt></dl>
@@ -1292,7 +558,7 @@ Sanalytic&nbsp;=&nbsp;0.5&nbsp;&nbsp;*&nbsp;(&nbsp;1.0&nbsp;+&nbsp;log(2*pi*sigm
 Slow&nbsp;but&nbsp;convenient&nbsp;to&nbsp;use.&nbsp;Note&nbsp;that&nbsp;numpy&nbsp;provides&nbsp;proper<br>
 floating&nbsp;point&nbsp;exception&nbsp;handling&nbsp;with&nbsp;access&nbsp;to&nbsp;the&nbsp;underlying<br>
 hardware.</tt></dd></dl>
- <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_none at 0x84b3bc4&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_none at 0x853287c&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
  <dl><dt><a name="-find"><strong>find</strong></a>(condition)</dt><dd><tt>Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;ravel(condition)&nbsp;is&nbsp;true</tt></dd></dl>
  <dl><dt><a name="-fix"><strong>fix</strong></a>(x)</dt><dd><tt>Rounds&nbsp;towards&nbsp;zero.<br>
 x_rounded&nbsp;=&nbsp;<a href="#-fix">fix</a>(x)&nbsp;rounds&nbsp;the&nbsp;elements&nbsp;of&nbsp;x&nbsp;to&nbsp;the&nbsp;nearest&nbsp;integers<br>
@@ -1344,11 +610,6 @@ keywords&nbsp;it&nbsp;will&nbsp;receive.</tt></dd></dl>
 matrix&nbsp;where&nbsp;some&nbsp;condition&nbsp;is&nbsp;satisfied.&nbsp;&nbsp;Return&nbsp;value&nbsp;is&nbsp;x,y,z<br>
 where&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;the&nbsp;indices&nbsp;into&nbsp;Z&nbsp;and&nbsp;z&nbsp;are&nbsp;the&nbsp;values&nbsp;of&nbsp;Z&nbsp;at<br>
 those&nbsp;indices.&nbsp;&nbsp;x,y,z&nbsp;are&nbsp;1D&nbsp;arrays</tt></dd></dl>
- <dl><dt><a name="-gtkformat_factory"><strong>gtkformat_factory</strong></a>(format, colnum)</dt><dd><tt>copy&nbsp;the&nbsp;format,&nbsp;perform&nbsp;any&nbsp;overrides,&nbsp;and&nbsp;attach&nbsp;an&nbsp;gtk&nbsp;style&nbsp;attrs<br>
-&nbsp;<br>
-&nbsp;<br>
-xalign&nbsp;=&nbsp;0.<br>
-cell&nbsp;=&nbsp;None</tt></dd></dl>
  <dl><dt><a name="-hist"><strong>hist</strong></a>(y, bins<font color="#909090">=10</font>, normed<font color="#909090">=0</font>)</dt><dd><tt>Return&nbsp;the&nbsp;histogram&nbsp;of&nbsp;y&nbsp;with&nbsp;bins&nbsp;equally&nbsp;sized&nbsp;bins.&nbsp;&nbsp;If&nbsp;bins<br>
 is&nbsp;an&nbsp;array,&nbsp;use&nbsp;the&nbsp;bins.&nbsp;&nbsp;Return&nbsp;value&nbsp;is<br>
 (n,x)&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;count&nbsp;for&nbsp;each&nbsp;bin&nbsp;in&nbsp;x<br>
@@ -1574,7 +835,7 @@ fracVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&n
 A&nbsp;similar&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name&nbsp;was&nbsp;in&nbsp;the&nbsp;Matlab&nbsp;(TM)<br>
 R13&nbsp;Neural&nbsp;Network&nbsp;Toolbox&nbsp;but&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;later&nbsp;versions;<br>
 its&nbsp;successor&nbsp;seems&nbsp;to&nbsp;be&nbsp;called&nbsp;"processpcs".</tt></dd></dl>
- <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x84b3b8c&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
+ <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment<br>
 is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and&nbsp;windowed&nbsp;by&nbsp;function&nbsp;window.<br>
 noperlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;overlap&nbsp;between&nbsp;segments.&nbsp;&nbsp;The<br>
@@ -1611,25 +872,12 @@ column&nbsp;headers.<br>
 &nbsp;<br>
 fname&nbsp;-&nbsp;can&nbsp;be&nbsp;a&nbsp;filename&nbsp;or&nbsp;a&nbsp;file&nbsp;handle.&nbsp;&nbsp;Support&nbsp;for&nbsp;gzipped<br>
 files&nbsp;is&nbsp;automatic,&nbsp;if&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz</tt></dd></dl>
- <dl><dt><a name="-rec2gtk"><strong>rec2gtk</strong></a>(r, formatd<font color="#909090">=None</font>, rownum<font color="#909090">=0</font>, autowin<font color="#909090">=True</font>)</dt><dd><tt>save&nbsp;record&nbsp;array&nbsp;r&nbsp;to&nbsp;excel&nbsp;pyExcelerator&nbsp;worksheet&nbsp;ws<br>
-starting&nbsp;at&nbsp;rownum.&nbsp;&nbsp;if&nbsp;ws&nbsp;is&nbsp;string&nbsp;like,&nbsp;assume&nbsp;it&nbsp;is&nbsp;a<br>
-filename&nbsp;and&nbsp;save&nbsp;to&nbsp;it<br>
-&nbsp;<br>
-formatd&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;dtype&nbsp;name&nbsp;-&gt;&nbsp;FormatXL&nbsp;instances<br>
-&nbsp;<br>
-This&nbsp;function&nbsp;creates&nbsp;a&nbsp;<a href="#SortedStringsScrolledWindow">SortedStringsScrolledWindow</a>&nbsp;(derived<br>
-from&nbsp;gtk.<a href="gtk.html#ScrolledWindow">ScrolledWindow</a>)&nbsp;and&nbsp;returns&nbsp;it.&nbsp;&nbsp;if&nbsp;autowin&nbsp;is&nbsp;True,<br>
-a&nbsp;gtk.Window&nbsp;is&nbsp;created,&nbsp;attached&nbsp;to&nbsp;the<br>
-<a href="#SortedStringsScrolledWindow">SortedStringsScrolledWindow</a>&nbsp;instance,&nbsp;shown&nbsp;and&nbsp;returned.&nbsp;&nbsp;If<br>
-autowin=False,&nbsp;the&nbsp;caller&nbsp;is&nbsp;responsible&nbsp;for&nbsp;adding&nbsp;the<br>
-<a href="#SortedStringsScrolledWindow">SortedStringsScrolledWindow</a>&nbsp;instance&nbsp;to&nbsp;a&nbsp;gtk&nbsp;widget&nbsp;and<br>
-showing&nbsp;it.</tt></dd></dl>
  <dl><dt><a name="-rec_append_field"><strong>rec_append_field</strong></a>(rec, name, arr, dtype<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;name&nbsp;populated&nbsp;with&nbsp;data&nbsp;from&nbsp;array&nbsp;arr</tt></dd></dl>
  <dl><dt><a name="-rec_drop_fields"><strong>rec_drop_fields</strong></a>(rec, names)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;numpy&nbsp;record&nbsp;array&nbsp;with&nbsp;fields&nbsp;in&nbsp;names&nbsp;dropped</tt></dd></dl>
  <dl><dt><a name="-rec_join"><strong>rec_join</strong></a>(key, r1, r2)</dt><dd><tt>join&nbsp;record&nbsp;arrays&nbsp;r1&nbsp;and&nbsp;r2&nbsp;on&nbsp;key;&nbsp;key&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;field<br>
 names.&nbsp;&nbsp;if&nbsp;r1&nbsp;and&nbsp;r2&nbsp;have&nbsp;equal&nbsp;values&nbsp;on&nbsp;all&nbsp;the&nbsp;keys&nbsp;in&nbsp;the&nbsp;key<br>
 tuple,&nbsp;then&nbsp;their&nbsp;fields&nbsp;will&nbsp;be&nbsp;merged&nbsp;into&nbsp;a&nbsp;new&nbsp;record&nbsp;array<br>
-containing&nbsp;the&nbsp;union&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2</tt></dd></dl>
+containing&nbsp;the&nbsp;intersection&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2</tt></dd></dl>
  <dl><dt><a name="-rem"><strong>rem</strong></a>(x, y)</dt><dd><tt>Remainder&nbsp;after&nbsp;division.<br>
 <a href="#-rem">rem</a>(x,y)&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;x&nbsp;-&nbsp;y.*<a href="#-fix">fix</a>(x./y)&nbsp;in&nbsp;case&nbsp;y&nbsp;is&nbsp;not&nbsp;zero.<br>
 By&nbsp;convention&nbsp;(but&nbsp;contrary&nbsp;to&nbsp;numpy),&nbsp;<a href="#-rem">rem</a>(x,0)&nbsp;returns&nbsp;None.<br>
@@ -1713,7 +961,7 @@ Regensburg,&nbsp;April&nbsp;2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-rege
 &nbsp;<br>
 (inspired&nbsp;by&nbsp;a&nbsp;original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,<br>
 Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is)</tt></dd></dl>
- <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x84b3cdc&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x84b3b8c&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
+ <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
 amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap.<br>
@@ -1796,7 +1044,7 @@ None&nbsp;it&nbsp;defaults&nbsp;to&nbsp;len(x).</tt></dd></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x84b44cc&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x84b44ec&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x84b450c&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x84b452c&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x84b458c&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0x84b45cc&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0x84b45ec&gt;}<br>
+<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cbec&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cc0c&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cc2c&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x852cc4c&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x852ccac&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0x852ccec&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0x852cd0c&gt;}<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>exp_safe_MAX</strong> = 1.7976931348623157e+308<br>
 <strong>exp_safe_MIN</strong> = -708.39641853226408<br>

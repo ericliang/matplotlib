@@ -90,6 +90,7 @@ coordinates&nbsp;of&nbsp;xy&nbsp;and&nbsp;xytext.<br>
 &nbsp;&nbsp;&nbsp;'axes&nbsp;pixels'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;pixels&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
 &nbsp;&nbsp;&nbsp;'axes&nbsp;fraction'&nbsp;&nbsp;&nbsp;:&nbsp;0,1&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;axes&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper&nbsp;right<br>
 &nbsp;&nbsp;&nbsp;'data'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;use&nbsp;the&nbsp;coordinate&nbsp;system&nbsp;of&nbsp;the&nbsp;object&nbsp;being&nbsp;annotated&nbsp;(default)<br>
+&nbsp;&nbsp;&nbsp;'offset&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Specify&nbsp;an&nbsp;offset&nbsp;(in&nbsp;points)&nbsp;from&nbsp;the&nbsp;xy&nbsp;value<br>
 &nbsp;&nbsp;&nbsp;'polar'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;you&nbsp;can&nbsp;specify&nbsp;theta,&nbsp;r&nbsp;for&nbsp;the&nbsp;annotation,&nbsp;even<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;cartesian&nbsp;plots.&nbsp;&nbsp;Note&nbsp;that&nbsp;if&nbsp;you<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;using&nbsp;a&nbsp;polar&nbsp;axes,&nbsp;you&nbsp;do&nbsp;not&nbsp;need<br>
@@ -1389,7 +1390,7 @@ kwargs&nbsp;control&nbsp;the&nbsp;Text&nbsp;properties:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;x:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;y:&nbsp;float<br>
 &nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
- <dl><dt><a name="-figure"><strong>figure</strong></a>(num<font color="#909090">=None</font>, figsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, edgecolor<font color="#909090">=None</font>, frameon<font color="#909090">=True</font>, FigureClass<font color="#909090">=&lt;class matplotlib.figure.Figure at 0x8ad86bc&gt;</font>, **kwargs)</dt><dd><tt><a href="#-figure">figure</a>(num&nbsp;=&nbsp;None,&nbsp;figsize=(8,&nbsp;6),&nbsp;dpi=80,&nbsp;facecolor='w',&nbsp;edgecolor='k')<br>
+ <dl><dt><a name="-figure"><strong>figure</strong></a>(num<font color="#909090">=None</font>, figsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, edgecolor<font color="#909090">=None</font>, frameon<font color="#909090">=True</font>, FigureClass<font color="#909090">=&lt;class matplotlib.figure.Figure at 0x88f235c&gt;</font>, **kwargs)</dt><dd><tt><a href="#-figure">figure</a>(num&nbsp;=&nbsp;None,&nbsp;figsize=(8,&nbsp;6),&nbsp;dpi=80,&nbsp;facecolor='w',&nbsp;edgecolor='k')<br>
 &nbsp;<br>
 &nbsp;<br>
 Create&nbsp;a&nbsp;new&nbsp;figure&nbsp;and&nbsp;return&nbsp;a&nbsp;handle&nbsp;to&nbsp;it.&nbsp;&nbsp;If&nbsp;num=None,&nbsp;the&nbsp;figure<br>

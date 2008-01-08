@@ -439,10 +439,10 @@ y.filled()[ii[1,0]:ii[1,1]]<br>
 <strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>TICKUP</strong> = 2<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x85867ac&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x860668c&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>lineMarkers</strong> = {0: '_draw_tickleft', 1: '_draw_tickright', 2: '_draw_tickup', 3: '_draw_tickdown', 4: '_draw_caretleft', 5: '_draw_caretright', 6: '_draw_caretup', 7: '_draw_caretdown', '': '_draw_nothing', ' ': '_draw_nothing', ...}<br>
 <strong>lineStyles</strong> = {'': '_draw_nothing', ' ': '_draw_nothing', '-': '_draw_solid', '--': '_draw_dashed', '-.': '_draw_dash_dot', ':': '_draw_dotted', 'None': '_draw_nothing', 'steps': '_draw_steps'}<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x826eb6c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
 @footer@

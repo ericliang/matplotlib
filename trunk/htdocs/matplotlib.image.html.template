@@ -16,13 +16,14 @@ operations.</tt></p>
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib._image.html">matplotlib._image</a><br>
 <a href="matplotlib.cm.html">matplotlib.cm</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.numerix.npyma.html">matplotlib.numerix.npyma</a><br>
-<a href="matplotlib.artist.html">matplotlib.artist</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.colors.html">matplotlib.colors</a><br>
+<a href="matplotlib.numerix.npyma.html">matplotlib.numerix.npyma</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
+<a href="matplotlib.colors.html">matplotlib.colors</a><br>
 <a href="numpy.html">numpy</a><br>
 </td><td width="25%" valign=top><a href="os.html">os</a><br>
 <a href="sys.html">sys</a><br>
-</td></tr></table></td></tr></table><p>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -136,6 +137,10 @@ ACCEPTS:&nbsp;positive&nbsp;float</tt></dd></dl>
 ACCEPTS:&nbsp;['bicubic'&nbsp;|&nbsp;'bilinear'&nbsp;|&nbsp;'blackman100'&nbsp;|&nbsp;'blackman256'&nbsp;|&nbsp;'blackman64',&nbsp;'nearest'&nbsp;|&nbsp;'sinc144'&nbsp;|&nbsp;'sinc256'&nbsp;|&nbsp;'sinc64'&nbsp;|&nbsp;'spline16'&nbsp;|&nbsp;'spline36']</tt></dd></dl>
 
 <dl><dt><a name="AxesImage-write_png"><strong>write_png</strong></a>(self, fname, noscale<font color="#909090">=False</font>)</dt><dd><tt>Write&nbsp;the&nbsp;image&nbsp;to&nbsp;png&nbsp;file&nbsp;with&nbsp;fname</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -297,8 +302,6 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
-<dl><dt><strong>zorder</strong> = 0</dl>
-
 <hr>
 Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
 <dl><dt><a name="AxesImage-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
@@ -359,8 +362,10 @@ If&nbsp;bytes&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as&nbsp;4&nbsp;uint8
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
-norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1</tt></dd></dl>
+<dl><dt><a name="FigureImage-__init__"><strong>__init__</strong></a>(self, fig, cmap<font color="#909090">=None</font>, norm<font color="#909090">=None</font>, offsetx<font color="#909090">=0</font>, offsety<font color="#909090">=0</font>, origin<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>cmap&nbsp;is&nbsp;a&nbsp;colors.Colormap&nbsp;instance<br>
+norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;luminance&nbsp;to&nbsp;0-1<br>
+&nbsp;<br>
+kwargs&nbsp;are&nbsp;an&nbsp;optional&nbsp;list&nbsp;of&nbsp;<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;keyword&nbsp;args</tt></dd></dl>
 
 <dl><dt><a name="FigureImage-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occured&nbsp;within&nbsp;the&nbsp;image.</tt></dd></dl>
 
@@ -373,6 +378,10 @@ norm&nbsp;is&nbsp;a&nbsp;colors.Normalize&nbsp;instance&nbsp;to&nbsp;map&nbsp;lu
 <dl><dt><a name="FigureImage-make_image"><strong>make_image</strong></a>(self, magnification<font color="#909090">=1.0</font>)</dt></dl>
 
 <dl><dt><a name="FigureImage-write_png"><strong>write_png</strong></a>(self, fname)</dt><dd><tt>Write&nbsp;the&nbsp;image&nbsp;to&nbsp;png&nbsp;file&nbsp;with&nbsp;fname</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -539,8 +548,6 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
-<dl><dt><strong>zorder</strong> = 0</dl>
-
 <hr>
 Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
 <dl><dt><a name="FigureImage-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
@@ -657,6 +664,10 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 <dl><dt><a name="NonUniformImage-set_extent"><strong>set_extent</strong></a>(self, extent)</dt><dd><tt>extent&nbsp;is&nbsp;data&nbsp;axes&nbsp;(left,&nbsp;right,&nbsp;bottom,&nbsp;top)&nbsp;for&nbsp;making&nbsp;image&nbsp;plots</tt></dd></dl>
 
 <dl><dt><a name="NonUniformImage-write_png"><strong>write_png</strong></a>(self, fname, noscale<font color="#909090">=False</font>)</dt><dd><tt>Write&nbsp;the&nbsp;image&nbsp;to&nbsp;png&nbsp;file&nbsp;with&nbsp;fname</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.image.html#AxesImage">AxesImage</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -817,8 +828,6 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
-
-<dl><dt><strong>zorder</strong> = 0</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>

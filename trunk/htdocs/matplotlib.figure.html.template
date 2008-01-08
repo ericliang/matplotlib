@@ -17,9 +17,10 @@
 <a href="matplotlib.artist.html">matplotlib.artist</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.colorbar.html">matplotlib.colorbar</a><br>
 <a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
-<a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -120,6 +121,7 @@ The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;supported:<br>
 <dl><dt><a name="Figure-add_subplot"><strong>add_subplot</strong></a>(self, *args, **kwargs)</dt><dd><tt>Add&nbsp;a&nbsp;subplot.&nbsp;&nbsp;Examples<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-add_subplot">add_subplot</a>(111)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-add_subplot">add_subplot</a>(1,1,1)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;equivalent&nbsp;but&nbsp;more&nbsp;general<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-add_subplot">add_subplot</a>(212,&nbsp;axisbg='r')&nbsp;&nbsp;#&nbsp;add&nbsp;subplot&nbsp;with&nbsp;red&nbsp;background<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-add_subplot">add_subplot</a>(111,&nbsp;polar=True)&nbsp;&nbsp;#&nbsp;add&nbsp;a&nbsp;polar&nbsp;subplot<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-add_subplot">add_subplot</a>(sub)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;Subplot&nbsp;instance&nbsp;sub<br>
@@ -172,11 +174,13 @@ The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;supported:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;yticks:&nbsp;sequence&nbsp;of&nbsp;floats<br>
 &nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
 
-<dl><dt><a name="Figure-autofmt_xdate"><strong>autofmt_xdate</strong></a>(self, bottom<font color="#909090">=0.20000000000000001</font>, rotation<font color="#909090">=30</font>, ha<font color="#909090">='right'</font>)</dt><dd><tt>A&nbsp;common&nbsp;use&nbsp;case&nbsp;is&nbsp;a&nbsp;number&nbsp;of&nbsp;subplots&nbsp;with&nbsp;shared&nbsp;xaxes<br>
-where&nbsp;the&nbsp;x-axis&nbsp;is&nbsp;date&nbsp;data.&nbsp;&nbsp;The&nbsp;ticklabels&nbsp;are&nbsp;often<br>
-long,and&nbsp;it&nbsp;helps&nbsp;to&nbsp;rotate&nbsp;them&nbsp;on&nbsp;the&nbsp;bottom&nbsp;subplot&nbsp;and<br>
-turn&nbsp;them&nbsp;off&nbsp;on&nbsp;other&nbsp;subplots.&nbsp;&nbsp;This&nbsp;function&nbsp;will&nbsp;raise&nbsp;a<br>
-RuntimeError&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;Axes&nbsp;are&nbsp;not&nbsp;Subplots.<br>
+<dl><dt><a name="Figure-autofmt_xdate"><strong>autofmt_xdate</strong></a>(self, bottom<font color="#909090">=0.20000000000000001</font>, rotation<font color="#909090">=30</font>, ha<font color="#909090">='right'</font>)</dt><dd><tt>Date&nbsp;ticklabels&nbsp;often&nbsp;overlap,&nbsp;so&nbsp;it&nbsp;is&nbsp;useful&nbsp;to&nbsp;rotate&nbsp;them<br>
+and&nbsp;right&nbsp;align&nbsp;them.&nbsp;&nbsp;Also,&nbsp;a&nbsp;common&nbsp;use&nbsp;case&nbsp;is&nbsp;a&nbsp;number&nbsp;of<br>
+subplots&nbsp;with&nbsp;shared&nbsp;xaxes&nbsp;where&nbsp;the&nbsp;x-axis&nbsp;is&nbsp;date&nbsp;data.&nbsp;&nbsp;The<br>
+ticklabels&nbsp;are&nbsp;often&nbsp;long,&nbsp;and&nbsp;it&nbsp;helps&nbsp;to&nbsp;rotate&nbsp;them&nbsp;on&nbsp;the<br>
+bottom&nbsp;subplot&nbsp;and&nbsp;turn&nbsp;them&nbsp;off&nbsp;on&nbsp;other&nbsp;subplots,&nbsp;as&nbsp;well&nbsp;as<br>
+turn&nbsp;off&nbsp;xlabels.<br>
+&nbsp;<br>
 &nbsp;<br>
 bottom&nbsp;:&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;subplots&nbsp;for&nbsp;subplots_adjust<br>
 rotation:&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;xtick&nbsp;labels<br>

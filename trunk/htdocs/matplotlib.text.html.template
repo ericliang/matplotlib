@@ -86,6 +86,7 @@ coordinates&nbsp;of&nbsp;xy&nbsp;and&nbsp;xytext.<br>
 &nbsp;&nbsp;&nbsp;'axes&nbsp;pixels'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;pixels&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
 &nbsp;&nbsp;&nbsp;'axes&nbsp;fraction'&nbsp;&nbsp;&nbsp;:&nbsp;0,1&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;axes&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper&nbsp;right<br>
 &nbsp;&nbsp;&nbsp;'data'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;use&nbsp;the&nbsp;coordinate&nbsp;system&nbsp;of&nbsp;the&nbsp;object&nbsp;being&nbsp;annotated&nbsp;(default)<br>
+&nbsp;&nbsp;&nbsp;'offset&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Specify&nbsp;an&nbsp;offset&nbsp;(in&nbsp;points)&nbsp;from&nbsp;the&nbsp;xy&nbsp;value<br>
 &nbsp;&nbsp;&nbsp;'polar'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;you&nbsp;can&nbsp;specify&nbsp;theta,&nbsp;r&nbsp;for&nbsp;the&nbsp;annotation,&nbsp;even<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;cartesian&nbsp;plots.&nbsp;&nbsp;Note&nbsp;that&nbsp;if&nbsp;you<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;using&nbsp;a&nbsp;polar&nbsp;axes,&nbsp;you&nbsp;do&nbsp;not&nbsp;need<br>
@@ -900,6 +901,12 @@ Methods defined here:<br>
 
 <dl><dt><a name="TextWithDash-get_position"><strong>get_position</strong></a>(self)</dt><dd><tt>Return&nbsp;x,&nbsp;y&nbsp;as&nbsp;tuple</tt></dd></dl>
 
+<dl><dt><a name="TextWithDash-get_prop_tup"><strong>get_prop_tup</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;hashable&nbsp;tuple&nbsp;of&nbsp;properties<br>
+&nbsp;<br>
+Not&nbsp;intended&nbsp;to&nbsp;be&nbsp;human&nbsp;readable,&nbsp;but&nbsp;useful&nbsp;for&nbsp;backends&nbsp;who<br>
+want&nbsp;to&nbsp;cache&nbsp;derived&nbsp;information&nbsp;about&nbsp;text&nbsp;(eg&nbsp;layouts)&nbsp;and<br>
+need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd></dl>
+
 <dl><dt><a name="TextWithDash-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
 <dl><dt><a name="TextWithDash-set_dashdirection"><strong>set_dashdirection</strong></a>(self, dd)</dt><dd><tt>Set&nbsp;the&nbsp;direction&nbsp;of&nbsp;the&nbsp;dash&nbsp;following&nbsp;the&nbsp;text.<br>
@@ -978,12 +985,6 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 <dl><dt><a name="TextWithDash-get_horizontalalignment"><strong>get_horizontalalignment</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;horizontal&nbsp;alignment&nbsp;as&nbsp;string</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_name"><strong>get_name</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;name&nbsp;as&nbsp;string</tt></dd></dl>
-
-<dl><dt><a name="TextWithDash-get_prop_tup"><strong>get_prop_tup</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;hashable&nbsp;tuple&nbsp;of&nbsp;properties<br>
-&nbsp;<br>
-Not&nbsp;intended&nbsp;to&nbsp;be&nbsp;human&nbsp;readable,&nbsp;but&nbsp;useful&nbsp;for&nbsp;backends&nbsp;who<br>
-want&nbsp;to&nbsp;cache&nbsp;derived&nbsp;information&nbsp;about&nbsp;text&nbsp;(eg&nbsp;layouts)&nbsp;and<br>
-need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_rotation"><strong>get_rotation</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
 
@@ -1264,5 +1265,5 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x826eb6c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
 @footer@

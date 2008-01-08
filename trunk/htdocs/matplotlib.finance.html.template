@@ -171,7 +171,7 @@ alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt>
 <td width="100%"><strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>cachedir</strong> = '/home/jdhunter/.matplotlib/finance.cache'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x867beac&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x85fed8c&gt;<br>
 <strong>configdir</strong> = '/home/jdhunter/.matplotlib'<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
 @footer@

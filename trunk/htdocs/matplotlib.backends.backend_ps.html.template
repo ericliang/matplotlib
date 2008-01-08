@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_ps</strong></big></big> (version 0.91.0)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_ps</strong></big></big> (version 0.91.2svn)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_ps.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_ps.py</a></font></td></tr></table>
     <p><tt>A&nbsp;PostScript&nbsp;backend,&nbsp;which&nbsp;can&nbsp;produce&nbsp;both&nbsp;PostScript&nbsp;.ps&nbsp;and&nbsp;.eps</tt></p>
@@ -444,6 +444,12 @@ in&nbsp;that&nbsp;direction</tt></dd></dl>
 each&nbsp;font.</tt></dd></dl>
 
 <hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>afmfontd</strong> = {}</dl>
+
+<dl><dt><strong>fontd</strong> = {}</dl>
+
+<hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#RendererBase">matplotlib.backend_bases.RendererBase</a>:<br>
 <dl><dt><a name="RendererPS-close_group"><strong>close_group</strong></a>(self, s)</dt><dd><tt>close&nbsp;a&nbsp;grouping&nbsp;element&nbsp;with&nbsp;label&nbsp;s<br>
 Is&nbsp;only&nbsp;currently&nbsp;used&nbsp;by&nbsp;backend_svg</tt></dd></dl>
@@ -579,15 +585,15 @@ output&nbsp;that&nbsp;treats&nbsp;text&nbsp;as&nbsp;text.</tt></dd></dl>
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>KERNING_DEFAULT</strong> = 0<br>
 <strong>LOAD_NO_HINTING</strong> = 2L<br>
-<strong>__version__</strong> = '0.91.0'<br>
+<strong>__version__</strong> = '0.91.2svn'<br>
 <strong>backend_version</strong> = 'Level II'<br>
 <strong>cmd_split</strong> = ';'<br>
 <strong>debugPS</strong> = 0<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x869ed0c&gt;<br>
+<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x8611c2c&gt;<br>
 <strong>papersize</strong> = {'a0': (33.109999999999999, 46.810000000000002), 'a1': (23.390000000000001, 33.109999999999999), 'a10': (1.02, 1.4570000000000001), 'a2': (16.539999999999999, 23.390000000000001), 'a3': (11.69, 16.539999999999999), 'a4': (8.2699999999999996, 11.69), 'a5': (5.8300000000000001, 8.2699999999999996), 'a6': (4.1299999999999999, 5.8300000000000001), 'a7': (2.9100000000000001, 4.1299999999999999), 'a8': (2.0699999999999998, 2.9100000000000001), ...}<br>
-<strong>psDefs</strong> = ['/m { moveto } bind def', '/l { lineto } bind def', '/r { rlineto } bind def', '/box {<font color="#c040c0">\n</font>      m<font color="#c040c0">\n</font>      1 index 0 r<font color="#c040c0">\n</font>      0 exch r<font color="#c040c0">\n</font>      neg 0 r<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def', '/clipbox {<font color="#c040c0">\n</font>      box<font color="#c040c0">\n</font>      clip<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>    } bind def', '/ellipse {<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>      matrix currentmat...rc<font color="#c040c0">\n</font>      setmatrix<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def', '/unitcircle {<font color="#c040c0">\n</font>    newpath<font color="#c040c0">\n</font>-1. 0. moveto<font color="#c040c0">\n</font>-1.0 0.5...4749831 -1.0 0.0 curveto<font color="#c040c0">\n</font>closepath<font color="#c040c0">\n</font>    } bind def']<br>
+<strong>psDefs</strong> = ['/m { moveto } bind def', '/l { lineto } bind def', '/r { rlineto } bind def', '/box {<font color="#c040c0">\n</font>      m<font color="#c040c0">\n</font>      1 index 0 r<font color="#c040c0">\n</font>      0 exch r<font color="#c040c0">\n</font>      neg 0 r<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def', '/clipbox {<font color="#c040c0">\n</font>      box<font color="#c040c0">\n</font>      clip<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>    } bind def', '/ellipse {<font color="#c040c0">\n</font>      newpath<font color="#c040c0">\n</font>      matrix currentmat...rc<font color="#c040c0">\n</font>      setmatrix<font color="#c040c0">\n</font>      closepath<font color="#c040c0">\n</font>    } bind def', '/unitcircle {<font color="#c040c0">\n</font>    newpath<font color="#c040c0">\n</font>0. -1. moveto<font color="#c040c0">\n</font>0.265203...31 -1.0 0.0 -1.0 curveto<font color="#c040c0">\n</font>closepath<font color="#c040c0">\n</font>    } bind def']<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>uni2type1</strong> = {32: 'space', 33: 'exclam', 34: 'quotedbl', 35: 'numbersign', 36: 'dollar', 37: 'percent', 38: 'ampersand', 39: 'quotesingle', 40: 'parenleft', 41: 'parenright', ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb6c&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
 @footer@

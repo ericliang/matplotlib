@@ -78,9 +78,11 @@ developers</a><p>
 
   <li>Fernando Perez has provided numerous bug reports and patches for
   cleaning up backend imports and expanding pylab functionality, and
-  provided matplotlib support in the pylab mode for <a
-  href=http://ipython.scipy.org>ipython</a>.  He also provided the <a
-  href=matplotlib.pyplot.html#-matshow>matshow</a> command.</li>
+  provided matplotlib support in the pylab mode for
+  <a href=http://ipython.scipy.org>ipython</a>.  He also provided
+  the <a href=matplotlib.pyplot.html#-matshow>matshow</a> command, and
+  wrote TConfig, which is the basis for the traited mpl
+  configuration. </li>
 
   <li>Andrew Dalke of Dalke Scientific Software contributed the
   strftime formatting code to handle years earlier than 1900</li>
@@ -96,13 +98,15 @@ developers</a><p>
   shared axes support that underlies ganged plots and multiscale
   plots</li>
 
-  <li>Jeffrey Whittaker at
+  <li>Jeffrey Whitaker at
   <a href=http://www.boulder.noaa.gov/>NOAA</a> wrote
   the <a href=toolkits.html>basemap</a> tookit</li>
 
   <li>Sigve Tjoraand, Ted Drain and colleagues at the
   <a href=http://www.jpl.nasa.gov>JPL</a> collaborated on the QtAgg
   backend</li>
+
+  <li>James Amundson did the initial work porting the qt backend to qt4</li>
 
   <li>Eric Firing has contributed significantly to contouring, masked
   array, pcolor, image and quiver support, in addition to ongoing
@@ -126,6 +130,10 @@ developers</a><p>
  does the binary builds and releases</li>
 
   <li>Jouni K. Seppaenen wrote the PDF backend</li>
+
+  <li> Paul Kienzle improved the picking infrastruture for interactive plots,
+ and with Alex Mont contributed fast rendering code for quadrilateral
+ meshes.</li>
 
   <li>Michael Droettboom supported by
   <a href=http://www.stsci.edu/>STScI</a> wrote the enhanced mathtext

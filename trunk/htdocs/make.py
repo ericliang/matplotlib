@@ -36,7 +36,7 @@ os.system('zip -r -o matplotlib_examples_%s.zip examples'%matplotlib.__version__
 
 os.system('cp ../users_guide/users_guide.pdf users_guide_%s.pdf'%matplotlib.__version__)
 
-filenames = ( 'INSTALL', 'CHANGELOG', 'API_CHANGES',)
+filenames = ( 'INSTALL', 'CHANGELOG', 'API_CHANGES', 'MIGRATION.txt')
 for fname in filenames:
     oldname = os.path.join(MPL_SRC,fname)
     print 'copying %s to %s' % (oldname, fname)
@@ -56,13 +56,13 @@ print 'Making tutorial images'
 #os.system('cd tut; python runall.py')
 
 #print 'Running process_docs'
-#os.system('python process_docs.py')
+os.system('python process_docs.py')
 
 print 'Running convert'
 os.system('python convert.py')
 
 print 'Building archive'
 version = matplotlib.__version__
-tarcommand = 'tar cfz site.tar.gz *.html api.pdf users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut examples gd matplotlibrc CHANGELOG NUMARRAY_ISSUES  API_CHANGES set_begone.py -X exclude.txt'%locals()
+tarcommand = 'tar cfz site.tar.gz *.html api.pdf users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut examples matplotlibrc CHANGELOG  API_CHANGES MIGRATION.txt set_begone.py -X exclude.txt'%locals()
 print tarcommand
 os.system(tarcommand)

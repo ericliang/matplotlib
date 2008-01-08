@@ -18,18 +18,19 @@ def exception_to_str(s = None):
    return sh.getvalue()
 
 class NewsBox:
-    def __init__(self, body, title='News Flash'):
+    def __init__(self, body, title='News Flash', bgcolor='red'):
         self.body = body
         self.title = title
-
+        self.bgcolor = bgcolor
+        
     def format_header(self):
         return """
-    <tr><td  bgcolor="red" align="left">
+    <tr><td  bgcolor="%s" align="left">
         <font class="tableheading">
                 <b>%s</b>
         </font>
     </td></tr>
-    """%self.title     
+    """%(self.bgcolor, self.title)
 
     def __repr__(self):
         s =  '<table width=100% border=1 cellpadding=1 ' +\
@@ -186,20 +187,26 @@ def isNewEntry(line):
 
 # re-add news to the params dict 'tables' entry below for news
 
-news1 = NewsBox("""matplotlib <a
-href="http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474">0.91.0</a>
+news1= NewsBox("""We have recetly merged significant changes in the internal matplotlib transformation infrastructure into the main matplotlib codebase.  While this will not affect typical pylab users, some users of the API and transformation code will  to make some code changes to work with the new transformations.  Please see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a> for a summary of the migration path and changes in the API, and let us know on the <a href=http://sourceforge.net/mail/?group_id=80706>mailing lists</a> if you are experiecing problems""", title='Major changes in matplotlib svn')
+
+
+news2 = NewsBox("""Help support matplotlib development by <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>donating</a> to fund developer sprints and other matplotlib development costs.""", title='Donate')
+
+
+news3 = NewsBox("""matplotlib <a
+href=http://sourceforge.net/project/platformdownload.php?group_id=80706>0.91.2</a>
 is out.  See <a href=whats_new.html>what's new</a> for a summary of new features.  """, title='New release')
 
 
 table1 =  LinkBox(header='Matplotlib', links=(
     ('Home', 'http://matplotlib.sourceforge.net'),
-    #('Donate', 'donations.html'),    
     ("What's&nbsp;New", 'whats_new.html'),
     ('Download', 'http://sourceforge.net/projects/matplotlib'),
     ('Installing', 'installing.html'),
     ('Screenshots', 'screenshots.html'),
     ('Examples&nbsp;(zip)', 'matplotlib_examples_%s.zip'%matplotlib.__version__),        
     ('Mailing lists', 'http://sourceforge.net/mail/?group_id=80706'),
+    ('Donate', 'http://sourceforge.net/project/project_donations.php?group_id=80706'),        
     ))
 
 table2 =  LinkBox(header='Documentation', links=(
@@ -225,7 +232,7 @@ table3 =  LinkBox(header='Other', links=(
 
 params = {
     'myemail' : '<a href=mailto:jdhunter@ace.bsd.uchicago.edu> (jdhunter@ace.bsd.uchicago.edu)</a>',
-    'tables' : (news1, table1, table2, table3),
+    'tables' : (news1, news2, news3, table1, table2, table3),
     'default_table' :  'border=1 cellpadding=3 cellspacing=2', 
           }
 

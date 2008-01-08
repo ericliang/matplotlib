@@ -42,7 +42,8 @@
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Ellipse">Ellipse</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Circle">Circle</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Arc">Arc</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Circle">Circle</a>
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Polygon">Polygon</a>
@@ -69,6 +70,344 @@
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#PolygonInteractor">PolygonInteractor</a>
 </font></dt></dl>
  <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Arc">class <strong>Arc</strong></a>(<a href="matplotlib.patches.html#Ellipse">Ellipse</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;elliptical&nbsp;arc.&nbsp;&nbsp;Because&nbsp;it&nbsp;performs&nbsp;various&nbsp;optimizations,&nbsp;it<br>
+can&nbsp;not&nbsp;be&nbsp;filled.<br>
+&nbsp;<br>
+The&nbsp;arc&nbsp;must&nbsp;be&nbsp;used&nbsp;in&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;it&nbsp;cannot&nbsp;be&nbsp;added<br>
+directly&nbsp;to&nbsp;a&nbsp;Figure)&nbsp;because&nbsp;it&nbsp;is&nbsp;optimized&nbsp;to&nbsp;only&nbsp;render&nbsp;the<br>
+segments&nbsp;that&nbsp;are&nbsp;inside&nbsp;the&nbsp;axes&nbsp;bounding&nbsp;box&nbsp;with&nbsp;high<br>
+resolution.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#Arc">Arc</a></dd>
+<dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Arc-__init__"><strong>__init__</strong></a>(self, xy, width, height, angle<font color="#909090">=0.0</font>, theta1<font color="#909090">=0.0</font>, theta2<font color="#909090">=360.0</font>, **kwargs)</dt><dd><tt>xy&nbsp;-&nbsp;center&nbsp;of&nbsp;ellipse<br>
+width&nbsp;-&nbsp;length&nbsp;of&nbsp;horizontal&nbsp;axis<br>
+height&nbsp;-&nbsp;length&nbsp;of&nbsp;vertical&nbsp;axis<br>
+angle&nbsp;-&nbsp;rotation&nbsp;in&nbsp;degrees&nbsp;(anti-clockwise)<br>
+theta1&nbsp;-&nbsp;starting&nbsp;angle&nbsp;of&nbsp;the&nbsp;arc&nbsp;in&nbsp;degrees<br>
+theta2&nbsp;-&nbsp;ending&nbsp;angle&nbsp;of&nbsp;the&nbsp;arc&nbsp;in&nbsp;degrees<br>
+&nbsp;<br>
+If&nbsp;theta1&nbsp;and&nbsp;theta2&nbsp;are&nbsp;not&nbsp;provided,&nbsp;the&nbsp;arc&nbsp;will&nbsp;form&nbsp;a<br>
+complete&nbsp;ellipse.<br>
+&nbsp;<br>
+Valid&nbsp;kwargs&nbsp;are:<br>
+%(<a href="#Patch">Patch</a>)s</tt></dd></dl>
+
+<dl><dt><a name="Arc-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-draw"><strong>draw</strong></a>(self, renderer)</dt><dd><tt>Ellipses&nbsp;are&nbsp;normally&nbsp;drawn&nbsp;using&nbsp;an&nbsp;approximation&nbsp;that&nbsp;uses<br>
+eight&nbsp;cubic&nbsp;bezier&nbsp;splines.&nbsp;&nbsp;The&nbsp;error&nbsp;of&nbsp;this&nbsp;approximation<br>
+is&nbsp;1.89818e-6,&nbsp;according&nbsp;to&nbsp;this&nbsp;unverified&nbsp;source:<br>
+&nbsp;<br>
+&nbsp;&nbsp;Lancaster,&nbsp;Don.&nbsp;&nbsp;Approximating&nbsp;a&nbsp;<a href="#Circle">Circle</a>&nbsp;or&nbsp;an&nbsp;<a href="#Ellipse">Ellipse</a>&nbsp;Using<br>
+&nbsp;&nbsp;Four&nbsp;Bezier&nbsp;Cubic&nbsp;Splines.<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://www.tinaja.com/glib/ellipse4.pdf">http://www.tinaja.com/glib/ellipse4.pdf</a><br>
+&nbsp;<br>
+There&nbsp;is&nbsp;a&nbsp;use&nbsp;case&nbsp;where&nbsp;very&nbsp;large&nbsp;ellipses&nbsp;must&nbsp;be&nbsp;drawn<br>
+with&nbsp;very&nbsp;high&nbsp;accuracy,&nbsp;and&nbsp;it&nbsp;is&nbsp;too&nbsp;expensive&nbsp;to&nbsp;render&nbsp;the<br>
+entire&nbsp;ellipse&nbsp;with&nbsp;enough&nbsp;segments&nbsp;(either&nbsp;splines&nbsp;or&nbsp;line<br>
+segments).&nbsp;&nbsp;Therefore,&nbsp;in&nbsp;the&nbsp;case&nbsp;where&nbsp;either&nbsp;radius&nbsp;of&nbsp;the<br>
+ellipse&nbsp;is&nbsp;large&nbsp;enough&nbsp;that&nbsp;the&nbsp;error&nbsp;of&nbsp;the&nbsp;spline<br>
+approximation&nbsp;will&nbsp;be&nbsp;visible&nbsp;(greater&nbsp;than&nbsp;one&nbsp;pixel&nbsp;offset<br>
+from&nbsp;the&nbsp;ideal),&nbsp;a&nbsp;different&nbsp;technique&nbsp;is&nbsp;used.<br>
+&nbsp;<br>
+In&nbsp;that&nbsp;case,&nbsp;only&nbsp;the&nbsp;visible&nbsp;parts&nbsp;of&nbsp;the&nbsp;ellipse&nbsp;are&nbsp;drawn,<br>
+with&nbsp;each&nbsp;visible&nbsp;arc&nbsp;using&nbsp;a&nbsp;fixed&nbsp;number&nbsp;of&nbsp;spline&nbsp;segments<br>
+(8),&nbsp;which&nbsp;should&nbsp;be&nbsp;adequate&nbsp;when&nbsp;the&nbsp;number&nbsp;of&nbsp;pixels&nbsp;across<br>
+the&nbsp;image&nbsp;is&nbsp;less&nbsp;than&nbsp;5e5.&nbsp;&nbsp;The&nbsp;algorithm&nbsp;proceeds&nbsp;as<br>
+follows:<br>
+&nbsp;<br>
+&nbsp;&nbsp;1.&nbsp;The&nbsp;points&nbsp;where&nbsp;the&nbsp;ellipse&nbsp;intersects&nbsp;the&nbsp;axes&nbsp;bounding<br>
+&nbsp;&nbsp;box&nbsp;are&nbsp;located.&nbsp;&nbsp;(This&nbsp;is&nbsp;done&nbsp;be&nbsp;performing&nbsp;an&nbsp;inverse<br>
+&nbsp;&nbsp;transformation&nbsp;on&nbsp;the&nbsp;axes&nbsp;bbox&nbsp;such&nbsp;that&nbsp;it&nbsp;is&nbsp;relative&nbsp;to<br>
+&nbsp;&nbsp;the&nbsp;unit&nbsp;circle&nbsp;--&nbsp;this&nbsp;makes&nbsp;the&nbsp;intersection&nbsp;calculation<br>
+&nbsp;&nbsp;much&nbsp;easier&nbsp;than&nbsp;doing&nbsp;rotated&nbsp;ellipse&nbsp;intersection<br>
+&nbsp;&nbsp;directly).<br>
+&nbsp;<br>
+&nbsp;&nbsp;This&nbsp;uses&nbsp;the&nbsp;"line&nbsp;intersecting&nbsp;a&nbsp;circle"&nbsp;algorithm&nbsp;from:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Vince,&nbsp;John.&nbsp;&nbsp;Geometry&nbsp;for&nbsp;Computer&nbsp;Graphics:&nbsp;Formulae,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Examples&nbsp;&amp;&nbsp;Proofs.&nbsp;&nbsp;London:&nbsp;Springer-Verlag,&nbsp;2005.<br>
+&nbsp;<br>
+&nbsp;&nbsp;2.&nbsp;The&nbsp;angles&nbsp;of&nbsp;each&nbsp;of&nbsp;the&nbsp;intersection&nbsp;points&nbsp;are<br>
+&nbsp;&nbsp;calculated.<br>
+&nbsp;<br>
+&nbsp;&nbsp;3.&nbsp;Proceeding&nbsp;counterclockwise&nbsp;starting&nbsp;in&nbsp;the&nbsp;positive<br>
+&nbsp;&nbsp;x-direction,&nbsp;each&nbsp;of&nbsp;the&nbsp;visible&nbsp;arc-segments&nbsp;between&nbsp;each<br>
+&nbsp;&nbsp;pair&nbsp;of&nbsp;intersections&nbsp;are&nbsp;drawn&nbsp;using&nbsp;the&nbsp;bezier&nbsp;arc<br>
+&nbsp;&nbsp;approximation&nbsp;technique&nbsp;implemented&nbsp;in&nbsp;arc().</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
+<dl><dt><a name="Arc-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
+
+<dl><dt><a name="Arc-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
+<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
+
+<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
+
+<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
+
+<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
+       [ 0.26...-1.        ],
+       [ 0.        , -1.        ]])</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="Arc-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Arc-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+
+<dl><dt><a name="Arc-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="Arc-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Arc-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Arc-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="Arc-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
+<dl><dt><a name="Arc-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="Arc-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="Arc-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Arc-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Arc-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Arc-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Arc-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
+
+<dl><dt><a name="Arc-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="Arc-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Arc-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Arc-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -408,11 +747,15 @@ Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
-<dl><dt><strong>circle</strong> = array([[-1.        ,  0.        ],
-       [-1.  ... 0.        ],
-       [-1.        ,  0.        ]])</dl>
+<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
 
-<dl><dt><strong>offset</strong> = 0.552284749831</dl>
+<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
+
+<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
+
+<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
+       [ 0.26...-1.        ],
+       [ 0.        , -1.        ]])</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -975,11 +1318,15 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>circle</strong> = array([[-1.        ,  0.        ],
-       [-1.  ... 0.        ],
-       [-1.        ,  0.        ]])</dl>
+<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
 
-<dl><dt><strong>offset</strong> = 0.552284749831</dl>
+<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
+
+<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
+
+<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
+       [ 0.26...-1.        ],
+       [ 0.        , -1.        ]])</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>

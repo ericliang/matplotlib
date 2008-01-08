@@ -308,11 +308,11 @@ returned&nbsp;by&nbsp;default&nbsp;with&nbsp;AFM&nbsp;fonts&nbsp;as&nbsp;an&nbsp
 <strong>OSXFontDirectories</strong> = ['/Library/Fonts/', '/Network/Library/Fonts/', '/System/Library/Fonts/', '/home/jdhunter/Library/Fonts']<br>
 <strong>USE_FONTCONFIG</strong> = False<br>
 <strong>X11FontDirectories</strong> = ['/usr/X11R6/lib/X11/fonts/TTF/', '/usr/share/fonts/', '/usr/local/share/fonts/', '/usr/lib/openoffice/share/fonts/truetype/', '/home/jdhunter/.fonts']<br>
-<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x842074c&gt;<br>
+<strong>fontManager</strong> = &lt;matplotlib.font_manager.FontManager instance at 0x83a164c&gt;<br>
 <strong>font_scalings</strong> = {'large': 1.2, 'larger': 1.2, 'medium': 1.0, 'small': 0.83299999999999996, 'smaller': 0.83299999999999996, 'x-large': 1.4399999999999999, 'x-small': 0.69399999999999995, 'xx-large': 1.728, 'xx-small': 0.57899999999999996}<br>
 <strong>home</strong> = '/home/jdhunter'<br>
 <strong>path</strong> = '/home/jdhunter/.fonts'<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x836eb4c&gt;<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08ac&gt;<br>
 <strong>weight_dict</strong> = {'black': 900, 'bold': 700, 'book': 400, 'demi': 600, 'demibold': 600, 'extra bold': 800, 'heavy': 800, 'light': 200, 'medium': 500, 'normal': 400, ...}</td></tr></table>
 @footer@
