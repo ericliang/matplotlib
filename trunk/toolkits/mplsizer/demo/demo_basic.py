@@ -63,7 +63,7 @@ if more_plots:
 if 1:
     # Now perform the mplsizer stuff
     
-    import matplotlib.toolkits.mplsizer as mplsizer
+    import mpl_toolkits.mplsizer as mplsizer
     
     frame = mplsizer.MplSizerFrame( fig )
     sizer = mplsizer.MplBoxSizer()

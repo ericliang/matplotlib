@@ -16,6 +16,6 @@ package" support.
       version='0.1',
       license='MIT',
       url='http://matplotlib.sourceforge.net/',
-      packages=['matplotlib.toolkits.mplsizer'],
-      namespace_packages = ['matplotlib.toolkits'],
+      packages=['mpl_toolkits','mpl_toolkits.mplsizer'],
+      namespace_packages = ['mpl_toolkits'],
       )

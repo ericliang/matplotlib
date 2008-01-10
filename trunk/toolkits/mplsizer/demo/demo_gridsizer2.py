@@ -16,7 +16,7 @@ fig = pylab.figure(figsize=(8,6))
 # simply return a previous Axes instance with the same bounding box,
 # assign a different label to each Axes instance.
 
-import matplotlib.toolkits.mplsizer as mplsizer
+import mpl_toolkits.mplsizer as mplsizer
 
 frame = mplsizer.MplSizerFrame( fig )
 sizer = mplsizer.MplBoxSizer()#orientation='horizontal')

@@ -1,5 +1,5 @@
 import pylab
-import matplotlib.toolkits.mplsizer as mplsizer
+import mpl_toolkits.mplsizer as mplsizer
 
 # Demonstration of minsize use.
 
