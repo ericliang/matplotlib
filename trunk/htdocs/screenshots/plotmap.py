@@ -4,15 +4,15 @@
 
 # the data is interpolated to the native projection grid.
 
-from matplotlib.toolkits.basemap import Basemap, shiftgrid
+from mpl_toolkits.basemap import Basemap, shiftgrid
 from pylab import title, colorbar, show, axes, cm, load, arange, figure, \
                   text
 
 # read in topo data (on a regular lat/lon grid)
 # longitudes go from 20 to 380.
-topoin = load('etopo20data.gz')
-lons = load('etopo20lons.gz')
-lats = load('etopo20lats.gz')
+topoin = load('data/etopo20data.gz')
+lons = load('data/etopo20lons.gz')
+lats = load('data/etopo20lats.gz')
 # shift data so lons go from -180 to 180 instead of 20 to 380.
 topoin,lons = shiftgrid(180.,topoin,lons,start=False)
 
@@ -32,7 +32,11 @@ ax = fig.add_axes([0.1,0.1,0.7,0.7])
 # plot image over map with imshow.
 im = m.imshow(topodat,cm.jet)
 # setup colorbar axes instance.
-l,b,w,h = ax.get_position()
+# for matplotlib 0.91 and earlier, could do l,b,w,h = ax.get_position()
+# for post 0.91, pos = ax.get_position(); l,b,w,h = pos.bounds
+# this works for both.
+pos = ax.get_position()
+l, b, w, h = getattr(pos, 'bounds', pos)
 cax = axes([l+w+0.075, b, 0.05, h])
 colorbar(cax=cax) # draw colorbar
 axes(ax)  # make the original axes current again
