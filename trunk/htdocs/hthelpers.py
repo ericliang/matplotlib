@@ -46,7 +46,7 @@ modules = (
     'matplotlib.texmanager',
     'matplotlib.text',
     'matplotlib.ticker',
-    'matplotlib.toolkits.basemap.basemap',
+    'mpl_toolkits.basemap.basemap',
     'matplotlib.transforms',
     'matplotlib.type1font',
     'matplotlib.units',
