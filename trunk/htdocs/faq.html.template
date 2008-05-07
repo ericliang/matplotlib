@@ -906,7 +906,7 @@ reported.<p>
 
 The unit directory of the source tree contains an example scripts
 useful for diagnosing and reporting memory leaks.  For
-example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii.py?view=markup"><tt>memleak_hawaii.py</tt></a>
+example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii3.py?view=markup"><tt>memleak_hawaii.py</tt></a>
   is useful for finding plotting-related memory leaks,
   and <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_gui.py?view=markup"><tt>memleak_gui.py</tt></a>
     helps find memory leaks in the GUI-backend.  Please use
