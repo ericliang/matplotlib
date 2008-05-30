@@ -82,9 +82,9 @@ rect1 = [left, 0.7, width, 0.2]
 rect2 = [left, 0.3, width, 0.4]
 rect3 = [left, 0.1, width, 0.2]
 axUpper      = axes(rect1, axisbg=axesBG)  #left, bottom, width, height
-axMiddle     = axes(rect2, axisbg=axesBG)
-axMiddleVol  = axes(rect2, axisbg=axesBG, frameon=False)  # the volume overlay
-axLower      = axes(rect3, axisbg=axesBG)
+axMiddle     = axes(rect2, axisbg=axesBG, sharex=axUpper)
+axMiddleVol  = axes(rect2, axisbg=axesBG, frameon=False, sharex=axUpper)  # the volume overlay
+axLower      = axes(rect3, axisbg=axesBG, sharex=axUpper)
 
 
 axUpper.xaxis.set_major_locator( get_locator() )
@@ -145,7 +145,7 @@ if 1: ############### Upper axes #################
 if 1:  ############### Middle axes #################
 
     #plot_day_summary2(axMiddle, opens, closes, highs, lows)
-    candlestick2(axMiddle, opens, closes, highs, lows)
+    candlestick2(axMiddle, opens, closes, highs, lows, width=0.9)
 
     # specify the text in axes (0,1) coords.  0,0 is lower left and 1,1 is
     # upper right
@@ -215,7 +215,11 @@ if 1:  ############### Lower axes #################
 allAxes = (axUpper, axMiddle, axMiddleVol, axLower)
 xlim = 0, len(quotes)
 for a in allAxes:
-    a.dataLim.intervalx().set_bounds(*xlim)
+    #a.dataLim.intervalx = xlim
     a.set_xlim(xlim)
+
+for ax in axUpper, axMiddle:
+    for ticklabel in ax.get_xticklabels():
+        ticklabel.set_visible(False)
 
 show()

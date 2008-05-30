@@ -32,6 +32,7 @@ files = {
     'pie_demo.py'     : default,
     'plotmap.py'     : default,
     'hstdemo.py' : default,
+    'path_patch_demo.py' : default,    
     }
 
 
