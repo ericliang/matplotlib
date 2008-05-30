@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mathtext</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mathtext.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mathtext.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
     <p><tt>OVERVIEW<br>
 &nbsp;<br>
 &nbsp;&nbsp;mathtext&nbsp;is&nbsp;a&nbsp;module&nbsp;for&nbsp;parsing&nbsp;TeX&nbsp;expressions&nbsp;and&nbsp;drawing&nbsp;them<br>
@@ -182,9 +182,8 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license&nbsp;(PSF&nbsp;compatibl
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 </td><td width="25%" valign=top><a href="unicodedata.html">unicodedata</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -387,8 +386,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#AutoHeightChar-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#AutoHeightChar-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -460,8 +459,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#AutoWidthChar-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#AutoWidthChar-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -537,9 +536,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
-
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0xf79a70&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
@@ -966,8 +963,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#HCentered-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#HCentered-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -1076,8 +1073,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#Hlist-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#Hlist-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -1300,7 +1297,7 @@ Methods inherited from <a href="exceptions.html#Warning">exceptions.Warning</a>:
 
 <hr>
 Data and other attributes inherited from <a href="exceptions.html#Warning">exceptions.Warning</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x8141be0&gt;<dd><tt>T.<a href="#MathTextWarning-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x3832b354c0&gt;<dd><tt>T.<a href="#MathTextWarning-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
@@ -2017,7 +2014,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts/afm'</dl>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mpl-data/fonts/afm'</dl>
 
 <dl><dt><strong>fontmap</strong> = {None: 'psyr', 'bf': 'pncb8a', 'cal': 'pzcmi8a', 'it': 'pncri8a', 'rm': 'pncr8a', 'sf': 'phvr8a', 'tt': 'pcrr8a'}</dl>
 
@@ -2102,9 +2099,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
-
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0xf79a70&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
@@ -2183,9 +2178,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
-
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0xf79a70&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
@@ -2257,8 +2250,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#SubSuperCluster-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#SubSuperCluster-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -2322,9 +2315,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
-
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0xf79a70&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
@@ -2401,9 +2392,7 @@ Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">Truetype
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
-<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x8596b9c&gt;</dl>
-
-<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mpl-data/fonts'</dl>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0xf79a70&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
@@ -2472,8 +2461,8 @@ have&nbsp;been&nbsp;shifted&nbsp;left.<br>
 w:&nbsp;specifies&nbsp;a&nbsp;width<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#VCentered-hpack">hpack</a>(w,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-hpack&nbsp;(w,&nbsp;additional&nbsp;)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#VCentered-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node649</tt></dd></dl>
 
@@ -2580,8 +2569,8 @@ h:&nbsp;specifies&nbsp;a&nbsp;height<br>
 m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
 l:&nbsp;a&nbsp;maximum&nbsp;height<br>
 &nbsp;<br>
-Thus,&nbsp;<a href="#Vlist-vpack">vpack</a>(h,&nbsp;exactly)&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
-<a href="#Vlist-vpack">vpack</a>(w,&nbsp;additional)&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+Thus,&nbsp;<a href="#Vlist-vpack">vpack</a>(h,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+<a href="#Vlist-vpack">vpack</a>(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
 plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
 node644,&nbsp;node668</tt></dd></dl>
 
@@ -2674,10 +2663,6 @@ Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>
 &nbsp;<br>
 Return&nbsp;the&nbsp;ceiling&nbsp;of&nbsp;x&nbsp;as&nbsp;a&nbsp;float.<br>
 This&nbsp;is&nbsp;the&nbsp;smallest&nbsp;integral&nbsp;value&nbsp;&gt;=&nbsp;x.</tt></dd></dl>
- <dl><dt><a name="-floor"><strong>floor</strong></a>(...)</dt><dd><tt><a href="#-floor">floor</a>(x)<br>
-&nbsp;<br>
-Return&nbsp;the&nbsp;floor&nbsp;of&nbsp;x&nbsp;as&nbsp;a&nbsp;float.<br>
-This&nbsp;is&nbsp;the&nbsp;largest&nbsp;integral&nbsp;value&nbsp;&lt;=&nbsp;x.</tt></dd></dl>
  <dl><dt><a name="-get_unicode_index"><strong>get_unicode_index</strong></a>(symbol)</dt><dd><tt><a href="#-get_unicode_index">get_unicode_index</a>(symbol)&nbsp;-&gt;&nbsp;integer<br>
 &nbsp;<br>
 Return&nbsp;the&nbsp;integer&nbsp;index&nbsp;(from&nbsp;the&nbsp;Unicode&nbsp;table)&nbsp;of&nbsp;symbol.<br>
@@ -2701,20 +2686,15 @@ or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl
 <strong>SUB1</strong> = 0.0<br>
 <strong>SUBDROP</strong> = 0.29999999999999999<br>
 <strong>SUP1</strong> = 0.69999999999999996<br>
-<strong>alphanums</strong> = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'<br>
-<strong>alphas</strong> = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x859740c&gt;<br>
+<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0xe21cf8&gt;<br>
 <strong>inf</strong> = inf<br>
 <strong>isinf</strong> = &lt;ufunc 'isinf'&gt;<br>
 <strong>latex_to_bakoma</strong> = {'%': ('cmr10', 48), "'": ('cmsy10', 73), '(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), ...}<br>
 <strong>latex_to_cmex</strong> = {r'\__sqrt__': 112, r'\bigcap': 92, r'\bigcup': 91, r'\bigodot': 75, r'\bigoplus': 77, r'\bigotimes': 79, r'\biguplus': 93, r'\bigvee': 95, r'\bigwedge': 94, r'\coprod': 97, ...}<br>
 <strong>latex_to_standard</strong> = {r'\$': ('pncr8a', 36), r'\%': ('pncr8a', 37), r'\Delta': ('psyr', 68), r'\Diamond': ('psyr', 224), r'\Downarrow': ('psyr', 223), r'\Gamma': ('psyr', 89), r'\Im': ('psyr', 193), r'\Lamda': ('psyr', 76), r'\Leftarrow': ('psyr', 220), r'\Leftrightarrow': ('psyr', 219), ...}<br>
-<strong>nums</strong> = '0123456789'<br>
-<strong>opAssoc</strong> = &lt;matplotlib.pyparsing._Constants object at 0x82e04cc&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>ship</strong> = &lt;matplotlib.mathtext.Ship object at 0x85bdaac&gt;<br>
-<strong>stix_virtual_fonts</strong> = {'bb': {'bf': [(48, 57, 'rm', 120792), (65, 90, 'bf', 58250), (97, 122, 'bf', 58269), (915, 915, 'bf', 8510), (928, 928, 'bf', 8511), (931, 931, 'bf', 8512), (947, 947, 'bf', 8509), (960, 960, 'bf', 8508)], 'it': [(65, 65, 'it', 57684), (67, 67, 'it', 8450), (68, 68, 'it', 8517), (69, 71, 'it', 57686), (72, 72, 'it', 8461), (73, 77, 'it', 57689), (78, 78, 'it', 8469), (79, 79, 'it', 57694), (80, 81, 'it', 8473), (82, 82, 'it', 8477), (83, 89, 'it', 57695), (90, 90, 'it', 8484), (97, 99, 'it', 57702), (100, 101, 'it', 8518), (102, 104, 'it', 57705), (105, 106, 'it', 8520), (107, 122, 'it', 57708), (915, 915, 'it', 8510), (928, 928, 'it', 8511), (931, 931, 'it', 8512), ...], 'rm': [(48, 57, 'rm', 120792), (65, 66, 'rm', 120120), (67, 67, 'rm', 8450), (68, 71, 'rm', 120123), (72, 72, 'rm', 8461), (73, 77, 'rm', 120128), (78, 78, 'rm', 8469), (79, 79, 'rm', 120134), (80, 81, 'rm', 8473), (82, 82, 'rm', 8477), (83, 89, 'rm', 120138), (90, 90, 'rm', 8484), (97, 122, 'rm', 120146), (915, 915, 'rm', 8510), (928, 928, 'rm', 8511), (931, 931, 'rm', 8512), (947, 947, 'rm', 8509), (960, 960, 'rm', 8508)]}, 'cal': [(65, 90, 'it', 57901)], 'circled': {'bf': [(48, 48, 'bf', 9450), (49, 57, 'bf', 9312), (65, 90, 'bf', 9398), (97, 122, 'bf', 9424)], 'it': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'it', 9398), (97, 122, 'it', 9424)], 'rm': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'rm', 9398), (97, 122, 'rm', 9424)]}, 'frak': {'bf': [(65, 90, 'bf', 120172), (97, 122, 'bf', 120198)], 'it': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)], 'rm': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)]}, 'scr': [(65, 65, 'it', 119964), (66, 66, 'it', 8492), (67, 68, 'it', 119966), (69, 70, 'it', 8496), (71, 71, 'it', 119970), (72, 72, 'it', 8459), (73, 73, 'it', 8464), (74, 75, 'it', 119973), (76, 76, 'it', 8466), (77, 61, 'it', 8467), (78, 81, 'it', 119977), (82, 82, 'it', 8475), (83, 90, 'it', 119982), (97, 100, 'it', 119990), (101, 101, 'it', 8495), (102, 102, 'it', 119995), (103, 103, 'it', 8458), (104, 110, 'it', 119997), (111, 111, 'it', 8500), (112, 122, 'it', 120005)], 'sf': {'bf': [(48, 57, 'bf', 120812), (65, 90, 'bf', 120276), (97, 122, 'bf', 120302), (913, 937, 'bf', 120662), (945, 969, 'bf', 120688), (977, 977, 'bf', 120715), (981, 981, 'bf', 120717), (982, 982, 'bf', 120719), (1008, 1008, 'bf', 120716), (1009, 1009, 'bf', 120718), (1013, 1013, 'bf', 120714), (8706, 8706, 'bf', 120713), (8711, 8711, 'bf', 120687)], 'it': [(48, 57, 'rm', 120802), (65, 90, 'it', 120328), (97, 122, 'it', 120354), (913, 937, 'rm', 57725), (945, 969, 'it', 57816), (977, 977, 'it', 57842), (981, 981, 'it', 57843), (982, 982, 'it', 57845), (1009, 1009, 'it', 57844), (1013, 1013, 'it', 57841)], 'rm': [(48, 57, 'rm', 120802), (65, 90, 'rm', 120224), (97, 122, 'rm', 120250), (913, 937, 'rm', 57725), (945, 969, 'rm', 57750), (977, 977, 'rm', 57776), (981, 981, 'rm', 57777), (982, 982, 'rm', 57779), (1009, 1009, 'rm', 57778), (1013, 1013, 'rm', 57775), (8706, 8706, 'rm', 57724)]}, 'tt': [(48, 57, 'rm', 120822), (65, 90, 'rm', 120432), (97, 122, 'rm', 120458)]}<br>
-<strong>tex2uni</strong> = {'$': 36, '%': 37, 'AA': 8491, 'AE': 198, 'BbbC': 8450, 'BbbN': 8469, 'BbbP': 8473, 'BbbQ': 8474, 'BbbR': 8477, 'BbbZ': 8484, ...}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
+<strong>ship</strong> = &lt;matplotlib.mathtext.Ship object at 0xf8f2d0&gt;<br>
+<strong>stix_virtual_fonts</strong> = {'bb': {'bf': [(48, 57, 'rm', 120792), (65, 90, 'bf', 58250), (97, 122, 'bf', 58269), (915, 915, 'bf', 8510), (928, 928, 'bf', 8511), (931, 931, 'bf', 8512), (947, 947, 'bf', 8509), (960, 960, 'bf', 8508)], 'it': [(48, 57, 'rm', 120792), (65, 65, 'it', 57684), (67, 67, 'it', 8450), (68, 68, 'it', 8517), (69, 71, 'it', 57686), (72, 72, 'it', 8461), (73, 77, 'it', 57689), (78, 78, 'it', 8469), (79, 79, 'it', 57694), (80, 81, 'it', 8473), (82, 82, 'it', 8477), (83, 89, 'it', 57695), (90, 90, 'it', 8484), (97, 99, 'it', 57702), (100, 101, 'it', 8518), (102, 104, 'it', 57705), (105, 106, 'it', 8520), (107, 122, 'it', 57708), (915, 915, 'it', 8510), (928, 928, 'it', 8511), ...], 'rm': [(48, 57, 'rm', 120792), (65, 66, 'rm', 120120), (67, 67, 'rm', 8450), (68, 71, 'rm', 120123), (72, 72, 'rm', 8461), (73, 77, 'rm', 120128), (78, 78, 'rm', 8469), (79, 79, 'rm', 120134), (80, 81, 'rm', 8473), (82, 82, 'rm', 8477), (83, 89, 'rm', 120138), (90, 90, 'rm', 8484), (97, 122, 'rm', 120146), (915, 915, 'rm', 8510), (928, 928, 'rm', 8511), (931, 931, 'rm', 8512), (947, 947, 'rm', 8509), (960, 960, 'rm', 8508)]}, 'cal': [(65, 90, 'it', 57901)], 'circled': {'bf': [(48, 48, 'bf', 9450), (49, 57, 'bf', 9312), (65, 90, 'bf', 9398), (97, 122, 'bf', 9424)], 'it': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'it', 9398), (97, 122, 'it', 9424)], 'rm': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'rm', 9398), (97, 122, 'rm', 9424)]}, 'frak': {'bf': [(65, 90, 'bf', 120172), (97, 122, 'bf', 120198)], 'it': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)], 'rm': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)]}, 'scr': [(65, 65, 'it', 119964), (66, 66, 'it', 8492), (67, 68, 'it', 119966), (69, 70, 'it', 8496), (71, 71, 'it', 119970), (72, 72, 'it', 8459), (73, 73, 'it', 8464), (74, 75, 'it', 119973), (76, 76, 'it', 8466), (77, 61, 'it', 8467), (78, 81, 'it', 119977), (82, 82, 'it', 8475), (83, 90, 'it', 119982), (97, 100, 'it', 119990), (101, 101, 'it', 8495), (102, 102, 'it', 119995), (103, 103, 'it', 8458), (104, 110, 'it', 119997), (111, 111, 'it', 8500), (112, 122, 'it', 120005)], 'sf': {'bf': [(48, 57, 'bf', 120812), (65, 90, 'bf', 120276), (97, 122, 'bf', 120302), (913, 937, 'bf', 120662), (945, 969, 'bf', 120688), (977, 977, 'bf', 120715), (981, 981, 'bf', 120717), (982, 982, 'bf', 120719), (1008, 1008, 'bf', 120716), (1009, 1009, 'bf', 120718), (1013, 1013, 'bf', 120714), (8706, 8706, 'bf', 120713), (8711, 8711, 'bf', 120687)], 'it': [(48, 57, 'rm', 120802), (65, 90, 'it', 120328), (97, 122, 'it', 120354), (913, 937, 'rm', 57725), (945, 969, 'it', 57816), (977, 977, 'it', 57842), (981, 981, 'it', 57843), (982, 982, 'it', 57845), (1009, 1009, 'it', 57844), (1013, 1013, 'it', 57841)], 'rm': [(48, 57, 'rm', 120802), (65, 90, 'rm', 120224), (97, 122, 'rm', 120250), (913, 937, 'rm', 57725), (945, 969, 'rm', 57750), (977, 977, 'rm', 57776), (981, 981, 'rm', 57777), (982, 982, 'rm', 57779), (1009, 1009, 'rm', 57778), (1013, 1013, 'rm', 57775), (8706, 8706, 'rm', 57724)]}, 'tt': [(48, 57, 'rm', 120822), (65, 90, 'rm', 120432), (97, 122, 'rm', 120458)]}<br>
+<strong>tex2uni</strong> = {'$': 36, '%': 37, 'AA': 8491, 'AE': 198, 'BbbC': 8450, 'BbbN': 8469, 'BbbP': 8473, 'BbbQ': 8474, 'BbbR': 8477, 'BbbZ': 8484, ...}</td></tr></table>
 @footer@

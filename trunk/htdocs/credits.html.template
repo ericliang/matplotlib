@@ -140,7 +140,7 @@ developers</a><p>
   support, implementing Knuth's box layout algorithms, saving to
   file-like objects across backends, and is responsible for numerous
   bug-fixes, much better font and unicode support, and feature and
-  performance enhancements across the matplotlib code base. </li>
+  performance enhancements across the matplotlib code base. He also rewrote the transformation infrastructure to support custom projections and scales/li>
 
 
 

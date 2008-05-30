@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.widgets</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/widgets.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/widgets.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/widgets.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/widgets.py</a></font></td></tr></table>
     <p><tt>GUI&nbsp;Neutral&nbsp;widgets<br>
 &nbsp;<br>
 All&nbsp;of&nbsp;these&nbsp;widgets&nbsp;require&nbsp;you&nbsp;to&nbsp;predefine&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;and<br>
@@ -174,6 +174,8 @@ examples/widgets/cursor.py.</tt></dd></dl>
 <hr>
 Methods inherited from <a href="matplotlib.widgets.html#SpanSelector">SpanSelector</a>:<br>
 <dl><dt><a name="HorizontalSpanSelector-ignore"><strong>ignore</strong></a>(self, event)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;event&nbsp;should&nbsp;be&nbsp;ignored</tt></dd></dl>
+
+<dl><dt><a name="HorizontalSpanSelector-new_axes"><strong>new_axes</strong></a>(self, ax)</dt></dl>
 
 <dl><dt><a name="HorizontalSpanSelector-onmove"><strong>onmove</strong></a>(self, event)</dt><dd><tt>on&nbsp;motion&nbsp;notify&nbsp;event</tt></dd></dl>
 
@@ -409,7 +411,7 @@ The&nbsp;following&nbsp;attributes&nbsp;are&nbsp;defined<br>
 Call&nbsp;on_changed&nbsp;to&nbsp;connect&nbsp;to&nbsp;the&nbsp;slider&nbsp;event<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="Slider-__init__"><strong>__init__</strong></a>(self, ax, label, valmin, valmax, valinit<font color="#909090">=0.5</font>, valfmt<font color="#909090">='%1.2f'</font>, closedmin<font color="#909090">=True</font>, closedmax<font color="#909090">=True</font>, slidermin<font color="#909090">=None</font>, slidermax<font color="#909090">=None</font>, dragging<font color="#909090">=True</font>)</dt><dd><tt>Create&nbsp;a&nbsp;slider&nbsp;from&nbsp;valmin&nbsp;to&nbsp;valmax&nbsp;in&nbsp;axes&nbsp;ax;<br>
+<dl><dt><a name="Slider-__init__"><strong>__init__</strong></a>(self, ax, label, valmin, valmax, valinit<font color="#909090">=0.5</font>, valfmt<font color="#909090">='%1.2f'</font>, closedmin<font color="#909090">=True</font>, closedmax<font color="#909090">=True</font>, slidermin<font color="#909090">=None</font>, slidermax<font color="#909090">=None</font>, dragging<font color="#909090">=True</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;slider&nbsp;from&nbsp;valmin&nbsp;to&nbsp;valmax&nbsp;in&nbsp;axes&nbsp;ax;<br>
 &nbsp;<br>
 valinit&nbsp;-&nbsp;&nbsp;the&nbsp;slider&nbsp;initial&nbsp;position<br>
 &nbsp;<br>
@@ -420,7 +422,12 @@ valfmt&nbsp;-&nbsp;used&nbsp;to&nbsp;format&nbsp;the&nbsp;slider&nbsp;value<br>
 closedmin&nbsp;and&nbsp;closedmax&nbsp;-&nbsp;indicate&nbsp;whether&nbsp;the&nbsp;slider&nbsp;interval&nbsp;is&nbsp;closed<br>
 &nbsp;<br>
 slidermin&nbsp;and&nbsp;slidermax&nbsp;-&nbsp;be&nbsp;used&nbsp;to&nbsp;contrain&nbsp;the&nbsp;value&nbsp;of<br>
-&nbsp;&nbsp;this&nbsp;slider&nbsp;to&nbsp;the&nbsp;values&nbsp;of&nbsp;other&nbsp;sliders.</tt></dd></dl>
+&nbsp;&nbsp;this&nbsp;slider&nbsp;to&nbsp;the&nbsp;values&nbsp;of&nbsp;other&nbsp;sliders.<br>
+&nbsp;<br>
+additional&nbsp;kwargs&nbsp;are&nbsp;passed&nbsp;on&nbsp;to&nbsp;self.<strong>poly</strong>&nbsp;which&nbsp;is&nbsp;the<br>
+matplotlib.patches.Rectangle&nbsp;which&nbsp;draws&nbsp;the&nbsp;slider.&nbsp;&nbsp;See&nbsp;the<br>
+matplotlib.patches.Rectangle&nbsp;documentation&nbsp;for&nbsp;legal&nbsp;property<br>
+names&nbsp;(eg&nbsp;facecolor,&nbsp;edgecolor,&nbsp;alpha,&nbsp;...)</tt></dd></dl>
 
 <dl><dt><a name="Slider-disconnect"><strong>disconnect</strong></a>(self, cid)</dt><dd><tt>remove&nbsp;the&nbsp;observer&nbsp;with&nbsp;connection&nbsp;id&nbsp;cid</tt></dd></dl>
 
@@ -479,6 +486,8 @@ set&nbsp;the&nbsp;visible&nbsp;attribute&nbsp;to&nbsp;False&nbsp;if&nbsp;you&nbs
 the&nbsp;functionality&nbsp;of&nbsp;the&nbsp;span&nbsp;selector</tt></dd></dl>
 
 <dl><dt><a name="SpanSelector-ignore"><strong>ignore</strong></a>(self, event)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;event&nbsp;should&nbsp;be&nbsp;ignored</tt></dd></dl>
+
+<dl><dt><a name="SpanSelector-new_axes"><strong>new_axes</strong></a>(self, ax)</dt></dl>
 
 <dl><dt><a name="SpanSelector-onmove"><strong>onmove</strong></a>(self, event)</dt><dd><tt>on&nbsp;motion&nbsp;notify&nbsp;event</tt></dd></dl>
 

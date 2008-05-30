@@ -4,22 +4,22 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.dviread</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dviread.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dviread.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/dviread.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/dviread.py</a></font></td></tr></table>
     <p><tt>An&nbsp;experimental&nbsp;module&nbsp;for&nbsp;reading&nbsp;dvi&nbsp;files&nbsp;output&nbsp;by&nbsp;TeX.&nbsp;Several<br>
 limitations&nbsp;make&nbsp;this&nbsp;not&nbsp;(currently)&nbsp;useful&nbsp;as&nbsp;a&nbsp;general-purpose&nbsp;dvi<br>
 preprocessor.<br>
 &nbsp;<br>
-Interface:<br>
+Interface::<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dvi&nbsp;=&nbsp;<a href="#Dvi">Dvi</a>(filename,&nbsp;72)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;page&nbsp;in&nbsp;dvi:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;iterate&nbsp;over&nbsp;pages<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w,&nbsp;h,&nbsp;d&nbsp;=&nbsp;page.width,&nbsp;page.height,&nbsp;page.descent<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;x,y,font,glyph,width&nbsp;in&nbsp;page.text:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontname&nbsp;=&nbsp;font.texname<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointsize&nbsp;=&nbsp;font.size<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;x,y,height,width&nbsp;in&nbsp;page.boxes:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</tt></p>
+&nbsp;&nbsp;dvi&nbsp;=&nbsp;<a href="#Dvi">Dvi</a>(filename,&nbsp;72)<br>
+&nbsp;&nbsp;for&nbsp;page&nbsp;in&nbsp;dvi:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;iterate&nbsp;over&nbsp;pages<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;w,&nbsp;h,&nbsp;d&nbsp;=&nbsp;page.width,&nbsp;page.height,&nbsp;page.descent<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;x,y,font,glyph,width&nbsp;in&nbsp;page.text:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontname&nbsp;=&nbsp;font.texname<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pointsize&nbsp;=&nbsp;font.size<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;x,y,height,width&nbsp;in&nbsp;page.boxes:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#aa55cc">
@@ -130,13 +130,14 @@ Data descriptors defined here:<br>
 <font color="#000000" face="helvetica, arial"><a name="Encoding">class <strong>Encoding</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>Parses&nbsp;a&nbsp;*.enc&nbsp;file&nbsp;referenced&nbsp;from&nbsp;a&nbsp;psfonts.map&nbsp;style&nbsp;file.<br>
+<td colspan=2><tt>Parses&nbsp;a&nbsp;\*.enc&nbsp;file&nbsp;referenced&nbsp;from&nbsp;a&nbsp;psfonts.map&nbsp;style&nbsp;file.<br>
 The&nbsp;format&nbsp;this&nbsp;class&nbsp;understands&nbsp;is&nbsp;a&nbsp;very&nbsp;limited&nbsp;subset&nbsp;of<br>
 PostScript.<br>
 &nbsp;<br>
-Usage&nbsp;(subject&nbsp;to&nbsp;change):<br>
-for&nbsp;name&nbsp;in&nbsp;<a href="#Encoding">Encoding</a>(filename):&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;whatever(name)<br>&nbsp;</tt></td></tr>
+Usage&nbsp;(subject&nbsp;to&nbsp;change)::<br>
+&nbsp;<br>
+&nbsp;&nbsp;for&nbsp;name&nbsp;in&nbsp;<a href="#Encoding">Encoding</a>(filename):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;whatever(name)<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Encoding-__init__"><strong>__init__</strong></a>(self, filename)</dt></dl>
@@ -190,12 +191,16 @@ But&nbsp;the&nbsp;user&nbsp;may&nbsp;have&nbsp;configured&nbsp;these&nbsp;files&
 minimum&nbsp;needed&nbsp;by&nbsp;the&nbsp;<a href="#Dvi">Dvi</a>&nbsp;class.<br>
 &nbsp;<br>
 Attributes:<br>
+&nbsp;<br>
 &nbsp;&nbsp;checksum:&nbsp;for&nbsp;verifying&nbsp;against&nbsp;dvi&nbsp;file<br>
+&nbsp;<br>
 &nbsp;&nbsp;design_size:&nbsp;design&nbsp;size&nbsp;of&nbsp;the&nbsp;font&nbsp;(in&nbsp;what&nbsp;units?)<br>
-&nbsp;&nbsp;width[i]:&nbsp;width&nbsp;of&nbsp;character&nbsp;#i,&nbsp;needs&nbsp;to&nbsp;be&nbsp;scaled&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;width[i]:&nbsp;width&nbsp;of&nbsp;character&nbsp;\#i,&nbsp;needs&nbsp;to&nbsp;be&nbsp;scaled<br>
 &nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;the&nbsp;factor&nbsp;specified&nbsp;in&nbsp;the&nbsp;dvi&nbsp;file<br>
 &nbsp;&nbsp;&nbsp;&nbsp;(this&nbsp;is&nbsp;a&nbsp;dict&nbsp;because&nbsp;indexing&nbsp;may&nbsp;not&nbsp;start&nbsp;from&nbsp;0)<br>
-&nbsp;&nbsp;height[i],&nbsp;depth[i]:&nbsp;height&nbsp;and&nbsp;depth&nbsp;of&nbsp;character&nbsp;#i<br>&nbsp;</tt></td></tr>
+&nbsp;<br>
+&nbsp;&nbsp;height[i],&nbsp;depth[i]:&nbsp;height&nbsp;and&nbsp;depth&nbsp;of&nbsp;character&nbsp;\#i<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Tfm-__init__"><strong>__init__</strong></a>(self, filename)</dt></dl>
@@ -219,12 +224,13 @@ Data descriptors defined here:<br>
 <font color="#000000" face="helvetica, arial"><a name="Vf">class <strong>Vf</strong></a>(<a href="matplotlib.dviread.html#Dvi">Dvi</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>A&nbsp;virtual&nbsp;font&nbsp;(*.vf&nbsp;file)&nbsp;containing&nbsp;subroutines&nbsp;for&nbsp;dvi&nbsp;files.<br>
+<td colspan=2><tt>A&nbsp;virtual&nbsp;font&nbsp;(\*.vf&nbsp;file)&nbsp;containing&nbsp;subroutines&nbsp;for&nbsp;dvi&nbsp;files.<br>
 &nbsp;<br>
-Usage:<br>
-vf&nbsp;=&nbsp;<a href="#Vf">Vf</a>(filename)<br>
-glyph&nbsp;=&nbsp;vf[code]<br>
-glyph.text,&nbsp;glyph.boxes,&nbsp;glyph.width<br>&nbsp;</tt></td></tr>
+Usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;vf&nbsp;=&nbsp;<a href="#Vf">Vf</a>(filename)<br>
+&nbsp;&nbsp;glyph&nbsp;=&nbsp;vf[code]<br>
+&nbsp;&nbsp;glyph.text,&nbsp;glyph.boxes,&nbsp;glyph.width<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.dviread.html#Vf">Vf</a></dd>

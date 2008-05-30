@@ -2,9 +2,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.0.4.dev4009)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.1.0.dev5176)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/numerix/__init__.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/numerix/__init__.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
 &nbsp;<br>
 0.&nbsp;&nbsp;If&nbsp;the&nbsp;value&nbsp;"--numpy","--numarray"&nbsp;or&nbsp;"--Numeric"&nbsp;is&nbsp;specified&nbsp;on&nbsp;the<br>
@@ -51,36 +51,40 @@ Join&nbsp;arrays&nbsp;together.<br>
 The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
 (default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
 &nbsp;<br>
-Example:<br>
-&nbsp;<br>
+Examples<br>
+--------<br>
 &gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
 array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
  <dl><dt><a name="-dump"><strong>dump</strong></a>(...)</dt><dd><tt><a href="#-dump">dump</a>(obj,&nbsp;file,&nbsp;protocol=0)&nbsp;--&nbsp;Write&nbsp;an&nbsp;object&nbsp;in&nbsp;pickle&nbsp;format&nbsp;to&nbsp;the&nbsp;given&nbsp;file.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;Pickler&nbsp;docstring&nbsp;for&nbsp;the&nbsp;meaning&nbsp;of&nbsp;optional&nbsp;argument&nbsp;proto.</tt></dd></dl>
  <dl><dt><a name="-dumps"><strong>dumps</strong></a>(...)</dt><dd><tt><a href="#-dumps">dumps</a>(obj,&nbsp;protocol=0)&nbsp;--&nbsp;Return&nbsp;a&nbsp;string&nbsp;containing&nbsp;an&nbsp;object&nbsp;in&nbsp;pickle&nbsp;format.<br>
 &nbsp;<br>
 See&nbsp;the&nbsp;Pickler&nbsp;docstring&nbsp;for&nbsp;the&nbsp;meaning&nbsp;of&nbsp;optional&nbsp;argument&nbsp;proto.</tt></dd></dl>
- <dl><dt><a name="-innerproduct"><strong>innerproduct</strong></a> = inner(...)</dt><dd><tt><a href="#-innerproduct">innerproduct</a>(a,b)<br>
-Returns&nbsp;the&nbsp;inner&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;NumPy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
+ <dl><dt><a name="-innerproduct"><strong>innerproduct</strong></a> = inner(...)</dt><dd><tt>inner(a,b)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;two&nbsp;arrays,&nbsp;which&nbsp;has&nbsp;shape&nbsp;a.shape[:-1]&nbsp;+<br>
+b.shape[:-1]&nbsp;with&nbsp;elements&nbsp;computed&nbsp;by&nbsp;the&nbsp;product&nbsp;of&nbsp;the&nbsp;elements<br>
+from&nbsp;the&nbsp;last&nbsp;dimensions&nbsp;of&nbsp;a&nbsp;and&nbsp;b.</tt></dd></dl>
  <dl><dt><a name="-iscontiguous"><strong>iscontiguous</strong></a>(a)</dt></dl>
  <dl><dt><a name="-itemsize"><strong>itemsize</strong></a>(a)</dt></dl>
- <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
- <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)&nbsp;sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where<br>
-mask.flat[n]&nbsp;is&nbsp;true.&nbsp;&nbsp;If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;of&nbsp;a&nbsp;and&nbsp;mask&nbsp;then<br>
-it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavior&nbsp;than&nbsp;a[mask]&nbsp;=&nbsp;values.</tt></dd></dl>
+ <dl><dt><a name="-matrixmultiply"><strong>matrixmultiply</strong></a> = dot(...)</dt></dl>
+ <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)<br>
+&nbsp;<br>
+Sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where&nbsp;mask.flat[n]&nbsp;is&nbsp;true.<br>
+&nbsp;<br>
+If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;as&nbsp;`a`&nbsp;and&nbsp;`mask`&nbsp;then&nbsp;it&nbsp;will&nbsp;repeat.<br>
+This&nbsp;gives&nbsp;behavior&nbsp;different&nbsp;from&nbsp;a[mask]&nbsp;=&nbsp;values.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+a&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;to&nbsp;put&nbsp;data&nbsp;into<br>
+mask&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;mask&nbsp;array<br>
+values&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Values&nbsp;to&nbsp;put</tt></dd></dl>
  <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
 random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
 &nbsp;<br>
@@ -98,9 +102,6 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;that&nbsp;takes&nbsp;a&nbsp;tuple&nbsp;as&nbsp;the&nbsp;first&nbsp;argument<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;numpy.random.standard_normal(shape_tuple).</tt></dd></dl>
  <dl><dt><a name="-typecode"><strong>typecode</strong></a>(a)</dt></dl>
- <dl><dt><a name="-vdot"><strong>vdot</strong></a>(...)</dt><dd><tt><a href="#-vdot">vdot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;scalars&nbsp;and&nbsp;vectors<br>
-of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbsp;first&nbsp;argument,&nbsp;a,&nbsp;is&nbsp;conjugated.</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -126,6 +127,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>Int0</strong> = 'b'<br>
 <strong>Int16</strong> = 'h'<br>
 <strong>Int32</strong> = 'i'<br>
+<strong>Int64</strong> = 'l'<br>
 <strong>Int8</strong> = 'b'<br>
 <strong>LittleEndian</strong> = True<br>
 <strong>NewAxis</strong> = None<br>
@@ -138,7 +140,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>UnsignedInt32</strong> = 'I'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.0.4.dev4009'<br>
+<strong>__version__</strong> = '1.1.0.dev5176'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -164,14 +166,14 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>floor</strong> = &lt;ufunc 'floor'&gt;<br>
 <strong>floor_divide</strong> = &lt;ufunc 'floor_divide'&gt;<br>
 <strong>fmod</strong> = &lt;ufunc 'fmod'&gt;<br>
-<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x84de924&gt;, 'Float': 'd', ...}<br>
+<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xe58aa0&gt;, 'Float': 'd', ...}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
 <strong>infinity</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
-<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x84de924&gt;, 'Float': 'd', ...}<br>
+<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xe58aa0&gt;, 'Float': 'd', ...}<br>
 <strong>left_shift</strong> = &lt;ufunc 'left_shift'&gt;<br>
 <strong>less</strong> = &lt;ufunc 'less'&gt;<br>
 <strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
@@ -188,7 +190,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x84c950c&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0xeb47e8&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
@@ -204,7 +206,7 @@ of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbs
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
 <strong>use_maskedarray</strong> = False<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;<br>
-<strong>version</strong> = 'numpy 1.0.4.dev4009'<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe46bd8&gt;<br>
+<strong>version</strong> = 'numpy 1.1.0.dev5176'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@

@@ -1,4 +1,255 @@
 ===============================================================
+2008-05-29 Released 0.98.0 at revision 5314
+
+2008-05-29 matplotlib.image.imread now no longer always returns RGBA
+           -- if the image is luminance or RGB, it will return a MxN
+           or MxNx3 array if possible.  Also uint8 is no longer always
+           forced to float.
+
+2008-05-29 Implement path clipping in PS backend - JDH
+
+2008-05-29 Fixed two bugs in texmanager.py:
+               improved comparison of dvipng versions
+               fixed a bug introduced when get_grey method was added
+           - DSD
+
+2008-05-28 Fix crashing of PDFs in xpdf and ghostscript when two-byte
+           characters are used with Type 3 fonts - MGD
+
+2008-05-28 Allow keyword args to configure widget properties as
+           requested in
+           http://sourceforge.net/tracker/index.php?func=detail&aid=1866207&group_id=80706&atid=560722
+           - JDH
+
+2008-05-28 Replaced '-' with u'\u2212' for minus sign as requested in
+           http://sourceforge.net/tracker/index.php?func=detail&aid=1962574&group_id=80706&atid=560720
+
+2008-05-28 zero width/height Rectangles no longer influence the
+           autoscaler.  Useful for log histograms with empty bins -
+           JDH
+
+2008-05-28 Fix rendering of composite glyphs in Type 3 conversion
+           (particularly as evidenced in the Eunjin.ttf Korean font)
+           Thanks Jae-Joon Lee for finding this!
+
+2008-05-27 Rewrote the cm.ScalarMappable callback infrastructure to
+           use cbook.CallbackRegistry rather than custom callback
+           handling.  Amy users of add_observer/notify of the
+           cm.ScalarMappable should uae the
+           cm.ScalarMappable.callbacksSM CallbackRegistry instead. JDH
+
+2008-05-27 Fix TkAgg build on Ubuntu 8.04 (and hopefully a more
+           general solution for other platforms, too.)
+
+2008-05-24 Added PIL support for loading images to imread (if PIL is
+           available) - JDH
+
+2008-05-23 Provided a function and a method for controlling the
+           plot color cycle. - EF
+
+2008-05-23 Major revision of hist(). Can handle 2D arrays and create
+           stacked histogram plots; keyword 'width' deprecated and
+           rwidth (relative width) introduced; align='edge' changed
+           to center of bin - MM
+
+2008-05-22 Added support for ReST-based doumentation using Sphinx.
+           Documents are located in doc/, and are broken up into
+           a users guide and an API reference. To build, run the
+           make.py files. Sphinx-0.4 is needed to build generate xml,
+           which will be useful for rendering equations with mathml,
+           use sphinx from svn until 0.4 is released - DSD
+
+2008-05-21 Fix segfault in TkAgg backend - MGD
+
+2008-05-21 Fix a "local variable unreferenced" bug in plotfile - MM
+
+2008-05-19 Fix crash when Windows can not access the registry to
+           determine font path [Bug 1966974, thanks Patrik Simons] - MGD
+
+2008-05-16 removed some unneeded code w/ the python 2.4 requirement.
+           cbook no longer provides compatibility for reversed,
+           enumerate, set or izip.  removed lib/subprocess, mpl1,
+           sandbox/units, and the swig code.  This stuff should remain
+           on the maintenance branch for archival purposes. JDH
+
+2008-05-16 Reorganized examples dir - JDH
+
+2008-05-16 Added 'elinewidth' keyword arg to errorbar, based on patch
+           by Christopher Brown - MM
+
+2008-05-16 Added 'cumulative' keyword arg to hist to plot cumulative
+           histograms. For normed hists, this is normalized to one - MM
+
+2008-05-15 Fix Tk backend segfault on some machines - MGD
+
+2008-05-14 Don't use stat on Windows (fixes font embedding problem) - MGD
+
+2008-05-09 Fix /singlequote (') in Postscript backend - MGD
+
+2008-05-08 Fix kerning in SVG when embedding character outlines - MGD
+
+2008-05-07 Switched to future numpy histogram semantic in hist - MM
+
+2008-05-06 Fix strange colors when blitting in QtAgg and Qt4Agg - MGD
+
+2008-05-05 pass notify_axes_change to the figure's add_axobserver
+           in the qt backends, like we do for the other backends.
+           Thanks Glenn Jones for the report - DSD
+
+2008-05-02 Added step histograms, based on patch by Erik Tollerud. - MM
+
+2008-05-02 On PyQt <= 3.14 there is no way to determine the underlying
+           Qt version. [1851364] - MGD
+
+2008-05-02 Don't call sys.exit() when pyemf is not found [1924199] -
+           MGD
+
+2008-05-02 Update _subprocess.c from upstream Python 2.5.2 to get a
+           few memory and reference-counting-related bugfixes.  See
+           bug 1949978. - MGD
+
+2008-04-30 Added some record array editing widgets for gtk -- see
+           examples/rec_edit*.py - JDH
+
+2008-04-29 Fix bug in mlab.sqrtm - MM
+
+2008-04-28 Fix bug in SVG text with Mozilla-based viewers (the symbol
+           tag is not supported) - MGD
+
+2008-04-27 Applied patch by Michiel de Hoon to add hexbin
+           axes method and pyplot function - EF
+
+2008-04-25 Enforce python >= 2.4; remove subprocess build - EF
+
+2008-04-25 Enforce the numpy requirement at build time - JDH
+
+2008-04-24 Make numpy 1.1 and python 2.3 required when importing
+           matplotlib - EF
+
+2008-04-24 Fix compilation issues on VS2003 (Thanks Martin Spacek for
+           all the help) - MGD
+
+2008-04-24 Fix sub/superscripts when the size of the font has been
+           changed - MGD
+
+2008-04-22 Use "svg.embed_char_paths" consistently everywhere - MGD
+
+2008-04-20 Add support to MaxNLocator for symmetric axis autoscaling. - EF
+
+2008-04-20 Fix double-zoom bug. - MM
+
+2008-04-15 Speed up color mapping. - EF
+
+2008-04-12 Speed up zooming and panning of dense images. - EF
+
+2008-04-11 Fix global font rcParam setting after initialization
+           time. - MGD
+
+2008-04-11 Revert commits 5002 and 5031, which were intended to
+           avoid an unnecessary call to draw(). 5002 broke saving
+           figures before show(). 5031 fixed the problem created in
+           5002, but broke interactive plotting. Unnecessary call to
+           draw still needs resolution - DSD
+
+2008-04-07 Improve color validation in rc handling, suggested
+           by Lev Givon - EF
+
+2008-04-02 Allow to use both linestyle definition arguments, '-' and
+           'solid' etc. in plots/collections - MM
+
+2008-03-27 Fix saving to Unicode filenames with Agg backend
+           (other backends appear to already work...)
+           (Thanks, Christopher Barker) - MGD
+
+2008-03-26 Fix SVG backend bug that prevents copying and pasting in
+           Inkscape (thanks Kaushik Ghose) - MGD
+
+2008-03-24 Removed an unnecessary call to draw() in the backend_qt*
+           mouseReleaseEvent. Thanks to Ted Drain - DSD
+
+2008-03-23 Fix a pdf backend bug which sometimes caused the outermost
+           gsave to not be balanced with a grestore. - JKS
+
+2008-03-20 Fixed a minor bug in ContourSet._process_linestyles when
+           len(linestyles)==Nlev - MM
+
+2008-03-19 Changed ma import statements to "from numpy import ma";
+           this should work with past and future versions of
+           numpy, whereas "import numpy.ma as ma" will work only
+           with numpy >= 1.05, and "import numerix.npyma as ma"
+           is obsolete now that maskedarray is replacing the
+           earlier implementation, as of numpy 1.05.
+
+2008-03-14 Removed an apparently unnecessary call to
+           FigureCanvasAgg.draw in backend_qt*agg. Thanks to Ted
+           Drain - DSD
+
+2008-03-10 Workaround a bug in backend_qt4agg's blitting due to a
+           buffer width/bbox width mismatch in _backend_agg's
+           copy_from_bbox - DSD
+
+2008-02-29 Fix class Wx toolbar pan and zoom functions (Thanks Jeff
+           Peery) - MGD
+
+2008-02-16 Added some new rec array functionality to mlab
+           (rec_summarize, rec2txt and rec_groupby).  See
+           examples/rec_groupby_demo.py.  Thanks to Tim M for rec2txt.
+
+2008-02-12 Applied Erik Tollerud's span selector patch - JDH
+
+2008-02-11 Update plotting() doc string to refer to getp/setp. - JKS
+
+2008-02-10 Fixed a problem with square roots in the pdf backend with
+           usetex. - JKS
+
+2008-02-08 Fixed minor __str__ bugs so getp(gca()) works. - JKS
+
+2008-02-05 Added getters for title, xlabel, ylabel, as requested
+           by Brandon Kieth - EF
+
+2008-02-05 Applied Gael's ginput patch and created
+           examples/ginput_demo.py - JDH
+
+2008-02-03 Expose interpnames, a list of valid interpolation
+           methods, as an AxesImage class attribute. - EF
+
+2008-02-03 Added BoundaryNorm, with examples in colorbar_only.py
+           and image_masked.py. - EF
+
+2008-02-03 Force dpi=72 in pdf backend to fix picture size bug. - JKS
+
+2008-02-01 Fix doubly-included font problem in Postscript backend - MGD
+
+2008-02-01 Fix reference leak in ft2font Glyph objects. - MGD
+
+2008-01-31 Don't use unicode strings with usetex by default - DSD
+
+2008-01-31 Fix text spacing problems in PDF backend with *some* fonts,
+           such as STIXGeneral.
+
+2008-01-31 Fix \sqrt with radical number (broken by making [ and ]
+           work below) - MGD
+
+2008-01-27 Applied  Martin Teichmann's patch to improve the Qt4
+           backend. Uses Qt's builtin toolbars and statusbars.
+           See bug 1828848 - DSD
+
+2008-01-10 Moved toolkits to mpl_toolkits, made mpl_toolkits
+           a namespace package - JSWHIT
+
+2008-01-10 Use setup.cfg to set the default parameters (tkagg,
+           numpy) when building windows installers - DSD
+
+2008-01-10 Fix bug displaying [ and ] in mathtext - MGD
+
+2008-01-10 Fix bug when displaying a tick value offset with scientific
+           notation. (Manifests itself as a warning that the \times
+           symbol can not be found). - MGD
+
+2008-01-10 Use setup.cfg to set the default parameters (tkagg,
+           numpy) when building windows installers - DSD
+
+===============================================================
 2008-01-06 Released 0.91.2 at revision 4802
 
 2007-12-26 Reduce too-late use of matplotlib.use() to a warning
@@ -135,6 +386,75 @@
 
 2007-10-31 Made log color scale easier to use with contourf;
            automatic level generation now works. - EF
+
+2007-10-29 TRANSFORMS REFACTORING
+
+	   The primary goal of this refactoring was to make it easier
+	   to extend matplotlib to support new kinds of projections.
+	   This is primarily an internal improvement, and the possible
+	   user-visible changes it allows are yet to come.
+
+	   The transformation framework was completely rewritten in
+	   Python (with Numpy).  This will make it easier to add news
+	   kinds of transformations without writing C/C++ code.
+
+	   Transforms are composed into a 'transform tree', made of
+	   transforms whose value depends on other transforms (their
+	   children).  When the contents of children change, their
+	   parents are automatically updated to reflect those changes.
+	   To do this an "invalidation" method is used: when children
+	   change, all of their ancestors are marked as "invalid".
+	   When the value of a transform is accessed at a later time,
+	   its value is recomputed only if it is invalid, otherwise a
+	   cached value may be used.  This prevents unnecessary
+	   recomputations of transforms, and contributes to better
+	   interactive performance.
+
+	   The framework can be used for both affine and non-affine
+	   transformations.  However, for speed, we want use the
+	   backend renderers to perform affine transformations
+	   whenever possible.  Therefore, it is possible to perform
+	   just the affine or non-affine part of a transformation on a
+	   set of data.  The affine is always assumed to occur after
+	   the non-affine.  For any transform:
+
+	        full transform == non-affine + affine
+
+	   Much of the drawing has been refactored in terms of
+	   compound paths.  Therefore, many methods have been removed
+	   from the backend interface and replaced with a a handful to
+	   draw compound paths.  This will make updating the backends
+	   easier, since there is less to update.  It also should make
+	   the backends more consistent in terms of functionality.
+
+	   User visible changes:
+
+	   - POLAR PLOTS: Polar plots are now interactively zoomable,
+             and the r-axis labels can be interactively rotated.
+             Straight line segments are now interpolated to follow the
+             curve of the r-axis.
+
+	   - Non-rectangular clipping works in more backends and with
+             more types of objects.
+
+	   - Sharing an axis across figures is now done in exactly
+	     the same way as sharing an axis between two axes in the
+	     same figure:
+
+	   	   fig1 = figure()
+		   fig2 = figure()
+
+		   ax1 = fig1.add_subplot(111)
+		   ax2 = fig2.add_subplot(111, sharex=ax1, sharey=ax1)
+
+           - linestyles now include steps-pre, steps-post and
+             steps-mid.  The old step still works and is equivalent to
+             step-pre.
+
+	   - Multiple line styles may be provided to a collection.
+
+	   See API_CHANGES for more low-level information about this
+	   refactoring.
 
 2007-10-24 Added ax kwarg to Figure.colorbar and pyplot.colorbar - EF
 
@@ -3251,3 +3571,4 @@ This is the Old, stale, never used changelog
 2003-11-21 - make a dash-dot dict for the GC
 
 2003-12-15 - fix install path bug
+t

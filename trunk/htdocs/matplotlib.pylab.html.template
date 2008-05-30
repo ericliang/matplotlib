@@ -2,9 +2,9 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big> (version 1.0.4.dev4009)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big> (version 1.1.0.dev5176)</font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/pylab.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/pylab.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
     <p><tt>This&nbsp;is&nbsp;a&nbsp;procedural&nbsp;interface&nbsp;to&nbsp;the&nbsp;matplotlib&nbsp;object-oriented<br>
 plotting&nbsp;library.<br>
 &nbsp;<br>
@@ -208,19 +208,20 @@ __end</tt></p>
 <a href="matplotlib.cm.html">matplotlib.cm</a><br>
 <a href="numpy.ctypeslib.html">numpy.ctypeslib</a><br>
 <a href="numpy.lib.scimath.html">numpy.lib.scimath</a><br>
-</td><td width="25%" valign=top><a href="numpy.fft.fftpack.html">numpy.fft.fftpack</a><br>
-<a href="numpy.fft.fftpack_lite.html">numpy.fft.fftpack_lite</a><br>
+<a href="numpy.fft.fftpack.html">numpy.fft.fftpack</a><br>
+</td><td width="25%" valign=top><a href="numpy.fft.fftpack_lite.html">numpy.fft.fftpack_lite</a><br>
 <a href="numpy.fft.helper.html">numpy.fft.helper</a><br>
 <a href="numpy.linalg.info.html">numpy.linalg.info</a><br>
 <a href="numpy.linalg.lapack_lite.html">numpy.linalg.lapack_lite</a><br>
-</td><td width="25%" valign=top><a href="numpy.linalg.linalg.html">numpy.linalg.linalg</a><br>
-<a href="numpy.core.ma.html">numpy.core.ma</a><br>
-<a href="math.html">math</a><br>
+<a href="numpy.linalg.linalg.html">numpy.linalg.linalg</a><br>
+<a href="numpy.ma.html">numpy.ma</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
 <a href="matplotlib.html">matplotlib</a><br>
 <a href="matplotlib.mlab.html">matplotlib.mlab</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.mpl.html">matplotlib.mpl</a><br>
+<a href="matplotlib.mpl.html">matplotlib.mpl</a><br>
 <a href="numpy.html">numpy</a><br>
-<a href="numpy.core.records.html">numpy.core.records</a><br>
+<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+</td><td width="25%" valign=top><a href="numpy.core.records.html">numpy.core.records</a><br>
 <a href="sys.html">sys</a><br>
 <a href="warnings.html">warnings</a><br>
 </td></tr></table></td></tr></table><p>
@@ -236,7 +237,6 @@ Add&nbsp;a&nbsp;docstring&nbsp;to&nbsp;a&nbsp;built-in&nbsp;obj&nbsp;if&nbsp;pos
 If&nbsp;the&nbsp;obj&nbsp;already&nbsp;has&nbsp;a&nbsp;docstring&nbsp;raise&nbsp;a&nbsp;RuntimeError<br>
 If&nbsp;this&nbsp;routine&nbsp;does&nbsp;not&nbsp;know&nbsp;how&nbsp;to&nbsp;add&nbsp;a&nbsp;docstring&nbsp;to&nbsp;the&nbsp;object<br>
 raise&nbsp;a&nbsp;TypeError</tt></dd></dl>
- <dl><dt><a name="-alterdot"><strong>alterdot</strong></a>(...)</dt><dd><tt><a href="#-alterdot">alterdot</a>()&nbsp;changes&nbsp;all&nbsp;dot&nbsp;functions&nbsp;to&nbsp;use&nbsp;blas.</tt></dd></dl>
  <dl><dt><a name="-arange"><strong>arange</strong></a>(...)</dt><dd><tt><a href="#-arange">arange</a>([start,]&nbsp;stop[,&nbsp;step,],&nbsp;dtype=None)<br>
 &nbsp;<br>
 For&nbsp;integer&nbsp;arguments,&nbsp;just&nbsp;like&nbsp;range()&nbsp;except&nbsp;it&nbsp;returns&nbsp;an&nbsp;array<br>
@@ -249,32 +249,39 @@ start)/step).&nbsp;&nbsp;This&nbsp;rule&nbsp;may&nbsp;result&nbsp;in&nbsp;the&nb
 being&nbsp;greater&nbsp;than&nbsp;stop.</tt></dd></dl>
  <dl><dt><a name="-array"><strong>array</strong></a>(...)</dt><dd><tt><a href="#-array">array</a>(object,&nbsp;dtype=None,&nbsp;copy=1,order=None,&nbsp;subok=0,ndmin=0)<br>
 &nbsp;<br>
-Return&nbsp;an&nbsp;array&nbsp;from&nbsp;object&nbsp;with&nbsp;the&nbsp;specified&nbsp;date-type.<br>
+Return&nbsp;an&nbsp;array&nbsp;from&nbsp;object&nbsp;with&nbsp;the&nbsp;specified&nbsp;data-type.<br>
 &nbsp;<br>
-Inputs:<br>
-&nbsp;&nbsp;object&nbsp;-&nbsp;an&nbsp;array,&nbsp;any&nbsp;object&nbsp;exposing&nbsp;the&nbsp;array&nbsp;interface,&nbsp;any<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;object&nbsp;whose&nbsp;__array__&nbsp;method&nbsp;returns&nbsp;an&nbsp;array,&nbsp;or&nbsp;any<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(nested)&nbsp;sequence.<br>
-&nbsp;&nbsp;dtype&nbsp;&nbsp;-&nbsp;The&nbsp;desired&nbsp;data-type&nbsp;for&nbsp;the&nbsp;array.&nbsp;&nbsp;If&nbsp;not&nbsp;given,&nbsp;then<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;the&nbsp;sequence.&nbsp;&nbsp;This&nbsp;argument&nbsp;can&nbsp;only<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;used&nbsp;to&nbsp;'upcast'&nbsp;the&nbsp;array.&nbsp;&nbsp;For&nbsp;downcasting,&nbsp;use&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;.astype(t)&nbsp;method.<br>
-&nbsp;&nbsp;copy&nbsp;&nbsp;&nbsp;-&nbsp;If&nbsp;true,&nbsp;then&nbsp;force&nbsp;a&nbsp;copy.&nbsp;&nbsp;Otherwise&nbsp;a&nbsp;copy&nbsp;will&nbsp;only&nbsp;occur<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;__array__&nbsp;returns&nbsp;a&nbsp;copy,&nbsp;obj&nbsp;is&nbsp;a&nbsp;nested&nbsp;sequence,&nbsp;or<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;copy&nbsp;is&nbsp;needed&nbsp;to&nbsp;satisfy&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;requirements<br>
-&nbsp;&nbsp;order&nbsp;&nbsp;-&nbsp;Specify&nbsp;the&nbsp;order&nbsp;of&nbsp;the&nbsp;array.&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;'C',&nbsp;then&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;will&nbsp;be&nbsp;in&nbsp;C-contiguous&nbsp;order&nbsp;(last-index&nbsp;varies&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastest).&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;'FORTRAN',&nbsp;then&nbsp;the&nbsp;returned&nbsp;array<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;in&nbsp;Fortran-contiguous&nbsp;order&nbsp;(first-index&nbsp;varies&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fastest).&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;None,&nbsp;then&nbsp;the&nbsp;returned&nbsp;array&nbsp;may<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;in&nbsp;either&nbsp;C-,&nbsp;or&nbsp;Fortran-contiguous&nbsp;order&nbsp;or&nbsp;even<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;discontiguous.<br>
-&nbsp;&nbsp;subok&nbsp;&nbsp;-&nbsp;If&nbsp;True,&nbsp;then&nbsp;sub-classes&nbsp;will&nbsp;be&nbsp;passed-through,&nbsp;otherwise<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;returned&nbsp;array&nbsp;will&nbsp;be&nbsp;forced&nbsp;to&nbsp;be&nbsp;a&nbsp;base-class&nbsp;array<br>
-&nbsp;&nbsp;ndmin&nbsp;&nbsp;-&nbsp;Specifies&nbsp;the&nbsp;minimum&nbsp;number&nbsp;of&nbsp;dimensions&nbsp;that&nbsp;the&nbsp;resulting<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;should&nbsp;have.&nbsp;&nbsp;1's&nbsp;will&nbsp;be&nbsp;pre-pended&nbsp;to&nbsp;the&nbsp;shape&nbsp;as<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;needed&nbsp;to&nbsp;meet&nbsp;this&nbsp;requirement.</tt></dd></dl>
+Parameters<br>
+----------<br>
+object&nbsp;:&nbsp;array-like<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;array,&nbsp;any&nbsp;object&nbsp;exposing&nbsp;the&nbsp;array&nbsp;interface,&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;object&nbsp;whose&nbsp;__array__&nbsp;method&nbsp;returns&nbsp;an&nbsp;array,&nbsp;or&nbsp;any<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(nested)&nbsp;sequence.<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;desired&nbsp;data-type&nbsp;for&nbsp;the&nbsp;array.&nbsp;&nbsp;If&nbsp;not&nbsp;given,&nbsp;then<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;type&nbsp;will&nbsp;be&nbsp;determined&nbsp;as&nbsp;the&nbsp;minimum&nbsp;type&nbsp;required<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;hold&nbsp;the&nbsp;objects&nbsp;in&nbsp;the&nbsp;sequence.&nbsp;&nbsp;This&nbsp;argument&nbsp;can&nbsp;only<br>
+&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;used&nbsp;to&nbsp;'upcast'&nbsp;the&nbsp;array.&nbsp;&nbsp;For&nbsp;downcasting,&nbsp;use&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;.astype(t)&nbsp;method.<br>
+copy&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;true,&nbsp;then&nbsp;force&nbsp;a&nbsp;copy.&nbsp;&nbsp;Otherwise&nbsp;a&nbsp;copy&nbsp;will&nbsp;only&nbsp;occur<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;__array__&nbsp;returns&nbsp;a&nbsp;copy,&nbsp;obj&nbsp;is&nbsp;a&nbsp;nested&nbsp;sequence,&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;copy&nbsp;is&nbsp;needed&nbsp;to&nbsp;satisfy&nbsp;any&nbsp;of&nbsp;the&nbsp;other&nbsp;requirements<br>
+order&nbsp;:&nbsp;{'C',&nbsp;'F',&nbsp;'A'&nbsp;(None)}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Specify&nbsp;the&nbsp;order&nbsp;of&nbsp;the&nbsp;array.&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;'C',&nbsp;then&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;will&nbsp;be&nbsp;in&nbsp;C-contiguous&nbsp;order&nbsp;(last-index&nbsp;varies&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fastest).&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;'FORTRAN',&nbsp;then&nbsp;the&nbsp;returned&nbsp;array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;in&nbsp;Fortran-contiguous&nbsp;order&nbsp;(first-index&nbsp;varies&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fastest).&nbsp;&nbsp;If&nbsp;order&nbsp;is&nbsp;None,&nbsp;then&nbsp;the&nbsp;returned&nbsp;array&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;in&nbsp;either&nbsp;C-,&nbsp;or&nbsp;Fortran-contiguous&nbsp;order&nbsp;or&nbsp;even<br>
+&nbsp;&nbsp;&nbsp;&nbsp;discontiguous.<br>
+subok&nbsp;:&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;True,&nbsp;then&nbsp;sub-classes&nbsp;will&nbsp;be&nbsp;passed-through,&nbsp;otherwise<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;returned&nbsp;array&nbsp;will&nbsp;be&nbsp;forced&nbsp;to&nbsp;be&nbsp;a&nbsp;base-class&nbsp;array<br>
+ndmin&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Specifies&nbsp;the&nbsp;minimum&nbsp;number&nbsp;of&nbsp;dimensions&nbsp;that&nbsp;the&nbsp;resulting<br>
+&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;should&nbsp;have.&nbsp;&nbsp;1's&nbsp;will&nbsp;be&nbsp;pre-pended&nbsp;to&nbsp;the&nbsp;shape&nbsp;as<br>
+&nbsp;&nbsp;&nbsp;&nbsp;needed&nbsp;to&nbsp;meet&nbsp;this&nbsp;requirement.</tt></dd></dl>
  <dl><dt><a name="-beta"><strong>beta</strong></a>(...)</dt><dd><tt>Beta&nbsp;distribution&nbsp;over&nbsp;[0,&nbsp;1].<br>
 &nbsp;<br>
 <a href="#-beta">beta</a>(a,&nbsp;b,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
@@ -309,8 +316,8 @@ Join&nbsp;arrays&nbsp;together.<br>
 The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp;joined&nbsp;along&nbsp;the&nbsp;given&nbsp;axis<br>
 (default&nbsp;is&nbsp;the&nbsp;first&nbsp;one)&nbsp;into&nbsp;a&nbsp;single&nbsp;numpy&nbsp;array.<br>
 &nbsp;<br>
-Example:<br>
-&nbsp;<br>
+Examples<br>
+--------<br>
 &gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
 <a href="#-array">array</a>([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
  <dl><dt><a name="-digitize"><strong>digitize</strong></a>(...)</dt><dd><tt><a href="#-digitize">digitize</a>(x,bins)<br>
@@ -322,15 +329,20 @@ bins&nbsp;is&nbsp;monotonically&nbsp;increasing,&nbsp;or&nbsp;bins&nbsp;[i-1]&nb
 bins&nbsp;is&nbsp;monotonically&nbsp;decreasing.<br>
 &nbsp;<br>
 Beyond&nbsp;the&nbsp;bounds&nbsp;of&nbsp;the&nbsp;bins&nbsp;0&nbsp;or&nbsp;len(bins)&nbsp;is&nbsp;returned&nbsp;as&nbsp;appropriate.</tt></dd></dl>
- <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt><dd><tt><a href="#-dot">dot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;numpy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;the&nbsp;second-to-last&nbsp;dimension&nbsp;of&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
- <dl><dt><a name="-empty"><strong>empty</strong></a>(...)</dt><dd><tt><a href="#-empty">empty</a>((d1,...,dn),dtype=float,order='C')<br>
+ <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-empty"><strong>empty</strong></a>(...)</dt><dd><tt><a href="#-empty">empty</a>(shape,&nbsp;dtype=float,&nbsp;order='C')<br>
 &nbsp;<br>
-Return&nbsp;a&nbsp;new&nbsp;array&nbsp;of&nbsp;shape&nbsp;(d1,...,dn)&nbsp;and&nbsp;given&nbsp;type&nbsp;with&nbsp;all&nbsp;its<br>
-entries&nbsp;uninitialized.&nbsp;This&nbsp;can&nbsp;be&nbsp;faster&nbsp;than&nbsp;zeros.</tt></dd></dl>
+Return&nbsp;a&nbsp;new&nbsp;array&nbsp;of&nbsp;given&nbsp;shape&nbsp;and&nbsp;type&nbsp;with&nbsp;all&nbsp;entries&nbsp;uninitialized.<br>
+This&nbsp;can&nbsp;be&nbsp;faster&nbsp;than&nbsp;zeros.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+shape&nbsp;:&nbsp;tuple&nbsp;of&nbsp;integers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Shape&nbsp;of&nbsp;the&nbsp;new&nbsp;array<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;desired&nbsp;data-type&nbsp;for&nbsp;the&nbsp;array.<br>
+order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;store&nbsp;multidimensional&nbsp;data&nbsp;in&nbsp;C&nbsp;or&nbsp;Fortran&nbsp;order.</tt></dd></dl>
  <dl><dt><a name="-exponential"><strong>exponential</strong></a>(...)</dt><dd><tt>Exponential&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-exponential">exponential</a>(scale=1.0,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
@@ -340,44 +352,71 @@ entries&nbsp;uninitialized.&nbsp;This&nbsp;can&nbsp;be&nbsp;faster&nbsp;than&nbs
  <dl><dt><a name="-fastCopyAndTranspose"><strong>fastCopyAndTranspose</strong></a> = _fastCopyAndTranspose(...)</dt><dd><tt>_fastCopyAndTranspose(a)</tt></dd></dl>
  <dl><dt><a name="-frombuffer"><strong>frombuffer</strong></a>(...)</dt><dd><tt><a href="#-frombuffer">frombuffer</a>(buffer=,&nbsp;dtype=float,&nbsp;count=-1,&nbsp;offset=0)<br>
 &nbsp;<br>
-Returns&nbsp;a&nbsp;1-d&nbsp;array&nbsp;of&nbsp;data&nbsp;type&nbsp;dtype&nbsp;from&nbsp;buffer.&nbsp;The&nbsp;buffer<br>
-argument&nbsp;must&nbsp;be&nbsp;an&nbsp;object&nbsp;that&nbsp;exposes&nbsp;the&nbsp;buffer&nbsp;interface.&nbsp;&nbsp;If<br>
-count&nbsp;is&nbsp;-1&nbsp;then&nbsp;the&nbsp;entire&nbsp;buffer&nbsp;is&nbsp;used,&nbsp;otherwise,&nbsp;count&nbsp;is&nbsp;the<br>
-size&nbsp;of&nbsp;the&nbsp;output.&nbsp;&nbsp;If&nbsp;offset&nbsp;is&nbsp;given&nbsp;then&nbsp;jump&nbsp;that&nbsp;far&nbsp;into&nbsp;the<br>
-buffer.&nbsp;If&nbsp;the&nbsp;buffer&nbsp;has&nbsp;data&nbsp;that&nbsp;is&nbsp;out&nbsp;not&nbsp;in&nbsp;machine&nbsp;byte-order,<br>
-than&nbsp;use&nbsp;a&nbsp;propert&nbsp;data&nbsp;type&nbsp;descriptor.&nbsp;The&nbsp;data&nbsp;will&nbsp;not&nbsp;be<br>
+Returns&nbsp;a&nbsp;1-d&nbsp;array&nbsp;of&nbsp;data&nbsp;type&nbsp;dtype&nbsp;from&nbsp;buffer.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+buffer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;object&nbsp;that&nbsp;exposes&nbsp;the&nbsp;buffer&nbsp;interface<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data&nbsp;type&nbsp;of&nbsp;the&nbsp;returned&nbsp;array.<br>
+count&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;items&nbsp;to&nbsp;read.&nbsp;-1&nbsp;means&nbsp;all&nbsp;data&nbsp;in&nbsp;the&nbsp;buffer.<br>
+offset&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;bytes&nbsp;to&nbsp;jump&nbsp;from&nbsp;the&nbsp;start&nbsp;of&nbsp;the&nbsp;buffer&nbsp;before&nbsp;reading<br>
+&nbsp;<br>
+Notes<br>
+-----<br>
+If&nbsp;the&nbsp;buffer&nbsp;has&nbsp;data&nbsp;that&nbsp;is&nbsp;not&nbsp;in&nbsp;machine&nbsp;byte-order,&nbsp;then<br>
+use&nbsp;a&nbsp;proper&nbsp;data&nbsp;type&nbsp;descriptor.&nbsp;The&nbsp;data&nbsp;will&nbsp;not&nbsp;be<br>
 byteswapped,&nbsp;but&nbsp;the&nbsp;array&nbsp;will&nbsp;manage&nbsp;it&nbsp;in&nbsp;future&nbsp;operations.</tt></dd></dl>
- <dl><dt><a name="-fromfile"><strong>fromfile</strong></a>(...)</dt><dd><tt><a href="#-fromfile">fromfile</a>(file=,&nbsp;dtype=float,&nbsp;count=-1,&nbsp;sep='')&nbsp;-&gt;&nbsp;array.<br>
+ <dl><dt><a name="-fromfile"><strong>fromfile</strong></a>(...)</dt><dd><tt><a href="#-fromfile">fromfile</a>(file=,&nbsp;dtype=float,&nbsp;count=-1,&nbsp;sep='')<br>
 &nbsp;<br>
-Required&nbsp;arguments:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;file&nbsp;--&nbsp;open&nbsp;file&nbsp;object&nbsp;or&nbsp;string&nbsp;containing&nbsp;file&nbsp;name.<br>
-&nbsp;<br>
-Keyword&nbsp;arguments:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;dtype&nbsp;--&nbsp;type&nbsp;and&nbsp;order&nbsp;of&nbsp;the&nbsp;returned&nbsp;array&nbsp;(default&nbsp;float)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;count&nbsp;--&nbsp;number&nbsp;of&nbsp;items&nbsp;to&nbsp;input&nbsp;(default&nbsp;all)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sep&nbsp;--&nbsp;separater&nbsp;between&nbsp;items&nbsp;if&nbsp;file&nbsp;is&nbsp;a&nbsp;text&nbsp;file&nbsp;(default&nbsp;"")<br>
-&nbsp;<br>
-Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;data&nbsp;type&nbsp;from&nbsp;a&nbsp;text&nbsp;or&nbsp;binary&nbsp;file.&nbsp;The<br>
-'file'&nbsp;argument&nbsp;can&nbsp;be&nbsp;an&nbsp;open&nbsp;file&nbsp;or&nbsp;a&nbsp;string&nbsp;with&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;file&nbsp;to<br>
-read&nbsp;from.&nbsp;&nbsp;If&nbsp;'count'&nbsp;==&nbsp;-1&nbsp;the&nbsp;entire&nbsp;file&nbsp;is&nbsp;read,&nbsp;otherwise&nbsp;count&nbsp;is&nbsp;the<br>
-number&nbsp;of&nbsp;items&nbsp;of&nbsp;the&nbsp;given&nbsp;type&nbsp;to&nbsp;read&nbsp;in.&nbsp;&nbsp;If&nbsp;'sep'&nbsp;is&nbsp;""&nbsp;it&nbsp;means&nbsp;to<br>
-read&nbsp;binary&nbsp;data&nbsp;from&nbsp;the&nbsp;file&nbsp;using&nbsp;the&nbsp;specified&nbsp;dtype,&nbsp;otherwise&nbsp;it&nbsp;gives<br>
-the&nbsp;separator&nbsp;between&nbsp;elements&nbsp;in&nbsp;a&nbsp;text&nbsp;file.&nbsp;The&nbsp;'dtype'&nbsp;value&nbsp;is&nbsp;also<br>
-used&nbsp;to&nbsp;determine&nbsp;the&nbsp;size&nbsp;and&nbsp;order&nbsp;of&nbsp;the&nbsp;items&nbsp;in&nbsp;binary&nbsp;files.<br>
-&nbsp;<br>
+Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;data&nbsp;type&nbsp;from&nbsp;a&nbsp;text&nbsp;or&nbsp;binary&nbsp;file.<br>
 &nbsp;<br>
 Data&nbsp;written&nbsp;using&nbsp;the&nbsp;tofile()&nbsp;method&nbsp;can&nbsp;be&nbsp;conveniently&nbsp;recovered&nbsp;using<br>
 this&nbsp;function.<br>
 &nbsp;<br>
+Parameters<br>
+----------<br>
+file&nbsp;:&nbsp;file&nbsp;or&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Open&nbsp;file&nbsp;object&nbsp;or&nbsp;string&nbsp;containing&nbsp;a&nbsp;file&nbsp;name.<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data&nbsp;type&nbsp;of&nbsp;the&nbsp;returned&nbsp;array.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;binary&nbsp;files,&nbsp;it&nbsp;is&nbsp;also&nbsp;used&nbsp;to&nbsp;determine&nbsp;the&nbsp;size&nbsp;and&nbsp;order&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;items&nbsp;in&nbsp;the&nbsp;file.<br>
+count&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;items&nbsp;to&nbsp;read.&nbsp;-1&nbsp;means&nbsp;all&nbsp;data&nbsp;in&nbsp;the&nbsp;whole&nbsp;file.<br>
+sep&nbsp;:&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Separator&nbsp;between&nbsp;items&nbsp;if&nbsp;file&nbsp;is&nbsp;a&nbsp;text&nbsp;file.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Empty&nbsp;("")&nbsp;separator&nbsp;means&nbsp;the&nbsp;file&nbsp;should&nbsp;be&nbsp;treated&nbsp;as&nbsp;binary.<br>
+&nbsp;<br>
+See&nbsp;also<br>
+--------<br>
+loadtxt&nbsp;:&nbsp;load&nbsp;data&nbsp;from&nbsp;text&nbsp;files<br>
+&nbsp;<br>
+Notes<br>
+-----<br>
 WARNING:&nbsp;This&nbsp;function&nbsp;should&nbsp;be&nbsp;used&nbsp;sparingly&nbsp;as&nbsp;the&nbsp;binary&nbsp;files&nbsp;are&nbsp;not<br>
 platform&nbsp;independent.&nbsp;In&nbsp;particular,&nbsp;they&nbsp;contain&nbsp;no&nbsp;endianess&nbsp;or&nbsp;datatype<br>
 information.&nbsp;Nevertheless&nbsp;it&nbsp;can&nbsp;be&nbsp;useful&nbsp;for&nbsp;reading&nbsp;in&nbsp;simply&nbsp;formatted<br>
 or&nbsp;binary&nbsp;data&nbsp;quickly.</tt></dd></dl>
  <dl><dt><a name="-fromiter"><strong>fromiter</strong></a>(...)</dt><dd><tt><a href="#-fromiter">fromiter</a>(iterable,&nbsp;dtype,&nbsp;count=-1)<br>
 &nbsp;<br>
-Return&nbsp;a&nbsp;new&nbsp;1d&nbsp;array&nbsp;initialized&nbsp;from&nbsp;iterable.&nbsp;If&nbsp;count&nbsp;is<br>
-nonegative,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;have&nbsp;count&nbsp;elements,&nbsp;otherwise&nbsp;it's<br>
-size&nbsp;is&nbsp;determined&nbsp;by&nbsp;the&nbsp;generator.</tt></dd></dl>
+Return&nbsp;a&nbsp;new&nbsp;1d&nbsp;array&nbsp;initialized&nbsp;from&nbsp;iterable.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+iterable<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Iterable&nbsp;object&nbsp;from&nbsp;which&nbsp;to&nbsp;obtain&nbsp;data<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Data&nbsp;type&nbsp;of&nbsp;the&nbsp;returned&nbsp;array.<br>
+count&nbsp;:&nbsp;int<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Number&nbsp;of&nbsp;items&nbsp;to&nbsp;read.&nbsp;-1&nbsp;means&nbsp;all&nbsp;data&nbsp;in&nbsp;the&nbsp;iterable.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+new_array&nbsp;:&nbsp;ndarray</tt></dd></dl>
  <dl><dt><a name="-frompyfunc"><strong>frompyfunc</strong></a>(...)</dt><dd><tt><a href="#-frompyfunc">frompyfunc</a>(func,&nbsp;nin,&nbsp;nout)&nbsp;take&nbsp;an&nbsp;arbitrary&nbsp;python&nbsp;function&nbsp;that&nbsp;takes&nbsp;nin&nbsp;objects&nbsp;as&nbsp;input&nbsp;and&nbsp;returns&nbsp;nout&nbsp;objects&nbsp;and&nbsp;return&nbsp;a&nbsp;universal&nbsp;function&nbsp;(ufunc).&nbsp;&nbsp;This&nbsp;ufunc&nbsp;always&nbsp;returns&nbsp;PyObject&nbsp;arrays</tt></dd></dl>
  <dl><dt><a name="-fromstring"><strong>fromstring</strong></a>(...)</dt><dd><tt><a href="#-fromstring">fromstring</a>(string,&nbsp;dtype=float,&nbsp;count=-1,&nbsp;sep='')<br>
 &nbsp;<br>
@@ -386,7 +425,8 @@ Return&nbsp;a&nbsp;new&nbsp;1d&nbsp;array&nbsp;initialized&nbsp;from&nbsp;the&nb
 If&nbsp;count&nbsp;is&nbsp;positive,&nbsp;the&nbsp;new&nbsp;array&nbsp;will&nbsp;have&nbsp;count&nbsp;elements,&nbsp;otherwise&nbsp;its<br>
 size&nbsp;is&nbsp;determined&nbsp;by&nbsp;the&nbsp;size&nbsp;of&nbsp;string.&nbsp;&nbsp;If&nbsp;sep&nbsp;is&nbsp;not&nbsp;empty&nbsp;then&nbsp;the<br>
 string&nbsp;is&nbsp;interpreted&nbsp;in&nbsp;ASCII&nbsp;mode&nbsp;and&nbsp;converted&nbsp;to&nbsp;the&nbsp;desired&nbsp;number&nbsp;type<br>
-using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;between&nbsp;elements&nbsp;(extra&nbsp;whitespace&nbsp;is&nbsp;ignored).</tt></dd></dl>
+using&nbsp;sep&nbsp;as&nbsp;the&nbsp;separator&nbsp;between&nbsp;elements&nbsp;(extra&nbsp;whitespace&nbsp;is&nbsp;ignored).<br>
+ASCII&nbsp;integer&nbsp;conversions&nbsp;are&nbsp;base-10;&nbsp;octal&nbsp;and&nbsp;hex&nbsp;are&nbsp;not&nbsp;supported.</tt></dd></dl>
  <dl><dt><a name="-gamma"><strong>gamma</strong></a>(...)</dt><dd><tt>Gamma&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-gamma">gamma</a>(shape,&nbsp;scale=1.0,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
@@ -396,13 +436,20 @@ an&nbsp;individual&nbsp;trial.<br>
 <a href="#-geometric">geometric</a>(p,&nbsp;size=None)</tt></dd></dl>
  <dl><dt><a name="-get_state"><strong>get_state</strong></a>(...)</dt><dd><tt>Return&nbsp;a&nbsp;tuple&nbsp;representing&nbsp;the&nbsp;internal&nbsp;state&nbsp;of&nbsp;the&nbsp;generator.<br>
 &nbsp;<br>
-<a href="#-get_state">get_state</a>()&nbsp;-&gt;&nbsp;('MT19937',&nbsp;int&nbsp;key[624],&nbsp;int&nbsp;pos)</tt></dd></dl>
+<a href="#-get_state">get_state</a>()&nbsp;-&gt;&nbsp;('MT19937',&nbsp;int&nbsp;key[624],&nbsp;int&nbsp;pos,&nbsp;int&nbsp;has_gauss,&nbsp;float&nbsp;cached_gaussian)</tt></dd></dl>
  <dl><dt><a name="-getbuffer"><strong>getbuffer</strong></a>(...)</dt><dd><tt><a href="#-getbuffer">getbuffer</a>(obj&nbsp;[,offset[,&nbsp;size]])<br>
 &nbsp;<br>
 Create&nbsp;a&nbsp;buffer&nbsp;object&nbsp;from&nbsp;the&nbsp;given&nbsp;object&nbsp;referencing&nbsp;a&nbsp;slice&nbsp;of<br>
 length&nbsp;size&nbsp;starting&nbsp;at&nbsp;offset.&nbsp;&nbsp;Default&nbsp;is&nbsp;the&nbsp;entire&nbsp;buffer.&nbsp;A<br>
 read-write&nbsp;buffer&nbsp;is&nbsp;attempted&nbsp;followed&nbsp;by&nbsp;a&nbsp;read-only&nbsp;buffer.</tt></dd></dl>
- <dl><dt><a name="-geterrobj"><strong>geterrobj</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-geterrobj"><strong>geterrobj</strong></a>(...)</dt><dd><tt><a href="#-geterrobj">geterrobj</a>()<br>
+&nbsp;<br>
+Used&nbsp;internally&nbsp;by&nbsp;`geterr`.<br>
+&nbsp;<br>
+Returns<br>
+-------<br>
+errobj&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Internal&nbsp;numpy&nbsp;buffer&nbsp;size,&nbsp;error&nbsp;mask,&nbsp;error&nbsp;callback&nbsp;function.</tt></dd></dl>
  <dl><dt><a name="-gumbel"><strong>gumbel</strong></a>(...)</dt><dd><tt>Gumbel&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-gumbel">gumbel</a>(loc=0.0,&nbsp;scale=1.0,&nbsp;size=None)</tt></dd></dl>
@@ -414,23 +461,12 @@ the&nbsp;hypergeometric&nbsp;distribution&nbsp;describes&nbsp;the&nbsp;distribut
 balls&nbsp;in&nbsp;the&nbsp;sample.<br>
 &nbsp;<br>
 <a href="#-hypergeometric">hypergeometric</a>(ngood,&nbsp;nbad,&nbsp;nsample,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-inner"><strong>inner</strong></a>(...)</dt><dd><tt>innerproduct(a,b)<br>
-Returns&nbsp;the&nbsp;inner&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;arrays&nbsp;of&nbsp;floating&nbsp;point&nbsp;types.<br>
-Like&nbsp;the&nbsp;generic&nbsp;NumPy&nbsp;equivalent&nbsp;the&nbsp;product&nbsp;sum&nbsp;is&nbsp;over<br>
-the&nbsp;last&nbsp;dimension&nbsp;of&nbsp;a&nbsp;and&nbsp;b.<br>
-NB:&nbsp;The&nbsp;first&nbsp;argument&nbsp;is&nbsp;not&nbsp;conjugated.</tt></dd></dl>
+ <dl><dt><a name="-inner"><strong>inner</strong></a>(...)</dt><dd><tt><a href="#-inner">inner</a>(a,b)<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;two&nbsp;arrays,&nbsp;which&nbsp;has&nbsp;shape&nbsp;a.shape[:-1]&nbsp;+<br>
+b.shape[:-1]&nbsp;with&nbsp;elements&nbsp;computed&nbsp;by&nbsp;the&nbsp;product&nbsp;of&nbsp;the&nbsp;elements<br>
+from&nbsp;the&nbsp;last&nbsp;dimensions&nbsp;of&nbsp;a&nbsp;and&nbsp;b.</tt></dd></dl>
  <dl><dt><a name="-int_asbuffer"><strong>int_asbuffer</strong></a>(...)</dt></dl>
- <dl><dt><a name="-interp"><strong>interp</strong></a>(...)</dt><dd><tt><a href="#-interp">interp</a>(x,&nbsp;xp,&nbsp;fp,&nbsp;left=None,&nbsp;right=None)<br>
-&nbsp;<br>
-Return&nbsp;the&nbsp;value&nbsp;of&nbsp;a&nbsp;piecewise-linear&nbsp;function&nbsp;at&nbsp;each&nbsp;value&nbsp;in&nbsp;x.<br>
-&nbsp;<br>
-The&nbsp;piecewise-linear&nbsp;function,&nbsp;f,&nbsp;is&nbsp;defined&nbsp;by&nbsp;the&nbsp;known&nbsp;data-points&nbsp;fp=<a href="#-f">f</a>(xp).<br>
-The&nbsp;xp&nbsp;points&nbsp;must&nbsp;be&nbsp;sorted&nbsp;in&nbsp;increasing&nbsp;order&nbsp;but&nbsp;this&nbsp;is&nbsp;not&nbsp;checked.<br>
-&nbsp;<br>
-For&nbsp;values&nbsp;of&nbsp;x&nbsp;&lt;&nbsp;xp[0]&nbsp;return&nbsp;the&nbsp;value&nbsp;given&nbsp;by&nbsp;left.&nbsp;&nbsp;If&nbsp;left&nbsp;is&nbsp;None,&nbsp;then<br>
-return&nbsp;fp[0].<br>
-For&nbsp;values&nbsp;of&nbsp;x&nbsp;&gt;&nbsp;xp[-1]&nbsp;return&nbsp;the&nbsp;value&nbsp;given&nbsp;by&nbsp;right.&nbsp;If&nbsp;right&nbsp;is&nbsp;None,&nbsp;then<br>
-return&nbsp;fp[-1].</tt></dd></dl>
  <dl><dt><a name="-laplace"><strong>laplace</strong></a>(...)</dt><dd><tt>Laplace&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-laplace">laplace</a>(loc=0.0,&nbsp;scale=1.0,&nbsp;size=None)</tt></dd></dl>
@@ -442,28 +478,38 @@ previous&nbsp;order&nbsp;is&nbsp;preserved&nbsp;when&nbsp;equal&nbsp;keys&nbsp;a
 a&nbsp;sort&nbsp;on&nbsp;multiple&nbsp;keys.&nbsp;&nbsp;If&nbsp;the&nbsp;keys&nbsp;represented&nbsp;columns&nbsp;of&nbsp;a&nbsp;spreadsheet,<br>
 for&nbsp;example,&nbsp;this&nbsp;would&nbsp;sort&nbsp;using&nbsp;multiple&nbsp;columns&nbsp;(the&nbsp;last&nbsp;key&nbsp;being<br>
 used&nbsp;for&nbsp;the&nbsp;primary&nbsp;sort&nbsp;order,&nbsp;the&nbsp;second-to-last&nbsp;key&nbsp;for&nbsp;the&nbsp;secondary<br>
-sort&nbsp;order,&nbsp;and&nbsp;so&nbsp;on).&nbsp;&nbsp;The&nbsp;keys&nbsp;argument&nbsp;must&nbsp;be&nbsp;a&nbsp;sequence&nbsp;of&nbsp;things<br>
-that&nbsp;can&nbsp;be&nbsp;converted&nbsp;to&nbsp;arrays&nbsp;of&nbsp;the&nbsp;same&nbsp;shape.<br>
+sort&nbsp;order,&nbsp;and&nbsp;so&nbsp;on).<br>
 &nbsp;<br>
-Parameters:<br>
+Parameters<br>
+----------<br>
+keys&nbsp;:&nbsp;(k,N)&nbsp;array&nbsp;or&nbsp;tuple&nbsp;of&nbsp;(N,)&nbsp;sequences<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;containing&nbsp;values&nbsp;that&nbsp;the&nbsp;returned&nbsp;indices&nbsp;should&nbsp;sort,&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;sequence&nbsp;of&nbsp;things&nbsp;that&nbsp;can&nbsp;be&nbsp;converted&nbsp;to&nbsp;arrays&nbsp;of&nbsp;the&nbsp;same&nbsp;shape.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:&nbsp;array&nbsp;type<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;containing&nbsp;values&nbsp;that&nbsp;the&nbsp;returned&nbsp;indices&nbsp;should&nbsp;sort.<br>
+axis&nbsp;:&nbsp;integer<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Axis&nbsp;to&nbsp;be&nbsp;indirectly&nbsp;sorted.&nbsp;&nbsp;Default&nbsp;is&nbsp;-1&nbsp;(i.e.&nbsp;last&nbsp;axis).<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;axis&nbsp;:&nbsp;integer<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Axis&nbsp;to&nbsp;be&nbsp;indirectly&nbsp;sorted.&nbsp;None&nbsp;indicates&nbsp;that&nbsp;the&nbsp;flattened<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;should&nbsp;be&nbsp;used.&nbsp;Default&nbsp;is&nbsp;-1.<br>
+Returns<br>
+-------<br>
+indices&nbsp;:&nbsp;(N,)&nbsp;integer&nbsp;array<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;of&nbsp;indices&nbsp;that&nbsp;sort&nbsp;the&nbsp;keys&nbsp;along&nbsp;the&nbsp;specified&nbsp;axis.<br>
 &nbsp;<br>
-Returns:<br>
+See&nbsp;Also<br>
+--------<br>
+argsort&nbsp;:&nbsp;indirect&nbsp;sort<br>
+sort&nbsp;:&nbsp;inplace&nbsp;sort<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;indices&nbsp;:&nbsp;integer&nbsp;array<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;of&nbsp;indices&nbsp;that&nbsp;sort&nbsp;the&nbsp;keys&nbsp;along&nbsp;the&nbsp;specified&nbsp;axis.&nbsp;The<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array&nbsp;has&nbsp;the&nbsp;same&nbsp;shape&nbsp;as&nbsp;the&nbsp;keys.<br>
-&nbsp;<br>
-SeeAlso:<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;argsort&nbsp;:&nbsp;indirect&nbsp;sort<br>
-&nbsp;&nbsp;&nbsp;&nbsp;sort&nbsp;:&nbsp;inplace&nbsp;sort</tt></dd></dl>
+Examples<br>
+--------<br>
+&gt;&gt;&gt;&nbsp;a&nbsp;=&nbsp;[1,5,1,4,3,6,7]<br>
+&gt;&gt;&gt;&nbsp;b&nbsp;=&nbsp;[9,4,0,4,0,4,3]<br>
+&gt;&gt;&gt;&nbsp;ind&nbsp;=&nbsp;<a href="#-lexsort">lexsort</a>((b,a))<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;ind<br>
+[2&nbsp;0&nbsp;4&nbsp;3&nbsp;1&nbsp;5&nbsp;6]<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;take(a,ind)<br>
+[1&nbsp;1&nbsp;3&nbsp;4&nbsp;5&nbsp;6&nbsp;7]<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;take(b,ind)<br>
+[0&nbsp;9&nbsp;0&nbsp;4&nbsp;4&nbsp;4&nbsp;3]</tt></dd></dl>
  <dl><dt><a name="-loads"><strong>loads</strong></a>(...)</dt><dd><tt><a href="#-loads">loads</a>(string)&nbsp;--&nbsp;Load&nbsp;a&nbsp;pickle&nbsp;from&nbsp;the&nbsp;given&nbsp;string</tt></dd></dl>
  <dl><dt><a name="-logistic"><strong>logistic</strong></a>(...)</dt><dd><tt>Logistic&nbsp;distribution.<br>
 &nbsp;<br>
@@ -516,6 +562,28 @@ Return&nbsp;a&nbsp;new&nbsp;uninitialized&nbsp;buffer&nbsp;object&nbsp;of&nbsp;s
  <dl><dt><a name="-normal"><strong>normal</strong></a>(...)</dt><dd><tt>Normal&nbsp;distribution&nbsp;(mean=loc,&nbsp;stdev=scale).<br>
 &nbsp;<br>
 <a href="#-normal">normal</a>(loc=0.0,&nbsp;scale=1.0,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
+ <dl><dt><a name="-packbits"><strong>packbits</strong></a>(...)</dt><dd><tt>out&nbsp;=&nbsp;numpy.<a href="#-packbits">packbits</a>(myarray,&nbsp;axis=None)<br>
+&nbsp;<br>
+myarray&nbsp;:&nbsp;an&nbsp;integer&nbsp;type&nbsp;array&nbsp;whose&nbsp;elements&nbsp;should&nbsp;be&nbsp;packed&nbsp;to&nbsp;bits<br>
+&nbsp;<br>
+&nbsp;This&nbsp;routine&nbsp;packs&nbsp;the&nbsp;elements&nbsp;of&nbsp;a&nbsp;binary-valued&nbsp;dataset&nbsp;into&nbsp;a<br>
+&nbsp;NumPy&nbsp;array&nbsp;of&nbsp;type&nbsp;uint8&nbsp;('B')&nbsp;whose&nbsp;bits&nbsp;correspond&nbsp;to<br>
+&nbsp;the&nbsp;logical&nbsp;(0&nbsp;or&nbsp;nonzero)&nbsp;value&nbsp;of&nbsp;the&nbsp;input&nbsp;elements.<br>
+&nbsp;The&nbsp;dimension&nbsp;over-which&nbsp;bit-packing&nbsp;is&nbsp;done&nbsp;is&nbsp;given&nbsp;by&nbsp;axis.<br>
+&nbsp;The&nbsp;shape&nbsp;of&nbsp;the&nbsp;output&nbsp;has&nbsp;the&nbsp;same&nbsp;number&nbsp;of&nbsp;dimensions&nbsp;as&nbsp;the&nbsp;input<br>
+&nbsp;(unless&nbsp;axis&nbsp;is&nbsp;None,&nbsp;in&nbsp;which&nbsp;case&nbsp;the&nbsp;output&nbsp;is&nbsp;1-d).<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;a&nbsp;=&nbsp;<a href="#-array">array</a>([[[1,0,1],<br>
+&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0,1,0]],<br>
+&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[1,1,0],<br>
+&nbsp;&nbsp;&nbsp;...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[0,0,1]]])<br>
+&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;b&nbsp;=&nbsp;numpy.<a href="#-packbits">packbits</a>(a,axis=-1)<br>
+&nbsp;&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;b<br>
+&nbsp;&nbsp;&nbsp;<a href="#-array">array</a>([[[160],[64]],[[192],[32]]],&nbsp;dtype=uint8)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;Note&nbsp;that&nbsp;160&nbsp;=&nbsp;128&nbsp;+&nbsp;32<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;192&nbsp;=&nbsp;128&nbsp;+&nbsp;64</tt></dd></dl>
  <dl><dt><a name="-pareto"><strong>pareto</strong></a>(...)</dt><dd><tt>Pareto&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-pareto">pareto</a>(a,&nbsp;size=None)</tt></dd></dl>
@@ -529,9 +597,21 @@ Return&nbsp;a&nbsp;new&nbsp;uninitialized&nbsp;buffer&nbsp;object&nbsp;of&nbsp;s
  <dl><dt><a name="-power"><strong>power</strong></a>(...)</dt><dd><tt>Power&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-power">power</a>(a,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)&nbsp;sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where<br>
-mask.flat[n]&nbsp;is&nbsp;true.&nbsp;&nbsp;If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;of&nbsp;a&nbsp;and&nbsp;mask&nbsp;then<br>
-it&nbsp;will&nbsp;repeat.&nbsp;&nbsp;This&nbsp;gives&nbsp;different&nbsp;behavior&nbsp;than&nbsp;a[mask]&nbsp;=&nbsp;values.</tt></dd></dl>
+ <dl><dt><a name="-putmask"><strong>putmask</strong></a>(...)</dt><dd><tt><a href="#-putmask">putmask</a>(a,&nbsp;mask,&nbsp;values)<br>
+&nbsp;<br>
+Sets&nbsp;a.flat[n]&nbsp;=&nbsp;values[n]&nbsp;for&nbsp;each&nbsp;n&nbsp;where&nbsp;mask.flat[n]&nbsp;is&nbsp;true.<br>
+&nbsp;<br>
+If&nbsp;values&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;size&nbsp;as&nbsp;`a`&nbsp;and&nbsp;`mask`&nbsp;then&nbsp;it&nbsp;will&nbsp;repeat.<br>
+This&nbsp;gives&nbsp;behavior&nbsp;different&nbsp;from&nbsp;a[mask]&nbsp;=&nbsp;values.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+a&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Array&nbsp;to&nbsp;put&nbsp;data&nbsp;into<br>
+mask&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;mask&nbsp;array<br>
+values&nbsp;:&nbsp;{array_like}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Values&nbsp;to&nbsp;put</tt></dd></dl>
  <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
 random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
 &nbsp;<br>
@@ -570,7 +650,6 @@ If&nbsp;high&nbsp;is&nbsp;None,&nbsp;then&nbsp;1&nbsp;&lt;=&nbsp;x&nbsp;&lt;=&nb
  <dl><dt><a name="-rayleigh"><strong>rayleigh</strong></a>(...)</dt><dd><tt>Rayleigh&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-rayleigh">rayleigh</a>(scale=1.0,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-restoredot"><strong>restoredot</strong></a>(...)</dt><dd><tt><a href="#-restoredot">restoredot</a>()&nbsp;restores&nbsp;dots&nbsp;to&nbsp;defaults.</tt></dd></dl>
  <dl><dt><a name="-sample"><strong>sample</strong></a> = random_sample(...)</dt><dd><tt>Return&nbsp;random&nbsp;floats&nbsp;in&nbsp;the&nbsp;half-open&nbsp;interval&nbsp;[0.0,&nbsp;1.0).<br>
 &nbsp;<br>
 <a href="#-random_sample">random_sample</a>(size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
@@ -589,6 +668,11 @@ forget&nbsp;**dict&nbsp;can&nbsp;be&nbsp;used&nbsp;as&nbsp;the&nbsp;argument&nbs
 that&nbsp;were&nbsp;replaced,&nbsp;which&nbsp;can&nbsp;be&nbsp;stored&nbsp;and&nbsp;set&nbsp;later.</tt></dd></dl>
  <dl><dt><a name="-set_state"><strong>set_state</strong></a>(...)</dt><dd><tt>Set&nbsp;the&nbsp;state&nbsp;from&nbsp;a&nbsp;tuple.<br>
 &nbsp;<br>
+state&nbsp;=&nbsp;('MT19937',&nbsp;int&nbsp;key[624],&nbsp;int&nbsp;pos,&nbsp;int&nbsp;has_gauss,&nbsp;float&nbsp;cached_gaussian)<br>
+&nbsp;<br>
+For&nbsp;backwards&nbsp;compatibility,&nbsp;the&nbsp;following&nbsp;form&nbsp;is&nbsp;also&nbsp;accepted<br>
+although&nbsp;it&nbsp;is&nbsp;missing&nbsp;some&nbsp;information&nbsp;about&nbsp;the&nbsp;cached&nbsp;Gaussian&nbsp;value.<br>
+&nbsp;<br>
 state&nbsp;=&nbsp;('MT19937',&nbsp;int&nbsp;key[624],&nbsp;int&nbsp;pos)<br>
 &nbsp;<br>
 <a href="#-set_state">set_state</a>(state)</tt></dd></dl>
@@ -598,7 +682,18 @@ Set&nbsp;the&nbsp;python&nbsp;function&nbsp;f&nbsp;to&nbsp;be&nbsp;the&nbsp;func
 printable&nbsp;string&nbsp;version&nbsp;of&nbsp;an&nbsp;array&nbsp;whenever&nbsp;an&nbsp;array&nbsp;is&nbsp;printed.<br>
 <a href="#-f">f</a>(M)&nbsp;should&nbsp;expect&nbsp;an&nbsp;array&nbsp;argument&nbsp;M,&nbsp;and&nbsp;should&nbsp;return&nbsp;a&nbsp;string<br>
 consisting&nbsp;of&nbsp;the&nbsp;desired&nbsp;representation&nbsp;of&nbsp;M&nbsp;for&nbsp;printing.</tt></dd></dl>
- <dl><dt><a name="-seterrobj"><strong>seterrobj</strong></a>(...)</dt></dl>
+ <dl><dt><a name="-seterrobj"><strong>seterrobj</strong></a>(...)</dt><dd><tt><a href="#-seterrobj">seterrobj</a>()<br>
+&nbsp;<br>
+Used&nbsp;internally&nbsp;by&nbsp;`seterr`.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+errobj&nbsp;:&nbsp;list<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[buffer_size,&nbsp;error_mask,&nbsp;callback_func]<br>
+&nbsp;<br>
+See&nbsp;Also<br>
+--------<br>
+seterrcall</tt></dd></dl>
  <dl><dt><a name="-shuffle"><strong>shuffle</strong></a>(...)</dt><dd><tt>Modify&nbsp;a&nbsp;sequence&nbsp;in-place&nbsp;by&nbsp;shuffling&nbsp;its&nbsp;contents.<br>
 &nbsp;<br>
 <a href="#-shuffle">shuffle</a>(x)</tt></dd></dl>
@@ -624,9 +719,14 @@ ending&nbsp;at&nbsp;right&nbsp;(left&nbsp;&lt;=&nbsp;mode&nbsp;&lt;=&nbsp;right)
  <dl><dt><a name="-uniform"><strong>uniform</strong></a>(...)</dt><dd><tt>Uniform&nbsp;distribution&nbsp;over&nbsp;[low,&nbsp;high).<br>
 &nbsp;<br>
 <a href="#-uniform">uniform</a>(low=0.0,&nbsp;high=1.0,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values</tt></dd></dl>
- <dl><dt><a name="-vdot"><strong>vdot</strong></a>(...)</dt><dd><tt><a href="#-vdot">vdot</a>(a,b)<br>
-Returns&nbsp;the&nbsp;dot&nbsp;product&nbsp;of&nbsp;a&nbsp;and&nbsp;b&nbsp;for&nbsp;scalars&nbsp;and&nbsp;vectors<br>
-of&nbsp;floating&nbsp;point&nbsp;and&nbsp;complex&nbsp;types.&nbsp;&nbsp;The&nbsp;first&nbsp;argument,&nbsp;a,&nbsp;is&nbsp;conjugated.</tt></dd></dl>
+ <dl><dt><a name="-unpackbits"><strong>unpackbits</strong></a>(...)</dt><dd><tt>out&nbsp;=&nbsp;numpy.<a href="#-unpackbits">unpackbits</a>(myarray,&nbsp;axis=None)<br>
+&nbsp;<br>
+myarray&nbsp;-&nbsp;array&nbsp;of&nbsp;uint8&nbsp;type&nbsp;where&nbsp;each&nbsp;element&nbsp;represents&nbsp;a&nbsp;bit-field<br>
+&nbsp;&nbsp;&nbsp;that&nbsp;should&nbsp;be&nbsp;unpacked&nbsp;into&nbsp;a&nbsp;boolean&nbsp;output&nbsp;array<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;The&nbsp;shape&nbsp;of&nbsp;the&nbsp;output&nbsp;array&nbsp;is&nbsp;either&nbsp;1-d&nbsp;(if&nbsp;axis&nbsp;is&nbsp;None)&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;the&nbsp;same&nbsp;shape&nbsp;as&nbsp;the&nbsp;input&nbsp;array&nbsp;with&nbsp;unpacking&nbsp;done&nbsp;along&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;axis&nbsp;specified.</tt></dd></dl>
  <dl><dt><a name="-vonmises"><strong>vonmises</strong></a>(...)</dt><dd><tt>von&nbsp;Mises&nbsp;circular&nbsp;distribution&nbsp;with&nbsp;mode&nbsp;mu&nbsp;and&nbsp;dispersion&nbsp;parameter<br>
 kappa&nbsp;on&nbsp;[-pi,&nbsp;pi].<br>
 &nbsp;<br>
@@ -637,22 +737,45 @@ kappa&nbsp;on&nbsp;[-pi,&nbsp;pi].<br>
  <dl><dt><a name="-weibull"><strong>weibull</strong></a>(...)</dt><dd><tt>Weibull&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-weibull">weibull</a>(a,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-where"><strong>where</strong></a>(...)</dt><dd><tt><a href="#-where">where</a>(condition,&nbsp;|&nbsp;x,&nbsp;y)<br>
+ <dl><dt><a name="-where"><strong>where</strong></a>(...)</dt><dd><tt><a href="#-where">where</a>(condition,&nbsp;x,&nbsp;y)&nbsp;or&nbsp;<a href="#-where">where</a>(condition)<br>
 &nbsp;<br>
-The&nbsp;result&nbsp;is&nbsp;shaped&nbsp;like&nbsp;condition&nbsp;and&nbsp;has&nbsp;elements&nbsp;of&nbsp;x&nbsp;and&nbsp;y&nbsp;where<br>
-condition&nbsp;is&nbsp;respectively&nbsp;true&nbsp;or&nbsp;false.&nbsp;&nbsp;If&nbsp;x&nbsp;or&nbsp;y&nbsp;are&nbsp;not&nbsp;given,<br>
-condition.nonzero()&nbsp;is&nbsp;returned.<br>
+Return&nbsp;elements&nbsp;from&nbsp;`x`&nbsp;or&nbsp;`y`,&nbsp;depending&nbsp;on&nbsp;`condition`.<br>
 &nbsp;<br>
-To&nbsp;group&nbsp;the&nbsp;indices&nbsp;by&nbsp;element,&nbsp;rather&nbsp;than&nbsp;dimension,&nbsp;use<br>
+Parameters<br>
+----------<br>
+condition&nbsp;:&nbsp;array&nbsp;of&nbsp;bool<br>
+&nbsp;&nbsp;&nbsp;&nbsp;When&nbsp;True,&nbsp;yield&nbsp;x,&nbsp;otherwise&nbsp;yield&nbsp;y.<br>
+x,y&nbsp;:&nbsp;1-dimensional&nbsp;arrays<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Values&nbsp;from&nbsp;which&nbsp;to&nbsp;choose.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;transpose(<a href="#-where">where</a>(condition))<br>
+Notes<br>
+-----<br>
+This&nbsp;is&nbsp;equivalent&nbsp;to<br>
 &nbsp;<br>
-instead.&nbsp;This&nbsp;always&nbsp;results&nbsp;in&nbsp;a&nbsp;2d&nbsp;array,&nbsp;with&nbsp;a&nbsp;row&nbsp;of&nbsp;indices&nbsp;for<br>
-each&nbsp;element&nbsp;that&nbsp;satisfies&nbsp;the&nbsp;condition.</tt></dd></dl>
- <dl><dt><a name="-zeros"><strong>zeros</strong></a>(...)</dt><dd><tt><a href="#-zeros">zeros</a>((d1,...,dn),dtype=float,order='C')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[xv&nbsp;if&nbsp;c&nbsp;else&nbsp;yv&nbsp;for&nbsp;(c,xv,yv)&nbsp;in&nbsp;zip(condition,x,y)]<br>
 &nbsp;<br>
-Return&nbsp;a&nbsp;new&nbsp;array&nbsp;of&nbsp;shape&nbsp;(d1,...,dn)&nbsp;and&nbsp;type&nbsp;typecode&nbsp;with&nbsp;all<br>
-it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
+The&nbsp;result&nbsp;is&nbsp;shaped&nbsp;like&nbsp;`condition`&nbsp;and&nbsp;has&nbsp;elements&nbsp;of&nbsp;`x`<br>
+or&nbsp;`y`&nbsp;where&nbsp;`condition`&nbsp;is&nbsp;respectively&nbsp;True&nbsp;or&nbsp;False.<br>
+&nbsp;<br>
+In&nbsp;the&nbsp;special&nbsp;case,&nbsp;where&nbsp;only&nbsp;`condition`&nbsp;is&nbsp;given,&nbsp;the<br>
+tuple&nbsp;condition.nonzero()&nbsp;is&nbsp;returned,&nbsp;instead.<br>
+&nbsp;<br>
+Examples<br>
+--------<br>
+&gt;&gt;&gt;&nbsp;<a href="#-where">where</a>([True,False,True],[1,2,3],[4,5,6])<br>
+<a href="#-array">array</a>([1,&nbsp;5,&nbsp;3])</tt></dd></dl>
+ <dl><dt><a name="-zeros"><strong>zeros</strong></a>(...)</dt><dd><tt><a href="#-zeros">zeros</a>(shape,&nbsp;dtype=float,&nbsp;order='C')<br>
+&nbsp;<br>
+Return&nbsp;a&nbsp;new&nbsp;array&nbsp;of&nbsp;given&nbsp;shape&nbsp;and&nbsp;type,&nbsp;filled&nbsp;zeros.<br>
+&nbsp;<br>
+Parameters<br>
+----------<br>
+shape&nbsp;:&nbsp;tuple&nbsp;of&nbsp;integers<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Shape&nbsp;of&nbsp;the&nbsp;new&nbsp;array<br>
+dtype&nbsp;:&nbsp;data-type<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;desired&nbsp;data-type&nbsp;for&nbsp;the&nbsp;array.<br>
+order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Whether&nbsp;to&nbsp;store&nbsp;multidimensional&nbsp;data&nbsp;in&nbsp;C&nbsp;or&nbsp;Fortran&nbsp;order.</tt></dd></dl>
  <dl><dt><a name="-zipf"><strong>zipf</strong></a>(...)</dt><dd><tt>Zipf&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-zipf">zipf</a>(a,&nbsp;size=None)</tt></dd></dl>
@@ -703,7 +826,7 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>SHIFT_OVERFLOW</strong> = 3<br>
 <strong>SHIFT_UNDERFLOW</strong> = 6<br>
 <strong>SU</strong> = SU<br>
-<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.void'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.int8'&gt;, &lt;type 'numpy.complex192'&gt;, &lt;type 'numpy.float32'&gt;, &lt;type 'numpy.bool_'&gt;, &lt;type 'numpy.uint8'&gt;, ...)<br>
+<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.float32'&gt;, &lt;type 'numpy.void'&gt;, &lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.string_'&gt;, &lt;type 'numpy.object_'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.complex256'&gt;, ...)<br>
 <strong>TH</strong> = TH<br>
 <strong>TU</strong> = TU<br>
 <strong>True_</strong> = True<br>
@@ -713,8 +836,7 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>WEEKLY</strong> = 2<br>
 <strong>WRAP</strong> = 1<br>
 <strong>YEARLY</strong> = 0<br>
-<strong>__dates_all__</strong> = ('date2num', 'num2date', 'drange', 'epoch2num', 'num2epoch', 'mx2num', 'DateFormatter', 'IndexDateFormatter', 'DateLocator', 'RRuleLocator', 'YearLocator', 'MonthLocator', 'WeekdayLocator', 'DayLocator', 'HourLocator', 'MinuteLocator', 'SecondLocator', 'rrule', 'MO', 'TU', ...)<br>
-<strong>__version__</strong> = '1.0.4.dev4009'<br>
+<strong>__version__</strong> = '1.1.0.dev5176'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -728,14 +850,15 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>bitwise_not</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>bitwise_or</strong> = &lt;ufunc 'bitwise_or'&gt;<br>
 <strong>bitwise_xor</strong> = &lt;ufunc 'bitwise_xor'&gt;<br>
-<strong>c_</strong> = &lt;numpy.lib.index_tricks.c_class object at 0x84b71ec&gt;<br>
-<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0x8...py.complex64'&gt;: &lt;function &lt;lambda&gt; at 0x8409f0c&gt;}<br>
+<strong>c_</strong> = &lt;numpy.lib.index_tricks.CClass object at 0xc47410&gt;<br>
+<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0xa... 'numpy.uint8'&gt;: &lt;function &lt;lambda&gt; at 0xa9cc08&gt;}<br>
 <strong>ceil</strong> = &lt;ufunc 'ceil'&gt;<br>
 <strong>colorbar_doc</strong> = '<font color="#c040c0">\n</font>Add a colorbar to a plot.<font color="#c040c0">\n\n</font>Function signatures ...e, do not use any of the<font color="#c040c0">\n</font>axes properties kwargs.<font color="#c040c0">\n</font>'<br>
 <strong>conj</strong> = &lt;ufunc 'conjugate'&gt;<br>
 <strong>conjugate</strong> = &lt;ufunc 'conjugate'&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
 <strong>cosh</strong> = &lt;ufunc 'cosh'&gt;<br>
+<strong>degrees</strong> = &lt;ufunc 'degrees'&gt;<br>
 <strong>divide</strong> = &lt;ufunc 'divide'&gt;<br>
 <strong>e</strong> = 2.7182818284590451<br>
 <strong>equal</strong> = &lt;ufunc 'equal'&gt;<br>
@@ -749,7 +872,7 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
-<strong>index_exp</strong> = &lt;numpy.lib.index_tricks._index_expression_class object at 0x84b738c&gt;<br>
+<strong>index_exp</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc47510&gt;<br>
 <strong>inf</strong> = inf<br>
 <strong>infty</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
@@ -769,30 +892,31 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>logical_or</strong> = &lt;ufunc 'logical_or'&gt;<br>
 <strong>logical_xor</strong> = &lt;ufunc 'logical_xor'&gt;<br>
 <strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
-<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0x84b70ec&gt;<br>
+<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc47290&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
 <strong>mod</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>modf</strong> = &lt;ufunc 'modf'&gt;<br>
 <strong>multiply</strong> = &lt;ufunc 'multiply'&gt;<br>
 <strong>nan</strong> = nan<br>
-<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...numpy.unicode_'&gt;: 0, &lt;type 'numpy.complex64'&gt;: 8}<br>
+<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.uint8'&gt;: 1}<br>
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0x84b710c&gt;<br>
+<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc472d0&gt;<br>
 <strong>ones_like</strong> = &lt;ufunc 'ones_like'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>r_</strong> = &lt;numpy.lib.index_tricks.r_class object at 0x84b716c&gt;<br>
+<strong>r_</strong> = &lt;numpy.lib.index_tricks.RClass object at 0xc47390&gt;<br>
+<strong>radians</strong> = &lt;ufunc 'radians'&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>rcParamsDefault</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>reciprocal</strong> = &lt;ufunc 'reciprocal'&gt;<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>rint</strong> = &lt;ufunc 'rint'&gt;<br>
-<strong>s_</strong> = &lt;numpy.lib.index_tricks._index_expression_class object at 0x84b73cc&gt;<br>
-<strong>sctypeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int32'&gt;, 8: &lt;type 'numpy.uint32'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
-<strong>sctypeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'Complex96': &lt;type 'numpy.complex192'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float32': &lt;type 'numpy.float32'&gt;, 'Float64': &lt;type 'numpy.float64'&gt;, ...}<br>
-<strong>sctypes</strong> = {'complex': [&lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.complex192'&gt;], 'float': [&lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.float96'&gt;], 'int': [&lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.int64'&gt;], 'others': [&lt;type 'bool'&gt;, &lt;type 'object'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'numpy.void'&gt;], 'uint': [&lt;type 'numpy.uint8'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.uint64'&gt;]}<br>
+<strong>s_</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc47590&gt;<br>
+<strong>sctypeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int64'&gt;, 8: &lt;type 'numpy.uint64'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
+<strong>sctypeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex128': &lt;type 'numpy.complex256'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float128': &lt;type 'numpy.float128'&gt;, 'Float32': &lt;type 'numpy.float32'&gt;, ...}<br>
+<strong>sctypes</strong> = {'complex': [&lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.complex256'&gt;], 'float': [&lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.float128'&gt;], 'int': [&lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.int64'&gt;], 'others': [&lt;type 'bool'&gt;, &lt;type 'object'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'numpy.void'&gt;], 'uint': [&lt;type 'numpy.uint8'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.uint64'&gt;]}<br>
 <strong>sign</strong> = &lt;ufunc 'sign'&gt;<br>
 <strong>signbit</strong> = &lt;ufunc 'signbit'&gt;<br>
 <strong>sin</strong> = &lt;ufunc 'sin'&gt;<br>
@@ -803,7 +927,7 @@ it's&nbsp;entries&nbsp;initialized&nbsp;to&nbsp;zero.</tt></dd></dl>
 <strong>tan</strong> = &lt;ufunc 'tan'&gt;<br>
 <strong>tanh</strong> = &lt;ufunc 'tanh'&gt;<br>
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
-<strong>typeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int32'&gt;, 8: &lt;type 'numpy.uint32'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
-<strong>typeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'Complex96': &lt;type 'numpy.complex192'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float32': &lt;type 'numpy.float32'&gt;, 'Float64': &lt;type 'numpy.float64'&gt;, ...}<br>
-<strong>typecodes</strong> = {'All': '?bhilqpBHILQPfdgFDGSUVO', 'AllFloat': 'fdgFDG', 'AllInteger': 'bBhHiIlLqQpP', 'Character': 'S1', 'Complex': 'FDG', 'Float': 'fdg', 'Integer': 'bhilqp', 'UnsignedInteger': 'BHILQP'}</td></tr></table>
+<strong>typeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int64'&gt;, 8: &lt;type 'numpy.uint64'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
+<strong>typeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex128': &lt;type 'numpy.complex256'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float128': &lt;type 'numpy.float128'&gt;, 'Float32': &lt;type 'numpy.float32'&gt;, ...}<br>
+<strong>typecodes</strong> = {'All': '?bhilqpBHILQPfdgFDGSUVO', 'AllFloat': 'fdgFDG', 'AllInteger': 'bBhHiIlLqQpP', 'Character': 'c', 'Complex': 'FDG', 'Float': 'fdg', 'Integer': 'bhilqp', 'UnsignedInteger': 'BHILQP'}</td></tr></table>
 @footer@

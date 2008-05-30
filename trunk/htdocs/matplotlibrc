@@ -19,7 +19,7 @@
 # Colors: for the color values below, you can either use
 #  - a matplotlib color string, such as r, k, or b
 #  - an rgb tuple, such as (1.0, 0.5, 0.0)
-#  - a hex string, such as ff00ff  (no '#' symbol)
+#  - a hex string, such as ff00ff or #ff00ff
 #  - a scalar grayscale intensity such as 0.75
 #  - a legal html color name, eg red, blue, darkslategray
 
@@ -156,7 +156,7 @@ numerix      : numpy  # numpy, Numeric or numarray
 				# 'tex': As TeX-like text.  Text between $'s will be
 				# formatted as a TeX math expression.
 				# This setting has no effect when text.usetex is True.
-				# In that case, all text will be sent to TeX for 
+				# In that case, all text will be sent to TeX for
 				# processing.
 
 # The following settings allow you to select the fonts in math mode.
@@ -171,7 +171,7 @@ numerix      : numpy  # numpy, Numeric or numarray
 #mathtext.fontset : cm # Should be 'cm' (Computer Modern), 'stix',
                        # 'stixsans' or 'custom'
 #mathtext.fallback_to_cm : True  # When True, use symbols from the Computer Modern
-			         # fonts when a symbol can not be found in one of 
+			         # fonts when a symbol can not be found in one of
 				 # the custom math fonts.
 
 ### AXES
@@ -247,6 +247,7 @@ numerix      : numpy  # numpy, Numeric or numarray
 #figure.subplot.wspace : 0.2   # the amount of width reserved for blank space between subplots
 #figure.subplot.hspace : 0.2   # the amount of height reserved for white space between subplots
 
+#figure.autolayout : False     # when True, adjust the axes so that text doesn't overlap
 
 ### IMAGES
 #image.aspect : equal             # equal | auto | a number
@@ -291,7 +292,7 @@ numerix      : numpy  # numpy, Numeric or numarray
 # svg backend params
 #svg.image_inline : True       # write raster image data directly into the svg file
 #svg.image_noscale : False     # suppress scaling of raster data embedded in SVG
-#svg.embed_chars : True       # embed character outlines in the SVG file
+#svg.embed_char_paths : True       # embed character outlines in the SVG file
 
 # Set the verbose flags.  This controls how much information
 # matplotlib gives you at runtime and where it goes.  The verbosity

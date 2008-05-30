@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.colors</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colors.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colors.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/colors.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/colors.py</a></font></td></tr></table>
     <p><tt>A&nbsp;class&nbsp;for&nbsp;converting&nbsp;color&nbsp;arguments&nbsp;to&nbsp;RGB&nbsp;or&nbsp;RGBA<br>
 &nbsp;<br>
 This&nbsp;class&nbsp;instantiates&nbsp;a&nbsp;single&nbsp;instance&nbsp;colorConverter&nbsp;that&nbsp;is&nbsp;used<br>
@@ -46,11 +46,10 @@ Finally,&nbsp;legal&nbsp;html&nbsp;names&nbsp;for&nbsp;colors,&nbsp;like&nbsp;'r
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
-<a href="matplotlib.numerix.npyma.html">matplotlib.numerix.npyma</a><br>
+</td><td width="25%" valign=top><a href="numpy.ma.html">numpy.ma</a><br>
 </td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-<a href="re.html">re</a><br>
-</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -73,13 +72,56 @@ Finally,&nbsp;legal&nbsp;html&nbsp;names&nbsp;for&nbsp;colors,&nbsp;like&nbsp;'r
 <dt><font face="helvetica, arial"><a href="matplotlib.colors.html#Normalize">Normalize</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.colors.html#LogNorm">LogNorm</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.colors.html#BoundaryNorm">BoundaryNorm</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.colors.html#LogNorm">LogNorm</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.colors.html#NoNorm">NoNorm</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.colors.html#NoNorm">NoNorm</a>
 </font></dt></dl>
 </dd>
 </dl>
  <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BoundaryNorm">class <strong>BoundaryNorm</strong></a>(<a href="matplotlib.colors.html#Normalize">Normalize</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Generate&nbsp;a&nbsp;colormap&nbsp;index&nbsp;based&nbsp;on&nbsp;discrete&nbsp;intervals.<br>
+&nbsp;<br>
+Unlike&nbsp;<a href="#Normalize">Normalize</a>&nbsp;or&nbsp;<a href="#LogNorm">LogNorm</a>,&nbsp;<a href="#BoundaryNorm">BoundaryNorm</a>&nbsp;maps&nbsp;values<br>
+to&nbsp;integers&nbsp;instead&nbsp;of&nbsp;to&nbsp;the&nbsp;interval&nbsp;0-1.<br>
+&nbsp;<br>
+Mapping&nbsp;to&nbsp;the&nbsp;0-1&nbsp;interval&nbsp;could&nbsp;have&nbsp;been&nbsp;done&nbsp;via<br>
+piece-wise&nbsp;linear&nbsp;interpolation,&nbsp;but&nbsp;using&nbsp;integers&nbsp;seems<br>
+simpler,&nbsp;and&nbsp;reduces&nbsp;the&nbsp;number&nbsp;of&nbsp;conversions&nbsp;back&nbsp;and&nbsp;forth<br>
+between&nbsp;integer&nbsp;and&nbsp;floating&nbsp;point.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="BoundaryNorm-__call__"><strong>__call__</strong></a>(self, x, clip<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="BoundaryNorm-__init__"><strong>__init__</strong></a>(self, boundaries, ncolors, clip<font color="#909090">=False</font>)</dt><dd><tt>args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;boundaries:&nbsp;a&nbsp;monotonically&nbsp;increasing&nbsp;sequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ncolors:&nbsp;number&nbsp;of&nbsp;colors&nbsp;in&nbsp;the&nbsp;colormap&nbsp;to&nbsp;be&nbsp;used<br>
+&nbsp;<br>
+If&nbsp;b[i]&nbsp;&lt;=&nbsp;v&nbsp;&lt;&nbsp;b[i+1]&nbsp;then&nbsp;v&nbsp;is&nbsp;mapped&nbsp;to&nbsp;color&nbsp;j;<br>
+as&nbsp;i&nbsp;varies&nbsp;from&nbsp;0&nbsp;to&nbsp;len(boundaries)-2,<br>
+j&nbsp;goes&nbsp;from&nbsp;0&nbsp;to&nbsp;ncolors-1.<br>
+&nbsp;<br>
+Out-of-range&nbsp;values&nbsp;are&nbsp;mapped&nbsp;to&nbsp;-1&nbsp;if&nbsp;low&nbsp;and&nbsp;ncolors<br>
+if&nbsp;high;&nbsp;these&nbsp;are&nbsp;converted&nbsp;to&nbsp;valid&nbsp;indices&nbsp;by<br>
+<a href="#Colormap">Colormap</a>.__call__.</tt></dd></dl>
+
+<dl><dt><a name="BoundaryNorm-inverse"><strong>inverse</strong></a>(self, value)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.colors.html#Normalize">Normalize</a>:<br>
+<dl><dt><a name="BoundaryNorm-autoscale"><strong>autoscale</strong></a>(self, A)</dt><dd><tt>Set&nbsp;vmin,&nbsp;vmax&nbsp;to&nbsp;min,&nbsp;max&nbsp;of&nbsp;A.</tt></dd></dl>
+
+<dl><dt><a name="BoundaryNorm-autoscale_None"><strong>autoscale_None</strong></a>(self, A)</dt><dd><tt>autoscale&nbsp;only&nbsp;None-valued&nbsp;vmin&nbsp;or&nbsp;vmax</tt></dd></dl>
+
+<dl><dt><a name="BoundaryNorm-scaled"><strong>scaled</strong></a>(self)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;vmin&nbsp;and&nbsp;vmax&nbsp;set</tt></dd></dl>
+
+</td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -103,10 +145,14 @@ For&nbsp;acceptable&nbsp;values&nbsp;of&nbsp;arg,&nbsp;see&nbsp;to_rgb.<br>
 If&nbsp;arg&nbsp;is&nbsp;an&nbsp;RGBA&nbsp;sequence&nbsp;and&nbsp;alpha&nbsp;is&nbsp;not&nbsp;None,<br>
 alpha&nbsp;will&nbsp;replace&nbsp;the&nbsp;original&nbsp;A.</tt></dd></dl>
 
-<dl><dt><a name="ColorConverter-to_rgba_list"><strong>to_rgba_list</strong></a>(self, c, alpha<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;rgba&nbsp;tuples.<br>
+<dl><dt><a name="ColorConverter-to_rgba_array"><strong>to_rgba_array</strong></a>(self, c, alpha<font color="#909090">=None</font>)</dt><dd><tt>Returns&nbsp;an&nbsp;Numpy&nbsp;array&nbsp;of&nbsp;rgba&nbsp;tuples.<br>
 &nbsp;<br>
 Accepts&nbsp;a&nbsp;single&nbsp;mpl&nbsp;color&nbsp;spec&nbsp;or&nbsp;a&nbsp;sequence&nbsp;of&nbsp;specs.<br>
-If&nbsp;the&nbsp;sequence&nbsp;is&nbsp;a&nbsp;list,&nbsp;the&nbsp;list&nbsp;items&nbsp;are&nbsp;changed&nbsp;in&nbsp;place.</tt></dd></dl>
+If&nbsp;the&nbsp;sequence&nbsp;is&nbsp;a&nbsp;list&nbsp;or&nbsp;array,&nbsp;the&nbsp;items&nbsp;are&nbsp;changed&nbsp;in&nbsp;place,<br>
+but&nbsp;an&nbsp;array&nbsp;copy&nbsp;is&nbsp;still&nbsp;returned.<br>
+&nbsp;<br>
+Special&nbsp;case&nbsp;to&nbsp;handle&nbsp;"no&nbsp;color":&nbsp;if&nbsp;c&nbsp;is&nbsp;"none"&nbsp;(case-insensitive),<br>
+then&nbsp;an&nbsp;empty&nbsp;array&nbsp;will&nbsp;be&nbsp;returned.&nbsp;&nbsp;Same&nbsp;for&nbsp;an&nbsp;empty&nbsp;list.</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
@@ -217,7 +263,15 @@ special&nbsp;colormaps&nbsp;also.<br>&nbsp;</tt></td></tr>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="ListedColormap-__init__"><strong>__init__</strong></a>(self, colors, name<font color="#909090">='from_list'</font>, N<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="ListedColormap-__init__"><strong>__init__</strong></a>(self, colors, name<font color="#909090">='from_list'</font>, N<font color="#909090">=None</font>)</dt><dd><tt>Make&nbsp;a&nbsp;colormap&nbsp;from&nbsp;a&nbsp;list&nbsp;of&nbsp;colors.<br>
+&nbsp;<br>
+colors&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;specifications<br>
+name&nbsp;is&nbsp;a&nbsp;string&nbsp;to&nbsp;identify&nbsp;the&nbsp;colormap<br>
+N&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;entries&nbsp;in&nbsp;the&nbsp;map.&nbsp;&nbsp;The&nbsp;default&nbsp;is&nbsp;None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;which&nbsp;case&nbsp;there&nbsp;is&nbsp;one&nbsp;colormap&nbsp;entry&nbsp;for&nbsp;each<br>
+&nbsp;&nbsp;&nbsp;&nbsp;element&nbsp;in&nbsp;the&nbsp;list&nbsp;of&nbsp;colors.&nbsp;&nbsp;If&nbsp;N&nbsp;&lt;&nbsp;len(colors)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;will&nbsp;be&nbsp;truncated&nbsp;at&nbsp;N.&nbsp;&nbsp;If&nbsp;N&nbsp;&gt;&nbsp;len(colors),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;list&nbsp;will&nbsp;be&nbsp;extended&nbsp;by&nbsp;repetition.</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.colors.html#Colormap">Colormap</a>:<br>
@@ -438,8 +492,8 @@ gives&nbsp;the&nbsp;closest&nbsp;value&nbsp;for&nbsp;values&nbsp;of&nbsp;x&nbsp;
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>cnames</strong> = {'aliceblue': '#F0F8FF', 'antiquewhite': '#FAEBD7', 'aqua': '#00FFFF', 'aquamarine': '#7FFFD4', 'azure': '#F0FFFF', 'beige': '#F5F5DC', 'bisque': '#FFE4C4', 'black': '#000000', 'blanchedalmond': '#FFEBCD', 'blue': '#0000FF', ...}<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x855a1ac&gt;<br>
-<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0x84bc660&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xe28710&gt;<br>
+<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xcf5920&gt;<br>
 <strong>k</strong> = 'peachpuff'<br>
 <strong>v</strong> = '#FFDAB9'</td></tr></table>
 @footer@

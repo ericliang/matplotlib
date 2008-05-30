@@ -4,6 +4,46 @@
 
 versioninfo = {}
 
+versioninfo['0.98.0'] = (
+
+('histogram enhancements', """<a
+href=matplotlib.pyplot.html#-hist>hist</a> can handle 2D arrays and create side-by-side or stacked histograms, as well as cumulative filled and unfilled histograms"""),
+
+('ginput function', """<a
+href=matplotlib.pyplot.html#-ginput>ginput</a> is a blocking function for interactive use to get input from the user.  A long requested feature submitted by Gael Varoquaux.  See <a
+href=examples/pylab/ginput_demo.py>ginput_demo.py</a>"""),
+
+('image optimizations', 'enhancements to speed up color mapping and panning and zooming on dense images'),
+
+('better transformations', """In what has been described as open-heart surgery on matplotlib, Michael Droettboom, supported by <a href=http://www.stsci.edu/>STScI</a>,  has rewritten the transformation infrastruture from the ground up, which not only makes the code more intuitive, it supports custom user projections and scales.  See <a href=doc/devel/add_new_projection.rst>adding a new projection</a> and the <a
+href=matplotlib.transforms.html>transforms</a> module documentation"""),
+
+('proper paths', """For the first time, matplotlib supports spine
+paths across backends, so you can pretty much draw anything.  See
+the <a href=screenshots.html#path_patch_demo>path_patch_demo
+screenshot</a> .  Thanks again to Michael Droettboom and
+<a href=http://www.stsci.edu/>STScI</a>"""),
+
+('better savefig', """<a
+href=matplotlib.pyplot.html#-savefig>savefig</a> now supports save to file handles (great for web app servers) or unicode filenames on all backends"""),
+
+('record array functions', """some more helper functions to facilitate work with record arrays: <a href=matplotlib.mlab.html#-rec_groupby>rec_groupby</a>, <a
+href=matplotlib.mlab.html#-rec2txt>rec2txt</a>, <a
+href=matplotlib.mlab.html#-rec_summarize>rec_summarize</a>"""),
+
+('accurate elliptical arcs', """In support of the <a href=http://www.jpl.nasa.gov/news/phoenix/main.php>Phoenix mission</a> to Mars, which used matplotlib in ground tracking of the spacecraft, Michael Droettboom built on work by Charlie Moad to provide an extremely accurate 8-spline approximation to <a href=matplotlib.patches.Arc#-draw>elliptical arcs</a> in the viewport.  This provides a scale free, accurate graph of the arc regardless of zoom level.  See<a href=screenshots.html#ellipse_demo>ellipse_demo screenshot</a>."""),
+
+('imread enhanced', """<a href=matplotlib.image.html#-imread>imread</a> now will use PIL when available to load images and return numpy arrays"""),
+
+('postscript enhancements', 'the postscript backend has clipping to paths (useful for polar plots)'),
+
+('PDF enhancements', 'The PDF backend handles composite glyphs properly, usetex fixes'),
+
+('SVF enhancements', 'clip to path (useful for polar plots), inkscape cut-and-paste fixes.'),
+
+('QT enhancements', 'Fixed a duplicate draw bug that slowed performance.  Native qt toolbars and status bars used for the toolbar controls.'),
+
+)
 versioninfo['0.91.2'] = (
 
 ('enhanced mathtext', """Complete revamp of matplotlib's internal math layout and rendering
@@ -396,8 +436,8 @@ href=whats_new.html#0.72-line_marker_optimizations_in_agg>here</a>.
 
     ('set deprecated', """\
 <tt>set</tt> clashes with the python2.4 builtin <tt>set</tt>.  Use <a
-href=matplotlib.pyplot.html#-setp>setp</a> and <a
-href=matplotlib.pyplot.html#-getp>getp</a> instead (<tt>get</tt> still
+href=matplotlib.artist.html#-setp>setp</a> and <a
+href=matplotlib.artist.html#-getp>getp</a> instead (<tt>get</tt> still
 works but I added <tt>getp</tt> for consistency).  A simple conversion
 script to recursive replace uses of set and get with setp and getp is
 provided in <a href=set_begone.py>set_begone.py</a>.  Use with

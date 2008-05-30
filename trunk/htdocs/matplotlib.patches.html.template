@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.patches</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/patches.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/patches.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/patches.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/patches.py</a></font></td></tr></table>
     <p></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -13,18 +13,13 @@
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.agg.html">matplotlib.agg</a><br>
-<a href="matplotlib.artist.html">matplotlib.artist</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
 <a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.colors.html">matplotlib.colors</a><br>
-<a href="matplotlib.lines.html">matplotlib.lines</a><br>
 <a href="math.html">math</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.mlab.html">matplotlib.mlab</a><br>
-<a href="matplotlib.html">matplotlib</a><br>
-<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
-</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-<a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
-<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -33,26 +28,25 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Patch">Patch</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Ellipse">Ellipse</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Arrow">Arrow</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Ellipse">Ellipse</a>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Arc">Arc</a>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Circle">Circle</a>
 </font></dt></dl>
 </dd>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Polygon">Polygon</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#PathPatch">PathPatch</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Polygon">Polygon</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Arrow">Arrow</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#FancyArrow">FancyArrow</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Wedge">Wedge</a>
-</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#YAArrow">YAArrow</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#FancyArrow">FancyArrow</a>
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Rectangle">Rectangle</a>
@@ -63,12 +57,13 @@
 </font></dt></dl>
 </dd>
 <dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Shadow">Shadow</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#Wedge">Wedge</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.patches.html#YAArrow">YAArrow</a>
 </font></dt></dl>
 </dd>
 </dl>
 </dd>
-<dt><font face="helvetica, arial"><a href="matplotlib.patches.html#PolygonInteractor">PolygonInteractor</a>
-</font></dt></dl>
+</dl>
  <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
@@ -89,6 +84,7 @@ resolution.<br>&nbsp;</tt></td></tr>
 <dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -126,9 +122,7 @@ from&nbsp;the&nbsp;ideal),&nbsp;a&nbsp;different&nbsp;technique&nbsp;is&nbsp;use
 &nbsp;<br>
 In&nbsp;that&nbsp;case,&nbsp;only&nbsp;the&nbsp;visible&nbsp;parts&nbsp;of&nbsp;the&nbsp;ellipse&nbsp;are&nbsp;drawn,<br>
 with&nbsp;each&nbsp;visible&nbsp;arc&nbsp;using&nbsp;a&nbsp;fixed&nbsp;number&nbsp;of&nbsp;spline&nbsp;segments<br>
-(8),&nbsp;which&nbsp;should&nbsp;be&nbsp;adequate&nbsp;when&nbsp;the&nbsp;number&nbsp;of&nbsp;pixels&nbsp;across<br>
-the&nbsp;image&nbsp;is&nbsp;less&nbsp;than&nbsp;5e5.&nbsp;&nbsp;The&nbsp;algorithm&nbsp;proceeds&nbsp;as<br>
-follows:<br>
+(8).&nbsp;&nbsp;The&nbsp;algorithm&nbsp;proceeds&nbsp;as&nbsp;follows:<br>
 &nbsp;<br>
 &nbsp;&nbsp;1.&nbsp;The&nbsp;points&nbsp;where&nbsp;the&nbsp;ellipse&nbsp;intersects&nbsp;the&nbsp;axes&nbsp;bounding<br>
 &nbsp;&nbsp;box&nbsp;are&nbsp;located.&nbsp;&nbsp;(This&nbsp;is&nbsp;done&nbsp;be&nbsp;performing&nbsp;an&nbsp;inverse<br>
@@ -146,41 +140,35 @@ follows:<br>
 &nbsp;&nbsp;calculated.<br>
 &nbsp;<br>
 &nbsp;&nbsp;3.&nbsp;Proceeding&nbsp;counterclockwise&nbsp;starting&nbsp;in&nbsp;the&nbsp;positive<br>
-&nbsp;&nbsp;x-direction,&nbsp;each&nbsp;of&nbsp;the&nbsp;visible&nbsp;arc-segments&nbsp;between&nbsp;each<br>
-&nbsp;&nbsp;pair&nbsp;of&nbsp;intersections&nbsp;are&nbsp;drawn&nbsp;using&nbsp;the&nbsp;bezier&nbsp;arc<br>
-&nbsp;&nbsp;approximation&nbsp;technique&nbsp;implemented&nbsp;in&nbsp;arc().</tt></dd></dl>
+&nbsp;&nbsp;x-direction,&nbsp;each&nbsp;of&nbsp;the&nbsp;visible&nbsp;arc-segments&nbsp;between&nbsp;the<br>
+&nbsp;&nbsp;pairs&nbsp;of&nbsp;vertices&nbsp;are&nbsp;drawn&nbsp;using&nbsp;the&nbsp;bezier&nbsp;arc<br>
+&nbsp;&nbsp;approximation&nbsp;technique&nbsp;implemented&nbsp;in&nbsp;Path.arc().</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
 <dl><dt><a name="Arc-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
 
-<dl><dt><a name="Arc-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="Arc-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
 
-<hr>
-Data and other attributes inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
-<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
-
-<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
-
-<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
-
-<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
-       [ 0.26...-1.        ],
-       [ 0.        , -1.        ]])</dl>
+<dl><dt><a name="Arc-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
-<dl><dt><a name="Arc-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Arc-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Arc-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arc-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Arc-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Arc-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Arc-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Arc-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arc-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Arc-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Arc-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -188,25 +176,35 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Arc-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arc-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Arc-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Arc-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Arc-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Arc-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Arc-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Arc-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Arc-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arc-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arc-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Arc-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Arc-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arc-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -234,9 +232,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Arc-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Arc-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Arc-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Arc-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -275,7 +275,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Arc-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Arc-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Arc-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Arc-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -332,9 +333,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Arc-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Arc-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Arc-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -404,6 +418,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Arc-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -411,16 +433,16 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Arrow">class <strong>Arrow</strong></a>(<a href="matplotlib.patches.html#Polygon">Polygon</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Arrow">class <strong>Arrow</strong></a>(<a href="matplotlib.patches.html#Patch">Patch</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>An&nbsp;arrow&nbsp;patch<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.patches.html#Arrow">Arrow</a></dd>
-<dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -447,9 +469,9 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <dl><dt><a name="Arrow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<hr>
-Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
-<dl><dt><a name="Arrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="Arrow-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arrow-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -459,17 +481,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Arrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Arrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Arrow-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Arrow-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arrow-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Arrow-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Arrow-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Arrow-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Arrow-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Arrow-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arrow-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Arrow-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Arrow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -477,25 +503,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Arrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Arrow-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Arrow-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Arrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Arrow-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Arrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Arrow-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Arrow-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Arrow-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Arrow-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -523,9 +559,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Arrow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Arrow-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Arrow-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Arrow-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -564,7 +602,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Arrow-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Arrow-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Arrow-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -621,9 +660,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Arrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Arrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Arrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -693,6 +745,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Arrow-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -710,6 +770,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -741,35 +802,29 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 Methods inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
 <dl><dt><a name="Circle-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
 
-<dl><dt><a name="Circle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+<dl><dt><a name="Circle-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Circle-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
-
-<hr>
-Data and other attributes inherited from <a href="matplotlib.patches.html#Ellipse">Ellipse</a>:<br>
-<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
-
-<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
-
-<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
-
-<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
-       [ 0.26...-1.        ],
-       [ 0.        , -1.        ]])</dl>
+<dl><dt><a name="Circle-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
-<dl><dt><a name="Circle-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Circle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="Circle-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Circle-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Circle-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Circle-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Circle-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Circle-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Circle-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Circle-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Circle-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Circle-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Circle-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -777,25 +832,35 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Circle-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Circle-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Circle-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Circle-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Circle-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Circle-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Circle-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Circle-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Circle-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Circle-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Circle-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -823,9 +888,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Circle-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Circle-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Circle-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Circle-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -864,7 +931,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Circle-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Circle-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Circle-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -921,9 +989,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Circle-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Circle-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Circle-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -993,6 +1074,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Circle-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -1010,6 +1099,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -1037,8 +1127,20 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>:<br>
-<dl><dt><a name="CirclePolygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="CirclePolygon-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="CirclePolygon-get_path"><strong>get_path</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a>:<br>
+<dl><dt><strong>numvertices</strong></dt>
+</dl>
+<dl><dt><strong>orientation</strong></dt>
+</dl>
+<dl><dt><strong>radius</strong></dt>
+</dl>
+<dl><dt><strong>xy</strong></dt>
+</dl>
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="CirclePolygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
@@ -1047,17 +1149,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="CirclePolygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="CirclePolygon-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="CirclePolygon-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="CirclePolygon-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="CirclePolygon-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -1065,25 +1171,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="CirclePolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="CirclePolygon-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="CirclePolygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="CirclePolygon-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="CirclePolygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="CirclePolygon-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="CirclePolygon-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -1111,9 +1227,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="CirclePolygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="CirclePolygon-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -1152,7 +1270,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="CirclePolygon-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="CirclePolygon-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -1209,9 +1328,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="CirclePolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="CirclePolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="CirclePolygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -1281,6 +1413,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="CirclePolygon-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -1297,6 +1437,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#Ellipse">Ellipse</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -1312,35 +1453,29 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <dl><dt><a name="Ellipse-contains"><strong>contains</strong></a>(self, ev)</dt></dl>
 
-<dl><dt><a name="Ellipse-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+<dl><dt><a name="Ellipse-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Ellipse-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
-
-<hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>MAGIC</strong> = 0.26520310000000002</dl>
-
-<dl><dt><strong>MAGIC45</strong> = 0.187526910402</dl>
-
-<dl><dt><strong>SQRTHALF</strong> = 0.707106781187</dl>
-
-<dl><dt><strong>circle</strong> = array([[ 0.        , -1.        ],
-       [ 0.26...-1.        ],
-       [ 0.        , -1.        ]])</dl>
+<dl><dt><a name="Ellipse-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
-<dl><dt><a name="Ellipse-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Ellipse-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Ellipse-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Ellipse-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Ellipse-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Ellipse-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Ellipse-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Ellipse-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Ellipse-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Ellipse-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Ellipse-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -1348,25 +1483,35 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 
 <dl><dt><a name="Ellipse-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Ellipse-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Ellipse-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Ellipse-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Ellipse-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Ellipse-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Ellipse-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Ellipse-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Ellipse-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Ellipse-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Ellipse-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -1394,9 +1539,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Ellipse-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Ellipse-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Ellipse-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -1435,7 +1582,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Ellipse-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Ellipse-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -1492,9 +1640,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Ellipse-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Ellipse-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Ellipse-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -1564,6 +1725,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Ellipse-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -1581,6 +1750,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -1618,8 +1788,12 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
-<dl><dt><a name="FancyArrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="FancyArrow-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
+<hr>
+Data descriptors inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
+<dl><dt><strong>xy</strong></dt>
+</dl>
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="FancyArrow-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
@@ -1628,17 +1802,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="FancyArrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="FancyArrow-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="FancyArrow-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="FancyArrow-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="FancyArrow-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="FancyArrow-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="FancyArrow-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="FancyArrow-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="FancyArrow-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="FancyArrow-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="FancyArrow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -1646,25 +1824,37 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="FancyArrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="FancyArrow-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="FancyArrow-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FancyArrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="FancyArrow-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="FancyArrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="FancyArrow-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="FancyArrow-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="FancyArrow-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="FancyArrow-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -1692,9 +1882,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="FancyArrow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="FancyArrow-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="FancyArrow-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -1733,7 +1925,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="FancyArrow-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="FancyArrow-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -1790,9 +1983,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="FancyArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="FancyArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="FancyArrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -1862,6 +2068,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="FancyArrow-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -1877,8 +2091,14 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 If&nbsp;any&nbsp;of&nbsp;edgecolor,&nbsp;facecolor,&nbsp;linewidth,&nbsp;or&nbsp;antialiased&nbsp;are<br>
 None,&nbsp;they&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;params&nbsp;setting<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
-<dl><dt><a name="Patch-__init__"><strong>__init__</strong></a>(self, edgecolor<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, linewidth<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, hatch<font color="#909090">=None</font>, fill<font color="#909090">=1</font>, **kwargs)</dt><dd><tt>The&nbsp;following&nbsp;kwarg&nbsp;properties&nbsp;are&nbsp;supported<br>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Patch-__init__"><strong>__init__</strong></a>(self, edgecolor<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, linewidth<font color="#909090">=None</font>, antialiased<font color="#909090">=None</font>, hatch<font color="#909090">=None</font>, fill<font color="#909090">=True</font>, **kwargs)</dt><dd><tt>The&nbsp;following&nbsp;kwarg&nbsp;properties&nbsp;are&nbsp;supported<br>
 alpha:&nbsp;float<br>
 animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
 antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
@@ -1904,17 +2124,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Patch-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Patch-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Patch-get_aa"><strong>get_aa</strong></a> = <a href="#Patch-get_antialiased">get_antialiased</a>(self)</dt></dl>
 
 <dl><dt><a name="Patch-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Patch-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Patch-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Patch-get_ec"><strong>get_ec</strong></a> = <a href="#Patch-get_edgecolor">get_edgecolor</a>(self)</dt></dl>
 
 <dl><dt><a name="Patch-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Patch-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Patch-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Patch-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Patch-get_fc"><strong>get_fc</strong></a> = <a href="#Patch-get_facecolor">get_facecolor</a>(self)</dt></dl>
 
 <dl><dt><a name="Patch-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -1922,27 +2146,33 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Patch-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Patch-get_lw"><strong>get_lw</strong></a> = <a href="#Patch-get_linewidth">get_linewidth</a>(self)</dt></dl>
 
-<dl><dt><a name="Patch-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;patch</tt></dd></dl>
+<dl><dt><a name="Patch-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Patch-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;path&nbsp;of&nbsp;this&nbsp;patch</tt></dd></dl>
+
+<dl><dt><a name="Patch-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Patch-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Patch-set_aa"><strong>set_aa</strong></a> = <a href="#Patch-set_antialiased">set_antialiased</a>(self, aa)</dt></dl>
+
 <dl><dt><a name="Patch-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Patch-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Patch-set_ec"><strong>set_ec</strong></a> = <a href="#Patch-set_edgecolor">set_edgecolor</a>(self, color)</dt></dl>
 
 <dl><dt><a name="Patch-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Patch-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Patch-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Patch-set_fc"><strong>set_fc</strong></a> = <a href="#Patch-set_facecolor">set_facecolor</a>(self, color)</dt></dl>
 
 <dl><dt><a name="Patch-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -1970,9 +2200,9 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Patch-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Patch-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Patch-set_lw"><strong>set_lw</strong></a> = <a href="#Patch-set_linewidth">set_linewidth</a>(self, w)</dt></dl>
 
 <dl><dt><a name="Patch-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -2011,7 +2241,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Patch-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Patch-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Patch-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -2068,9 +2299,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Patch-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Patch-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Patch-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -2140,6 +2384,342 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Patch-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="PathPatch">class <strong>PathPatch</strong></a>(<a href="matplotlib.patches.html#Patch">Patch</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;general&nbsp;polycurve&nbsp;path&nbsp;patch.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.patches.html#PathPatch">PathPatch</a></dd>
+<dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="PathPatch-__init__"><strong>__init__</strong></a>(self, path, **kwargs)</dt><dd><tt>path&nbsp;is&nbsp;a&nbsp;Path&nbsp;object<br>
+&nbsp;<br>
+Valid&nbsp;kwargs&nbsp;are:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edgecolor&nbsp;or&nbsp;ec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facecolor&nbsp;or&nbsp;fc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hatch:&nbsp;unknown<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw:&nbsp;float<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+See&nbsp;<a href="#Patch">Patch</a>&nbsp;documentation&nbsp;for&nbsp;additional&nbsp;kwargs</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_path"><strong>get_path</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><a name="PathPatch-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
+&nbsp;<br>
+Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="PathPatch-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
+&nbsp;<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
+/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done<br>
+if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
+in&nbsp;that&nbsp;direction<br>
+&nbsp;<br>
+CURRENT&nbsp;LIMITATIONS:<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
+backend&nbsp;only.<br>
+&nbsp;<br>
+2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="PathPatch-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="PathPatch-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="PathPatch-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#PathPatch-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
+be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
+Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
+was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="PathPatch-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="PathPatch-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -2156,10 +2736,11 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Polygon-__init__"><strong>__init__</strong></a>(self, xy, **kwargs)</dt><dd><tt>xy&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(x,y)&nbsp;2&nbsp;tuples<br>
+<dl><dt><a name="Polygon-__init__"><strong>__init__</strong></a>(self, xy, **kwargs)</dt><dd><tt>xy&nbsp;is&nbsp;a&nbsp;numpy&nbsp;array&nbsp;with&nbsp;shape&nbsp;Nx2<br>
 &nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
@@ -2183,8 +2764,12 @@ See&nbsp;<a href="#Patch">Patch</a>&nbsp;documentation&nbsp;for&nbsp;additional&
 
 <dl><dt><a name="Polygon-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Polygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="Polygon-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>xy</strong></dt>
+</dl>
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="Polygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
@@ -2193,17 +2778,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Polygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Polygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Polygon-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Polygon-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Polygon-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Polygon-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Polygon-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Polygon-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Polygon-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Polygon-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Polygon-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Polygon-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Polygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -2211,25 +2800,37 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Polygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Polygon-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Polygon-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Polygon-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Polygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Polygon-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Polygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Polygon-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Polygon-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Polygon-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Polygon-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -2257,9 +2858,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Polygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Polygon-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Polygon-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Polygon-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -2298,7 +2901,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Polygon-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Polygon-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Polygon-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -2355,9 +2959,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Polygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Polygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Polygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -2427,50 +3044,16 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Polygon-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
-
-</td></tr></table> <p>
-<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
-<tr bgcolor="#ffc8d8">
-<td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="PolygonInteractor">class <strong>PolygonInteractor</strong></a></font></td></tr>
-    
-<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>An&nbsp;polygon&nbsp;editor.<br>
-&nbsp;<br>
-Key-bindings<br>
-&nbsp;<br>
-&nbsp;&nbsp;'t'&nbsp;toggle&nbsp;vertex&nbsp;markers&nbsp;on&nbsp;and&nbsp;off.&nbsp;&nbsp;When&nbsp;vertex&nbsp;markers&nbsp;are&nbsp;on,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;can&nbsp;move&nbsp;them,&nbsp;delete&nbsp;them<br>
-&nbsp;<br>
-&nbsp;&nbsp;'d'&nbsp;delete&nbsp;the&nbsp;vertex&nbsp;under&nbsp;point<br>
-&nbsp;<br>
-&nbsp;&nbsp;'i'&nbsp;insert&nbsp;a&nbsp;vertex&nbsp;at&nbsp;point.&nbsp;&nbsp;You&nbsp;must&nbsp;be&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;line&nbsp;connecting&nbsp;two&nbsp;existing&nbsp;vertices<br>&nbsp;</tt></td></tr>
-<tr><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
-<dl><dt><a name="PolygonInteractor-__init__"><strong>__init__</strong></a>(self, poly)</dt></dl>
-
-<dl><dt><a name="PolygonInteractor-__str__"><strong>__str__</strong></a>(self)</dt></dl>
-
-<dl><dt><a name="PolygonInteractor-button_press_callback"><strong>button_press_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;pressed</tt></dd></dl>
-
-<dl><dt><a name="PolygonInteractor-button_release_callback"><strong>button_release_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;mouse&nbsp;button&nbsp;is&nbsp;released</tt></dd></dl>
-
-<dl><dt><a name="PolygonInteractor-get_ind_under_point"><strong>get_ind_under_point</strong></a>(self, event)</dt><dd><tt>get&nbsp;the&nbsp;index&nbsp;of&nbsp;the&nbsp;vertex&nbsp;under&nbsp;point&nbsp;if&nbsp;within&nbsp;epsilon&nbsp;tolerance</tt></dd></dl>
-
-<dl><dt><a name="PolygonInteractor-key_press_callback"><strong>key_press_callback</strong></a>(self, event)</dt><dd><tt>whenever&nbsp;a&nbsp;key&nbsp;is&nbsp;pressed</tt></dd></dl>
-
-<dl><dt><a name="PolygonInteractor-motion_notify_callback"><strong>motion_notify_callback</strong></a>(self, event)</dt><dd><tt>on&nbsp;mouse&nbsp;movement</tt></dd></dl>
-
-<dl><dt><a name="PolygonInteractor-poly_changed"><strong>poly_changed</strong></a>(self, poly)</dt><dd><tt>this&nbsp;method&nbsp;is&nbsp;called&nbsp;whenever&nbsp;the&nbsp;polygon&nbsp;object&nbsp;is&nbsp;called</tt></dd></dl>
-
-<hr>
-Data and other attributes defined here:<br>
-<dl><dt><strong>epsilon</strong> = 5</dl>
-
-<dl><dt><strong>showverts</strong> = True</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -2486,6 +3069,7 @@ width&nbsp;and&nbsp;height<br>&nbsp;</tt></td></tr>
 <dd><a href="matplotlib.patches.html#Rectangle">Rectangle</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -2515,9 +3099,15 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <dl><dt><a name="Rectangle-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Rectangle-contains"><strong>contains</strong></a>(self, mouseevent)</dt></dl>
+
+<dl><dt><a name="Rectangle-get_bbox"><strong>get_bbox</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Rectangle-get_height"><strong>get_height</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Rectangle-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_width"><strong>get_width</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;&nbsp;rectangle</tt></dd></dl>
 
@@ -2547,23 +3137,23 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
-<dl><dt><a name="Rectangle-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
-&nbsp;<br>
-Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
-
 <dl><dt><a name="Rectangle-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Rectangle-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Rectangle-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Rectangle-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Rectangle-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Rectangle-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Rectangle-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -2571,25 +3161,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Rectangle-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Rectangle-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Rectangle-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Rectangle-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Rectangle-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Rectangle-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Rectangle-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -2617,9 +3217,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Rectangle-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Rectangle-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -2658,7 +3260,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Rectangle-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -2715,9 +3318,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Rectangle-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Rectangle-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Rectangle-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -2787,6 +3403,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Rectangle-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -2803,6 +3427,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#RegularPolygon">RegularPolygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -2831,8 +3456,20 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <dl><dt><a name="RegularPolygon-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RegularPolygon-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="RegularPolygon-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="RegularPolygon-get_path"><strong>get_path</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>numvertices</strong></dt>
+</dl>
+<dl><dt><strong>orientation</strong></dt>
+</dl>
+<dl><dt><strong>radius</strong></dt>
+</dl>
+<dl><dt><strong>xy</strong></dt>
+</dl>
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
 <dl><dt><a name="RegularPolygon-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
@@ -2841,17 +3478,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="RegularPolygon-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RegularPolygon-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="RegularPolygon-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="RegularPolygon-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="RegularPolygon-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RegularPolygon-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -2859,25 +3500,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RegularPolygon-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="RegularPolygon-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="RegularPolygon-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="RegularPolygon-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="RegularPolygon-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="RegularPolygon-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="RegularPolygon-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -2905,9 +3556,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="RegularPolygon-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="RegularPolygon-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -2946,7 +3599,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="RegularPolygon-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="RegularPolygon-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -3003,9 +3657,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="RegularPolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="RegularPolygon-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="RegularPolygon-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -3075,6 +3742,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="RegularPolygon-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -3089,6 +3764,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <dd><a href="matplotlib.patches.html#Shadow">Shadow</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -3116,7 +3792,9 @@ kwargs&nbsp;are<br>
 
 <dl><dt><a name="Shadow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Shadow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="Shadow-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Shadow-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -3126,17 +3804,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Shadow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Shadow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Shadow-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Shadow-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Shadow-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Shadow-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Shadow-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Shadow-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Shadow-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Shadow-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Shadow-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Shadow-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Shadow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -3144,25 +3826,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Shadow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Shadow-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Shadow-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Shadow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Shadow-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Shadow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Shadow-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Shadow-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Shadow-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Shadow-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -3190,9 +3882,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Shadow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Shadow-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Shadow-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Shadow-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -3231,7 +3925,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Shadow-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Shadow-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Shadow-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -3288,9 +3983,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Shadow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Shadow-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Shadow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -3360,6 +4068,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Shadow-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -3367,45 +4083,28 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="Wedge">class <strong>Wedge</strong></a>(<a href="matplotlib.patches.html#Polygon">Polygon</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="Wedge">class <strong>Wedge</strong></a>(<a href="matplotlib.patches.html#Patch">Patch</a>)</font></td></tr>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.patches.html#Wedge">Wedge</a></dd>
-<dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="Wedge-__init__"><strong>__init__</strong></a>(self, center, r, theta1, theta2, dtheta<font color="#909090">=5.0</font>, **kwargs)</dt><dd><tt>Draw&nbsp;a&nbsp;wedge&nbsp;centered&nbsp;at&nbsp;x,y&nbsp;tuple&nbsp;center&nbsp;with&nbsp;radius&nbsp;r&nbsp;that<br>
+<dl><dt><a name="Wedge-__init__"><strong>__init__</strong></a>(self, center, r, theta1, theta2, **kwargs)</dt><dd><tt>Draw&nbsp;a&nbsp;wedge&nbsp;centered&nbsp;at&nbsp;x,y&nbsp;tuple&nbsp;center&nbsp;with&nbsp;radius&nbsp;r&nbsp;that<br>
 sweeps&nbsp;theta1&nbsp;to&nbsp;theta2&nbsp;(angles)<br>
 &nbsp;<br>
-dtheta&nbsp;is&nbsp;the&nbsp;resolution&nbsp;in&nbsp;degrees<br>
-&nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;alpha:&nbsp;float<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;animated:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;antialiased&nbsp;or&nbsp;aa:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;edgecolor&nbsp;or&nbsp;ec:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;facecolor&nbsp;or&nbsp;fc:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fill:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hatch:&nbsp;unknown<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;label:&nbsp;any&nbsp;string<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewidth&nbsp;or&nbsp;lw:&nbsp;float<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;lod:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transform:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;visible:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;zorder:&nbsp;any&nbsp;number</tt></dd></dl>
+%(<a href="#Patch">Patch</a>)s</tt></dd></dl>
 
 <dl><dt><a name="Wedge-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<hr>
-Methods inherited from <a href="matplotlib.patches.html#Polygon">Polygon</a>:<br>
-<dl><dt><a name="Wedge-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="Wedge-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wedge-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">Patch</a>:<br>
@@ -3415,17 +4114,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Wedge-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="Wedge-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Wedge-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Wedge-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Wedge-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Wedge-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Wedge-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Wedge-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Wedge-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Wedge-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Wedge-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Wedge-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Wedge-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -3433,25 +4136,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Wedge-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Wedge-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Wedge-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Wedge-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Wedge-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Wedge-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Wedge-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Wedge-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Wedge-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Wedge-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -3479,9 +4192,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Wedge-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Wedge-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Wedge-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Wedge-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -3520,7 +4235,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Wedge-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Wedge-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Wedge-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -3577,9 +4293,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Wedge-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Wedge-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Wedge-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -3649,6 +4378,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Wedge-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -3656,7 +4393,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
-<font color="#000000" face="helvetica, arial"><a name="YAArrow">class <strong>YAArrow</strong></a>(<a href="matplotlib.patches.html#Polygon">Polygon</a>)</font></td></tr>
+<font color="#000000" face="helvetica, arial"><a name="YAArrow">class <strong>YAArrow</strong></a>(<a href="matplotlib.patches.html#Patch">Patch</a>)</font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>Yet&nbsp;another&nbsp;arrow&nbsp;class<br>
@@ -3666,15 +4403,15 @@ x1,y1&nbsp;and&nbsp;a&nbsp;base&nbsp;at&nbsp;x2,&nbsp;y2.<br>&nbsp;</tt></td></t
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.patches.html#YAArrow">YAArrow</a></dd>
-<dd><a href="matplotlib.patches.html#Polygon">Polygon</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
-<dl><dt><a name="YAArrow-__init__"><strong>__init__</strong></a>(self, dpi, xytip, xybase, width<font color="#909090">=4</font>, frac<font color="#909090">=0.10000000000000001</font>, headwidth<font color="#909090">=12</font>, **kwargs)</dt><dd><tt>xytip&nbsp;:&nbsp;(x,y)&nbsp;location&nbsp;of&nbsp;arrow&nbsp;tip<br>
+<dl><dt><a name="YAArrow-__init__"><strong>__init__</strong></a>(self, figure, xytip, xybase, width<font color="#909090">=4</font>, frac<font color="#909090">=0.10000000000000001</font>, headwidth<font color="#909090">=12</font>, **kwargs)</dt><dd><tt>xytip&nbsp;:&nbsp;(x,y)&nbsp;location&nbsp;of&nbsp;arrow&nbsp;tip<br>
 xybase&nbsp;:&nbsp;(x,y)&nbsp;location&nbsp;the&nbsp;arrow&nbsp;base&nbsp;mid&nbsp;point<br>
-dpi&nbsp;:&nbsp;the&nbsp;figure&nbsp;dpi&nbsp;instance&nbsp;(fig.dpi)<br>
+figure&nbsp;:&nbsp;the&nbsp;figure&nbsp;instance&nbsp;(fig.dpi)<br>
 width&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;arrow&nbsp;in&nbsp;points<br>
 frac&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;arrow&nbsp;length&nbsp;occupied&nbsp;by&nbsp;the&nbsp;head<br>
 headwidth&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;base&nbsp;of&nbsp;the&nbsp;arrow&nbsp;head&nbsp;in&nbsp;points<br>
@@ -3699,7 +4436,9 @@ Valid&nbsp;kwargs&nbsp;are:<br>
 
 <dl><dt><a name="YAArrow-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="YAArrow-get_verts"><strong>get_verts</strong></a>(self)</dt></dl>
+<dl><dt><a name="YAArrow-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="YAArrow-get_path"><strong>get_path</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-getpoints"><strong>getpoints</strong></a>(self, x1, y1, x2, y2, k)</dt><dd><tt>for&nbsp;line&nbsp;segment&nbsp;defined&nbsp;by&nbsp;x1,y1&nbsp;and&nbsp;x2,y2,&nbsp;return&nbsp;the&nbsp;points&nbsp;on<br>
 the&nbsp;line&nbsp;that&nbsp;is&nbsp;perpendicular&nbsp;to&nbsp;the&nbsp;line&nbsp;and&nbsp;intersects&nbsp;x2,y2<br>
@@ -3713,17 +4452,21 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
-<dl><dt><a name="YAArrow-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="YAArrow-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="YAArrow-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="YAArrow-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="YAArrow-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="YAArrow-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="YAArrow-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="YAArrow-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="YAArrow-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -3731,25 +4474,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="YAArrow-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="YAArrow-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="YAArrow-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="YAArrow-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="YAArrow-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="YAArrow-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="YAArrow-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="YAArrow-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="YAArrow-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="YAArrow-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -3777,9 +4530,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="YAArrow-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="YAArrow-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="YAArrow-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -3818,7 +4573,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="YAArrow-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="YAArrow-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -3875,9 +4631,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="YAArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="YAArrow-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;<a href="#Patch">Patch</a>&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;<a href="#Patch">Patch</a><br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="YAArrow-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -3947,6 +4716,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="YAArrow-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -3966,7 +4743,6 @@ props&nbsp;is&nbsp;a&nbsp;dict&nbsp;of&nbsp;rectangle&nbsp;props&nbsp;with&nbsp;
  <dl><dt><a name="-draw_bbox"><strong>draw_bbox</strong></a>(bbox, renderer, color<font color="#909090">='k'</font>, trans<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;is&nbsp;a&nbsp;debug&nbsp;function&nbsp;to&nbsp;draw&nbsp;a&nbsp;rectangle&nbsp;around&nbsp;the&nbsp;bounding<br>
 box&nbsp;returned&nbsp;by&nbsp;get_window_extent&nbsp;of&nbsp;an&nbsp;artist,&nbsp;to&nbsp;test&nbsp;whether<br>
 the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd></dl>
- <dl><dt><a name="-inellipse"><strong>inellipse</strong></a>(x, y, cx, cy, a, b, angle)</dt></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">
@@ -3976,5 +4752,5 @@ the&nbsp;artist&nbsp;is&nbsp;returning&nbsp;the&nbsp;correct&nbsp;bbox</tt></dd>
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>k</strong> = 'Ellipse'<br>
-<strong>patchdoc</strong> = '    alpha: float<font color="#c040c0">\n</font>    animated: [True | False]<font color="#c040c0">\n</font>  ...   visible: [True | False]<font color="#c040c0">\n</font>    zorder: any number'</td></tr></table>
+<strong>patchdoc</strong> = '    aa: [True | False]  or None for default<font color="#c040c0">\n</font>    ...   visible: [True | False]<font color="#c040c0">\n</font>    zorder: any number'</td></tr></table>
 @footer@

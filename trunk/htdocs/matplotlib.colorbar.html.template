@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.colorbar</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colorbar.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/colorbar.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/colorbar.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/colorbar.py</a></font></td></tr></table>
     <p><tt><a href="#Colorbar">Colorbar</a>&nbsp;toolkit&nbsp;with&nbsp;two&nbsp;classes&nbsp;and&nbsp;a&nbsp;function:<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#ColorbarBase">ColorbarBase</a>&nbsp;is&nbsp;the&nbsp;base&nbsp;class&nbsp;with&nbsp;full&nbsp;colorbar&nbsp;drawing&nbsp;functionality.<br>
@@ -35,7 +35,6 @@ function&nbsp;is&nbsp;a&nbsp;thin&nbsp;wrapper&nbsp;over&nbsp;Figure.colorbar().
 <a href="numpy.html">numpy</a><br>
 <a href="matplotlib.patches.html">matplotlib.patches</a><br>
 </td><td width="25%" valign=top><a href="matplotlib.ticker.html">matplotlib.ticker</a><br>
-<a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -74,7 +73,7 @@ Methods defined here:<br>
 
 <dl><dt><a name="Colorbar-add_lines"><strong>add_lines</strong></a>(self, CS)</dt><dd><tt>Add&nbsp;the&nbsp;lines&nbsp;from&nbsp;a&nbsp;non-filled&nbsp;ContourSet&nbsp;to&nbsp;the&nbsp;colorbar.</tt></dd></dl>
 
-<dl><dt><a name="Colorbar-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>Manually&nbsp;change&nbsp;any&nbsp;contour&nbsp;line&nbsp;colors.&nbsp;&nbsp;This&nbsp;is&nbsp;called<br>
+<dl><dt><a name="Colorbar-update_bruteforce"><strong>update_bruteforce</strong></a>(self, mappable)</dt><dd><tt>Manually&nbsp;change&nbsp;any&nbsp;contour&nbsp;line&nbsp;colors.&nbsp;&nbsp;This&nbsp;is&nbsp;called<br>
 when&nbsp;the&nbsp;image&nbsp;or&nbsp;contour&nbsp;plot&nbsp;to&nbsp;which&nbsp;this&nbsp;colorbar&nbsp;belongs<br>
 is&nbsp;changed.</tt></dd></dl>
 
@@ -92,20 +91,14 @@ Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm
 <dl><dt><a name="Colorbar-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
 that&nbsp;are&nbsp;set&nbsp;to&nbsp;True&nbsp;when&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed.</tt></dd></dl>
 
-<dl><dt><a name="Colorbar-add_observer"><strong>add_observer</strong></a>(self, mappable)</dt><dd><tt>whenever&nbsp;the&nbsp;norm,&nbsp;clim&nbsp;or&nbsp;cmap&nbsp;is&nbsp;set,&nbsp;call&nbsp;the&nbsp;notify<br>
-instance&nbsp;of&nbsp;the&nbsp;mappable&nbsp;observer&nbsp;with&nbsp;self.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;designed&nbsp;to&nbsp;allow&nbsp;one&nbsp;image&nbsp;to&nbsp;follow&nbsp;changes&nbsp;in&nbsp;the<br>
-cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
-
 <dl><dt><a name="Colorbar-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="Colorbar-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
 
-<dl><dt><a name="Colorbar-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
-update&nbsp;state</tt></dd></dl>
+<dl><dt><a name="Colorbar-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;to&nbsp;notify&nbsp;all&nbsp;the<br>
+callbackSM&nbsp;listeners&nbsp;to&nbsp;the&nbsp;'changed'&nbsp;signal</tt></dd></dl>
 
 <dl><dt><a name="Colorbar-check_update"><strong>check_update</strong></a>(self, checker)</dt><dd><tt>If&nbsp;mappable&nbsp;has&nbsp;changed&nbsp;since&nbsp;the&nbsp;last&nbsp;check,<br>
 return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
@@ -113,6 +106,8 @@ return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
 <dl><dt><a name="Colorbar-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="Colorbar-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+
+<dl><dt><a name="Colorbar-get_cmap"><strong>get_cmap</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="Colorbar-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;A</tt></dd></dl>
 
@@ -172,20 +167,14 @@ Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm
 <dl><dt><a name="ColorbarBase-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
 that&nbsp;are&nbsp;set&nbsp;to&nbsp;True&nbsp;when&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed.</tt></dd></dl>
 
-<dl><dt><a name="ColorbarBase-add_observer"><strong>add_observer</strong></a>(self, mappable)</dt><dd><tt>whenever&nbsp;the&nbsp;norm,&nbsp;clim&nbsp;or&nbsp;cmap&nbsp;is&nbsp;set,&nbsp;call&nbsp;the&nbsp;notify<br>
-instance&nbsp;of&nbsp;the&nbsp;mappable&nbsp;observer&nbsp;with&nbsp;self.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;designed&nbsp;to&nbsp;allow&nbsp;one&nbsp;image&nbsp;to&nbsp;follow&nbsp;changes&nbsp;in&nbsp;the<br>
-cmap&nbsp;of&nbsp;another&nbsp;image</tt></dd></dl>
-
 <dl><dt><a name="ColorbarBase-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array</tt></dd></dl>
 
 <dl><dt><a name="ColorbarBase-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
 current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
 
-<dl><dt><a name="ColorbarBase-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;so&nbsp;observers&nbsp;can<br>
-update&nbsp;state</tt></dd></dl>
+<dl><dt><a name="ColorbarBase-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;to&nbsp;notify&nbsp;all&nbsp;the<br>
+callbackSM&nbsp;listeners&nbsp;to&nbsp;the&nbsp;'changed'&nbsp;signal</tt></dd></dl>
 
 <dl><dt><a name="ColorbarBase-check_update"><strong>check_update</strong></a>(self, checker)</dt><dd><tt>If&nbsp;mappable&nbsp;has&nbsp;changed&nbsp;since&nbsp;the&nbsp;last&nbsp;check,<br>
 return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
@@ -194,8 +183,7 @@ return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
 
 <dl><dt><a name="ColorbarBase-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
 
-<dl><dt><a name="ColorbarBase-notify"><strong>notify</strong></a>(self, mappable)</dt><dd><tt>If&nbsp;this&nbsp;is&nbsp;called&nbsp;then&nbsp;we&nbsp;are&nbsp;pegged&nbsp;to&nbsp;another&nbsp;mappable.<br>
-Update&nbsp;our&nbsp;cmap,&nbsp;norm,&nbsp;alpha&nbsp;from&nbsp;the&nbsp;other&nbsp;mappable.</tt></dd></dl>
+<dl><dt><a name="ColorbarBase-get_cmap"><strong>get_cmap</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="ColorbarBase-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;A</tt></dd></dl>
 

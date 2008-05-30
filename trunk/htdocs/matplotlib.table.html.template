@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.table</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/table.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/table.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/table.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/table.py</a></font></td></tr></table>
     <p><tt>Place&nbsp;a&nbsp;table&nbsp;below&nbsp;the&nbsp;x-axis&nbsp;at&nbsp;location&nbsp;loc.<br>
 &nbsp;<br>
 The&nbsp;table&nbsp;consists&nbsp;of&nbsp;a&nbsp;grid&nbsp;of&nbsp;cells.<br>
@@ -31,9 +31,8 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license</tt></p>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
-</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
 </td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -41,7 +40,7 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license</tt></p>
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.table.html#Table">Table</a>
@@ -68,6 +67,7 @@ License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license</tt></p>
 <dd><a href="matplotlib.patches.html#Rectangle">matplotlib.patches.Rectangle</a></dd>
 <dd><a href="matplotlib.patches.html#Patch">matplotlib.patches.Patch</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -101,9 +101,15 @@ Data and other attributes defined here:<br>
 Methods inherited from <a href="matplotlib.patches.html#Rectangle">matplotlib.patches.Rectangle</a>:<br>
 <dl><dt><a name="Cell-__str__"><strong>__str__</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Cell-contains"><strong>contains</strong></a>(self, mouseevent)</dt></dl>
+
+<dl><dt><a name="Cell-get_bbox"><strong>get_bbox</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Cell-get_height"><strong>get_height</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
+<dl><dt><a name="Cell-get_patch_transform"><strong>get_patch_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cell-get_path"><strong>get_path</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;rectangle</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_width"><strong>get_width</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;&nbsp;rectangle</tt></dd></dl>
 
@@ -133,21 +139,21 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.patches.html#Patch">matplotlib.patches.Patch</a>:<br>
-<dl><dt><a name="Cell-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;patch.<br>
-&nbsp;<br>
-Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
-
-<dl><dt><a name="Cell-get_aa"><strong>get_aa</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_antialiased</tt></dd></dl>
+<dl><dt><a name="Cell-get_aa"><strong>get_aa</strong></a> = get_antialiased(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_antialiased"><strong>get_antialiased</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Cell-get_ec"><strong>get_ec</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_edgecolor</tt></dd></dl>
+<dl><dt><a name="Cell-get_data_transform"><strong>get_data_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cell-get_ec"><strong>get_ec</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Cell-get_extents"><strong>get_extents</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Cell-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Cell-get_fc"><strong>get_fc</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_facecolor</tt></dd></dl>
+<dl><dt><a name="Cell-get_fc"><strong>get_fc</strong></a> = get_facecolor(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_fill"><strong>get_fill</strong></a>(self)</dt><dd><tt>return&nbsp;whether&nbsp;fill&nbsp;is&nbsp;set</tt></dd></dl>
 
@@ -155,25 +161,35 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Cell-get_lw"><strong>get_lw</strong></a>(self)</dt><dd><tt>alias&nbsp;for&nbsp;get_linewidth</tt></dd></dl>
+<dl><dt><a name="Cell-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
+
+<dl><dt><a name="Cell-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
+<dl><dt><a name="Cell-set_aa"><strong>set_aa</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
 <dl><dt><a name="Cell-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;use&nbsp;antialiased&nbsp;rendering<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_ec"><strong>set_ec</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_edgecolor</tt></dd></dl>
+<dl><dt><a name="Cell-set_ec"><strong>set_ec</strong></a> = set_edgecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;edge&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color</tt></dd></dl>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_fc"><strong>set_fc</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_facecolor</tt></dd></dl>
+<dl><dt><a name="Cell-set_fc"><strong>set_fc</strong></a> = set_facecolor(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;face&nbsp;color<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;mpl&nbsp;color&nbsp;spec,&nbsp;or&nbsp;None&nbsp;for&nbsp;default,&nbsp;or&nbsp;'none'&nbsp;for&nbsp;no&nbsp;color</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_fill"><strong>set_fill</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;to&nbsp;fill&nbsp;the&nbsp;patch<br>
 &nbsp;<br>
@@ -201,9 +217,11 @@ backend&nbsp;only.<br>
 
 <dl><dt><a name="Cell-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;float</tt></dd></dl>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_lw"><strong>set_lw</strong></a>(self, val)</dt><dd><tt>alias&nbsp;for&nbsp;set_linewidth</tt></dd></dl>
+<dl><dt><a name="Cell-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
 
 <dl><dt><a name="Cell-update_from"><strong>update_from</strong></a>(self, other)</dt></dl>
 
@@ -242,7 +260,8 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Cell-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
@@ -299,9 +318,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Cell-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -363,6 +395,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Cell-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -384,7 +424,13 @@ Column&nbsp;widths&nbsp;and&nbsp;row&nbsp;heights&nbsp;for&nbsp;the&nbsp;table&n
 Return&nbsp;value&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;text,&nbsp;line&nbsp;and&nbsp;patch&nbsp;instances&nbsp;that&nbsp;make<br>
 up&nbsp;the&nbsp;table<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.table.html#Table">Table</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
 <dl><dt><a name="Table-__init__"><strong>__init__</strong></a>(self, ax, loc<font color="#909090">=None</font>, bbox<font color="#909090">=None</font>)</dt></dl>
 
 <dl><dt><a name="Table-add_cell"><strong>add_cell</strong></a>(self, row, col, *args, **kwargs)</dt><dd><tt>Add&nbsp;a&nbsp;cell&nbsp;to&nbsp;the&nbsp;table.</tt></dd></dl>
@@ -454,6 +500,9 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Table-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
+<dl><dt><a name="Table-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+
 <dl><dt><a name="Table-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Table-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
@@ -509,9 +558,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Table-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Table-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Table-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -583,6 +645,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Table-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -595,8 +665,7 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><dl><dt><a name="-Bbox"><strong>Bbox</strong></a>(...)</dt><dd><tt><a href="#-Bbox">Bbox</a>(ll,&nbsp;ur)</tt></dd></dl>
- <dl><dt><a name="-table"><strong>table</strong></a>(ax, cellText<font color="#909090">=None</font>, cellColours<font color="#909090">=None</font>, cellLoc<font color="#909090">='right'</font>, colWidths<font color="#909090">=None</font>, rowLabels<font color="#909090">=None</font>, rowColours<font color="#909090">=None</font>, rowLoc<font color="#909090">='left'</font>, colLabels<font color="#909090">=None</font>, colColours<font color="#909090">=None</font>, colLoc<font color="#909090">='center'</font>, loc<font color="#909090">='bottom'</font>, bbox<font color="#909090">=None</font>)</dt><dd><tt>TABLE(cellText=None,&nbsp;cellColours=None,<br>
+<td width="100%"><dl><dt><a name="-table"><strong>table</strong></a>(ax, cellText<font color="#909090">=None</font>, cellColours<font color="#909090">=None</font>, cellLoc<font color="#909090">='right'</font>, colWidths<font color="#909090">=None</font>, rowLabels<font color="#909090">=None</font>, rowColours<font color="#909090">=None</font>, rowLoc<font color="#909090">='left'</font>, colLabels<font color="#909090">=None</font>, colColours<font color="#909090">=None</font>, colLoc<font color="#909090">='center'</font>, loc<font color="#909090">='bottom'</font>, bbox<font color="#909090">=None</font>)</dt><dd><tt>TABLE(cellText=None,&nbsp;cellColours=None,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cellLoc='right',&nbsp;colWidths=None,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rowLabels=None,&nbsp;rowColours=None,&nbsp;rowLoc='left',<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colLabels=None,&nbsp;colColours=None,&nbsp;colLoc='center',<br>
@@ -612,6 +681,5 @@ Thanks&nbsp;to&nbsp;John&nbsp;Gill&nbsp;for&nbsp;providing&nbsp;the&nbsp;class&n
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
+<td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
 @footer@

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.backends.html"><font color="#ffffff">backends</font></a>.backend_gtkagg</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gtkagg.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/backends/backend_gtkagg.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/backends/backend_gtkagg.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/backends/backend_gtkagg.py</a></font></td></tr></table>
     <p><tt>Render&nbsp;to&nbsp;gtk&nbsp;from&nbsp;agg</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -63,6 +63,7 @@
 <dd><a href="gtk.html#Widget">gtk.Widget</a></dd>
 <dd><a href="gtk.html#Object">gtk.Object</a></dd>
 <dd><a href="gobject.html#GObject">gobject.GObject</a></dd>
+<dd><a href="gtk.html#Buildable">gtk.Buildable</a></dd>
 <dd><a href="atk.html#ImplementorIface">atk.ImplementorIface</a></dd>
 <dd><a href="gobject.html#GInterface">gobject.GInterface</a></dd>
 <dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
@@ -95,6 +96,8 @@ Methods inherited from <a href="matplotlib.backends.backend_gtk.html#FigureCanva
 
 <dl><dt><a name="FigureCanvasGTKAgg-expose_event"><strong>expose_event</strong></a>(self, widget, event)</dt><dd><tt>Expose_event&nbsp;for&nbsp;all&nbsp;GTK&nbsp;backends.&nbsp;Should&nbsp;not&nbsp;be&nbsp;overridden.</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-flush_events"><strong>flush_events</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-get_default_filetype"><strong>get_default_filetype</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-key_press_event"><strong>key_press_event</strong></a>(self, widget, event)</dt></dl>
@@ -121,7 +124,7 @@ Methods inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#DrawingArea">gtk.DrawingArea</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (144843552)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkDrawingArea (23486800)&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
@@ -203,6 +206,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-ensure_style"><strong>ensure_style</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-error_bell"><strong>error_bell</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-event"><strong>event</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-freeze_child_notify"><strong>freeze_child_notify</strong></a>(...)</dt></dl>
@@ -233,6 +238,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_extension_events"><strong>get_extension_events</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-get_has_tooltip"><strong>get_has_tooltip</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-get_modifier_style"><strong>get_modifier_style</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_name"><strong>get_name</strong></a>(...)</dt></dl>
@@ -256,6 +263,12 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="FigureCanvasGTKAgg-get_size_request"><strong>get_size_request</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_style"><strong>get_style</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-get_tooltip_markup"><strong>get_tooltip_markup</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-get_tooltip_text"><strong>get_tooltip_text</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-get_tooltip_window"><strong>get_tooltip_window</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_toplevel"><strong>get_toplevel</strong></a>(...)</dt></dl>
 
@@ -287,6 +300,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-is_focus"><strong>is_focus</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-keynav_failed"><strong>keynav_failed</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-list_mnemonic_labels"><strong>list_mnemonic_labels</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-map"><strong>map</strong></a>(...)</dt></dl>
@@ -298,6 +313,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="FigureCanvasGTKAgg-modify_base"><strong>modify_base</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-modify_bg"><strong>modify_bg</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-modify_cursor"><strong>modify_cursor</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-modify_fg"><strong>modify_fg</strong></a>(...)</dt></dl>
 
@@ -391,6 +408,12 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-set_style"><strong>set_style</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-set_tooltip_markup"><strong>set_tooltip_markup</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-set_tooltip_text"><strong>set_tooltip_text</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-set_tooltip_window"><strong>set_tooltip_window</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-set_uposition"><strong>set_uposition</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-set_usize"><strong>set_usize</strong></a>(...)</dt></dl>
@@ -412,6 +435,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="FigureCanvasGTKAgg-thaw_child_notify"><strong>thaw_child_notify</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-translate_coordinates"><strong>translate_coordinates</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-trigger_tooltip_query"><strong>trigger_tooltip_query</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-unmap"><strong>unmap</strong></a>(...)</dt></dl>
 
@@ -437,137 +462,137 @@ Data descriptors inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 </dl>
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
-<dl><dt><strong>do_button_press_event</strong> = &lt;built-in method do_button_press_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_button_press_event</strong> = &lt;built-in method do_button_press_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_button_release_event</strong> = &lt;built-in method do_button_release_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_button_release_event</strong> = &lt;built-in method do_button_release_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_can_activate_accel</strong> = &lt;built-in method do_can_activate_accel of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_can_activate_accel</strong> = &lt;built-in method do_can_activate_accel of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_client_event</strong> = &lt;built-in method do_client_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_client_event</strong> = &lt;built-in method do_client_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_composited_changed</strong> = &lt;built-in method do_composited_changed of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_composited_changed</strong> = &lt;built-in method do_composited_changed of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_configure_event</strong> = &lt;built-in method do_configure_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_configure_event</strong> = &lt;built-in method do_configure_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_delete_event</strong> = &lt;built-in method do_delete_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_delete_event</strong> = &lt;built-in method do_delete_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_destroy_event</strong> = &lt;built-in method do_destroy_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_destroy_event</strong> = &lt;built-in method do_destroy_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_direction_changed</strong> = &lt;built-in method do_direction_changed of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_direction_changed</strong> = &lt;built-in method do_direction_changed of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_begin</strong> = &lt;built-in method do_drag_begin of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_begin</strong> = &lt;built-in method do_drag_begin of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_data_delete</strong> = &lt;built-in method do_drag_data_delete of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_data_delete</strong> = &lt;built-in method do_drag_data_delete of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_data_get</strong> = &lt;built-in method do_drag_data_get of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_data_get</strong> = &lt;built-in method do_drag_data_get of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_data_received</strong> = &lt;built-in method do_drag_data_received of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_data_received</strong> = &lt;built-in method do_drag_data_received of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_drop</strong> = &lt;built-in method do_drag_drop of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_drop</strong> = &lt;built-in method do_drag_drop of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_end</strong> = &lt;built-in method do_drag_end of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_end</strong> = &lt;built-in method do_drag_end of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_leave</strong> = &lt;built-in method do_drag_leave of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_leave</strong> = &lt;built-in method do_drag_leave of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_drag_motion</strong> = &lt;built-in method do_drag_motion of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_drag_motion</strong> = &lt;built-in method do_drag_motion of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_enter_notify_event</strong> = &lt;built-in method do_enter_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_enter_notify_event</strong> = &lt;built-in method do_enter_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_event</strong> = &lt;built-in method do_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_event</strong> = &lt;built-in method do_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_expose_event</strong> = &lt;built-in method do_expose_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_expose_event</strong> = &lt;built-in method do_expose_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_focus</strong> = &lt;built-in method do_focus of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_focus</strong> = &lt;built-in method do_focus of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_focus_in_event</strong> = &lt;built-in method do_focus_in_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_focus_in_event</strong> = &lt;built-in method do_focus_in_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_focus_out_event</strong> = &lt;built-in method do_focus_out_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_focus_out_event</strong> = &lt;built-in method do_focus_out_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_get_accessible</strong> = &lt;built-in method do_get_accessible of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_get_accessible</strong> = &lt;built-in method do_get_accessible of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_grab_broken_event</strong> = &lt;built-in method do_grab_broken_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_grab_broken_event</strong> = &lt;built-in method do_grab_broken_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_grab_focus</strong> = &lt;built-in method do_grab_focus of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_grab_focus</strong> = &lt;built-in method do_grab_focus of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_grab_notify</strong> = &lt;built-in method do_grab_notify of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_grab_notify</strong> = &lt;built-in method do_grab_notify of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_hide</strong> = &lt;built-in method do_hide of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_hide</strong> = &lt;built-in method do_hide of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_hide_all</strong> = &lt;built-in method do_hide_all of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_hide_all</strong> = &lt;built-in method do_hide_all of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_hierarchy_changed</strong> = &lt;built-in method do_hierarchy_changed of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_hierarchy_changed</strong> = &lt;built-in method do_hierarchy_changed of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_key_press_event</strong> = &lt;built-in method do_key_press_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_key_press_event</strong> = &lt;built-in method do_key_press_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_key_release_event</strong> = &lt;built-in method do_key_release_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_key_release_event</strong> = &lt;built-in method do_key_release_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_leave_notify_event</strong> = &lt;built-in method do_leave_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_leave_notify_event</strong> = &lt;built-in method do_leave_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_map</strong> = &lt;built-in method do_map of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_map</strong> = &lt;built-in method do_map of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_map_event</strong> = &lt;built-in method do_map_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_map_event</strong> = &lt;built-in method do_map_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_mnemonic_activate</strong> = &lt;built-in method do_mnemonic_activate of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_mnemonic_activate</strong> = &lt;built-in method do_mnemonic_activate of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_motion_notify_event</strong> = &lt;built-in method do_motion_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_motion_notify_event</strong> = &lt;built-in method do_motion_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_no_expose_event</strong> = &lt;built-in method do_no_expose_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_no_expose_event</strong> = &lt;built-in method do_no_expose_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_parent_set</strong> = &lt;built-in method do_parent_set of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_parent_set</strong> = &lt;built-in method do_parent_set of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_popup_menu</strong> = &lt;built-in method do_popup_menu of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_popup_menu</strong> = &lt;built-in method do_popup_menu of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_property_notify_event</strong> = &lt;built-in method do_property_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_property_notify_event</strong> = &lt;built-in method do_property_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_proximity_in_event</strong> = &lt;built-in method do_proximity_in_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_proximity_in_event</strong> = &lt;built-in method do_proximity_in_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_proximity_out_event</strong> = &lt;built-in method do_proximity_out_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_proximity_out_event</strong> = &lt;built-in method do_proximity_out_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_realize</strong> = &lt;built-in method do_realize of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_realize</strong> = &lt;built-in method do_realize of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_screen_changed</strong> = &lt;built-in method do_screen_changed of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_screen_changed</strong> = &lt;built-in method do_screen_changed of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_scroll_event</strong> = &lt;built-in method do_scroll_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_scroll_event</strong> = &lt;built-in method do_scroll_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_selection_clear_event</strong> = &lt;built-in method do_selection_clear_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_selection_clear_event</strong> = &lt;built-in method do_selection_clear_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_selection_get</strong> = &lt;built-in method do_selection_get of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_selection_get</strong> = &lt;built-in method do_selection_get of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_selection_notify_event</strong> = &lt;built-in method do_selection_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_selection_notify_event</strong> = &lt;built-in method do_selection_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_selection_received</strong> = &lt;built-in method do_selection_received of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_selection_received</strong> = &lt;built-in method do_selection_received of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_selection_request_event</strong> = &lt;built-in method do_selection_request_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_selection_request_event</strong> = &lt;built-in method do_selection_request_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_show</strong> = &lt;built-in method do_show of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_show</strong> = &lt;built-in method do_show of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_show_all</strong> = &lt;built-in method do_show_all of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_show_all</strong> = &lt;built-in method do_show_all of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_show_help</strong> = &lt;built-in method do_show_help of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_show_help</strong> = &lt;built-in method do_show_help of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_size_allocate</strong> = &lt;built-in method do_size_allocate of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_size_allocate</strong> = &lt;built-in method do_size_allocate of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_size_request</strong> = &lt;built-in method do_size_request of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_size_request</strong> = &lt;built-in method do_size_request of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_state_changed</strong> = &lt;built-in method do_state_changed of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_state_changed</strong> = &lt;built-in method do_state_changed of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_style_set</strong> = &lt;built-in method do_style_set of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_style_set</strong> = &lt;built-in method do_style_set of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_unmap</strong> = &lt;built-in method do_unmap of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_unmap</strong> = &lt;built-in method do_unmap of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_unmap_event</strong> = &lt;built-in method do_unmap_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_unmap_event</strong> = &lt;built-in method do_unmap_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_unrealize</strong> = &lt;built-in method do_unrealize of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_unrealize</strong> = &lt;built-in method do_unrealize of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_visibility_notify_event</strong> = &lt;built-in method do_visibility_notify_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_visibility_notify_event</strong> = &lt;built-in method do_visibility_notify_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>do_window_state_event</strong> = &lt;built-in method do_window_state_event of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_window_state_event</strong> = &lt;built-in method do_window_state_event of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>get_activate_signal</strong> = &lt;built-in method get_activate_signal of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>get_activate_signal</strong> = &lt;built-in method get_activate_signal of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>set_activate_signal</strong> = &lt;built-in method set_activate_signal of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>set_activate_signal</strong> = &lt;built-in method set_activate_signal of GObjectMeta object at 0x1873c50&gt;</dl>
 
-<dl><dt><strong>set_set_scroll_adjustments_signal</strong> = &lt;built-in method set_set_scroll_adjustments_signal of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>set_set_scroll_adjustments_signal</strong> = &lt;built-in method set_set_scroll_adjustments_signal of GObjectMeta object at 0x1873c50&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
@@ -583,17 +608,21 @@ Methods inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
-<dl><dt><strong>do_destroy</strong> = &lt;built-in method do_destroy of GObjectMeta object at 0x8360ebc&gt;</dl>
+<dl><dt><strong>do_destroy</strong> = &lt;built-in method do_destroy of GObjectMeta object at 0x1873c50&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><a name="FigureCanvasGTKAgg-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#FigureCanvasGTKAgg-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#FigureCanvasGTKAgg-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-__gobject_init__"><strong>__gobject_init__</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#FigureCanvasGTKAgg-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#FigureCanvasGTKAgg-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#FigureCanvasGTKAgg-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-chain"><strong>chain</strong></a>(...)</dt></dl>
 
@@ -617,6 +646,8 @@ Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_data"><strong>get_data</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-get_properties"><strong>get_properties</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-get_property"><strong>get_property</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-handler_block"><strong>handler_block</strong></a>(...)</dt></dl>
@@ -635,11 +666,15 @@ Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 
 <dl><dt><a name="FigureCanvasGTKAgg-set_data"><strong>set_data</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="FigureCanvasGTKAgg-set_properties"><strong>set_properties</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="FigureCanvasGTKAgg-set_property"><strong>set_property</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-stop_emission"><strong>stop_emission</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-thaw_notify"><strong>thaw_notify</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-weak_ref"><strong>weak_ref</strong></a>(...)</dt></dl>
 
 <hr>
 Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
@@ -651,9 +686,31 @@ Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</
 Data and other attributes inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><strong>__gdoc__</strong> = 'Object GtkDrawingArea<font color="#c040c0">\n\n</font>Signals from GtkWidget:<font color="#c040c0">\n</font> ...ointer<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
 
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb5884400&gt;<dd><tt>T.<a href="#FigureCanvasGTKAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0x2aaab051d820&gt;<dd><tt>T.<a href="#FigureCanvasGTKAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x8a9388c&gt;</dl>
+<dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x1812c10&gt;</dl>
+
+<hr>
+Methods inherited from <a href="gtk.html#Buildable">gtk.Buildable</a>:<br>
+<dl><dt><a name="FigureCanvasGTKAgg-add_child"><strong>add_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-construct_child"><strong>construct_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-get_internal_child"><strong>get_internal_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="FigureCanvasGTKAgg-parser_finished"><strong>parser_finished</strong></a>(...)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="gtk.html#Buildable">gtk.Buildable</a>:<br>
+<dl><dt><strong>do_add_child</strong> = &lt;built-in method do_add_child of GObjectMeta object at 0x1873c50&gt;</dl>
+
+<dl><dt><strong>do_construct_child</strong> = &lt;built-in method do_construct_child of GObjectMeta object at 0x1873c50&gt;</dl>
+
+<dl><dt><strong>do_get_internal_child</strong> = &lt;built-in method do_get_internal_child of GObjectMeta object at 0x1873c50&gt;</dl>
+
+<dl><dt><strong>do_parser_finished</strong> = &lt;built-in method do_parser_finished of GObjectMeta object at 0x1873c50&gt;</dl>
+
+<dl><dt><strong>do_set_name</strong> = &lt;built-in method do_set_name of GObjectMeta object at 0x1873c50&gt;</dl>
 
 <hr>
 Methods inherited from <a href="atk.html#ImplementorIface">atk.ImplementorIface</a>:<br>
@@ -667,9 +724,9 @@ Methods inherited from <a href="matplotlib.backends.backend_agg.html#FigureCanva
 
 <dl><dt><a name="FigureCanvasGTKAgg-get_renderer"><strong>get_renderer</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="FigureCanvasGTKAgg-print_raw"><strong>print_raw</strong></a>(self, filename, *args, **kwargs)</dt></dl>
+<dl><dt><a name="FigureCanvasGTKAgg-print_raw"><strong>print_raw</strong></a>(self, filename_or_obj, *args, **kwargs)</dt></dl>
 
-<dl><dt><a name="FigureCanvasGTKAgg-print_rgba"><strong>print_rgba</strong></a> = print_raw(self, filename, *args, **kwargs)</dt></dl>
+<dl><dt><a name="FigureCanvasGTKAgg-print_rgba"><strong>print_rgba</strong></a> = print_raw(self, filename_or_obj, *args, **kwargs)</dt></dl>
 
 <dl><dt><a name="FigureCanvasGTKAgg-restore_region"><strong>restore_region</strong></a>(self, region)</dt></dl>
 
@@ -827,6 +884,7 @@ Methods inherited from <a href="matplotlib.backend_bases.html#FigureManagerBase"
 <dd><a href="gtk.html#Widget">gtk.Widget</a></dd>
 <dd><a href="gtk.html#Object">gtk.Object</a></dd>
 <dd><a href="gobject.html#GObject">gobject.GObject</a></dd>
+<dd><a href="gtk.html#Buildable">gtk.Buildable</a></dd>
 <dd><a href="atk.html#ImplementorIface">atk.ImplementorIface</a></dd>
 <dd><a href="gobject.html#GInterface">gobject.GInterface</a></dd>
 <dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
@@ -957,13 +1015,13 @@ Methods inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Toolbar">gtk.Toolbar</a>:<br>
-<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (144847144)&gt;</dl>
+<dl><dt><strong>__gtype__</strong> = &lt;GType GtkToolbar (23500432)&gt;</dl>
 
-<dl><dt><strong>do_orientation_changed</strong> = &lt;built-in method do_orientation_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_orientation_changed</strong> = &lt;built-in method do_orientation_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_popup_context_menu</strong> = &lt;built-in method do_popup_context_menu of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_popup_context_menu</strong> = &lt;built-in method do_popup_context_menu of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_style_changed</strong> = &lt;built-in method do_style_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_style_changed</strong> = &lt;built-in method do_style_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Container">gtk.Container</a>:<br>
@@ -1045,25 +1103,27 @@ Data descriptors inherited from <a href="gtk.html#Container">gtk.Container</a>:<
 </dl>
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Container">gtk.Container</a>:<br>
-<dl><dt><strong>do_add</strong> = &lt;built-in method do_add of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_add</strong> = &lt;built-in method do_add of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_check_resize</strong> = &lt;built-in method do_check_resize of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_check_resize</strong> = &lt;built-in method do_check_resize of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_child_type</strong> = &lt;built-in method do_child_type of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_child_type</strong> = &lt;built-in method do_child_type of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_composite_name</strong> = &lt;built-in method do_composite_name of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_composite_name</strong> = &lt;built-in method do_composite_name of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_get_child_property</strong> = &lt;built-in method do_get_child_property of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_forall</strong> = &lt;built-in method do_forall of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_remove</strong> = &lt;built-in method do_remove of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_get_child_property</strong> = &lt;built-in method do_get_child_property of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_set_child_property</strong> = &lt;built-in method do_set_child_property of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_remove</strong> = &lt;built-in method do_remove of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_set_focus_child</strong> = &lt;built-in method do_set_focus_child of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_set_child_property</strong> = &lt;built-in method do_set_child_property of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>install_child_property</strong> = &lt;built-in method install_child_property of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_set_focus_child</strong> = &lt;built-in method do_set_focus_child of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>list_child_properties</strong> = &lt;built-in method list_child_properties of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>install_child_property</strong> = &lt;built-in method install_child_property of GObjectMeta object at 0x1536500&gt;</dl>
+
+<dl><dt><strong>list_child_properties</strong> = &lt;built-in method list_child_properties of GObjectMeta object at 0x1536500&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
@@ -1145,6 +1205,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-ensure_style"><strong>ensure_style</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-error_bell"><strong>error_bell</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-event"><strong>event</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-freeze_child_notify"><strong>freeze_child_notify</strong></a>(...)</dt></dl>
@@ -1175,6 +1237,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_extension_events"><strong>get_extension_events</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_has_tooltip"><strong>get_has_tooltip</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_modifier_style"><strong>get_modifier_style</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_name"><strong>get_name</strong></a>(...)</dt></dl>
@@ -1196,6 +1260,12 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_settings"><strong>get_settings</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_size_request"><strong>get_size_request</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_tooltip_markup"><strong>get_tooltip_markup</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_tooltip_text"><strong>get_tooltip_text</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_tooltip_window"><strong>get_tooltip_window</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_toplevel"><strong>get_toplevel</strong></a>(...)</dt></dl>
 
@@ -1227,6 +1297,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-is_focus"><strong>is_focus</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-keynav_failed"><strong>keynav_failed</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-list_mnemonic_labels"><strong>list_mnemonic_labels</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-map"><strong>map</strong></a>(...)</dt></dl>
@@ -1238,6 +1310,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="NavigationToolbar2GTKAgg-modify_base"><strong>modify_base</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-modify_bg"><strong>modify_bg</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-modify_cursor"><strong>modify_cursor</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-modify_fg"><strong>modify_fg</strong></a>(...)</dt></dl>
 
@@ -1329,6 +1403,12 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-set_state"><strong>set_state</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-set_tooltip_markup"><strong>set_tooltip_markup</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-set_tooltip_text"><strong>set_tooltip_text</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-set_tooltip_window"><strong>set_tooltip_window</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-set_uposition"><strong>set_uposition</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-set_usize"><strong>set_usize</strong></a>(...)</dt></dl>
@@ -1350,6 +1430,8 @@ Methods inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 <dl><dt><a name="NavigationToolbar2GTKAgg-thaw_child_notify"><strong>thaw_child_notify</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-translate_coordinates"><strong>translate_coordinates</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-trigger_tooltip_query"><strong>trigger_tooltip_query</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-unmap"><strong>unmap</strong></a>(...)</dt></dl>
 
@@ -1375,137 +1457,137 @@ Data descriptors inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
 </dl>
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Widget">gtk.Widget</a>:<br>
-<dl><dt><strong>do_button_press_event</strong> = &lt;built-in method do_button_press_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_button_press_event</strong> = &lt;built-in method do_button_press_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_button_release_event</strong> = &lt;built-in method do_button_release_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_button_release_event</strong> = &lt;built-in method do_button_release_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_can_activate_accel</strong> = &lt;built-in method do_can_activate_accel of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_can_activate_accel</strong> = &lt;built-in method do_can_activate_accel of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_client_event</strong> = &lt;built-in method do_client_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_client_event</strong> = &lt;built-in method do_client_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_composited_changed</strong> = &lt;built-in method do_composited_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_composited_changed</strong> = &lt;built-in method do_composited_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_configure_event</strong> = &lt;built-in method do_configure_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_configure_event</strong> = &lt;built-in method do_configure_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_delete_event</strong> = &lt;built-in method do_delete_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_delete_event</strong> = &lt;built-in method do_delete_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_destroy_event</strong> = &lt;built-in method do_destroy_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_destroy_event</strong> = &lt;built-in method do_destroy_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_direction_changed</strong> = &lt;built-in method do_direction_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_direction_changed</strong> = &lt;built-in method do_direction_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_begin</strong> = &lt;built-in method do_drag_begin of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_begin</strong> = &lt;built-in method do_drag_begin of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_data_delete</strong> = &lt;built-in method do_drag_data_delete of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_data_delete</strong> = &lt;built-in method do_drag_data_delete of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_data_get</strong> = &lt;built-in method do_drag_data_get of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_data_get</strong> = &lt;built-in method do_drag_data_get of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_data_received</strong> = &lt;built-in method do_drag_data_received of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_data_received</strong> = &lt;built-in method do_drag_data_received of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_drop</strong> = &lt;built-in method do_drag_drop of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_drop</strong> = &lt;built-in method do_drag_drop of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_end</strong> = &lt;built-in method do_drag_end of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_end</strong> = &lt;built-in method do_drag_end of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_leave</strong> = &lt;built-in method do_drag_leave of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_leave</strong> = &lt;built-in method do_drag_leave of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_drag_motion</strong> = &lt;built-in method do_drag_motion of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_drag_motion</strong> = &lt;built-in method do_drag_motion of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_enter_notify_event</strong> = &lt;built-in method do_enter_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_enter_notify_event</strong> = &lt;built-in method do_enter_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_event</strong> = &lt;built-in method do_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_event</strong> = &lt;built-in method do_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_expose_event</strong> = &lt;built-in method do_expose_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_expose_event</strong> = &lt;built-in method do_expose_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_focus</strong> = &lt;built-in method do_focus of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_focus</strong> = &lt;built-in method do_focus of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_focus_in_event</strong> = &lt;built-in method do_focus_in_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_focus_in_event</strong> = &lt;built-in method do_focus_in_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_focus_out_event</strong> = &lt;built-in method do_focus_out_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_focus_out_event</strong> = &lt;built-in method do_focus_out_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_get_accessible</strong> = &lt;built-in method do_get_accessible of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_get_accessible</strong> = &lt;built-in method do_get_accessible of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_grab_broken_event</strong> = &lt;built-in method do_grab_broken_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_grab_broken_event</strong> = &lt;built-in method do_grab_broken_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_grab_focus</strong> = &lt;built-in method do_grab_focus of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_grab_focus</strong> = &lt;built-in method do_grab_focus of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_grab_notify</strong> = &lt;built-in method do_grab_notify of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_grab_notify</strong> = &lt;built-in method do_grab_notify of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_hide</strong> = &lt;built-in method do_hide of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_hide</strong> = &lt;built-in method do_hide of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_hide_all</strong> = &lt;built-in method do_hide_all of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_hide_all</strong> = &lt;built-in method do_hide_all of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_hierarchy_changed</strong> = &lt;built-in method do_hierarchy_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_hierarchy_changed</strong> = &lt;built-in method do_hierarchy_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_key_press_event</strong> = &lt;built-in method do_key_press_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_key_press_event</strong> = &lt;built-in method do_key_press_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_key_release_event</strong> = &lt;built-in method do_key_release_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_key_release_event</strong> = &lt;built-in method do_key_release_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_leave_notify_event</strong> = &lt;built-in method do_leave_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_leave_notify_event</strong> = &lt;built-in method do_leave_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_map</strong> = &lt;built-in method do_map of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_map</strong> = &lt;built-in method do_map of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_map_event</strong> = &lt;built-in method do_map_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_map_event</strong> = &lt;built-in method do_map_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_mnemonic_activate</strong> = &lt;built-in method do_mnemonic_activate of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_mnemonic_activate</strong> = &lt;built-in method do_mnemonic_activate of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_motion_notify_event</strong> = &lt;built-in method do_motion_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_motion_notify_event</strong> = &lt;built-in method do_motion_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_no_expose_event</strong> = &lt;built-in method do_no_expose_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_no_expose_event</strong> = &lt;built-in method do_no_expose_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_parent_set</strong> = &lt;built-in method do_parent_set of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_parent_set</strong> = &lt;built-in method do_parent_set of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_popup_menu</strong> = &lt;built-in method do_popup_menu of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_popup_menu</strong> = &lt;built-in method do_popup_menu of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_property_notify_event</strong> = &lt;built-in method do_property_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_property_notify_event</strong> = &lt;built-in method do_property_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_proximity_in_event</strong> = &lt;built-in method do_proximity_in_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_proximity_in_event</strong> = &lt;built-in method do_proximity_in_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_proximity_out_event</strong> = &lt;built-in method do_proximity_out_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_proximity_out_event</strong> = &lt;built-in method do_proximity_out_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_realize</strong> = &lt;built-in method do_realize of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_realize</strong> = &lt;built-in method do_realize of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_screen_changed</strong> = &lt;built-in method do_screen_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_screen_changed</strong> = &lt;built-in method do_screen_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_scroll_event</strong> = &lt;built-in method do_scroll_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_scroll_event</strong> = &lt;built-in method do_scroll_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_selection_clear_event</strong> = &lt;built-in method do_selection_clear_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_selection_clear_event</strong> = &lt;built-in method do_selection_clear_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_selection_get</strong> = &lt;built-in method do_selection_get of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_selection_get</strong> = &lt;built-in method do_selection_get of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_selection_notify_event</strong> = &lt;built-in method do_selection_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_selection_notify_event</strong> = &lt;built-in method do_selection_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_selection_received</strong> = &lt;built-in method do_selection_received of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_selection_received</strong> = &lt;built-in method do_selection_received of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_selection_request_event</strong> = &lt;built-in method do_selection_request_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_selection_request_event</strong> = &lt;built-in method do_selection_request_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_show</strong> = &lt;built-in method do_show of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_show</strong> = &lt;built-in method do_show of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_show_all</strong> = &lt;built-in method do_show_all of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_show_all</strong> = &lt;built-in method do_show_all of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_show_help</strong> = &lt;built-in method do_show_help of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_show_help</strong> = &lt;built-in method do_show_help of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_size_allocate</strong> = &lt;built-in method do_size_allocate of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_size_allocate</strong> = &lt;built-in method do_size_allocate of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_size_request</strong> = &lt;built-in method do_size_request of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_size_request</strong> = &lt;built-in method do_size_request of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_state_changed</strong> = &lt;built-in method do_state_changed of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_state_changed</strong> = &lt;built-in method do_state_changed of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_style_set</strong> = &lt;built-in method do_style_set of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_style_set</strong> = &lt;built-in method do_style_set of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_unmap</strong> = &lt;built-in method do_unmap of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_unmap</strong> = &lt;built-in method do_unmap of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_unmap_event</strong> = &lt;built-in method do_unmap_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_unmap_event</strong> = &lt;built-in method do_unmap_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_unrealize</strong> = &lt;built-in method do_unrealize of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_unrealize</strong> = &lt;built-in method do_unrealize of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_visibility_notify_event</strong> = &lt;built-in method do_visibility_notify_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_visibility_notify_event</strong> = &lt;built-in method do_visibility_notify_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>do_window_state_event</strong> = &lt;built-in method do_window_state_event of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_window_state_event</strong> = &lt;built-in method do_window_state_event of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>get_activate_signal</strong> = &lt;built-in method get_activate_signal of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>get_activate_signal</strong> = &lt;built-in method get_activate_signal of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>set_activate_signal</strong> = &lt;built-in method set_activate_signal of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>set_activate_signal</strong> = &lt;built-in method set_activate_signal of GObjectMeta object at 0x1536500&gt;</dl>
 
-<dl><dt><strong>set_set_scroll_adjustments_signal</strong> = &lt;built-in method set_set_scroll_adjustments_signal of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>set_set_scroll_adjustments_signal</strong> = &lt;built-in method set_set_scroll_adjustments_signal of GObjectMeta object at 0x1536500&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
@@ -1521,17 +1603,21 @@ Methods inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="gtk.html#Object">gtk.Object</a>:<br>
-<dl><dt><strong>do_destroy</strong> = &lt;built-in method do_destroy of GObjectMeta object at 0x8af2634&gt;</dl>
+<dl><dt><strong>do_destroy</strong> = &lt;built-in method do_destroy of GObjectMeta object at 0x1536500&gt;</dl>
 
 <hr>
 Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><a name="NavigationToolbar2GTKAgg-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#NavigationToolbar2GTKAgg-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#NavigationToolbar2GTKAgg-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-__gobject_init__"><strong>__gobject_init__</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#NavigationToolbar2GTKAgg-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#NavigationToolbar2GTKAgg-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#NavigationToolbar2GTKAgg-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-chain"><strong>chain</strong></a>(...)</dt></dl>
 
@@ -1555,6 +1641,8 @@ Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_data"><strong>get_data</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_properties"><strong>get_properties</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-get_property"><strong>get_property</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-handler_block"><strong>handler_block</strong></a>(...)</dt></dl>
@@ -1573,11 +1661,15 @@ Methods inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-set_data"><strong>set_data</strong></a>(...)</dt></dl>
 
+<dl><dt><a name="NavigationToolbar2GTKAgg-set_properties"><strong>set_properties</strong></a>(...)</dt></dl>
+
 <dl><dt><a name="NavigationToolbar2GTKAgg-set_property"><strong>set_property</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-stop_emission"><strong>stop_emission</strong></a>(...)</dt></dl>
 
 <dl><dt><a name="NavigationToolbar2GTKAgg-thaw_notify"><strong>thaw_notify</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-weak_ref"><strong>weak_ref</strong></a>(...)</dt></dl>
 
 <hr>
 Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
@@ -1589,9 +1681,31 @@ Data descriptors inherited from <a href="gobject.html#GObject">gobject.GObject</
 Data and other attributes inherited from <a href="gobject.html#GObject">gobject.GObject</a>:<br>
 <dl><dt><strong>__gdoc__</strong> = 'Object GtkToolbar<font color="#c040c0">\n\n</font>Signals from GtkToolbar:<font color="#c040c0">\n</font>  or...ointer<font color="#c040c0">\n\n</font>Signals from GObject:<font color="#c040c0">\n</font>  notify (GParam)<font color="#c040c0">\n\n</font>'</dl>
 
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0xb5884400&gt;<dd><tt>T.<a href="#NavigationToolbar2GTKAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of GObjectMeta object at 0x2aaab051d820&gt;<dd><tt>T.<a href="#NavigationToolbar2GTKAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
-<dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x8b5b66c&gt;</dl>
+<dl><dt><strong>props</strong> = &lt;gobject.GProps object at 0x17e73d0&gt;</dl>
+
+<hr>
+Methods inherited from <a href="gtk.html#Buildable">gtk.Buildable</a>:<br>
+<dl><dt><a name="NavigationToolbar2GTKAgg-add_child"><strong>add_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-construct_child"><strong>construct_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-get_internal_child"><strong>get_internal_child</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="NavigationToolbar2GTKAgg-parser_finished"><strong>parser_finished</strong></a>(...)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="gtk.html#Buildable">gtk.Buildable</a>:<br>
+<dl><dt><strong>do_add_child</strong> = &lt;built-in method do_add_child of GObjectMeta object at 0x1536500&gt;</dl>
+
+<dl><dt><strong>do_construct_child</strong> = &lt;built-in method do_construct_child of GObjectMeta object at 0x1536500&gt;</dl>
+
+<dl><dt><strong>do_get_internal_child</strong> = &lt;built-in method do_get_internal_child of GObjectMeta object at 0x1536500&gt;</dl>
+
+<dl><dt><strong>do_parser_finished</strong> = &lt;built-in method do_parser_finished of GObjectMeta object at 0x1536500&gt;</dl>
+
+<dl><dt><strong>do_set_name</strong> = &lt;built-in method do_set_name of GObjectMeta object at 0x1536500&gt;</dl>
 
 <hr>
 Methods inherited from <a href="atk.html#ImplementorIface">atk.ImplementorIface</a>:<br>
@@ -1615,6 +1729,6 @@ Methods inherited from <a href="atk.html#ImplementorIface">atk.ImplementorIface<
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>DEBUG</strong> = False<br>
 <strong>PIXELS_PER_INCH</strong> = 96<br>
-<strong>backend_version</strong> = '2.10.4'<br>
+<strong>backend_version</strong> = '2.12.0'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
 @footer@

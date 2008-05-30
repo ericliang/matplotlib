@@ -187,15 +187,13 @@ def isNewEntry(line):
 
 # re-add news to the params dict 'tables' entry below for news
 
-news1= NewsBox("""We have recetly merged significant changes in the internal matplotlib transformation infrastructure into the main matplotlib codebase.  While this will not affect typical pylab users, some users of the API and transformation code will  to make some code changes to work with the new transformations.  Please see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a> for a summary of the migration path and changes in the API, and let us know on the <a href=http://sourceforge.net/mail/?group_id=80706>mailing lists</a> if you are experiecing problems""", title='Major changes in matplotlib svn')
+news1= NewsBox("""matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=603020>0.98.0</a> is a major release which requires python2.4 and numpy 1.1.  It contains a number of internal improvements and may require some power users to update their code; see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474&release_id=603021>0.91.3</a>""", title='New release')
 
 
 news2 = NewsBox("""Help support matplotlib development by <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>donating</a> to fund developer sprints and other matplotlib development costs.""", title='Donate')
 
-
-news3 = NewsBox("""matplotlib <a
-href=http://sourceforge.net/project/platformdownload.php?group_id=80706>0.91.2</a>
-is out.  See <a href=whats_new.html>what's new</a> for a summary of new features.  """, title='New release')
 
 
 table1 =  LinkBox(header='Matplotlib', links=(
@@ -211,8 +209,10 @@ table1 =  LinkBox(header='Matplotlib', links=(
 
 table2 =  LinkBox(header='Documentation', links=(
     ('Tutorial', 'tutorial.html'),
-    ("User's&nbsp;Guide&nbsp;(pdf)", 'users_guide_%s.pdf'%matplotlib.__version__),
-    ("API&nbsp;(pdf)", 'api.pdf'),
+    ("User's&nbsp;Guide&nbsp", 'users_guide_%s.pdf'%matplotlib.__version__),
+    ('API&nbsp;tutorial', 'pycon/event_handling_tut.pdf'),
+    ('Event&nbsp;handling', 'pycon/artist_api_tut.pdf'),    
+    ("API&nbsp;", 'api.pdf'),
     ('FAQ', 'faq.html'),
     ('Cookbook&nbsp;/&nbsp;wiki', 'http://www.scipy.org/wikis/topical_software/MatplotlibCookbook'),        
     ('pylab&nbsp;interface', 'pylab_commands.html'),
@@ -232,7 +232,7 @@ table3 =  LinkBox(header='Other', links=(
 
 params = {
     'myemail' : '<a href=mailto:jdhunter@ace.bsd.uchicago.edu> (jdhunter@ace.bsd.uchicago.edu)</a>',
-    'tables' : (news1, news2, news3, table1, table2, table3),
+    'tables' : (news1, news2, table1, table2, table3),
     'default_table' :  'border=1 cellpadding=3 cellspacing=2', 
           }
 

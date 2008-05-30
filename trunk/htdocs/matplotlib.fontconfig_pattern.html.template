@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.fontconfig_pattern</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/fontconfig_pattern.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/fontconfig_pattern.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/fontconfig_pattern.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/fontconfig_pattern.py</a></font></td></tr></table>
     <p><tt>A&nbsp;module&nbsp;for&nbsp;parsing&nbsp;a&nbsp;fontconfig&nbsp;pattern.<br>
 &nbsp;<br>
 This&nbsp;class&nbsp;is&nbsp;defined&nbsp;here&nbsp;because&nbsp;it&nbsp;must&nbsp;be&nbsp;available&nbsp;in:<br>

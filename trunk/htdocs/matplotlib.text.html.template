@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.text</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/text.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/text.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/text.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/text.py</a></font></td></tr></table>
     <p><tt>Figure&nbsp;and&nbsp;Axes&nbsp;text</tt></p>
 <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -16,11 +16,9 @@
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
 <a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
 </td><td width="25%" valign=top><a href="math.html">math</a><br>
-<a href="matplotlib.html">matplotlib</a><br>
-</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-<a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
-</td><td width="25%" valign=top><a href="re.html">re</a><br>
-</td></tr></table></td></tr></table><p>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -28,7 +26,7 @@
     
 <tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.text.html#Text">Text</a>
@@ -55,6 +53,7 @@ Axes,&nbsp;Point,&nbsp;Rectangle,&nbsp;etc...&nbsp;easier<br>&nbsp;</tt></td></t
 <dd><a href="matplotlib.text.html#Annotation">Annotation</a></dd>
 <dd><a href="matplotlib.text.html#Text">Text</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -66,36 +65,47 @@ arrowprops,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of&n
 (see&nbsp;matplotlib.lines.Line2D)&nbsp;for&nbsp;the&nbsp;arrow&nbsp;that&nbsp;connects<br>
 annotation&nbsp;to&nbsp;the&nbsp;point.&nbsp;&nbsp;&nbsp;Valid&nbsp;keys&nbsp;are<br>
 &nbsp;<br>
-&nbsp;&nbsp;-&nbsp;width&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;arrow&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;-&nbsp;frac&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;arrow&nbsp;length&nbsp;occupied&nbsp;by&nbsp;the&nbsp;head<br>
-&nbsp;&nbsp;-&nbsp;headwidth&nbsp;:&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;base&nbsp;of&nbsp;the&nbsp;arrow&nbsp;head&nbsp;in&nbsp;points<br>
-&nbsp;&nbsp;-&nbsp;shrink:&nbsp;often&nbsp;times&nbsp;it&nbsp;is&nbsp;convenient&nbsp;to&nbsp;have&nbsp;the&nbsp;arrowtip<br>
-&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;a&nbsp;bit&nbsp;away&nbsp;from&nbsp;the&nbsp;text&nbsp;and&nbsp;point&nbsp;being<br>
-&nbsp;&nbsp;&nbsp;&nbsp;annotated.&nbsp;&nbsp;If&nbsp;d&nbsp;is&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;text&nbsp;and<br>
-&nbsp;&nbsp;&nbsp;&nbsp;annotated&nbsp;point,&nbsp;shrink&nbsp;will&nbsp;shorten&nbsp;the&nbsp;arrow&nbsp;so&nbsp;the&nbsp;tip<br>
-&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;are&nbsp;shink&nbsp;percent&nbsp;of&nbsp;the&nbsp;distance&nbsp;d&nbsp;away&nbsp;from&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;endpoints.&nbsp;&nbsp;ie,&nbsp;shrink=0.05&nbsp;is&nbsp;5%<br>
-&nbsp;&nbsp;-&nbsp;any&nbsp;key&nbsp;for&nbsp;matplotlib.patches.polygon<br>
+=========&nbsp;&nbsp;&nbsp;===========================================================<br>
+&nbsp;&nbsp;&nbsp;Key&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+=========&nbsp;&nbsp;&nbsp;===========================================================<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;arrow&nbsp;in&nbsp;points<br>
+frac&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&nbsp;arrow&nbsp;length&nbsp;occupied&nbsp;by&nbsp;the&nbsp;head<br>
+headwidth&nbsp;&nbsp;&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;base&nbsp;of&nbsp;the&nbsp;arrow&nbsp;head&nbsp;in&nbsp;points<br>
+shrink&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;often&nbsp;times&nbsp;it&nbsp;is&nbsp;convenient&nbsp;to&nbsp;have&nbsp;the&nbsp;arrowtip<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;a&nbsp;bit&nbsp;away&nbsp;from&nbsp;the&nbsp;text&nbsp;and&nbsp;point&nbsp;being<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotated.&nbsp;&nbsp;If&nbsp;d&nbsp;is&nbsp;the&nbsp;distance&nbsp;between&nbsp;the&nbsp;text&nbsp;and<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotated&nbsp;point,&nbsp;shrink&nbsp;will&nbsp;shorten&nbsp;the&nbsp;arrow&nbsp;so&nbsp;the&nbsp;tip<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;and&nbsp;base&nbsp;are&nbsp;shink&nbsp;percent&nbsp;of&nbsp;the&nbsp;distance&nbsp;d&nbsp;away&nbsp;from&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;endpoints.&nbsp;&nbsp;ie,&nbsp;shrink=0.05&nbsp;is&nbsp;5%<br>
+?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;key&nbsp;for&nbsp;matplotlib.patches.polygon<br>
+=========&nbsp;&nbsp;&nbsp;===========================================================<br>
 &nbsp;<br>
 xycoords&nbsp;and&nbsp;textcoords&nbsp;are&nbsp;strings&nbsp;that&nbsp;indicate&nbsp;the<br>
 coordinates&nbsp;of&nbsp;xy&nbsp;and&nbsp;xytext.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;'figure&nbsp;points'&nbsp;&nbsp;&nbsp;:&nbsp;points&nbsp;from&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;the&nbsp;figure<br>
-&nbsp;&nbsp;&nbsp;'figure&nbsp;pixels'&nbsp;&nbsp;&nbsp;:&nbsp;pixels&nbsp;from&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;the&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'figure&nbsp;fraction'&nbsp;:&nbsp;0,0&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;figure&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper,&nbsp;right<br>
-&nbsp;&nbsp;&nbsp;'axes&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;points&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
-&nbsp;&nbsp;&nbsp;'axes&nbsp;pixels'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;pixels&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
-&nbsp;&nbsp;&nbsp;'axes&nbsp;fraction'&nbsp;&nbsp;&nbsp;:&nbsp;0,1&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;axes&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper&nbsp;right<br>
-&nbsp;&nbsp;&nbsp;'data'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;use&nbsp;the&nbsp;coordinate&nbsp;system&nbsp;of&nbsp;the&nbsp;object&nbsp;being&nbsp;annotated&nbsp;(default)<br>
-&nbsp;&nbsp;&nbsp;'offset&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;Specify&nbsp;an&nbsp;offset&nbsp;(in&nbsp;points)&nbsp;from&nbsp;the&nbsp;xy&nbsp;value<br>
-&nbsp;&nbsp;&nbsp;'polar'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;you&nbsp;can&nbsp;specify&nbsp;theta,&nbsp;r&nbsp;for&nbsp;the&nbsp;annotation,&nbsp;even<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;cartesian&nbsp;plots.&nbsp;&nbsp;Note&nbsp;that&nbsp;if&nbsp;you<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;using&nbsp;a&nbsp;polar&nbsp;axes,&nbsp;you&nbsp;do&nbsp;not&nbsp;need<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;specify&nbsp;polar&nbsp;for&nbsp;the&nbsp;coordinate<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system&nbsp;since&nbsp;that&nbsp;is&nbsp;the&nbsp;native"data"&nbsp;coordinate&nbsp;system.<br>
+=================&nbsp;&nbsp;&nbsp;===================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+=================&nbsp;&nbsp;&nbsp;===================================================<br>
+'figure&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;points&nbsp;from&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;the&nbsp;figure<br>
+'figure&nbsp;pixels'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pixels&nbsp;from&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;the&nbsp;figure<br>
+'figure&nbsp;fraction'&nbsp;&nbsp;&nbsp;0,0&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;figure&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper,&nbsp;right<br>
+'axes&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;points&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
+'axes&nbsp;pixels'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pixels&nbsp;from&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of&nbsp;axes<br>
+'axes&nbsp;fraction'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0,1&nbsp;is&nbsp;lower&nbsp;left&nbsp;of&nbsp;axes&nbsp;and&nbsp;1,1&nbsp;is&nbsp;upper&nbsp;right<br>
+'data'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;the&nbsp;coordinate&nbsp;system&nbsp;of&nbsp;the&nbsp;object&nbsp;being<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;annotated&nbsp;(default)<br>
+'offset&nbsp;points'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Specify&nbsp;an&nbsp;offset&nbsp;(in&nbsp;points)&nbsp;from&nbsp;the&nbsp;xy&nbsp;value<br>
+'polar'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;you&nbsp;can&nbsp;specify&nbsp;theta,&nbsp;r&nbsp;for&nbsp;the&nbsp;annotation,&nbsp;even<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;cartesian&nbsp;plots.&nbsp;&nbsp;Note&nbsp;that&nbsp;if&nbsp;you<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;using&nbsp;a&nbsp;polar&nbsp;axes,&nbsp;you&nbsp;do&nbsp;not&nbsp;need<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;specify&nbsp;polar&nbsp;for&nbsp;the&nbsp;coordinate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system&nbsp;since&nbsp;that&nbsp;is&nbsp;the&nbsp;native"data"&nbsp;coordinate<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;system.<br>
+=================&nbsp;&nbsp;&nbsp;===================================================<br>
 &nbsp;<br>
 If&nbsp;a&nbsp;points&nbsp;or&nbsp;pixels&nbsp;option&nbsp;is&nbsp;specified,&nbsp;values&nbsp;will&nbsp;be<br>
 added&nbsp;to&nbsp;the&nbsp;left,&nbsp;bottom&nbsp;and&nbsp;if&nbsp;negative,&nbsp;values&nbsp;will&nbsp;be<br>
-subtracted&nbsp;from&nbsp;the&nbsp;top,&nbsp;right.&nbsp;&nbsp;Eg,<br>
+subtracted&nbsp;from&nbsp;the&nbsp;top,&nbsp;right.&nbsp;&nbsp;Eg::<br>
 &nbsp;<br>
 &nbsp;&nbsp;#&nbsp;10&nbsp;points&nbsp;to&nbsp;the&nbsp;right&nbsp;of&nbsp;the&nbsp;left&nbsp;border&nbsp;of&nbsp;the&nbsp;axes&nbsp;and<br>
 &nbsp;&nbsp;#&nbsp;5&nbsp;points&nbsp;below&nbsp;the&nbsp;top&nbsp;border<br>
@@ -110,7 +120,7 @@ Additional&nbsp;kwargs&nbsp;are&nbsp;<a href="#Text">Text</a>&nbsp;properties:<b
 &nbsp;&nbsp;&nbsp;&nbsp;bbox:&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;which&nbsp;is&nbsp;a&nbsp;pad&nbsp;in&nbsp;points<br>
 &nbsp;&nbsp;&nbsp;&nbsp;clip_box:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance<br>
 &nbsp;&nbsp;&nbsp;&nbsp;clip_on:&nbsp;[True&nbsp;|&nbsp;False]<br>
-&nbsp;&nbsp;&nbsp;&nbsp;clip_path:&nbsp;an&nbsp;agg.path_storage&nbsp;instance<br>
+&nbsp;&nbsp;&nbsp;&nbsp;clip_path:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
 &nbsp;&nbsp;&nbsp;&nbsp;color:&nbsp;any&nbsp;matplotlib&nbsp;color<br>
 &nbsp;&nbsp;&nbsp;&nbsp;contains:&nbsp;unknown<br>
 &nbsp;&nbsp;&nbsp;&nbsp;family:&nbsp;[&nbsp;'serif'&nbsp;|&nbsp;'sans-serif'&nbsp;|&nbsp;'cursive'&nbsp;|&nbsp;'fantasy'&nbsp;|&nbsp;'monospace'&nbsp;]<br>
@@ -147,6 +157,8 @@ Additional&nbsp;kwargs&nbsp;are&nbsp;<a href="#Text">Text</a>&nbsp;properties:<b
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 
+<dl><dt><a name="Annotation-set_figure"><strong>set_figure</strong></a>(self, fig)</dt></dl>
+
 <dl><dt><a name="Annotation-update_positions"><strong>update_positions</strong></a>(self, renderer)</dt></dl>
 
 <hr>
@@ -178,8 +190,6 @@ want&nbsp;to&nbsp;cache&nbsp;derived&nbsp;information&nbsp;about&nbsp;text&nbsp;
 need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd></dl>
 
 <dl><dt><a name="Annotation-get_rotation"><strong>get_rotation</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
-
-<dl><dt><a name="Annotation-get_rotation_matrix"><strong>get_rotation_matrix</strong></a>(self, x0, y0)</dt></dl>
 
 <dl><dt><a name="Annotation-get_size"><strong>get_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;size&nbsp;as&nbsp;integer</tt></dd></dl>
 
@@ -333,6 +343,9 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Annotation-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
+<dl><dt><a name="Annotation-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+
 <dl><dt><a name="Annotation-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Annotation-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
@@ -384,9 +397,22 @@ ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Annotation-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Annotation-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Annotation-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -396,10 +422,6 @@ mouse&nbsp;event:<br>
 &nbsp;<br>
 If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
 is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
-
-<dl><dt><a name="Annotation-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Annotation-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
@@ -456,6 +478,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Annotation-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -468,7 +498,13 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
 <td colspan=2><tt>Handle&nbsp;storing&nbsp;and&nbsp;drawing&nbsp;of&nbsp;text&nbsp;in&nbsp;window&nbsp;or&nbsp;data&nbsp;coordinates<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
-<td width="100%">Methods defined here:<br>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.text.html#Text">Text</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
 <dl><dt><a name="Text-__init__"><strong>__init__</strong></a>(self, x<font color="#909090">=0</font>, y<font color="#909090">=0</font>, text<font color="#909090">=''</font>, color<font color="#909090">=None</font>, verticalalignment<font color="#909090">='bottom'</font>, horizontalalignment<font color="#909090">='left'</font>, multialignment<font color="#909090">=None</font>, fontproperties<font color="#909090">=None</font>, rotation<font color="#909090">=None</font>, linespacing<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;<a href="#Text">Text</a>&nbsp;instance&nbsp;at&nbsp;x,y&nbsp;with&nbsp;string&nbsp;text.<br>
 &nbsp;<br>
 Valid&nbsp;kwargs&nbsp;are<br>
@@ -537,8 +573,6 @@ want&nbsp;to&nbsp;cache&nbsp;derived&nbsp;information&nbsp;about&nbsp;text&nbsp;
 need&nbsp;to&nbsp;know&nbsp;if&nbsp;the&nbsp;text&nbsp;has&nbsp;changed</tt></dd></dl>
 
 <dl><dt><a name="Text-get_rotation"><strong>get_rotation</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
-
-<dl><dt><a name="Text-get_rotation_matrix"><strong>get_rotation_matrix</strong></a>(self, x0, y0)</dt></dl>
 
 <dl><dt><a name="Text-get_size"><strong>get_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;size&nbsp;as&nbsp;integer</tt></dd></dl>
 
@@ -692,6 +726,9 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Text-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
+<dl><dt><a name="Text-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+
 <dl><dt><a name="Text-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Text-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
@@ -747,9 +784,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Text-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="Text-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="Text-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -819,6 +869,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="Text-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -842,7 +900,7 @@ verticalalignment)&nbsp;are&nbsp;ignored.<br>
 dashlength&nbsp;is&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;dash&nbsp;in&nbsp;canvas&nbsp;units.<br>
 (default=0.0).<br>
 &nbsp;<br>
-dashdirection&nbsp;is&nbsp;one&nbsp;of&nbsp;0&nbsp;or&nbsp;1,&nbsp;npy.where&nbsp;0&nbsp;draws&nbsp;the&nbsp;dash<br>
+dashdirection&nbsp;is&nbsp;one&nbsp;of&nbsp;0&nbsp;or&nbsp;1,&nbsp;np.where&nbsp;0&nbsp;draws&nbsp;the&nbsp;dash<br>
 after&nbsp;the&nbsp;text&nbsp;and&nbsp;1&nbsp;before.<br>
 (default=0).<br>
 &nbsp;<br>
@@ -878,6 +936,7 @@ object&nbsp;bbox.<br>&nbsp;</tt></td></tr>
 <dd><a href="matplotlib.text.html#TextWithDash">TextWithDash</a></dd>
 <dd><a href="matplotlib.text.html#Text">Text</a></dd>
 <dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
 </dl>
 <hr>
 Methods defined here:<br>
@@ -987,8 +1046,6 @@ Returns&nbsp;T/F,&nbsp;{}</tt></dd></dl>
 <dl><dt><a name="TextWithDash-get_name"><strong>get_name</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;name&nbsp;as&nbsp;string</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_rotation"><strong>get_rotation</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;text&nbsp;angle&nbsp;as&nbsp;float</tt></dd></dl>
-
-<dl><dt><a name="TextWithDash-get_rotation_matrix"><strong>get_rotation_matrix</strong></a>(self, x0, y0)</dt></dl>
 
 <dl><dt><a name="TextWithDash-get_size"><strong>get_size</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;font&nbsp;size&nbsp;as&nbsp;integer</tt></dd></dl>
 
@@ -1126,6 +1183,9 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
+<dl><dt><a name="TextWithDash-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
+and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+
 <dl><dt><a name="TextWithDash-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
@@ -1181,9 +1241,22 @@ ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="TextWithDash-set_clip_path"><strong>set_clip_path</strong></a>(self, path)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path<br>
+<dl><dt><a name="TextWithDash-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;an&nbsp;agg.path_storage&nbsp;instance</tt></dd></dl>
+&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
+instance,&nbsp;or&nbsp;None</tt></dd></dl>
 
 <dl><dt><a name="TextWithDash-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
@@ -1245,6 +1318,14 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 <dl><dt><a name="TextWithDash-update"><strong>update</strong></a>(self, props)</dt></dl>
 
 <hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
 Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><strong>aname</strong> = 'Artist'</dl>
 
@@ -1264,6 +1345,5 @@ Data and other attributes inherited from <a href="matplotlib.artist.html#Artist"
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x82f08cc&gt;</td></tr></table>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}</td></tr></table>
 @footer@

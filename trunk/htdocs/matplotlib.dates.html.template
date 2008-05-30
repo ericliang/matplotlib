@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.dates</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/dates.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/dates.py</a></font></td></tr></table>
     <p><tt>Matplotlib&nbsp;provides&nbsp;sophisticated&nbsp;date&nbsp;plotting&nbsp;capabilities,&nbsp;standing<br>
 on&nbsp;the&nbsp;shoulders&nbsp;of&nbsp;python&nbsp;datetime,&nbsp;the&nbsp;add-on&nbsp;modules&nbsp;pytz&nbsp;and<br>
 dateutils.&nbsp;&nbsp;datetime&nbsp;objects&nbsp;are&nbsp;converted&nbsp;to&nbsp;floating&nbsp;point&nbsp;numbers<br>
@@ -88,16 +88,14 @@ Date&nbsp;formatters<br>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
 <a href="datetime.html">datetime</a><br>
 <a href="dateutil.html">dateutil</a><br>
-<a href="locale.html">locale</a><br>
 </td><td width="25%" valign=top><a href="math.html">math</a><br>
 <a href="matplotlib.html">matplotlib</a><br>
 <a href="numpy.html">numpy</a><br>
-<a href="pytz.html">pytz</a><br>
-</td><td width="25%" valign=top><a href="re.html">re</a><br>
-<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top><a href="pytz.html">pytz</a><br>
+<a href="re.html">re</a><br>
 <a href="matplotlib.ticker.html">matplotlib.ticker</a><br>
-<a href="time.html">time</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.units.html">matplotlib.units</a><br>
+</td><td width="25%" valign=top><a href="time.html">time</a><br>
+<a href="matplotlib.units.html">matplotlib.units</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
@@ -175,10 +173,23 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x8537530&gt;</dl>
+<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0xf5c3e0&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>
+<dl><dt><a name="DateFormatter-fix_minus"><strong>fix_minus</strong></a>(self, s)</dt><dd><tt>some&nbsp;classes&nbsp;may&nbsp;want&nbsp;to&nbsp;replace&nbsp;a&nbsp;hyphen&nbsp;for&nbsp;minus&nbsp;with&nbsp;the<br>
+proper&nbsp;unicode&nbsp;symbol&nbsp;as&nbsp;described&nbsp;here<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1962574&amp;group_id=80706&amp;atid=560720">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1962574&amp;group_id=80706&amp;atid=560720</a>.<br>
+The&nbsp;default&nbsp;is&nbsp;to&nbsp;do&nbsp;nothing<br>
+&nbsp;<br>
+Note,&nbsp;if&nbsp;you&nbsp;use&nbsp;this&nbsp;method,&nbsp;eg&nbsp;in&nbsp;format_data&nbsp;or&nbsp;call,&nbsp;you<br>
+probably&nbsp;don't&nbsp;want&nbsp;to&nbsp;use&nbsp;it&nbsp;for&nbsp;format_data_short&nbsp;since&nbsp;the<br>
+toolbar&nbsp;uses&nbsp;this&nbsp;for&nbsp;interative&nbsp;coord&nbsp;reporting&nbsp;and&nbsp;I&nbsp;doubt<br>
+we&nbsp;can&nbsp;expect&nbsp;GUIs&nbsp;across&nbsp;platforms&nbsp;will&nbsp;handle&nbsp;the&nbsp;unicode<br>
+correctly.&nbsp;&nbsp;So&nbsp;for&nbsp;now&nbsp;the&nbsp;classes&nbsp;that&nbsp;override&nbsp;fix_minus<br>
+should&nbsp;have&nbsp;an&nbsp;explicit&nbsp;format_data_short&nbsp;method</tt></dd></dl>
+
 <dl><dt><a name="DateFormatter-format_data"><strong>format_data</strong></a>(self, value)</dt></dl>
 
 <dl><dt><a name="DateFormatter-format_data_short"><strong>format_data_short</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;short&nbsp;string&nbsp;version</tt></dd></dl>
@@ -193,24 +204,21 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="DateFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="DateFormatter-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="DateFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DateFormatter-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="DateFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DateFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="DateFormatter-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="DateFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="DateFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -254,24 +262,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="DateLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="DateLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="DateLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DateLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="DateLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DateLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="DateLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="DateLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="DateLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -325,24 +330,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="DayLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="DayLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="DayLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DayLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="DayLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="DayLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="DayLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="DayLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="DayLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -398,24 +400,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="HourLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="HourLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="HourLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="HourLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="HourLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="HourLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="HourLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="HourLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="HourLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -440,6 +439,19 @@ strftime&nbsp;format&nbsp;string</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>
+<dl><dt><a name="IndexDateFormatter-fix_minus"><strong>fix_minus</strong></a>(self, s)</dt><dd><tt>some&nbsp;classes&nbsp;may&nbsp;want&nbsp;to&nbsp;replace&nbsp;a&nbsp;hyphen&nbsp;for&nbsp;minus&nbsp;with&nbsp;the<br>
+proper&nbsp;unicode&nbsp;symbol&nbsp;as&nbsp;described&nbsp;here<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1962574&amp;group_id=80706&amp;atid=560720">http://sourceforge.net/tracker/index.php?func=detail&amp;aid=1962574&amp;group_id=80706&amp;atid=560720</a>.<br>
+The&nbsp;default&nbsp;is&nbsp;to&nbsp;do&nbsp;nothing<br>
+&nbsp;<br>
+Note,&nbsp;if&nbsp;you&nbsp;use&nbsp;this&nbsp;method,&nbsp;eg&nbsp;in&nbsp;format_data&nbsp;or&nbsp;call,&nbsp;you<br>
+probably&nbsp;don't&nbsp;want&nbsp;to&nbsp;use&nbsp;it&nbsp;for&nbsp;format_data_short&nbsp;since&nbsp;the<br>
+toolbar&nbsp;uses&nbsp;this&nbsp;for&nbsp;interative&nbsp;coord&nbsp;reporting&nbsp;and&nbsp;I&nbsp;doubt<br>
+we&nbsp;can&nbsp;expect&nbsp;GUIs&nbsp;across&nbsp;platforms&nbsp;will&nbsp;handle&nbsp;the&nbsp;unicode<br>
+correctly.&nbsp;&nbsp;So&nbsp;for&nbsp;now&nbsp;the&nbsp;classes&nbsp;that&nbsp;override&nbsp;fix_minus<br>
+should&nbsp;have&nbsp;an&nbsp;explicit&nbsp;format_data_short&nbsp;method</tt></dd></dl>
+
 <dl><dt><a name="IndexDateFormatter-format_data"><strong>format_data</strong></a>(self, value)</dt></dl>
 
 <dl><dt><a name="IndexDateFormatter-format_data_short"><strong>format_data_short</strong></a>(self, value)</dt><dd><tt>return&nbsp;a&nbsp;short&nbsp;string&nbsp;version</tt></dd></dl>
@@ -454,24 +466,21 @@ Data and other attributes inherited from <a href="matplotlib.ticker.html#Formatt
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="IndexDateFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="IndexDateFormatter-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="IndexDateFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="IndexDateFormatter-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="IndexDateFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="IndexDateFormatter-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="IndexDateFormatter-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="IndexDateFormatter-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="IndexDateFormatter-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -527,24 +536,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="MinuteLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="MinuteLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="MinuteLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="MinuteLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="MinuteLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="MinuteLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="MinuteLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="MinuteLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="MinuteLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -600,24 +606,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="MonthLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="MonthLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="MonthLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="MonthLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="MonthLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="MonthLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="MonthLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="MonthLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="MonthLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -664,24 +667,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="RRuleLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="RRuleLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="RRuleLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="RRuleLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="RRuleLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="RRuleLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="RRuleLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="RRuleLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="RRuleLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -737,24 +737,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="SecondLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="SecondLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="SecondLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="SecondLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="SecondLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="SecondLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="SecondLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="SecondLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="SecondLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -813,24 +810,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="WeekdayLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="WeekdayLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="WeekdayLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="WeekdayLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="WeekdayLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="WeekdayLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="WeekdayLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="WeekdayLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="WeekdayLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -887,24 +881,21 @@ Methods inherited from <a href="matplotlib.ticker.html#Locator">matplotlib.ticke
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><a name="YearLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt><dd><tt>Set&nbsp;dataInterval&nbsp;and&nbsp;viewInterval&nbsp;from&nbsp;numeric&nbsp;vmin,&nbsp;vmax.<br>
-&nbsp;<br>
-This&nbsp;is&nbsp;for&nbsp;stand-alone&nbsp;use&nbsp;of&nbsp;Formatters&nbsp;and/or<br>
-Locators&nbsp;that&nbsp;require&nbsp;these&nbsp;intervals;&nbsp;that&nbsp;is,&nbsp;for<br>
-cases&nbsp;where&nbsp;the&nbsp;Intervals&nbsp;do&nbsp;not&nbsp;need&nbsp;to&nbsp;be&nbsp;updated<br>
-automatically.</tt></dd></dl>
+<dl><dt><a name="YearLocator-create_dummy_axis"><strong>create_dummy_axis</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="YearLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="YearLocator-set_axis"><strong>set_axis</strong></a>(self, axis)</dt></dl>
 
-<dl><dt><a name="YearLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, interval)</dt></dl>
+<dl><dt><a name="YearLocator-set_bounds"><strong>set_bounds</strong></a>(self, vmin, vmax)</dt></dl>
 
-<dl><dt><a name="YearLocator-verify_intervals"><strong>verify_intervals</strong></a>(self)</dt></dl>
+<dl><dt><a name="YearLocator-set_data_interval"><strong>set_data_interval</strong></a>(self, vmin, vmax)</dt></dl>
+
+<dl><dt><a name="YearLocator-set_view_interval"><strong>set_view_interval</strong></a>(self, vmin, vmax)</dt></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>dataInterval</strong> = None</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed82f0&gt;</dl>
 
-<dl><dt><strong>viewInterval</strong> = None</dl>
+<dl><dt><strong>axis</strong> = None</dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">

@@ -4,7 +4,7 @@
 <td valign=bottom>&nbsp;<br>
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mlab</strong></big></big></font></td
 ><td align=right valign=bottom
-><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mlab.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/mlab.py</a></font></td></tr></table>
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mlab.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mlab.py</a></font></td></tr></table>
     <p><tt>Numerical&nbsp;python&nbsp;functions&nbsp;written&nbsp;for&nbsp;compatability&nbsp;with&nbsp;matlab(TM)<br>
 commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;<br>
@@ -50,19 +50,18 @@ commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this&nbsp;efficiently&nbsp;by&nbsp;caching&nbsp;the&nbsp;direct&nbsp;FFTs.<br>
 &nbsp;<br>
 =&nbsp;record&nbsp;array&nbsp;helper&nbsp;functions&nbsp;=<br>
-&nbsp;<br>
+&nbsp;&nbsp;&nbsp;*&nbsp;rec2txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;pretty&nbsp;print&nbsp;a&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec2csv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;store&nbsp;record&nbsp;array&nbsp;in&nbsp;CSV&nbsp;file<br>
-&nbsp;&nbsp;&nbsp;*&nbsp;rec2excel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;store&nbsp;record&nbsp;array&nbsp;in&nbsp;excel&nbsp;worksheet&nbsp;-&nbsp;required&nbsp;pyExcelerator<br>
-&nbsp;<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;csv2rec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;import&nbsp;record&nbsp;array&nbsp;from&nbsp;CSV&nbsp;file&nbsp;with&nbsp;type&nbsp;inspection<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_append_field&nbsp;:&nbsp;add&nbsp;a&nbsp;field/array&nbsp;to&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_drop_fields&nbsp;&nbsp;:&nbsp;drop&nbsp;fields&nbsp;from&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_join&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;join&nbsp;two&nbsp;record&nbsp;arrays&nbsp;on&nbsp;sequence&nbsp;of&nbsp;fields<br>
+&nbsp;&nbsp;&nbsp;*&nbsp;rec_groupby&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;summarize&nbsp;data&nbsp;by&nbsp;groups&nbsp;(similar&nbsp;to&nbsp;SQL&nbsp;GROUP&nbsp;BY)<br>
+&nbsp;&nbsp;&nbsp;*&nbsp;rec_summarize&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;helper&nbsp;code&nbsp;to&nbsp;filter&nbsp;rec&nbsp;array&nbsp;fields&nbsp;into&nbsp;new&nbsp;fields<br>
 &nbsp;<br>
-For&nbsp;the&nbsp;rec&nbsp;viewer&nbsp;clases&nbsp;(rec2csv,&nbsp;rec2excel),&nbsp;there&nbsp;are<br>
-a&nbsp;bunch&nbsp;of&nbsp;Format&nbsp;objects&nbsp;you&nbsp;can&nbsp;pass&nbsp;into&nbsp;the&nbsp;functions&nbsp;that&nbsp;will&nbsp;do<br>
-things&nbsp;like&nbsp;color&nbsp;negative&nbsp;values&nbsp;red,&nbsp;set&nbsp;percent&nbsp;formatting&nbsp;and<br>
-scaling,&nbsp;etc.<br>
+For&nbsp;the&nbsp;rec&nbsp;viewer&nbsp;functions(e&nbsp;rec2csv),&nbsp;there&nbsp;are&nbsp;a&nbsp;bunch&nbsp;of&nbsp;Format<br>
+objects&nbsp;you&nbsp;can&nbsp;pass&nbsp;into&nbsp;the&nbsp;functions&nbsp;that&nbsp;will&nbsp;do&nbsp;things&nbsp;like&nbsp;color<br>
+negative&nbsp;values&nbsp;red,&nbsp;set&nbsp;percent&nbsp;formatting&nbsp;and&nbsp;scaling,&nbsp;etc.<br>
 &nbsp;<br>
 &nbsp;<br>
 Example&nbsp;usage:<br>
@@ -95,14 +94,13 @@ Example&nbsp;usage:<br>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
 <a href="copy.html">copy</a><br>
 <a href="csv.html">csv</a><br>
-</td><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
-<a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
 <a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
-<a href="operator.html">operator</a><br>
-<a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td></tr></table></td></tr></table><p>
+<a href="matplotlib.nxutils.html">matplotlib.nxutils</a><br>
+</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+<a href="os.html">os</a><br>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -114,7 +112,8 @@ Example&nbsp;usage:<br>
 </font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatObj">FormatObj</a>
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatDate">FormatDate</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatBool">FormatBool</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatDate">FormatDate</a>
 </font></dt><dd>
 <dl>
 <dt><font face="helvetica, arial"><a href="matplotlib.mlab.html#FormatDatetime">FormatDatetime</a>
@@ -179,11 +178,29 @@ added&nbsp;or&nbsp;nmax</tt></dd></dl>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="FormatBool">class <strong>FormatBool</strong></a>(<a href="matplotlib.mlab.html#FormatObj">FormatObj</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="FormatBool-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="FormatBool-toval"><strong>toval</strong></a>(self, x)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<br>
+<dl><dt><a name="FormatBool-tostr"><strong>tostr</strong></a>(self, x)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
 <font color="#000000" face="helvetica, arial"><a name="FormatDate">class <strong>FormatDate</strong></a>(<a href="matplotlib.mlab.html#FormatObj">FormatObj</a>)</font></td></tr>
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="FormatDate-__init__"><strong>__init__</strong></a>(self, fmt)</dt></dl>
+
+<dl><dt><a name="FormatDate-fromstr"><strong>fromstr</strong></a>(self, x)</dt></dl>
 
 <dl><dt><a name="FormatDate-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
@@ -206,6 +223,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<b
 <hr>
 Methods defined here:<br>
 <dl><dt><a name="FormatDatetime-__init__"><strong>__init__</strong></a>(self, fmt<font color="#909090">='%Y-%m-%d %H:%M:%S'</font>)</dt></dl>
+
+<dl><dt><a name="FormatDatetime-fromstr"><strong>fromstr</strong></a>(self, x)</dt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatDate">FormatDate</a>:<br>
@@ -231,6 +250,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<b
 Methods defined here:<br>
 <dl><dt><a name="FormatFloat-__init__"><strong>__init__</strong></a>(self, precision<font color="#909090">=4</font>, scale<font color="#909090">=1.0</font>)</dt></dl>
 
+<dl><dt><a name="FormatFloat-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatFloat-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 <hr>
@@ -251,6 +272,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatFormatStr">FormatForm
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<br>
+<dl><dt><a name="FormatFormatStr-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatFormatStr-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 </td></tr></table> <p>
@@ -261,6 +284,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<b
     
 <tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
+<dl><dt><a name="FormatInt-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatInt-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 <hr>
@@ -286,6 +311,8 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatFloat">FormatFloat</a>:<br>
+<dl><dt><a name="FormatMillions-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatMillions-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 <hr>
@@ -302,6 +329,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatFormatStr">FormatForm
 <td colspan=2><tt>#&nbsp;a&nbsp;series&nbsp;of&nbsp;classes&nbsp;for&nbsp;describing&nbsp;the&nbsp;format&nbsp;intentions&nbsp;of&nbsp;various&nbsp;rec&nbsp;views<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
+<dl><dt><a name="FormatObj-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatObj-tostr"><strong>tostr</strong></a>(self, x)</dt></dl>
 
 <dl><dt><a name="FormatObj-toval"><strong>toval</strong></a>(self, x)</dt></dl>
@@ -325,6 +354,8 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatFloat">FormatFloat</a>:<br>
+<dl><dt><a name="FormatPercent-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatPercent-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 <hr>
@@ -343,6 +374,8 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatFormatStr">FormatForm
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatObj">FormatObj</a>:<br>
+<dl><dt><a name="FormatString-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatString-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 </td></tr></table> <p>
@@ -364,6 +397,8 @@ Methods defined here:<br>
 
 <hr>
 Methods inherited from <a href="matplotlib.mlab.html#FormatFloat">FormatFloat</a>:<br>
+<dl><dt><a name="FormatThousands-fromstr"><strong>fromstr</strong></a>(self, s)</dt></dl>
+
 <dl><dt><a name="FormatThousands-toval"><strong>toval</strong></a>(self, x)</dt></dl>
 
 <hr>
@@ -398,7 +433,7 @@ converted&nbsp;to&nbsp;a&nbsp;Python&nbsp;float.</tt></dd></dl>
 &nbsp;<br>
 if&nbsp;dim=1&nbsp;operate&nbsp;on&nbsp;columns&nbsp;instead&nbsp;of&nbsp;rows.&nbsp;&nbsp;(dim&nbsp;is&nbsp;opposite<br>
 to&nbsp;the&nbsp;numpy&nbsp;axis&nbsp;kwarg.)</tt></dd></dl>
- <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
+ <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
 &nbsp;<br>
 Cxy&nbsp;=&nbsp;|Pxy|^2/(Pxx*Pyy)<br>
@@ -409,7 +444,7 @@ about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;window
 well&nbsp;as&nbsp;the&nbsp;methods&nbsp;used&nbsp;to&nbsp;compute&nbsp;Pxy,&nbsp;Pxx&nbsp;and&nbsp;Pyy.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Cxy,&nbsp;freqs</tt></dd></dl>
- <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0x8532bc4&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
+ <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0xed02a8&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
 &nbsp;<br>
 Compute&nbsp;the&nbsp;coherence&nbsp;for&nbsp;all&nbsp;pairs&nbsp;in&nbsp;ij.&nbsp;&nbsp;X&nbsp;is&nbsp;a<br>
 numSamples,numCols&nbsp;numpy&nbsp;array.&nbsp;&nbsp;ij&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples&nbsp;(i,j).<br>
@@ -480,7 +515,7 @@ Numpy&nbsp;arrays&nbsp;can&nbsp;be&nbsp;real&nbsp;or&nbsp;complex<br>
 The&nbsp;correlation&nbsp;matrix&nbsp;is&nbsp;defined&nbsp;from&nbsp;the&nbsp;covariance&nbsp;matrix&nbsp;C&nbsp;as<br>
 &nbsp;<br>
 r(i,j)&nbsp;=&nbsp;C[i,j]&nbsp;/&nbsp;sqrt(C[i,i]*C[j,j])</tt></dd></dl>
- <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
+ <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
 method.&nbsp;&nbsp;The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length<br>
 segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and<br>
 windowed&nbsp;by&nbsp;function&nbsp;window.&nbsp;&nbsp;noverlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the<br>
@@ -500,8 +535,8 @@ Returns&nbsp;the&nbsp;tuple&nbsp;Pxy,&nbsp;freqs<br>
 Refs:<br>
 &nbsp;&nbsp;Bendat&nbsp;&amp;&nbsp;Piersol&nbsp;--&nbsp;Random&nbsp;Data:&nbsp;Analysis&nbsp;and&nbsp;Measurement<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Procedures,&nbsp;John&nbsp;Wiley&nbsp;&amp;&nbsp;Sons&nbsp;(1986)</tt></dd></dl>
- <dl><dt><a name="-csv2rec"><strong>csv2rec</strong></a>(fname, comments<font color="#909090">='#'</font>, skiprows<font color="#909090">=0</font>, checkrows<font color="#909090">=0</font>, delimiter<font color="#909090">=','</font>, converterd<font color="#909090">=None</font>, names<font color="#909090">=None</font>, missing<font color="#909090">=None</font>)</dt><dd><tt>Load&nbsp;data&nbsp;from&nbsp;comma/space/tab&nbsp;delimited&nbsp;file&nbsp;in&nbsp;fname&nbsp;into&nbsp;a<br>
-numpy&nbsp;record&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;record&nbsp;array.<br>
+ <dl><dt><a name="-csv2rec"><strong>csv2rec</strong></a>(fname, comments<font color="#909090">='#'</font>, skiprows<font color="#909090">=0</font>, checkrows<font color="#909090">=0</font>, delimiter<font color="#909090">=','</font>, converterd<font color="#909090">=None</font>, names<font color="#909090">=None</font>, missing<font color="#909090">=''</font>, missingd<font color="#909090">=None</font>)</dt><dd><tt>Load&nbsp;data&nbsp;from&nbsp;comma/space/tab&nbsp;delimited&nbsp;file&nbsp;in&nbsp;fname&nbsp;into&nbsp;a<br>
+numpy&nbsp;(m)record&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;record&nbsp;array.<br>
 &nbsp;<br>
 If&nbsp;names&nbsp;is&nbsp;None,&nbsp;a&nbsp;header&nbsp;row&nbsp;is&nbsp;required&nbsp;to&nbsp;automatically&nbsp;assign<br>
 the&nbsp;recarray&nbsp;names.&nbsp;&nbsp;The&nbsp;headers&nbsp;will&nbsp;be&nbsp;lower&nbsp;cased,&nbsp;spaces&nbsp;will<br>
@@ -522,10 +557,17 @@ checkrows&nbsp;-&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;rows&nbsp;to&nbsp;che
 data&nbsp;type.&nbsp;&nbsp;When&nbsp;set&nbsp;to&nbsp;zero&nbsp;all&nbsp;rows&nbsp;are&nbsp;validated.<br>
 &nbsp;<br>
 converterd,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;column&nbsp;number&nbsp;or<br>
-munged&nbsp;column&nbsp;name&nbsp;to&nbsp;a&nbsp;converter&nbsp;function<br>
+munged&nbsp;column&nbsp;name&nbsp;to&nbsp;a&nbsp;converter&nbsp;function.<br>
 &nbsp;<br>
 names,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;header&nbsp;names.&nbsp;&nbsp;In&nbsp;this&nbsp;case,&nbsp;no<br>
 header&nbsp;will&nbsp;be&nbsp;read&nbsp;from&nbsp;the&nbsp;file<br>
+&nbsp;<br>
+missingd&nbsp;-&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;munged&nbsp;column&nbsp;names&nbsp;to&nbsp;field&nbsp;values<br>
+which&nbsp;signify&nbsp;that&nbsp;the&nbsp;field&nbsp;does&nbsp;not&nbsp;contain&nbsp;actual&nbsp;data&nbsp;and&nbsp;should<br>
+be&nbsp;masked,&nbsp;e.g.&nbsp;'0000-00-00'&nbsp;or&nbsp;'unused'<br>
+&nbsp;<br>
+missing&nbsp;-&nbsp;a&nbsp;string&nbsp;whose&nbsp;value&nbsp;signals&nbsp;a&nbsp;missing&nbsp;field&nbsp;regardless&nbsp;of<br>
+the&nbsp;column&nbsp;it&nbsp;appears&nbsp;in,&nbsp;e.g.&nbsp;'unused'<br>
 &nbsp;<br>
 if&nbsp;no&nbsp;rows&nbsp;are&nbsp;found,&nbsp;None&nbsp;is&nbsp;returned&nbsp;--&nbsp;see&nbsp;examples/loadrec.py</tt></dd></dl>
  <dl><dt><a name="-csvformat_factory"><strong>csvformat_factory</strong></a>(format)</dt></dl>
@@ -558,7 +600,7 @@ Sanalytic&nbsp;=&nbsp;0.5&nbsp;&nbsp;*&nbsp;(&nbsp;1.0&nbsp;+&nbsp;log(2*pi*sigm
 Slow&nbsp;but&nbsp;convenient&nbsp;to&nbsp;use.&nbsp;Note&nbsp;that&nbsp;numpy&nbsp;provides&nbsp;proper<br>
 floating&nbsp;point&nbsp;exception&nbsp;handling&nbsp;with&nbsp;access&nbsp;to&nbsp;the&nbsp;underlying<br>
 hardware.</tt></dd></dl>
- <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_none at 0x853287c&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_none at 0xece398&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
  <dl><dt><a name="-find"><strong>find</strong></a>(condition)</dt><dd><tt>Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;ravel(condition)&nbsp;is&nbsp;true</tt></dd></dl>
  <dl><dt><a name="-fix"><strong>fix</strong></a>(x)</dt><dd><tt>Rounds&nbsp;towards&nbsp;zero.<br>
 x_rounded&nbsp;=&nbsp;<a href="#-fix">fix</a>(x)&nbsp;rounds&nbsp;the&nbsp;elements&nbsp;of&nbsp;x&nbsp;to&nbsp;the&nbsp;nearest&nbsp;integers<br>
@@ -835,7 +877,7 @@ fracVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&n
 A&nbsp;similar&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name&nbsp;was&nbsp;in&nbsp;the&nbsp;Matlab&nbsp;(TM)<br>
 R13&nbsp;Neural&nbsp;Network&nbsp;Toolbox&nbsp;but&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;later&nbsp;versions;<br>
 its&nbsp;successor&nbsp;seems&nbsp;to&nbsp;be&nbsp;called&nbsp;"processpcs".</tt></dd></dl>
- <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
+ <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment<br>
 is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and&nbsp;windowed&nbsp;by&nbsp;function&nbsp;window.<br>
 noperlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;overlap&nbsp;between&nbsp;segments.&nbsp;&nbsp;The<br>
@@ -865,19 +907,71 @@ linearly&nbsp;independent&nbsp;rows&nbsp;or&nbsp;columns&nbsp;(depending&nbsp;on
 matrix).<br>
 Note&nbsp;that&nbsp;numerix.mlab.<a href="#-rank">rank</a>()&nbsp;is&nbsp;not&nbsp;equivalent&nbsp;to&nbsp;Matlab's&nbsp;rank.<br>
 This&nbsp;function&nbsp;is!</tt></dd></dl>
- <dl><dt><a name="-rec2csv"><strong>rec2csv</strong></a>(r, fname, delimiter<font color="#909090">=','</font>, formatd<font color="#909090">=None</font>)</dt><dd><tt>Save&nbsp;the&nbsp;data&nbsp;from&nbsp;numpy&nbsp;record&nbsp;array&nbsp;r&nbsp;into&nbsp;a&nbsp;comma/space/tab<br>
+ <dl><dt><a name="-rec2csv"><strong>rec2csv</strong></a>(r, fname, delimiter<font color="#909090">=','</font>, formatd<font color="#909090">=None</font>, missing<font color="#909090">=''</font>, missingd<font color="#909090">=None</font>)</dt><dd><tt>Save&nbsp;the&nbsp;data&nbsp;from&nbsp;numpy&nbsp;(m)recarray&nbsp;r&nbsp;into&nbsp;a&nbsp;comma/space/tab<br>
 delimited&nbsp;file.&nbsp;&nbsp;The&nbsp;record&nbsp;array&nbsp;dtype&nbsp;names&nbsp;will&nbsp;be&nbsp;used&nbsp;for<br>
 column&nbsp;headers.<br>
 &nbsp;<br>
 &nbsp;<br>
 fname&nbsp;-&nbsp;can&nbsp;be&nbsp;a&nbsp;filename&nbsp;or&nbsp;a&nbsp;file&nbsp;handle.&nbsp;&nbsp;Support&nbsp;for&nbsp;gzipped<br>
-files&nbsp;is&nbsp;automatic,&nbsp;if&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz</tt></dd></dl>
+files&nbsp;is&nbsp;automatic,&nbsp;if&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz<br>
+&nbsp;<br>
+See&nbsp;csv2rec&nbsp;and&nbsp;rec2csv&nbsp;for&nbsp;information&nbsp;about&nbsp;missing&nbsp;and<br>
+missingd,&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;fill&nbsp;in&nbsp;masked&nbsp;values&nbsp;into&nbsp;your&nbsp;CSV<br>
+file.</tt></dd></dl>
+ <dl><dt><a name="-rec2txt"><strong>rec2txt</strong></a>(r, header<font color="#909090">=None</font>, padding<font color="#909090">=3</font>, precision<font color="#909090">=3</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;textual&nbsp;representation&nbsp;of&nbsp;a&nbsp;record&nbsp;array.<br>
+&nbsp;<br>
+r&nbsp;-&nbsp;numpy&nbsp;recarray<br>
+&nbsp;<br>
+header&nbsp;-&nbsp;list&nbsp;of&nbsp;column&nbsp;headers<br>
+&nbsp;<br>
+padding&nbsp;-&nbsp;space&nbsp;between&nbsp;each&nbsp;column<br>
+&nbsp;<br>
+precision&nbsp;-&nbsp;number&nbsp;of&nbsp;decimal&nbsp;places&nbsp;to&nbsp;use&nbsp;for&nbsp;floats.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Set&nbsp;to&nbsp;an&nbsp;integer&nbsp;to&nbsp;apply&nbsp;to&nbsp;all&nbsp;floats.&nbsp;&nbsp;Set&nbsp;to&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;list&nbsp;of&nbsp;integers&nbsp;to&nbsp;apply&nbsp;precision&nbsp;individually.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Precision&nbsp;for&nbsp;non-floats&nbsp;is&nbsp;simply&nbsp;ignored.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Example:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;precision=[0,2,3]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Output:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;Return<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC&nbsp;&nbsp;&nbsp;12.54&nbsp;&nbsp;&nbsp;&nbsp;0.234<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XYZ&nbsp;&nbsp;&nbsp;&nbsp;6.32&nbsp;&nbsp;&nbsp;-0.076</tt></dd></dl>
  <dl><dt><a name="-rec_append_field"><strong>rec_append_field</strong></a>(rec, name, arr, dtype<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;name&nbsp;populated&nbsp;with&nbsp;data&nbsp;from&nbsp;array&nbsp;arr</tt></dd></dl>
+ <dl><dt><a name="-rec_append_fields"><strong>rec_append_fields</strong></a>(rec, names, arrs, dtypes<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;names&nbsp;populated&nbsp;with&nbsp;data<br>
+from&nbsp;arrays&nbsp;in&nbsp;arrs.&nbsp;&nbsp;If&nbsp;appending&nbsp;a&nbsp;single&nbsp;field&nbsp;then&nbsp;names,&nbsp;arrs<br>
+and&nbsp;dtypes&nbsp;do&nbsp;not&nbsp;have&nbsp;to&nbsp;be&nbsp;lists.&nbsp;They&nbsp;can&nbsp;just&nbsp;be&nbsp;the&nbsp;values&nbsp;themselves.</tt></dd></dl>
  <dl><dt><a name="-rec_drop_fields"><strong>rec_drop_fields</strong></a>(rec, names)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;numpy&nbsp;record&nbsp;array&nbsp;with&nbsp;fields&nbsp;in&nbsp;names&nbsp;dropped</tt></dd></dl>
- <dl><dt><a name="-rec_join"><strong>rec_join</strong></a>(key, r1, r2)</dt><dd><tt>join&nbsp;record&nbsp;arrays&nbsp;r1&nbsp;and&nbsp;r2&nbsp;on&nbsp;key;&nbsp;key&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;field<br>
+ <dl><dt><a name="-rec_groupby"><strong>rec_groupby</strong></a>(r, groupby, stats)</dt><dd><tt>r&nbsp;is&nbsp;a&nbsp;numpy&nbsp;record&nbsp;array<br>
+&nbsp;<br>
+groupby&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;record&nbsp;array&nbsp;attribute&nbsp;names&nbsp;that<br>
+together&nbsp;form&nbsp;the&nbsp;grouping&nbsp;key.&nbsp;&nbsp;eg&nbsp;('date',&nbsp;'productcode')<br>
+&nbsp;<br>
+stats&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;(attr,&nbsp;func,&nbsp;outname)&nbsp;which&nbsp;will&nbsp;call&nbsp;x&nbsp;=<br>
+func(attr)&nbsp;and&nbsp;assign&nbsp;x&nbsp;to&nbsp;the&nbsp;record&nbsp;array&nbsp;output&nbsp;with&nbsp;attribute<br>
+outname.<br>
+Eg,&nbsp;&nbsp;stats&nbsp;=&nbsp;(&nbsp;('sales',&nbsp;len,&nbsp;'numsales'),&nbsp;('sales',&nbsp;np.mean,&nbsp;'avgsale')&nbsp;)<br>
+&nbsp;<br>
+return&nbsp;record&nbsp;array&nbsp;has&nbsp;dtype&nbsp;names&nbsp;for&nbsp;each&nbsp;attribute&nbsp;name&nbsp;in&nbsp;in<br>
+the&nbsp;the&nbsp;'groupby'&nbsp;argument,&nbsp;with&nbsp;the&nbsp;associated&nbsp;group&nbsp;values,&nbsp;and<br>
+for&nbsp;each&nbsp;outname&nbsp;name&nbsp;in&nbsp;the&nbsp;stats&nbsp;argument,&nbsp;with&nbsp;the&nbsp;associated<br>
+stat&nbsp;summary&nbsp;output</tt></dd></dl>
+ <dl><dt><a name="-rec_join"><strong>rec_join</strong></a>(key, r1, r2, jointype<font color="#909090">='inner'</font>, defaults<font color="#909090">=None</font>)</dt><dd><tt>join&nbsp;record&nbsp;arrays&nbsp;r1&nbsp;and&nbsp;r2&nbsp;on&nbsp;key;&nbsp;key&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;field<br>
 names.&nbsp;&nbsp;if&nbsp;r1&nbsp;and&nbsp;r2&nbsp;have&nbsp;equal&nbsp;values&nbsp;on&nbsp;all&nbsp;the&nbsp;keys&nbsp;in&nbsp;the&nbsp;key<br>
 tuple,&nbsp;then&nbsp;their&nbsp;fields&nbsp;will&nbsp;be&nbsp;merged&nbsp;into&nbsp;a&nbsp;new&nbsp;record&nbsp;array<br>
-containing&nbsp;the&nbsp;intersection&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2</tt></dd></dl>
+containing&nbsp;the&nbsp;intersection&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2<br>
+&nbsp;<br>
+The&nbsp;jointype&nbsp;keyword&nbsp;can&nbsp;be&nbsp;'inner',&nbsp;'outer',&nbsp;'leftouter'.<br>
+To&nbsp;do&nbsp;a&nbsp;rightouter&nbsp;join&nbsp;just&nbsp;reverse&nbsp;r1&nbsp;and&nbsp;r2.<br>
+&nbsp;<br>
+The&nbsp;defaults&nbsp;keyword&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;filled&nbsp;with<br>
+{column_name:default_value}&nbsp;pairs.</tt></dd></dl>
+ <dl><dt><a name="-rec_summarize"><strong>rec_summarize</strong></a>(r, summaryfuncs)</dt><dd><tt>r&nbsp;is&nbsp;a&nbsp;numpy&nbsp;record&nbsp;array<br>
+&nbsp;<br>
+summaryfuncs&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(attr,&nbsp;func,&nbsp;outname)&nbsp;which&nbsp;will<br>
+apply&nbsp;codefunc&nbsp;to&nbsp;the&nbsp;the&nbsp;array&nbsp;r[attr]&nbsp;and&nbsp;assign&nbsp;the&nbsp;output<br>
+to&nbsp;a&nbsp;new&nbsp;attribute&nbsp;name&nbsp;outname.&nbsp;&nbsp;The&nbsp;returned&nbsp;record&nbsp;array&nbsp;is<br>
+identical&nbsp;to&nbsp;r,&nbsp;with&nbsp;extra&nbsp;arrays&nbsp;for&nbsp;each&nbsp;element&nbsp;in&nbsp;summaryfuncs</tt></dd></dl>
  <dl><dt><a name="-rem"><strong>rem</strong></a>(x, y)</dt><dd><tt>Remainder&nbsp;after&nbsp;division.<br>
 <a href="#-rem">rem</a>(x,y)&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;x&nbsp;-&nbsp;y.*<a href="#-fix">fix</a>(x./y)&nbsp;in&nbsp;case&nbsp;y&nbsp;is&nbsp;not&nbsp;zero.<br>
 By&nbsp;convention&nbsp;(but&nbsp;contrary&nbsp;to&nbsp;numpy),&nbsp;<a href="#-rem">rem</a>(x,0)&nbsp;returns&nbsp;None.<br>
@@ -916,6 +1010,7 @@ Example&nbsp;2:<br>
 If&nbsp;you&nbsp;have&nbsp;access&nbsp;to&nbsp;scipy,&nbsp;you&nbsp;should&nbsp;probably&nbsp;be&nbsp;using&nbsp;the<br>
 scipy.integrate&nbsp;tools&nbsp;rather&nbsp;than&nbsp;this&nbsp;function.</tt></dd></dl>
  <dl><dt><a name="-rms_flat"><strong>rms_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;root&nbsp;mean&nbsp;square&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.</tt></dd></dl>
+ <dl><dt><a name="-safe_isinf"><strong>safe_isinf</strong></a>(x)</dt><dd><tt>isnan&nbsp;for&nbsp;arbitrary&nbsp;types</tt></dd></dl>
  <dl><dt><a name="-safe_isnan"><strong>safe_isnan</strong></a>(x)</dt><dd><tt>isnan&nbsp;for&nbsp;arbitrary&nbsp;types</tt></dd></dl>
  <dl><dt><a name="-save"><strong>save</strong></a>(fname, X, fmt<font color="#909090">='%.18e'</font>, delimiter<font color="#909090">=' '</font>)</dt><dd><tt>Save&nbsp;the&nbsp;data&nbsp;in&nbsp;X&nbsp;to&nbsp;file&nbsp;fname&nbsp;using&nbsp;fmt&nbsp;string&nbsp;to&nbsp;convert&nbsp;the<br>
 data&nbsp;to&nbsp;strings<br>
@@ -961,7 +1056,7 @@ Regensburg,&nbsp;April&nbsp;2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-rege
 &nbsp;<br>
 (inspired&nbsp;by&nbsp;a&nbsp;original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,<br>
 Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is)</tt></dd></dl>
- <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x8532994&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x8532844&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
+ <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
 amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap.<br>
@@ -985,7 +1080,7 @@ returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;-&nbsp;1-D&nbsp;array&nbsp;of&nbsp;times&nbsp;corresponding&nbsp;to&nbsp;midpoints&nbsp;of<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;segments.</tt></dd></dl>
  <dl><dt><a name="-sqrtm"><strong>sqrtm</strong></a>(x)</dt><dd><tt>Returns&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;a&nbsp;square&nbsp;matrix.<br>
-This&nbsp;means&nbsp;that&nbsp;s=<a href="#-sqrtm">sqrtm</a>(x)&nbsp;implies&nbsp;s*s&nbsp;=&nbsp;x.<br>
+This&nbsp;means&nbsp;that&nbsp;s=<a href="#-sqrtm">sqrtm</a>(x)&nbsp;implies&nbsp;dot(s,s)&nbsp;=&nbsp;x.<br>
 Note&nbsp;that&nbsp;s&nbsp;and&nbsp;x&nbsp;are&nbsp;matrices.</tt></dd></dl>
  <dl><dt><a name="-stineman_interp"><strong>stineman_interp</strong></a>(xi, x, y, yp<font color="#909090">=None</font>)</dt><dd><tt>STINEMAN_INTERP&nbsp;Well&nbsp;behaved&nbsp;data&nbsp;interpolation.&nbsp;&nbsp;Given&nbsp;data<br>
 vectors&nbsp;X&nbsp;and&nbsp;Y,&nbsp;the&nbsp;slope&nbsp;vector&nbsp;YP&nbsp;and&nbsp;a&nbsp;new&nbsp;abscissa&nbsp;vector&nbsp;XI<br>
@@ -1044,7 +1139,7 @@ None&nbsp;it&nbsp;defaults&nbsp;to&nbsp;len(x).</tt></dd></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cbec&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cc0c&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x852cc2c&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x852cc4c&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x852ccac&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0x852ccec&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0x852cd0c&gt;}<br>
+<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.bool_'&gt;: &lt;matplotlib.mlab.FormatBool instance at 0xe43e18&gt;, &lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xe43f80&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xeca6c8&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xeca170&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xeca680&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xecac20&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0xecac68&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0xecacb0&gt;}<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>exp_safe_MAX</strong> = 1.7976931348623157e+308<br>
 <strong>exp_safe_MIN</strong> = -708.39641853226408<br>
