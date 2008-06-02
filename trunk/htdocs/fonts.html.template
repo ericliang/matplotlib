@@ -50,9 +50,6 @@ default values.  The <a
 href=matplotlib.font_manager.html#FontProperties>FontProperties</a>
 class is used to describe these properties.<p>
 
-See <a href=examples/font_properties_demo.py>font_properties_demo.py</a>
-for an example setting the default font property and changing it in the
-middle of the script.
 
 <h5>font family</h5>
 

@@ -492,8 +492,8 @@ gives&nbsp;the&nbsp;closest&nbsp;value&nbsp;for&nbsp;values&nbsp;of&nbsp;x&nbsp;
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><strong>cnames</strong> = {'aliceblue': '#F0F8FF', 'antiquewhite': '#FAEBD7', 'aqua': '#00FFFF', 'aquamarine': '#7FFFD4', 'azure': '#F0FFFF', 'beige': '#F5F5DC', 'bisque': '#FFE4C4', 'black': '#000000', 'blanchedalmond': '#FFEBCD', 'blue': '#0000FF', ...}<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xe28710&gt;<br>
-<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xcf5920&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xe29710&gt;<br>
+<strong>hexColorPattern</strong> = &lt;_sre.SRE_Pattern object at 0xcf69f0&gt;<br>
 <strong>k</strong> = 'peachpuff'<br>
 <strong>v</strong> = '#FFDAB9'</td></tr></table>
 @footer@

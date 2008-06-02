@@ -762,7 +762,7 @@ Attributes&nbsp;are<br>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xf93e60&gt;<br>
+<td width="100%"><strong>cursors</strong> = &lt;matplotlib.backend_bases.Cursors instance at 0xf95e60&gt;<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}</td></tr></table>
 @footer@

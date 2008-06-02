@@ -1,3 +1,4 @@
+
 from hthelpers import get_mpl_commands
 
 all_commands = get_mpl_commands()
@@ -6,10 +7,9 @@ commands = all_commands[0][1]
 
 
 @header@
-<a href=http://www.scipy.org/Cookbook/Matplotlib/Maps><img align=right
-src=screenshots/contour_small.png></a>
+<a href=screenshots.html><img align=right src=logo_sidebar.png></a>
 
-<h2>Matplotlib</h2> 
+
   matplotlib is a python 2D plotting library which produces
   publication quality figures in a variety of hardcopy formats and
   interactive environments across platforms.  matplotlib can be used
@@ -18,7 +18,7 @@ src=screenshots/contour_small.png></a>
   mathematica), web application servers, and six graphical user
   interface toolkits. <p>
 
-  matplotlib trys to make easy things easy and hard things possible.
+  matplotlib tries to make easy things easy and hard things possible.
   You can generate plots, histograms, power spectra, bar charts,
   errorcharts, scatterplots, etc, with just a few lines of code.  For
   example, to make a histogram of data in x, you simply need to type

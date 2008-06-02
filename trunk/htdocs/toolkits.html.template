@@ -1,5 +1,7 @@
 modfiles = (
-    ('basemap', 'Plots data on map projections (with continental and political boundaries)'), 
+    ('basemap.basemap', 'Plots data on map projections (with continental and political boundaries)'), 
+    ('gtktools', 'some gtk utilities'), 
+    ('exceltools', 'some Excel utilities'), 
     )
 
 @header@
@@ -17,7 +19,7 @@ Toolkits are collections of application-specific functions that extend matplotli
     + for toolkit,desc in modfiles:
         <tr>
             <th align=left>
-            <a href=matplotlib.toolkits.@toolkit@.@toolkit@.html>@toolkit@</a>
+            <a href=mpl_toolkits.@toolkit@.html>mpl_toolkits.@toolkit@</a>
             </th>
             <td>
             @desc@

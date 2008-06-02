@@ -70,8 +70,8 @@ mode during a run command for efficiency, and then restore the
 interactive state at the end of the run.<p>
 
 <pre>
->>> cd python/projects/matplotlib/examples/
-/home/jdhunter/python/projects/matplotlib/examples
+>>> cd python/projects/matplotlib/examples/pylab
+/home/jdhunter/python/projects/matplotlib/examples/pylab
 >>> run simple_plot.py
 >>> title('a new title', color='r')
 </pre> 

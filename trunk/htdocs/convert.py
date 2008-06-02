@@ -18,7 +18,7 @@ def exception_to_str(s = None):
    return sh.getvalue()
 
 class NewsBox:
-    def __init__(self, body, title='News Flash', bgcolor='red'):
+    def __init__(self, body, title='News Flash', bgcolor='#9DBCDA'):
         self.body = body
         self.title = title
         self.bgcolor = bgcolor
@@ -36,7 +36,7 @@ class NewsBox:
         s =  '<table width=100% border=1 cellpadding=1 ' +\
                'cellspacing=1>\n'
         s += self.format_header()
-        s += '<tr><td valign="top" bgcolor=#efefef>\n'
+        s += '<tr><td valign="top" bgcolor=#EFEFEF>\n'
         s += '<font color="black">%s</font>'%self.body
         s += '</td></tr>\n'
         s += '</table>\n'
@@ -49,7 +49,7 @@ class LinkBox:
 
     def format_header(self):
         return """
-    <tr><td  bgcolor=#bfbfbf align="left">
+    <tr><td  bgcolor=#9DBCDA align="left">
         <font class="tableheading">
                 <b>%s</b>
         </font>
@@ -61,7 +61,7 @@ class LinkBox:
         s =  '<table width=100% border=1 cellpadding=1 ' +\
                'cellspacing=1>\n'
         s += self.format_header()
-        s += '  <tr><td valign="top" bgcolor=#efefef>\n'
+        s += '  <tr><td valign="top" bgcolor=#EFEFEF>\n'
         for text, link in self.links:
             s += '    <a href=%s>%s</a><br>\n' % (link, text)
             
@@ -188,7 +188,7 @@ def isNewEntry(line):
 # re-add news to the params dict 'tables' entry below for news
 
 news1= NewsBox("""matplotlib <a
-href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=603020>0.98.0</a> is a major release which requires python2.4 and numpy 1.1.  It contains a number of internal improvements and may require some power users to update their code; see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=603020>0.98.0</a> is a major release which requires python2.4 and numpy 1.1.  It contains significant improvements and may require some advanced users to update their code; see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
 href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474&release_id=603021>0.91.3</a>""", title='New release')
 
 
@@ -210,9 +210,9 @@ table1 =  LinkBox(header='Matplotlib', links=(
 table2 =  LinkBox(header='Documentation', links=(
     ('Tutorial', 'tutorial.html'),
     ("User's&nbsp;Guide&nbsp", 'users_guide_%s.pdf'%matplotlib.__version__),
-    ('API&nbsp;tutorial', 'pycon/event_handling_tut.pdf'),
-    ('Event&nbsp;handling', 'pycon/artist_api_tut.pdf'),    
-    ("API&nbsp;", 'api.pdf'),
+    ('API&nbsp;tutorial', 'pycon/artist_api_tut.pdf'),
+    ('Event&nbsp;handling', 'pycon/event_handling_tut.pdf'),    
+    ("API&nbsp;Reference", 'api.pdf'),
     ('FAQ', 'faq.html'),
     ('Cookbook&nbsp;/&nbsp;wiki', 'http://www.scipy.org/wikis/topical_software/MatplotlibCookbook'),        
     ('pylab&nbsp;interface', 'pylab_commands.html'),

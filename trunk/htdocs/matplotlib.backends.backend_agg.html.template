@@ -366,5 +366,5 @@ want&nbsp;to&nbsp;rescale&nbsp;and&nbsp;composite&nbsp;raster&nbsp;images.&nbsp;
 <strong>backend_version</strong> = 'v2.2'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe38c20&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe47c20&gt;</td></tr></table>
 @footer@

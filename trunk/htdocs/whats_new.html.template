@@ -6,8 +6,17 @@ versioninfo = {}
 
 versioninfo['0.98.0'] = (
 
+('better transformations', """In what has been described as open-heart surgery on matplotlib, Michael Droettboom, supported by <a href=http://www.stsci.edu/>STScI</a>,  has rewritten the transformation infrastructure from the ground up, which not only makes the code more intuitive, it supports custom user projections and scales.  See <a href=doc/devel/add_new_projection.rst>adding a new projection</a> and the <a
+href=matplotlib.transforms.html>transforms</a> module documentation"""),
+
+('proper paths', """For the first time, matplotlib supports spline
+paths across backends, so you can pretty much draw anything.  See
+the <a href=screenshots.html#path_patch_demo>path_patch_demo
+screenshot</a> .  Thanks again to Michael Droettboom and
+<a href=http://www.stsci.edu/>STScI</a>"""),
+
 ('histogram enhancements', """<a
-href=matplotlib.pyplot.html#-hist>hist</a> can handle 2D arrays and create side-by-side or stacked histograms, as well as cumulative filled and unfilled histograms"""),
+href=matplotlib.pyplot.html#-hist>hist</a> can handle 2D arrays and create side-by-side or stacked histograms, as well as cumulative filled and unfilled histograms; see <a href=examples/pylab/histogram_demo_extended.py>histogram_demo_extended.py</a>"""),
 
 ('ginput function', """<a
 href=matplotlib.pyplot.html#-ginput>ginput</a> is a blocking function for interactive use to get input from the user.  A long requested feature submitted by Gael Varoquaux.  See <a
@@ -15,14 +24,6 @@ href=examples/pylab/ginput_demo.py>ginput_demo.py</a>"""),
 
 ('image optimizations', 'enhancements to speed up color mapping and panning and zooming on dense images'),
 
-('better transformations', """In what has been described as open-heart surgery on matplotlib, Michael Droettboom, supported by <a href=http://www.stsci.edu/>STScI</a>,  has rewritten the transformation infrastruture from the ground up, which not only makes the code more intuitive, it supports custom user projections and scales.  See <a href=doc/devel/add_new_projection.rst>adding a new projection</a> and the <a
-href=matplotlib.transforms.html>transforms</a> module documentation"""),
-
-('proper paths', """For the first time, matplotlib supports spine
-paths across backends, so you can pretty much draw anything.  See
-the <a href=screenshots.html#path_patch_demo>path_patch_demo
-screenshot</a> .  Thanks again to Michael Droettboom and
-<a href=http://www.stsci.edu/>STScI</a>"""),
 
 ('better savefig', """<a
 href=matplotlib.pyplot.html#-savefig>savefig</a> now supports save to file handles (great for web app servers) or unicode filenames on all backends"""),
@@ -31,7 +32,16 @@ href=matplotlib.pyplot.html#-savefig>savefig</a> now supports save to file handl
 href=matplotlib.mlab.html#-rec2txt>rec2txt</a>, <a
 href=matplotlib.mlab.html#-rec_summarize>rec_summarize</a>"""),
 
-('accurate elliptical arcs', """In support of the <a href=http://www.jpl.nasa.gov/news/phoenix/main.php>Phoenix mission</a> to Mars, which used matplotlib in ground tracking of the spacecraft, Michael Droettboom built on work by Charlie Moad to provide an extremely accurate 8-spline approximation to <a href=matplotlib.patches.Arc#-draw>elliptical arcs</a> in the viewport.  This provides a scale free, accurate graph of the arc regardless of zoom level.  See<a href=screenshots.html#ellipse_demo>ellipse_demo screenshot</a>."""),
+('accurate elliptical arcs', """In support of the
+<a href=http://www.jpl.nasa.gov/news/phoenix/main.php>Phoenix
+mission</a> to Mars, which used matplotlib in ground tracking of the
+spacecraft, Michael Droettboom built on work by Charlie Moad to
+provide an extremely accurate 8-spline approximation
+to <a href=matplotlib.patches.html#Arc-draw>elliptical arcs</a> in the
+viewport.  This provides a scale free, accurate graph of the arc
+regardless of zoom level.
+See <a href=screenshots.html#ellipse_demo>ellipse_demo 
+screenshot</a>."""),
 
 ('imread enhanced', """<a href=matplotlib.image.html#-imread>imread</a> now will use PIL when available to load images and return numpy arrays"""),
 
@@ -39,7 +49,7 @@ href=matplotlib.mlab.html#-rec_summarize>rec_summarize</a>"""),
 
 ('PDF enhancements', 'The PDF backend handles composite glyphs properly, usetex fixes'),
 
-('SVF enhancements', 'clip to path (useful for polar plots), inkscape cut-and-paste fixes.'),
+('SVG enhancements', 'clip to path (useful for polar plots), inkscape cut-and-paste fixes.'),
 
 ('QT enhancements', 'Fixed a duplicate draw bug that slowed performance.  Native qt toolbars and status bars used for the toolbar controls.'),
 
@@ -69,7 +79,7 @@ matplotlib's <a href=matplotlibrc>rc</a> configuration using a <a href=http://ma
 This has been a much requested feature for usage in web application servers.
 """),
 
-('record array support', """New functions for loading, displaying and saving numpy record arrays in <a href=matplotlib.mlab.html>matplotlib.mlab</a>.  See for example, <a href=examples/loadrec.py>loadrec.py</a>
+('record array support', """New functions for loading, displaying and saving numpy record arrays in <a href=matplotlib.mlab.html>matplotlib.mlab</a>.  See for example, <a href=examples/pylab/loadrec.py>loadrec.py</a>
 """),
 
 ('pyplot', """Added a module <a href=matplotlib.pyplot.html>matplotlib.pyplot</a> which has all of pylab's plotting functions (eg figure, plot, show, close) but does not import the numpy namespace.  This is useful for those who want to use the pylab functionality w/o the namespace clutter.
@@ -108,7 +118,7 @@ ColorConverter.to_rgba_list."""),
 
 ('enhanced xcorr and acorr', """Some more niceties for xcorr -- a maxlags option, normed now works for
 xcorr as well as axorr, usevlines is supported, and a zero correlation
-hline is added.  See <a href="examples/xcorr_demo.py">xcorr_demo.py</a>"""),
+hline is added.  See <a href="examples/pylab/xcorr_demo.py">xcorr_demo.py</a>"""),
 
 ('performance boost to hlines and vlines', """Axes.vlines and
 Axes.hlines now create and returns a LineCollection, not a list of
@@ -128,7 +138,7 @@ routines."""),
 
 ('better pdf font handling', 'Lots of pdf font enhancements -- see the <a href=CHANGELOG>CHANGELOG</a>.'),
 
-('new picker API', 'Better support for interactive object picking. ; see <a href=examples/pick_event_demo.py>pick_event_demo.py</a>'),
+('new picker API', 'Better support for interactive object picking. ; see <a href=examples/event_handling/pick_event_demo.py>pick_event_demo.py</a>'),
 
 
 ('subplot labeling convience functions', """Added "Subplot.label_outer" method.  It will set the
@@ -156,11 +166,11 @@ columns are plotted as in Matlab"""),
 requiring 2-D arrays."""),
 
 ('logarithmic color scaling', """Added LogNorm to colors.py as illustrated by
-<a href=examples/pcolor_log.py>pcolor_log.py</a>, based on suggestion by
+<a href=examples/pylab/pcolor_log.py>pcolor_log.py</a>, based on suggestion by
 Jim McDonald.  Colorbar modified to handle LogNorm.
 Norms have additional "inverse" method."""),
 
-('clipped line demo', """Added <a href=examples/clippedline.py>clippedline.py</a>, which shows how to clip line
+('clipped line demo', """Added <a href=examples/pylab/clippedline.py>clippedline.py</a>, which shows how to clip line
 data based on view limits -- it also changes the marker
 style when zoomed in."""),
 
@@ -168,11 +178,11 @@ style when zoomed in."""),
 raise NotImplementedError; same for pcolor_classic"""),
 
 ('new broken bar plot function', """Added broken_barh function for makring a sequence of
-horizontal bars broken by gaps -- see <a href=examples/broken_barh.py>broken_barh.py</a>"""),
+horizontal bars broken by gaps -- see <a href=examples/pylab/broken_barh.py>broken_barh.py</a>"""),
 
 ('annotation enhancements', """Removed lineprops and markerprops from the Annotation code
 and replaced them with an arrow configurable with kwarg
-arrowprops.  See <a href=examples/annotation_demo.py>annotation_demo.py</a>"""),
+arrowprops.  See <a href=examples/pylab/annotation_demo.py>annotation_demo.py</a>"""),
 
 )
 
@@ -184,13 +194,13 @@ Excellent support for axes aspect handling, with aspect='equal' or
 
   ("lasso tool", """\
 Use a lasso tool for picking points -- see <a
-href=examples/lasso_demo.py>lasso demo</a>
+href=examples/event_handling/lasso_demo.py>lasso demo</a>
 """),
 
   ("true ellipses", """\
 Earlier versions of matplotlib used a polygon approximation to
 ellipses.  With this release we have arcs supporting scale free
-ellipses and circles.  See <a href=examples/ellipse_demo.py>ellipse demo.py</a>
+ellipses and circles.  See <a href=examples/pylab/ellipse_demo.py>ellipse demo.py</a>
 """),
 
   ("pdf backend", """\
@@ -207,7 +217,7 @@ Supports discrete colorbars and more
 
   ("John Porter's 3D code incorporated", """\ A prototype
 implementation of simple 3D plots -- see <a
-href=examples/simple3d_oo.py>simple3d_oo.py</a> """),
+href=examples/pylab/simple3d_oo.py>simple3d_oo.py</a> """),
 
 
 
@@ -323,15 +333,15 @@ href=matplotlib.figure.html#SubplotParams>SubplotParams</a>, <a
 href=matplotlib.figure.html#Figure-subplots_adjust>Figure.subplots_adjust</a>
 and the pylab method <a
 href=matplotlib.pyplot.html#-subplots_adjust>subplots_adjust</a> and <a
-href=examples/subplots_adjust.py>subplots_adjust.py</a> .  Also added
+href=examples/pylab/subplots_adjust.py>subplots_adjust.py</a> .  Also added
 a GUI neutral widget for adjusting subplots, see <a
-href=examples/subplot_toolbar.py>subplot_toolbar.py</a>.  There is a
+href=examples/pylab/subplot_toolbar.py>subplot_toolbar.py</a>.  There is a
 new toolbar button on GTK*, WX* and TkAgg to launch the subplot
 configuration tool (which uses the new matplotlib cross GUI classes
 discussed below).<p>
 
 This also makes it easier to make ganged plots -- see
-<a href=examples/ganged_plots.py>ganged_plots.py</a>.<p>
+<a href=examples/pylab/ganged_plots.py>ganged_plots.py</a>.<p>
 
 Note this required a small change to how the toolbar on some GUIs are
 imported; if you are using the mpl API in WXAgg and GTKAgg, see <a
@@ -422,8 +432,8 @@ particularly the <tt>interpolation</tt>, <tt>filternorm</tt> and
 
     ('Text and dashes', """\
 Daishi Harada contributed a patch for connecting text to points with lines.
-See <a href=examples/dashpointlabel.py>dashpointlabel.py</a> and <a
-href=examples/dashtick.py>dashtick.py</a>
+See <a href=examples/pylab/dashpointlabel.py>dashpointlabel.py</a> and <a
+href=examples/pylab/dashtick.py>dashtick.py</a>
 """),
 
     ('Fast markers on win32', """\
@@ -453,7 +463,7 @@ href=http://brainvisa.info>brainvisa</a> Orsay team
     ('agg wrapper', """\
 Started work on a proper agg wrapper to expose more general agg
 functionality in mpl.  See <a
-href=examples/agg_test.py>agg_test.py</a>.  Lots of wrapping remains
+href=examples/pylab/agg_test.py>agg_test.py</a>.  Lots of wrapping remains
 to be done.
 """),
 
@@ -461,7 +471,7 @@ to be done.
     ('New scalar formatter', """\
 Darren Dale did a lot of work to make scalar formatting smarter in
 pathalogical cases.  See <a
-href=examples/newscalarformatter_demo.py>newscalarformatter_demo.py</a>.
+href=examples/pylab/newscalarformatter_demo.py>newscalarformatter_demo.py</a>.
 """),
 
     ('Small features', """\
@@ -470,11 +480,11 @@ href=matplotlib.pyplot.html#-scatter>scatter</a> to control edgewidth
 and color, autolegending now inspects line segments in addition to
 vertices, upgraded to agg23, new example showing how to use line
 collections <a
-href=examples/line_collection.py>line_collection.py</a>, fixed
+href=examples/pylab/line_collection.py>line_collection.py</a>, fixed
 antialiased property setting in agg, added a postscript papersize <a
 href=matplotlibrc>rc</a> option <tt>ps.papersize</tt>, added an
 example showing how to embed mpl in a qt app <a
-href=examples/embedding_in_qt.py>embedding_in_qt.py</a>, arrow keys
+href=examples/user_interfaces/embedding_in_qt.py>embedding_in_qt.py</a>, arrow keys
 now exposed in mpl's GUI neutral event handling, added"among" kwarg to axes picker function
   to limit picks, added autoscale_on property to Axes to control
   whether or not autoscaling is done.
@@ -495,8 +505,8 @@ versioninfo['0.73'] = (
 Filled contours (polygons) with <a
 href=matplotlib.pyplot.html#-contourf>contourf</a> and <a
 href=matplotlib.pyplot.html#-clabel>clabel</a> .  See <a
-href=examples/contour_demo.py>contour_demo.py</a>, <a
-href=examples/contour_image.py>contour_image.py</a> and this <a
+href=examples/pylab/contour_demo.py>contour_demo.py</a>, <a
+href=examples/pylab/contour_image.py>contour_image.py</a> and this <a
 href=screenshots.html#pcolor_demo>screenshot</a>.  Thanks Nadia and
 Eric for lots of hard work.  This code is not perfect, so please let
 us know if you find bugs or problems.
@@ -553,18 +563,18 @@ the safe side."""),
 
  ('matshow for displaying arrays', """
 To create a figure and axes with the same aspect ratio as your imaxge, use
-<a href=matplotlib.pyplot.html#-matshow>matshow</a>  Example at <a href=examples/matshow.py>matshow.py</a>.  Thanks Fernando!"""),
+<a href=matplotlib.pyplot.html#-matshow>matshow</a>  Example at <a href=examples/pylab/matshow.py>matshow.py</a>.  Thanks Fernando!"""),
 
 ('New interactive gtk shhell examples', """\
 
-New <a href=examples/interactive.py>interactive.py</a> which shows you
+New <a href=examples/user_interfaces/interactive.py>interactive.py</a> which shows you
 how to use matplotlib in a custom gtk shell, if for some reason <a
 href=http://ipython.scipy.org>ipython</a> is not suitable for you</a>."""),
 
 ('shared axes', """\
 Shared axes for two scale and ganged plots -- you can set sharex on
 and axis and multiple subpolots will pan and zoom together.  See
-<a href=examples/shared_axis_demo.py>shared_axis_demo.py</a> - Thanks
+<a href=examples/pylab/shared_axis_demo.py>shared_axis_demo.py</a> - Thanks
 Baptiste!"""),
 
 ('Key press actions over axes', """\
@@ -602,7 +612,7 @@ of symbols provided
 Thanks Nadia for the blood, sweat and tears, and Dominique for the report."""),
 
   ('contour colormaps', """\
-Contour now uses the current colormap if colors is not provided, and works with  colorbars.  See <a href=examples/contour_demo2.py>contour_demo2.py</a>"""),
+Contour now uses the current colormap if colors is not provided, and works with  colorbars.  See <a href=examples/pylab/contour_demo2.py>contour_demo2.py</a>"""),
 
   ('colorbar enhancements', """\
 Horizontal colorbars supported with keyword arg <tt>orientation='horizontal'</tt> and colorbars can be placed in an arbitrary axes with keyword arg <tt>cax</tt>.  See <a href=matplotlib.pyplot.html#-colorbar>colorbar</a>"""),
@@ -613,7 +623,7 @@ Added accents to mathtext: <tt>\hat, \breve, \grave, \bar, \acute, \tilde,
 overbar you do <tt>\bar{o}</tt> or to make an o umlaut you do <tt>\ddot{o}</tt>. The
 shortcuts are also provided, eg: <tt>\"o \'e \`e \~n \.x \^y </tt>
 
-See <a href=examples/accent_demo.py>accent_demo.py</a>.
+See <a href=examples/pylab/accent_demo.py>accent_demo.py</a>.
 """),
 
   ('fixed super/subscript parsing in mathtext', """\
@@ -652,7 +662,7 @@ See <a href=screenshots.html#pie_demo>pie screenshot</a>.
   ('object picking', """\
 
 Support for object picking - see <a
-href=examples/picker_demo.py>examples/picker_demo.py</a>.  As people
+href=examples/event_handling/picker_demo.py>examples/picker_demo.py</a>.  As people
 test this out and we settle on an interface, this will probably become
 part of the core, as will other keypress functionality for navigation,
 grid toogle, zoom toggle etc.
@@ -664,7 +674,7 @@ The wx toolbar now reports the x,y coords of the mouse
 
   ('key events', """\
 Key press and release event supported across backends -- see
-<a href=examples/keypress_demo.py>examples/keypress_demo.py</a>.
+<a href=examples/event_handling/keypress_demo.py>keypress_demo.py</a>.
 """),
 
   ('shadow effect', """\
@@ -674,7 +684,7 @@ a shadow effect for polygons, legends, pie charts - eg,
 """),
 
   ('text rotation example', """\
-New <a href=examples/text_rotation.py>examples/text_rotation.py</a>
+New <a href=examples/pylab/text_rotation.py>examples/pylab/text_rotation.py</a>
 demonstrates how text rotations and
 alignment work in matplotlib.  """),
 
@@ -684,7 +694,7 @@ alignment work in matplotlib.  """),
   <li>Fixed an agg text rotation alignment bug, fixed some text kwarg
     processing bugs.</li>
   <li>Refactored event handling - multiple connects and disconnects now
-    work across backends.  See examples/coords_demo.py, especially
+    work across backends.  See examples/pylab/coords_demo.py, especially
     with test_disconnect.</li>
   <li>Fixed a tkagg interactive bug that caused segfaults in some
     conditions.</li>
@@ -711,7 +721,7 @@ known as pylab interface) with
   ('contour', """\
 contouring with the <a href=matplotlib.pyplot.html#-contour>contour</a>
 function!!  Thanks to Nadia Dencheva.  See <a
-href=examples/contour_demo.py>contour_demo.py</a>.  And there was much
+href=examples/pylab/contour_demo.py>contour_demo.py</a>.  And there was much
 rejoicing!
   """),
 
@@ -719,7 +729,7 @@ rejoicing!
 matlab compatible <a href=matplotlib.pyplot.html#-set>set</a> and <a
 href=matplotlib.pyplot.html#-get>get</a> introspection to determine
 settable properties and their values.  See <a
-href=examples/set_and_get.py>set_and_get.py</a>.  Sample usage
+href=examples/pylab/set_and_get.py>set_and_get.py</a>.  Sample usage
 
 <pre>
    >>> lines = plot([1,2,3])
@@ -742,7 +752,7 @@ Thanks Perry!
 
   ('zordering', """\
 zorder to artists to control drawing order of lines, patches and text
-in axes.  See <a href=examples/zorder_demo.py>zorder_demo.py</a>.
+in axes.  See <a href=examples/pylab/zorder_demo.py>zorder_demo.py</a>.
   """),
 
   ('delaxes', """\
@@ -799,7 +809,7 @@ pylab interface functions <a
 href=matplotlib.pyplot.html#-rgrids>rgrids</a> and <a
 href=matplotlib.pyplot.html#-thetagrids>thetagrids</a> for
 customizing the grid locations and labels for polar plots - see
-<a href=examples/polar_demo.py>polar_demo.py</a>."""),
+<a href=examples/pylab/polar_demo.py>polar_demo.py</a>."""),
 
 ('interactive control functions', """\
 Added <a
@@ -829,8 +839,8 @@ versioninfo['0.64'] = (
 polar plots with the polar command.  These create a axes.PolarAxes
 instance, which defines the default axes, gridlines, etc.  Other plot
 types can be used on polar axes, eg scatter.  See <a
-href=examples/polar_demo.py>polar_demo.py</a>, <a
-href=examples/polar_scatter.py>polar_scatter.py</a> and <a
+href=examples/pylab/polar_demo.py>polar_demo.py</a>, <a
+href=examples/pylab/polar_scatter.py>polar_scatter.py</a> and <a
 href=screenshots.html#polar_demo>polar_demo<a/>."""),
 
 
@@ -867,10 +877,10 @@ xticks and yticks now take kwargs so you can do, for example
   ('PIL support', """\
 
 <a href=matplotlib.pyplot.html#-imshow>imshow</a> now supports PIL
-images - see <a href=examples/image_demo3.py>image_demo3.py</a>.
+images - see <a href=examples/pylab/image_demo3.py>image_demo3.py</a>.
 Thanks Andrew Straw."""),
 
-  ('barh', '<a href=matplotlib.pyplot.html#-barh>barh</a> for horizontal bar charts; see <a href=examples/barh_demo.py>barh_demo.py</a>'),
+  ('barh', '<a href=matplotlib.pyplot.html#-barh>barh</a> for horizontal bar charts; see <a href=examples/pylab/barh_demo.py>barh_demo.py</a>'),
 
   ('Verbose', """\
 
@@ -903,7 +913,7 @@ matplotlib, and after talking with the Maxim implemented a solution in
 matplotlib which fixes the edge problem w/o the view lim hack used
 previously.  Basically, I pad the edges of the input image.  This is
 described in more detail in the new <a
-href=examples/image_interp.py>image_interp.py</a>.  There is still an
+href=examples/pylab/image_interp.py>image_interp.py</a>.  There is still an
 occasional off by 1 rounding problem that causes a 1 pixel error (this
 is independent of the interpolation/edge bug)."""),
 
@@ -914,7 +924,7 @@ of your old date code will break, but it's an easy port.  In
 particular, note that the date tick location constructors now have a
 different meaning.  See <a href=API_CHANGES>API_CHANGES</a>, <a
 href=matplotlib.dates.html>matplotlib.dates</a>, the updated date
-demos in examples/ and the new dates tutorial at <a
+demos in examples/pylab/ and the new dates tutorial at <a
 href=tutorial.html#dates>dates tutorial</a>."""),
 
 ('numerix supports both extensions at compile time', """\
@@ -935,7 +945,7 @@ limits, tick locations and labels more natural and elegant."""),
 
        ('print to file obj in agg', """\
 Added print to file handle for backend agg; see <a
-href=examples/print_stdout.py>print_stdout.py</a>.  Useful for webapp
+href=examples/pylab/print_stdout.py>print_stdout.py</a>.  Useful for webapp
 servers who want to print to a pipe."""),
 
         ('x and y coord reporting', """\
@@ -944,7 +954,7 @@ gtk* and tkagg (not implemented yet in wx*). You can set the axis
 attributes ax.fmt_xdata and ax.fmt_ydata with callable functions to
 control the formatting of the reported coords (default uses the major
 tick formatter).  See <a
-href=examples/coords_report.py>coords_report.py</a> and <a
+href=examples/pylab/coords_report.py>coords_report.py</a> and <a
 href=date_demo1.py>date_demo1.py</a>."""),
 
         ('axhline, axvline, axhspan and axvspan', """\
@@ -955,7 +965,7 @@ href=matplotlib.pyplot.html#-axvspan>axvspan</a> for plotting lines
 and rectangles (spans) in mixed data/axes coords.  This is useful if
 for example, you want to provide a threshold line or range where the x
 range spans the axes (0-1 in axes coords) and the y range is given in
-data units.  See <a href=examples/axhspan_demo.py>axhspan_demo.py</a>."""),
+data units.  See <a href=examples/pylab/axhspan_demo.py>axhspan_demo.py</a>."""),
 
 )
 
@@ -1031,7 +1041,7 @@ savers down the road."""),
 The functions mpl_connect and mpl_disconnect are used for backend
 independent event handling.  The callback signature is <tt>func(event)</tt>.
 See <a href=tutorial.html#events>events tutorial</a> and <a
-href=examples/coords_demo.py>coords_demo.py</a>.  The new events carry
+href=examples/pylab/coords_demo.py>coords_demo.py</a>.  The new events carry
 lots of useful information in them, like the coords in display and
 data units, the axes instance they were over, keys pressed during the
 event and more."""),
@@ -1102,7 +1112,7 @@ Fixed a tk/osx install problem in setupext.py</a>"""),
     ('wx cursor demo', """\
 New demo for wx/wxagg showing how to to make a flicker free cursor
 that follows the mouse and reports the coords in a status bar - see
-<a href=examples/wxcursor_demo.py>wxcursor_demo.py</a>"""),
+<a href=examples/user_interfaces/wxcursor_demo.py>wxcursor_demo.py</a>"""),
 
     ('bug fixes', """\
 Numerous bug fixes and minor enhancements detailed at
@@ -1115,7 +1125,7 @@ versioninfo['0.60'] = (
 pixel-by-pixel, not resampled, images with the <a
 href=matplotlib.pyplot.html#-figimage>figimage</a> command.  Multiple
 figure images (ie mosaics) with alpha blending are supported.  See <a
-href=examples/figimage_demo.py>figimage_demo.py</a>
+href=examples/pylab/figimage_demo.py>figimage_demo.py</a>
 """),
 
     ('multiple axes images with imshow', """\
@@ -1133,7 +1143,7 @@ matplotlib rc parameters for default image params
 
     ('image origin can be upper or lower', """\
 see <a
-href=examples/image_origin.py>image_origin.py</a>
+href=examples/pylab/image_origin.py>image_origin.py</a>
 """),
 
     ('support for py2exe', 'see <a href=py2exe_examples.zip>py2exe_examples.zip</a>'),
@@ -1141,7 +1151,7 @@ href=examples/image_origin.py>image_origin.py</a>
     ('new matplotlib.matlab command rc', """\
 Use <a href=matplotlib.pyplot.html#-rc>rc</a> for dynamic control of rc
 parameters.  See matplotlib.pyplot.html#-rc
-and example <a href=examples/customize_rc.py>customize_rc.py</a>"""),
+and example <a href=examples/pylab/customize_rc.py>customize_rc.py</a>"""),
 
     ('draw command', """\
 new <a href=matplotlib.pyplot.html#-draw>draw</a> command to redraw
@@ -1159,7 +1169,7 @@ screenshot at <a href=screenshots.html#finance_work2>finance_work2</a>"""),
 Andrew Straw submitted a dynamic_image example.  The wx version is
 still in progree and has some flicker problems, but the gtk version is
 pretty cool - <a
-href=examples/dynamic_image_gtkagg.py>dynamic_image_gtkagg.py</a>"""),
+href=examples/animation/dynamic_image_gtkagg.py>dynamic_image_gtkagg.py</a>"""),
 
     ('Bug fixes', 'dynamic_demo_wx, figure legends, memory leaks, axis scaling bug related to singleton plots'),
 
@@ -1228,7 +1238,7 @@ finally got around to supporting newline separated text in the Text
 frontend, so this is no longer backend dependent.  As a bonus, it even
 works with arbitrary rotations.  There is an additional text attribute
 'multialignment' that specifies the alignment of the lines in
-multiline text.  See <a href=examples/multiline.py>multiline.py</a>
+multiline text.  See <a href=examples/pylab/multiline.py>multiline.py</a>
 and <a href=screenshots.html#align_text>alignment screenshot</a>.
 Works with all text instances except mathtext."""),
 
@@ -1259,7 +1269,7 @@ tick.minor.pad      : 4       # distance to the minor tick label in points
 
     ('Full dash control', """You can precisely control the dashes with
 a sequence of on off ink in points.  See <a
-href=examples/dash_control.py>dash_control.py</a> """),
+href=examples/pylab/dash_control.py>dash_control.py</a> """),
 
     ('Removed close buttons from GUI', """Steve Chaplin persuasively
 argued these were a bad idea.  It's taken me a while not to
@@ -1269,11 +1279,11 @@ to it now.
 
     ('Properly aligned text with arbitrary alignments',
 """You can now expect horizontal and vertical alignment specifications
-to work with text at an arbitrary angle, eg, 45 degrees.  See <a href=examples/alignment_test.py>alignment_test.py</a>
+to work with text at an arbitrary angle, eg, 45 degrees.  See <a href=examples/pylab/alignment_test.py>alignment_test.py</a>
 """),
 
     ('Added stem plotting command', """
-See <a href=matplotlib.pyplot.html#-stem>stem</a> and <a href=examples/stem_plot.py>stem_plot.py</a>"""),
+See <a href=matplotlib.pyplot.html#-stem>stem</a> and <a href=examples/pylab/stem_plot.py>stem_plot.py</a>"""),
 
     ('Bug fix roundup', """ See <a href=CHANGELOG>CHANGELOG</a> for
 details.  Executive summary: fixed ps centering, errorbar autoscaling,
@@ -1314,8 +1324,8 @@ Full support for major and minor ticks with a bevy of more intelligent
 tick locators supplied in the <a
 href=matplotlib.ticker.html>ticker</a> module.  Fully customizable and
 user definable tick locators and formatters.  See <a
-href=examples/major_minor_demo1.py>major_minor_demo1.py</a> and <a
-href=examples/major_minor_demo2.py>major_minor_demo2.py</a>.  The
+href=examples/pylab/major_minor_demo1.py>major_minor_demo1.py</a> and <a
+href=examples/pylab/major_minor_demo2.py>major_minor_demo2.py</a>.  The
 default tick labeler is much more intelligent is choosing good tick
 locations.
 """
@@ -1330,8 +1340,8 @@ with a variety of datetime instances.  Custom date locators and
 formatters allow you to place major and minor ticks by minute, hour,
 weekday, month, year, etc, and use strftime format strings to format
 the ticks.  See examples <a
-href=examples/date_demo1.py>date_demo1.py</a> and <a
-href=examples/date_demo2.py>date_demo2.py</a>.  The <a
+href=examples/pylab/date_demo1.py>date_demo1.py</a> and <a
+href=examples/pylab/date_demo2.py>date_demo2.py</a>.  The <a
 href=matplotlib.dates.html>dates documentation</a> provides an
 overview and guide to with dates."""),
 
@@ -1361,7 +1371,7 @@ href=matplotlib.pyplot.html#-save>save</a>.
 Added some features to the axis and ticks to allow two plots with
 different scales on the "same" axes with different scales, ticks
 and labels on the left and right side of the x axis.  To see why same is
-quoted, see <a href=examples/two_scales.py>two_scales.py</a>.
+quoted, see <a href=examples/pylab/two_scales.py>two_scales.py</a>.
 """
      ),
 
@@ -1386,7 +1396,7 @@ Basic image support.  Images can be specified by Numeric float arrays
      If X is MxNx3, assume RGB
      If X is MxNx4, assume RGBA
 
-     imshow(X, cmap)  # plot X using colormap; see examples/pcolor_demo2.py
+     imshow(X, cmap)  # plot X using colormap; see examples/pylab/pcolor_demo2.py
 </pre>
 
 see <a href=matplotlib.pyplot.html#-imshow>imshow</a> and the
@@ -1407,12 +1417,12 @@ can place legends anywhere in the figure with <a href=matplotlib.pyplot.html#-fi
     ('fill command', """
 Andrew Straw wrote a <a href=matplotlib.pyplot.html#-fill>fill</a>
 command to plot filled polygons.  See <a
-href=examples/fill_demo.py>fill_demo.py</a>
+href=examples/pylab/fill_demo.py>fill_demo.py</a>
 """),
 
     ('specgram command', """ Make 2D spectrograms with <a
 href=matplotlib.pyplot.html#-specgram>specgram</a>.  Requires image
-support; see <a href=examples/specgram_demo.py>specgram_demo.py</a>
+support; see <a href=examples/pylab/specgram_demo.py>specgram_demo.py</a>
 """),
 
 	('Bugfixes and minor improvements', """\
@@ -1478,7 +1488,7 @@ issues in using numarray.  """),
 viewport clipping, is turned off by default.  You can change the
 default behavior in <a href=matplotlibrc>matplotlibrc</a> or set it
 to be true when needed as in <a
-href=examples/stock_demo.py>stock_demo.py</a> """),
+href=examples/pylab/stock_demo.py>stock_demo.py</a> """),
 
     ('kwargs in plot commands', """The plot commands now take kwargs
 that are can be used to set line properties (any property that has a
@@ -1551,7 +1561,7 @@ screenshot <a href=screenshots.html#table_demo>table_demo</a>."""),
 	('Added x linesyle', """Matt MacMahon submitted a patch for an
 'x' linestyle.  Thanks Matt! """ ),
 
-	('Exposed legend properties', """Added methods to access the legend primities: text, lines, and rectangles to allow fine-grained control over legend properties; see <a href=examples/legend_demo.py>legend_demo.py</a>""" ),
+	('Exposed legend properties', """Added methods to access the legend primities: text, lines, and rectangles to allow fine-grained control over legend properties; see <a href=examples/pylab/legend_demo.py>legend_demo.py</a>""" ),
 
 	('gd module on win32', """\
 With much weeping and gnashing of teeth and help from half the people
@@ -1575,7 +1585,7 @@ You can provide an optional argument bottom to the <a
 href=matplotlib.pyplot.html#-bar>bar</a> command to determine where
 the bottom of each bar is, default 0 for all.  This enables stacked
 bar plots and candelstick plots -- <a
-href=examples/bar_stacked.py>examples/bar_stacked.py</a>.  Thanks to
+href=examples/pylab/bar_stacked.py>bar_stacked.py</a>.  Thanks to
 David Moore and John Gill for suggestions and code.  """),
 
 	('Figure backend refactored', """\
@@ -1654,7 +1664,7 @@ Additionally, PS and EPS save from WX backend work
 """),
 
 	('Object picker example',
-"""The file examples/object_picker.py is a template showing how to
+"""The file examples/pylab/object_picker.py is a template showing how to
 select objects in the figure with the mouse(eg, text, lines).  If you
 click on the line, a properties dialog will pop up.  You can edit the
 line properties.  This is just a template for those who want to
@@ -1708,8 +1718,8 @@ href=matplotlib.pyplot.html#-psd>psd</a> plots the power spectral
 density of a time series, <a href=matplotlib.pyplot.html#-csd>csd</a>
 plots the cross spectral density of two time series, and <a
 href=matplotlib.pyplot.html#-cohere>cohere</a> plots the coherence.
-See the examples <a href=examples/psd_demo.py>psd_demo.py</a> and <a
-href=examples/csd_demo.py>csd_demo.py</a>
+See the examples <a href=examples/pylab/psd_demo.py>psd_demo.py</a> and <a
+href=examples/pylab/csd_demo.py>csd_demo.py</a>
 """),
 
 	('Expanded legend capabilities',
@@ -1726,7 +1736,7 @@ center'.  See <a href=screenshots.html#legend_demo>legend_demo</a> and
 """
 Gary Ruben contributed some code to support x and y errorbars, either
 symmetric or asymmetric.  See <a
-href=examples/errorbar_demo.py>errorbar_demo.py</a> for examples of
+href=examples/pylab/errorbar_demo.py>errorbar_demo.py</a> for examples of
 all the wild and wonderful errorbar styles.  Bar charts can now also
 display errorbars; see <a
 href=screenshots.html#barchart_demo>barchart_demo</a>
@@ -1768,7 +1778,7 @@ The <a href=matplotlib.pyplot.html#-pcolor>pcolor</a> command
 generates pseudo color plots.  See <a
 href=screenshots.html#pcolor_demo>pcolor_demo</a> and <a
 href=screenshots.html#mri_with_eeg>mri_with_eeg</a> for screenshots
-and <a href=examples/pcolor_demo.py>pcolor_demo.py</a> for some
+and <a href=examples/pylab/pcolor_demo.py>pcolor_demo.py</a> for some
 example code
 """),
 	('Numerous small bugfixes',
@@ -1787,7 +1797,7 @@ Many thanks.  matplotlib now has three new commands <a
     href=matplotlib.pyplot.html#-semilogx>semilogx</a>, <a
     href=matplotlib.pyplot.html#-semilogy>semilogy</a>, and <a
     href=matplotlib.pyplot.html#-loglog>loglog</a>, and a new demo
-   <a href=examples/log_demo.py>log_demo.py</a>
+   <a href=examples/pylab/log_demo.py>log_demo.py</a>
 """),
     )
 ##############################################################################
@@ -1795,18 +1805,18 @@ Many thanks.  matplotlib now has three new commands <a
 versioninfo['0.29.1'] = (
     ('GTK bugfixes and interactive mode',
 """This includes several bug fixes in the GTK backend which affected
-interactive mode and figure resizing.  See <a href=examples/interactive2.py>interactive2.py</a> in
+interactive mode and figure resizing.  See <a href=examples/pylab/interactive2.py>interactive2.py</a> in
 the new src release.
 """),
     ('Figure legends',
 """A matlab compatible legend command has been added.  See
-<a href=examples/legend_demo.py>legend_demo.py</a>
+<a href=examples/pylab/legend_demo.py>legend_demo.py</a>
 """),
    ('Bug fixes in alternate color specifications',
 """Some bugs regarding alternate ways of specifying colors have been
 ironed out (you can now use hex strings or 0-1 RGB tuples anywhere a
 color format string is supported ).  See <a
-href=examples/color_demo.py>color_demo.py</a>
+href=examples/pylab/color_demo.py>color_demo.py</a>
 """),
 )
 ##############################################################################
@@ -1865,13 +1875,13 @@ examples generate warnings.  Let me know if you get some!
 """
 Jon Anderson posted an improved GTK shell to the pygtk mailing list.
 Using this no longer requires that pygtk have threading built in.  See
-<a href="examples/interactive2.py">interactive2.py</a>.  Use this if you want to make plots
+<a href="examples/pylab/interactive2.py">interactive2.py</a>.  Use this if you want to make plots
 interactively from the python shell.
 """),
     ('Specifying colors',
 """
 You can now specify colors with color format strings, RGB tuples, or
-hex strings as in html.  See <a href="examples/color_demo.py">color_demo.py</a>
+hex strings as in html.  See <a href="examples/pylab/color_demo.py">color_demo.py</a>
 """),
     ('Figure text',
 """
@@ -1880,14 +1890,14 @@ it's helpful to be able to specify text in relative figure
 coordinates.  Now figures have text.  When you scroll interactively,
 axis text moves with the data, figure text is fixed.  This is also
 useful for making a figure title when you have multiple columns of
-subplots.  See <a href="examples/figtext.py">figtext.py</a>
+subplots.  See <a href="examples/pylab/figtext.py">figtext.py</a>
 """),
     ('Flicker free updates',
 """
 All drawing is done to a pixmap and then updated.  This allows flicker
 free updates of the figure.  You can use this, for example, to build a
 system monitor, which continuously shows system resources such as RAM,
-CPU, etc...  See <a href="examples/system_monitor.py">system_monitor.py</a> for a demo.
+CPU, etc...  See <a href="examples/pylab/system_monitor.py">system_monitor.py</a> for a demo.
 """),
     )
 ############################################################################

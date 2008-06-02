@@ -65,7 +65,7 @@ complexities, as described at <a href=interactive.html>interactive
 matplotlib</a> and this <a href=faq.html#FREEZE>faq</a>.  So open up a
 UNIX shell (or a DOS command prompt) and cd into a directory
 containing a minimal example in a file.  Something like <a
-href=examples/simple_plot.py>simple_plot.py</a> or just this
+href=examples/pylab/simple_plot.py>simple_plot.py</a> or just this
 
 <pre>
 from pylab import *
@@ -130,7 +130,7 @@ collections, etc appear is determined by the <tt>zorder</tt> property
 (matplotlib-0.65 or later).  The default order is patches, lines,
 text, with collections of lines and collections of patches appearing
 at the same level as regular lines and patches, respectively.  See <a
-href=examples/zorder_demo.py>examples/zorder_demo.py</a>.
+href=examples/pylab/zorder_demo.py>zorder_demo.py</a>.
 """),
 
     ('TOOLBAR2',
@@ -185,7 +185,7 @@ or set your log coords *before* calling a plot command
 
 and then the errorbar command will pick a "locator" to handle ticking
 and viewport scaling appropriately from the outset.  This is the
-approach taken in <a href=examples/log_bar.py>log_bar.py</a>.
+approach taken in <a href=examples/pylab/log_bar.py>log_bar.py</a>.
 """),
 
     ('EQUAL',
@@ -344,12 +344,12 @@ is to download the source distribution and take a look at the <a
 href=http://matplotlib.sf.net/examples>examples</a> subdirectory.  If
 you are working with date plots you'll find several date demos with
 obvious filenames like <a
-href=examples/date_demo1.py>examples/date_demo1.py</a>.  Likewise,
+href=examples/pylab/date_demo1.py>date_demo1.py</a>.  Likewise,
 you'll find examples for images (<a
-href=examples/image_demo.py>examples/image_demo.py</a>), contouring
-(<a href=examples/contour_demo.py>examples/contour_demo.py</a>, using
+href=examples/pylab/image_demo.py>image_demo.py</a>), contouring
+(<a href=examples/pylab/contour_demo.py>contour_demo.py</a>, using
 matplotlib with a graphical user interface (<a
-href=examples/embedding_in_wx.py>examples/embedding_in_wx.py</a> and
+href=examples/pylab/embedding_in_wx.py>examples/user_interfaces/embedding_in_wx.py</a> and
 many more.  At last count, there were 116 examples.  Because these are
 not included with the standard windows installer, they are often
 overlooked, which is why I emphasize them here.<p>
@@ -501,7 +501,7 @@ There is no official documentation yet, but there are a few resources
  </li>
 
   <li><a
-      href=examples/pythonic_matplotlib.py>pythonic_matplotlib.py</a>
+      href=examples/pylab/pythonic_matplotlib.py>pythonic_matplotlib.py</a>
       describes the translation from the matlab style interface to the
       pythonic, OO interface.</li>
 
@@ -584,7 +584,7 @@ If you want to customize a session of matplotlib, eg, the default font,
 linewidth, fontsize, etc, use the <a
 href=matplotlib.pyplot.html#-rc>rc</a> command.  This changes the
 default for the rest of the session, or until you issue another rc
-command.  See <a examples/customize_rc.py>customize_rc.py</a> for
+command.  See <a examples/pylab/customize_rc.py>customize_rc.py</a> for
 example usage."""),
 
 
@@ -639,7 +639,7 @@ See the <a href=tutorial.html#dates>dates tutorial</a>.
      'Can I plot data with two y axes scales?',
      r"""
 As of matplotlib-0.53, there is support for this.  See <a
-href=examples/two_scales.py>two_scales.py</a>.
+href=examples/pylab/two_scales.py>two_scales.py</a>.
 """),
 
     ('MATHTEXT',
@@ -778,8 +778,8 @@ href=faq.html#CUSTOM>rcParams</a>."""),
     ('DYNAMIC',
      'Can matplotlib do dynamic plots, like digital oscilloscopes or animations?',
     """
-Absolutely.  See for example, <a href=examples/anim.py>anim.py</a> and <a
-href=examples/system_monitor.py>system_monitor.py</a>"""),
+Absolutely.  See for example, <a href=examples/animation/anim.py>anim.py</a> and <a
+href=examples/animation/system_monitor.py>system_monitor.py</a>"""),
 
     ('AXES',
      'Can I change the size of the subplots',
@@ -789,7 +789,7 @@ subplot is just a helper function to generate regularly spaced axes.
 For more fine-grained control, you can position axes anywhere you want
 in any size using the axes command.  See
 the <a href=matplotlib.pyplot.html#-axes>axes command</a> and the example
-<a href=examples/axes_demo.py>axes_demo.py<a/>.<p>
+<a href=examples/pylab/axes_demo.py>axes_demo.py<a/>.<p>
 
 """),
 
@@ -1030,7 +1030,7 @@ library.<p>
 
 If you need a lot of control over GUI properties, you may want to skip
 the pylab interface and use the matplotlib API directly, eg build a
-GTK app which embeds matplotlib.  See examples/embedding_in*.py in the
+GTK app which embeds matplotlib.  See examples/user_interfaces/embedding_in*.py in the
 matplotlib src distribution or at <a
 href=http://matplotlib.sf.net/examples>examples</a> explaining how to
 embed matplotlib in your GUI of choice.

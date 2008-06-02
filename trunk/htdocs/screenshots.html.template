@@ -17,13 +17,19 @@ or probabilities""", 1),
 """You can add aribitrary paths in matplotlib as of release 0.98.  See the <a
 href=matplotlib.path.html>path</a> module""", 1),
 
-('ellipse_demo', 
-"""In support of the <a href=http://www.jpl.nasa.gov/news/phoenix/main.php>Phoenix mission</a> to Mars, which used matplotlib in ground tracking of the spacecraft, Michael Droettboom built on work by Charlie Moad to provide an extremely accurate 8-spline approximation to <a href=matplotlib.patches.Arc#-draw>elliptical arcs</a> in the viewport.  This provides a scale free, accurate graph of the arc regardless of zoom level""", 1),
+('ellipse_demo', """In support of the
+<a href=http://www.jpl.nasa.gov/news/phoenix/main.php>Phoenix
+mission</a> to Mars, which used matplotlib in ground tracking of the
+spacecraft, Michael Droettboom built on work by Charlie Moad to
+provide an extremely accurate 8-spline approximation
+to <a href=matplotlib.patches.html#Arc-draw>elliptical arcs</a> in the
+viewport.  This provides a scale free, accurate graph of the arc
+regardless of zoom level""", 1),
 
 ('barchart_demo', """The <a href=matplotlib.pyplot.html#-bar>bar</a>
 command takes error bars as an optional argument.  You can also use up
 and down bars, stacked bars, 'candlestick' bars, etc, ... See <a
-href=examples/bar_stacked.py>bar_stacked.py</a> for another example.
+href=examples/pylab/bar_stacked.py>bar_stacked.py</a> for another example.
 You can make horizontal bar charts with the <a
 href=matplotlib.pyplot.html#-barh>barh</a> command.
 """, 1),
@@ -106,15 +112,13 @@ generates figure legends, with matltab compatible legend placement
 commands.  Thanks to Charles Twardy for input on the legend
 command""", 1),
 
-('mathtext_demo', """The mathtext module provides TeX style
+('mathtext_examples', """A sampling of the many TeX expressions now
+supported by matplotlib's internal mathtext engine.  The mathtext module provides TeX style
 mathematical expressions using freetype2 and the BaKoMa computer
 modern or STIX fonts.  See the <a href=matplotlib.mathtext.html>mathtext</a>
 module for usage, licensing and backend information.  matplotlib
 mathtext is an independent implementation, and does not required TeX
-or any external packages installed on your computer.""", 1),
-
-('mathtext_examples', """A sampling of the many TeX expressions now
-supported by matplotlib's internal mathtext engine.
+or any external packages installed on your computer.
 """, 1),
 
 ('wheeler_demo', """
@@ -126,6 +130,21 @@ respectively.  The distance delta represents the nominal interface
 width. The LSM requires an algorithmic construct while the PFM is a
 first principles approach.  Thanks to Daniel Wheeler for this nice
 example of TeX rendering with usetex..""", 1),
+
+('eeg', """ You can embed matplotlib into pygtk, wxpython, Tk, FLTK
+or Qt applications.  Here is a screenshot of an eeg viewer written in
+pygtk using matplotlib; the lower axes is using <a
+href=matplotlib.pyplot.html#-specgram>specgram</a> to plot the
+spectrogram of one of the EEG channels.  The code demo linked above is
+a much simpler example of embedding matplotlib in pygtk.  For an
+example of how to use the navigation toolbar in your applications, see
+<a href=examples/user_interfaces/embedding_in_gtk2.py>embedding_in_gtk2.py</a>.  If
+you want to use matplotlib in a wx application, see <a
+href=examples/user_interfaces/embedding_in_wx2.py>embedding_in_wx2.py</a>.  If you
+want to work with <a href=http://glade.gnome.org>glade</a>, see <a
+href=examples/user_interfaces/mpl_with_glade.py>mpl_with_glade.py</a> """, 0),
+
+)
 
 ('tex_demo', """
 In addition to having it's own mathematical typesetting engine shown
@@ -157,16 +176,6 @@ MRI plotted with <a href=matplotlib.pyplot.html#-hist>hist</a>, and
 some EEG channels plotted as <a
 href=matplotlib.lines.html#Line2D>lines</a> """, 1),
 
-('text_themes', """You can specify <i>themes</i> for your axis text by
-making a font dictionary.  Here the default font is <tt>courier</tt>
-and the default color is red, but you can override the defaults, as in
-the function label in the axes.  See <a
-href=matplotlib.pyplot.html#-text>text</a> for more information.  This
-example uses a python dictionary to control text themes, but you can
-also use matlab handle graphics calls.  See the examples file <a
-href=examples/text_handles.py>text_handles.py</a> in the src
-distribution for a handle graphics demo.""", 1),
-
 ('align_text', """You can precisely layout text in data or axes (0,1)
  coordinates.  This example shows you some of the alignment and
  rotation specifications to layout text.""", 1),
@@ -176,20 +185,6 @@ distribution for a handle graphics demo.""", 1),
 href=matplotlib.pyplot.html#-axes>axes</a> command.  Here, two inset axes are
 placed over a <a href=matplotlib.pyplot.html#-subplot>subplot</a>.""", 1), 
 
-('eeg', """ You can embed matplotlib into pygtk, wxpython, Tk, FLTK
-or Qt applications.  Here is a screenshot of an eeg viewer written in
-pygtk using matplotlib; the lower axes is using <a
-href=matplotlib.pyplot.html#-specgram>specgram</a> to plot the
-spectrogram of one of the EEG channels.  The code demo linked above is
-a much simpler example of embedding matplotlib in pygtk.  For an
-example of how to use the navigation toolbar in your applications, see
-<a href=examples/embedding_in_gtk2.py>embedding_in_gtk2.py</a>.  If
-you want to use matplotlib in a wx application, see <a
-href=examples/embedding_in_wx2.py>embedding_in_wx2.py</a>.  If you
-want to work with <a href=http://glade.gnome.org>glade</a>, see <a
-href=examples/mpl_with_glade.py>mpl_with_glade.py</a> """, 0),
-
-)
 
 @header@
 <h2>Matplotlib sample code and figures</h2>

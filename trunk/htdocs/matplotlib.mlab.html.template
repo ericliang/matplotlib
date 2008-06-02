@@ -433,7 +433,7 @@ converted&nbsp;to&nbsp;a&nbsp;Python&nbsp;float.</tt></dd></dl>
 &nbsp;<br>
 if&nbsp;dim=1&nbsp;operate&nbsp;on&nbsp;columns&nbsp;instead&nbsp;of&nbsp;rows.&nbsp;&nbsp;(dim&nbsp;is&nbsp;opposite<br>
 to&nbsp;the&nbsp;numpy&nbsp;axis&nbsp;kwarg.)</tt></dd></dl>
- <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
+ <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
 &nbsp;<br>
 Cxy&nbsp;=&nbsp;|Pxy|^2/(Pxx*Pyy)<br>
@@ -444,7 +444,7 @@ about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;window
 well&nbsp;as&nbsp;the&nbsp;methods&nbsp;used&nbsp;to&nbsp;compute&nbsp;Pxy,&nbsp;Pxx&nbsp;and&nbsp;Pyy.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Cxy,&nbsp;freqs</tt></dd></dl>
- <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0xed02a8&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
+ <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0xecf410&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
 &nbsp;<br>
 Compute&nbsp;the&nbsp;coherence&nbsp;for&nbsp;all&nbsp;pairs&nbsp;in&nbsp;ij.&nbsp;&nbsp;X&nbsp;is&nbsp;a<br>
 numSamples,numCols&nbsp;numpy&nbsp;array.&nbsp;&nbsp;ij&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples&nbsp;(i,j).<br>
@@ -515,7 +515,7 @@ Numpy&nbsp;arrays&nbsp;can&nbsp;be&nbsp;real&nbsp;or&nbsp;complex<br>
 The&nbsp;correlation&nbsp;matrix&nbsp;is&nbsp;defined&nbsp;from&nbsp;the&nbsp;covariance&nbsp;matrix&nbsp;C&nbsp;as<br>
 &nbsp;<br>
 r(i,j)&nbsp;=&nbsp;C[i,j]&nbsp;/&nbsp;sqrt(C[i,i]*C[j,j])</tt></dd></dl>
- <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
+ <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
 method.&nbsp;&nbsp;The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length<br>
 segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and<br>
 windowed&nbsp;by&nbsp;function&nbsp;window.&nbsp;&nbsp;noverlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the<br>
@@ -600,7 +600,7 @@ Sanalytic&nbsp;=&nbsp;0.5&nbsp;&nbsp;*&nbsp;(&nbsp;1.0&nbsp;+&nbsp;log(2*pi*sigm
 Slow&nbsp;but&nbsp;convenient&nbsp;to&nbsp;use.&nbsp;Note&nbsp;that&nbsp;numpy&nbsp;provides&nbsp;proper<br>
 floating&nbsp;point&nbsp;exception&nbsp;handling&nbsp;with&nbsp;access&nbsp;to&nbsp;the&nbsp;underlying<br>
 hardware.</tt></dd></dl>
- <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_none at 0xece398&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_none at 0xecb500&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
  <dl><dt><a name="-find"><strong>find</strong></a>(condition)</dt><dd><tt>Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;ravel(condition)&nbsp;is&nbsp;true</tt></dd></dl>
  <dl><dt><a name="-fix"><strong>fix</strong></a>(x)</dt><dd><tt>Rounds&nbsp;towards&nbsp;zero.<br>
 x_rounded&nbsp;=&nbsp;<a href="#-fix">fix</a>(x)&nbsp;rounds&nbsp;the&nbsp;elements&nbsp;of&nbsp;x&nbsp;to&nbsp;the&nbsp;nearest&nbsp;integers<br>
@@ -877,7 +877,7 @@ fracVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&n
 A&nbsp;similar&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name&nbsp;was&nbsp;in&nbsp;the&nbsp;Matlab&nbsp;(TM)<br>
 R13&nbsp;Neural&nbsp;Network&nbsp;Toolbox&nbsp;but&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;later&nbsp;versions;<br>
 its&nbsp;successor&nbsp;seems&nbsp;to&nbsp;be&nbsp;called&nbsp;"processpcs".</tt></dd></dl>
- <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
+ <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment<br>
 is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and&nbsp;windowed&nbsp;by&nbsp;function&nbsp;window.<br>
 noperlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;overlap&nbsp;between&nbsp;segments.&nbsp;&nbsp;The<br>
@@ -1056,7 +1056,7 @@ Regensburg,&nbsp;April&nbsp;2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-rege
 &nbsp;<br>
 (inspired&nbsp;by&nbsp;a&nbsp;original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,<br>
 Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is)</tt></dd></dl>
- <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xeced70&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xece410&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
+ <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
 amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap.<br>
@@ -1139,7 +1139,7 @@ None&nbsp;it&nbsp;defaults&nbsp;to&nbsp;len(x).</tt></dd></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.bool_'&gt;: &lt;matplotlib.mlab.FormatBool instance at 0xe43e18&gt;, &lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xe43f80&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xeca6c8&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xeca170&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xeca680&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xecac20&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0xecac68&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0xecacb0&gt;}<br>
+<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.bool_'&gt;: &lt;matplotlib.mlab.FormatBool instance at 0xe51e18&gt;, &lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xe51f80&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xec86c8&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xec8170&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xec8680&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xec8c20&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0xec8c68&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0xec8cb0&gt;}<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>exp_safe_MAX</strong> = 1.7976931348623157e+308<br>
 <strong>exp_safe_MIN</strong> = -708.39641853226408<br>

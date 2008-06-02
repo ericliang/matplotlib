@@ -826,7 +826,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>SHIFT_OVERFLOW</strong> = 3<br>
 <strong>SHIFT_UNDERFLOW</strong> = 6<br>
 <strong>SU</strong> = SU<br>
-<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.float32'&gt;, &lt;type 'numpy.void'&gt;, &lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.string_'&gt;, &lt;type 'numpy.object_'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.complex256'&gt;, ...)<br>
+<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.void'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.bool_'&gt;, &lt;type 'numpy.uint64'&gt;, ...)<br>
 <strong>TH</strong> = TH<br>
 <strong>TU</strong> = TU<br>
 <strong>True_</strong> = True<br>
@@ -850,8 +850,8 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>bitwise_not</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>bitwise_or</strong> = &lt;ufunc 'bitwise_or'&gt;<br>
 <strong>bitwise_xor</strong> = &lt;ufunc 'bitwise_xor'&gt;<br>
-<strong>c_</strong> = &lt;numpy.lib.index_tricks.CClass object at 0xc47410&gt;<br>
-<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0xa... 'numpy.uint8'&gt;: &lt;function &lt;lambda&gt; at 0xa9cc08&gt;}<br>
+<strong>c_</strong> = &lt;numpy.lib.index_tricks.CClass object at 0xc48510&gt;<br>
+<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0xa...mpy.complex64'&gt;: &lt;function &lt;lambda&gt; at 0xa9d500&gt;}<br>
 <strong>ceil</strong> = &lt;ufunc 'ceil'&gt;<br>
 <strong>colorbar_doc</strong> = '<font color="#c040c0">\n</font>Add a colorbar to a plot.<font color="#c040c0">\n\n</font>Function signatures ...e, do not use any of the<font color="#c040c0">\n</font>axes properties kwargs.<font color="#c040c0">\n</font>'<br>
 <strong>conj</strong> = &lt;ufunc 'conjugate'&gt;<br>
@@ -872,7 +872,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
-<strong>index_exp</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc47510&gt;<br>
+<strong>index_exp</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc48610&gt;<br>
 <strong>inf</strong> = inf<br>
 <strong>infty</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
@@ -892,20 +892,20 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>logical_or</strong> = &lt;ufunc 'logical_or'&gt;<br>
 <strong>logical_xor</strong> = &lt;ufunc 'logical_xor'&gt;<br>
 <strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
-<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc47290&gt;<br>
+<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc48390&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
 <strong>mod</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>modf</strong> = &lt;ufunc 'modf'&gt;<br>
 <strong>multiply</strong> = &lt;ufunc 'multiply'&gt;<br>
 <strong>nan</strong> = nan<br>
-<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.uint8'&gt;: 1}<br>
+<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...type 'numpy.uint8'&gt;: 1, &lt;type 'numpy.uint16'&gt;: 2}<br>
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc472d0&gt;<br>
+<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc483d0&gt;<br>
 <strong>ones_like</strong> = &lt;ufunc 'ones_like'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>r_</strong> = &lt;numpy.lib.index_tricks.RClass object at 0xc47390&gt;<br>
+<strong>r_</strong> = &lt;numpy.lib.index_tricks.RClass object at 0xc48490&gt;<br>
 <strong>radians</strong> = &lt;ufunc 'radians'&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>rcParamsDefault</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
@@ -913,7 +913,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>rint</strong> = &lt;ufunc 'rint'&gt;<br>
-<strong>s_</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc47590&gt;<br>
+<strong>s_</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc48690&gt;<br>
 <strong>sctypeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int64'&gt;, 8: &lt;type 'numpy.uint64'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
 <strong>sctypeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex128': &lt;type 'numpy.complex256'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float128': &lt;type 'numpy.float128'&gt;, 'Float32': &lt;type 'numpy.float32'&gt;, ...}<br>
 <strong>sctypes</strong> = {'complex': [&lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.complex256'&gt;], 'float': [&lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.float128'&gt;], 'int': [&lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.int64'&gt;], 'others': [&lt;type 'bool'&gt;, &lt;type 'object'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'numpy.void'&gt;], 'uint': [&lt;type 'numpy.uint8'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.uint64'&gt;]}<br>

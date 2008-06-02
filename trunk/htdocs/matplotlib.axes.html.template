@@ -764,7 +764,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="Axes-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="Axes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend&nbsp;=&nbsp;mlab.detrend_none,<br>
+<dl><dt><a name="Axes-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend&nbsp;=&nbsp;mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window&nbsp;=&nbsp;mlab.window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
@@ -1057,7 +1057,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removed.&nbsp;&nbsp;Chunking&nbsp;introduces&nbsp;artifacts&nbsp;at&nbsp;the&nbsp;chunk<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boundaries&nbsp;unless&nbsp;antialiased&nbsp;=&nbsp;False</tt></dd></dl>
 
-<dl><dt><a name="Axes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="Axes-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
@@ -2463,7 +2463,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="Axes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="Axes-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=mlab.window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
@@ -3248,7 +3248,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="Axes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="Axes-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window&nbsp;=&nbsp;mlab.window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -3555,7 +3555,7 @@ tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&n
 
 <dl><dt><a name="Axes-xaxis_inverted"><strong>xaxis_inverted</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;x-axis&nbsp;is&nbsp;inverted.</tt></dd></dl>
 
-<dl><dt><a name="Axes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=mlab.detrend_none,&nbsp;usevlines=False,&nbsp;\*\*kwargs):<br>
+<dl><dt><a name="Axes-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=mlab.detrend_none,&nbsp;usevlines=False,&nbsp;\*\*kwargs):<br>
 &nbsp;<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
@@ -4506,7 +4506,7 @@ keyword&nbsp;arguments:<br>
 
 <dl><dt><a name="AxesSubplot-clear"><strong>clear</strong></a>(self)</dt><dd><tt>clear&nbsp;the&nbsp;axes</tt></dd></dl>
 
-<dl><dt><a name="AxesSubplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend&nbsp;=&nbsp;mlab.detrend_none,<br>
+<dl><dt><a name="AxesSubplot-cohere"><strong>cohere</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>COHERE(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend&nbsp;=&nbsp;mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window&nbsp;=&nbsp;mlab.window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 cohere&nbsp;the&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
@@ -4799,7 +4799,7 @@ use&nbsp;kwargs&nbsp;for&nbsp;these):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;removed.&nbsp;&nbsp;Chunking&nbsp;introduces&nbsp;artifacts&nbsp;at&nbsp;the&nbsp;chunk<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boundaries&nbsp;unless&nbsp;antialiased&nbsp;=&nbsp;False</tt></dd></dl>
 
-<dl><dt><a name="AxesSubplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="AxesSubplot-csd"><strong>csd</strong></a>(self, x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>CSD(x,&nbsp;y,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
@@ -6205,7 +6205,7 @@ Valid&nbsp;kwargs&nbsp;are&nbsp;Line2D&nbsp;properties:<br>
 See&nbsp;dates&nbsp;for&nbsp;helper&nbsp;functions&nbsp;date2num,&nbsp;num2date<br>
 and&nbsp;drange&nbsp;for&nbsp;help&nbsp;on&nbsp;creating&nbsp;the&nbsp;required&nbsp;floating&nbsp;point&nbsp;dates</tt></dd></dl>
 
-<dl><dt><a name="AxesSubplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="AxesSubplot-psd"><strong>psd</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=0</font>, **kwargs)</dt><dd><tt>PSD(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;window=mlab.window_hanning,&nbsp;noverlap=0,&nbsp;**kwargs)<br>
 &nbsp;<br>
 The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.&nbsp;&nbsp;The<br>
@@ -6990,7 +6990,7 @@ ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;strings</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="AxesSubplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x13116e0&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
+<dl><dt><a name="AxesSubplot-specgram"><strong>specgram</strong></a>(self, x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, Fc<font color="#909090">=0</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x1310848&gt;</font>, noverlap<font color="#909090">=128</font>, cmap<font color="#909090">=None</font>, xextent<font color="#909090">=None</font>)</dt><dd><tt>SPECGRAM(x,&nbsp;NFFT=256,&nbsp;Fs=2,&nbsp;Fc=0,&nbsp;detrend=mlab.detrend_none,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;window&nbsp;=&nbsp;mlab.window_hanning,&nbsp;noverlap=128,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;cmap=None,&nbsp;xextent=None)<br>
 &nbsp;<br>
@@ -7297,7 +7297,7 @@ tz&nbsp;is&nbsp;the&nbsp;time&nbsp;zone&nbsp;to&nbsp;use&nbsp;in&nbsp;labeling&n
 
 <dl><dt><a name="AxesSubplot-xaxis_inverted"><strong>xaxis_inverted</strong></a>(self)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;the&nbsp;x-axis&nbsp;is&nbsp;inverted.</tt></dd></dl>
 
-<dl><dt><a name="AxesSubplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x1319758&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=mlab.detrend_none,&nbsp;usevlines=False,&nbsp;\*\*kwargs):<br>
+<dl><dt><a name="AxesSubplot-xcorr"><strong>xcorr</strong></a>(self, x, y, normed<font color="#909090">=False</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x13178c0&gt;</font>, usevlines<font color="#909090">=False</font>, maxlags<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>XCORR(x,&nbsp;y,&nbsp;normed=False,&nbsp;detrend=mlab.detrend_none,&nbsp;usevlines=False,&nbsp;\*\*kwargs):<br>
 &nbsp;<br>
 Plot&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;If&nbsp;normed=True,<br>
 normalize&nbsp;the&nbsp;data&nbsp;but&nbsp;the&nbsp;cross&nbsp;correlation&nbsp;at&nbsp;0-th&nbsp;lag.&nbsp;&nbsp;x<br>
