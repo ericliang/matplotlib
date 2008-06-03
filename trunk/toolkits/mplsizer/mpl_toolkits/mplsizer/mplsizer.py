@@ -46,14 +46,14 @@ class MplSizerElement:
             else:
                 raise ValueError('key "%s" is not understood'%key) # hint: try centre instead of center
         self.Update() # update self.minsize and self.minsize_bordered
-        
+
     def _show_contents(self,indent=0):
         buf = (' '*indent)+'MplSizerElement\n'
         return buf
-    
+
     def Update(self):
         # updates self.minsize and self.minsize_bordered
-        
+
         left = self.flag.get('left',False) or self.flag.get('all',False)
         right = self.flag.get('right',False) or self.flag.get('all',False)
         bottom = self.flag.get('bottom',False) or self.flag.get('all',False)
@@ -75,7 +75,7 @@ class MplSizerElement:
             print self.name,'MplSizerElement.Update() setting minsize',self.minsize
             print
         return
-    
+
     def _layout(self,lbrt_inch,fig_w_inch,fig_h_inch,eps=1e-10):
         #print 'MplSizerElement._layout',self,self.name,lbrt_inch
 
@@ -117,14 +117,14 @@ class MplSizerElement:
         h_inch = lbrt_inch[3]-lbrt_inch[1]
         self._rect = (lbrt_inch[0]/fig_w_inch,      lbrt_inch[1]/fig_h_inch,
                       w_inch/fig_w_inch, h_inch/fig_h_inch )
-        
+
         # call derived class layout_core (where the action is)
         return self._layout_core(lbrt_inch,fig_w_inch,fig_h_inch)
-    
+
     def _layout_core(self,lbrt_inch,fig_w_inch,fig_h_inch):
         # does nothing in this base class -- override for interesting behavior
         return None,None
-    
+
 class MplAxesSizerElement( MplSizerElement ):
     def __init__(self,ax,**kwargs):
         self.ax = ax
@@ -161,7 +161,7 @@ class MplSizer( MplSizerElement ):
         for el in self.elements:
             buf += el._show_contents(indent=indent+2)
         return buf
-    
+
 class MplBoxSizer( MplSizer ):
     """vertical or horizontal sizer"""
     def __init__(self,orientation=None):
@@ -190,29 +190,29 @@ class MplBoxSizer( MplSizer ):
         else:
             dir_idx=0
             other_idx=1
-            
+
         minsize = [0,0]
         for el in self.elements:
             el.Update() # updates minsize, may not be necessary
             dir_minsize = el.minsize_bordered[dir_idx]
             other_minsize = el.minsize_bordered[other_idx]
-            
+
             minsize[dir_idx] = minsize[dir_idx] + dir_minsize
             minsize[other_idx] = max(minsize[other_idx],other_minsize)
-        
+
         self.minsize = minsize
         #print self.name,'MplBoxSizer.Update() setting minsize',self.minsize
         MplSizer.Update(self) # call base class (sets self.minsize_bordered)
 
     def _layout_core(self,lbrt_inch,fig_w_inch,fig_h_inch):
         #print 'MplBoxSizer._layout_core',self,self.name,lbrt_inch
-        
+
         if self.orientation.startswith('v'):
             vertical=True
         elif self.orientation.startswith('h'):
             vertical=False
         else: ValueError("only vertical and horizontal supported")
-        
+
         if vertical:
             dir_idx = 1
             sizer_width_inch = lbrt_inch[2]-lbrt_inch[0]
@@ -224,7 +224,7 @@ class MplBoxSizer( MplSizer ):
         stop = lbrt_inch[dir_idx+2]
         dist_avail = stop-start
         total_weight = 0
-        
+
         # first iteration -- find inches remaining after borders and minsizes allocated
         optioned_minimum = 0
         for el in self.elements:
@@ -270,7 +270,7 @@ class MplBoxSizer( MplSizer ):
             else:
                 current_location_inch += dir*el.minsize_bordered[dir_idx]
             el_rb = current_location_inch
-            
+
             if vertical:
                 el_bottom = el_rb
                 el_top = el_lt
@@ -296,7 +296,7 @@ class MplBoxSizer( MplSizer ):
                     else:
                         el_lbrt_inch = (lbrt_inch[0], el_bottom,
                                         lbrt_inch[0]+minwidth, el_top)
-                        
+
             else: #horizonal
                 el_left = el_lt
                 el_right = el_rb
@@ -339,7 +339,7 @@ class MplGridSizer( MplSizer ):
         self.vgap_inch = vgap
         self.append_horiz = append_horiz # if true, add horizontally
         MplSizer.__init__(self)
-        
+
     def _show_contents(self,indent=0):
         buf = (' '*indent)+'MplGridSizer:\n'
         buf += MplSizer._show_contents(self,indent+2)
@@ -376,14 +376,14 @@ class MplGridSizer( MplSizer ):
 
         n_hgaps = max(0,self.cols-1)
         total_hgap = n_hgaps*self.hgap_inch
-        
+
         if self.flag.get('expand',False):
             total_width_inches = lbrt_inch[2]-lbrt_inch[0]
         else:
             total_width_inches = self.minsize[0]
         col_width = (total_width_inches-total_hgap)/self.cols
         col_stride = col_width + self.hgap_inch
-        
+
         n_vgaps = max(0,rows-1)
         total_vgap = n_vgaps*self.vgap_inch
 
@@ -396,7 +396,7 @@ class MplGridSizer( MplSizer ):
 
         req_w_inch = None
         req_h_inch = None
-        
+
         for i in range(rows):
             y1 = lbrt_inch[3] - i*row_stride # top
             y0 = lbrt_inch[3] - i*row_stride - row_height # bottom
@@ -411,7 +411,7 @@ class MplGridSizer( MplSizer ):
                     continue
 
                 el = self.elements[idx]
-                
+
                 x0 = lbrt_inch[0] + j*col_stride
                 x1 = lbrt_inch[0] + j*col_stride + col_width
 
@@ -446,13 +446,13 @@ class MplGridSizer( MplSizer ):
 
         if req_w_inch is not None:
             req_w_inch = self.cols*req_w_inch
-        
+
         if req_h_inch is not None:
             req_h_inch = rows*req_h_inch
-        
+
         # call base class
         return req_w_inch, req_h_inch
-        
+
 class MplSizerFrame:
     def __init__(self,fig):
         self.fig = fig
@@ -466,10 +466,10 @@ class MplSizerFrame:
         sizer._update_sizer_element_kwargs(**kwargs)
         sizer.Update() # calculate minsize requirements
         self.sizer = sizer
-        
+
     def Layout(self):
         self.sizer.Update() # calculate minsize requirements
-        
+
         fig_w_inch = self.fig.get_figwidth()
         fig_h_inch = self.fig.get_figheight()
         lbrt_inch = (0,0,fig_w_inch,fig_h_inch) # bounding box within figure
@@ -497,4 +497,4 @@ class MplSizerFrame:
 ##                print 'ntry %d: req_w_inch, req_h_inch'%(ntry,),repr(req_w_inch), repr(req_h_inch)
         if (req_w_inch is not None) or (req_h_inch is not None):
             raise RuntimeError('failed to layout')
-        
+
