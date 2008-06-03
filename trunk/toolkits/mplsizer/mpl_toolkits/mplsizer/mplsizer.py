@@ -11,6 +11,11 @@ _sizer_flags = ['left','right','bottom','top','all',
                 'align_centre_horizontal',
                 'align_right',
                 'align_bottom',
+
+                # XXX TODO: check if there is another way to do this
+                # in wx (in context of grid sizer):
+                'expand_vertical',
+                'expand_horizontal',
                 ]
 
 def as_sizer_element(ax,**kwargs):
@@ -433,6 +438,12 @@ class MplGridSizer( MplSizer ):
                     elif el.flag.get('align_centre_vertical',False):
                         el_lbrt_inch = (x0,  y05-h2,
                                         x0+w,y05+h2)
+                    elif el.flag.get('expand_vertical',False):
+                        el_lbrt_inch = (x05-w2, y0,
+                                        x05+w2, y1)
+                    elif el.flag.get('expand_horizontal',False):
+                        el_lbrt_inch = (x0, y05-h2,
+                                        x1, y05+h2)
                     # XXX more needed
                     else:
                         # top left default
