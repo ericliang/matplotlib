@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big> (version 1.1.0.dev5176)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.pylab</strong></big></big> (version 1.2.0.dev5564)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/pylab.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/pylab.py</a></font></td></tr></table>
     <p><tt>This&nbsp;is&nbsp;a&nbsp;procedural&nbsp;interface&nbsp;to&nbsp;the&nbsp;matplotlib&nbsp;object-oriented<br>
@@ -44,6 +44,7 @@ _Plotting&nbsp;commands<br>
 &nbsp;&nbsp;figtext&nbsp;&nbsp;&nbsp;-&nbsp;add&nbsp;text&nbsp;in&nbsp;figure&nbsp;coords<br>
 &nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;-&nbsp;create&nbsp;or&nbsp;change&nbsp;active&nbsp;figure<br>
 &nbsp;&nbsp;fill&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;make&nbsp;filled&nbsp;polygons<br>
+&nbsp;&nbsp;findobj&nbsp;&nbsp;-&nbsp;recursively&nbsp;find&nbsp;all&nbsp;objects&nbsp;matching&nbsp;some&nbsp;criteria<br>
 &nbsp;&nbsp;gca&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;the&nbsp;current&nbsp;axes<br>
 &nbsp;&nbsp;gcf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;return&nbsp;the&nbsp;current&nbsp;figure<br>
 &nbsp;&nbsp;gci&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;get&nbsp;the&nbsp;current&nbsp;image,&nbsp;or&nbsp;None<br>
@@ -84,6 +85,7 @@ _Plotting&nbsp;commands<br>
 &nbsp;&nbsp;subplot&nbsp;&nbsp;-&nbsp;make&nbsp;a&nbsp;subplot&nbsp;(numrows,&nbsp;numcols,&nbsp;axesnum)<br>
 &nbsp;&nbsp;subplots_adjust&nbsp;-&nbsp;change&nbsp;the&nbsp;params&nbsp;controlling&nbsp;the&nbsp;subplot&nbsp;positions&nbsp;of&nbsp;current&nbsp;figure<br>
 &nbsp;&nbsp;subplot_tool&nbsp;-&nbsp;launch&nbsp;the&nbsp;subplot&nbsp;configuration&nbsp;tool<br>
+&nbsp;&nbsp;suptitle&nbsp;&nbsp;&nbsp;-&nbsp;add&nbsp;a&nbsp;figure&nbsp;title<br>
 &nbsp;&nbsp;table&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;add&nbsp;a&nbsp;table&nbsp;to&nbsp;the&nbsp;plot<br>
 &nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;add&nbsp;some&nbsp;text&nbsp;at&nbsp;location&nbsp;x,y&nbsp;to&nbsp;the&nbsp;current&nbsp;axes<br>
 &nbsp;&nbsp;thetagrids&nbsp;-&nbsp;customize&nbsp;the&nbsp;radial&nbsp;theta&nbsp;grids&nbsp;and&nbsp;labels&nbsp;for&nbsp;polar<br>
@@ -188,6 +190,7 @@ _Dates<br>
 _Other<br>
 &nbsp;<br>
 &nbsp;&nbsp;angle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;the&nbsp;angle&nbsp;of&nbsp;a&nbsp;complex&nbsp;array<br>
+&nbsp;&nbsp;griddata&nbsp;-&nbsp;interpolate&nbsp;irregularly&nbsp;distributed&nbsp;data&nbsp;to&nbsp;a&nbsp;regular&nbsp;grid<br>
 &nbsp;&nbsp;load&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;load&nbsp;ASCII&nbsp;data&nbsp;into&nbsp;array<br>
 &nbsp;&nbsp;polyfit&nbsp;&nbsp;&nbsp;-&nbsp;fit&nbsp;x,&nbsp;y&nbsp;to&nbsp;an&nbsp;n-th&nbsp;order&nbsp;polynomial<br>
 &nbsp;&nbsp;polyval&nbsp;&nbsp;&nbsp;-&nbsp;evaluate&nbsp;an&nbsp;n-th&nbsp;order&nbsp;polynomial<br>
@@ -207,21 +210,22 @@ __end</tt></p>
 <a href="numpy.core.defchararray.html">numpy.core.defchararray</a><br>
 <a href="matplotlib.cm.html">matplotlib.cm</a><br>
 <a href="numpy.ctypeslib.html">numpy.ctypeslib</a><br>
+<a href="numpy.doc.html">numpy.doc</a><br>
 <a href="numpy.lib.scimath.html">numpy.lib.scimath</a><br>
-<a href="numpy.fft.fftpack.html">numpy.fft.fftpack</a><br>
-</td><td width="25%" valign=top><a href="numpy.fft.fftpack_lite.html">numpy.fft.fftpack_lite</a><br>
+</td><td width="25%" valign=top><a href="numpy.fft.fftpack.html">numpy.fft.fftpack</a><br>
+<a href="numpy.fft.fftpack_lite.html">numpy.fft.fftpack_lite</a><br>
 <a href="numpy.fft.helper.html">numpy.fft.helper</a><br>
 <a href="numpy.linalg.info.html">numpy.linalg.info</a><br>
 <a href="numpy.linalg.lapack_lite.html">numpy.linalg.lapack_lite</a><br>
 <a href="numpy.linalg.linalg.html">numpy.linalg.linalg</a><br>
-<a href="numpy.ma.html">numpy.ma</a><br>
-</td><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top><a href="numpy.ma.html">numpy.ma</a><br>
+<a href="math.html">math</a><br>
 <a href="matplotlib.html">matplotlib</a><br>
 <a href="matplotlib.mlab.html">matplotlib.mlab</a><br>
 <a href="matplotlib.mpl.html">matplotlib.mpl</a><br>
 <a href="numpy.html">numpy</a><br>
-<a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
-</td><td width="25%" valign=top><a href="numpy.core.records.html">numpy.core.records</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.pyplot.html">matplotlib.pyplot</a><br>
+<a href="numpy.core.records.html">numpy.core.records</a><br>
 <a href="sys.html">sys</a><br>
 <a href="warnings.html">warnings</a><br>
 </td></tr></table></td></tr></table><p>
@@ -318,7 +322,7 @@ The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp
 &nbsp;<br>
 Examples<br>
 --------<br>
-&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
+&gt;&gt;&gt;&nbsp;np.<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
 <a href="#-array">array</a>([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
  <dl><dt><a name="-digitize"><strong>digitize</strong></a>(...)</dt><dd><tt><a href="#-digitize">digitize</a>(x,bins)<br>
 &nbsp;<br>
@@ -455,9 +459,9 @@ errobj&nbsp;:&nbsp;list<br>
 <a href="#-gumbel">gumbel</a>(loc=0.0,&nbsp;scale=1.0,&nbsp;size=None)</tt></dd></dl>
  <dl><dt><a name="-hypergeometric"><strong>hypergeometric</strong></a>(...)</dt><dd><tt>Hypergeometric&nbsp;distribution.<br>
 &nbsp;<br>
-Consider&nbsp;an&nbsp;urn&nbsp;with&nbsp;ngood&nbsp;"good"&nbsp;balls&nbsp;and&nbsp;nbad&nbsp;"bad"&nbsp;balls.&nbsp;If&nbsp;one&nbsp;<br>
-were&nbsp;to&nbsp;draw&nbsp;nsample&nbsp;balls&nbsp;from&nbsp;the&nbsp;urn&nbsp;without&nbsp;replacement,&nbsp;then&nbsp;<br>
-the&nbsp;hypergeometric&nbsp;distribution&nbsp;describes&nbsp;the&nbsp;distribution&nbsp;of&nbsp;"good"&nbsp;<br>
+Consider&nbsp;an&nbsp;urn&nbsp;with&nbsp;ngood&nbsp;"good"&nbsp;balls&nbsp;and&nbsp;nbad&nbsp;"bad"&nbsp;balls.&nbsp;If&nbsp;one<br>
+were&nbsp;to&nbsp;draw&nbsp;nsample&nbsp;balls&nbsp;from&nbsp;the&nbsp;urn&nbsp;without&nbsp;replacement,&nbsp;then<br>
+the&nbsp;hypergeometric&nbsp;distribution&nbsp;describes&nbsp;the&nbsp;distribution&nbsp;of&nbsp;"good"<br>
 balls&nbsp;in&nbsp;the&nbsp;sample.<br>
 &nbsp;<br>
 <a href="#-hypergeometric">hypergeometric</a>(ngood,&nbsp;nbad,&nbsp;nsample,&nbsp;size=None)</tt></dd></dl>
@@ -503,12 +507,12 @@ Examples<br>
 --------<br>
 &gt;&gt;&gt;&nbsp;a&nbsp;=&nbsp;[1,5,1,4,3,6,7]<br>
 &gt;&gt;&gt;&nbsp;b&nbsp;=&nbsp;[9,4,0,4,0,4,3]<br>
-&gt;&gt;&gt;&nbsp;ind&nbsp;=&nbsp;<a href="#-lexsort">lexsort</a>((b,a))<br>
+&gt;&gt;&gt;&nbsp;ind&nbsp;=&nbsp;np.<a href="#-lexsort">lexsort</a>((b,a))<br>
 &gt;&gt;&gt;&nbsp;print&nbsp;ind<br>
 [2&nbsp;0&nbsp;4&nbsp;3&nbsp;1&nbsp;5&nbsp;6]<br>
-&gt;&gt;&gt;&nbsp;print&nbsp;take(a,ind)<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;np.take(a,ind)<br>
 [1&nbsp;1&nbsp;3&nbsp;4&nbsp;5&nbsp;6&nbsp;7]<br>
-&gt;&gt;&gt;&nbsp;print&nbsp;take(b,ind)<br>
+&gt;&gt;&gt;&nbsp;print&nbsp;np.take(b,ind)<br>
 [0&nbsp;9&nbsp;0&nbsp;4&nbsp;4&nbsp;4&nbsp;3]</tt></dd></dl>
  <dl><dt><a name="-loads"><strong>loads</strong></a>(...)</dt><dd><tt><a href="#-loads">loads</a>(string)&nbsp;--&nbsp;Load&nbsp;a&nbsp;pickle&nbsp;from&nbsp;the&nbsp;given&nbsp;string</tt></dd></dl>
  <dl><dt><a name="-logistic"><strong>logistic</strong></a>(...)</dt><dd><tt>Logistic&nbsp;distribution.<br>
@@ -516,7 +520,7 @@ Examples<br>
 <a href="#-logistic">logistic</a>(loc=0.0,&nbsp;scale=1.0,&nbsp;size=None)</tt></dd></dl>
  <dl><dt><a name="-lognormal"><strong>lognormal</strong></a>(...)</dt><dd><tt>Log-normal&nbsp;distribution.<br>
 &nbsp;<br>
-Note&nbsp;that&nbsp;the&nbsp;mean&nbsp;parameter&nbsp;is&nbsp;not&nbsp;the&nbsp;mean&nbsp;of&nbsp;this&nbsp;distribution,&nbsp;but&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;mean&nbsp;parameter&nbsp;is&nbsp;not&nbsp;the&nbsp;mean&nbsp;of&nbsp;this&nbsp;distribution,&nbsp;but<br>
 the&nbsp;underlying&nbsp;normal&nbsp;distribution.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<a href="#-lognormal">lognormal</a>(mean,&nbsp;sigma)&nbsp;&lt;=&gt;&nbsp;exp(<a href="#-normal">normal</a>(mean,&nbsp;sigma))<br>
@@ -587,7 +591,7 @@ myarray&nbsp;:&nbsp;an&nbsp;integer&nbsp;type&nbsp;array&nbsp;whose&nbsp;element
  <dl><dt><a name="-pareto"><strong>pareto</strong></a>(...)</dt><dd><tt>Pareto&nbsp;distribution.<br>
 &nbsp;<br>
 <a href="#-pareto">pareto</a>(a,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-permutation"><strong>permutation</strong></a>(...)</dt><dd><tt>Given&nbsp;an&nbsp;integer,&nbsp;return&nbsp;a&nbsp;shuffled&nbsp;sequence&nbsp;of&nbsp;integers&nbsp;&gt;=&nbsp;0&nbsp;and&nbsp;<br>
+ <dl><dt><a name="-permutation"><strong>permutation</strong></a>(...)</dt><dd><tt>Given&nbsp;an&nbsp;integer,&nbsp;return&nbsp;a&nbsp;shuffled&nbsp;sequence&nbsp;of&nbsp;integers&nbsp;&gt;=&nbsp;0&nbsp;and<br>
 &lt;&nbsp;x;&nbsp;given&nbsp;a&nbsp;sequence,&nbsp;return&nbsp;a&nbsp;shuffled&nbsp;array&nbsp;copy.<br>
 &nbsp;<br>
 <a href="#-permutation">permutation</a>(x)</tt></dd></dl>
@@ -612,7 +616,7 @@ mask&nbsp;:&nbsp;{array_like}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;mask&nbsp;array<br>
 values&nbsp;:&nbsp;{array_like}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Values&nbsp;to&nbsp;put</tt></dd></dl>
- <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
+ <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to<br>
 random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
 &nbsp;<br>
 <a href="#-rand">rand</a>(d0,&nbsp;d1,&nbsp;...,&nbsp;dn)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
@@ -625,7 +629,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <a href="#-randint">randint</a>(low,&nbsp;high=None,&nbsp;size=None)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
 &nbsp;<br>
 If&nbsp;high&nbsp;is&nbsp;None,&nbsp;then&nbsp;0&nbsp;&lt;=&nbsp;x&nbsp;&lt;&nbsp;low.</tt></dd></dl>
- <dl><dt><a name="-randn"><strong>randn</strong></a>(...)</dt><dd><tt>Returns&nbsp;zero-mean,&nbsp;unit-variance&nbsp;Gaussian&nbsp;random&nbsp;numbers&nbsp;in&nbsp;an&nbsp;<br>
+ <dl><dt><a name="-randn"><strong>randn</strong></a>(...)</dt><dd><tt>Returns&nbsp;zero-mean,&nbsp;unit-variance&nbsp;Gaussian&nbsp;random&nbsp;numbers&nbsp;in&nbsp;an<br>
 array&nbsp;of&nbsp;shape&nbsp;(d0,&nbsp;d1,&nbsp;...,&nbsp;dn).<br>
 &nbsp;<br>
 <a href="#-randn">randn</a>(d0,&nbsp;d1,&nbsp;...,&nbsp;dn)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
@@ -712,7 +716,7 @@ seterrcall</tt></dd></dl>
  <dl><dt><a name="-standard_t"><strong>standard_t</strong></a>(...)</dt><dd><tt>Standard&nbsp;Student's&nbsp;t&nbsp;distribution&nbsp;with&nbsp;df&nbsp;degrees&nbsp;of&nbsp;freedom.<br>
 &nbsp;<br>
 <a href="#-standard_t">standard_t</a>(df,&nbsp;size=None)</tt></dd></dl>
- <dl><dt><a name="-triangular"><strong>triangular</strong></a>(...)</dt><dd><tt>Triangular&nbsp;distribution&nbsp;starting&nbsp;at&nbsp;left,&nbsp;peaking&nbsp;at&nbsp;mode,&nbsp;and&nbsp;<br>
+ <dl><dt><a name="-triangular"><strong>triangular</strong></a>(...)</dt><dd><tt>Triangular&nbsp;distribution&nbsp;starting&nbsp;at&nbsp;left,&nbsp;peaking&nbsp;at&nbsp;mode,&nbsp;and<br>
 ending&nbsp;at&nbsp;right&nbsp;(left&nbsp;&lt;=&nbsp;mode&nbsp;&lt;=&nbsp;right).<br>
 &nbsp;<br>
 <a href="#-triangular">triangular</a>(left,&nbsp;mode,&nbsp;right,&nbsp;size=None)</tt></dd></dl>
@@ -762,7 +766,7 @@ tuple&nbsp;condition.nonzero()&nbsp;is&nbsp;returned,&nbsp;instead.<br>
 &nbsp;<br>
 Examples<br>
 --------<br>
-&gt;&gt;&gt;&nbsp;<a href="#-where">where</a>([True,False,True],[1,2,3],[4,5,6])<br>
+&gt;&gt;&gt;&nbsp;np.<a href="#-where">where</a>([True,False,True],[1,2,3],[4,5,6])<br>
 <a href="#-array">array</a>([1,&nbsp;5,&nbsp;3])</tt></dd></dl>
  <dl><dt><a name="-zeros"><strong>zeros</strong></a>(...)</dt><dd><tt><a href="#-zeros">zeros</a>(shape,&nbsp;dtype=float,&nbsp;order='C')<br>
 &nbsp;<br>
@@ -826,7 +830,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>SHIFT_OVERFLOW</strong> = 3<br>
 <strong>SHIFT_UNDERFLOW</strong> = 6<br>
 <strong>SU</strong> = SU<br>
-<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.uint64'&gt;, &lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.void'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.bool_'&gt;, &lt;type 'numpy.uint64'&gt;, ...)<br>
+<strong>ScalarType</strong> = (&lt;type 'int'&gt;, &lt;type 'float'&gt;, &lt;type 'complex'&gt;, &lt;type 'long'&gt;, &lt;type 'bool'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'buffer'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.object_'&gt;, &lt;type 'numpy.float128'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.unicode_'&gt;, &lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.uint8'&gt;, &lt;type 'numpy.int64'&gt;, &lt;type 'numpy.uint64'&gt;, ...)<br>
 <strong>TH</strong> = TH<br>
 <strong>TU</strong> = TU<br>
 <strong>True_</strong> = True<br>
@@ -836,7 +840,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>WEEKLY</strong> = 2<br>
 <strong>WRAP</strong> = 1<br>
 <strong>YEARLY</strong> = 0<br>
-<strong>__version__</strong> = '1.1.0.dev5176'<br>
+<strong>__version__</strong> = '1.2.0.dev5564'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -850,10 +854,10 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>bitwise_not</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>bitwise_or</strong> = &lt;ufunc 'bitwise_or'&gt;<br>
 <strong>bitwise_xor</strong> = &lt;ufunc 'bitwise_xor'&gt;<br>
-<strong>c_</strong> = &lt;numpy.lib.index_tricks.CClass object at 0xc48510&gt;<br>
-<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0xa...mpy.complex64'&gt;: &lt;function &lt;lambda&gt; at 0xa9d500&gt;}<br>
+<strong>c_</strong> = &lt;numpy.lib.index_tricks.CClass object at 0xd74990&gt;<br>
+<strong>cast</strong> = {&lt;type 'numpy.int64'&gt;: &lt;function &lt;lambda&gt; at 0xc...numpy.string_'&gt;: &lt;function &lt;lambda&gt; at 0xc5f050&gt;}<br>
 <strong>ceil</strong> = &lt;ufunc 'ceil'&gt;<br>
-<strong>colorbar_doc</strong> = '<font color="#c040c0">\n</font>Add a colorbar to a plot.<font color="#c040c0">\n\n</font>Function signatures ...e, do not use any of the<font color="#c040c0">\n</font>axes properties kwargs.<font color="#c040c0">\n</font>'<br>
+<strong>colorbar_doc</strong> = '<font color="#c040c0">\n\n</font>Add a colorbar to a plot.<font color="#c040c0">\n\n</font>Function signatures...e, do not use any of the axes properties kwargs.<font color="#c040c0">\n</font>'<br>
 <strong>conj</strong> = &lt;ufunc 'conjugate'&gt;<br>
 <strong>conjugate</strong> = &lt;ufunc 'conjugate'&gt;<br>
 <strong>cos</strong> = &lt;ufunc 'cos'&gt;<br>
@@ -872,7 +876,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
-<strong>index_exp</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc48610&gt;<br>
+<strong>index_exp</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xd74a90&gt;<br>
 <strong>inf</strong> = inf<br>
 <strong>infty</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
@@ -892,20 +896,20 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>logical_or</strong> = &lt;ufunc 'logical_or'&gt;<br>
 <strong>logical_xor</strong> = &lt;ufunc 'logical_xor'&gt;<br>
 <strong>maximum</strong> = &lt;ufunc 'maximum'&gt;<br>
-<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc48390&gt;<br>
+<strong>mgrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xd74810&gt;<br>
 <strong>minimum</strong> = &lt;ufunc 'minimum'&gt;<br>
 <strong>mod</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>modf</strong> = &lt;ufunc 'modf'&gt;<br>
 <strong>multiply</strong> = &lt;ufunc 'multiply'&gt;<br>
 <strong>nan</strong> = nan<br>
-<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...type 'numpy.uint8'&gt;: 1, &lt;type 'numpy.uint16'&gt;: 2}<br>
+<strong>nbytes</strong> = {&lt;type 'numpy.int64'&gt;: 8, &lt;type 'numpy.int16'&gt;: ...type 'numpy.int8'&gt;: 1, &lt;type 'numpy.string_'&gt;: 0}<br>
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xc483d0&gt;<br>
+<strong>ogrid</strong> = &lt;numpy.lib.index_tricks.nd_grid object at 0xd74850&gt;<br>
 <strong>ones_like</strong> = &lt;ufunc 'ones_like'&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
-<strong>r_</strong> = &lt;numpy.lib.index_tricks.RClass object at 0xc48490&gt;<br>
+<strong>r_</strong> = &lt;numpy.lib.index_tricks.RClass object at 0xd74910&gt;<br>
 <strong>radians</strong> = &lt;ufunc 'radians'&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
 <strong>rcParamsDefault</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
@@ -913,7 +917,7 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>remainder</strong> = &lt;ufunc 'remainder'&gt;<br>
 <strong>right_shift</strong> = &lt;ufunc 'right_shift'&gt;<br>
 <strong>rint</strong> = &lt;ufunc 'rint'&gt;<br>
-<strong>s_</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xc48690&gt;<br>
+<strong>s_</strong> = &lt;numpy.lib.index_tricks.IndexExpression object at 0xd74b10&gt;<br>
 <strong>sctypeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int64'&gt;, 8: &lt;type 'numpy.uint64'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
 <strong>sctypeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex128': &lt;type 'numpy.complex256'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float128': &lt;type 'numpy.float128'&gt;, 'Float32': &lt;type 'numpy.float32'&gt;, ...}<br>
 <strong>sctypes</strong> = {'complex': [&lt;type 'numpy.complex64'&gt;, &lt;type 'numpy.complex128'&gt;, &lt;type 'numpy.complex256'&gt;], 'float': [&lt;type 'numpy.float32'&gt;, &lt;type 'numpy.float64'&gt;, &lt;type 'numpy.float128'&gt;], 'int': [&lt;type 'numpy.int8'&gt;, &lt;type 'numpy.int16'&gt;, &lt;type 'numpy.int32'&gt;, &lt;type 'numpy.int64'&gt;], 'others': [&lt;type 'bool'&gt;, &lt;type 'object'&gt;, &lt;type 'str'&gt;, &lt;type 'unicode'&gt;, &lt;type 'numpy.void'&gt;], 'uint': [&lt;type 'numpy.uint8'&gt;, &lt;type 'numpy.uint16'&gt;, &lt;type 'numpy.uint32'&gt;, &lt;type 'numpy.uint64'&gt;]}<br>
@@ -929,5 +933,6 @@ order&nbsp;:&nbsp;{'C',&nbsp;'F'}<br>
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
 <strong>typeDict</strong> = {0: &lt;type 'numpy.bool_'&gt;, 1: &lt;type 'numpy.int8'&gt;, 2: &lt;type 'numpy.uint8'&gt;, 3: &lt;type 'numpy.int16'&gt;, 4: &lt;type 'numpy.uint16'&gt;, 5: &lt;type 'numpy.int32'&gt;, 6: &lt;type 'numpy.uint32'&gt;, 7: &lt;type 'numpy.int64'&gt;, 8: &lt;type 'numpy.uint64'&gt;, 9: &lt;type 'numpy.int64'&gt;, ...}<br>
 <strong>typeNA</strong> = {'?': 'Bool', 'B': 'UInt8', 'Bool': &lt;type 'numpy.bool_'&gt;, 'Complex128': &lt;type 'numpy.complex256'&gt;, 'Complex32': &lt;type 'numpy.complex64'&gt;, 'Complex64': &lt;type 'numpy.complex128'&gt;, 'D': 'Complex64', 'F': 'Complex32', 'Float128': &lt;type 'numpy.float128'&gt;, 'Float32': &lt;type 'numpy.float32'&gt;, ...}<br>
-<strong>typecodes</strong> = {'All': '?bhilqpBHILQPfdgFDGSUVO', 'AllFloat': 'fdgFDG', 'AllInteger': 'bBhHiIlLqQpP', 'Character': 'c', 'Complex': 'FDG', 'Float': 'fdg', 'Integer': 'bhilqp', 'UnsignedInteger': 'BHILQP'}</td></tr></table>
+<strong>typecodes</strong> = {'All': '?bhilqpBHILQPfdgFDGSUVO', 'AllFloat': 'fdgFDG', 'AllInteger': 'bBhHiIlLqQpP', 'Character': 'c', 'Complex': 'FDG', 'Float': 'fdg', 'Integer': 'bhilqp', 'UnsignedInteger': 'BHILQP'}<br>
+<strong>x</strong> = 'symlog'</td></tr></table>
 @footer@

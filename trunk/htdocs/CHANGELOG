@@ -1,3 +1,204 @@
+=================================================================
+2008-08-03 Released 0.98.3 at svn r5947
+
+2008-08-01 Backported memory leak fixes in _ttconv.cpp - MGD
+
+2008-07-31 Added masked array support to griddata. - JSW
+
+2008-07-26 Added optional C and reduce_C_function arguments to
+	   axes.hexbin().  This allows hexbin to accumulate the values
+	   of C based on the x,y coordinates and display in hexagonal
+	   bins. - ADS
+
+2008-07-24 Deprecated (raise NotImplementedError) all the mlab2
+           functions from matplotlib.mlab out of concern that some of
+           them were not clean room implementations. JDH
+
+2008-07-24 Rewrite of a significant portion of the clabel code (class
+	   ContourLabeler) to improve inlining. - DMK
+ 
+2008-07-22 Added Barbs polygon collection (similar to Quiver) for plotting
+           wind barbs.  Added corresponding helpers to Axes and pyplot as
+           well. (examples/pylab_examples/barb_demo.py shows it off.) - RMM
+
+2008-07-21 Added scikits.delaunay as matplotlib.delaunay.  Added griddata
+           function in matplotlib.mlab, with example (griddata_demo.py) in
+           pylab_examples. griddata function will use mpl_toolkits._natgrid
+           if installed.  - JSW
+
+2008-07-21 Re-introduced offset_copy that works in the context of the
+           new transforms. - MGD
+
+2008-07-21 Committed patch by Ryan May to add get_offsets and
+           set_offsets to Collections base class - EF
+
+2008-07-21 Changed the "asarray" strategy in image.py so that
+           colormapping of masked input should work for all
+           image types (thanks Klaus Zimmerman) - EF
+
+2008-07-20 Rewrote cbook.delete_masked_points and corresponding
+           unit test to support rgb color array inputs, datetime
+           inputs, etc. - EF
+
+2008-07-20 Renamed unit/axes_unit.py to cbook_unit.py and modified
+           in accord with Ryan's move of delete_masked_points from
+           axes to cbook. - EF
+
+2008-07-18 Check for nan and inf in axes.delete_masked_points().
+           This should help hexbin and scatter deal with nans. - ADS
+
+2008-07-17 Added ability to manually select contour label locations.
+           Also added a waitforbuttonpress function. - DMK
+
+2008-07-17 Fix bug with NaNs at end of path (thanks, Andrew Straw for
+           the report) - MGD
+
+2008-07-16 Improve error handling in texmanager, thanks to Ian Henry
+           for reporting - DSD
+
+2008-07-12 Added support for external backends with the
+           "module://my_backend" syntax - JDH
+
+2008-07-11 Fix memory leak related to shared axes.  Grouper should
+           store weak references. - MGD
+
+2008-07-10 Bugfix: crash displaying fontconfig pattern - MGD
+
+2008-07-10 Bugfix: [ 2013963 ] update_datalim_bounds in Axes not works - MGD
+
+2008-07-10 Bugfix: [ 2014183 ] multiple imshow() causes gray edges - MGD
+
+2008-07-09 Fix rectangular axes patch on polar plots bug - MGD
+
+2008-07-09 Improve mathtext radical rendering - MGD
+
+2008-07-08 Improve mathtext superscript placement - MGD
+
+2008-07-07 Fix custom scales in pcolormesh (thanks Matthew Turk) - MGD
+
+2008-07-03 Implemented findobj method for artist and pyplot - see
+           examples/pylab_examples/findobj_demo.py - JDH
+
+2008-06-30 Another attempt to fix TextWithDash - DSD
+
+2008-06-30 Removed Qt4 NavigationToolbar2.destroy -- it appears to
+           have been unnecessary and caused a bug reported by P.
+           Raybaut - DSD
+
+2008-06-27 Fixed tick positioning bug - MM
+
+2008-06-27 Fix dashed text bug where text was at the wrong end of the
+           dash - MGD
+
+2008-06-26 Fix mathtext bug for expressions like $x_{\leftarrow}$ - MGD
+
+2008-06-26 Fix direction of horizontal/vertical hatches - MGD
+
+2008-06-25 Figure.figurePatch renamed Figure.patch, Axes.axesPatch
+           renamed Axes.patch, Axes.axesFrame renamed Axes.frame,
+           Axes.get_frame, which returns Axes.patch, is deprecated.
+           Examples and users guide updated - JDH
+
+2008-06-25 Fix rendering quality of pcolor - MGD
+
+=================================================================
+2008-06-24 Released 0.98.2 at svn r5667 - (source only for debian) JDH
+
+2008-06-24 Added "transparent" kwarg to savefig. - MGD
+
+2008-06-24 Applied Stefan's patch to draw a single centered marker over
+           a line with numpoints==1 - JDH
+
+2008-06-23 Use splines to render circles in scatter plots - MGD
+
+===============================================================
+2008-06-22 Released 0.98.1 at revision 5637
+
+2008-06-22 Removed axes3d support and replaced it with a
+           NotImplementedError for one release cycle
+
+2008-06-21 fix marker placement bug in backend_ps - DSD
+
+2008-06-20 [ 1978629 ] scale documentation missing/incorrect for log - MGD
+
+2008-06-20 Added closed kwarg to PolyCollection.  Fixes bug [ 1994535
+           ] still missing lines on graph with svn (r 5548). - MGD
+
+2008-06-20 Added set/get_closed method to Polygon; fixes error
+           in hist - MM
+
+2008-06-19 Use relative font sizes (e.g. 'medium' and 'large') in
+           rcsetup.py and matplotlibrc.template so that text will
+           be scaled by default when changing rcParams['font.size'] -
+           EF
+
+2008-06-17 Add a generic PatchCollection class that can contain any
+           kind of patch. - MGD
+
+2008-06-13 Change pie chart label alignment to avoid having labels
+           overwrite the pie - MGD
+
+2008-06-12 Added some helper functions to the mathtext parser to
+           return bitmap arrays or write pngs to make it easier to use
+           mathtext outside the context of an mpl figure.  modified
+           the mathpng sphinxext to use the mathtext png save
+           functionality - see examples/api/mathtext_asarray.py - JDH
+
+2008-06-11 Use matplotlib.mathtext to render math expressions in
+           online docs - MGD
+
+2008-06-11 Move PNG loading/saving to its own extension module, and
+           remove duplicate code in _backend_agg.cpp and _image.cpp
+           that does the same thing - MGD
+
+2008-06-11 Numerous mathtext bugfixes, primarily related to
+           dpi-independence - MGD
+
+2008-06-10 Bar now applies the label only to the first patch only, and
+           sets '_nolegend_' for the other patch labels.  This lets
+           autolegend work as expected for hist and bar - see
+           https://sourceforge.net/tracker/index.php?func=detail&aid=1986597&group_id=80706&atid=560720
+           JDH
+
+2008-06-10 Fix text baseline alignment bug.  [ 1985420 ] Repair of
+           baseline alignment in Text._get_layout.  Thanks Stan West -
+           MGD
+
+2008-06-09 Committed Gregor's image resample patch to downsampling
+           images with new rcparam image.resample - JDH
+
+2008-06-09 Don't install Enthought.Traits along with matplotlib. For
+           matplotlib developers convenience, it can still be
+           installed by setting an option in setup.cfg while we figure
+           decide if there is a future for the traited config - DSD
+
+2008-06-09 Added range keyword arg to hist() - MM
+
+2008-06-07 Moved list of backends to rcsetup.py; made use of lower
+           case for backend names consistent; use validate_backend
+           when importing backends subpackage - EF
+
+2008-06-06 hist() revision, applied ideas proposed by Erik Tollerud and
+           Olle Engdegard: make histtype='step' unfilled by default
+           and introduce histtype='stepfilled'; use default color
+           cycle; introduce reverse cumulative histogram; new align
+           keyword - MM
+
+2008-06-06 Fix closed polygon patch and also provide the option to
+           not close the polygon - MGD
+
+2008-06-05 Fix some dpi-changing-related problems with PolyCollection,
+           as called by Axes.scatter() - MGD
+
+2008-06-05 Fix image drawing so there is no extra space to the right
+           or bottom - MGD
+
+2006-06-04 Added a figure title command subtitle as a Figure method
+           and pyplot command -- see examples/figure_title.py - JDH
+
+2008-06-02 Added support for log to hist with histtype='step' and fixed
+           a bug for log-scale stacked histograms - MM
+
 ===============================================================
 2008-05-29 Released 0.98.0 at revision 5314
 

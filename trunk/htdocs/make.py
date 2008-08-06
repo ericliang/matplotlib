@@ -29,19 +29,19 @@ print >> file('license.html.template','w'), fmt%d
 
 
 print 'Making screenshots'
-#os.system('cd screenshots; python makeshots.py; rm -f _tmp*.py')
+os.system('cd screenshots; python makeshots.py; rm -f _tmp*.py')
 
 print 'Making tutorial images'
-#os.system('cd tut; python runall.py')
+os.system('cd tut; python runall.py')
 
 print 'Running process_docs'
-#os.system('python process_docs.py')
+os.system('python process_docs.py')
 
 print 'Running convert'
 os.system('python convert.py')
 
 print 'Building archive'
 version = matplotlib.__version__
-tarcommand = 'tar cfz site.tar.gz *.html api.pdf users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut doc examples matplotlibrc CHANGELOG  API_CHANGES MIGRATION.txt set_begone.py logo2.py logo2.png logo_sidebar.png -X exclude.txt'%locals()
+tarcommand = 'tar cfz site.tar.gz *.html api.pdf users_guide_%(version)s.pdf matplotlib_examples_%(version)s.zip screenshots tut doc examples matplotlibrc CHANGELOG  API_CHANGES MIGRATION.txt set_begone.py logo2.py logo2.png logo_sidebar.png basemap_readme.txt  -X exclude.txt'%locals()
 print tarcommand
 os.system(tarcommand)

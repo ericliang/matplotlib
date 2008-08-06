@@ -159,11 +159,21 @@ Methods inherited from <a href="matplotlib.patches.html#Patch">matplotlib.patche
 
 <dl><dt><a name="Cell-get_hatch"><strong>get_hatch</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;hatching&nbsp;pattern</tt></dd></dl>
 
+<dl><dt><a name="Cell-get_linestyle"><strong>get_linestyle</strong></a>(self)</dt></dl>
+
 <dl><dt><a name="Cell-get_linewidth"><strong>get_linewidth</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cell-get_ls"><strong>get_ls</strong></a> = get_linestyle(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_lw"><strong>get_lw</strong></a> = get_linewidth(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_transform"><strong>get_transform</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cell-get_verts"><strong>get_verts</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;copy&nbsp;of&nbsp;the&nbsp;vertices&nbsp;used&nbsp;in&nbsp;this&nbsp;patch<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;patch&nbsp;contains&nbsp;Bézier&nbsp;curves,&nbsp;the&nbsp;curves&nbsp;will&nbsp;be<br>
+interpolated&nbsp;by&nbsp;line&nbsp;segments.&nbsp;&nbsp;To&nbsp;access&nbsp;the&nbsp;curves&nbsp;as<br>
+curves,&nbsp;use&nbsp;:meth:`get_path`.</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_window_extent"><strong>get_window_extent</strong></a>(self, renderer<font color="#909090">=None</font>)</dt></dl>
 
@@ -197,27 +207,36 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_hatch"><strong>set_hatch</strong></a>(self, h)</dt><dd><tt>Set&nbsp;the&nbsp;hatching&nbsp;pattern<br>
 &nbsp;<br>
-hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of:<br>
-/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
-\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
-|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
--&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
-#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
-x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
-letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
-hatchings&nbsp;are&nbsp;done<br>
-if&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the&nbsp;density&nbsp;of&nbsp;hatching<br>
-in&nbsp;that&nbsp;direction<br>
+hatch&nbsp;can&nbsp;be&nbsp;one&nbsp;of::<br>
+&nbsp;<br>
+&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;-&nbsp;diagonal&nbsp;hatching<br>
+&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;-&nbsp;back&nbsp;diagonal<br>
+&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;-&nbsp;vertical<br>
+&nbsp;&nbsp;-&nbsp;&nbsp;&nbsp;-&nbsp;horizontal<br>
+&nbsp;&nbsp;#&nbsp;&nbsp;&nbsp;-&nbsp;crossed<br>
+&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;-&nbsp;crossed&nbsp;diagonal<br>
+&nbsp;<br>
+Letters&nbsp;can&nbsp;be&nbsp;combined,&nbsp;in&nbsp;which&nbsp;case&nbsp;all&nbsp;the&nbsp;specified<br>
+hatchings&nbsp;are&nbsp;done.&nbsp;&nbsp;If&nbsp;same&nbsp;letter&nbsp;repeats,&nbsp;it&nbsp;increases&nbsp;the<br>
+density&nbsp;of&nbsp;hatching&nbsp;in&nbsp;that&nbsp;direction.<br>
 &nbsp;<br>
 CURRENT&nbsp;LIMITATIONS:<br>
-1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript<br>
-backend&nbsp;only.<br>
+&nbsp;<br>
+1.&nbsp;Hatching&nbsp;is&nbsp;supported&nbsp;in&nbsp;the&nbsp;PostScript&nbsp;backend&nbsp;only.<br>
 &nbsp;<br>
 2.&nbsp;Hatching&nbsp;is&nbsp;done&nbsp;with&nbsp;solid&nbsp;black&nbsp;lines&nbsp;of&nbsp;width&nbsp;0.</tt></dd></dl>
+
+<dl><dt><a name="Cell-set_linestyle"><strong>set_linestyle</strong></a>(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linestyle<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed'&nbsp;|&nbsp;'dashdot'&nbsp;|&nbsp;'dotted']</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_linewidth"><strong>set_linewidth</strong></a>(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float&nbsp;or&nbsp;None&nbsp;for&nbsp;default</tt></dd></dl>
+
+<dl><dt><a name="Cell-set_ls"><strong>set_ls</strong></a> = set_linestyle(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linestyle<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed'&nbsp;|&nbsp;'dashdot'&nbsp;|&nbsp;'dotted']</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_lw"><strong>set_lw</strong></a> = set_linewidth(self, w)</dt><dd><tt>Set&nbsp;the&nbsp;patch&nbsp;linewidth&nbsp;in&nbsp;points<br>
 &nbsp;<br>
@@ -234,17 +253,33 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 <dl><dt><a name="Cell-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
 <dl><dt><a name="Cell-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
 
 <dl><dt><a name="Cell-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Cell-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#Cell-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+<dl><dt><a name="Cell-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;*None*</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -252,22 +287,24 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+<dl><dt><a name="Cell-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="Cell-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_label"><strong>get_label</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Cell-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Cell-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
-and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+<dl><dt><a name="Cell-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Cell-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Cell-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+<dl><dt><a name="Cell-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
 <dl><dt><a name="Cell-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
 
@@ -277,25 +314,30 @@ and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transfor
 
 <dl><dt><a name="Cell-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="Cell-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Cell-pick">pick</a>(mouseevent)<br>
+<dl><dt><a name="Cell-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;<a href="#Cell-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
 the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
-<dl><dt><a name="Cell-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+<dl><dt><a name="Cell-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
-<dl><dt><a name="Cell-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
-be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
-Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+<dl><dt><a name="Cell-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
 &nbsp;<br>
-Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
-was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
 &nbsp;<br>
 Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Cell-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
-<dl><dt><a name="Cell-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+<dl><dt><a name="Cell-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
 all&nbsp;backends<br>
@@ -306,13 +348,13 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+<dl><dt><a name="Cell-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
@@ -320,31 +362,33 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
 &nbsp;<br>
-&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
 &nbsp;<br>
-&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
 &nbsp;<br>
 For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
 rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
-corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
-instance,&nbsp;or&nbsp;None</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-mouse&nbsp;event:<br>
+mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
-If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
 is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="Cell-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+<dl><dt><a name="Cell-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
 
@@ -356,31 +400,31 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Cell-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
-picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;<br>
-&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
 &nbsp;<br>
-&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
 &nbsp;<br>
-&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
 &nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
 &nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
 &nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
 &nbsp;<br>
-&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
 &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
@@ -472,17 +516,33 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 <dl><dt><a name="Table-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
 <dl><dt><a name="Table-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
 
 <dl><dt><a name="Table-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Table-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#Table-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
 
 <dl><dt><a name="Table-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="Table-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
-<dl><dt><a name="Table-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+<dl><dt><a name="Table-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;*None*</tt></dd></dl>
 
 <dl><dt><a name="Table-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -490,24 +550,27 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Table-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
-<dl><dt><a name="Table-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+<dl><dt><a name="Table-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
 
-<dl><dt><a name="Table-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="Table-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
 
 <dl><dt><a name="Table-get_label"><strong>get_label</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Table-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Table-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Table-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
-<dl><dt><a name="Table-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
-and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+<dl><dt><a name="Table-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
 
 <dl><dt><a name="Table-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Table-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Table-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+<dl><dt><a name="Table-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
 <dl><dt><a name="Table-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
 
@@ -517,25 +580,30 @@ and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transfor
 
 <dl><dt><a name="Table-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="Table-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Table-pick">pick</a>(mouseevent)<br>
+<dl><dt><a name="Table-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;<a href="#Table-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
 the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
-<dl><dt><a name="Table-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+<dl><dt><a name="Table-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
-<dl><dt><a name="Table-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
-be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
-Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+<dl><dt><a name="Table-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
 &nbsp;<br>
-Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
-was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
 &nbsp;<br>
 Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Table-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
-<dl><dt><a name="Table-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+<dl><dt><a name="Table-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
 
 <dl><dt><a name="Table-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
 all&nbsp;backends<br>
@@ -546,13 +614,13 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Table-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+<dl><dt><a name="Table-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Table-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Table-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
@@ -560,35 +628,38 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Table-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
 &nbsp;<br>
-&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
 &nbsp;<br>
-&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
 &nbsp;<br>
 For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
 rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
-corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
-instance,&nbsp;or&nbsp;None</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
 
 <dl><dt><a name="Table-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-mouse&nbsp;event:<br>
+mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
-If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
 is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="Table-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+<dl><dt><a name="Table-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the&nbsp;artist<br>
+belongs&nbsp;to.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.figure.Figure`&nbsp;instance</tt></dd></dl>
 
-<dl><dt><a name="Table-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+<dl><dt><a name="Table-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
 
@@ -600,37 +671,36 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Table-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
-picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;<br>
-&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
 &nbsp;<br>
-&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
 &nbsp;<br>
-&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
 &nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
 &nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
 &nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
 &nbsp;<br>
-&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
 &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
-<dl><dt><a name="Table-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="Table-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`&nbsp;instance<br>
+used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
 <dl><dt><a name="Table-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
 &nbsp;<br>
@@ -642,7 +712,7 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="Table-update"><strong>update</strong></a>(self, props)</dt></dl>
 
-<dl><dt><a name="Table-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
+<dl><dt><a name="Table-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;*other*&nbsp;to&nbsp;*self*.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>

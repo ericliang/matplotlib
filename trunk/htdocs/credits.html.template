@@ -114,7 +114,7 @@ developers</a><p>
   most aspects of matplotlib.</li>
 
   <li>Daishi Harada added support for "Dashed Text".  See <a
-  href=examples/pylab/dashpointlabel.py>dashpointlabel.py</a> and <a
+  href=examples/pylab_examples/dashpointlabel.py>dashpointlabel.py</a> and <a
   href=matplotlib.text.html#TextWithDash>TextWithDash</a></li>
 
   <li>Nicolas Young added support for byte images to imshow, which are

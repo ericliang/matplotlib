@@ -173,7 +173,7 @@ Methods defined here:<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0xe6a290&gt;</dl>
+<dl><dt><strong>illegal_s</strong> = &lt;_sre.SRE_Pattern object at 0x149d280&gt;</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.ticker.html#Formatter">matplotlib.ticker.Formatter</a>:<br>
@@ -216,7 +216,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -274,7 +274,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -342,7 +342,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -412,7 +412,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -478,7 +478,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -548,7 +548,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -618,7 +618,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -679,7 +679,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -749,7 +749,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -822,7 +822,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 
@@ -893,7 +893,7 @@ Methods inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ti
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.ticker.html#TickHelper">matplotlib.ticker.TickHelper</a>:<br>
-<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0xed9290&gt;</dl>
+<dl><dt><strong>DummyAxis</strong> = &lt;class matplotlib.ticker.DummyAxis at 0x14cdcb0&gt;</dl>
 
 <dl><dt><strong>axis</strong> = None</dl>
 

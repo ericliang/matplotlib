@@ -58,33 +58,79 @@ labelling&nbsp;for&nbsp;the&nbsp;axes&nbsp;class</tt></p>
 <td colspan=2><tt>Mixin&nbsp;to&nbsp;provide&nbsp;labelling&nbsp;capability&nbsp;to&nbsp;<a href="#ContourSet">ContourSet</a><br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
-<dl><dt><a name="ContourLabeler-break_linecontour"><strong>break_linecontour</strong></a>(self, linecontour, rot, labelwidth, ind)</dt><dd><tt>break&nbsp;a&nbsp;contour&nbsp;in&nbsp;two&nbsp;contours&nbsp;at&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+<dl><dt><a name="ContourLabeler-add_label"><strong>add_label</strong></a>(self, x, y, rotation, lev, cvalue)</dt></dl>
 
-<dl><dt><a name="ContourLabeler-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#ContourLabeler-clabel">clabel</a>(CS,&nbsp;**kwargs)&nbsp;-&nbsp;add&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;CS,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;CS&nbsp;is&nbsp;a&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;object&nbsp;returned&nbsp;by&nbsp;contour.<br>
+<dl><dt><a name="ContourLabeler-calc_label_rot_and_inline"><strong>calc_label_rot_and_inline</strong></a>(self, slc, ind, lw, lc<font color="#909090">=None</font>, spacing<font color="#909090">=5</font>)</dt><dd><tt>This&nbsp;function&nbsp;calculates&nbsp;the&nbsp;appropriate&nbsp;label&nbsp;rotation&nbsp;given<br>
+the&nbsp;linecontour&nbsp;coordinates&nbsp;in&nbsp;screen&nbsp;units,&nbsp;the&nbsp;index&nbsp;of&nbsp;the<br>
+label&nbsp;location&nbsp;and&nbsp;the&nbsp;label&nbsp;width.<br>
 &nbsp;<br>
-<a href="#ContourLabeler-clabel">clabel</a>(CS,&nbsp;V,&nbsp;**kwargs)&nbsp;-&nbsp;only&nbsp;label&nbsp;contours&nbsp;listed&nbsp;in&nbsp;V<br>
+It&nbsp;will&nbsp;also&nbsp;break&nbsp;contour&nbsp;and&nbsp;calculate&nbsp;inlining&nbsp;if&nbsp;*lc*&nbsp;is<br>
+not&nbsp;empty&nbsp;(lc&nbsp;defaults&nbsp;to&nbsp;the&nbsp;empty&nbsp;list&nbsp;if&nbsp;None).&nbsp;&nbsp;*spacing*<br>
+is&nbsp;the&nbsp;space&nbsp;around&nbsp;the&nbsp;label&nbsp;in&nbsp;pixels&nbsp;to&nbsp;leave&nbsp;empty.<br>
 &nbsp;<br>
-keyword&nbsp;arguments:<br>
+Do&nbsp;both&nbsp;of&nbsp;these&nbsp;tasks&nbsp;at&nbsp;once&nbsp;to&nbsp;avoid&nbsp;calling&nbsp;cbook.path_length<br>
+multiple&nbsp;times,&nbsp;which&nbsp;is&nbsp;relatively&nbsp;costly.<br>
 &nbsp;<br>
-*&nbsp;fontsize&nbsp;=&nbsp;None:&nbsp;as&nbsp;described&nbsp;in&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+The&nbsp;method&nbsp;used&nbsp;here&nbsp;involves&nbsp;calculating&nbsp;the&nbsp;path&nbsp;length<br>
+along&nbsp;the&nbsp;contour&nbsp;in&nbsp;pixel&nbsp;coordinates&nbsp;and&nbsp;then&nbsp;looking<br>
+approximately&nbsp;label&nbsp;width&nbsp;/&nbsp;2&nbsp;away&nbsp;from&nbsp;central&nbsp;point&nbsp;to<br>
+determine&nbsp;rotation&nbsp;and&nbsp;then&nbsp;to&nbsp;break&nbsp;contour&nbsp;if&nbsp;desired.</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-*&nbsp;colors&nbsp;=&nbsp;None:<br>
+&nbsp;&nbsp;<a href="#ContourLabeler-clabel">clabel</a>(cs,&nbsp;**kwargs)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+adds&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;*cs*,&nbsp;where&nbsp;*cs*&nbsp;is&nbsp;a<br>
+:class:`~matplotlib.contour.<a href="#ContourSet">ContourSet</a>`&nbsp;object&nbsp;returned&nbsp;by<br>
+contour.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;colors&nbsp;=&nbsp;'r'&nbsp;or&nbsp;colors&nbsp;=&nbsp;'red',&nbsp;all&nbsp;labels<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+::<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;colors&nbsp;==&nbsp;None,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;&nbsp;<a href="#ContourLabeler-clabel">clabel</a>(cs,&nbsp;v,&nbsp;**kwargs)<br>
 &nbsp;<br>
-*&nbsp;inline&nbsp;=&nbsp;True:&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inline&nbsp;=&nbsp;True)&nbsp;or&nbsp;not&nbsp;(False)<br>
+only&nbsp;labels&nbsp;contours&nbsp;listed&nbsp;in&nbsp;*v*.<br>
 &nbsp;<br>
-*&nbsp;fmt&nbsp;=&nbsp;'%1.3f':&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label</tt></dd></dl>
+Optional&nbsp;keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fontsize*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+&nbsp;<br>
+..&nbsp;TODO:&nbsp;Update&nbsp;this&nbsp;link&nbsp;to&nbsp;new&nbsp;fonts&nbsp;document<br>
+&nbsp;<br>
+&nbsp;&nbsp;*colors*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;*None*,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;*colors*&nbsp;=&nbsp;'r'&nbsp;or&nbsp;*colors*&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'red',&nbsp;all&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+&nbsp;<br>
+&nbsp;&nbsp;*inline*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;not.&nbsp;Default&nbsp;is&nbsp;*True*.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*inline_spacing*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;space&nbsp;in&nbsp;pixels&nbsp;to&nbsp;leave&nbsp;on&nbsp;each&nbsp;side&nbsp;of&nbsp;label&nbsp;when<br>
+&nbsp;&nbsp;&nbsp;&nbsp;placing&nbsp;inline.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;5.&nbsp;&nbsp;This&nbsp;spacing&nbsp;will&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exact&nbsp;for&nbsp;labels&nbsp;at&nbsp;locations&nbsp;where&nbsp;the&nbsp;contour&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;straight,&nbsp;less&nbsp;so&nbsp;for&nbsp;labels&nbsp;on&nbsp;curved&nbsp;contours.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fmt*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label.&nbsp;Default&nbsp;is&nbsp;'%1.3f'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Alternatively,&nbsp;this&nbsp;can&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;matching&nbsp;contour<br>
+&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;with&nbsp;arbitrary&nbsp;strings&nbsp;to&nbsp;use&nbsp;for&nbsp;each&nbsp;contour&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(i.e.,&nbsp;fmt[level]=string)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*manual*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;*True*,&nbsp;contour&nbsp;labels&nbsp;will&nbsp;be&nbsp;placed&nbsp;manually&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;clicks.&nbsp;&nbsp;Click&nbsp;the&nbsp;first&nbsp;button&nbsp;near&nbsp;a&nbsp;contour&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;add&nbsp;a&nbsp;label,&nbsp;click&nbsp;the&nbsp;second&nbsp;button&nbsp;(or&nbsp;potentially&nbsp;both<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;buttons&nbsp;at&nbsp;once)&nbsp;to&nbsp;finish&nbsp;adding&nbsp;labels.&nbsp;&nbsp;The&nbsp;third<br>
+&nbsp;&nbsp;&nbsp;&nbsp;button&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;last&nbsp;label&nbsp;added,&nbsp;but<br>
+&nbsp;&nbsp;&nbsp;&nbsp;only&nbsp;if&nbsp;labels&nbsp;are&nbsp;not&nbsp;inline.</tt></dd></dl>
 
 <dl><dt><a name="ContourLabeler-get_label_coords"><strong>get_label_coords</strong></a>(self, distances, XX, YY, ysize, lw)</dt><dd><tt>labels&nbsp;are&nbsp;ploted&nbsp;at&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;smallest<br>
 dispersion&nbsp;of&nbsp;the&nbsp;contour&nbsp;from&nbsp;a&nbsp;straight&nbsp;line<br>
@@ -95,13 +141,19 @@ beginning&nbsp;of&nbsp;the&nbsp;contour</tt></dd></dl>
 
 <dl><dt><a name="ContourLabeler-get_label_width"><strong>get_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;label&nbsp;in&nbsp;points</tt></dd></dl>
 
+<dl><dt><a name="ContourLabeler-get_real_label_width"><strong>get_real_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>This&nbsp;computes&nbsp;actual&nbsp;onscreen&nbsp;label&nbsp;width.<br>
+This&nbsp;uses&nbsp;some&nbsp;black&nbsp;magic&nbsp;to&nbsp;determine&nbsp;onscreen&nbsp;extent&nbsp;of&nbsp;non-drawn<br>
+label.&nbsp;&nbsp;This&nbsp;magic&nbsp;may&nbsp;not&nbsp;be&nbsp;very&nbsp;robust.</tt></dd></dl>
+
 <dl><dt><a name="ContourLabeler-get_text"><strong>get_text</strong></a>(self, lev, fmt)</dt><dd><tt>get&nbsp;the&nbsp;text&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
 
-<dl><dt><a name="ContourLabeler-labels"><strong>labels</strong></a>(self, inline)</dt></dl>
+<dl><dt><a name="ContourLabeler-labels"><strong>labels</strong></a>(self, inline, inline_spacing)</dt></dl>
 
 <dl><dt><a name="ContourLabeler-locate_label"><strong>locate_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>find&nbsp;a&nbsp;good&nbsp;place&nbsp;to&nbsp;plot&nbsp;a&nbsp;label&nbsp;(relatively&nbsp;flat<br>
 part&nbsp;of&nbsp;the&nbsp;contour)&nbsp;and&nbsp;the&nbsp;angle&nbsp;of&nbsp;rotation&nbsp;for&nbsp;the<br>
 text&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="ContourLabeler-pop_label"><strong>pop_label</strong></a>(self, index<font color="#909090">=-1</font>)</dt><dd><tt>Defaults&nbsp;to&nbsp;removing&nbsp;last&nbsp;label,&nbsp;but&nbsp;any&nbsp;index&nbsp;can&nbsp;be&nbsp;supplied</tt></dd></dl>
 
 <dl><dt><a name="ContourLabeler-print_label"><strong>print_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>if&nbsp;contours&nbsp;are&nbsp;too&nbsp;short,&nbsp;don't&nbsp;plot&nbsp;a&nbsp;label</tt></dd></dl>
 
@@ -121,11 +173,15 @@ text&nbsp;object</tt></dd></dl>
 User-callable&nbsp;method:&nbsp;clabel<br>
 &nbsp;<br>
 Useful&nbsp;attributes:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;ax&nbsp;-&nbsp;the&nbsp;axes&nbsp;object&nbsp;in&nbsp;which&nbsp;the&nbsp;contours&nbsp;are&nbsp;drawn<br>
-&nbsp;&nbsp;&nbsp;&nbsp;collections&nbsp;-&nbsp;a&nbsp;silent_list&nbsp;of&nbsp;LineCollections&nbsp;or&nbsp;PolyCollections<br>
-&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;-&nbsp;contour&nbsp;levels<br>
-&nbsp;&nbsp;&nbsp;&nbsp;layers&nbsp;-&nbsp;same&nbsp;as&nbsp;levels&nbsp;for&nbsp;line&nbsp;contours;&nbsp;half-way&nbsp;between<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;for&nbsp;filled&nbsp;contours.&nbsp;&nbsp;See&nbsp;_process_colors&nbsp;method.<br>&nbsp;</tt></td></tr>
+&nbsp;&nbsp;ax:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;axes&nbsp;object&nbsp;in&nbsp;which&nbsp;the&nbsp;contours&nbsp;are&nbsp;drawn<br>
+&nbsp;&nbsp;collections:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;silent_list&nbsp;of&nbsp;LineCollections&nbsp;or&nbsp;PolyCollections<br>
+&nbsp;&nbsp;levels:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;contour&nbsp;levels<br>
+&nbsp;&nbsp;layers:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;same&nbsp;as&nbsp;levels&nbsp;for&nbsp;line&nbsp;contours;&nbsp;half-way&nbsp;between<br>
+&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;for&nbsp;filled&nbsp;contours.&nbsp;&nbsp;See&nbsp;_process_colors&nbsp;method.<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%"><dl><dt>Method resolution order:</dt>
 <dd><a href="matplotlib.contour.html#ContourSet">ContourSet</a></dd>
@@ -143,13 +199,36 @@ are&nbsp;described&nbsp;in&nbsp;<a href="#ContourSet">ContourSet</a>.contour_doc
 
 <dl><dt><a name="ContourSet-changed"><strong>changed</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="ContourSet-find_nearest_contour"><strong>find_nearest_contour</strong></a>(self, x, y, indices<font color="#909090">=None</font>, pixel<font color="#909090">=True</font>)</dt><dd><tt>Finds&nbsp;contour&nbsp;that&nbsp;is&nbsp;closest&nbsp;to&nbsp;a&nbsp;point.&nbsp;&nbsp;Defaults&nbsp;to<br>
+measuring&nbsp;distance&nbsp;in&nbsp;pixels&nbsp;(screen&nbsp;space&nbsp;-&nbsp;useful&nbsp;for&nbsp;manual<br>
+contour&nbsp;labeling),&nbsp;but&nbsp;this&nbsp;can&nbsp;be&nbsp;controlled&nbsp;via&nbsp;a&nbsp;keyword<br>
+argument.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;tuple&nbsp;containing&nbsp;the&nbsp;contour,&nbsp;segment,&nbsp;index&nbsp;of<br>
+segment,&nbsp;x&nbsp;&amp;&nbsp;y&nbsp;of&nbsp;segment&nbsp;point&nbsp;and&nbsp;distance&nbsp;to&nbsp;minimum&nbsp;point.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+conmin,segmin,imin,xmin,ymin,dmin&nbsp;=&nbsp;<a href="#ContourSet-find_nearest_contour">find_nearest_contour</a>(<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;self,&nbsp;x,&nbsp;y,&nbsp;indices=None,&nbsp;pixel=True&nbsp;)<br>
+&nbsp;<br>
+Optional&nbsp;keyword&nbsp;arguments::<br>
+&nbsp;<br>
+*indices*:<br>
+&nbsp;&nbsp;&nbsp;Indexes&nbsp;of&nbsp;contour&nbsp;levels&nbsp;to&nbsp;consider&nbsp;when&nbsp;looking&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;nearest&nbsp;point.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;using&nbsp;all&nbsp;levels.<br>
+&nbsp;<br>
+*pixel*:<br>
+&nbsp;&nbsp;&nbsp;If&nbsp;*True*,&nbsp;measure&nbsp;distance&nbsp;in&nbsp;pixel&nbsp;space,&nbsp;if&nbsp;not,&nbsp;measure<br>
+&nbsp;&nbsp;&nbsp;distance&nbsp;in&nbsp;axes&nbsp;space.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;*True*.</tt></dd></dl>
+
 <dl><dt><a name="ContourSet-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>returns&nbsp;alpha&nbsp;to&nbsp;be&nbsp;applied&nbsp;to&nbsp;all&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;artists</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>sets&nbsp;alpha&nbsp;for&nbsp;all&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;artists</tt></dd></dl>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>contour_doc</strong> = '<font color="#c040c0">\n</font>        contour and contourf draw contour lines...   boundaries unless antialiased = False<font color="#c040c0">\n</font>        '</dl>
+<dl><dt><strong>contour_doc</strong> = '<font color="#c040c0">\n</font>        :func:`~matplotlib.pyplot.contour` and<font color="#c040c0">\n</font>...le:**<font color="#c040c0">\n\n</font>        .. plot:: contour_demo.py<font color="#c040c0">\n</font>        '</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
@@ -171,10 +250,10 @@ return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-get_cmap"><strong>get_cmap</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;colormap</tt></dd></dl>
 
-<dl><dt><a name="ContourSet-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;A</tt></dd></dl>
+<dl><dt><a name="ContourSet-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;*A*</tt></dd></dl>
 
-<dl><dt><a name="ContourSet-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
-sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+<dl><dt><a name="ContourSet-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;*vmin*&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;``(vmin,&nbsp;vmax)``&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
 support&nbsp;setp<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
@@ -187,40 +266,86 @@ ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-set_norm"><strong>set_norm</strong></a>(self, norm)</dt><dd><tt>set&nbsp;the&nbsp;normalization&nbsp;instance</tt></dd></dl>
 
-<dl><dt><a name="ContourSet-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;x.<br>
-If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;alpha;&nbsp;if&nbsp;it&nbsp;is<br>
-already&nbsp;rgba,&nbsp;return&nbsp;it&nbsp;unchanged.<br>
-If&nbsp;bytes&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as&nbsp;4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
+<dl><dt><a name="ContourSet-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;*x*.&nbsp;If&nbsp;*x*<br>
+is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;*alpha*;&nbsp;if&nbsp;it&nbsp;is&nbsp;already<br>
+rgba,&nbsp;return&nbsp;it&nbsp;unchanged.&nbsp;If&nbsp;*bytes*&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as<br>
+4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.contour.html#ContourLabeler">ContourLabeler</a>:<br>
-<dl><dt><a name="ContourSet-break_linecontour"><strong>break_linecontour</strong></a>(self, linecontour, rot, labelwidth, ind)</dt><dd><tt>break&nbsp;a&nbsp;contour&nbsp;in&nbsp;two&nbsp;contours&nbsp;at&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
+<dl><dt><a name="ContourSet-add_label"><strong>add_label</strong></a>(self, x, y, rotation, lev, cvalue)</dt></dl>
 
-<dl><dt><a name="ContourSet-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#ContourSet-clabel">clabel</a>(CS,&nbsp;**kwargs)&nbsp;-&nbsp;add&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;CS,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;CS&nbsp;is&nbsp;a&nbsp;<a href="#ContourSet">ContourSet</a>&nbsp;object&nbsp;returned&nbsp;by&nbsp;contour.<br>
+<dl><dt><a name="ContourSet-calc_label_rot_and_inline"><strong>calc_label_rot_and_inline</strong></a>(self, slc, ind, lw, lc<font color="#909090">=None</font>, spacing<font color="#909090">=5</font>)</dt><dd><tt>This&nbsp;function&nbsp;calculates&nbsp;the&nbsp;appropriate&nbsp;label&nbsp;rotation&nbsp;given<br>
+the&nbsp;linecontour&nbsp;coordinates&nbsp;in&nbsp;screen&nbsp;units,&nbsp;the&nbsp;index&nbsp;of&nbsp;the<br>
+label&nbsp;location&nbsp;and&nbsp;the&nbsp;label&nbsp;width.<br>
 &nbsp;<br>
-<a href="#ContourSet-clabel">clabel</a>(CS,&nbsp;V,&nbsp;**kwargs)&nbsp;-&nbsp;only&nbsp;label&nbsp;contours&nbsp;listed&nbsp;in&nbsp;V<br>
+It&nbsp;will&nbsp;also&nbsp;break&nbsp;contour&nbsp;and&nbsp;calculate&nbsp;inlining&nbsp;if&nbsp;*lc*&nbsp;is<br>
+not&nbsp;empty&nbsp;(lc&nbsp;defaults&nbsp;to&nbsp;the&nbsp;empty&nbsp;list&nbsp;if&nbsp;None).&nbsp;&nbsp;*spacing*<br>
+is&nbsp;the&nbsp;space&nbsp;around&nbsp;the&nbsp;label&nbsp;in&nbsp;pixels&nbsp;to&nbsp;leave&nbsp;empty.<br>
 &nbsp;<br>
-keyword&nbsp;arguments:<br>
+Do&nbsp;both&nbsp;of&nbsp;these&nbsp;tasks&nbsp;at&nbsp;once&nbsp;to&nbsp;avoid&nbsp;calling&nbsp;cbook.path_length<br>
+multiple&nbsp;times,&nbsp;which&nbsp;is&nbsp;relatively&nbsp;costly.<br>
 &nbsp;<br>
-*&nbsp;fontsize&nbsp;=&nbsp;None:&nbsp;as&nbsp;described&nbsp;in&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+The&nbsp;method&nbsp;used&nbsp;here&nbsp;involves&nbsp;calculating&nbsp;the&nbsp;path&nbsp;length<br>
+along&nbsp;the&nbsp;contour&nbsp;in&nbsp;pixel&nbsp;coordinates&nbsp;and&nbsp;then&nbsp;looking<br>
+approximately&nbsp;label&nbsp;width&nbsp;/&nbsp;2&nbsp;away&nbsp;from&nbsp;central&nbsp;point&nbsp;to<br>
+determine&nbsp;rotation&nbsp;and&nbsp;then&nbsp;to&nbsp;break&nbsp;contour&nbsp;if&nbsp;desired.</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-clabel"><strong>clabel</strong></a>(self, *args, **kwargs)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-*&nbsp;colors&nbsp;=&nbsp;None:<br>
+&nbsp;&nbsp;<a href="#ContourSet-clabel">clabel</a>(cs,&nbsp;**kwargs)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+adds&nbsp;labels&nbsp;to&nbsp;line&nbsp;contours&nbsp;in&nbsp;*cs*,&nbsp;where&nbsp;*cs*&nbsp;is&nbsp;a<br>
+:class:`~matplotlib.contour.<a href="#ContourSet">ContourSet</a>`&nbsp;object&nbsp;returned&nbsp;by<br>
+contour.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;colors&nbsp;=&nbsp;'r'&nbsp;or&nbsp;colors&nbsp;=&nbsp;'red',&nbsp;all&nbsp;labels<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+::<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;colors&nbsp;==&nbsp;None,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;&nbsp;<a href="#ContourSet-clabel">clabel</a>(cs,&nbsp;v,&nbsp;**kwargs)<br>
 &nbsp;<br>
-*&nbsp;inline&nbsp;=&nbsp;True:&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(inline&nbsp;=&nbsp;True)&nbsp;or&nbsp;not&nbsp;(False)<br>
+only&nbsp;labels&nbsp;contours&nbsp;listed&nbsp;in&nbsp;*v*.<br>
 &nbsp;<br>
-*&nbsp;fmt&nbsp;=&nbsp;'%1.3f':&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label</tt></dd></dl>
+Optional&nbsp;keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fontsize*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;See&nbsp;<a href="http://matplotlib.sf.net/fonts.html">http://matplotlib.sf.net/fonts.html</a><br>
+&nbsp;<br>
+..&nbsp;TODO:&nbsp;Update&nbsp;this&nbsp;link&nbsp;to&nbsp;new&nbsp;fonts&nbsp;document<br>
+&nbsp;<br>
+&nbsp;&nbsp;*colors*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;*None*,&nbsp;the&nbsp;color&nbsp;of&nbsp;each&nbsp;label&nbsp;matches&nbsp;the&nbsp;color&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;corresponding&nbsp;contour<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;one&nbsp;string&nbsp;color,&nbsp;e.g.&nbsp;*colors*&nbsp;=&nbsp;'r'&nbsp;or&nbsp;*colors*&nbsp;=<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'red',&nbsp;all&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;this&nbsp;color<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;if&nbsp;a&nbsp;tuple&nbsp;of&nbsp;matplotlib&nbsp;color&nbsp;args&nbsp;(string,&nbsp;float,&nbsp;rgb,&nbsp;etc),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;different&nbsp;labels&nbsp;will&nbsp;be&nbsp;plotted&nbsp;in&nbsp;different&nbsp;colors&nbsp;in&nbsp;the&nbsp;order<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;specified<br>
+&nbsp;<br>
+&nbsp;&nbsp;*inline*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;controls&nbsp;whether&nbsp;the&nbsp;underlying&nbsp;contour&nbsp;is&nbsp;removed&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;not.&nbsp;Default&nbsp;is&nbsp;*True*.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*inline_spacing*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;space&nbsp;in&nbsp;pixels&nbsp;to&nbsp;leave&nbsp;on&nbsp;each&nbsp;side&nbsp;of&nbsp;label&nbsp;when<br>
+&nbsp;&nbsp;&nbsp;&nbsp;placing&nbsp;inline.&nbsp;&nbsp;Defaults&nbsp;to&nbsp;5.&nbsp;&nbsp;This&nbsp;spacing&nbsp;will&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;exact&nbsp;for&nbsp;labels&nbsp;at&nbsp;locations&nbsp;where&nbsp;the&nbsp;contour&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;straight,&nbsp;less&nbsp;so&nbsp;for&nbsp;labels&nbsp;on&nbsp;curved&nbsp;contours.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fmt*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;format&nbsp;string&nbsp;for&nbsp;the&nbsp;label.&nbsp;Default&nbsp;is&nbsp;'%1.3f'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Alternatively,&nbsp;this&nbsp;can&nbsp;be&nbsp;a&nbsp;dictionary&nbsp;matching&nbsp;contour<br>
+&nbsp;&nbsp;&nbsp;&nbsp;levels&nbsp;with&nbsp;arbitrary&nbsp;strings&nbsp;to&nbsp;use&nbsp;for&nbsp;each&nbsp;contour&nbsp;level<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(i.e.,&nbsp;fmt[level]=string)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*manual*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;*True*,&nbsp;contour&nbsp;labels&nbsp;will&nbsp;be&nbsp;placed&nbsp;manually&nbsp;using<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;clicks.&nbsp;&nbsp;Click&nbsp;the&nbsp;first&nbsp;button&nbsp;near&nbsp;a&nbsp;contour&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;add&nbsp;a&nbsp;label,&nbsp;click&nbsp;the&nbsp;second&nbsp;button&nbsp;(or&nbsp;potentially&nbsp;both<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;buttons&nbsp;at&nbsp;once)&nbsp;to&nbsp;finish&nbsp;adding&nbsp;labels.&nbsp;&nbsp;The&nbsp;third<br>
+&nbsp;&nbsp;&nbsp;&nbsp;button&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;remove&nbsp;the&nbsp;last&nbsp;label&nbsp;added,&nbsp;but<br>
+&nbsp;&nbsp;&nbsp;&nbsp;only&nbsp;if&nbsp;labels&nbsp;are&nbsp;not&nbsp;inline.</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-get_label_coords"><strong>get_label_coords</strong></a>(self, distances, XX, YY, ysize, lw)</dt><dd><tt>labels&nbsp;are&nbsp;ploted&nbsp;at&nbsp;a&nbsp;location&nbsp;with&nbsp;the&nbsp;smallest<br>
 dispersion&nbsp;of&nbsp;the&nbsp;contour&nbsp;from&nbsp;a&nbsp;straight&nbsp;line<br>
@@ -231,13 +356,19 @@ beginning&nbsp;of&nbsp;the&nbsp;contour</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-get_label_width"><strong>get_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>get&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;label&nbsp;in&nbsp;points</tt></dd></dl>
 
+<dl><dt><a name="ContourSet-get_real_label_width"><strong>get_real_label_width</strong></a>(self, lev, fmt, fsize)</dt><dd><tt>This&nbsp;computes&nbsp;actual&nbsp;onscreen&nbsp;label&nbsp;width.<br>
+This&nbsp;uses&nbsp;some&nbsp;black&nbsp;magic&nbsp;to&nbsp;determine&nbsp;onscreen&nbsp;extent&nbsp;of&nbsp;non-drawn<br>
+label.&nbsp;&nbsp;This&nbsp;magic&nbsp;may&nbsp;not&nbsp;be&nbsp;very&nbsp;robust.</tt></dd></dl>
+
 <dl><dt><a name="ContourSet-get_text"><strong>get_text</strong></a>(self, lev, fmt)</dt><dd><tt>get&nbsp;the&nbsp;text&nbsp;of&nbsp;the&nbsp;label</tt></dd></dl>
 
-<dl><dt><a name="ContourSet-labels"><strong>labels</strong></a>(self, inline)</dt></dl>
+<dl><dt><a name="ContourSet-labels"><strong>labels</strong></a>(self, inline, inline_spacing)</dt></dl>
 
 <dl><dt><a name="ContourSet-locate_label"><strong>locate_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>find&nbsp;a&nbsp;good&nbsp;place&nbsp;to&nbsp;plot&nbsp;a&nbsp;label&nbsp;(relatively&nbsp;flat<br>
 part&nbsp;of&nbsp;the&nbsp;contour)&nbsp;and&nbsp;the&nbsp;angle&nbsp;of&nbsp;rotation&nbsp;for&nbsp;the<br>
 text&nbsp;object</tt></dd></dl>
+
+<dl><dt><a name="ContourSet-pop_label"><strong>pop_label</strong></a>(self, index<font color="#909090">=-1</font>)</dt><dd><tt>Defaults&nbsp;to&nbsp;removing&nbsp;last&nbsp;label,&nbsp;but&nbsp;any&nbsp;index&nbsp;can&nbsp;be&nbsp;supplied</tt></dd></dl>
 
 <dl><dt><a name="ContourSet-print_label"><strong>print_label</strong></a>(self, linecontour, labelwidth)</dt><dd><tt>if&nbsp;contours&nbsp;are&nbsp;too&nbsp;short,&nbsp;don't&nbsp;plot&nbsp;a&nbsp;label</tt></dd></dl>
 

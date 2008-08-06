@@ -29,7 +29,7 @@ regardless of zoom level""", 1),
 ('barchart_demo', """The <a href=matplotlib.pyplot.html#-bar>bar</a>
 command takes error bars as an optional argument.  You can also use up
 and down bars, stacked bars, 'candlestick' bars, etc, ... See <a
-href=examples/pylab/bar_stacked.py>bar_stacked.py</a> for another example.
+href=examples/pylab_examples/bar_stacked.py>bar_stacked.py</a> for another example.
 You can make horizontal bar charts with the <a
 href=matplotlib.pyplot.html#-barh>barh</a> command.
 """, 1),

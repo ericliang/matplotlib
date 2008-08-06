@@ -19,6 +19,8 @@ commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;find&nbsp;-&nbsp;Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;some&nbsp;condition&nbsp;is&nbsp;true;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;numpy.nonzero&nbsp;is&nbsp;similar&nbsp;but&nbsp;more&nbsp;general.<br>
 &nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;griddata&nbsp;-&nbsp;interpolate&nbsp;irregularly&nbsp;distributed&nbsp;data&nbsp;to&nbsp;a<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regular&nbsp;grid.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;prctile&nbsp;-&nbsp;find&nbsp;the&nbsp;percentiles&nbsp;of&nbsp;a&nbsp;sequence<br>
 &nbsp;<br>
@@ -28,19 +30,6 @@ commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;rk4&nbsp;-&nbsp;A&nbsp;4th&nbsp;order&nbsp;runge&nbsp;kutta&nbsp;integrator&nbsp;for&nbsp;1D&nbsp;or&nbsp;ND&nbsp;systems<br>
 &nbsp;<br>
-&nbsp;<br>
-&nbsp;&nbsp;The&nbsp;following&nbsp;are&nbsp;deprecated;&nbsp;please&nbsp;import&nbsp;directly&nbsp;from&nbsp;numpy<br>
-&nbsp;&nbsp;(with&nbsp;care--function&nbsp;signatures&nbsp;may&nbsp;differ):<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;conv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-&nbsp;convolution&nbsp;&nbsp;(numpy.convolve)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;corrcoef&nbsp;-&nbsp;The&nbsp;matrix&nbsp;of&nbsp;correlation&nbsp;coefficients<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;hist&nbsp;--&nbsp;Histogram&nbsp;(numpy.histogram)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;linspace&nbsp;--&nbsp;Linear&nbsp;spaced&nbsp;array&nbsp;from&nbsp;min&nbsp;to&nbsp;max<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;meshgrid<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;polyfit&nbsp;-&nbsp;least&nbsp;squares&nbsp;best&nbsp;polynomial&nbsp;fit&nbsp;of&nbsp;x&nbsp;to&nbsp;y<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;polyval&nbsp;-&nbsp;evaluate&nbsp;a&nbsp;vector&nbsp;for&nbsp;a&nbsp;vector&nbsp;of&nbsp;polynomial&nbsp;coeffs<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;trapz&nbsp;-&nbsp;trapeziodal&nbsp;integration&nbsp;(<a href="#-trapz">trapz</a>(x,y)&nbsp;-&gt;&nbsp;numpy.<a href="#-trapz">trapz</a>(y,x))<br>
-&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;vander&nbsp;-&nbsp;the&nbsp;Vandermonde&nbsp;matrix<br>
 &nbsp;<br>
 &nbsp;&nbsp;Functions&nbsp;that&nbsp;don't&nbsp;exist&nbsp;in&nbsp;matlab(TM),&nbsp;but&nbsp;are&nbsp;useful&nbsp;anyway:<br>
 &nbsp;<br>
@@ -53,7 +42,7 @@ commands&nbsp;with&nbsp;the&nbsp;same&nbsp;names.<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec2txt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;pretty&nbsp;print&nbsp;a&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec2csv&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;store&nbsp;record&nbsp;array&nbsp;in&nbsp;CSV&nbsp;file<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;csv2rec&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;import&nbsp;record&nbsp;array&nbsp;from&nbsp;CSV&nbsp;file&nbsp;with&nbsp;type&nbsp;inspection<br>
-&nbsp;&nbsp;&nbsp;*&nbsp;rec_append_field&nbsp;:&nbsp;add&nbsp;a&nbsp;field/array&nbsp;to&nbsp;record&nbsp;array<br>
+&nbsp;&nbsp;&nbsp;*&nbsp;rec_append_fields:&nbsp;adds&nbsp;&nbsp;field(s)/array(s)&nbsp;to&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_drop_fields&nbsp;&nbsp;:&nbsp;drop&nbsp;fields&nbsp;from&nbsp;record&nbsp;array<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_join&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;join&nbsp;two&nbsp;record&nbsp;arrays&nbsp;on&nbsp;sequence&nbsp;of&nbsp;fields<br>
 &nbsp;&nbsp;&nbsp;*&nbsp;rec_groupby&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;summarize&nbsp;data&nbsp;by&nbsp;groups&nbsp;(similar&nbsp;to&nbsp;SQL&nbsp;GROUP&nbsp;BY)<br>
@@ -416,8 +405,7 @@ Methods inherited from <a href="matplotlib.mlab.html#FormatFormatStr">FormatForm
 &nbsp;<br>
 Works&nbsp;like&nbsp;map(),&nbsp;but&nbsp;it&nbsp;returns&nbsp;an&nbsp;array.&nbsp;&nbsp;This&nbsp;is&nbsp;just&nbsp;a&nbsp;convenient<br>
 shorthand&nbsp;for&nbsp;numpy.array(map(...))</tt></dd></dl>
- <dl><dt><a name="-approx_real"><strong>approx_real</strong></a>(x)</dt><dd><tt><a href="#-approx_real">approx_real</a>(x)&nbsp;:&nbsp;returns&nbsp;x.real&nbsp;if&nbsp;|x.imag|&nbsp;&lt;&nbsp;|x.real|&nbsp;*&nbsp;_eps_approx.<br>
-This&nbsp;function&nbsp;is&nbsp;needed&nbsp;by&nbsp;sqrtm&nbsp;and&nbsp;allows&nbsp;further&nbsp;functions.</tt></dd></dl>
+ <dl><dt><a name="-approx_real"><strong>approx_real</strong></a>(x)</dt><dd><tt>Deprecated&nbsp;-&nbsp;needs&nbsp;clean&nbsp;room&nbsp;implementation</tt></dd></dl>
  <dl><dt><a name="-base_repr"><strong>base_repr</strong></a>(number, base<font color="#909090">=2</font>, padding<font color="#909090">=0</font>)</dt><dd><tt>Return&nbsp;the&nbsp;representation&nbsp;of&nbsp;a&nbsp;number&nbsp;in&nbsp;any&nbsp;given&nbsp;base.</tt></dd></dl>
  <dl><dt><a name="-binary_repr"><strong>binary_repr</strong></a>(number, max_length<font color="#909090">=1025</font>)</dt><dd><tt>Return&nbsp;the&nbsp;binary&nbsp;representation&nbsp;of&nbsp;the&nbsp;input&nbsp;number&nbsp;as&nbsp;a&nbsp;string.<br>
 &nbsp;<br>
@@ -433,7 +421,7 @@ converted&nbsp;to&nbsp;a&nbsp;Python&nbsp;float.</tt></dd></dl>
 &nbsp;<br>
 if&nbsp;dim=1&nbsp;operate&nbsp;on&nbsp;columns&nbsp;instead&nbsp;of&nbsp;rows.&nbsp;&nbsp;(dim&nbsp;is&nbsp;opposite<br>
 to&nbsp;the&nbsp;numpy&nbsp;axis&nbsp;kwarg.)</tt></dd></dl>
- <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
+ <dl><dt><a name="-cohere"><strong>cohere</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x252b2a8&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;coherence&nbsp;between&nbsp;x&nbsp;and&nbsp;y.&nbsp;&nbsp;Coherence&nbsp;is&nbsp;the&nbsp;normalized<br>
 cross&nbsp;spectral&nbsp;density<br>
 &nbsp;<br>
 Cxy&nbsp;=&nbsp;|Pxy|^2/(Pxx*Pyy)<br>
@@ -444,7 +432,7 @@ about&nbsp;the&nbsp;function&nbsp;arguments&nbsp;NFFT,&nbsp;detrend,&nbsp;window
 well&nbsp;as&nbsp;the&nbsp;methods&nbsp;used&nbsp;to&nbsp;compute&nbsp;Pxy,&nbsp;Pxx&nbsp;and&nbsp;Pyy.<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;tuple&nbsp;Cxy,&nbsp;freqs</tt></dd></dl>
- <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0xecf410&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
+ <dl><dt><a name="-cohere_pairs"><strong>cohere_pairs</strong></a>(X, ij, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x252b2a8&gt;</font>, noverlap<font color="#909090">=0</font>, preferSpeedOverMemory<font color="#909090">=True</font>, progressCallback<font color="#909090">=&lt;function donothing_callback at 0x252f7d0&gt;</font>, returnPxx<font color="#909090">=False</font>)</dt><dd><tt>Cxy,&nbsp;Phase,&nbsp;freqs&nbsp;=&nbsp;<a href="#-cohere_pairs">cohere_pairs</a>(&nbsp;X,&nbsp;ij,&nbsp;...)<br>
 &nbsp;<br>
 Compute&nbsp;the&nbsp;coherence&nbsp;for&nbsp;all&nbsp;pairs&nbsp;in&nbsp;ij.&nbsp;&nbsp;X&nbsp;is&nbsp;a<br>
 numSamples,numCols&nbsp;numpy&nbsp;array.&nbsp;&nbsp;ij&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples&nbsp;(i,j).<br>
@@ -515,7 +503,7 @@ Numpy&nbsp;arrays&nbsp;can&nbsp;be&nbsp;real&nbsp;or&nbsp;complex<br>
 The&nbsp;correlation&nbsp;matrix&nbsp;is&nbsp;defined&nbsp;from&nbsp;the&nbsp;covariance&nbsp;matrix&nbsp;C&nbsp;as<br>
 &nbsp;<br>
 r(i,j)&nbsp;=&nbsp;C[i,j]&nbsp;/&nbsp;sqrt(C[i,i]*C[j,j])</tt></dd></dl>
- <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
+ <dl><dt><a name="-csd"><strong>csd</strong></a>(x, y, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x252b2a8&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;cross&nbsp;spectral&nbsp;density&nbsp;Pxy&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram<br>
 method.&nbsp;&nbsp;The&nbsp;vectors&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length<br>
 segments.&nbsp;&nbsp;Each&nbsp;segment&nbsp;is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and<br>
 windowed&nbsp;by&nbsp;function&nbsp;window.&nbsp;&nbsp;noverlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the<br>
@@ -600,12 +588,8 @@ Sanalytic&nbsp;=&nbsp;0.5&nbsp;&nbsp;*&nbsp;(&nbsp;1.0&nbsp;+&nbsp;log(2*pi*sigm
 Slow&nbsp;but&nbsp;convenient&nbsp;to&nbsp;use.&nbsp;Note&nbsp;that&nbsp;numpy&nbsp;provides&nbsp;proper<br>
 floating&nbsp;point&nbsp;exception&nbsp;handling&nbsp;with&nbsp;access&nbsp;to&nbsp;the&nbsp;underlying<br>
 hardware.</tt></dd></dl>
- <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_none at 0xecb500&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
+ <dl><dt><a name="-fftsurr"><strong>fftsurr</strong></a>(x, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_none at 0x252b8c0&gt;</font>)</dt><dd><tt>Compute&nbsp;an&nbsp;FFT&nbsp;phase&nbsp;randomized&nbsp;surrogate&nbsp;of&nbsp;x</tt></dd></dl>
  <dl><dt><a name="-find"><strong>find</strong></a>(condition)</dt><dd><tt>Return&nbsp;the&nbsp;indices&nbsp;where&nbsp;ravel(condition)&nbsp;is&nbsp;true</tt></dd></dl>
- <dl><dt><a name="-fix"><strong>fix</strong></a>(x)</dt><dd><tt>Rounds&nbsp;towards&nbsp;zero.<br>
-x_rounded&nbsp;=&nbsp;<a href="#-fix">fix</a>(x)&nbsp;rounds&nbsp;the&nbsp;elements&nbsp;of&nbsp;x&nbsp;to&nbsp;the&nbsp;nearest&nbsp;integers<br>
-towards&nbsp;zero.<br>
-For&nbsp;negative&nbsp;numbers&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;ceil&nbsp;and&nbsp;for&nbsp;positive&nbsp;to&nbsp;floor.</tt></dd></dl>
  <dl><dt><a name="-frange"><strong>frange</strong></a>(xini, xfin<font color="#909090">=None</font>, delta<font color="#909090">=None</font>, **kw)</dt><dd><tt><a href="#-frange">frange</a>([start,]&nbsp;stop[,&nbsp;step,&nbsp;keywords])&nbsp;-&gt;&nbsp;array&nbsp;of&nbsp;floats<br>
 &nbsp;<br>
 Return&nbsp;a&nbsp;numpy&nbsp;ndarray&nbsp;containing&nbsp;a&nbsp;progression&nbsp;of&nbsp;floats.&nbsp;Similar&nbsp;to<br>
@@ -652,6 +636,28 @@ keywords&nbsp;it&nbsp;will&nbsp;receive.</tt></dd></dl>
 matrix&nbsp;where&nbsp;some&nbsp;condition&nbsp;is&nbsp;satisfied.&nbsp;&nbsp;Return&nbsp;value&nbsp;is&nbsp;x,y,z<br>
 where&nbsp;x&nbsp;and&nbsp;y&nbsp;are&nbsp;the&nbsp;indices&nbsp;into&nbsp;Z&nbsp;and&nbsp;z&nbsp;are&nbsp;the&nbsp;values&nbsp;of&nbsp;Z&nbsp;at<br>
 those&nbsp;indices.&nbsp;&nbsp;x,y,z&nbsp;are&nbsp;1D&nbsp;arrays</tt></dd></dl>
+ <dl><dt><a name="-griddata"><strong>griddata</strong></a>(x, y, z, xi, yi)</dt><dd><tt>zi&nbsp;=&nbsp;<a href="#-griddata">griddata</a>(x,y,z,xi,yi)&nbsp;fits&nbsp;a&nbsp;surface&nbsp;of&nbsp;the&nbsp;form&nbsp;z&nbsp;=&nbsp;f(x,y)<br>
+to&nbsp;the&nbsp;data&nbsp;in&nbsp;the&nbsp;(usually)&nbsp;nonuniformly&nbsp;spaced&nbsp;vectors&nbsp;(x,y,z).<br>
+griddata&nbsp;interpolates&nbsp;this&nbsp;surface&nbsp;at&nbsp;the&nbsp;points&nbsp;specified&nbsp;by&nbsp;(xi,yi)<br>
+to&nbsp;produce&nbsp;zi.&nbsp;xi&nbsp;and&nbsp;yi&nbsp;must&nbsp;describe&nbsp;a&nbsp;regular&nbsp;grid,&nbsp;can&nbsp;be<br>
+either&nbsp;1D&nbsp;or&nbsp;2D,&nbsp;but&nbsp;must&nbsp;be&nbsp;monotonically&nbsp;increasing.<br>
+&nbsp;<br>
+A&nbsp;masked&nbsp;array&nbsp;is&nbsp;returned&nbsp;if&nbsp;any&nbsp;grid&nbsp;points&nbsp;are&nbsp;outside&nbsp;convex<br>
+hull&nbsp;defined&nbsp;by&nbsp;input&nbsp;data&nbsp;(no&nbsp;extrapolation&nbsp;is&nbsp;done).<br>
+&nbsp;<br>
+Uses&nbsp;natural&nbsp;neighbor&nbsp;interpolation&nbsp;based&nbsp;on&nbsp;Delaunay&nbsp;triangulation.<br>
+By&nbsp;default,&nbsp;this&nbsp;algorithm&nbsp;is&nbsp;provided&nbsp;by&nbsp;the&nbsp;matplotlib.delaunay<br>
+package,&nbsp;written&nbsp;by&nbsp;Robert&nbsp;Kern.&nbsp;&nbsp;The&nbsp;triangulation&nbsp;algorithm&nbsp;in&nbsp;this<br>
+package&nbsp;is&nbsp;known&nbsp;to&nbsp;fail&nbsp;on&nbsp;some&nbsp;nearly&nbsp;pathological&nbsp;cases.&nbsp;For<br>
+this&nbsp;reason,&nbsp;a&nbsp;separate&nbsp;toolkit&nbsp;(mpl_tookits.natgrid)&nbsp;has&nbsp;been&nbsp;created<br>
+that&nbsp;provides&nbsp;a&nbsp;more&nbsp;robust&nbsp;algorithm&nbsp;fof&nbsp;triangulation&nbsp;and&nbsp;interpolation.<br>
+This&nbsp;toolkit&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;NCAR&nbsp;natgrid&nbsp;library,&nbsp;which&nbsp;contains&nbsp;code<br>
+that&nbsp;is&nbsp;not&nbsp;redistributable&nbsp;under&nbsp;a&nbsp;BSD-compatible&nbsp;license.&nbsp;&nbsp;When&nbsp;installed,<br>
+this&nbsp;function&nbsp;will&nbsp;use&nbsp;the&nbsp;mpl_toolkits.natgrid&nbsp;algorithm,&nbsp;otherwise&nbsp;it<br>
+will&nbsp;use&nbsp;the&nbsp;built-in&nbsp;matplotlib.delaunay&nbsp;package.<br>
+&nbsp;<br>
+The&nbsp;natgrid&nbsp;matplotlib&nbsp;toolkit&nbsp;can&nbsp;be&nbsp;downloaded&nbsp;from<br>
+<a href="http://sourceforge.net/project/showfiles.php?group_id=80706&amp;package_id=142792">http://sourceforge.net/project/showfiles.php?group_id=80706&amp;package_id=142792</a></tt></dd></dl>
  <dl><dt><a name="-hist"><strong>hist</strong></a>(y, bins<font color="#909090">=10</font>, normed<font color="#909090">=0</font>)</dt><dd><tt>Return&nbsp;the&nbsp;histogram&nbsp;of&nbsp;y&nbsp;with&nbsp;bins&nbsp;equally&nbsp;sized&nbsp;bins.&nbsp;&nbsp;If&nbsp;bins<br>
 is&nbsp;an&nbsp;array,&nbsp;use&nbsp;the&nbsp;bins.&nbsp;&nbsp;Return&nbsp;value&nbsp;is<br>
 (n,x)&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;count&nbsp;for&nbsp;each&nbsp;bin&nbsp;in&nbsp;x<br>
@@ -699,7 +705,7 @@ What&nbsp;the&nbsp;function&nbsp;here&nbsp;calculates&nbsp;may&nbsp;not&nbsp;be&
 caveat&nbsp;emptor.<br>
 It&nbsp;also&nbsp;seems&nbsp;that&nbsp;this&nbsp;function's&nbsp;name&nbsp;is&nbsp;badly&nbsp;misspelled.</tt></dd></dl>
  <dl><dt><a name="-linspace"><strong>linspace</strong></a>(*args, **kw)</dt></dl>
- <dl><dt><a name="-load"><strong>load</strong></a>(fname, comments<font color="#909090">='#'</font>, delimiter<font color="#909090">=None</font>, converters<font color="#909090">=None</font>, skiprows<font color="#909090">=0</font>, usecols<font color="#909090">=None</font>, unpack<font color="#909090">=False</font>)</dt><dd><tt>Load&nbsp;ASCII&nbsp;data&nbsp;from&nbsp;fname&nbsp;into&nbsp;an&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;array.<br>
+ <dl><dt><a name="-load"><strong>load</strong></a>(fname, comments<font color="#909090">='#'</font>, delimiter<font color="#909090">=None</font>, converters<font color="#909090">=None</font>, skiprows<font color="#909090">=0</font>, usecols<font color="#909090">=None</font>, unpack<font color="#909090">=False</font>, dtype<font color="#909090">=&lt;type 'numpy.float64'&gt;</font>)</dt><dd><tt>Load&nbsp;ASCII&nbsp;data&nbsp;from&nbsp;fname&nbsp;into&nbsp;an&nbsp;array&nbsp;and&nbsp;return&nbsp;the&nbsp;array.<br>
 &nbsp;<br>
 The&nbsp;data&nbsp;must&nbsp;be&nbsp;regular,&nbsp;same&nbsp;number&nbsp;of&nbsp;values&nbsp;in&nbsp;every&nbsp;row<br>
 &nbsp;<br>
@@ -727,20 +733,23 @@ file.&nbsp;If&nbsp;delimiter&nbsp;is&nbsp;unspecified&nbsp;or&nbsp;none,&nbsp;an
 a&nbsp;separator.<br>
 &nbsp;<br>
 converters,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;column&nbsp;number&nbsp;to<br>
-a&nbsp;function&nbsp;that&nbsp;will&nbsp;convert&nbsp;that&nbsp;column&nbsp;to&nbsp;a&nbsp;float.&nbsp;&nbsp;Eg,&nbsp;if<br>
-column&nbsp;0&nbsp;is&nbsp;a&nbsp;date&nbsp;string:&nbsp;converters={0:datestr2num}<br>
+a&nbsp;function&nbsp;that&nbsp;will&nbsp;convert&nbsp;that&nbsp;column&nbsp;to&nbsp;a&nbsp;float&nbsp;(or&nbsp;the&nbsp;optional<br>
+dtype&nbsp;if&nbsp;specified).&nbsp;&nbsp;Eg,&nbsp;if&nbsp;column&nbsp;0&nbsp;is&nbsp;a&nbsp;date&nbsp;string:<br>
+converters={0:datestr2num}<br>
 &nbsp;<br>
 skiprows&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;rows&nbsp;from&nbsp;the&nbsp;top&nbsp;to&nbsp;skip<br>
 &nbsp;<br>
 usecols,&nbsp;if&nbsp;not&nbsp;None,&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;integer&nbsp;column&nbsp;indexes&nbsp;to<br>
-extract&nbsp;where&nbsp;0&nbsp;is&nbsp;the&nbsp;first&nbsp;column,&nbsp;eg&nbsp;usecols=(1,4,5)&nbsp;to&nbsp;extract<br>
+extract&nbsp;where&nbsp;0&nbsp;is&nbsp;the&nbsp;first&nbsp;column,&nbsp;eg&nbsp;usecols=[1,4,5]&nbsp;to&nbsp;extract<br>
 just&nbsp;the&nbsp;2nd,&nbsp;5th&nbsp;and&nbsp;6th&nbsp;columns<br>
 &nbsp;<br>
 unpack,&nbsp;if&nbsp;True,&nbsp;will&nbsp;transpose&nbsp;the&nbsp;matrix&nbsp;allowing&nbsp;you&nbsp;to&nbsp;unpack<br>
 into&nbsp;named&nbsp;arguments&nbsp;on&nbsp;the&nbsp;left&nbsp;hand&nbsp;side<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;t,y&nbsp;=&nbsp;<a href="#-load">load</a>('test.dat',&nbsp;unpack=True)&nbsp;#&nbsp;for&nbsp;&nbsp;two&nbsp;column&nbsp;data<br>
-&nbsp;&nbsp;&nbsp;&nbsp;x,y,z&nbsp;=&nbsp;<a href="#-load">load</a>('somefile.dat',&nbsp;usecols=(3,5,7),&nbsp;unpack=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;x,y,z&nbsp;=&nbsp;<a href="#-load">load</a>('somefile.dat',&nbsp;usecols=[3,5,7],&nbsp;unpack=True)<br>
+&nbsp;<br>
+dtype,&nbsp;the&nbsp;array&nbsp;will&nbsp;have&nbsp;this&nbsp;dtype.&nbsp;&nbsp;default:&nbsp;numpy.float_<br>
 &nbsp;<br>
 See&nbsp;examples/load_demo.py&nbsp;which&nbsp;exeercises&nbsp;many&nbsp;of&nbsp;these&nbsp;options.</tt></dd></dl>
  <dl><dt><a name="-log2"><strong>log2</strong></a>(x, ln2<font color="#909090">=0.69314718055994529</font>)</dt><dd><tt>Return&nbsp;the&nbsp;log(x)&nbsp;in&nbsp;base&nbsp;2.<br>
@@ -755,28 +764,9 @@ If&nbsp;there&nbsp;are&nbsp;two&nbsp;equally&nbsp;long&nbsp;stretches,&nbsp;pick
  <dl><dt><a name="-mean"><strong>mean</strong></a>(x, dim<font color="#909090">=None</font>)</dt></dl>
  <dl><dt><a name="-mean_flat"><strong>mean_flat</strong></a>(a)</dt><dd><tt>Return&nbsp;the&nbsp;mean&nbsp;of&nbsp;all&nbsp;the&nbsp;elements&nbsp;of&nbsp;a,&nbsp;flattened&nbsp;out.</tt></dd></dl>
  <dl><dt><a name="-meshgrid"><strong>meshgrid</strong></a>(x, y)</dt></dl>
- <dl><dt><a name="-mfuncC"><strong>mfuncC</strong></a>(f, x)</dt><dd><tt><a href="#-mfuncC">mfuncC</a>(f,&nbsp;x)&nbsp;:&nbsp;matrix&nbsp;function&nbsp;with&nbsp;possibly&nbsp;complex&nbsp;eigenvalues.<br>
-Note:&nbsp;Numeric&nbsp;defines&nbsp;(v,u)&nbsp;=&nbsp;eig(x)&nbsp;=&gt;&nbsp;x*u.T&nbsp;=&nbsp;u.T&nbsp;*&nbsp;Diag(v)<br>
-This&nbsp;function&nbsp;is&nbsp;needed&nbsp;by&nbsp;sqrtm&nbsp;and&nbsp;allows&nbsp;further&nbsp;functions.</tt></dd></dl>
+ <dl><dt><a name="-mfuncC"><strong>mfuncC</strong></a>(f, x)</dt><dd><tt>Deprecated</tt></dd></dl>
  <dl><dt><a name="-movavg"><strong>movavg</strong></a>(x, n)</dt><dd><tt>compute&nbsp;the&nbsp;len(n)&nbsp;moving&nbsp;average&nbsp;of&nbsp;x</tt></dd></dl>
- <dl><dt><a name="-norm"><strong>norm</strong></a>(x, y<font color="#909090">=2</font>)</dt><dd><tt>Norm&nbsp;of&nbsp;a&nbsp;matrix&nbsp;or&nbsp;a&nbsp;vector&nbsp;according&nbsp;to&nbsp;Matlab.<br>
-The&nbsp;description&nbsp;is&nbsp;taken&nbsp;from&nbsp;Matlab:<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;matrices...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X)&nbsp;is&nbsp;the&nbsp;largest&nbsp;singular&nbsp;value&nbsp;of&nbsp;X,&nbsp;max(svd(X)).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,2)&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;NORM(X).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,1)&nbsp;is&nbsp;the&nbsp;1-norm&nbsp;of&nbsp;X,&nbsp;the&nbsp;largest&nbsp;column&nbsp;sum,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;max(sum(abs((X)))).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,inf)&nbsp;is&nbsp;the&nbsp;infinity&nbsp;norm&nbsp;of&nbsp;X,&nbsp;the&nbsp;largest&nbsp;row&nbsp;sum,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=&nbsp;max(sum(abs((X')))).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,'fro')&nbsp;is&nbsp;the&nbsp;Frobenius&nbsp;norm,&nbsp;sqrt(sum(diag(X'*X))).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(X,P)&nbsp;is&nbsp;available&nbsp;for&nbsp;matrix&nbsp;X&nbsp;only&nbsp;if&nbsp;P&nbsp;is&nbsp;1,&nbsp;2,&nbsp;inf&nbsp;or&nbsp;'fro'.<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;vectors...<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,P)&nbsp;=&nbsp;sum(abs(V).^P)^(1/P).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V)&nbsp;=&nbsp;<a href="#-norm">norm</a>(V,2).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,inf)&nbsp;=&nbsp;max(abs(V)).<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NORM(V,-inf)&nbsp;=&nbsp;min(abs(V)).</tt></dd></dl>
+ <dl><dt><a name="-norm"><strong>norm</strong></a>(x, y<font color="#909090">=2</font>)</dt><dd><tt>Deprecated&nbsp;-&nbsp;see&nbsp;numpy.linalg.norm</tt></dd></dl>
  <dl><dt><a name="-norm_flat"><strong>norm_flat</strong></a>(a, p<font color="#909090">=2</font>)</dt><dd><tt><a href="#-norm">norm</a>(a,p=2)&nbsp;-&gt;&nbsp;l-p&nbsp;norm&nbsp;of&nbsp;a.flat<br>
 &nbsp;<br>
 Return&nbsp;the&nbsp;l-p&nbsp;norm&nbsp;of&nbsp;a,&nbsp;considered&nbsp;as&nbsp;a&nbsp;flat&nbsp;array.&nbsp;&nbsp;This&nbsp;is&nbsp;NOT&nbsp;a&nbsp;true<br>
@@ -784,13 +774,7 @@ matrix&nbsp;norm,&nbsp;since&nbsp;arrays&nbsp;of&nbsp;arbitrary&nbsp;rank&nbsp;a
 &nbsp;<br>
 p&nbsp;can&nbsp;be&nbsp;a&nbsp;number&nbsp;or&nbsp;the&nbsp;string&nbsp;'Infinity'&nbsp;to&nbsp;get&nbsp;the&nbsp;L-infinity&nbsp;norm.</tt></dd></dl>
  <dl><dt><a name="-normpdf"><strong>normpdf</strong></a>(x, *args)</dt><dd><tt>Return&nbsp;the&nbsp;normal&nbsp;pdf&nbsp;evaluated&nbsp;at&nbsp;x;&nbsp;args&nbsp;provides&nbsp;mu,&nbsp;sigma</tt></dd></dl>
- <dl><dt><a name="-orth"><strong>orth</strong></a>(A)</dt><dd><tt>Orthogonalization&nbsp;procedure&nbsp;by&nbsp;Matlab.<br>
-The&nbsp;description&nbsp;is&nbsp;taken&nbsp;from&nbsp;its&nbsp;help:<br>
-&nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Q&nbsp;=&nbsp;ORTH(A)&nbsp;is&nbsp;an&nbsp;orthonormal&nbsp;basis&nbsp;for&nbsp;the&nbsp;range&nbsp;of&nbsp;A.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;That&nbsp;is,&nbsp;Q'*Q&nbsp;=&nbsp;I,&nbsp;the&nbsp;columns&nbsp;of&nbsp;Q&nbsp;span&nbsp;the&nbsp;same&nbsp;space&nbsp;as<br>
-&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;columns&nbsp;of&nbsp;A,&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;columns&nbsp;of&nbsp;Q&nbsp;is&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;rank&nbsp;of&nbsp;A.</tt></dd></dl>
+ <dl><dt><a name="-orth"><strong>orth</strong></a>(A)</dt><dd><tt>Deprecated&nbsp;-&nbsp;needs&nbsp;clean&nbsp;room&nbsp;implementation</tt></dd></dl>
  <dl><dt><a name="-poly_below"><strong>poly_below</strong></a>(xmin, xs, ys)</dt><dd><tt>given&nbsp;a&nbsp;sequence&nbsp;of&nbsp;xs&nbsp;and&nbsp;ys,&nbsp;return&nbsp;the&nbsp;vertices&nbsp;of&nbsp;a&nbsp;polygon<br>
 that&nbsp;has&nbsp;a&nbsp;horzontal&nbsp;base&nbsp;at&nbsp;xmin&nbsp;and&nbsp;an&nbsp;upper&nbsp;bound&nbsp;at&nbsp;the&nbsp;ys.<br>
 xmin&nbsp;is&nbsp;a&nbsp;scalar.<br>
@@ -877,7 +861,7 @@ fracVar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;fraction&nbsp;of&nbsp;the&n
 A&nbsp;similar&nbsp;function&nbsp;of&nbsp;the&nbsp;same&nbsp;name&nbsp;was&nbsp;in&nbsp;the&nbsp;Matlab&nbsp;(TM)<br>
 R13&nbsp;Neural&nbsp;Network&nbsp;Toolbox&nbsp;but&nbsp;is&nbsp;not&nbsp;found&nbsp;in&nbsp;later&nbsp;versions;<br>
 its&nbsp;successor&nbsp;seems&nbsp;to&nbsp;be&nbsp;called&nbsp;"processpcs".</tt></dd></dl>
- <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
+ <dl><dt><a name="-psd"><strong>psd</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x252b2a8&gt;</font>, noverlap<font color="#909090">=0</font>)</dt><dd><tt>The&nbsp;power&nbsp;spectral&nbsp;density&nbsp;by&nbsp;Welches&nbsp;average&nbsp;periodogram&nbsp;method.<br>
 The&nbsp;vector&nbsp;x&nbsp;is&nbsp;divided&nbsp;into&nbsp;NFFT&nbsp;length&nbsp;segments.&nbsp;&nbsp;Each&nbsp;segment<br>
 is&nbsp;detrended&nbsp;by&nbsp;function&nbsp;detrend&nbsp;and&nbsp;windowed&nbsp;by&nbsp;function&nbsp;window.<br>
 noperlap&nbsp;gives&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;overlap&nbsp;between&nbsp;segments.&nbsp;&nbsp;The<br>
@@ -901,12 +885,7 @@ Returns&nbsp;the&nbsp;tuple&nbsp;Pxx,&nbsp;freqs<br>
 Refs:<br>
 &nbsp;&nbsp;Bendat&nbsp;&amp;&nbsp;Piersol&nbsp;--&nbsp;Random&nbsp;Data:&nbsp;Analysis&nbsp;and&nbsp;Measurement<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Procedures,&nbsp;John&nbsp;Wiley&nbsp;&amp;&nbsp;Sons&nbsp;(1986)</tt></dd></dl>
- <dl><dt><a name="-rank"><strong>rank</strong></a>(x)</dt><dd><tt>Returns&nbsp;the&nbsp;rank&nbsp;of&nbsp;a&nbsp;matrix.<br>
-The&nbsp;rank&nbsp;is&nbsp;understood&nbsp;here&nbsp;as&nbsp;the&nbsp;an&nbsp;estimation&nbsp;of&nbsp;the&nbsp;number&nbsp;of<br>
-linearly&nbsp;independent&nbsp;rows&nbsp;or&nbsp;columns&nbsp;(depending&nbsp;on&nbsp;the&nbsp;size&nbsp;of&nbsp;the<br>
-matrix).<br>
-Note&nbsp;that&nbsp;numerix.mlab.<a href="#-rank">rank</a>()&nbsp;is&nbsp;not&nbsp;equivalent&nbsp;to&nbsp;Matlab's&nbsp;rank.<br>
-This&nbsp;function&nbsp;is!</tt></dd></dl>
+ <dl><dt><a name="-rank"><strong>rank</strong></a>(x)</dt><dd><tt>Deprecated&nbsp;-&nbsp;see&nbsp;numpy.rank</tt></dd></dl>
  <dl><dt><a name="-rec2csv"><strong>rec2csv</strong></a>(r, fname, delimiter<font color="#909090">=','</font>, formatd<font color="#909090">=None</font>, missing<font color="#909090">=''</font>, missingd<font color="#909090">=None</font>)</dt><dd><tt>Save&nbsp;the&nbsp;data&nbsp;from&nbsp;numpy&nbsp;(m)recarray&nbsp;r&nbsp;into&nbsp;a&nbsp;comma/space/tab<br>
 delimited&nbsp;file.&nbsp;&nbsp;The&nbsp;record&nbsp;array&nbsp;dtype&nbsp;names&nbsp;will&nbsp;be&nbsp;used&nbsp;for<br>
 column&nbsp;headers.<br>
@@ -937,7 +916,8 @@ precision&nbsp;-&nbsp;number&nbsp;of&nbsp;decimal&nbsp;places&nbsp;to&nbsp;use&n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;Price&nbsp;&nbsp;&nbsp;Return<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ABC&nbsp;&nbsp;&nbsp;12.54&nbsp;&nbsp;&nbsp;&nbsp;0.234<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;XYZ&nbsp;&nbsp;&nbsp;&nbsp;6.32&nbsp;&nbsp;&nbsp;-0.076</tt></dd></dl>
- <dl><dt><a name="-rec_append_field"><strong>rec_append_field</strong></a>(rec, name, arr, dtype<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;name&nbsp;populated&nbsp;with&nbsp;data&nbsp;from&nbsp;array&nbsp;arr</tt></dd></dl>
+ <dl><dt><a name="-rec_append_field"><strong>rec_append_field</strong></a>(rec, name, arr, dtype<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;name&nbsp;populated&nbsp;with&nbsp;data&nbsp;from&nbsp;array&nbsp;arr.<br>
+This&nbsp;function&nbsp;is&nbsp;Depreacted.&nbsp;Please&nbsp;use&nbsp;rec_append_fields.</tt></dd></dl>
  <dl><dt><a name="-rec_append_fields"><strong>rec_append_fields</strong></a>(rec, names, arrs, dtypes<font color="#909090">=None</font>)</dt><dd><tt>return&nbsp;a&nbsp;new&nbsp;record&nbsp;array&nbsp;with&nbsp;field&nbsp;names&nbsp;populated&nbsp;with&nbsp;data<br>
 from&nbsp;arrays&nbsp;in&nbsp;arrs.&nbsp;&nbsp;If&nbsp;appending&nbsp;a&nbsp;single&nbsp;field&nbsp;then&nbsp;names,&nbsp;arrs<br>
 and&nbsp;dtypes&nbsp;do&nbsp;not&nbsp;have&nbsp;to&nbsp;be&nbsp;lists.&nbsp;They&nbsp;can&nbsp;just&nbsp;be&nbsp;the&nbsp;values&nbsp;themselves.</tt></dd></dl>
@@ -957,9 +937,11 @@ the&nbsp;the&nbsp;'groupby'&nbsp;argument,&nbsp;with&nbsp;the&nbsp;associated&nb
 for&nbsp;each&nbsp;outname&nbsp;name&nbsp;in&nbsp;the&nbsp;stats&nbsp;argument,&nbsp;with&nbsp;the&nbsp;associated<br>
 stat&nbsp;summary&nbsp;output</tt></dd></dl>
  <dl><dt><a name="-rec_join"><strong>rec_join</strong></a>(key, r1, r2, jointype<font color="#909090">='inner'</font>, defaults<font color="#909090">=None</font>)</dt><dd><tt>join&nbsp;record&nbsp;arrays&nbsp;r1&nbsp;and&nbsp;r2&nbsp;on&nbsp;key;&nbsp;key&nbsp;is&nbsp;a&nbsp;tuple&nbsp;of&nbsp;field<br>
-names.&nbsp;&nbsp;if&nbsp;r1&nbsp;and&nbsp;r2&nbsp;have&nbsp;equal&nbsp;values&nbsp;on&nbsp;all&nbsp;the&nbsp;keys&nbsp;in&nbsp;the&nbsp;key<br>
+names.&nbsp;If&nbsp;r1&nbsp;and&nbsp;r2&nbsp;have&nbsp;equal&nbsp;values&nbsp;on&nbsp;all&nbsp;the&nbsp;keys&nbsp;in&nbsp;the&nbsp;key<br>
 tuple,&nbsp;then&nbsp;their&nbsp;fields&nbsp;will&nbsp;be&nbsp;merged&nbsp;into&nbsp;a&nbsp;new&nbsp;record&nbsp;array<br>
-containing&nbsp;the&nbsp;intersection&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2<br>
+containing&nbsp;the&nbsp;intersection&nbsp;of&nbsp;the&nbsp;fields&nbsp;of&nbsp;r1&nbsp;and&nbsp;r2.<br>
+&nbsp;<br>
+r1&nbsp;(also&nbsp;r2)&nbsp;must&nbsp;not&nbsp;have&nbsp;any&nbsp;duplicate&nbsp;keys.<br>
 &nbsp;<br>
 The&nbsp;jointype&nbsp;keyword&nbsp;can&nbsp;be&nbsp;'inner',&nbsp;'outer',&nbsp;'leftouter'.<br>
 To&nbsp;do&nbsp;a&nbsp;rightouter&nbsp;join&nbsp;just&nbsp;reverse&nbsp;r1&nbsp;and&nbsp;r2.<br>
@@ -972,11 +954,7 @@ summaryfuncs&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(attr,&nbsp;func,&nbsp;outnam
 apply&nbsp;codefunc&nbsp;to&nbsp;the&nbsp;the&nbsp;array&nbsp;r[attr]&nbsp;and&nbsp;assign&nbsp;the&nbsp;output<br>
 to&nbsp;a&nbsp;new&nbsp;attribute&nbsp;name&nbsp;outname.&nbsp;&nbsp;The&nbsp;returned&nbsp;record&nbsp;array&nbsp;is<br>
 identical&nbsp;to&nbsp;r,&nbsp;with&nbsp;extra&nbsp;arrays&nbsp;for&nbsp;each&nbsp;element&nbsp;in&nbsp;summaryfuncs</tt></dd></dl>
- <dl><dt><a name="-rem"><strong>rem</strong></a>(x, y)</dt><dd><tt>Remainder&nbsp;after&nbsp;division.<br>
-<a href="#-rem">rem</a>(x,y)&nbsp;is&nbsp;equivalent&nbsp;to&nbsp;x&nbsp;-&nbsp;y.*<a href="#-fix">fix</a>(x./y)&nbsp;in&nbsp;case&nbsp;y&nbsp;is&nbsp;not&nbsp;zero.<br>
-By&nbsp;convention&nbsp;(but&nbsp;contrary&nbsp;to&nbsp;numpy),&nbsp;<a href="#-rem">rem</a>(x,0)&nbsp;returns&nbsp;None.<br>
-This&nbsp;also&nbsp;differs&nbsp;from&nbsp;numpy.remainder,&nbsp;which&nbsp;uses&nbsp;floor&nbsp;instead&nbsp;of<br>
-fix.</tt></dd></dl>
+ <dl><dt><a name="-rem"><strong>rem</strong></a>(x, y)</dt><dd><tt>Deprecated&nbsp;-&nbsp;see&nbsp;numpy.remainder</tt></dd></dl>
  <dl><dt><a name="-rk4"><strong>rk4</strong></a>(derivs, y0, t)</dt><dd><tt>Integrate&nbsp;1D&nbsp;or&nbsp;ND&nbsp;system&nbsp;of&nbsp;ODEs&nbsp;from&nbsp;initial&nbsp;state&nbsp;y0&nbsp;at&nbsp;sample<br>
 times&nbsp;t.&nbsp;&nbsp;derivs&nbsp;returns&nbsp;the&nbsp;derivative&nbsp;of&nbsp;the&nbsp;system&nbsp;and&nbsp;has&nbsp;the<br>
 signature<br>
@@ -1056,7 +1034,7 @@ Regensburg,&nbsp;April&nbsp;2006&nbsp;Norbert.Nemec&nbsp;at&nbsp;physik.uni-rege
 &nbsp;<br>
 (inspired&nbsp;by&nbsp;a&nbsp;original&nbsp;implementation&nbsp;by&nbsp;Halldor&nbsp;Bjornsson,<br>
 Icelandic&nbsp;Meteorological&nbsp;Office,&nbsp;March&nbsp;2006&nbsp;halldor&nbsp;at&nbsp;vedur.is)</tt></dd></dl>
- <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0xecbed8&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0xecb578&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
+ <dl><dt><a name="-specgram"><strong>specgram</strong></a>(x, NFFT<font color="#909090">=256</font>, Fs<font color="#909090">=2</font>, detrend<font color="#909090">=&lt;function detrend_none at 0x252f320&gt;</font>, window<font color="#909090">=&lt;function window_hanning at 0x252b2a8&gt;</font>, noverlap<font color="#909090">=128</font>)</dt><dd><tt>Compute&nbsp;a&nbsp;spectrogram&nbsp;of&nbsp;data&nbsp;in&nbsp;x.&nbsp;&nbsp;Data&nbsp;are&nbsp;split&nbsp;into&nbsp;NFFT<br>
 length&nbsp;segements&nbsp;and&nbsp;the&nbsp;PSD&nbsp;of&nbsp;each&nbsp;section&nbsp;is&nbsp;computed.&nbsp;&nbsp;The<br>
 windowing&nbsp;function&nbsp;window&nbsp;is&nbsp;applied&nbsp;to&nbsp;each&nbsp;segment,&nbsp;and&nbsp;the<br>
 amount&nbsp;of&nbsp;overlap&nbsp;of&nbsp;each&nbsp;segment&nbsp;is&nbsp;specified&nbsp;with&nbsp;noverlap.<br>
@@ -1079,9 +1057,7 @@ returns:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;rows&nbsp;in&nbsp;Pxx<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;t&nbsp;-&nbsp;1-D&nbsp;array&nbsp;of&nbsp;times&nbsp;corresponding&nbsp;to&nbsp;midpoints&nbsp;of<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;segments.</tt></dd></dl>
- <dl><dt><a name="-sqrtm"><strong>sqrtm</strong></a>(x)</dt><dd><tt>Returns&nbsp;the&nbsp;square&nbsp;root&nbsp;of&nbsp;a&nbsp;square&nbsp;matrix.<br>
-This&nbsp;means&nbsp;that&nbsp;s=<a href="#-sqrtm">sqrtm</a>(x)&nbsp;implies&nbsp;dot(s,s)&nbsp;=&nbsp;x.<br>
-Note&nbsp;that&nbsp;s&nbsp;and&nbsp;x&nbsp;are&nbsp;matrices.</tt></dd></dl>
+ <dl><dt><a name="-sqrtm"><strong>sqrtm</strong></a>(x)</dt><dd><tt>Deprecated&nbsp;-&nbsp;needs&nbsp;clean&nbsp;room&nbsp;implementation</tt></dd></dl>
  <dl><dt><a name="-stineman_interp"><strong>stineman_interp</strong></a>(xi, x, y, yp<font color="#909090">=None</font>)</dt><dd><tt>STINEMAN_INTERP&nbsp;Well&nbsp;behaved&nbsp;data&nbsp;interpolation.&nbsp;&nbsp;Given&nbsp;data<br>
 vectors&nbsp;X&nbsp;and&nbsp;Y,&nbsp;the&nbsp;slope&nbsp;vector&nbsp;YP&nbsp;and&nbsp;a&nbsp;new&nbsp;abscissa&nbsp;vector&nbsp;XI<br>
 the&nbsp;function&nbsp;<a href="#-stineman_interp">stineman_interp</a>(xi,x,y,yp)&nbsp;uses&nbsp;Stineman<br>
@@ -1090,8 +1066,8 @@ interpolation&nbsp;to&nbsp;calculate&nbsp;a&nbsp;vector&nbsp;YI&nbsp;correspondi
 Here's&nbsp;an&nbsp;example&nbsp;that&nbsp;generates&nbsp;a&nbsp;coarse&nbsp;sine&nbsp;curve,&nbsp;then<br>
 interpolates&nbsp;over&nbsp;a&nbsp;finer&nbsp;abscissa:<br>
 &nbsp;<br>
-&nbsp;&nbsp;x&nbsp;=&nbsp;<a href="#-linspace">linspace</a>(0,2*pi,20);&nbsp;&nbsp;y&nbsp;=&nbsp;sin(x);&nbsp;yp&nbsp;=&nbsp;cos(x)<br>
-&nbsp;&nbsp;xi&nbsp;=&nbsp;<a href="#-linspace">linspace</a>(0,2*pi,40);<br>
+&nbsp;&nbsp;x&nbsp;=&nbsp;np.<a href="#-linspace">linspace</a>(0,2*pi,20);&nbsp;&nbsp;y&nbsp;=&nbsp;sin(x);&nbsp;yp&nbsp;=&nbsp;cos(x)<br>
+&nbsp;&nbsp;xi&nbsp;=&nbsp;np.<a href="#-linspace">linspace</a>(0,2*pi,40);<br>
 &nbsp;&nbsp;yi&nbsp;=&nbsp;<a href="#-stineman_interp">stineman_interp</a>(xi,x,y,yp);<br>
 &nbsp;&nbsp;plot(x,y,'o',xi,yi)<br>
 &nbsp;<br>
@@ -1139,9 +1115,9 @@ None&nbsp;it&nbsp;defaults&nbsp;to&nbsp;len(x).</tt></dd></dl>
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.bool_'&gt;: &lt;matplotlib.mlab.FormatBool instance at 0xe51e18&gt;, &lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xe51f80&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xec86c8&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0xec8170&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xec8680&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0xec8c20&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0xec8c68&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0xec8cb0&gt;}<br>
+<td width="100%"><strong>defaultformatd</strong> = {&lt;type 'numpy.bool_'&gt;: &lt;matplotlib.mlab.FormatBool instance at 0x251e518&gt;, &lt;type 'numpy.int16'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x251e560&gt;, &lt;type 'numpy.int32'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x251e6c8&gt;, &lt;type 'numpy.int64'&gt;: &lt;matplotlib.mlab.FormatInt instance at 0x251e878&gt;, &lt;type 'numpy.float32'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x251ed88&gt;, &lt;type 'numpy.float64'&gt;: &lt;matplotlib.mlab.FormatFloat instance at 0x252e368&gt;, &lt;type 'numpy.object_'&gt;: &lt;matplotlib.mlab.FormatObj instance at 0x252e3b0&gt;, &lt;type 'numpy.string_'&gt;: &lt;matplotlib.mlab.FormatString instance at 0x252e3f8&gt;}<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
 <strong>exp_safe_MAX</strong> = 1.7976931348623157e+308<br>
 <strong>exp_safe_MIN</strong> = -708.39641853226408<br>
-<strong>readme</strong> = '<font color="#c040c0">\n</font>MLab2.py, release 1<font color="#c040c0">\n\n</font>Created on February 2003 b...<font color="#c040c0">\n</font>Look at: http://pdilib.sf.net for new releases.<font color="#c040c0">\n</font>'</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x24e6200&gt;</td></tr></table>
 @footer@

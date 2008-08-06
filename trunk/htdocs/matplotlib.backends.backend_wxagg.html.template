@@ -80,7 +80,7 @@ Methods defined here:<br>
 <dl><dt><a name="FigureCanvasWxAgg-blit"><strong>blit</strong></a>(self, bbox<font color="#909090">=None</font>)</dt><dd><tt>Transfer&nbsp;the&nbsp;region&nbsp;of&nbsp;the&nbsp;agg&nbsp;buffer&nbsp;defined&nbsp;by&nbsp;bbox&nbsp;to&nbsp;the&nbsp;display.<br>
 If&nbsp;bbox&nbsp;is&nbsp;None,&nbsp;the&nbsp;entire&nbsp;buffer&nbsp;is&nbsp;transferred.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-draw"><strong>draw</strong></a>(self, repaint<font color="#909090">=True</font>)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;using&nbsp;agg.</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-draw"><strong>draw</strong></a>(self, drawDC<font color="#909090">=None</font>)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;using&nbsp;agg.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-print_figure"><strong>print_figure</strong></a>(self, filename, *args, **kwargs)</dt></dl>
 
@@ -136,7 +136,7 @@ Setup&nbsp;Dialog.</tt></dd></dl>
 &nbsp;&nbsp;EVT_SIZE&nbsp;&nbsp;(Resize&nbsp;event)<br>
 &nbsp;&nbsp;EVT_PAINT&nbsp;(Paint&nbsp;event)</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-draw_idle"><strong>draw_idle</strong></a>(self, *args, **kwargs)</dt></dl>
+<dl><dt><a name="FigureCanvasWxAgg-draw_idle"><strong>draw_idle</strong></a>(self)</dt><dd><tt>Delay&nbsp;rendering&nbsp;until&nbsp;the&nbsp;GUI&nbsp;is&nbsp;idle.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-flush_events"><strong>flush_events</strong></a>(self)</dt></dl>
 
@@ -158,8 +158,29 @@ redraw&nbsp;the&nbsp;image.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-print_xpm"><strong>print_xpm</strong></a>(self, filename, *args, **kwargs)</dt></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-realize"><strong>realize</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;when&nbsp;the&nbsp;system&nbsp;is&nbsp;ready&nbsp;to&nbsp;draw,<br>
-eg&nbsp;when&nbsp;a&nbsp;GUI&nbsp;window&nbsp;is&nbsp;realized</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-start_event_loop"><strong>start_event_loop</strong></a>(self, timeout<font color="#909090">=0</font>)</dt><dd><tt>Start&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;start&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.&nbsp;&nbsp;This&nbsp;should&nbsp;not&nbsp;be<br>
+confused&nbsp;with&nbsp;the&nbsp;main&nbsp;GUI&nbsp;event&nbsp;loop,&nbsp;which&nbsp;is&nbsp;always&nbsp;running<br>
+and&nbsp;has&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with&nbsp;this.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+<a href="#FigureCanvasWxAgg-start_event_loop">start_event_loop</a>(self,timeout=0)<br>
+&nbsp;<br>
+This&nbsp;call&nbsp;blocks&nbsp;until&nbsp;a&nbsp;callback&nbsp;function&nbsp;triggers<br>
+<a href="#FigureCanvasWxAgg-stop_event_loop">stop_event_loop</a>()&nbsp;or&nbsp;*timeout*&nbsp;is&nbsp;reached.&nbsp;&nbsp;If&nbsp;*timeout*&nbsp;is<br>
+&lt;=0,&nbsp;never&nbsp;timeout.<br>
+&nbsp;<br>
+Raises&nbsp;RuntimeError&nbsp;if&nbsp;event&nbsp;loop&nbsp;is&nbsp;already&nbsp;running.</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWxAgg-stop_event_loop"><strong>stop_event_loop</strong></a>(self, event<font color="#909090">=None</font>)</dt><dd><tt>Stop&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;stop&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+<a href="#FigureCanvasWxAgg-stop_event_loop_default">stop_event_loop_default</a>(self)</tt></dd></dl>
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backends.backend_wx.html#FigureCanvasWx">matplotlib.backends.backend_wx.FigureCanvasWx</a>:<br>
@@ -169,16 +190,32 @@ Data and other attributes inherited from <a href="matplotlib.backends.backend_wx
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
 <dl><dt><a name="FigureCanvasWxAgg-button_press_event"><strong>button_press_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any&nbsp;mouse<br>
 button&nbsp;press.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;:class:`MouseEvent`.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'button_press_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-button_release_event"><strong>button_release_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any&nbsp;mouse<br>
-button&nbsp;release.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+button&nbsp;release.<br>
+&nbsp;<br>
+*x*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=left<br>
+&nbsp;<br>
+*y*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=bottom<br>
+&nbsp;<br>
+*guiEvent*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;native&nbsp;UI&nbsp;event&nbsp;that&nbsp;generated&nbsp;the&nbsp;mpl&nbsp;event<br>
+&nbsp;<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'button_release_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-draw_cursor"><strong>draw_cursor</strong></a>(self, event)</dt><dd><tt>Draw&nbsp;a&nbsp;cursor&nbsp;in&nbsp;the&nbsp;event.axes&nbsp;if&nbsp;inaxes&nbsp;is&nbsp;not&nbsp;None.&nbsp;&nbsp;Use<br>
 native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt></dl>
+<dl><dt><a name="FigureCanvasWxAgg-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'draw_event'&nbsp;with&nbsp;a&nbsp;:class:`DrawEvent`</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-get_supported_filetypes"><strong>get_supported_filetypes</strong></a>(self)</dt></dl>
 
@@ -187,54 +224,90 @@ native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt>
 <dl><dt><a name="FigureCanvasWxAgg-get_width_height"><strong>get_width_height</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;points&nbsp;or&nbsp;pixels<br>
 (depending&nbsp;on&nbsp;the&nbsp;backend),&nbsp;truncated&nbsp;to&nbsp;integers</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-key_press_event"><strong>key_press_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="FigureCanvasWxAgg-idle_event"><strong>idle_event</strong></a>(self, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>call&nbsp;when&nbsp;GUI&nbsp;is&nbsp;idle</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-key_release_event"><strong>key_release_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="FigureCanvasWxAgg-key_press_event"><strong>key_press_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'key_press_event'&nbsp;with&nbsp;a&nbsp;:class:`KeyEvent`</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWxAgg-key_release_event"><strong>key_release_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'key_release_event'&nbsp;with&nbsp;a&nbsp;:class:`KeyEvent`</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-motion_notify_event"><strong>motion_notify_event</strong></a>(self, x, y, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
-motion-notify-event.&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+motion-notify-event.<br>
+&nbsp;<br>
+*x*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=left<br>
+&nbsp;<br>
+*y*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=bottom<br>
+&nbsp;<br>
+*guiEvent*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;native&nbsp;UI&nbsp;event&nbsp;that&nbsp;generated&nbsp;the&nbsp;mpl&nbsp;event<br>
+&nbsp;<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'motion_notify_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-mpl_connect"><strong>mpl_connect</strong></a>(self, s, func)</dt><dd><tt>Connect&nbsp;event&nbsp;with&nbsp;string&nbsp;s&nbsp;to&nbsp;func.&nbsp;&nbsp;The&nbsp;signature&nbsp;of&nbsp;func&nbsp;is<br>
+<dl><dt><a name="FigureCanvasWxAgg-mpl_connect"><strong>mpl_connect</strong></a>(self, s, func)</dt><dd><tt>Connect&nbsp;event&nbsp;with&nbsp;string&nbsp;*s*&nbsp;to&nbsp;*func*.&nbsp;&nbsp;The&nbsp;signature&nbsp;of&nbsp;*func*&nbsp;is::<br>
 &nbsp;<br>
 &nbsp;&nbsp;def&nbsp;func(event)<br>
 &nbsp;<br>
-where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbsp;events&nbsp;are&nbsp;recognized<br>
+where&nbsp;event&nbsp;is&nbsp;a&nbsp;:class:`matplotlib.backend_bases.Event`.&nbsp;&nbsp;The<br>
+following&nbsp;events&nbsp;are&nbsp;recognized<br>
 &nbsp;<br>
-'resize_event',<br>
-'draw_event',<br>
-'key_press_event',<br>
-'key_release_event',<br>
-'button_press_event',<br>
-'button_release_event',<br>
-'scroll_event',<br>
-'motion_notify_event',<br>
-'pick_event',<br>
+-&nbsp;'button_press_event'<br>
+-&nbsp;'button_release_event'<br>
+-&nbsp;'draw_event'<br>
+-&nbsp;'key_press_event'<br>
+-&nbsp;'key_release_event'<br>
+-&nbsp;'motion_notify_event'<br>
+-&nbsp;'pick_event'<br>
+-&nbsp;'resize_event'<br>
+-&nbsp;'scroll_event'<br>
 &nbsp;<br>
+For&nbsp;the&nbsp;location&nbsp;events&nbsp;(button&nbsp;and&nbsp;key&nbsp;press/release),&nbsp;if&nbsp;the<br>
+mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,&nbsp;the&nbsp;variable&nbsp;``event.inaxes``&nbsp;will&nbsp;be<br>
+set&nbsp;to&nbsp;the&nbsp;:class:`~matplotlib.axes.Axes`&nbsp;the&nbsp;event&nbsp;occurs&nbsp;is<br>
+over,&nbsp;and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;``event.xdata``&nbsp;and<br>
+``event.ydata``&nbsp;will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location<br>
+in&nbsp;data&nbsp;coords.&nbsp;&nbsp;See<br>
+:class:`~matplotlib.backend_bases.KeyEvent`&nbsp;and<br>
+:class:`~matplotlib.backend_bases.MouseEvent`&nbsp;for&nbsp;more&nbsp;info.<br>
 &nbsp;<br>
-For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
-the&nbsp;variable&nbsp;event.inaxes&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;axes&nbsp;it&nbsp;is&nbsp;over,<br>
-and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;event.xdata&nbsp;and&nbsp;event.ydata<br>
-will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location&nbsp;in&nbsp;data&nbsp;coords.<br>
-See&nbsp;backend_bases.MplEvent.<br>
+Return&nbsp;value&nbsp;is&nbsp;a&nbsp;connection&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with<br>
+:meth:`~matplotlib.backend_bases.Event.mpl_disconnect`.<br>
 &nbsp;<br>
-return&nbsp;value&nbsp;is&nbsp;a&nbsp;connection&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with<br>
-mpl_disconnect</tt></dd></dl>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;on_press(event):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'you&nbsp;pressed',&nbsp;event.button,&nbsp;event.xdata,&nbsp;event.ydata<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cid&nbsp;=&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('button_press_event',&nbsp;on_press)</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
+<dl><dt><a name="FigureCanvasWxAgg-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cid&nbsp;=&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('button_press_event',&nbsp;on_press)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#...later<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_disconnect">mpl_disconnect</a>(cid)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-onHilite"><strong>onHilite</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;highlights&nbsp;the&nbsp;artists<br>
-under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;motion_notify_event<br>
-using&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;'motion_notify_event'<br>
+using::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-onRemove"><strong>onRemove</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;removes&nbsp;the&nbsp;top&nbsp;artist<br>
-under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;mouse_press_event<br>
-using&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;'mouse_press_event'<br>
+using::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasWxAgg-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-pick"><strong>pick</strong></a>(self, mouseevent)</dt></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-pick_event"><strong>pick_event</strong></a>(self, mouseevent, artist, **kwargs)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;by&nbsp;artists&nbsp;who&nbsp;are&nbsp;picked&nbsp;and&nbsp;will<br>
-fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
+fire&nbsp;off&nbsp;:class:`PickEvent`&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-print_emf"><strong>print_emf</strong></a>(self, *args, **kwargs)</dt></dl>
 
@@ -252,14 +325,45 @@ fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt><
 
 <dl><dt><a name="FigureCanvasWxAgg-resize"><strong>resize</strong></a>(self, w, h)</dt><dd><tt>set&nbsp;the&nbsp;canvas&nbsp;size&nbsp;in&nbsp;pixels</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-resize_event"><strong>resize_event</strong></a>(self)</dt></dl>
+<dl><dt><a name="FigureCanvasWxAgg-resize_event"><strong>resize_event</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'resize_event'&nbsp;with&nbsp;a&nbsp;:class:`ResizeEvent`</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-scroll_event"><strong>scroll_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
+<dl><dt><a name="FigureCanvasWxAgg-scroll_event"><strong>scroll_event</strong></a>(self, x, y, step, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
 scroll&nbsp;wheel&nbsp;event.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,<br>
-left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'scroll_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt><dd><tt>Set&nbsp;the&nbsp;title&nbsp;text&nbsp;of&nbsp;the&nbsp;window&nbsp;containing&nbsp;the&nbsp;figure.&nbsp;&nbsp;Note&nbsp;that<br>
 this&nbsp;has&nbsp;no&nbsp;effect&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;window&nbsp;(eg,&nbsp;a&nbsp;PS&nbsp;backend).</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWxAgg-start_event_loop_default"><strong>start_event_loop_default</strong></a>(self, timeout<font color="#909090">=0</font>)</dt><dd><tt>Start&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;start&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.&nbsp;&nbsp;This&nbsp;should&nbsp;not&nbsp;be<br>
+confused&nbsp;with&nbsp;the&nbsp;main&nbsp;GUI&nbsp;event&nbsp;loop,&nbsp;which&nbsp;is&nbsp;always&nbsp;running<br>
+and&nbsp;has&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with&nbsp;this.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;provides&nbsp;default&nbsp;event&nbsp;loop&nbsp;functionality&nbsp;based<br>
+on&nbsp;time.sleep&nbsp;that&nbsp;is&nbsp;meant&nbsp;to&nbsp;be&nbsp;used&nbsp;until&nbsp;event&nbsp;loop<br>
+functions&nbsp;for&nbsp;each&nbsp;of&nbsp;the&nbsp;GUI&nbsp;backends&nbsp;can&nbsp;be&nbsp;written.&nbsp;&nbsp;As<br>
+such,&nbsp;it&nbsp;throws&nbsp;a&nbsp;deprecated&nbsp;warning.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#FigureCanvasWxAgg-start_event_loop_default">start_event_loop_default</a>(self,timeout=0)<br>
+&nbsp;<br>
+This&nbsp;call&nbsp;blocks&nbsp;until&nbsp;a&nbsp;callback&nbsp;function&nbsp;triggers<br>
+<a href="#FigureCanvasWxAgg-stop_event_loop">stop_event_loop</a>()&nbsp;or&nbsp;*timeout*&nbsp;is&nbsp;reached.&nbsp;&nbsp;If&nbsp;*timeout*&nbsp;is<br>
+&lt;=0,&nbsp;never&nbsp;timeout.</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasWxAgg-stop_event_loop_default"><strong>stop_event_loop_default</strong></a>(self)</dt><dd><tt>Stop&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;stop&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+<a href="#FigureCanvasWxAgg-stop_event_loop_default">stop_event_loop_default</a>(self)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-switch_backends"><strong>switch_backends</strong></a>(self, FigureCanvasClass)</dt><dd><tt>instantiate&nbsp;an&nbsp;instance&nbsp;of&nbsp;FigureCanvasClass<br>
 &nbsp;<br>
@@ -270,7 +374,7 @@ figure&nbsp;size&nbsp;or&nbsp;line&nbsp;props),&nbsp;will&nbsp;be&nbsp;reflected
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
-<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event')</dl>
+<dl><dt><strong>events</strong> = ['resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event', 'idle_event']</dl>
 
 <hr>
 Methods inherited from <a href="wx._windows.html#Panel">wx._windows.Panel</a>:<br>
@@ -481,7 +585,7 @@ window&nbsp;had&nbsp;already&nbsp;been&nbsp;in&nbsp;the&nbsp;specified&nbsp;stat
 
 <dl><dt><a name="FigureCanvasWxAgg-FindWindowById"><strong>FindWindowById</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-FindWindowById">FindWindowById</a>(self,&nbsp;long&nbsp;winid)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
-Find&nbsp;a&nbsp;chld&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
+Find&nbsp;a&nbsp;child&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-FindWindowByName"><strong>FindWindowByName</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-FindWindowByName">FindWindowByName</a>(self,&nbsp;String&nbsp;name)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
@@ -581,12 +685,11 @@ Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;curr
 &nbsp;<br>
 Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;current&nbsp;font.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasWxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;PyObject<br>
+<dl><dt><a name="FigureCanvasWxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;WindowList<br>
 &nbsp;<br>
-Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;NOTE:&nbsp;Currently&nbsp;this&nbsp;is&nbsp;a<br>
-copy&nbsp;of&nbsp;the&nbsp;child&nbsp;window&nbsp;list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window,&nbsp;so&nbsp;the&nbsp;return<br>
-value&nbsp;of&nbsp;this&nbsp;function&nbsp;is&nbsp;only&nbsp;valid&nbsp;as&nbsp;long&nbsp;as&nbsp;the&nbsp;window's&nbsp;children<br>
-do&nbsp;not&nbsp;change.</tt></dd></dl>
+Returns&nbsp;an&nbsp;object&nbsp;containing&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;The<br>
+object&nbsp;provides&nbsp;a&nbsp;Python&nbsp;sequence-like&nbsp;interface&nbsp;over&nbsp;the&nbsp;internal<br>
+list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window..</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-GetClientAreaOrigin"><strong>GetClientAreaOrigin</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetClientAreaOrigin">GetClientAreaOrigin</a>(self)&nbsp;-&gt;&nbsp;Point<br>
 &nbsp;<br>
@@ -671,11 +774,16 @@ current&nbsp;or&nbsp;specified&nbsp;font.</tt></dd></dl>
 Returns&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;parent&nbsp;of&nbsp;this&nbsp;window,&nbsp;or&nbsp;None&nbsp;if&nbsp;there<br>
 isn't&nbsp;one.</tt></dd></dl>
 
+<dl><dt><a name="FigureCanvasWxAgg-GetGtkWidget"><strong>GetGtkWidget</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetGtkWidget">GetGtkWidget</a>(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd></dl>
+
 <dl><dt><a name="FigureCanvasWxAgg-GetHandle"><strong>GetHandle</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetHandle">GetHandle</a>(self)&nbsp;-&gt;&nbsp;long<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;platform-specific&nbsp;handle&nbsp;(as&nbsp;a&nbsp;long&nbsp;integer)&nbsp;of&nbsp;the<br>
-physical&nbsp;window.&nbsp;&nbsp;Currently&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;returns&nbsp;the&nbsp;handle&nbsp;of&nbsp;the<br>
-toplevel&nbsp;parent&nbsp;of&nbsp;the&nbsp;window.</tt></dd></dl>
+physical&nbsp;window.&nbsp;&nbsp;On&nbsp;wxMSW&nbsp;this&nbsp;is&nbsp;the&nbsp;win32&nbsp;window&nbsp;handle,&nbsp;on&nbsp;wxGTK<br>
+it&nbsp;is&nbsp;the&nbsp;XWindow&nbsp;ID,&nbsp;and&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;is&nbsp;the&nbsp;ControlRef.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasWxAgg-GetHelpText"><strong>GetHelpText</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureCanvasWxAgg-GetHelpText">GetHelpText</a>(self)&nbsp;-&gt;&nbsp;String<br>
 &nbsp;<br>
@@ -1734,6 +1842,12 @@ Data descriptors inherited from <a href="wx._core.html#Window">wx._core.Window</
 <dl><dt><strong>GrandParent</strong></dt>
 <dd><tt>See&nbsp;`GetGrandParent`</tt></dd>
 </dl>
+<dl><dt><strong>GtkWidget</strong></dt>
+<dd><tt>GetGtkWidget(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd>
+</dl>
 <dl><dt><strong>Handle</strong></dt>
 <dd><tt>See&nbsp;`GetHandle`</tt></dd>
 </dl>
@@ -2059,6 +2173,8 @@ Return&nbsp;the&nbsp;temporary&nbsp;default&nbsp;item,&nbsp;which&nbsp;can&nbsp;
 
 <dl><dt><a name="FigureFrameWxAgg-MacGetMetalAppearance"><strong>MacGetMetalAppearance</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-MacGetMetalAppearance">MacGetMetalAppearance</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
 
+<dl><dt><a name="FigureFrameWxAgg-MacGetUnifiedAppearance"><strong>MacGetUnifiedAppearance</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-MacGetUnifiedAppearance">MacGetUnifiedAppearance</a>(self)&nbsp;-&gt;&nbsp;bool</tt></dd></dl>
+
 <dl><dt><a name="FigureFrameWxAgg-MacSetMetalAppearance"><strong>MacSetMetalAppearance</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-MacSetMetalAppearance">MacSetMetalAppearance</a>(self,&nbsp;bool&nbsp;on)</tt></dd></dl>
 
 <dl><dt><a name="FigureFrameWxAgg-Maximize"><strong>Maximize</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-Maximize">Maximize</a>(self,&nbsp;bool&nbsp;maximize=True)</tt></dd></dl>
@@ -2272,7 +2388,7 @@ window&nbsp;had&nbsp;already&nbsp;been&nbsp;in&nbsp;the&nbsp;specified&nbsp;stat
 
 <dl><dt><a name="FigureFrameWxAgg-FindWindowById"><strong>FindWindowById</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-FindWindowById">FindWindowById</a>(self,&nbsp;long&nbsp;winid)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
-Find&nbsp;a&nbsp;chld&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
+Find&nbsp;a&nbsp;child&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
 
 <dl><dt><a name="FigureFrameWxAgg-FindWindowByName"><strong>FindWindowByName</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-FindWindowByName">FindWindowByName</a>(self,&nbsp;String&nbsp;name)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
@@ -2372,12 +2488,11 @@ Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;curr
 &nbsp;<br>
 Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;current&nbsp;font.</tt></dd></dl>
 
-<dl><dt><a name="FigureFrameWxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;PyObject<br>
+<dl><dt><a name="FigureFrameWxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;WindowList<br>
 &nbsp;<br>
-Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;NOTE:&nbsp;Currently&nbsp;this&nbsp;is&nbsp;a<br>
-copy&nbsp;of&nbsp;the&nbsp;child&nbsp;window&nbsp;list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window,&nbsp;so&nbsp;the&nbsp;return<br>
-value&nbsp;of&nbsp;this&nbsp;function&nbsp;is&nbsp;only&nbsp;valid&nbsp;as&nbsp;long&nbsp;as&nbsp;the&nbsp;window's&nbsp;children<br>
-do&nbsp;not&nbsp;change.</tt></dd></dl>
+Returns&nbsp;an&nbsp;object&nbsp;containing&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;The<br>
+object&nbsp;provides&nbsp;a&nbsp;Python&nbsp;sequence-like&nbsp;interface&nbsp;over&nbsp;the&nbsp;internal<br>
+list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window..</tt></dd></dl>
 
 <dl><dt><a name="FigureFrameWxAgg-GetClientAreaOrigin"><strong>GetClientAreaOrigin</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetClientAreaOrigin">GetClientAreaOrigin</a>(self)&nbsp;-&gt;&nbsp;Point<br>
 &nbsp;<br>
@@ -2462,11 +2577,16 @@ current&nbsp;or&nbsp;specified&nbsp;font.</tt></dd></dl>
 Returns&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;parent&nbsp;of&nbsp;this&nbsp;window,&nbsp;or&nbsp;None&nbsp;if&nbsp;there<br>
 isn't&nbsp;one.</tt></dd></dl>
 
+<dl><dt><a name="FigureFrameWxAgg-GetGtkWidget"><strong>GetGtkWidget</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetGtkWidget">GetGtkWidget</a>(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd></dl>
+
 <dl><dt><a name="FigureFrameWxAgg-GetHandle"><strong>GetHandle</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetHandle">GetHandle</a>(self)&nbsp;-&gt;&nbsp;long<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;platform-specific&nbsp;handle&nbsp;(as&nbsp;a&nbsp;long&nbsp;integer)&nbsp;of&nbsp;the<br>
-physical&nbsp;window.&nbsp;&nbsp;Currently&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;returns&nbsp;the&nbsp;handle&nbsp;of&nbsp;the<br>
-toplevel&nbsp;parent&nbsp;of&nbsp;the&nbsp;window.</tt></dd></dl>
+physical&nbsp;window.&nbsp;&nbsp;On&nbsp;wxMSW&nbsp;this&nbsp;is&nbsp;the&nbsp;win32&nbsp;window&nbsp;handle,&nbsp;on&nbsp;wxGTK<br>
+it&nbsp;is&nbsp;the&nbsp;XWindow&nbsp;ID,&nbsp;and&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;is&nbsp;the&nbsp;ControlRef.</tt></dd></dl>
 
 <dl><dt><a name="FigureFrameWxAgg-GetHelpText"><strong>GetHelpText</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#FigureFrameWxAgg-GetHelpText">GetHelpText</a>(self)&nbsp;-&gt;&nbsp;String<br>
 &nbsp;<br>
@@ -3523,6 +3643,12 @@ Data descriptors inherited from <a href="wx._core.html#Window">wx._core.Window</
 <dl><dt><strong>GrandParent</strong></dt>
 <dd><tt>See&nbsp;`GetGrandParent`</tt></dd>
 </dl>
+<dl><dt><strong>GtkWidget</strong></dt>
+<dd><tt>GetGtkWidget(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd>
+</dl>
 <dl><dt><strong>Handle</strong></dt>
 <dd><tt>See&nbsp;`GetHandle`</tt></dd>
 </dl>
@@ -3814,28 +3940,28 @@ Data descriptors inherited from <a href="wx._controls.html#ToolBar">wx._controls
 </dl>
 <hr>
 Methods inherited from <a href="wx._controls.html#ToolBarBase">wx._controls.ToolBarBase</a>:<br>
-<dl><dt><a name="NavigationToolbar2WxAgg-AddCheckLabelTool"><strong>AddCheckLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;check&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddCheckLabelTool"><strong>AddCheckLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;check&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-AddCheckTool"><strong>AddCheckTool</strong></a>(self, id, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;check&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddCheckTool"><strong>AddCheckTool</strong></a>(self, id, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;check&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-AddControl"><strong>AddControl</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-AddControl">AddControl</a>(self,&nbsp;Control&nbsp;control)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-AddLabelTool"><strong>AddLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, kind<font color="#909090">=0</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>The&nbsp;full&nbsp;<a href="#NavigationToolbar2WxAgg-AddTool">AddTool</a>()&nbsp;function.<br>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddLabelTool"><strong>AddLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, kind<font color="#909090">=0</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>The&nbsp;full&nbsp;<a href="#NavigationToolbar2WxAgg-AddTool">AddTool</a>()&nbsp;function.<br>
 &nbsp;<br>
 If&nbsp;bmpDisabled&nbsp;is&nbsp;wx.NullBitmap,&nbsp;a&nbsp;shadowed&nbsp;version&nbsp;of&nbsp;the&nbsp;normal&nbsp;bitmap<br>
 is&nbsp;created&nbsp;and&nbsp;used&nbsp;as&nbsp;the&nbsp;disabled&nbsp;image.</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-AddRadioLabelTool"><strong>AddRadioLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;radio&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled&nbsp;and&nbsp;releases&nbsp;any<br>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddRadioLabelTool"><strong>AddRadioLabelTool</strong></a>(self, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;radio&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled&nbsp;and&nbsp;releases&nbsp;any<br>
 other&nbsp;toggled&nbsp;radio&nbsp;tools&nbsp;in&nbsp;the&nbsp;same&nbsp;group&nbsp;when&nbsp;it&nbsp;happens</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-AddRadioTool"><strong>AddRadioTool</strong></a>(self, id, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;radio&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled&nbsp;and&nbsp;releases&nbsp;any<br>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddRadioTool"><strong>AddRadioTool</strong></a>(self, id, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Add&nbsp;a&nbsp;radio&nbsp;tool,&nbsp;i.e.&nbsp;a&nbsp;tool&nbsp;which&nbsp;can&nbsp;be&nbsp;toggled&nbsp;and&nbsp;releases&nbsp;any<br>
 other&nbsp;toggled&nbsp;radio&nbsp;tools&nbsp;in&nbsp;the&nbsp;same&nbsp;group&nbsp;when&nbsp;it&nbsp;happens</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-AddSeparator"><strong>AddSeparator</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-AddSeparator">AddSeparator</a>(self)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-AddSimpleTool"><strong>AddSimpleTool</strong></a>(self, id, bitmap, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>, isToggle<font color="#909090">=0</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;add&nbsp;a&nbsp;tool&nbsp;to&nbsp;the&nbsp;toolbar.</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-AddTool"><strong>AddTool</strong></a>(self, id, bitmap, pushedBitmap<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, isToggle<font color="#909090">=0</font>, clientData<font color="#909090">=None</font>, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;add&nbsp;a&nbsp;tool&nbsp;to&nbsp;the&nbsp;toolbar.</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-AddTool"><strong>AddTool</strong></a>(self, id, bitmap, pushedBitmap<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, isToggle<font color="#909090">=0</font>, clientData<font color="#909090">=None</font>, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;add&nbsp;a&nbsp;tool&nbsp;to&nbsp;the&nbsp;toolbar.</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-AddToolItem"><strong>AddToolItem</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-AddToolItem">AddToolItem</a>(self,&nbsp;ToolBarToolBase&nbsp;tool)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
@@ -3895,14 +4021,14 @@ other&nbsp;toggled&nbsp;radio&nbsp;tools&nbsp;in&nbsp;the&nbsp;same&nbsp;group&n
 
 <dl><dt><a name="NavigationToolbar2WxAgg-InsertControl"><strong>InsertControl</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-InsertControl">InsertControl</a>(self,&nbsp;size_t&nbsp;pos,&nbsp;Control&nbsp;control)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-InsertLabelTool"><strong>InsertLabelTool</strong></a>(self, pos, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, kind<font color="#909090">=0</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Insert&nbsp;the&nbsp;new&nbsp;tool&nbsp;at&nbsp;the&nbsp;given&nbsp;position,&nbsp;if&nbsp;pos&nbsp;==&nbsp;<a href="#NavigationToolbar2WxAgg-GetToolsCount">GetToolsCount</a>(),&nbsp;it<br>
+<dl><dt><a name="NavigationToolbar2WxAgg-InsertLabelTool"><strong>InsertLabelTool</strong></a>(self, pos, id, label, bitmap, bmpDisabled<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, kind<font color="#909090">=0</font>, shortHelp<font color="#909090">=''</font>, longHelp<font color="#909090">=''</font>, clientData<font color="#909090">=None</font>)</dt><dd><tt>Insert&nbsp;the&nbsp;new&nbsp;tool&nbsp;at&nbsp;the&nbsp;given&nbsp;position,&nbsp;if&nbsp;pos&nbsp;==&nbsp;<a href="#NavigationToolbar2WxAgg-GetToolsCount">GetToolsCount</a>(),&nbsp;it<br>
 is&nbsp;equivalent&nbsp;to&nbsp;<a href="#NavigationToolbar2WxAgg-AddTool">AddTool</a>()</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-InsertSeparator"><strong>InsertSeparator</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-InsertSeparator">InsertSeparator</a>(self,&nbsp;size_t&nbsp;pos)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-InsertSimpleTool"><strong>InsertSimpleTool</strong></a>(self, pos, id, bitmap, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>, isToggle<font color="#909090">=0</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;insert&nbsp;a&nbsp;tool&nbsp;in&nbsp;the&nbsp;toolbar.</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-InsertTool"><strong>InsertTool</strong></a>(self, pos, id, bitmap, pushedBitmap<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x3b8c030df0&gt; &gt;</font>, isToggle<font color="#909090">=0</font>, clientData<font color="#909090">=None</font>, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;insert&nbsp;a&nbsp;tool&nbsp;in&nbsp;the&nbsp;toolbar.</tt></dd></dl>
+<dl><dt><a name="NavigationToolbar2WxAgg-InsertTool"><strong>InsertTool</strong></a>(self, pos, id, bitmap, pushedBitmap<font color="#909090">=&lt;wx._gdi.Bitmap; proxy of &lt;Swig Object of type 'wxBitmap *' at 0x327a832e70&gt; &gt;</font>, isToggle<font color="#909090">=0</font>, clientData<font color="#909090">=None</font>, shortHelpString<font color="#909090">=''</font>, longHelpString<font color="#909090">=''</font>)</dt><dd><tt>Old&nbsp;style&nbsp;method&nbsp;to&nbsp;insert&nbsp;a&nbsp;tool&nbsp;in&nbsp;the&nbsp;toolbar.</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-InsertToolItem"><strong>InsertToolItem</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-InsertToolItem">InsertToolItem</a>(self,&nbsp;size_t&nbsp;pos,&nbsp;ToolBarToolBase&nbsp;tool)&nbsp;-&gt;&nbsp;ToolBarToolBase</tt></dd></dl>
 
@@ -4173,7 +4299,7 @@ window&nbsp;had&nbsp;already&nbsp;been&nbsp;in&nbsp;the&nbsp;specified&nbsp;stat
 
 <dl><dt><a name="NavigationToolbar2WxAgg-FindWindowById"><strong>FindWindowById</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-FindWindowById">FindWindowById</a>(self,&nbsp;long&nbsp;winid)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
-Find&nbsp;a&nbsp;chld&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
+Find&nbsp;a&nbsp;child&nbsp;of&nbsp;this&nbsp;window&nbsp;by&nbsp;window&nbsp;ID</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-FindWindowByName"><strong>FindWindowByName</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-FindWindowByName">FindWindowByName</a>(self,&nbsp;String&nbsp;name)&nbsp;-&gt;&nbsp;Window<br>
 &nbsp;<br>
@@ -4273,12 +4399,11 @@ Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;curr
 &nbsp;<br>
 Get&nbsp;the&nbsp;(average)&nbsp;character&nbsp;size&nbsp;for&nbsp;the&nbsp;current&nbsp;font.</tt></dd></dl>
 
-<dl><dt><a name="NavigationToolbar2WxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;PyObject<br>
+<dl><dt><a name="NavigationToolbar2WxAgg-GetChildren"><strong>GetChildren</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetChildren">GetChildren</a>(self)&nbsp;-&gt;&nbsp;WindowList<br>
 &nbsp;<br>
-Returns&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;NOTE:&nbsp;Currently&nbsp;this&nbsp;is&nbsp;a<br>
-copy&nbsp;of&nbsp;the&nbsp;child&nbsp;window&nbsp;list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window,&nbsp;so&nbsp;the&nbsp;return<br>
-value&nbsp;of&nbsp;this&nbsp;function&nbsp;is&nbsp;only&nbsp;valid&nbsp;as&nbsp;long&nbsp;as&nbsp;the&nbsp;window's&nbsp;children<br>
-do&nbsp;not&nbsp;change.</tt></dd></dl>
+Returns&nbsp;an&nbsp;object&nbsp;containing&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;window's&nbsp;children.&nbsp;&nbsp;The<br>
+object&nbsp;provides&nbsp;a&nbsp;Python&nbsp;sequence-like&nbsp;interface&nbsp;over&nbsp;the&nbsp;internal<br>
+list&nbsp;maintained&nbsp;by&nbsp;the&nbsp;window..</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-GetClientAreaOrigin"><strong>GetClientAreaOrigin</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetClientAreaOrigin">GetClientAreaOrigin</a>(self)&nbsp;-&gt;&nbsp;Point<br>
 &nbsp;<br>
@@ -4363,11 +4488,16 @@ current&nbsp;or&nbsp;specified&nbsp;font.</tt></dd></dl>
 Returns&nbsp;the&nbsp;parent&nbsp;of&nbsp;the&nbsp;parent&nbsp;of&nbsp;this&nbsp;window,&nbsp;or&nbsp;None&nbsp;if&nbsp;there<br>
 isn't&nbsp;one.</tt></dd></dl>
 
+<dl><dt><a name="NavigationToolbar2WxAgg-GetGtkWidget"><strong>GetGtkWidget</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetGtkWidget">GetGtkWidget</a>(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd></dl>
+
 <dl><dt><a name="NavigationToolbar2WxAgg-GetHandle"><strong>GetHandle</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetHandle">GetHandle</a>(self)&nbsp;-&gt;&nbsp;long<br>
 &nbsp;<br>
 Returns&nbsp;the&nbsp;platform-specific&nbsp;handle&nbsp;(as&nbsp;a&nbsp;long&nbsp;integer)&nbsp;of&nbsp;the<br>
-physical&nbsp;window.&nbsp;&nbsp;Currently&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;returns&nbsp;the&nbsp;handle&nbsp;of&nbsp;the<br>
-toplevel&nbsp;parent&nbsp;of&nbsp;the&nbsp;window.</tt></dd></dl>
+physical&nbsp;window.&nbsp;&nbsp;On&nbsp;wxMSW&nbsp;this&nbsp;is&nbsp;the&nbsp;win32&nbsp;window&nbsp;handle,&nbsp;on&nbsp;wxGTK<br>
+it&nbsp;is&nbsp;the&nbsp;XWindow&nbsp;ID,&nbsp;and&nbsp;on&nbsp;wxMac&nbsp;it&nbsp;is&nbsp;the&nbsp;ControlRef.</tt></dd></dl>
 
 <dl><dt><a name="NavigationToolbar2WxAgg-GetHelpText"><strong>GetHelpText</strong></a>(*args, **kwargs)</dt><dd><tt><a href="#NavigationToolbar2WxAgg-GetHelpText">GetHelpText</a>(self)&nbsp;-&gt;&nbsp;String<br>
 &nbsp;<br>
@@ -5426,6 +5556,12 @@ Data descriptors inherited from <a href="wx._core.html#Window">wx._core.Window</
 <dl><dt><strong>GrandParent</strong></dt>
 <dd><tt>See&nbsp;`GetGrandParent`</tt></dd>
 </dl>
+<dl><dt><strong>GtkWidget</strong></dt>
+<dd><tt>GetGtkWidget(self)&nbsp;-&gt;&nbsp;long<br>
+&nbsp;<br>
+On&nbsp;wxGTK&nbsp;returns&nbsp;a&nbsp;pointer&nbsp;to&nbsp;the&nbsp;GtkWidget&nbsp;for&nbsp;this&nbsp;window&nbsp;as&nbsp;a&nbsp;long<br>
+integer.&nbsp;&nbsp;On&nbsp;the&nbsp;other&nbsp;platforms&nbsp;this&nbsp;method&nbsp;returns&nbsp;zero.</tt></dd>
+</dl>
 <dl><dt><strong>Handle</strong></dt>
 <dd><tt>See&nbsp;`GetHandle`</tt></dd>
 </dl>
@@ -5619,6 +5755,6 @@ Data descriptors inherited from <a href="wx._core.html#Object">wx._core.Object</
 <font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
     
 <tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><strong>backend_version</strong> = '2.8.4.0'<br>
+<td width="100%"><strong>backend_version</strong> = '2.8.7.1'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)</td></tr></table>
 @footer@

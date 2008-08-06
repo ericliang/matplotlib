@@ -136,6 +136,33 @@ Methods inherited from <a href="matplotlib.backends.backend_qt.html#FigureCanvas
 
 <dl><dt><a name="FigureCanvasQTAgg-sizeHint"><strong>sizeHint</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="FigureCanvasQTAgg-start_event_loop"><strong>start_event_loop</strong></a>(self, timeout)</dt><dd><tt>Start&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;start&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.&nbsp;&nbsp;This&nbsp;should&nbsp;not&nbsp;be<br>
+confused&nbsp;with&nbsp;the&nbsp;main&nbsp;GUI&nbsp;event&nbsp;loop,&nbsp;which&nbsp;is&nbsp;always&nbsp;running<br>
+and&nbsp;has&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with&nbsp;this.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;provides&nbsp;default&nbsp;event&nbsp;loop&nbsp;functionality&nbsp;based<br>
+on&nbsp;time.sleep&nbsp;that&nbsp;is&nbsp;meant&nbsp;to&nbsp;be&nbsp;used&nbsp;until&nbsp;event&nbsp;loop<br>
+functions&nbsp;for&nbsp;each&nbsp;of&nbsp;the&nbsp;GUI&nbsp;backends&nbsp;can&nbsp;be&nbsp;written.&nbsp;&nbsp;As<br>
+such,&nbsp;it&nbsp;throws&nbsp;a&nbsp;deprecated&nbsp;warning.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#FigureCanvasQTAgg-start_event_loop_default">start_event_loop_default</a>(self,timeout=0)<br>
+&nbsp;<br>
+This&nbsp;call&nbsp;blocks&nbsp;until&nbsp;a&nbsp;callback&nbsp;function&nbsp;triggers<br>
+<a href="#FigureCanvasQTAgg-stop_event_loop">stop_event_loop</a>()&nbsp;or&nbsp;*timeout*&nbsp;is&nbsp;reached.&nbsp;&nbsp;If&nbsp;*timeout*&nbsp;is<br>
+&lt;=0,&nbsp;never&nbsp;timeout.</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasQTAgg-stop_event_loop"><strong>stop_event_loop</strong></a>(self)</dt><dd><tt>Stop&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;stop&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+<a href="#FigureCanvasQTAgg-stop_event_loop_default">stop_event_loop_default</a>(self)</tt></dd></dl>
+
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backends.backend_qt.html#FigureCanvasQT">matplotlib.backends.backend_qt.FigureCanvasQT</a>:<br>
 <dl><dt><strong>buttond</strong> = {1: 1, 2: 3, 4: 2}</dl>
@@ -1809,77 +1836,77 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>XorROP</strong> = 2</dl>
 
-<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x1588e20&gt;</dl>
+<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x298c8d0&gt;</dl>
 
-<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x159e7c0&gt;</dl>
+<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x298d270&gt;</dl>
 
-<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x15888d0&gt;</dl>
+<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x298c380&gt;</dl>
 
-<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x159e408&gt;</dl>
+<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x298ce20&gt;</dl>
 
-<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x15885a0&gt;</dl>
+<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x298c050&gt;</dl>
 
-<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x159e8d0&gt;</dl>
+<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x298d380&gt;</dl>
 
-<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x159e848&gt;</dl>
+<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x298d2f8&gt;</dl>
 
-<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x1588d10&gt;</dl>
+<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x298c7c0&gt;</dl>
 
-<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x159e380&gt;</dl>
+<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x298cd98&gt;</dl>
 
-<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x159e0d8&gt;</dl>
+<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x298caf0&gt;</dl>
 
-<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x159e050&gt;</dl>
+<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x298ca68&gt;</dl>
 
-<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x159e6b0&gt;</dl>
+<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x298d160&gt;</dl>
 
-<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x159e160&gt;</dl>
+<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x298cb78&gt;</dl>
 
-<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x1588f30&gt;</dl>
+<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x298c9e0&gt;</dl>
 
-<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x159e1e8&gt;</dl>
+<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x298cc00&gt;</dl>
 
-<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x1588ea8&gt;</dl>
+<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x298c958&gt;</dl>
 
-<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x15886b0&gt;</dl>
+<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x298c160&gt;</dl>
 
-<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x159e628&gt;</dl>
+<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x298d0d8&gt;</dl>
 
-<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x159e490&gt;</dl>
+<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x298cea8&gt;</dl>
 
-<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x1588c00&gt;</dl>
+<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x298c6b0&gt;</dl>
 
-<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x159e5a0&gt;</dl>
+<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x298d050&gt;</dl>
 
-<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x159e2f8&gt;</dl>
+<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x298cd10&gt;</dl>
 
-<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x1588738&gt;</dl>
+<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x298c1e8&gt;</dl>
 
-<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x159e518&gt;</dl>
+<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x298cf30&gt;</dl>
 
-<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x1588958&gt;</dl>
+<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x298c408&gt;</dl>
 
-<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x1588a68&gt;</dl>
+<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x298c518&gt;</dl>
 
-<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x15889e0&gt;</dl>
+<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x298c490&gt;</dl>
 
-<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x1588af0&gt;</dl>
+<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x298c5a0&gt;</dl>
 
-<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x1588b78&gt;</dl>
+<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x298c628&gt;</dl>
 
-<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x15887c0&gt;</dl>
+<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x298c270&gt;</dl>
 
-<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x1588848&gt;</dl>
+<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x298c2f8&gt;</dl>
 
-<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x1588d98&gt;</dl>
+<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x298c848&gt;</dl>
 
-<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x1588c88&gt;</dl>
+<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x298c738&gt;</dl>
 
-<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x1588628&gt;</dl>
+<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x298c0d8&gt;</dl>
 
-<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x159e738&gt;</dl>
+<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x298d1e8&gt;</dl>
 
-<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x159e270&gt;</dl>
+<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x298cc88&gt;</dl>
 
 <hr>
 Data and other attributes inherited from <a href="qt.html#QPaintDevice">qt.QPaintDevice</a>:<br>
@@ -2051,24 +2078,40 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0x2aaab57adf40&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0x7f0b8ec58f40&gt;<dd><tt>T.<a href="#FigureCanvasQTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
 <dl><dt><a name="FigureCanvasQTAgg-button_press_event"><strong>button_press_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any&nbsp;mouse<br>
 button&nbsp;press.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;:class:`MouseEvent`.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'button_press_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-button_release_event"><strong>button_release_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any&nbsp;mouse<br>
-button&nbsp;release.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+button&nbsp;release.<br>
+&nbsp;<br>
+*x*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=left<br>
+&nbsp;<br>
+*y*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=bottom<br>
+&nbsp;<br>
+*guiEvent*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;native&nbsp;UI&nbsp;event&nbsp;that&nbsp;generated&nbsp;the&nbsp;mpl&nbsp;event<br>
+&nbsp;<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'button_release_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-draw_cursor"><strong>draw_cursor</strong></a>(self, event)</dt><dd><tt>Draw&nbsp;a&nbsp;cursor&nbsp;in&nbsp;the&nbsp;event.axes&nbsp;if&nbsp;inaxes&nbsp;is&nbsp;not&nbsp;None.&nbsp;&nbsp;Use<br>
 native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt></dl>
+<dl><dt><a name="FigureCanvasQTAgg-draw_event"><strong>draw_event</strong></a>(self, renderer)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'draw_event'&nbsp;with&nbsp;a&nbsp;:class:`DrawEvent`</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-draw_idle"><strong>draw_idle</strong></a>(self, *args, **kwargs)</dt><dd><tt>draw&nbsp;only&nbsp;if&nbsp;idle;&nbsp;defaults&nbsp;to&nbsp;draw&nbsp;but&nbsp;backends&nbsp;can&nbsp;overrride</tt></dd></dl>
+<dl><dt><a name="FigureCanvasQTAgg-draw_idle"><strong>draw_idle</strong></a>(self, *args, **kwargs)</dt><dd><tt>:meth:`draw`&nbsp;only&nbsp;if&nbsp;idle;&nbsp;defaults&nbsp;to&nbsp;draw&nbsp;but&nbsp;backends&nbsp;can&nbsp;overrride</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-get_supported_filetypes"><strong>get_supported_filetypes</strong></a>(self)</dt></dl>
 
@@ -2077,54 +2120,90 @@ native&nbsp;GUI&nbsp;drawing&nbsp;for&nbsp;efficiency&nbsp;if&nbsp;possible</tt>
 <dl><dt><a name="FigureCanvasQTAgg-get_width_height"><strong>get_width_height</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;width&nbsp;and&nbsp;height&nbsp;in&nbsp;points&nbsp;or&nbsp;pixels<br>
 (depending&nbsp;on&nbsp;the&nbsp;backend),&nbsp;truncated&nbsp;to&nbsp;integers</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-key_press_event"><strong>key_press_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="FigureCanvasQTAgg-idle_event"><strong>idle_event</strong></a>(self, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>call&nbsp;when&nbsp;GUI&nbsp;is&nbsp;idle</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-key_release_event"><strong>key_release_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt></dl>
+<dl><dt><a name="FigureCanvasQTAgg-key_press_event"><strong>key_press_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'key_press_event'&nbsp;with&nbsp;a&nbsp;:class:`KeyEvent`</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasQTAgg-key_release_event"><strong>key_release_event</strong></a>(self, key, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'key_release_event'&nbsp;with&nbsp;a&nbsp;:class:`KeyEvent`</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-motion_notify_event"><strong>motion_notify_event</strong></a>(self, x, y, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
-motion-notify-event.&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,&nbsp;left.<br>
-button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+motion-notify-event.<br>
+&nbsp;<br>
+*x*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=left<br>
+&nbsp;<br>
+*y*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;canvas&nbsp;coordinates&nbsp;where&nbsp;0=bottom<br>
+&nbsp;<br>
+*guiEvent*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;native&nbsp;UI&nbsp;event&nbsp;that&nbsp;generated&nbsp;the&nbsp;mpl&nbsp;event<br>
+&nbsp;<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'motion_notify_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-mpl_connect"><strong>mpl_connect</strong></a>(self, s, func)</dt><dd><tt>Connect&nbsp;event&nbsp;with&nbsp;string&nbsp;s&nbsp;to&nbsp;func.&nbsp;&nbsp;The&nbsp;signature&nbsp;of&nbsp;func&nbsp;is<br>
+<dl><dt><a name="FigureCanvasQTAgg-mpl_connect"><strong>mpl_connect</strong></a>(self, s, func)</dt><dd><tt>Connect&nbsp;event&nbsp;with&nbsp;string&nbsp;*s*&nbsp;to&nbsp;*func*.&nbsp;&nbsp;The&nbsp;signature&nbsp;of&nbsp;*func*&nbsp;is::<br>
 &nbsp;<br>
 &nbsp;&nbsp;def&nbsp;func(event)<br>
 &nbsp;<br>
-where&nbsp;event&nbsp;is&nbsp;a&nbsp;MplEvent.&nbsp;&nbsp;The&nbsp;following&nbsp;events&nbsp;are&nbsp;recognized<br>
+where&nbsp;event&nbsp;is&nbsp;a&nbsp;:class:`matplotlib.backend_bases.Event`.&nbsp;&nbsp;The<br>
+following&nbsp;events&nbsp;are&nbsp;recognized<br>
 &nbsp;<br>
-'resize_event',<br>
-'draw_event',<br>
-'key_press_event',<br>
-'key_release_event',<br>
-'button_press_event',<br>
-'button_release_event',<br>
-'scroll_event',<br>
-'motion_notify_event',<br>
-'pick_event',<br>
+-&nbsp;'button_press_event'<br>
+-&nbsp;'button_release_event'<br>
+-&nbsp;'draw_event'<br>
+-&nbsp;'key_press_event'<br>
+-&nbsp;'key_release_event'<br>
+-&nbsp;'motion_notify_event'<br>
+-&nbsp;'pick_event'<br>
+-&nbsp;'resize_event'<br>
+-&nbsp;'scroll_event'<br>
 &nbsp;<br>
+For&nbsp;the&nbsp;location&nbsp;events&nbsp;(button&nbsp;and&nbsp;key&nbsp;press/release),&nbsp;if&nbsp;the<br>
+mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,&nbsp;the&nbsp;variable&nbsp;``event.inaxes``&nbsp;will&nbsp;be<br>
+set&nbsp;to&nbsp;the&nbsp;:class:`~matplotlib.axes.Axes`&nbsp;the&nbsp;event&nbsp;occurs&nbsp;is<br>
+over,&nbsp;and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;``event.xdata``&nbsp;and<br>
+``event.ydata``&nbsp;will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location<br>
+in&nbsp;data&nbsp;coords.&nbsp;&nbsp;See<br>
+:class:`~matplotlib.backend_bases.KeyEvent`&nbsp;and<br>
+:class:`~matplotlib.backend_bases.MouseEvent`&nbsp;for&nbsp;more&nbsp;info.<br>
 &nbsp;<br>
-For&nbsp;the&nbsp;three&nbsp;events&nbsp;above,&nbsp;if&nbsp;the&nbsp;mouse&nbsp;is&nbsp;over&nbsp;the&nbsp;axes,<br>
-the&nbsp;variable&nbsp;event.inaxes&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;the&nbsp;axes&nbsp;it&nbsp;is&nbsp;over,<br>
-and&nbsp;additionally,&nbsp;the&nbsp;variables&nbsp;event.xdata&nbsp;and&nbsp;event.ydata<br>
-will&nbsp;be&nbsp;defined.&nbsp;&nbsp;This&nbsp;is&nbsp;the&nbsp;mouse&nbsp;location&nbsp;in&nbsp;data&nbsp;coords.<br>
-See&nbsp;backend_bases.MplEvent.<br>
+Return&nbsp;value&nbsp;is&nbsp;a&nbsp;connection&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with<br>
+:meth:`~matplotlib.backend_bases.Event.mpl_disconnect`.<br>
 &nbsp;<br>
-return&nbsp;value&nbsp;is&nbsp;a&nbsp;connection&nbsp;id&nbsp;that&nbsp;can&nbsp;be&nbsp;used&nbsp;with<br>
-mpl_disconnect</tt></dd></dl>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;def&nbsp;on_press(event):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'you&nbsp;pressed',&nbsp;event.button,&nbsp;event.xdata,&nbsp;event.ydata<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cid&nbsp;=&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('button_press_event',&nbsp;on_press)</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid</tt></dd></dl>
+<dl><dt><a name="FigureCanvasQTAgg-mpl_disconnect"><strong>mpl_disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;callback&nbsp;id&nbsp;cid<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;cid&nbsp;=&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('button_press_event',&nbsp;on_press)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;#...later<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_disconnect">mpl_disconnect</a>(cid)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-onHilite"><strong>onHilite</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;highlights&nbsp;the&nbsp;artists<br>
-under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;motion_notify_event<br>
-using&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;'motion_notify_event'<br>
+using::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('motion_notify_event',canvas.onHilite)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-onRemove"><strong>onRemove</strong></a>(self, ev)</dt><dd><tt>Mouse&nbsp;event&nbsp;processor&nbsp;which&nbsp;removes&nbsp;the&nbsp;top&nbsp;artist<br>
-under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;mouse_press_event<br>
-using&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
+under&nbsp;the&nbsp;cursor.&nbsp;&nbsp;Connect&nbsp;this&nbsp;to&nbsp;the&nbsp;'mouse_press_event'<br>
+using::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;canvas.<a href="#FigureCanvasQTAgg-mpl_connect">mpl_connect</a>('mouse_press_event',canvas.onRemove)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-pick"><strong>pick</strong></a>(self, mouseevent)</dt></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-pick_event"><strong>pick_event</strong></a>(self, mouseevent, artist, **kwargs)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;called&nbsp;by&nbsp;artists&nbsp;who&nbsp;are&nbsp;picked&nbsp;and&nbsp;will<br>
-fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
+fire&nbsp;off&nbsp;:class:`PickEvent`&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-print_bmp"><strong>print_bmp</strong></a> = print_raw(self, *args, **kwargs)</dt></dl>
 
@@ -2142,14 +2221,45 @@ fire&nbsp;off&nbsp;PickEvent&nbsp;callbacks&nbsp;registered&nbsp;listeners</tt><
 
 <dl><dt><a name="FigureCanvasQTAgg-print_svgz"><strong>print_svgz</strong></a>(self, *args, **kwargs)</dt></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-resize_event"><strong>resize_event</strong></a>(self)</dt></dl>
+<dl><dt><a name="FigureCanvasQTAgg-resize_event"><strong>resize_event</strong></a>(self)</dt><dd><tt>This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'resize_event'&nbsp;with&nbsp;a&nbsp;:class:`ResizeEvent`</tt></dd></dl>
 
-<dl><dt><a name="FigureCanvasQTAgg-scroll_event"><strong>scroll_event</strong></a>(self, x, y, button, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
+<dl><dt><a name="FigureCanvasQTAgg-scroll_event"><strong>scroll_event</strong></a>(self, x, y, step, guiEvent<font color="#909090">=None</font>)</dt><dd><tt>Backend&nbsp;derived&nbsp;classes&nbsp;should&nbsp;call&nbsp;this&nbsp;function&nbsp;on&nbsp;any<br>
 scroll&nbsp;wheel&nbsp;event.&nbsp;&nbsp;x,y&nbsp;are&nbsp;the&nbsp;canvas&nbsp;coords:&nbsp;0,0&nbsp;is&nbsp;lower,<br>
-left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent</tt></dd></dl>
+left.&nbsp;&nbsp;button&nbsp;and&nbsp;key&nbsp;are&nbsp;as&nbsp;defined&nbsp;in&nbsp;MouseEvent.<br>
+&nbsp;<br>
+This&nbsp;method&nbsp;will&nbsp;be&nbsp;call&nbsp;all&nbsp;functions&nbsp;connected&nbsp;to&nbsp;the<br>
+'scroll_event'&nbsp;with&nbsp;a&nbsp;:class:`MouseEvent`&nbsp;instance.</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-set_window_title"><strong>set_window_title</strong></a>(self, title)</dt><dd><tt>Set&nbsp;the&nbsp;title&nbsp;text&nbsp;of&nbsp;the&nbsp;window&nbsp;containing&nbsp;the&nbsp;figure.&nbsp;&nbsp;Note&nbsp;that<br>
 this&nbsp;has&nbsp;no&nbsp;effect&nbsp;if&nbsp;there&nbsp;is&nbsp;no&nbsp;window&nbsp;(eg,&nbsp;a&nbsp;PS&nbsp;backend).</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasQTAgg-start_event_loop_default"><strong>start_event_loop_default</strong></a>(self, timeout<font color="#909090">=0</font>)</dt><dd><tt>Start&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;start&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.&nbsp;&nbsp;This&nbsp;should&nbsp;not&nbsp;be<br>
+confused&nbsp;with&nbsp;the&nbsp;main&nbsp;GUI&nbsp;event&nbsp;loop,&nbsp;which&nbsp;is&nbsp;always&nbsp;running<br>
+and&nbsp;has&nbsp;nothing&nbsp;to&nbsp;do&nbsp;with&nbsp;this.<br>
+&nbsp;<br>
+This&nbsp;function&nbsp;provides&nbsp;default&nbsp;event&nbsp;loop&nbsp;functionality&nbsp;based<br>
+on&nbsp;time.sleep&nbsp;that&nbsp;is&nbsp;meant&nbsp;to&nbsp;be&nbsp;used&nbsp;until&nbsp;event&nbsp;loop<br>
+functions&nbsp;for&nbsp;each&nbsp;of&nbsp;the&nbsp;GUI&nbsp;backends&nbsp;can&nbsp;be&nbsp;written.&nbsp;&nbsp;As<br>
+such,&nbsp;it&nbsp;throws&nbsp;a&nbsp;deprecated&nbsp;warning.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#FigureCanvasQTAgg-start_event_loop_default">start_event_loop_default</a>(self,timeout=0)<br>
+&nbsp;<br>
+This&nbsp;call&nbsp;blocks&nbsp;until&nbsp;a&nbsp;callback&nbsp;function&nbsp;triggers<br>
+<a href="#FigureCanvasQTAgg-stop_event_loop">stop_event_loop</a>()&nbsp;or&nbsp;*timeout*&nbsp;is&nbsp;reached.&nbsp;&nbsp;If&nbsp;*timeout*&nbsp;is<br>
+&lt;=0,&nbsp;never&nbsp;timeout.</tt></dd></dl>
+
+<dl><dt><a name="FigureCanvasQTAgg-stop_event_loop_default"><strong>stop_event_loop_default</strong></a>(self)</dt><dd><tt>Stop&nbsp;an&nbsp;event&nbsp;loop.&nbsp;&nbsp;This&nbsp;is&nbsp;used&nbsp;to&nbsp;stop&nbsp;a&nbsp;blocking&nbsp;event<br>
+loop&nbsp;so&nbsp;that&nbsp;interactive&nbsp;functions,&nbsp;such&nbsp;as&nbsp;ginput&nbsp;and<br>
+waitforbuttonpress,&nbsp;can&nbsp;wait&nbsp;for&nbsp;events.<br>
+&nbsp;<br>
+Call&nbsp;signature::<br>
+&nbsp;<br>
+<a href="#FigureCanvasQTAgg-stop_event_loop_default">stop_event_loop_default</a>(self)</tt></dd></dl>
 
 <dl><dt><a name="FigureCanvasQTAgg-switch_backends"><strong>switch_backends</strong></a>(self, FigureCanvasClass)</dt><dd><tt>instantiate&nbsp;an&nbsp;instance&nbsp;of&nbsp;FigureCanvasClass<br>
 &nbsp;<br>
@@ -2160,7 +2270,7 @@ figure&nbsp;size&nbsp;or&nbsp;line&nbsp;props),&nbsp;will&nbsp;be&nbsp;reflected
 
 <hr>
 Data and other attributes inherited from <a href="matplotlib.backend_bases.html#FigureCanvasBase">matplotlib.backend_bases.FigureCanvasBase</a>:<br>
-<dl><dt><strong>events</strong> = ('resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event')</dl>
+<dl><dt><strong>events</strong> = ['resize_event', 'draw_event', 'key_press_event', 'key_release_event', 'button_press_event', 'button_release_event', 'scroll_event', 'motion_notify_event', 'pick_event', 'idle_event']</dl>
 
 <dl><dt><strong>filetypes</strong> = {'emf': 'Enhanced Metafile', 'eps': 'Encapsulated Postscript', 'pdf': 'Portable Document Format', 'png': 'Portable Network Graphics', 'ps': 'Postscript', 'raw': 'Raw RGBA bitmap', 'rgba': 'Raw RGBA bitmap', 'svg': 'Scalable Vector Graphics', 'svgz': 'Scalable Vector Graphics'}</dl>
 
@@ -3951,77 +4061,77 @@ Data and other attributes inherited from <a href="qt.html#Qt">qt.Qt</a>:<br>
 
 <dl><dt><strong>XorROP</strong> = 2</dl>
 
-<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x1588e20&gt;</dl>
+<dl><dt><strong>arrowCursor</strong> = &lt;qt.QCursor object at 0x298c8d0&gt;</dl>
 
-<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x159e7c0&gt;</dl>
+<dl><dt><strong>black</strong> = &lt;qt.QColor object at 0x298d270&gt;</dl>
 
-<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x15888d0&gt;</dl>
+<dl><dt><strong>blankCursor</strong> = &lt;qt.QCursor object at 0x298c380&gt;</dl>
 
-<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x159e408&gt;</dl>
+<dl><dt><strong>blue</strong> = &lt;qt.QColor object at 0x298ce20&gt;</dl>
 
-<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x15885a0&gt;</dl>
+<dl><dt><strong>busyCursor</strong> = &lt;qt.QCursor object at 0x298c050&gt;</dl>
 
-<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x159e8d0&gt;</dl>
+<dl><dt><strong>color0</strong> = &lt;qt.QColor object at 0x298d380&gt;</dl>
 
-<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x159e848&gt;</dl>
+<dl><dt><strong>color1</strong> = &lt;qt.QColor object at 0x298d2f8&gt;</dl>
 
-<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x1588d10&gt;</dl>
+<dl><dt><strong>crossCursor</strong> = &lt;qt.QCursor object at 0x298c7c0&gt;</dl>
 
-<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x159e380&gt;</dl>
+<dl><dt><strong>cyan</strong> = &lt;qt.QColor object at 0x298cd98&gt;</dl>
 
-<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x159e0d8&gt;</dl>
+<dl><dt><strong>darkBlue</strong> = &lt;qt.QColor object at 0x298caf0&gt;</dl>
 
-<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x159e050&gt;</dl>
+<dl><dt><strong>darkCyan</strong> = &lt;qt.QColor object at 0x298ca68&gt;</dl>
 
-<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x159e6b0&gt;</dl>
+<dl><dt><strong>darkGray</strong> = &lt;qt.QColor object at 0x298d160&gt;</dl>
 
-<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x159e160&gt;</dl>
+<dl><dt><strong>darkGreen</strong> = &lt;qt.QColor object at 0x298cb78&gt;</dl>
 
-<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x1588f30&gt;</dl>
+<dl><dt><strong>darkMagenta</strong> = &lt;qt.QColor object at 0x298c9e0&gt;</dl>
 
-<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x159e1e8&gt;</dl>
+<dl><dt><strong>darkRed</strong> = &lt;qt.QColor object at 0x298cc00&gt;</dl>
 
-<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x1588ea8&gt;</dl>
+<dl><dt><strong>darkYellow</strong> = &lt;qt.QColor object at 0x298c958&gt;</dl>
 
-<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x15886b0&gt;</dl>
+<dl><dt><strong>forbiddenCursor</strong> = &lt;qt.QCursor object at 0x298c160&gt;</dl>
 
-<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x159e628&gt;</dl>
+<dl><dt><strong>gray</strong> = &lt;qt.QColor object at 0x298d0d8&gt;</dl>
 
-<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x159e490&gt;</dl>
+<dl><dt><strong>green</strong> = &lt;qt.QColor object at 0x298cea8&gt;</dl>
 
-<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x1588c00&gt;</dl>
+<dl><dt><strong>ibeamCursor</strong> = &lt;qt.QCursor object at 0x298c6b0&gt;</dl>
 
-<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x159e5a0&gt;</dl>
+<dl><dt><strong>lightGray</strong> = &lt;qt.QColor object at 0x298d050&gt;</dl>
 
-<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x159e2f8&gt;</dl>
+<dl><dt><strong>magenta</strong> = &lt;qt.QColor object at 0x298cd10&gt;</dl>
 
-<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x1588738&gt;</dl>
+<dl><dt><strong>pointingHandCursor</strong> = &lt;qt.QCursor object at 0x298c1e8&gt;</dl>
 
-<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x159e518&gt;</dl>
+<dl><dt><strong>red</strong> = &lt;qt.QColor object at 0x298cf30&gt;</dl>
 
-<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x1588958&gt;</dl>
+<dl><dt><strong>sizeAllCursor</strong> = &lt;qt.QCursor object at 0x298c408&gt;</dl>
 
-<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x1588a68&gt;</dl>
+<dl><dt><strong>sizeBDiagCursor</strong> = &lt;qt.QCursor object at 0x298c518&gt;</dl>
 
-<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x15889e0&gt;</dl>
+<dl><dt><strong>sizeFDiagCursor</strong> = &lt;qt.QCursor object at 0x298c490&gt;</dl>
 
-<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x1588af0&gt;</dl>
+<dl><dt><strong>sizeHorCursor</strong> = &lt;qt.QCursor object at 0x298c5a0&gt;</dl>
 
-<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x1588b78&gt;</dl>
+<dl><dt><strong>sizeVerCursor</strong> = &lt;qt.QCursor object at 0x298c628&gt;</dl>
 
-<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x15887c0&gt;</dl>
+<dl><dt><strong>splitHCursor</strong> = &lt;qt.QCursor object at 0x298c270&gt;</dl>
 
-<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x1588848&gt;</dl>
+<dl><dt><strong>splitVCursor</strong> = &lt;qt.QCursor object at 0x298c2f8&gt;</dl>
 
-<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x1588d98&gt;</dl>
+<dl><dt><strong>upArrowCursor</strong> = &lt;qt.QCursor object at 0x298c848&gt;</dl>
 
-<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x1588c88&gt;</dl>
+<dl><dt><strong>waitCursor</strong> = &lt;qt.QCursor object at 0x298c738&gt;</dl>
 
-<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x1588628&gt;</dl>
+<dl><dt><strong>whatsThisCursor</strong> = &lt;qt.QCursor object at 0x298c0d8&gt;</dl>
 
-<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x159e738&gt;</dl>
+<dl><dt><strong>white</strong> = &lt;qt.QColor object at 0x298d1e8&gt;</dl>
 
-<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x159e270&gt;</dl>
+<dl><dt><strong>yellow</strong> = &lt;qt.QColor object at 0x298cc88&gt;</dl>
 
 <hr>
 Data and other attributes inherited from <a href="qt.html#QPaintDevice">qt.QPaintDevice</a>:<br>
@@ -4193,7 +4303,7 @@ Methods inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
 
 <hr>
 Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper</a>:<br>
-<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0x2aaab57adf40&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of sip.wrappertype object at 0x7f0b8ec58f40&gt;<dd><tt>T.<a href="#NavigationToolbar2QTAgg-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;object&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -4213,5 +4323,5 @@ Data and other attributes inherited from <a href="sip.html#wrapper">sip.wrapper<
 <td width="100%"><strong>DEBUG</strong> = False<br>
 <strong>backend_version</strong> = '0.9.1'<br>
 <strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe47bd8&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x2214200&gt;</td></tr></table>
 @footer@

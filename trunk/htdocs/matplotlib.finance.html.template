@@ -15,11 +15,10 @@ financial&nbsp;data.&nbsp;&nbsp;&nbsp;User&nbsp;contributions&nbsp;welcome!</tt>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
-<a href="md5.html">md5</a><br>
-</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
-<a href="os.html">os</a><br>
-</td><td width="25%" valign=top><a href="time.html">time</a><br>
-<a href="warnings.html">warnings</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
 </td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#eeaa77">
@@ -73,6 +72,7 @@ a&nbsp;file&nbsp;handle&nbsp;is&nbsp;returned</tt></dd></dl>
 ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
 width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
 alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt></dd></dl>
+ <dl><dt><a name="-md5"><strong>md5</strong></a> = openssl_md5(...)</dt><dd><tt>Returns&nbsp;a&nbsp;md5&nbsp;hash&nbsp;object;&nbsp;optionally&nbsp;initialized&nbsp;with&nbsp;a&nbsp;string</tt></dd></dl>
  <dl><dt><a name="-parse_yahoo_historical"><strong>parse_yahoo_historical</strong></a>(fh, asobject<font color="#909090">=False</font>, adjusted<font color="#909090">=True</font>)</dt><dd><tt>Parse&nbsp;the&nbsp;historical&nbsp;data&nbsp;in&nbsp;file&nbsp;handle&nbsp;fh&nbsp;from&nbsp;yahoo&nbsp;finance&nbsp;and&nbsp;return<br>
 results&nbsp;as&nbsp;a&nbsp;list&nbsp;of<br>
 &nbsp;<br>
@@ -170,7 +170,7 @@ alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt>
 <td width="100%"><strong>TICKLEFT</strong> = 0<br>
 <strong>TICKRIGHT</strong> = 1<br>
 <strong>cachedir</strong> = '/home/jdhunter/.matplotlib/finance.cache'<br>
-<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0xe29710&gt;<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x1e29b90&gt;<br>
 <strong>configdir</strong> = '/home/jdhunter/.matplotlib'<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe47bd8&gt;</td></tr></table>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x1e4c200&gt;</td></tr></table>
 @footer@

@@ -5,10 +5,15 @@
 <font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.quiver</strong></big></big></font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/quiver.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/quiver.py</a></font></td></tr></table>
-    <p><tt>Support&nbsp;for&nbsp;plotting&nbsp;fields&nbsp;of&nbsp;arrows.<br>
+    <p><tt>Support&nbsp;for&nbsp;plotting&nbsp;vector&nbsp;fields.<br>
 &nbsp;<br>
-Presently&nbsp;this&nbsp;contains&nbsp;a&nbsp;single&nbsp;class,&nbsp;<a href="#Quiver">Quiver</a>,&nbsp;but&nbsp;it<br>
-might&nbsp;make&nbsp;sense&nbsp;to&nbsp;consolidate&nbsp;other&nbsp;arrow&nbsp;plotting&nbsp;here.<br>
+Presently&nbsp;this&nbsp;contains&nbsp;<a href="#Quiver">Quiver</a>&nbsp;and&nbsp;Barb.&nbsp;<a href="#Quiver">Quiver</a>&nbsp;plots&nbsp;an&nbsp;arrow&nbsp;in&nbsp;the<br>
+direction&nbsp;of&nbsp;the&nbsp;vector,&nbsp;with&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;arrow&nbsp;related&nbsp;to&nbsp;the<br>
+magnitude&nbsp;of&nbsp;the&nbsp;vector.<br>
+&nbsp;<br>
+<a href="#Barbs">Barbs</a>&nbsp;are&nbsp;like&nbsp;quiver&nbsp;in&nbsp;that&nbsp;they&nbsp;point&nbsp;along&nbsp;a&nbsp;vector,&nbsp;but<br>
+the&nbsp;magnitude&nbsp;of&nbsp;the&nbsp;vector&nbsp;is&nbsp;given&nbsp;schematically&nbsp;by&nbsp;the&nbsp;presence&nbsp;of&nbsp;barbs<br>
+or&nbsp;flags&nbsp;on&nbsp;the&nbsp;barb.<br>
 &nbsp;<br>
 This&nbsp;will&nbsp;also&nbsp;become&nbsp;a&nbsp;home&nbsp;for&nbsp;things&nbsp;such&nbsp;as&nbsp;standard<br>
 deviation&nbsp;ellipses,&nbsp;which&nbsp;can&nbsp;and&nbsp;will&nbsp;be&nbsp;derived&nbsp;very&nbsp;easily&nbsp;from<br>
@@ -20,13 +25,13 @@ the&nbsp;<a href="#Quiver">Quiver</a>&nbsp;code.</tt></p>
 <font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
     
 <tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
-<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.artist.html">matplotlib.artist</a><br>
-<a href="matplotlib.collections.html">matplotlib.collections</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.font_manager.html">matplotlib.font_manager</a><br>
-<a href="numpy.ma.html">numpy.ma</a><br>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib.collections.html">matplotlib.collections</a><br>
+<a href="matplotlib.font_manager.html">matplotlib.font_manager</a><br>
+</td><td width="25%" valign=top><a href="numpy.ma.html">numpy.ma</a><br>
+<a href="matplotlib.artist.html">matplotlib.artist</a><br>
 </td><td width="25%" valign=top><a href="math.html">math</a><br>
-<a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top><a href="matplotlib.text.html">matplotlib.text</a><br>
+<a href="matplotlib.text.html">matplotlib.text</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
 <a href="matplotlib.transforms.html">matplotlib.transforms</a><br>
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -45,11 +50,596 @@ the&nbsp;<a href="#Quiver">Quiver</a>&nbsp;code.</tt></p>
 <dt><font face="helvetica, arial"><a href="matplotlib.collections.html#PolyCollection">matplotlib.collections.PolyCollection</a>(<a href="matplotlib.collections.html#Collection">matplotlib.collections.Collection</a>)
 </font></dt><dd>
 <dl>
-<dt><font face="helvetica, arial"><a href="matplotlib.quiver.html#Quiver">Quiver</a>
+<dt><font face="helvetica, arial"><a href="matplotlib.quiver.html#Barbs">Barbs</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.quiver.html#Quiver">Quiver</a>
 </font></dt></dl>
 </dd>
 </dl>
  <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Barbs">class <strong>Barbs</strong></a>(<a href="matplotlib.collections.html#PolyCollection">matplotlib.collections.PolyCollection</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Specialized&nbsp;<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>&nbsp;for&nbsp;barbs.<br>
+&nbsp;<br>
+The&nbsp;only&nbsp;API&nbsp;method&nbsp;is&nbsp;<a href="#Barbs-set_UVC">set_UVC</a>(),&nbsp;which&nbsp;can&nbsp;be&nbsp;used<br>
+to&nbsp;change&nbsp;the&nbsp;size,&nbsp;orientation,&nbsp;and&nbsp;color&nbsp;of&nbsp;the<br>
+arrows.&nbsp;&nbsp;Locations&nbsp;are&nbsp;changed&nbsp;using&nbsp;the&nbsp;<a href="#Barbs-set_offsets">set_offsets</a>()&nbsp;collection<br>
+method.Possibly&nbsp;this&nbsp;method&nbsp;will&nbsp;be&nbsp;useful&nbsp;in&nbsp;animations.<br>
+&nbsp;<br>
+There&nbsp;is&nbsp;one&nbsp;internal&nbsp;function&nbsp;_find_tails()&nbsp;which&nbsp;finds&nbsp;exactly<br>
+what&nbsp;should&nbsp;be&nbsp;put&nbsp;on&nbsp;the&nbsp;barb&nbsp;given&nbsp;the&nbsp;vector&nbsp;magnitude.&nbsp;&nbsp;From&nbsp;there<br>
+_make_barbs()&nbsp;is&nbsp;used&nbsp;to&nbsp;find&nbsp;the&nbsp;vertices&nbsp;of&nbsp;the&nbsp;polygon&nbsp;to&nbsp;represent&nbsp;the<br>
+barb&nbsp;based&nbsp;on&nbsp;this&nbsp;information.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.quiver.html#Barbs">Barbs</a></dd>
+<dd><a href="matplotlib.collections.html#PolyCollection">matplotlib.collections.PolyCollection</a></dd>
+<dd><a href="matplotlib.collections.html#Collection">matplotlib.collections.Collection</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+<dd><a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Barbs-__init__"><strong>__init__</strong></a>(self, ax, *args, **kw)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;constructor&nbsp;takes&nbsp;one&nbsp;required&nbsp;argument,&nbsp;an&nbsp;Axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance,&nbsp;followed&nbsp;by&nbsp;the&nbsp;args&nbsp;and&nbsp;kwargs&nbsp;described<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;the&nbsp;following&nbsp;pylab&nbsp;interface&nbsp;documentation:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+Plot&nbsp;a&nbsp;2-D&nbsp;field&nbsp;of&nbsp;barbs.<br>
+&nbsp;<br>
+call&nbsp;signatures::<br>
+&nbsp;<br>
+&nbsp;&nbsp;barb(U,&nbsp;V,&nbsp;**kw)<br>
+&nbsp;&nbsp;barb(U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
+&nbsp;&nbsp;barb(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;**kw)<br>
+&nbsp;&nbsp;barb(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
+&nbsp;<br>
+Arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*X*,&nbsp;*Y*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;x&nbsp;and&nbsp;y&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;barb&nbsp;locations<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(default&nbsp;is&nbsp;head&nbsp;of&nbsp;barb;&nbsp;see&nbsp;*pivot*&nbsp;kwarg)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*U*,&nbsp;*V*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;give&nbsp;the&nbsp;*x*&nbsp;and&nbsp;*y*&nbsp;components&nbsp;of&nbsp;the&nbsp;barb&nbsp;shaft<br>
+&nbsp;<br>
+&nbsp;&nbsp;*C*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;array&nbsp;used&nbsp;to&nbsp;map&nbsp;colors&nbsp;to&nbsp;the&nbsp;barbs<br>
+&nbsp;<br>
+All&nbsp;arguments&nbsp;may&nbsp;be&nbsp;1-D&nbsp;or&nbsp;2-D&nbsp;arrays&nbsp;or&nbsp;sequences.&nbsp;If&nbsp;*X*&nbsp;and&nbsp;*Y*<br>
+are&nbsp;absent,&nbsp;they&nbsp;will&nbsp;be&nbsp;generated&nbsp;as&nbsp;a&nbsp;uniform&nbsp;grid.&nbsp;&nbsp;If&nbsp;*U*&nbsp;and&nbsp;*V*<br>
+are&nbsp;2-D&nbsp;arrays&nbsp;but&nbsp;*X*&nbsp;and&nbsp;*Y*&nbsp;are&nbsp;1-D,&nbsp;and&nbsp;if&nbsp;len(*X*)&nbsp;and&nbsp;len(*Y*)<br>
+match&nbsp;the&nbsp;column&nbsp;and&nbsp;row&nbsp;dimensions&nbsp;of&nbsp;*U*,&nbsp;then&nbsp;*X*&nbsp;and&nbsp;*Y*&nbsp;will&nbsp;be<br>
+expanded&nbsp;with&nbsp;:func:`numpy.meshgrid`.<br>
+&nbsp;<br>
+*U*,&nbsp;*V*,&nbsp;*C*&nbsp;may&nbsp;be&nbsp;masked&nbsp;arrays,&nbsp;but&nbsp;masked&nbsp;*X*,&nbsp;*Y*&nbsp;are&nbsp;not<br>
+supported&nbsp;at&nbsp;present.<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*length*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Length&nbsp;of&nbsp;the&nbsp;barb&nbsp;in&nbsp;points;&nbsp;the&nbsp;other&nbsp;parts&nbsp;of&nbsp;the&nbsp;barb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;scaled&nbsp;against&nbsp;this.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;9<br>
+&nbsp;<br>
+&nbsp;&nbsp;*pivot*:&nbsp;[&nbsp;'tip'&nbsp;|&nbsp;'middle'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;part&nbsp;of&nbsp;the&nbsp;arrow&nbsp;that&nbsp;is&nbsp;at&nbsp;the&nbsp;grid&nbsp;point;&nbsp;the&nbsp;arrow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rotates&nbsp;about&nbsp;this&nbsp;point,&nbsp;hence&nbsp;the&nbsp;name&nbsp;*pivot*.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;'tip'<br>
+&nbsp;<br>
+&nbsp;&nbsp;*barbcolor*:&nbsp;[&nbsp;color&nbsp;|&nbsp;color&nbsp;sequence&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Specifies&nbsp;the&nbsp;color&nbsp;all&nbsp;parts&nbsp;of&nbsp;the&nbsp;barb&nbsp;except&nbsp;any&nbsp;flags.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;parameter&nbsp;is&nbsp;analagous&nbsp;to&nbsp;the&nbsp;*edgecolor*&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;polygons,&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;instead.&nbsp;However&nbsp;this&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;override&nbsp;facecolor.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*flagcolor*:&nbsp;[&nbsp;color&nbsp;|&nbsp;color&nbsp;sequence&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Specifies&nbsp;the&nbsp;color&nbsp;of&nbsp;any&nbsp;flags&nbsp;on&nbsp;the&nbsp;barb.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;parameter&nbsp;is&nbsp;analagous&nbsp;to&nbsp;the&nbsp;*facecolor*&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;polygons,&nbsp;which&nbsp;can&nbsp;be&nbsp;used&nbsp;instead.&nbsp;However&nbsp;this&nbsp;parameter<br>
+&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;override&nbsp;facecolor.&nbsp;&nbsp;If&nbsp;this&nbsp;is&nbsp;not&nbsp;set&nbsp;(and&nbsp;*C*&nbsp;has&nbsp;not&nbsp;either)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;then&nbsp;*flagcolor*&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;match&nbsp;*barbcolor*&nbsp;so&nbsp;that&nbsp;the&nbsp;barb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;has&nbsp;a&nbsp;uniform&nbsp;color.&nbsp;If&nbsp;*C*&nbsp;has&nbsp;been&nbsp;set,&nbsp;*flagcolor*&nbsp;has&nbsp;no&nbsp;effect.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*sizes*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;coefficients&nbsp;specifying&nbsp;the&nbsp;ratio&nbsp;of&nbsp;a&nbsp;given&nbsp;feature<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;barb.&nbsp;Only&nbsp;those&nbsp;values&nbsp;one&nbsp;wishes&nbsp;to&nbsp;override<br>
+&nbsp;&nbsp;&nbsp;&nbsp;need&nbsp;to&nbsp;be&nbsp;included.&nbsp;&nbsp;These&nbsp;features&nbsp;include:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'spacing'&nbsp;-&nbsp;space&nbsp;between&nbsp;features&nbsp;(flags,&nbsp;full/half&nbsp;barbs)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'height'&nbsp;-&nbsp;height&nbsp;(distance&nbsp;from&nbsp;shaft&nbsp;to&nbsp;top)&nbsp;of&nbsp;a&nbsp;flag&nbsp;or&nbsp;full&nbsp;barb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'width'&nbsp;-&nbsp;width&nbsp;of&nbsp;a&nbsp;flag,&nbsp;twice&nbsp;the&nbsp;width&nbsp;of&nbsp;a&nbsp;full&nbsp;barb<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'emptybarb'&nbsp;-&nbsp;radius&nbsp;of&nbsp;the&nbsp;circle&nbsp;used&nbsp;for&nbsp;low&nbsp;magnitudes<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fill_empty*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;flag&nbsp;on&nbsp;whether&nbsp;the&nbsp;empty&nbsp;barbs&nbsp;(circles)&nbsp;that&nbsp;are&nbsp;drawn&nbsp;should&nbsp;be&nbsp;filled<br>
+&nbsp;&nbsp;&nbsp;&nbsp;with&nbsp;the&nbsp;flag&nbsp;color.&nbsp;&nbsp;If&nbsp;they&nbsp;are&nbsp;not&nbsp;filled,&nbsp;they&nbsp;will&nbsp;be&nbsp;drawn&nbsp;such&nbsp;that<br>
+&nbsp;&nbsp;&nbsp;&nbsp;no&nbsp;color&nbsp;is&nbsp;applied&nbsp;to&nbsp;the&nbsp;center.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+&nbsp;&nbsp;*rounding*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;flag&nbsp;to&nbsp;indicate&nbsp;whether&nbsp;the&nbsp;vector&nbsp;magnitude&nbsp;should&nbsp;be&nbsp;rounded&nbsp;when<br>
+&nbsp;&nbsp;&nbsp;&nbsp;allocating&nbsp;barb&nbsp;components.&nbsp;&nbsp;If&nbsp;True,&nbsp;the&nbsp;magnitude&nbsp;is&nbsp;rounded&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;nearest&nbsp;multiple&nbsp;of&nbsp;the&nbsp;half-barb&nbsp;increment.&nbsp;&nbsp;If&nbsp;False,&nbsp;the&nbsp;magnitude<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;simply&nbsp;truncated&nbsp;to&nbsp;the&nbsp;next&nbsp;lowest&nbsp;multiple.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;True<br>
+&nbsp;<br>
+&nbsp;&nbsp;*barb_increments*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;of&nbsp;increments&nbsp;specifying&nbsp;values&nbsp;to&nbsp;associate&nbsp;with&nbsp;different<br>
+&nbsp;&nbsp;&nbsp;&nbsp;parts&nbsp;of&nbsp;the&nbsp;barb.&nbsp;Only&nbsp;those&nbsp;values&nbsp;one&nbsp;wishes&nbsp;to&nbsp;override&nbsp;need&nbsp;to&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;included.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'half'&nbsp;-&nbsp;half&nbsp;barbs&nbsp;(Default&nbsp;is&nbsp;5)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'full'&nbsp;-&nbsp;full&nbsp;barbs&nbsp;(Default&nbsp;is&nbsp;10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'flag'&nbsp;-&nbsp;flags&nbsp;(default&nbsp;is&nbsp;50)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*flip_barb*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Either&nbsp;a&nbsp;single&nbsp;boolean&nbsp;flag&nbsp;or&nbsp;an&nbsp;array&nbsp;of&nbsp;booleans.&nbsp;&nbsp;Single&nbsp;boolean<br>
+&nbsp;&nbsp;&nbsp;&nbsp;indicates&nbsp;whether&nbsp;the&nbsp;lines&nbsp;and&nbsp;flags&nbsp;should&nbsp;point&nbsp;opposite&nbsp;to&nbsp;normal<br>
+&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;all&nbsp;barbs.&nbsp;&nbsp;An&nbsp;array&nbsp;(which&nbsp;should&nbsp;be&nbsp;the&nbsp;same&nbsp;size&nbsp;as&nbsp;the&nbsp;other<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;arrays)&nbsp;indicates&nbsp;whether&nbsp;to&nbsp;flip&nbsp;for&nbsp;each&nbsp;individual&nbsp;barb.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Normal&nbsp;behavior&nbsp;is&nbsp;for&nbsp;the&nbsp;barbs&nbsp;and&nbsp;lines&nbsp;to&nbsp;point&nbsp;right&nbsp;(comes&nbsp;from<br>
+&nbsp;&nbsp;&nbsp;&nbsp;wind&nbsp;barbs&nbsp;having&nbsp;these&nbsp;features&nbsp;point&nbsp;towards&nbsp;low&nbsp;pressure&nbsp;in&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Northern&nbsp;Hemisphere.)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;False<br>
+&nbsp;<br>
+<a href="#Barbs">Barbs</a>&nbsp;are&nbsp;traditionally&nbsp;used&nbsp;in&nbsp;meteorology&nbsp;as&nbsp;a&nbsp;way&nbsp;to&nbsp;plot&nbsp;the&nbsp;speed<br>
+and&nbsp;direction&nbsp;of&nbsp;wind&nbsp;observations,&nbsp;but&nbsp;can&nbsp;technically&nbsp;be&nbsp;used&nbsp;to&nbsp;plot<br>
+any&nbsp;two&nbsp;dimensional&nbsp;vector&nbsp;quantity.&nbsp;&nbsp;As&nbsp;opposed&nbsp;to&nbsp;arrows,&nbsp;which&nbsp;give<br>
+vector&nbsp;magnitude&nbsp;by&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;arrow,&nbsp;the&nbsp;barbs&nbsp;give&nbsp;more&nbsp;quantitative<br>
+information&nbsp;about&nbsp;the&nbsp;vector&nbsp;magnitude&nbsp;by&nbsp;putting&nbsp;slanted&nbsp;lines&nbsp;or&nbsp;a&nbsp;triangle<br>
+for&nbsp;various&nbsp;increments&nbsp;in&nbsp;magnitude,&nbsp;as&nbsp;show&nbsp;schematically&nbsp;below:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;/\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;&nbsp;&nbsp;&nbsp;------------------------------<br>
+&nbsp;<br>
+The&nbsp;largest&nbsp;increment&nbsp;is&nbsp;given&nbsp;by&nbsp;a&nbsp;triangle&nbsp;(or&nbsp;"flag").&nbsp;After&nbsp;those&nbsp;come&nbsp;full<br>
+lines&nbsp;(barbs).&nbsp;The&nbsp;smallest&nbsp;increment&nbsp;is&nbsp;a&nbsp;half&nbsp;line.&nbsp;&nbsp;There&nbsp;is&nbsp;only,&nbsp;of<br>
+course,&nbsp;ever&nbsp;at&nbsp;most&nbsp;1&nbsp;half&nbsp;line.&nbsp;&nbsp;If&nbsp;the&nbsp;magnitude&nbsp;is&nbsp;small&nbsp;and&nbsp;only&nbsp;needs&nbsp;a<br>
+single&nbsp;half-line&nbsp;and&nbsp;no&nbsp;full&nbsp;lines&nbsp;or&nbsp;triangles,&nbsp;the&nbsp;half-line&nbsp;is&nbsp;offset&nbsp;from<br>
+the&nbsp;end&nbsp;of&nbsp;the&nbsp;barb&nbsp;so&nbsp;that&nbsp;it&nbsp;can&nbsp;be&nbsp;easily&nbsp;distinguished&nbsp;from&nbsp;barbs&nbsp;with&nbsp;a<br>
+single&nbsp;full&nbsp;line.&nbsp;&nbsp;The&nbsp;magnitude&nbsp;for&nbsp;the&nbsp;barb&nbsp;shown&nbsp;above&nbsp;would&nbsp;nominally&nbsp;be<br>
+65,&nbsp;using&nbsp;the&nbsp;standard&nbsp;increments&nbsp;of&nbsp;50,&nbsp;10,&nbsp;and&nbsp;5.<br>
+&nbsp;<br>
+linewidths&nbsp;and&nbsp;edgecolors&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;customize&nbsp;the&nbsp;barb.<br>
+Additional&nbsp;:class:`~matplotlib.collections.<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>`<br>
+keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================<br>
+&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;animated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;antialiased&nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;antialiaseds&nbsp;&nbsp;&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;array&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;axes&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;cmap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;colormap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;colorbar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;contains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;dashes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;edgecolor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;edgecolors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;facecolor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;facecolors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.figure.Figure`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;linestyle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;linestyles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;linewidth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;linewidths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;norm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;offsets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;picker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[None|float|boolean|callable]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;pickradius&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;visible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;zorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_UVC"><strong>set_UVC</strong></a>(self, U, V, C<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Barbs-set_offsets"><strong>set_offsets</strong></a>(self, xy)</dt><dd><tt>Set&nbsp;the&nbsp;offsets&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*offsets*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>barbs_doc</strong> = '<font color="#c040c0">\n</font>Plot a 2-D field of barbs.<font color="#c040c0">\n\n</font>call signatures::<font color="#c040c0">\n\n</font>...===============================================<font color="#c040c0">\n\n</font>'</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.collections.html#PolyCollection">matplotlib.collections.PolyCollection</a>:<br>
+<dl><dt><a name="Barbs-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="Barbs-get_paths"><strong>get_paths</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-set_verts"><strong>set_verts</strong></a>(self, verts, closed<font color="#909090">=True</font>)</dt><dd><tt>This&nbsp;allows&nbsp;one&nbsp;to&nbsp;delay&nbsp;initialization&nbsp;of&nbsp;the&nbsp;vertices.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.collections.html#Collection">matplotlib.collections.Collection</a>:<br>
+<dl><dt><a name="Barbs-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;collection.<br>
+&nbsp;<br>
+Returns&nbsp;True&nbsp;|&nbsp;False,&nbsp;``dict(ind=itemlist)``,&nbsp;where&nbsp;every<br>
+item&nbsp;in&nbsp;itemlist&nbsp;contains&nbsp;the&nbsp;event.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_dashes"><strong>get_dashes</strong></a> = get_linestyles(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_datalim"><strong>get_datalim</strong></a>(self, transData)</dt></dl>
+
+<dl><dt><a name="Barbs-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_edgecolors"><strong>get_edgecolors</strong></a> = get_edgecolor(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_facecolors"><strong>get_facecolors</strong></a> = get_facecolor(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_linestyle"><strong>get_linestyle</strong></a> = get_linestyles(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_linestyles"><strong>get_linestyles</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_linewidth"><strong>get_linewidth</strong></a> = get_linewidths(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_linewidths"><strong>get_linewidths</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_offsets"><strong>get_offsets</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;offsets&nbsp;for&nbsp;the&nbsp;collection.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_pickradius"><strong>get_pickradius</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_transforms"><strong>get_transforms</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;tranparencies&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*alpha*&nbsp;must&nbsp;be<br>
+a&nbsp;float.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_antialiased"><strong>set_antialiased</strong></a>(self, aa)</dt><dd><tt>Set&nbsp;the&nbsp;antialiasing&nbsp;state&nbsp;for&nbsp;rendering.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_antialiaseds"><strong>set_antialiaseds</strong></a> = set_antialiased(self, aa)</dt><dd><tt>Set&nbsp;the&nbsp;antialiasing&nbsp;state&nbsp;for&nbsp;rendering.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_color"><strong>set_color</strong></a>(self, c)</dt><dd><tt>Set&nbsp;both&nbsp;the&nbsp;edgecolor&nbsp;and&nbsp;the&nbsp;facecolor.<br>
+See&nbsp;:meth:`set_facecolor`&nbsp;and&nbsp;:meth:`set_edgecolor`.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_dashes"><strong>set_dashes</strong></a> = set_linestyles(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_edgecolor"><strong>set_edgecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;*c*&nbsp;is&nbsp;'face',&nbsp;the&nbsp;edge&nbsp;color&nbsp;will&nbsp;always&nbsp;be&nbsp;the&nbsp;same&nbsp;as<br>
+the&nbsp;face&nbsp;color.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_edgecolors"><strong>set_edgecolors</strong></a> = set_edgecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;*c*&nbsp;is&nbsp;'face',&nbsp;the&nbsp;edge&nbsp;color&nbsp;will&nbsp;always&nbsp;be&nbsp;the&nbsp;same&nbsp;as<br>
+the&nbsp;face&nbsp;color.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_facecolor"><strong>set_facecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_facecolors"><strong>set_facecolors</strong></a> = set_facecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_linestyle"><strong>set_linestyle</strong></a> = set_linestyles(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_linestyles"><strong>set_linestyles</strong></a>(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_linewidth"><strong>set_linewidth</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_linewidths"><strong>set_linewidths</strong></a>(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_lw"><strong>set_lw</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_pickradius"><strong>set_pickradius</strong></a>(self, pickradius)</dt></dl>
+
+<dl><dt><a name="Barbs-update_scalarmappable"><strong>update_scalarmappable</strong></a>(self)</dt><dd><tt>If&nbsp;the&nbsp;scalar&nbsp;mappable&nbsp;array&nbsp;is&nbsp;not&nbsp;none,&nbsp;update&nbsp;colors<br>
+from&nbsp;scalar&nbsp;data</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.collections.html#Collection">matplotlib.collections.Collection</a>:<br>
+<dl><dt><strong>zorder</strong> = 1</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="Barbs-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Barbs-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Barbs-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Barbs-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#Barbs-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;*None*</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
+<dl><dt><a name="Barbs-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="Barbs-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Barbs-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="Barbs-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Barbs-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Barbs-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Barbs-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Barbs-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="Barbs-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the&nbsp;artist<br>
+belongs&nbsp;to.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.figure.Figure`&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`&nbsp;instance<br>
+used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Barbs-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<dl><dt><a name="Barbs-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;*other*&nbsp;to&nbsp;*self*.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cm.html#ScalarMappable">matplotlib.cm.ScalarMappable</a>:<br>
+<dl><dt><a name="Barbs-add_checker"><strong>add_checker</strong></a>(self, checker)</dt><dd><tt>Add&nbsp;an&nbsp;entry&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;boolean&nbsp;flags<br>
+that&nbsp;are&nbsp;set&nbsp;to&nbsp;True&nbsp;when&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed.</tt></dd></dl>
+
+<dl><dt><a name="Barbs-autoscale"><strong>autoscale</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="Barbs-autoscale_None"><strong>autoscale_None</strong></a>(self)</dt><dd><tt>Autoscale&nbsp;the&nbsp;scalar&nbsp;limits&nbsp;on&nbsp;the&nbsp;norm&nbsp;instance&nbsp;using&nbsp;the<br>
+current&nbsp;array,&nbsp;changing&nbsp;only&nbsp;limits&nbsp;that&nbsp;are&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Barbs-changed"><strong>changed</strong></a>(self)</dt><dd><tt>Call&nbsp;this&nbsp;whenever&nbsp;the&nbsp;mappable&nbsp;is&nbsp;changed&nbsp;to&nbsp;notify&nbsp;all&nbsp;the<br>
+callbackSM&nbsp;listeners&nbsp;to&nbsp;the&nbsp;'changed'&nbsp;signal</tt></dd></dl>
+
+<dl><dt><a name="Barbs-check_update"><strong>check_update</strong></a>(self, checker)</dt><dd><tt>If&nbsp;mappable&nbsp;has&nbsp;changed&nbsp;since&nbsp;the&nbsp;last&nbsp;check,<br>
+return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_array"><strong>get_array</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;array</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_clim"><strong>get_clim</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;min,&nbsp;max&nbsp;of&nbsp;the&nbsp;color&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling</tt></dd></dl>
+
+<dl><dt><a name="Barbs-get_cmap"><strong>get_cmap</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;colormap</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;*A*</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;*vmin*&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;``(vmin,&nbsp;vmax)``&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+support&nbsp;setp<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_cmap"><strong>set_cmap</strong></a>(self, cmap)</dt><dd><tt>set&nbsp;the&nbsp;colormap&nbsp;for&nbsp;luminance&nbsp;data<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_colorbar"><strong>set_colorbar</strong></a>(self, im, ax)</dt><dd><tt>set&nbsp;the&nbsp;colorbar&nbsp;image&nbsp;and&nbsp;axes&nbsp;associated&nbsp;with&nbsp;mappable</tt></dd></dl>
+
+<dl><dt><a name="Barbs-set_norm"><strong>set_norm</strong></a>(self, norm)</dt><dd><tt>set&nbsp;the&nbsp;normalization&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Barbs-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;*x*.&nbsp;If&nbsp;*x*<br>
+is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;*alpha*;&nbsp;if&nbsp;it&nbsp;is&nbsp;already<br>
+rgba,&nbsp;return&nbsp;it&nbsp;unchanged.&nbsp;If&nbsp;*bytes*&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as<br>
+4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
+
+</td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ffc8d8">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -87,47 +677,46 @@ Methods defined here:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
 Plot&nbsp;a&nbsp;2-D&nbsp;field&nbsp;of&nbsp;arrows.<br>
 &nbsp;<br>
-Function&nbsp;signatures:<br>
+call&nbsp;signatures::<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;quiver(U,&nbsp;V,&nbsp;**kw)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;quiver(U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;quiver(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;**kw)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;quiver(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
+&nbsp;&nbsp;quiver(U,&nbsp;V,&nbsp;**kw)<br>
+&nbsp;&nbsp;quiver(U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
+&nbsp;&nbsp;quiver(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;**kw)<br>
+&nbsp;&nbsp;quiver(X,&nbsp;Y,&nbsp;U,&nbsp;V,&nbsp;C,&nbsp;**kw)<br>
 &nbsp;<br>
 Arguments:<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;X,&nbsp;Y&nbsp;give&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;arrow&nbsp;locations<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(default&nbsp;is&nbsp;tail&nbsp;of&nbsp;arrow;&nbsp;see&nbsp;'pivot'&nbsp;kwarg)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;U,&nbsp;V&nbsp;give&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;components&nbsp;of&nbsp;the&nbsp;arrow&nbsp;vectors<br>
-&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;is&nbsp;an&nbsp;optional&nbsp;array&nbsp;used&nbsp;to&nbsp;map&nbsp;colors&nbsp;to&nbsp;the&nbsp;arrows<br>
+&nbsp;&nbsp;*X*,&nbsp;*Y*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;x&nbsp;and&nbsp;y&nbsp;coordinates&nbsp;of&nbsp;the&nbsp;arrow&nbsp;locations<br>
+&nbsp;&nbsp;&nbsp;&nbsp;(default&nbsp;is&nbsp;tail&nbsp;of&nbsp;arrow;&nbsp;see&nbsp;*pivot*&nbsp;kwarg)<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;All&nbsp;arguments&nbsp;may&nbsp;be&nbsp;1-D&nbsp;or&nbsp;2-D&nbsp;arrays&nbsp;or&nbsp;sequences.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;X&nbsp;and&nbsp;Y&nbsp;are&nbsp;absent,&nbsp;they&nbsp;will&nbsp;be&nbsp;generated&nbsp;as&nbsp;a&nbsp;uniform&nbsp;grid.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;U&nbsp;and&nbsp;V&nbsp;are&nbsp;2-D&nbsp;arrays&nbsp;but&nbsp;X&nbsp;and&nbsp;Y&nbsp;are&nbsp;1-D,&nbsp;and&nbsp;if<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(X)&nbsp;and&nbsp;len(Y)&nbsp;match&nbsp;the&nbsp;column&nbsp;and&nbsp;row&nbsp;dimensions<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;U,&nbsp;then&nbsp;X&nbsp;and&nbsp;Y&nbsp;will&nbsp;be&nbsp;expanded&nbsp;with&nbsp;meshgrid.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;U,&nbsp;V,&nbsp;C&nbsp;may&nbsp;be&nbsp;masked&nbsp;arrays,&nbsp;but&nbsp;masked&nbsp;X,&nbsp;Y&nbsp;are&nbsp;not<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;supported&nbsp;at&nbsp;present.<br>
+&nbsp;&nbsp;*U*,&nbsp;*V*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;give&nbsp;the&nbsp;*x*&nbsp;and&nbsp;*y*&nbsp;components&nbsp;of&nbsp;the&nbsp;arrow&nbsp;vectors<br>
 &nbsp;<br>
-Keyword&nbsp;arguments&nbsp;(default&nbsp;given&nbsp;first):<br>
+&nbsp;&nbsp;*C*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;array&nbsp;used&nbsp;to&nbsp;map&nbsp;colors&nbsp;to&nbsp;the&nbsp;arrows<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;units&nbsp;=&nbsp;'width'&nbsp;|&nbsp;'height'&nbsp;|&nbsp;'dots'&nbsp;|&nbsp;'inches'&nbsp;|&nbsp;'x'&nbsp;|&nbsp;'y'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;arrow&nbsp;units;&nbsp;the&nbsp;arrow&nbsp;dimensions&nbsp;*except&nbsp;for&nbsp;length*<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;in&nbsp;multiples&nbsp;of&nbsp;this&nbsp;unit.<br>
-&nbsp;&nbsp;*&nbsp;scale&nbsp;=&nbsp;None&nbsp;|&nbsp;float<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;units&nbsp;per&nbsp;arrow&nbsp;unit,&nbsp;e.g.&nbsp;m/s&nbsp;per&nbsp;plot&nbsp;width;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;smaller&nbsp;scale&nbsp;parameter&nbsp;makes&nbsp;the&nbsp;arrow&nbsp;longer.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;None,&nbsp;a&nbsp;simple&nbsp;autoscaling&nbsp;algorithm&nbsp;is&nbsp;used,&nbsp;based<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;the&nbsp;average&nbsp;vector&nbsp;length&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;vectors.<br>
+All&nbsp;arguments&nbsp;may&nbsp;be&nbsp;1-D&nbsp;or&nbsp;2-D&nbsp;arrays&nbsp;or&nbsp;sequences.&nbsp;If&nbsp;*X*&nbsp;and&nbsp;*Y*<br>
+are&nbsp;absent,&nbsp;they&nbsp;will&nbsp;be&nbsp;generated&nbsp;as&nbsp;a&nbsp;uniform&nbsp;grid.&nbsp;&nbsp;If&nbsp;*U*&nbsp;and&nbsp;*V*<br>
+are&nbsp;2-D&nbsp;arrays&nbsp;but&nbsp;*X*&nbsp;and&nbsp;*Y*&nbsp;are&nbsp;1-D,&nbsp;and&nbsp;if&nbsp;len(*X*)&nbsp;and&nbsp;len(*Y*)<br>
+match&nbsp;the&nbsp;column&nbsp;and&nbsp;row&nbsp;dimensions&nbsp;of&nbsp;*U*,&nbsp;then&nbsp;*X*&nbsp;and&nbsp;*Y*&nbsp;will&nbsp;be<br>
+expanded&nbsp;with&nbsp;:func:`numpy.meshgrid`.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Arrow&nbsp;dimensions&nbsp;and&nbsp;scales&nbsp;can&nbsp;be&nbsp;in&nbsp;any&nbsp;of&nbsp;several&nbsp;units:<br>
+*U*,&nbsp;*V*,&nbsp;*C*&nbsp;may&nbsp;be&nbsp;masked&nbsp;arrays,&nbsp;but&nbsp;masked&nbsp;*X*,&nbsp;**&nbsp;are&nbsp;not<br>
+supported&nbsp;at&nbsp;present.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;'width'&nbsp;or&nbsp;'height':&nbsp;the&nbsp;width&nbsp;or&nbsp;height&nbsp;of&nbsp;the&nbsp;axes<br>
-&nbsp;&nbsp;&nbsp;&nbsp;'dots'&nbsp;or&nbsp;'inches':&nbsp;&nbsp;pixels&nbsp;or&nbsp;inches,&nbsp;based&nbsp;on&nbsp;the&nbsp;figure&nbsp;dpi<br>
-&nbsp;&nbsp;&nbsp;&nbsp;'x'&nbsp;or&nbsp;'y':&nbsp;X&nbsp;or&nbsp;Y&nbsp;data&nbsp;units<br>
+Keyword&nbsp;arguments:<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;all&nbsp;cases&nbsp;the&nbsp;arrow&nbsp;aspect&nbsp;ratio&nbsp;is&nbsp;1,&nbsp;so&nbsp;that&nbsp;if&nbsp;U==V&nbsp;the&nbsp;angle<br>
-&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;arrow&nbsp;on&nbsp;the&nbsp;plot&nbsp;is&nbsp;45&nbsp;degrees&nbsp;CCW&nbsp;from&nbsp;the&nbsp;X-axis.<br>
+&nbsp;&nbsp;*units*:&nbsp;['width'&nbsp;|&nbsp;'height'&nbsp;|&nbsp;'dots'&nbsp;|&nbsp;'inches'&nbsp;|&nbsp;'x'&nbsp;|&nbsp;'y'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;arrow&nbsp;units;&nbsp;the&nbsp;arrow&nbsp;dimensions&nbsp;*except&nbsp;for&nbsp;length*&nbsp;are<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;multiples&nbsp;of&nbsp;this&nbsp;unit.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;'width'&nbsp;or&nbsp;'height':&nbsp;the&nbsp;width&nbsp;or&nbsp;height&nbsp;of&nbsp;the&nbsp;axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;'dots'&nbsp;or&nbsp;'inches':&nbsp;&nbsp;pixels&nbsp;or&nbsp;inches,&nbsp;based&nbsp;on&nbsp;the&nbsp;figure&nbsp;dpi<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;'x'&nbsp;or&nbsp;'y':&nbsp;*X*&nbsp;or&nbsp;*Y*&nbsp;data&nbsp;units<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;all&nbsp;cases&nbsp;the&nbsp;arrow&nbsp;aspect&nbsp;ratio&nbsp;is&nbsp;1,&nbsp;so&nbsp;that&nbsp;if&nbsp;*U*==*V*&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;angle&nbsp;of&nbsp;the&nbsp;arrow&nbsp;on&nbsp;the&nbsp;plot&nbsp;is&nbsp;45&nbsp;degrees&nbsp;CCW&nbsp;from&nbsp;the&nbsp;*x*-axis.<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;arrows&nbsp;scale&nbsp;differently&nbsp;depending&nbsp;on&nbsp;the&nbsp;units,&nbsp;however.<br>
 &nbsp;&nbsp;&nbsp;&nbsp;For&nbsp;'x'&nbsp;or&nbsp;'y',&nbsp;the&nbsp;arrows&nbsp;get&nbsp;larger&nbsp;as&nbsp;one&nbsp;zooms&nbsp;in;&nbsp;for&nbsp;other<br>
@@ -136,42 +725,95 @@ Keyword&nbsp;arguments&nbsp;(default&nbsp;given&nbsp;first):<br>
 &nbsp;&nbsp;&nbsp;&nbsp;height&nbsp;of&nbsp;the&nbsp;axes,&nbsp;respectively,&nbsp;when&nbsp;the&nbsp;the&nbsp;window&nbsp;is&nbsp;resized;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;'dots'&nbsp;or&nbsp;'inches',&nbsp;resizing&nbsp;does&nbsp;not&nbsp;change&nbsp;the&nbsp;arrows.<br>
 &nbsp;<br>
+&nbsp;&nbsp;*scale*:&nbsp;[&nbsp;None&nbsp;|&nbsp;float&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;units&nbsp;per&nbsp;arrow&nbsp;unit,&nbsp;e.g.&nbsp;m/s&nbsp;per&nbsp;plot&nbsp;width;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;smaller&nbsp;scale&nbsp;parameter&nbsp;makes&nbsp;the&nbsp;arrow&nbsp;longer.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;*None*,&nbsp;a&nbsp;simple&nbsp;autoscaling&nbsp;algorithm&nbsp;is&nbsp;used,&nbsp;based<br>
+&nbsp;&nbsp;&nbsp;&nbsp;on&nbsp;the&nbsp;average&nbsp;vector&nbsp;length&nbsp;and&nbsp;the&nbsp;number&nbsp;of&nbsp;vectors.<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;width&nbsp;=&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;shaft&nbsp;width&nbsp;in&nbsp;arrow&nbsp;units;&nbsp;default&nbsp;depends&nbsp;on<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;choice&nbsp;of&nbsp;units,&nbsp;above,&nbsp;and&nbsp;number&nbsp;of&nbsp;vectors;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;typical&nbsp;starting&nbsp;value&nbsp;is&nbsp;about<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.005&nbsp;times&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;plot.<br>
-&nbsp;&nbsp;*&nbsp;headwidth&nbsp;=&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;width&nbsp;as&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width<br>
-&nbsp;&nbsp;*&nbsp;headlength&nbsp;=&nbsp;5&nbsp;&nbsp;&nbsp;head&nbsp;length&nbsp;as&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width<br>
-&nbsp;&nbsp;*&nbsp;headaxislength&nbsp;=&nbsp;4.5&nbsp;&nbsp;head&nbsp;length&nbsp;at&nbsp;shaft&nbsp;intersection<br>
-&nbsp;&nbsp;*&nbsp;minshaft&nbsp;=&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;below&nbsp;which&nbsp;arrow&nbsp;scales,&nbsp;in&nbsp;units<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;head&nbsp;length.&nbsp;Do&nbsp;not&nbsp;set&nbsp;this&nbsp;to&nbsp;less<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than&nbsp;1,&nbsp;or&nbsp;small&nbsp;arrows&nbsp;will&nbsp;look&nbsp;terrible!<br>
-&nbsp;&nbsp;*&nbsp;minlength&nbsp;=&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;minimum&nbsp;length&nbsp;as&nbsp;a&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;an&nbsp;arrow&nbsp;length&nbsp;is&nbsp;less&nbsp;than&nbsp;this,&nbsp;plot&nbsp;a<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dot&nbsp;(hexagon)&nbsp;of&nbsp;this&nbsp;diameter&nbsp;instead.<br>
+&nbsp;&nbsp;*width*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;shaft&nbsp;width&nbsp;in&nbsp;arrow&nbsp;units;&nbsp;default&nbsp;depends&nbsp;on&nbsp;choice&nbsp;of&nbsp;units,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;above,&nbsp;and&nbsp;number&nbsp;of&nbsp;vectors;&nbsp;a&nbsp;typical&nbsp;starting&nbsp;value&nbsp;is&nbsp;about<br>
+&nbsp;&nbsp;&nbsp;&nbsp;0.005&nbsp;times&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;plot.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;defaults&nbsp;give&nbsp;a&nbsp;slightly&nbsp;swept-back&nbsp;arrow;&nbsp;to&nbsp;make&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;a&nbsp;triangle,&nbsp;make&nbsp;headaxislength&nbsp;the&nbsp;same&nbsp;as&nbsp;headlength.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;make&nbsp;the&nbsp;arrow&nbsp;more&nbsp;pointed,&nbsp;reduce&nbsp;headwidth&nbsp;or&nbsp;increase<br>
-&nbsp;&nbsp;&nbsp;&nbsp;headlength&nbsp;and&nbsp;headaxislength.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;To&nbsp;make&nbsp;the&nbsp;head&nbsp;smaller&nbsp;relative&nbsp;to&nbsp;the&nbsp;shaft,&nbsp;scale&nbsp;down<br>
-&nbsp;&nbsp;&nbsp;&nbsp;all&nbsp;the&nbsp;head*&nbsp;parameters.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;You&nbsp;will&nbsp;probably&nbsp;do&nbsp;best&nbsp;to&nbsp;leave&nbsp;minshaft&nbsp;alone.<br>
+&nbsp;&nbsp;*headwidth*:&nbsp;scalar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;width&nbsp;as&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width,&nbsp;default&nbsp;is&nbsp;3<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;pivot&nbsp;=&nbsp;'tail'&nbsp;|&nbsp;'middle'&nbsp;|&nbsp;'tip'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;part&nbsp;of&nbsp;the&nbsp;arrow&nbsp;that&nbsp;is&nbsp;at&nbsp;the&nbsp;grid&nbsp;point;&nbsp;the&nbsp;arrow<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rotates&nbsp;about&nbsp;this&nbsp;point,&nbsp;hence&nbsp;the&nbsp;name&nbsp;'pivot'.<br>
+&nbsp;&nbsp;*headlength*:&nbsp;scalar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;length&nbsp;as&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width,&nbsp;default&nbsp;is&nbsp;5<br>
 &nbsp;<br>
-&nbsp;&nbsp;*&nbsp;color&nbsp;=&nbsp;'k'&nbsp;|&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;spec&nbsp;or&nbsp;sequence&nbsp;of&nbsp;color&nbsp;specs.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;synonym&nbsp;for&nbsp;the&nbsp;<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>&nbsp;facecolor&nbsp;kwarg.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;C&nbsp;has&nbsp;been&nbsp;set,&nbsp;'color'&nbsp;has&nbsp;no&nbsp;effect.<br>
+&nbsp;&nbsp;*headaxislength*:&nbsp;scalar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;head&nbsp;length&nbsp;at&nbsp;shaft&nbsp;intersection,&nbsp;default&nbsp;is&nbsp;4.5<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;*&nbsp;All&nbsp;<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>&nbsp;kwargs&nbsp;are&nbsp;valid,&nbsp;in&nbsp;the&nbsp;sense&nbsp;that&nbsp;they<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;passed&nbsp;on&nbsp;to&nbsp;the&nbsp;<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>&nbsp;constructor.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In&nbsp;particular,&nbsp;one&nbsp;might&nbsp;want&nbsp;to&nbsp;use,&nbsp;for&nbsp;example:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;linewidths&nbsp;=&nbsp;(1,),&nbsp;edgecolors&nbsp;=&nbsp;('g',)<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;make&nbsp;the&nbsp;arrows&nbsp;have&nbsp;green&nbsp;outlines&nbsp;of&nbsp;unit&nbsp;width.</tt></dd></dl>
+&nbsp;&nbsp;*minshaft*:&nbsp;scalar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;length&nbsp;below&nbsp;which&nbsp;arrow&nbsp;scales,&nbsp;in&nbsp;units&nbsp;of&nbsp;head&nbsp;length.&nbsp;Do&nbsp;not<br>
+&nbsp;&nbsp;&nbsp;&nbsp;set&nbsp;this&nbsp;to&nbsp;less&nbsp;than&nbsp;1,&nbsp;or&nbsp;small&nbsp;arrows&nbsp;will&nbsp;look&nbsp;terrible!<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;1<br>
+&nbsp;<br>
+&nbsp;&nbsp;*minlength*:&nbsp;scalar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;minimum&nbsp;length&nbsp;as&nbsp;a&nbsp;multiple&nbsp;of&nbsp;shaft&nbsp;width;&nbsp;if&nbsp;an&nbsp;arrow&nbsp;length<br>
+&nbsp;&nbsp;&nbsp;&nbsp;is&nbsp;less&nbsp;than&nbsp;this,&nbsp;plot&nbsp;a&nbsp;dot&nbsp;(hexagon)&nbsp;of&nbsp;this&nbsp;diameter&nbsp;instead.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;1.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*pivot*:&nbsp;[&nbsp;'tail'&nbsp;|&nbsp;'middle'&nbsp;|&nbsp;'tip'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;part&nbsp;of&nbsp;the&nbsp;arrow&nbsp;that&nbsp;is&nbsp;at&nbsp;the&nbsp;grid&nbsp;point;&nbsp;the&nbsp;arrow<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rotates&nbsp;about&nbsp;this&nbsp;point,&nbsp;hence&nbsp;the&nbsp;name&nbsp;*pivot*.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*color*:&nbsp;[&nbsp;color&nbsp;|&nbsp;color&nbsp;sequence&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;synonym&nbsp;for&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~matplotlib.collections.<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>`&nbsp;facecolor&nbsp;kwarg.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;*C*&nbsp;has&nbsp;been&nbsp;set,&nbsp;*color*&nbsp;has&nbsp;no&nbsp;effect.<br>
+&nbsp;<br>
+The&nbsp;defaults&nbsp;give&nbsp;a&nbsp;slightly&nbsp;swept-back&nbsp;arrow;&nbsp;to&nbsp;make&nbsp;the&nbsp;head&nbsp;a<br>
+triangle,&nbsp;make&nbsp;*headaxislength*&nbsp;the&nbsp;same&nbsp;as&nbsp;*headlength*.&nbsp;To&nbsp;make&nbsp;the<br>
+arrow&nbsp;more&nbsp;pointed,&nbsp;reduce&nbsp;*headwidth*&nbsp;or&nbsp;increase&nbsp;*headlength*&nbsp;and<br>
+*headaxislength*.&nbsp;To&nbsp;make&nbsp;the&nbsp;head&nbsp;smaller&nbsp;relative&nbsp;to&nbsp;the&nbsp;shaft,<br>
+scale&nbsp;down&nbsp;all&nbsp;the&nbsp;head&nbsp;parameters.&nbsp;You&nbsp;will&nbsp;probably&nbsp;do&nbsp;best&nbsp;to&nbsp;leave<br>
+minshaft&nbsp;alone.<br>
+&nbsp;<br>
+linewidths&nbsp;and&nbsp;edgecolors&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;customize&nbsp;the&nbsp;arrow<br>
+outlines.&nbsp;Additional&nbsp;:class:`~matplotlib.collections.<a href="matplotlib.collections.html#PolyCollection">PolyCollection</a>`<br>
+keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================<br>
+&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;animated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;antialiased&nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;antialiaseds&nbsp;&nbsp;&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;array&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;axes&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;cmap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;colormap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;colorbar&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;contains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;dashes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;edgecolor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;edgecolors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;facecolor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;facecolors&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.figure.Figure`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;linestyle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;linestyles&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]<br>
+&nbsp;&nbsp;linewidth&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;linewidths&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lw&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;norm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;offsets&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;picker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[None|float|boolean|callable]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;pickradius&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;visible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;zorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;======================================================================</tt></dd></dl>
 
 <dl><dt><a name="Quiver-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
 
@@ -179,23 +821,28 @@ Keyword&nbsp;arguments&nbsp;(default&nbsp;given&nbsp;first):<br>
 
 <hr>
 Data and other attributes defined here:<br>
-<dl><dt><strong>quiver_doc</strong> = '<font color="#c040c0">\n</font>Plot a 2-D field of arrows.<font color="#c040c0">\n\n</font>Function signature...e the arrows have green outlines of unit width.<font color="#c040c0">\n\n</font>'</dl>
+<dl><dt><strong>quiver_doc</strong> = '<font color="#c040c0">\n</font>Plot a 2-D field of arrows.<font color="#c040c0">\n\n</font>call signatures::<font color="#c040c0">\n</font>...===============================================<font color="#c040c0">\n\n</font>'</dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.collections.html#PolyCollection">matplotlib.collections.PolyCollection</a>:<br>
 <dl><dt><a name="Quiver-get_paths"><strong>get_paths</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Quiver-set_verts"><strong>set_verts</strong></a>(self, verts)</dt><dd><tt>This&nbsp;allows&nbsp;one&nbsp;to&nbsp;delay&nbsp;initialization&nbsp;of&nbsp;the&nbsp;vertices.</tt></dd></dl>
+<dl><dt><a name="Quiver-set_verts"><strong>set_verts</strong></a>(self, verts, closed<font color="#909090">=True</font>)</dt><dd><tt>This&nbsp;allows&nbsp;one&nbsp;to&nbsp;delay&nbsp;initialization&nbsp;of&nbsp;the&nbsp;vertices.</tt></dd></dl>
 
 <hr>
 Methods inherited from <a href="matplotlib.collections.html#Collection">matplotlib.collections.Collection</a>:<br>
 <dl><dt><a name="Quiver-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;in&nbsp;the&nbsp;collection.<br>
 &nbsp;<br>
-Returns&nbsp;T/F,&nbsp;dict(ind=itemlist),&nbsp;where&nbsp;every&nbsp;item&nbsp;in&nbsp;itemlist&nbsp;contains&nbsp;the&nbsp;event.</tt></dd></dl>
+Returns&nbsp;True&nbsp;|&nbsp;False,&nbsp;``dict(ind=itemlist)``,&nbsp;where&nbsp;every<br>
+item&nbsp;in&nbsp;itemlist&nbsp;contains&nbsp;the&nbsp;event.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_dashes"><strong>get_dashes</strong></a> = get_linestyles(self)</dt></dl>
 
 <dl><dt><a name="Quiver-get_datalim"><strong>get_datalim</strong></a>(self, transData)</dt></dl>
+
+<dl><dt><a name="Quiver-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Quiver-get_edgecolors"><strong>get_edgecolors</strong></a> = get_edgecolor(self)</dt></dl>
 
 <dl><dt><a name="Quiver-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt></dl>
 
@@ -209,11 +856,13 @@ Returns&nbsp;T/F,&nbsp;dict(ind=itemlist),&nbsp;where&nbsp;every&nbsp;item&nbsp;
 
 <dl><dt><a name="Quiver-get_linewidths"><strong>get_linewidths</strong></a>(self)</dt></dl>
 
+<dl><dt><a name="Quiver-get_offsets"><strong>get_offsets</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;offsets&nbsp;for&nbsp;the&nbsp;collection.</tt></dd></dl>
+
 <dl><dt><a name="Quiver-get_pickradius"><strong>get_pickradius</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Quiver-get_transforms"><strong>get_transforms</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Quiver-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;tranparencies&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;Alpha&nbsp;must&nbsp;be<br>
+<dl><dt><a name="Quiver-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;tranparencies&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*alpha*&nbsp;must&nbsp;be<br>
 a&nbsp;float.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float</tt></dd></dl>
@@ -227,60 +876,73 @@ ACCEPTS:&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans</tt></dd></dl>
 ACCEPTS:&nbsp;Boolean&nbsp;or&nbsp;sequence&nbsp;of&nbsp;booleans</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_color"><strong>set_color</strong></a>(self, c)</dt><dd><tt>Set&nbsp;both&nbsp;the&nbsp;edgecolor&nbsp;and&nbsp;the&nbsp;facecolor.<br>
-See&nbsp;set_facecolor&nbsp;and&nbsp;set_edgecolor.<br>
+See&nbsp;:meth:`set_facecolor`&nbsp;and&nbsp;:meth:`set_edgecolor`.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_dashes"><strong>set_dashes</strong></a> = set_linestyles(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
-ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_edgecolor"><strong>set_edgecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib&nbsp;color<br>
-arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if<br>
-it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
+<dl><dt><a name="Quiver-set_edgecolor"><strong>set_edgecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;*c*&nbsp;is&nbsp;'face',&nbsp;the&nbsp;edge&nbsp;color&nbsp;will&nbsp;always&nbsp;be&nbsp;the&nbsp;same&nbsp;as<br>
+the&nbsp;face&nbsp;color.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_edgecolors"><strong>set_edgecolors</strong></a> = set_edgecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib&nbsp;color<br>
-arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if<br>
-it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
+<dl><dt><a name="Quiver-set_edgecolors"><strong>set_edgecolors</strong></a> = set_edgecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;edgecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence.<br>
+&nbsp;<br>
+If&nbsp;*c*&nbsp;is&nbsp;'face',&nbsp;the&nbsp;edge&nbsp;color&nbsp;will&nbsp;always&nbsp;be&nbsp;the&nbsp;same&nbsp;as<br>
+the&nbsp;face&nbsp;color.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_facecolor"><strong>set_facecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib<br>
-color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or<br>
-rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
-through&nbsp;the&nbsp;sequence<br>
+<dl><dt><a name="Quiver-set_facecolor"><strong>set_facecolor</strong></a>(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_facecolors"><strong>set_facecolors</strong></a> = set_facecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;c&nbsp;can&nbsp;be&nbsp;a&nbsp;matplotlib<br>
-color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a&nbsp;a&nbsp;sequence&nbsp;or<br>
-rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
-through&nbsp;the&nbsp;sequence<br>
+<dl><dt><a name="Quiver-set_facecolors"><strong>set_facecolors</strong></a> = set_facecolor(self, c)</dt><dd><tt>Set&nbsp;the&nbsp;facecolor(s)&nbsp;of&nbsp;the&nbsp;collection.&nbsp;&nbsp;*c*&nbsp;can&nbsp;be&nbsp;a<br>
+matplotlib&nbsp;color&nbsp;arg&nbsp;(all&nbsp;patches&nbsp;have&nbsp;same&nbsp;color),&nbsp;or&nbsp;a<br>
+sequence&nbsp;or&nbsp;rgba&nbsp;tuples;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will<br>
+cycle&nbsp;through&nbsp;the&nbsp;sequence<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;matplotlib&nbsp;color&nbsp;arg&nbsp;or&nbsp;sequence&nbsp;of&nbsp;rgba&nbsp;tuples</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_linestyle"><strong>set_linestyle</strong></a> = set_linestyles(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
-ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_linestyles"><strong>set_linestyles</strong></a>(self, ls)</dt><dd><tt>Set&nbsp;the&nbsp;linestyles(s)&nbsp;for&nbsp;the&nbsp;collection.<br>
-ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
+ACCEPTS:&nbsp;['solid'&nbsp;|&nbsp;'dashed',&nbsp;'dashdot',&nbsp;'dotted'&nbsp;|&nbsp;(offset,&nbsp;on-off-dash-seq)&nbsp;]</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_linewidth"><strong>set_linewidth</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;lw&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar&nbsp;or&nbsp;a<br>
-sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the<br>
-sequence<br>
+<dl><dt><a name="Quiver-set_linewidth"><strong>set_linewidth</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_linewidths"><strong>set_linewidths</strong></a>(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;lw&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar&nbsp;or&nbsp;a<br>
-sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the<br>
-sequence<br>
+<dl><dt><a name="Quiver-set_linewidths"><strong>set_linewidths</strong></a>(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_lw"><strong>set_lw</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;lw&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar&nbsp;or&nbsp;a<br>
-sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle&nbsp;through&nbsp;the<br>
-sequence<br>
+<dl><dt><a name="Quiver-set_lw"><strong>set_lw</strong></a> = set_linewidths(self, lw)</dt><dd><tt>Set&nbsp;the&nbsp;linewidth(s)&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*lw*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence;&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;sequence&nbsp;the&nbsp;patches&nbsp;will&nbsp;cycle<br>
+through&nbsp;the&nbsp;sequence<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
+
+<dl><dt><a name="Quiver-set_offsets"><strong>set_offsets</strong></a>(self, offsets)</dt><dd><tt>Set&nbsp;the&nbsp;offsets&nbsp;for&nbsp;the&nbsp;collection.&nbsp;&nbsp;*offsets*&nbsp;can&nbsp;be&nbsp;a&nbsp;scalar<br>
+or&nbsp;a&nbsp;sequence.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;float&nbsp;or&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
 
@@ -298,17 +960,33 @@ Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist
 <dl><dt><a name="Quiver-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
 <dl><dt><a name="Quiver-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
 
 <dl><dt><a name="Quiver-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Quiver-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#Quiver-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
-<dl><dt><a name="Quiver-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+<dl><dt><a name="Quiver-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;*None*</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -316,24 +994,27 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
-<dl><dt><a name="Quiver-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+<dl><dt><a name="Quiver-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
 
-<dl><dt><a name="Quiver-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="Quiver-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_label"><strong>get_label</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="Quiver-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="Quiver-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="Quiver-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
-<dl><dt><a name="Quiver-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
-and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+<dl><dt><a name="Quiver-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="Quiver-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+<dl><dt><a name="Quiver-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
 <dl><dt><a name="Quiver-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
 
@@ -343,37 +1024,42 @@ and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transfor
 
 <dl><dt><a name="Quiver-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="Quiver-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#Quiver-pick">pick</a>(mouseevent)<br>
+<dl><dt><a name="Quiver-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;<a href="#Quiver-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
 the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
-<dl><dt><a name="Quiver-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+<dl><dt><a name="Quiver-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
-<dl><dt><a name="Quiver-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
-be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
-Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+<dl><dt><a name="Quiver-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
 &nbsp;<br>
-Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
-was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
 &nbsp;<br>
 Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
-<dl><dt><a name="Quiver-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+<dl><dt><a name="Quiver-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+<dl><dt><a name="Quiver-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
@@ -381,35 +1067,38 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
 &nbsp;<br>
-&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
 &nbsp;<br>
-&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
 &nbsp;<br>
 For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
 rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
-corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
-instance,&nbsp;or&nbsp;None</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-mouse&nbsp;event:<br>
+mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
-If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
 is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
+<dl><dt><a name="Quiver-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the&nbsp;artist<br>
+belongs&nbsp;to.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.figure.Figure`&nbsp;instance</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+<dl><dt><a name="Quiver-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
 
@@ -421,37 +1110,36 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
-picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;<br>
-&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
 &nbsp;<br>
-&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
 &nbsp;<br>
-&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
 &nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
 &nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
 &nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
 &nbsp;<br>
-&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
 &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="Quiver-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`&nbsp;instance<br>
+used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
 &nbsp;<br>
@@ -463,7 +1151,7 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="Quiver-update"><strong>update</strong></a>(self, props)</dt></dl>
 
-<dl><dt><a name="Quiver-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
+<dl><dt><a name="Quiver-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;*other*&nbsp;to&nbsp;*self*.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
@@ -500,10 +1188,10 @@ return&nbsp;True;&nbsp;else&nbsp;return&nbsp;False</tt></dd></dl>
 
 <dl><dt><a name="Quiver-get_cmap"><strong>get_cmap</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;colormap</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;A</tt></dd></dl>
+<dl><dt><a name="Quiver-set_array"><strong>set_array</strong></a>(self, A)</dt><dd><tt>Set&nbsp;the&nbsp;image&nbsp;array&nbsp;from&nbsp;numpy&nbsp;array&nbsp;*A*</tt></dd></dl>
 
-<dl><dt><a name="Quiver-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;vmin&nbsp;is&nbsp;a&nbsp;length2<br>
-sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;(vmin,&nbsp;vmax)&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
+<dl><dt><a name="Quiver-set_clim"><strong>set_clim</strong></a>(self, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>)</dt><dd><tt>set&nbsp;the&nbsp;norm&nbsp;limits&nbsp;for&nbsp;image&nbsp;scaling;&nbsp;if&nbsp;*vmin*&nbsp;is&nbsp;a&nbsp;length2<br>
+sequence,&nbsp;interpret&nbsp;it&nbsp;as&nbsp;``(vmin,&nbsp;vmax)``&nbsp;which&nbsp;is&nbsp;used&nbsp;to<br>
 support&nbsp;setp<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;a&nbsp;length&nbsp;2&nbsp;sequence&nbsp;of&nbsp;floats</tt></dd></dl>
@@ -516,10 +1204,10 @@ ACCEPTS:&nbsp;a&nbsp;colormap</tt></dd></dl>
 
 <dl><dt><a name="Quiver-set_norm"><strong>set_norm</strong></a>(self, norm)</dt><dd><tt>set&nbsp;the&nbsp;normalization&nbsp;instance</tt></dd></dl>
 
-<dl><dt><a name="Quiver-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;x.<br>
-If&nbsp;x&nbsp;is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;alpha;&nbsp;if&nbsp;it&nbsp;is<br>
-already&nbsp;rgba,&nbsp;return&nbsp;it&nbsp;unchanged.<br>
-If&nbsp;bytes&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as&nbsp;4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
+<dl><dt><a name="Quiver-to_rgba"><strong>to_rgba</strong></a>(self, x, alpha<font color="#909090">=1.0</font>, bytes<font color="#909090">=False</font>)</dt><dd><tt>Return&nbsp;a&nbsp;normalized&nbsp;rgba&nbsp;array&nbsp;corresponding&nbsp;to&nbsp;*x*.&nbsp;If&nbsp;*x*<br>
+is&nbsp;already&nbsp;an&nbsp;rgb&nbsp;array,&nbsp;insert&nbsp;*alpha*;&nbsp;if&nbsp;it&nbsp;is&nbsp;already<br>
+rgba,&nbsp;return&nbsp;it&nbsp;unchanged.&nbsp;If&nbsp;*bytes*&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as<br>
+4&nbsp;uint8s&nbsp;instead&nbsp;of&nbsp;4&nbsp;floats.</tt></dd></dl>
 
 </td></tr></table> <p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -539,44 +1227,68 @@ If&nbsp;bytes&nbsp;is&nbsp;True,&nbsp;return&nbsp;rgba&nbsp;as&nbsp;4&nbsp;uint8
 Methods defined here:<br>
 <dl><dt><a name="QuiverKey-__init__"><strong>__init__</strong></a>(self, Q, X, Y, U, label, **kw)</dt><dd><tt>Add&nbsp;a&nbsp;key&nbsp;to&nbsp;a&nbsp;quiver&nbsp;plot.<br>
 &nbsp;<br>
-Function&nbsp;signature:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;quiverkey(Q,&nbsp;X,&nbsp;Y,&nbsp;U,&nbsp;label,&nbsp;**kw)<br>
+call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;quiverkey(Q,&nbsp;X,&nbsp;Y,&nbsp;U,&nbsp;label,&nbsp;**kw)<br>
 &nbsp;<br>
 Arguments:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Q&nbsp;is&nbsp;the&nbsp;<a href="#Quiver">Quiver</a>&nbsp;instance&nbsp;returned&nbsp;by&nbsp;a&nbsp;call&nbsp;to&nbsp;quiver.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;X,&nbsp;Y&nbsp;give&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;key;&nbsp;additional&nbsp;explanation&nbsp;follows.<br>
-&nbsp;&nbsp;&nbsp;&nbsp;U&nbsp;is&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;key<br>
-&nbsp;&nbsp;&nbsp;&nbsp;label&nbsp;is&nbsp;a&nbsp;string&nbsp;with&nbsp;the&nbsp;length&nbsp;and&nbsp;units&nbsp;of&nbsp;the&nbsp;key<br>
 &nbsp;<br>
-Keyword&nbsp;arguments&nbsp;(default&nbsp;given&nbsp;first):<br>
-&nbsp;&nbsp;*&nbsp;coordinates&nbsp;=&nbsp;'axes'&nbsp;|&nbsp;'figure'&nbsp;|&nbsp;'data'&nbsp;|&nbsp;'inches'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Coordinate&nbsp;system&nbsp;and&nbsp;units&nbsp;for&nbsp;X,&nbsp;Y:&nbsp;'axes'&nbsp;and&nbsp;'figure'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;normalized&nbsp;coordinate&nbsp;systems&nbsp;with&nbsp;0,0&nbsp;in&nbsp;the&nbsp;lower<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left&nbsp;and&nbsp;1,1&nbsp;in&nbsp;the&nbsp;upper&nbsp;right;&nbsp;'data'&nbsp;are&nbsp;the&nbsp;axes<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;coordinates&nbsp;(used&nbsp;for&nbsp;the&nbsp;locations&nbsp;of&nbsp;the&nbsp;vectors<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;quiver&nbsp;plot&nbsp;itself);&nbsp;'inches'&nbsp;is&nbsp;position&nbsp;in&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;in&nbsp;inches,&nbsp;with&nbsp;0,0&nbsp;at&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner.<br>
-&nbsp;&nbsp;*&nbsp;color&nbsp;overrides&nbsp;face&nbsp;and&nbsp;edge&nbsp;colors&nbsp;from&nbsp;Q.<br>
-&nbsp;&nbsp;*&nbsp;labelpos&nbsp;=&nbsp;'N'&nbsp;|&nbsp;'S'&nbsp;|&nbsp;'E'&nbsp;|&nbsp;'W'<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position&nbsp;the&nbsp;label&nbsp;above,&nbsp;below,&nbsp;to&nbsp;the&nbsp;right,&nbsp;to&nbsp;the&nbsp;left<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;arrow,&nbsp;respectively.<br>
-&nbsp;&nbsp;*&nbsp;labelsep&nbsp;=&nbsp;0.1&nbsp;inches&nbsp;distance&nbsp;between&nbsp;the&nbsp;arrow&nbsp;and&nbsp;the&nbsp;label<br>
-&nbsp;&nbsp;*&nbsp;labelcolor&nbsp;(defaults&nbsp;to&nbsp;default&nbsp;Text&nbsp;color)<br>
-&nbsp;&nbsp;*&nbsp;fontproperties&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;with&nbsp;keyword&nbsp;arguments&nbsp;accepted<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;the&nbsp;FontProperties&nbsp;initializer:&nbsp;family,&nbsp;style,&nbsp;variant,<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;size,&nbsp;weight<br>
+&nbsp;&nbsp;*Q*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;<a href="#Quiver">Quiver</a>&nbsp;instance&nbsp;returned&nbsp;by&nbsp;a&nbsp;call&nbsp;to&nbsp;quiver.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;Any&nbsp;additional&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;used&nbsp;to&nbsp;override&nbsp;vector<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;taken&nbsp;from&nbsp;Q.<br>
+&nbsp;&nbsp;*X*,&nbsp;*Y*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;location&nbsp;of&nbsp;the&nbsp;key;&nbsp;additional&nbsp;explanation&nbsp;follows.<br>
 &nbsp;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;positioning&nbsp;of&nbsp;the&nbsp;key&nbsp;depends&nbsp;on&nbsp;X,&nbsp;Y,&nbsp;coordinates,&nbsp;and<br>
-&nbsp;&nbsp;&nbsp;&nbsp;labelpos.&nbsp;&nbsp;If&nbsp;labelpos&nbsp;is&nbsp;'N'&nbsp;or&nbsp;'S',&nbsp;X,Y&nbsp;give&nbsp;the&nbsp;position<br>
-&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;key&nbsp;arrow.&nbsp;&nbsp;If&nbsp;labelpos&nbsp;is&nbsp;'E',&nbsp;X,Y<br>
-&nbsp;&nbsp;&nbsp;&nbsp;positions&nbsp;the&nbsp;head,&nbsp;and&nbsp;if&nbsp;labelpos&nbsp;is&nbsp;'W',&nbsp;X,Y&nbsp;positions&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;tail;&nbsp;in&nbsp;either&nbsp;of&nbsp;these&nbsp;two&nbsp;cases,&nbsp;X,Y&nbsp;is&nbsp;somewhere&nbsp;in&nbsp;the&nbsp;middle<br>
-&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;arrow+label&nbsp;key&nbsp;object.</tt></dd></dl>
+&nbsp;&nbsp;*U*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;length&nbsp;of&nbsp;the&nbsp;key<br>
+&nbsp;<br>
+&nbsp;&nbsp;*label*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;string&nbsp;with&nbsp;the&nbsp;length&nbsp;and&nbsp;units&nbsp;of&nbsp;the&nbsp;key<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*coordinates*&nbsp;=&nbsp;[&nbsp;'axes'&nbsp;|&nbsp;'figure'&nbsp;|&nbsp;'data'&nbsp;|&nbsp;'inches'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Coordinate&nbsp;system&nbsp;and&nbsp;units&nbsp;for&nbsp;*X*,&nbsp;*Y*:&nbsp;'axes'&nbsp;and&nbsp;'figure'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;are&nbsp;normalized&nbsp;coordinate&nbsp;systems&nbsp;with&nbsp;0,0&nbsp;in&nbsp;the&nbsp;lower<br>
+&nbsp;&nbsp;&nbsp;&nbsp;left&nbsp;and&nbsp;1,1&nbsp;in&nbsp;the&nbsp;upper&nbsp;right;&nbsp;'data'&nbsp;are&nbsp;the&nbsp;axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data&nbsp;coordinates&nbsp;(used&nbsp;for&nbsp;the&nbsp;locations&nbsp;of&nbsp;the&nbsp;vectors<br>
+&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;the&nbsp;quiver&nbsp;plot&nbsp;itself);&nbsp;'inches'&nbsp;is&nbsp;position&nbsp;in&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;figure&nbsp;in&nbsp;inches,&nbsp;with&nbsp;0,0&nbsp;at&nbsp;the&nbsp;lower&nbsp;left&nbsp;corner.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*color*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;overrides&nbsp;face&nbsp;and&nbsp;edge&nbsp;colors&nbsp;from&nbsp;*Q*.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*labelpos*&nbsp;=&nbsp;[&nbsp;'N'&nbsp;|&nbsp;'S'&nbsp;|&nbsp;'E'&nbsp;|&nbsp;'W'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Position&nbsp;the&nbsp;label&nbsp;above,&nbsp;below,&nbsp;to&nbsp;the&nbsp;right,&nbsp;to&nbsp;the&nbsp;left<br>
+&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;arrow,&nbsp;respectively.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*labelsep*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Distance&nbsp;in&nbsp;inches&nbsp;between&nbsp;the&nbsp;arrow&nbsp;and&nbsp;the&nbsp;label.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Default&nbsp;is&nbsp;0.1<br>
+&nbsp;<br>
+&nbsp;&nbsp;*labelcolor*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;defaults&nbsp;to&nbsp;default&nbsp;:class:`~matplotlib.text.Text`&nbsp;color.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fontproperties*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;dictionary&nbsp;with&nbsp;keyword&nbsp;arguments&nbsp;accepted&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:class:`~matplotlib.font_manager.FontProperties`&nbsp;initializer:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*family*,&nbsp;*style*,&nbsp;*variant*,&nbsp;*size*,&nbsp;*weight*<br>
+&nbsp;<br>
+Any&nbsp;additional&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;used&nbsp;to&nbsp;override&nbsp;vector<br>
+properties&nbsp;taken&nbsp;from&nbsp;*Q*.<br>
+&nbsp;<br>
+The&nbsp;positioning&nbsp;of&nbsp;the&nbsp;key&nbsp;depends&nbsp;on&nbsp;*X*,&nbsp;*Y*,&nbsp;*coordinates*,&nbsp;and<br>
+*labelpos*.&nbsp;&nbsp;If&nbsp;*labelpos*&nbsp;is&nbsp;'N'&nbsp;or&nbsp;'S',&nbsp;*X*,&nbsp;*Y*&nbsp;give&nbsp;the&nbsp;position<br>
+of&nbsp;the&nbsp;middle&nbsp;of&nbsp;the&nbsp;key&nbsp;arrow.&nbsp;&nbsp;If&nbsp;*labelpos*&nbsp;is&nbsp;'E',&nbsp;*X*,&nbsp;*Y*<br>
+positions&nbsp;the&nbsp;head,&nbsp;and&nbsp;if&nbsp;*labelpos*&nbsp;is&nbsp;'W',&nbsp;*X*,&nbsp;*Y*&nbsp;positions&nbsp;the<br>
+tail;&nbsp;in&nbsp;either&nbsp;of&nbsp;these&nbsp;two&nbsp;cases,&nbsp;*X*,&nbsp;*Y*&nbsp;is&nbsp;somewhere&nbsp;in&nbsp;the<br>
+middle&nbsp;of&nbsp;the&nbsp;arrow+label&nbsp;key&nbsp;object.</tt></dd></dl>
+
+<dl><dt><a name="QuiverKey-contains"><strong>contains</strong></a>(self, mouseevent)</dt></dl>
 
 <dl><dt><a name="QuiverKey-draw"><strong>draw</strong></a>(self, renderer)</dt></dl>
+
+<dl><dt><a name="QuiverKey-set_figure"><strong>set_figure</strong></a>(self, fig)</dt></dl>
 
 <hr>
 Data and other attributes defined here:<br>
@@ -584,7 +1296,7 @@ Data and other attributes defined here:<br>
 
 <dl><dt><strong>pivot</strong> = {'E': 'tip', 'N': 'mid', 'S': 'mid', 'W': 'tail'}</dl>
 
-<dl><dt><strong>quiverkey_doc</strong> = '<font color="#c040c0">\n</font>Add a key to a quiver plot.<font color="#c040c0">\n\n</font>Function signature...in the middle<font color="#c040c0">\n</font>    of the arrow+label key object.<font color="#c040c0">\n</font>'</dl>
+<dl><dt><strong>quiverkey_doc</strong> = '<font color="#c040c0">\n</font>Add a key to a quiver plot.<font color="#c040c0">\n\n</font>call signature::<font color="#c040c0">\n\n</font>...ere in the<font color="#c040c0">\n</font>middle of the arrow+label key object.<font color="#c040c0">\n</font>'</dl>
 
 <dl><dt><strong>valign</strong> = {'E': 'center', 'N': 'bottom', 'S': 'top', 'W': 'center'}</dl>
 
@@ -592,24 +1304,34 @@ Data and other attributes defined here:<br>
 Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
 <dl><dt><a name="QuiverKey-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
 
-<dl><dt><a name="QuiverKey-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;artist&nbsp;contains&nbsp;the&nbsp;mouse&nbsp;event.<br>
-&nbsp;<br>
-Returns&nbsp;the&nbsp;truth&nbsp;value&nbsp;and&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;artist&nbsp;specific&nbsp;details&nbsp;of<br>
-selection,&nbsp;such&nbsp;as&nbsp;which&nbsp;points&nbsp;are&nbsp;contained&nbsp;in&nbsp;the&nbsp;pick&nbsp;radius.&nbsp;&nbsp;See<br>
-individual&nbsp;artists&nbsp;for&nbsp;details.</tt></dd></dl>
-
 <dl><dt><a name="QuiverKey-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;x&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
-convert&nbsp;y&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="QuiverKey-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#QuiverKey-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
 backends</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;None</tt></dd></dl>
+<dl><dt><a name="QuiverKey-get_axes"><strong>get_axes</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;or&nbsp;*None*</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
 
@@ -617,24 +1339,27 @@ backends</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;None&nbsp;for&nbsp;default.</tt></dd></dl>
+<dl><dt><a name="QuiverKey-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;figure&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="QuiverKey-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.Figure`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_label"><strong>get_label</strong></a>(self)</dt></dl>
 
 <dl><dt><a name="QuiverKey-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+<dl><dt><a name="QuiverKey-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation&nbsp;applied,<br>
-and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transformation.</tt></dd></dl>
+<dl><dt><a name="QuiverKey-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
 
-<dl><dt><a name="QuiverKey-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+<dl><dt><a name="QuiverKey-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
 
@@ -644,25 +1369,30 @@ and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its&nbsp;transfor
 
 <dl><dt><a name="QuiverKey-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt><a href="#QuiverKey-pick">pick</a>(mouseevent)<br>
+<dl><dt><a name="QuiverKey-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
 &nbsp;<br>
-each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;mouseevent&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;<a href="#QuiverKey-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
 the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;True&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+<dl><dt><a name="QuiverKey-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect&nbsp;will&nbsp;not<br>
-be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with&nbsp;ax.draw_idle().<br>
-Call&nbsp;ax.relim()&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits&nbsp;if&nbsp;desired.<br>
+<dl><dt><a name="QuiverKey-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
 &nbsp;<br>
-Note:&nbsp;relim()&nbsp;will&nbsp;not&nbsp;see&nbsp;collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection<br>
-was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with&nbsp;autolim=True.<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
 &nbsp;<br>
 Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
 
-<dl><dt><a name="QuiverKey-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;kwargs&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+<dl><dt><a name="QuiverKey-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
 all&nbsp;backends<br>
@@ -673,13 +1403,13 @@ ACCEPTS:&nbsp;float</tt></dd></dl>
 &nbsp;<br>
 ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;the&nbsp;artist&nbsp;resides&nbsp;in,&nbsp;if&nbsp;any<br>
+<dl><dt><a name="QuiverKey-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform.Bbox&nbsp;instance</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
 &nbsp;<br>
@@ -687,35 +1417,33 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
 &nbsp;<br>
-&nbsp;&nbsp;a)&nbsp;a&nbsp;Patch&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
 &nbsp;<br>
-&nbsp;&nbsp;b)&nbsp;a&nbsp;Path&nbsp;instance,&nbsp;in&nbsp;which&nbsp;cas&nbsp;aoptional&nbsp;transform&nbsp;may<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the&nbsp;path&nbsp;before&nbsp;using&nbsp;it<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for&nbsp;clipping.<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
 &nbsp;<br>
-&nbsp;&nbsp;c)&nbsp;None,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
 &nbsp;<br>
 For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
 rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
-corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;None.<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
 &nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;Path&nbsp;instance&nbsp;and&nbsp;a&nbsp;Transform&nbsp;instance,&nbsp;a&nbsp;Patch<br>
-instance,&nbsp;or&nbsp;None</tt></dd></dl>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
 be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-mouse&nbsp;event:<br>
+mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
-If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
 is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;figure&nbsp;instance&nbsp;the&nbsp;artist&nbsp;belong&nbsp;to<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.figure.Figure&nbsp;instance</tt></dd></dl>
-
-<dl><dt><a name="QuiverKey-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;s&nbsp;for&nbsp;auto&nbsp;legend<br>
+<dl><dt><a name="QuiverKey-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
 
@@ -727,37 +1455,36 @@ ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
 &nbsp;<br>
-picker&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
 &nbsp;<br>
-&nbsp;&nbsp;None&nbsp;-&nbsp;&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
 &nbsp;<br>
-&nbsp;&nbsp;boolean&nbsp;-&nbsp;if&nbsp;True&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
 &nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
 &nbsp;<br>
-&nbsp;&nbsp;float&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
-&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
 &nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
 &nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
 &nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
-&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;eg&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
 &nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
 &nbsp;<br>
-&nbsp;&nbsp;function&nbsp;-&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
 &nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
 &nbsp;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
-&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;hit=True&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
-&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
 &nbsp;<br>
 ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
 
-<dl><dt><a name="QuiverKey-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>set&nbsp;the&nbsp;Transformation&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
-&nbsp;<br>
-ACCEPTS:&nbsp;a&nbsp;matplotlib.transform&nbsp;transformation&nbsp;instance</tt></dd></dl>
+<dl><dt><a name="QuiverKey-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`&nbsp;instance<br>
+used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
 &nbsp;<br>
@@ -769,7 +1496,7 @@ ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
 
 <dl><dt><a name="QuiverKey-update"><strong>update</strong></a>(self, props)</dt></dl>
 
-<dl><dt><a name="QuiverKey-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>copy&nbsp;properties&nbsp;from&nbsp;other&nbsp;to&nbsp;self</tt></dd></dl>
+<dl><dt><a name="QuiverKey-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;*other*&nbsp;to&nbsp;*self*.</tt></dd></dl>
 
 <hr>
 Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>

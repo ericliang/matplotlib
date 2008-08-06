@@ -46,14 +46,13 @@ or&nbsp;include&nbsp;these&nbsp;two&nbsp;lines&nbsp;in&nbsp;your&nbsp;script::<b
 <td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="copy.html">copy</a><br>
 <a href="distutils.html">distutils</a><br>
 <a href="glob.html">glob</a><br>
-</td><td width="25%" valign=top><a href="md5.html">md5</a><br>
-<a href="matplotlib.html">matplotlib</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.html">matplotlib</a><br>
 <a href="numpy.html">numpy</a><br>
-</td><td width="25%" valign=top><a href="os.html">os</a><br>
-<a href="shutil.html">shutil</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="shutil.html">shutil</a><br>
 <a href="sys.html">sys</a><br>
-</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
-</td></tr></table></td></tr></table><p>
+<a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#ee77aa">
 <td colspan=3 valign=bottom>&nbsp;<br>
@@ -149,7 +148,8 @@ Data and other attributes defined here:<br>
     
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt><a name="-dvipng_hack_alpha"><strong>dvipng_hack_alpha</strong></a>()</dt></dl>
- <dl><dt><a name="-readpng"><strong>readpng</strong></a>(...)</dt><dd><tt>readpng</tt></dd></dl>
+ <dl><dt><a name="-md5"><strong>md5</strong></a> = openssl_md5(...)</dt><dd><tt>Returns&nbsp;a&nbsp;md5&nbsp;hash&nbsp;object;&nbsp;optionally&nbsp;initialized&nbsp;with&nbsp;a&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-read_png"><strong>read_png</strong></a>(...)</dt><dd><tt><a href="#-read_png">read_png</a>(fileobj)</tt></dd></dl>
 </td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
 <tr bgcolor="#55aa55">

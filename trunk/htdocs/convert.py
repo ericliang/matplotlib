@@ -22,7 +22,7 @@ class NewsBox:
         self.body = body
         self.title = title
         self.bgcolor = bgcolor
-        
+
     def format_header(self):
         return """
     <tr><td  bgcolor="%s" align="left">
@@ -55,7 +55,7 @@ class LinkBox:
         </font>
     </td></tr>
     """ % self.header
-            
+
 
     def __repr__(self):
         s =  '<table width=100% border=1 cellpadding=1 ' +\
@@ -64,14 +64,14 @@ class LinkBox:
         s += '  <tr><td valign="top" bgcolor=#EFEFEF>\n'
         for text, link in self.links:
             s += '    <a href=%s>%s</a><br>\n' % (link, text)
-            
+
         s += '</td></tr>\n'
         s += '</table>\n'
         return s
 
 class FormatGoals:
     """Reads simple text file of goals and formats as html table"""
-    
+
     def __init__(self, filename):
         self.table = []
         f = open(filename)
@@ -85,7 +85,7 @@ class FormatGoals:
             return None
         else:
             return self.lines[self.nline].strip()
-            
+
     def format_table(self):
         while 1:
             line = self.getline()
@@ -103,7 +103,7 @@ class FormatGoals:
                 self.table.append("<tr><td colspan=3 bgcolor=#dddddd><b>")
                 self.table.append(self.getline())
                 self.table.append("</b></td></tr>")
-                
+
             elif onlyContains(line, '*'): # Regular table entry
                 # suck up any intervening blank lines
                 self.nextline()
@@ -114,8 +114,8 @@ class FormatGoals:
             else:
                 print "WARNING: goals text file is malformed at or around line", \
                     self.nline
-            self.nextline()                      
-                                  
+            self.nextline()
+
     def parse_entry(self):
         """Deal with the different components of a normal goal row"""
         ncol = 0
@@ -139,7 +139,7 @@ class FormatGoals:
                 ncol += 1
                 if ncol > 2:
                     ncol = 2
-               
+
     def addrow(self, cols):
         """Format the entry for a row"""
         ncol = 0
@@ -153,15 +153,15 @@ class FormatGoals:
                 #self.table.append("<font color=#ffffff>.</font>") # need something in cell to format well
             self.table.append("</td>")
             ncol += 1
-        self.table.append("</tr>")      
-                    
+        self.table.append("</tr>")
+
     def __repr__(self):
         return "\n".join(self.table)
 
 # helper functions for FormatGoals
 def onlyContains(line, char):
     """Does line only contain one or more instances of given character?
-    
+
     (aside from leading or trailing whitespace)"""
 
     tline = line.strip()
@@ -172,14 +172,14 @@ def onlyContains(line, char):
 
 def isComment(line):
     return line.strip() and (line.strip()[0] == '#')
-    
-def isBlank(line):  
+
+def isBlank(line):
     return not line.strip()
-    
-            
+
+
 def isNewEntry(line):
-    if (onlyContains(line, '=') or 
-        onlyContains(line, '+') or 
+    if (onlyContains(line, '=') or
+        onlyContains(line, '+') or
         onlyContains(line, '*')):
         return 1
     else:
@@ -188,8 +188,9 @@ def isNewEntry(line):
 # re-add news to the params dict 'tables' entry below for news
 
 news1= NewsBox("""matplotlib <a
-href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=603020>0.98.0</a> is a major release which requires python2.4 and numpy 1.1.  It contains significant improvements and may require some advanced users to update their code; see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
-href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474&release_id=603021>0.91.3</a>""", title='New release')
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=617552>0.98.3</a> is a major release which requires python2.4 or 2.5 and numpy 1.1.  It contains significant improvements and may require some advanced users to update their code; see <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474&release_id=608756>0.91.4</a>. """, title='New release')
+
 
 
 news2 = NewsBox("""Help support matplotlib development by <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>donating</a> to fund developer sprints and other matplotlib development costs.""", title='Donate')
@@ -202,19 +203,19 @@ table1 =  LinkBox(header='Matplotlib', links=(
     ('Download', 'http://sourceforge.net/projects/matplotlib'),
     ('Installing', 'installing.html'),
     ('Screenshots', 'screenshots.html'),
-    ('Examples&nbsp;(zip)', 'matplotlib_examples_%s.zip'%matplotlib.__version__),        
+    ('Examples&nbsp;(zip)', 'matplotlib_examples_%s.zip'%matplotlib.__version__),
     ('Mailing lists', 'http://sourceforge.net/mail/?group_id=80706'),
-    ('Donate', 'http://sourceforge.net/project/project_donations.php?group_id=80706'),        
+    ('Donate', 'http://sourceforge.net/project/project_donations.php?group_id=80706'),
     ))
 
 table2 =  LinkBox(header='Documentation', links=(
     ('Tutorial', 'tutorial.html'),
     ("User's&nbsp;Guide&nbsp", 'users_guide_%s.pdf'%matplotlib.__version__),
     ('API&nbsp;tutorial', 'pycon/artist_api_tut.pdf'),
-    ('Event&nbsp;handling', 'pycon/event_handling_tut.pdf'),    
+    ('Event&nbsp;handling', 'pycon/event_handling_tut.pdf'),
     ("API&nbsp;Reference", 'api.pdf'),
     ('FAQ', 'faq.html'),
-    ('Cookbook&nbsp;/&nbsp;wiki', 'http://www.scipy.org/wikis/topical_software/MatplotlibCookbook'),        
+    ('Cookbook&nbsp;/&nbsp;wiki', 'http://www.scipy.org/wikis/topical_software/MatplotlibCookbook'),
     ('pylab&nbsp;interface', 'pylab_commands.html'),
     ('Class&nbsp;library', 'classdocs.html'),
     ('Backends', 'backends.html'),
@@ -233,7 +234,7 @@ table3 =  LinkBox(header='Other', links=(
 params = {
     'myemail' : '<a href=mailto:jdhunter@ace.bsd.uchicago.edu> (jdhunter@ace.bsd.uchicago.edu)</a>',
     'tables' : (news1, news2, table1, table2, table3),
-    'default_table' :  'border=1 cellpadding=3 cellspacing=2', 
+    'default_table' :  'border=1 cellpadding=3 cellspacing=2',
           }
 
 headerBuffer = StringIO()
@@ -249,7 +250,7 @@ cop.copy(lines)
 params['footer'] = footerBuffer.getvalue()
 
 docs = [modname + '.html.template' for modname in modules]
-         
+
 
 files = [
     'backends.html.template',
@@ -263,14 +264,14 @@ files = [
     'installing.html.template',
     'interactive.html.template',
     'license.html.template',
-    'pylab_commands.html.template', 
+    'pylab_commands.html.template',
     'screenshots.html.template',
     'tutorial.html.template',
-    'whats_new.html.template', 
+    'whats_new.html.template',
          ]
 files.extend(docs)
-         
-         
+
+
 
 #print params
 
@@ -307,4 +308,4 @@ for inFile in files:
         print exception_to_str('Failed converting: %s'%inFile)
         continue
 
-        
+

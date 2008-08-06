@@ -2,7 +2,7 @@
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
 <tr bgcolor="#7799ee">
 <td valign=bottom>&nbsp;<br>
-<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.1.0.dev5176)</font></td
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.numerix</strong></big></big> (version 1.2.0.dev5564)</font></td
 ><td align=right valign=bottom
 ><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/numerix/__init__.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/numerix/__init__.py</a></font></td></tr></table>
     <p><tt>numerix&nbsp;&nbsp;imports&nbsp;either&nbsp;Numeric&nbsp;or&nbsp;numarray&nbsp;based&nbsp;on&nbsp;various&nbsp;selectors.<br>
@@ -53,7 +53,7 @@ The&nbsp;tuple&nbsp;of&nbsp;sequences&nbsp;(a1,&nbsp;a2,&nbsp;...)&nbsp;are&nbsp
 &nbsp;<br>
 Examples<br>
 --------<br>
-&gt;&gt;&gt;&nbsp;<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
+&gt;&gt;&gt;&nbsp;np.<a href="#-concatenate">concatenate</a>(&nbsp;([0,1,2],&nbsp;[5,6,7])&nbsp;)<br>
 array([0,&nbsp;1,&nbsp;2,&nbsp;5,&nbsp;6,&nbsp;7])</tt></dd></dl>
  <dl><dt><a name="-dot"><strong>dot</strong></a>(...)</dt></dl>
  <dl><dt><a name="-dump"><strong>dump</strong></a>(...)</dt><dd><tt><a href="#-dump">dump</a>(obj,&nbsp;file,&nbsp;protocol=0)&nbsp;--&nbsp;Write&nbsp;an&nbsp;object&nbsp;in&nbsp;pickle&nbsp;format&nbsp;to&nbsp;the&nbsp;given&nbsp;file.<br>
@@ -85,7 +85,7 @@ mask&nbsp;:&nbsp;{array_like}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Boolean&nbsp;mask&nbsp;array<br>
 values&nbsp;:&nbsp;{array_like}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;Values&nbsp;to&nbsp;put</tt></dd></dl>
- <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to&nbsp;<br>
+ <dl><dt><a name="-rand"><strong>rand</strong></a>(...)</dt><dd><tt>Return&nbsp;an&nbsp;array&nbsp;of&nbsp;the&nbsp;given&nbsp;dimensions&nbsp;which&nbsp;is&nbsp;initialized&nbsp;to<br>
 random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp;the&nbsp;range&nbsp;[0,1).<br>
 &nbsp;<br>
 <a href="#-rand">rand</a>(d0,&nbsp;d1,&nbsp;...,&nbsp;dn)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
@@ -93,7 +93,7 @@ random&nbsp;numbers&nbsp;from&nbsp;a&nbsp;uniform&nbsp;distribution&nbsp;in&nbsp
 Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbsp;you&nbsp;want&nbsp;an<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interface&nbsp;that&nbsp;takes&nbsp;a&nbsp;tuple&nbsp;as&nbsp;the&nbsp;first&nbsp;argument<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;numpy.random.random_sample(shape_tuple).</tt></dd></dl>
- <dl><dt><a name="-randn"><strong>randn</strong></a>(...)</dt><dd><tt>Returns&nbsp;zero-mean,&nbsp;unit-variance&nbsp;Gaussian&nbsp;random&nbsp;numbers&nbsp;in&nbsp;an&nbsp;<br>
+ <dl><dt><a name="-randn"><strong>randn</strong></a>(...)</dt><dd><tt>Returns&nbsp;zero-mean,&nbsp;unit-variance&nbsp;Gaussian&nbsp;random&nbsp;numbers&nbsp;in&nbsp;an<br>
 array&nbsp;of&nbsp;shape&nbsp;(d0,&nbsp;d1,&nbsp;...,&nbsp;dn).<br>
 &nbsp;<br>
 <a href="#-randn">randn</a>(d0,&nbsp;d1,&nbsp;...,&nbsp;dn)&nbsp;-&gt;&nbsp;random&nbsp;values<br>
@@ -135,12 +135,15 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>UInt</strong> = 'u'<br>
 <strong>UInt16</strong> = 'H'<br>
 <strong>UInt32</strong> = 'I'<br>
+<strong>UInt64</strong> = 'L'<br>
 <strong>UInt8</strong> = 'B'<br>
+<strong>UnsignedInt</strong> = 'u'<br>
 <strong>UnsignedInt16</strong> = 'H'<br>
 <strong>UnsignedInt32</strong> = 'I'<br>
+<strong>UnsignedInt64</strong> = 'L'<br>
 <strong>UnsignedInt8</strong> = 'B'<br>
 <strong>UnsignedInteger</strong> = 'u'<br>
-<strong>__version__</strong> = '1.1.0.dev5176'<br>
+<strong>__version__</strong> = '1.2.0.dev5564'<br>
 <strong>absolute</strong> = &lt;ufunc 'absolute'&gt;<br>
 <strong>add</strong> = &lt;ufunc 'add'&gt;<br>
 <strong>arccos</strong> = &lt;ufunc 'arccos'&gt;<br>
@@ -166,14 +169,14 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>floor</strong> = &lt;ufunc 'floor'&gt;<br>
 <strong>floor_divide</strong> = &lt;ufunc 'floor_divide'&gt;<br>
 <strong>fmod</strong> = &lt;ufunc 'fmod'&gt;<br>
-<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xe59c08&gt;, 'Float': 'd', ...}<br>
+<strong>g</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x261c140&gt;, 'Float': 'd', ...}<br>
 <strong>greater</strong> = &lt;ufunc 'greater'&gt;<br>
 <strong>greater_equal</strong> = &lt;ufunc 'greater_equal'&gt;<br>
 <strong>hypot</strong> = &lt;ufunc 'hypot'&gt;<br>
 <strong>infinity</strong> = inf<br>
 <strong>invert</strong> = &lt;ufunc 'invert'&gt;<br>
 <strong>isnan</strong> = &lt;ufunc 'isnan'&gt;<br>
-<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0xe59c08&gt;, 'Float': 'd', ...}<br>
+<strong>l</strong> = {'ArrayType': &lt;type 'numpy.ndarray'&gt;, 'Character': 'c', 'Complex': 'D', 'Complex0': 'F', 'Complex16': 'F', 'Complex32': 'F', 'Complex64': 'D', 'Complex8': 'F', 'DumpArray': &lt;function DumpArray at 0x261c140&gt;, 'Float': 'd', ...}<br>
 <strong>left_shift</strong> = &lt;ufunc 'left_shift'&gt;<br>
 <strong>less</strong> = &lt;ufunc 'less'&gt;<br>
 <strong>less_equal</strong> = &lt;ufunc 'less_equal'&gt;<br>
@@ -190,7 +193,7 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>negative</strong> = &lt;ufunc 'negative'&gt;<br>
 <strong>newaxis</strong> = None<br>
 <strong>not_equal</strong> = &lt;ufunc 'not_equal'&gt;<br>
-<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0xeb57e8&gt;<br>
+<strong>nx</strong> = &lt;matplotlib.numerix._sp_imports._TypeNamespace instance at 0x2630248&gt;<br>
 <strong>pi</strong> = 3.1415926535897931<br>
 <strong>power</strong> = &lt;ufunc 'power'&gt;<br>
 <strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
@@ -204,9 +207,9 @@ Note:&nbsp;&nbsp;This&nbsp;is&nbsp;a&nbsp;convenience&nbsp;function.&nbsp;If&nbs
 <strong>tan</strong> = &lt;ufunc 'tan'&gt;<br>
 <strong>tanh</strong> = &lt;ufunc 'tanh'&gt;<br>
 <strong>true_divide</strong> = &lt;ufunc 'true_divide'&gt;<br>
-<strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHI'}<br>
+<strong>typecodes</strong> = {'Character': 'c', 'Complex': 'FD', 'Float': 'fd', 'Integer': 'bhil', 'UnsignedInteger': 'BHIL'}<br>
 <strong>use_maskedarray</strong> = False<br>
-<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0xe47bd8&gt;<br>
-<strong>version</strong> = 'numpy 1.1.0.dev5176'<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x25ee200&gt;<br>
+<strong>version</strong> = 'numpy 1.2.0.dev5564'<br>
 <strong>which</strong> = ('numpy', 'rc')</td></tr></table>
 @footer@
