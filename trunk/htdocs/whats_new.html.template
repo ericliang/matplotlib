@@ -12,7 +12,7 @@ versioninfo['0.98.3'] = (
 
 ('external backends', """backend developers and users can now use custom backends outside the matplotlib tree, by using the special syntax <pre>module://my_backend</pre> for the backend setting in the rc file, the use directive, or in -d command line argument to pylab/pyplot scripts"""),
 
-('findobj', """Introduced a recursive object search method to find all objects that meet some matching criterion, ef to find all text instances in a figure.  See <a href=examples/pylab_examples/findobj_demo.py>fondobj_demo.py</a>"""),
+('findobj', """Introduced a recursive object search method to find all objects that meet some matching criterion, e.g. to find all text instances in a figure.  See <a href=examples/pylab_examples/findobj_demo.py>findobj_demo.py</a>"""),
 
 ('tons of bug fixes', """Many critical bugfixes affecting memory leaks, math rendering, UI specific problems and more.  For details, see the <a href=CHANGELOG>CHANGELOG</a>""")
 
@@ -67,7 +67,7 @@ provide an extremely accurate 8-spline approximation
 to <a href=matplotlib.patches.html#Arc-draw>elliptical arcs</a> in the
 viewport.  This provides a scale free, accurate graph of the arc
 regardless of zoom level.
-See <a href=screenshots.html#ellipse_demo>ellipse_demo 
+See <a href=screenshots.html#ellipse_demo>ellipse_demo
 screenshot</a>."""),
 
 ('imread enhanced', """<a href=matplotlib.image.html#-imread>imread</a> now will use PIL when available to load images and return numpy arrays"""),

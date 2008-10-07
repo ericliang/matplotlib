@@ -44,7 +44,7 @@ internals to make all the right settings for you internally<p>
 
 <pre>
 peds-pc311:~> ipython -pylab
-Python 2.3.3 (#2, Apr 13 2004, 17:41:29) 
+Python 2.3.3 (#2, Apr 13 2004, 17:41:29)
 Type "copyright", "credits" or "license" for more information.
 
 IPython 0.6.5 -- An enhanced Interactive Python.
@@ -74,10 +74,10 @@ interactive state at the end of the run.<p>
 /home/jdhunter/python/projects/matplotlib/examples/pylab
 >>> run simple_plot.py
 >>> title('a new title', color='r')
-</pre> 
+</pre>
 
 The pylab interface provides 4 commands that are useful for
-interactive control.  Note again that the interactgive setting
+interactive control.  Note again that the interactive setting
 primarily controls whether the figure is redrawn with each plotting
 command.  <a
 href=matplotlib.pyplot.html#-isinteractive>isinteractive</a> returns
@@ -109,7 +109,7 @@ matplotlib in interactive mode.
 <pre>
   >>> import matplotlib
   >>> matplotlib.interactive(True)
-  >>> matplotlib.use('WX') 
+  >>> matplotlib.use('WX')
   >>> from matplotlib.pylab import *
   >>> plot([1,2,3])
   >>> xlabel('time (s)')
@@ -120,7 +120,7 @@ set the following in your <a href=matplotlibrc>matplotlibrc</a> file
 
 <pre>
 backend      : Wx
-interactive  : True     
+interactive  : True
 </pre>
 
 
