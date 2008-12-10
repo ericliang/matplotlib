@@ -1,0 +1,176 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.finance</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/finance.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/finance.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;collection&nbsp;of&nbsp;modules&nbsp;for&nbsp;collecting,&nbsp;analyzing&nbsp;and&nbsp;plotting<br>
+financial&nbsp;data.&nbsp;&nbsp;&nbsp;User&nbsp;contributions&nbsp;welcome!</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+<a href="numpy.html">numpy</a><br>
+</td><td width="25%" valign=top><a href="os.html">os</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-candlestick"><strong>candlestick</strong></a>(ax, quotes, width<font color="#909090">=0.20000000000000001</font>, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>quotes&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(time,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;...)&nbsp;&nbsp;tuples.<br>
+As&nbsp;long&nbsp;as&nbsp;the&nbsp;first&nbsp;5&nbsp;elements&nbsp;of&nbsp;the&nbsp;tuples&nbsp;are&nbsp;these&nbsp;values,<br>
+the&nbsp;tuple&nbsp;can&nbsp;be&nbsp;as&nbsp;long&nbsp;as&nbsp;you&nbsp;want&nbsp;(eg&nbsp;it&nbsp;may&nbsp;store&nbsp;volume).<br>
+&nbsp;<br>
+time&nbsp;must&nbsp;be&nbsp;in&nbsp;float&nbsp;days&nbsp;format&nbsp;-&nbsp;see&nbsp;date2num<br>
+&nbsp;<br>
+Plot&nbsp;the&nbsp;time,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low&nbsp;as&nbsp;a&nbsp;vertical&nbsp;line&nbsp;ranging<br>
+from&nbsp;low&nbsp;to&nbsp;high.&nbsp;&nbsp;Use&nbsp;a&nbsp;rectangular&nbsp;bar&nbsp;to&nbsp;represent&nbsp;the<br>
+open-close&nbsp;span.&nbsp;&nbsp;If&nbsp;close&nbsp;&gt;=&nbsp;open,&nbsp;use&nbsp;colorup&nbsp;to&nbsp;color&nbsp;the&nbsp;bar,<br>
+otherwise&nbsp;use&nbsp;colordown<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;fraction&nbsp;of&nbsp;a&nbsp;day&nbsp;for&nbsp;the&nbsp;rectangle&nbsp;width<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;rectangle&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;rectangle&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;rectangle&nbsp;alpha&nbsp;level<br>
+&nbsp;<br>
+return&nbsp;value&nbsp;is&nbsp;lines,&nbsp;patches&nbsp;where&nbsp;lines&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;lines<br>
+added&nbsp;and&nbsp;patches&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;rectangle&nbsp;patches&nbsp;added</tt></dd></dl>
+ <dl><dt><a name="-candlestick2"><strong>candlestick2</strong></a>(ax, opens, closes, highs, lows, width<font color="#909090">=4</font>, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>, alpha<font color="#909090">=0.75</font>)</dt><dd><tt>Represent&nbsp;the&nbsp;open,&nbsp;close&nbsp;as&nbsp;a&nbsp;bar&nbsp;line&nbsp;and&nbsp;high&nbsp;low&nbsp;range&nbsp;as&nbsp;a<br>
+vertical&nbsp;line.<br>
+&nbsp;<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency<br>
+&nbsp;<br>
+return&nbsp;value&nbsp;is&nbsp;lineCollection,&nbsp;barCollection</tt></dd></dl>
+ <dl><dt><a name="-fetch_historical_yahoo"><strong>fetch_historical_yahoo</strong></a>(ticker, date1, date2, cachename<font color="#909090">=None</font>)</dt><dd><tt>Fetch&nbsp;historical&nbsp;data&nbsp;for&nbsp;ticker&nbsp;between&nbsp;date1&nbsp;and&nbsp;date2.&nbsp;&nbsp;date1&nbsp;and<br>
+date2&nbsp;are&nbsp;datetime&nbsp;instances<br>
+&nbsp;<br>
+Ex:<br>
+fh&nbsp;=&nbsp;<a href="#-fetch_historical_yahoo">fetch_historical_yahoo</a>('^GSPC',&nbsp;d1,&nbsp;d2)<br>
+&nbsp;<br>
+cachename&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;local&nbsp;file&nbsp;cache.&nbsp;&nbsp;If&nbsp;None,&nbsp;will<br>
+default&nbsp;to&nbsp;the&nbsp;md5&nbsp;hash&nbsp;or&nbsp;the&nbsp;url&nbsp;(which&nbsp;incorporates&nbsp;the&nbsp;ticker<br>
+and&nbsp;date&nbsp;range)<br>
+&nbsp;<br>
+a&nbsp;file&nbsp;handle&nbsp;is&nbsp;returned</tt></dd></dl>
+ <dl><dt><a name="-index_bar"><strong>index_bar</strong></a>(ax, vals, facecolor<font color="#909090">='b'</font>, edgecolor<font color="#909090">='l'</font>, width<font color="#909090">=4</font>, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Add&nbsp;a&nbsp;bar&nbsp;collection&nbsp;graph&nbsp;with&nbsp;height&nbsp;vals&nbsp;(-1&nbsp;is&nbsp;missing).<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt></dd></dl>
+ <dl><dt><a name="-md5"><strong>md5</strong></a> = openssl_md5(...)</dt><dd><tt>Returns&nbsp;a&nbsp;md5&nbsp;hash&nbsp;object;&nbsp;optionally&nbsp;initialized&nbsp;with&nbsp;a&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-parse_yahoo_historical"><strong>parse_yahoo_historical</strong></a>(fh, asobject<font color="#909090">=False</font>, adjusted<font color="#909090">=True</font>)</dt><dd><tt>Parse&nbsp;the&nbsp;historical&nbsp;data&nbsp;in&nbsp;file&nbsp;handle&nbsp;fh&nbsp;from&nbsp;yahoo&nbsp;finance&nbsp;and&nbsp;return<br>
+results&nbsp;as&nbsp;a&nbsp;list&nbsp;of<br>
+&nbsp;<br>
+d,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;volume<br>
+&nbsp;<br>
+where&nbsp;d&nbsp;is&nbsp;a&nbsp;floating&nbsp;poing&nbsp;representation&nbsp;of&nbsp;date,&nbsp;as&nbsp;returned&nbsp;by&nbsp;date2num<br>
+&nbsp;<br>
+if&nbsp;adjust=True,&nbsp;use&nbsp;adjusted&nbsp;prices</tt></dd></dl>
+ <dl><dt><a name="-plot_day_summary"><strong>plot_day_summary</strong></a>(ax, quotes, ticksize<font color="#909090">=3</font>, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>)</dt><dd><tt>quotes&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(time,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;...)&nbsp;tuples<br>
+&nbsp;<br>
+Represent&nbsp;the&nbsp;time,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low&nbsp;as&nbsp;a&nbsp;vertical&nbsp;line<br>
+ranging&nbsp;from&nbsp;low&nbsp;to&nbsp;high.&nbsp;&nbsp;The&nbsp;left&nbsp;tick&nbsp;is&nbsp;the&nbsp;open&nbsp;and&nbsp;the&nbsp;right<br>
+tick&nbsp;is&nbsp;the&nbsp;close.<br>
+&nbsp;<br>
+time&nbsp;must&nbsp;be&nbsp;in&nbsp;float&nbsp;date&nbsp;format&nbsp;-&nbsp;see&nbsp;date2num<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+ticksize&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;open/close&nbsp;tick&nbsp;marker&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+return&nbsp;value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;lines&nbsp;added</tt></dd></dl>
+ <dl><dt><a name="-plot_day_summary2"><strong>plot_day_summary2</strong></a>(ax, opens, closes, highs, lows, ticksize<font color="#909090">=4</font>, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>)</dt><dd><tt>Represent&nbsp;the&nbsp;time,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low&nbsp;as&nbsp;a&nbsp;vertical&nbsp;line<br>
+ranging&nbsp;from&nbsp;low&nbsp;to&nbsp;high.&nbsp;&nbsp;The&nbsp;left&nbsp;tick&nbsp;is&nbsp;the&nbsp;open&nbsp;and&nbsp;the&nbsp;right<br>
+tick&nbsp;is&nbsp;the&nbsp;close.<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+ticksize&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;size&nbsp;of&nbsp;open&nbsp;and&nbsp;close&nbsp;ticks&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+&nbsp;<br>
+return&nbsp;value&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;lines&nbsp;added</tt></dd></dl>
+ <dl><dt><a name="-quotes_historical_yahoo"><strong>quotes_historical_yahoo</strong></a>(ticker, date1, date2, asobject<font color="#909090">=False</font>, adjusted<font color="#909090">=True</font>, cachename<font color="#909090">=None</font>)</dt><dd><tt>Get&nbsp;historical&nbsp;data&nbsp;for&nbsp;ticker&nbsp;between&nbsp;date1&nbsp;and&nbsp;date2.&nbsp;&nbsp;date1&nbsp;and<br>
+date2&nbsp;are&nbsp;datetime&nbsp;instances<br>
+&nbsp;<br>
+results&nbsp;are&nbsp;a&nbsp;list&nbsp;of&nbsp;tuples<br>
+&nbsp;<br>
+&nbsp;&nbsp;(d,&nbsp;open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;volume)<br>
+&nbsp;<br>
+where&nbsp;d&nbsp;is&nbsp;a&nbsp;floating&nbsp;poing&nbsp;representation&nbsp;of&nbsp;date,&nbsp;as&nbsp;returned&nbsp;by&nbsp;date2num<br>
+&nbsp;<br>
+if&nbsp;asobject&nbsp;is&nbsp;True,&nbsp;the&nbsp;return&nbsp;val&nbsp;is&nbsp;an&nbsp;object&nbsp;with&nbsp;attrs&nbsp;date,<br>
+open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;volume,&nbsp;which&nbsp;are&nbsp;equal&nbsp;length&nbsp;arrays<br>
+&nbsp;<br>
+if&nbsp;adjust=True,&nbsp;use&nbsp;adjusted&nbsp;prices<br>
+&nbsp;<br>
+Ex:<br>
+sp&nbsp;=&nbsp;f.<a href="#-quotes_historical_yahoo">quotes_historical_yahoo</a>('^GSPC',&nbsp;d1,&nbsp;d2,&nbsp;asobject=True,&nbsp;adjusted=True)<br>
+returns&nbsp;=&nbsp;(sp.open[1:]&nbsp;-&nbsp;sp.open[:-1])/sp.open[1:]<br>
+[n,bins,patches]&nbsp;=&nbsp;hist(returns,&nbsp;100)<br>
+mu&nbsp;=&nbsp;mean(returns)<br>
+sigma&nbsp;=&nbsp;std(returns)<br>
+x&nbsp;=&nbsp;normpdf(bins,&nbsp;mu,&nbsp;sigma)<br>
+plot(bins,&nbsp;x,&nbsp;color='red',&nbsp;lw=2)<br>
+&nbsp;<br>
+cachename&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;the&nbsp;local&nbsp;file&nbsp;cache.&nbsp;&nbsp;If&nbsp;None,&nbsp;will<br>
+default&nbsp;to&nbsp;the&nbsp;md5&nbsp;hash&nbsp;or&nbsp;the&nbsp;url&nbsp;(which&nbsp;incorporates&nbsp;the&nbsp;ticker<br>
+and&nbsp;date&nbsp;range)</tt></dd></dl>
+ <dl><dt><a name="-volume_overlay"><strong>volume_overlay</strong></a>(ax, opens, closes, volumes, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>, width<font color="#909090">=4</font>, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Add&nbsp;a&nbsp;volume&nbsp;overlay&nbsp;to&nbsp;the&nbsp;current&nbsp;axes.&nbsp;&nbsp;The&nbsp;opens&nbsp;and&nbsp;closes<br>
+are&nbsp;used&nbsp;to&nbsp;determine&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;bar.&nbsp;&nbsp;-1&nbsp;is&nbsp;missing.&nbsp;&nbsp;If&nbsp;a<br>
+value&nbsp;is&nbsp;missing&nbsp;on&nbsp;one&nbsp;it&nbsp;must&nbsp;be&nbsp;missing&nbsp;on&nbsp;all<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt></dd></dl>
+ <dl><dt><a name="-volume_overlay2"><strong>volume_overlay2</strong></a>(ax, closes, volumes, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>, width<font color="#909090">=4</font>, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Add&nbsp;a&nbsp;volume&nbsp;overlay&nbsp;to&nbsp;the&nbsp;current&nbsp;axes.&nbsp;&nbsp;The&nbsp;closes&nbsp;are&nbsp;used&nbsp;to<br>
+determine&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;bar.&nbsp;&nbsp;-1&nbsp;is&nbsp;missing.&nbsp;&nbsp;If&nbsp;a&nbsp;value&nbsp;is<br>
+missing&nbsp;on&nbsp;one&nbsp;it&nbsp;must&nbsp;be&nbsp;missing&nbsp;on&nbsp;all<br>
+&nbsp;<br>
+ax&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;an&nbsp;Axes&nbsp;instance&nbsp;to&nbsp;plot&nbsp;to<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&gt;=&nbsp;open<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close&nbsp;&lt;&nbsp;&nbsp;open<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency<br>
+&nbsp;<br>
+nb:&nbsp;first&nbsp;point&nbsp;is&nbsp;not&nbsp;displayed&nbsp;-&nbsp;it&nbsp;is&nbsp;used&nbsp;only&nbsp;for&nbsp;choosing&nbsp;the<br>
+right&nbsp;color</tt></dd></dl>
+ <dl><dt><a name="-volume_overlay3"><strong>volume_overlay3</strong></a>(ax, quotes, colorup<font color="#909090">='k'</font>, colordown<font color="#909090">='r'</font>, width<font color="#909090">=4</font>, alpha<font color="#909090">=1.0</font>)</dt><dd><tt>Add&nbsp;a&nbsp;volume&nbsp;overlay&nbsp;to&nbsp;the&nbsp;current&nbsp;axes.&nbsp;&nbsp;quotes&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;(d,<br>
+open,&nbsp;close,&nbsp;high,&nbsp;low,&nbsp;volume)&nbsp;and&nbsp;close-open&nbsp;is&nbsp;used&nbsp;to<br>
+determine&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;bar<br>
+&nbsp;<br>
+kwarg<br>
+width&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;bar&nbsp;width&nbsp;in&nbsp;points<br>
+colorup&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close1&nbsp;&gt;=&nbsp;close0<br>
+colordown&nbsp;&nbsp;&nbsp;:&nbsp;the&nbsp;color&nbsp;of&nbsp;the&nbsp;lines&nbsp;where&nbsp;close1&nbsp;&lt;&nbsp;&nbsp;close0<br>
+alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;bar&nbsp;transparency</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>TICKLEFT</strong> = 0<br>
+<strong>TICKRIGHT</strong> = 1<br>
+<strong>cachedir</strong> = '/home/jdhunter/.matplotlib/finance.cache'<br>
+<strong>colorConverter</strong> = &lt;matplotlib.colors.ColorConverter instance at 0x1e29b90&gt;<br>
+<strong>configdir</strong> = '/home/jdhunter/.matplotlib'<br>
+<strong>verbose</strong> = &lt;matplotlib.Verbose instance at 0x1e4c200&gt;</td></tr></table>
+@footer@

@@ -1,0 +1,136 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.rcsetup</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/rcsetup.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/rcsetup.py</a></font></td></tr></table>
+    <p><tt>The&nbsp;rcsetup&nbsp;module&nbsp;contains&nbsp;the&nbsp;default&nbsp;values&nbsp;and&nbsp;the&nbsp;validation&nbsp;code&nbsp;for<br>
+customization&nbsp;using&nbsp;matplotlib's&nbsp;rc&nbsp;settings.<br>
+&nbsp;<br>
+Each&nbsp;rc&nbsp;setting&nbsp;is&nbsp;assigned&nbsp;a&nbsp;default&nbsp;value&nbsp;and&nbsp;a&nbsp;function&nbsp;used&nbsp;to&nbsp;validate&nbsp;any<br>
+attempted&nbsp;changes&nbsp;to&nbsp;that&nbsp;setting.&nbsp;The&nbsp;default&nbsp;values&nbsp;and&nbsp;validation&nbsp;functions<br>
+are&nbsp;defined&nbsp;in&nbsp;the&nbsp;rcsetup&nbsp;module,&nbsp;and&nbsp;are&nbsp;used&nbsp;to&nbsp;construct&nbsp;the&nbsp;rcParams&nbsp;global<br>
+object&nbsp;which&nbsp;stores&nbsp;the&nbsp;settings&nbsp;and&nbsp;is&nbsp;referenced&nbsp;throughout&nbsp;matplotlib.<br>
+&nbsp;<br>
+These&nbsp;default&nbsp;values&nbsp;should&nbsp;be&nbsp;consistent&nbsp;with&nbsp;the&nbsp;default&nbsp;matplotlibrc&nbsp;file<br>
+that&nbsp;actually&nbsp;reflects&nbsp;the&nbsp;values&nbsp;given&nbsp;here.&nbsp;Any&nbsp;additions&nbsp;or&nbsp;deletions&nbsp;to&nbsp;the<br>
+parameter&nbsp;set&nbsp;listed&nbsp;here&nbsp;should&nbsp;also&nbsp;be&nbsp;visited&nbsp;to&nbsp;the<br>
+:file:`matplotlibrc.template`&nbsp;in&nbsp;matplotlib's&nbsp;root&nbsp;source&nbsp;directory.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="warnings.html">warnings</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.rcsetup.html#ValidateInStrings">ValidateInStrings</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.rcsetup.html#ValidateInterval">ValidateInterval</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.rcsetup.html#validate_nseq_float">validate_nseq_float</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.rcsetup.html#validate_nseq_int">validate_nseq_int</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ValidateInStrings">class <strong>ValidateInStrings</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ValidateInStrings-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="ValidateInStrings-__init__"><strong>__init__</strong></a>(self, key, valid, ignorecase<font color="#909090">=False</font>)</dt><dd><tt>valid&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;legal&nbsp;strings</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="ValidateInterval">class <strong>ValidateInterval</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Value&nbsp;must&nbsp;be&nbsp;in&nbsp;interval<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="ValidateInterval-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="ValidateInterval-__init__"><strong>__init__</strong></a>(self, vmin, vmax, closedmin<font color="#909090">=True</font>, closedmax<font color="#909090">=True</font>)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="validate_nseq_float">class <strong>validate_nseq_float</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="validate_nseq_float-__call__"><strong>__call__</strong></a>(self, s)</dt><dd><tt>return&nbsp;a&nbsp;seq&nbsp;of&nbsp;n&nbsp;floats&nbsp;or&nbsp;raise</tt></dd></dl>
+
+<dl><dt><a name="validate_nseq_float-__init__"><strong>__init__</strong></a>(self, n)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="validate_nseq_int">class <strong>validate_nseq_int</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="validate_nseq_int-__call__"><strong>__call__</strong></a>(self, s)</dt><dd><tt>return&nbsp;a&nbsp;seq&nbsp;of&nbsp;n&nbsp;ints&nbsp;or&nbsp;raise</tt></dd></dl>
+
+<dl><dt><a name="validate_nseq_int-__init__"><strong>__init__</strong></a>(self, n)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-validate_aspect"><strong>validate_aspect</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-validate_autolayout"><strong>validate_autolayout</strong></a>(v)</dt></dl>
+ <dl><dt><a name="-validate_bool"><strong>validate_bool</strong></a>(b)</dt><dd><tt>Convert&nbsp;b&nbsp;to&nbsp;a&nbsp;boolean&nbsp;or&nbsp;raise</tt></dd></dl>
+ <dl><dt><a name="-validate_bool_maybe_none"><strong>validate_bool_maybe_none</strong></a>(b)</dt><dd><tt>Convert&nbsp;b&nbsp;to&nbsp;a&nbsp;boolean&nbsp;or&nbsp;raise</tt></dd></dl>
+ <dl><dt><a name="-validate_color"><strong>validate_color</strong></a>(s)</dt><dd><tt>return&nbsp;a&nbsp;valid&nbsp;color&nbsp;arg</tt></dd></dl>
+ <dl><dt><a name="-validate_float"><strong>validate_float</strong></a>(s)</dt><dd><tt>convert&nbsp;s&nbsp;to&nbsp;float&nbsp;or&nbsp;raise</tt></dd></dl>
+ <dl><dt><a name="-validate_font_properties"><strong>validate_font_properties</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-validate_fontsize"><strong>validate_fontsize</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-validate_fonttype"><strong>validate_fonttype</strong></a>(s)</dt><dd><tt>confirm&nbsp;that&nbsp;this&nbsp;is&nbsp;a&nbsp;Postscript&nbsp;of&nbsp;PDF&nbsp;font&nbsp;type&nbsp;that&nbsp;we&nbsp;know&nbsp;how&nbsp;to&nbsp;convert&nbsp;to</tt></dd></dl>
+ <dl><dt><a name="-validate_int"><strong>validate_int</strong></a>(s)</dt><dd><tt>convert&nbsp;s&nbsp;to&nbsp;int&nbsp;or&nbsp;raise</tt></dd></dl>
+ <dl><dt><a name="-validate_negative_linestyle_legacy"><strong>validate_negative_linestyle_legacy</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-validate_path_exists"><strong>validate_path_exists</strong></a>(s)</dt><dd><tt>If&nbsp;s&nbsp;is&nbsp;a&nbsp;path,&nbsp;return&nbsp;s,&nbsp;else&nbsp;False</tt></dd></dl>
+ <dl><dt><a name="-validate_ps_distiller"><strong>validate_ps_distiller</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-validate_stringlist"><strong>validate_stringlist</strong></a>(s)</dt><dd><tt>return&nbsp;a&nbsp;list</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>all_backends</strong> = ['GTK', 'GTKAgg', 'GTKCairo', 'FltkAgg', 'QtAgg', 'Qt4Agg', 'TkAgg', 'WX', 'WXAgg', 'CocoaAgg', 'agg', 'cairo', 'emf', 'gdk', 'pdf', 'ps', 'svg', 'template']<br>
+<strong>defaultParams</strong> = {'axes.axisbelow': [False, &lt;function validate_bool at 0x1c00848&gt;], 'axes.edgecolor': ['k', &lt;function validate_color at 0x1c108c0&gt;], 'axes.facecolor': ['w', &lt;function validate_color at 0x1c108c0&gt;], 'axes.formatter.limits': [[-7, 7], &lt;matplotlib.rcsetup.validate_nseq_int instance at 0x7f2c5a5272d8&gt;], 'axes.grid': [False, &lt;function validate_bool at 0x1c00848&gt;], 'axes.hold': [True, &lt;function validate_bool at 0x1c00848&gt;], 'axes.labelcolor': ['k', &lt;function validate_color at 0x1c108c0&gt;], 'axes.labelsize': ['medium', &lt;function validate_fontsize at 0x7f2c5a524488&gt;], 'axes.linewidth': [1.0, &lt;function validate_float at 0x1c0c320&gt;], 'axes.titlesize': ['large', &lt;function validate_fontsize at 0x7f2c5a524488&gt;], ...}<br>
+<strong>interactive_bk</strong> = ['GTK', 'GTKAgg', 'GTKCairo', 'FltkAgg', 'QtAgg', 'Qt4Agg', 'TkAgg', 'WX', 'WXAgg', 'CocoaAgg']<br>
+<strong>non_interactive_bk</strong> = ['agg', 'cairo', 'emf', 'gdk', 'pdf', 'ps', 'svg', 'template']<br>
+<strong>validate_backend</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x1d437e8&gt;<br>
+<strong>validate_cairo_format</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523cb0&gt;<br>
+<strong>validate_capstyle</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523d88&gt;<br>
+<strong>validate_fontset</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523c20&gt;<br>
+<strong>validate_joinstyle</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523d40&gt;<br>
+<strong>validate_legend_loc</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523e18&gt;<br>
+<strong>validate_negative_linestyle</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523dd0&gt;<br>
+<strong>validate_numerix</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523bd8&gt;<br>
+<strong>validate_orientation</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523b00&gt;<br>
+<strong>validate_ps_papersize</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523cf8&gt;<br>
+<strong>validate_toolbar</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523b48&gt;<br>
+<strong>validate_verbose</strong> = &lt;matplotlib.rcsetup.ValidateInStrings instance at 0x7f2c5a523c68&gt;</td></tr></table>
+@footer@

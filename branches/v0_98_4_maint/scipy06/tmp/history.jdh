@@ -1,0 +1,549 @@
+y
+plot([1,2,3])\
+hist(randn(10000), 100)
+import numarray
+import Numeric
+import Tkinter
+plot([1,2,3])
+cd 3d/ 
+ls
+run mplot3d.py
+run surface.py
+cd tex/talks/scipy05/examples/ 
+ls
+run animate_circles.py 
+ls
+pwd
+cd talk/examples/ 
+ls
+cd 3d/ 
+run surface.py
+cd /Users/jdhunter/python/projects/matplotlib/examples
+run simple_plot.py
+run image_demo.py 
+type image_demo.py 
+cat image_demo.py
+contour(X,Y,Z,levels=7)
+run image_demo.py 
+contour(X,Y,Z,levels=7)
+whos
+Z = Z2-Z1
+contour(X,Y,Z,levels=7)
+set(_, linewidths=(8,)
+)
+setp(_, linewidths=(8,))
+_oh
+levels, colls = _oh[5]
+setp(colls, linewidths=3)
+setp(colls, linewidth=3)
+help colormap
+hot
+gray
+close
+run image_demo.py 
+contour(X,Y,Z,levels=7)
+hot
+axes.collections
+a = gca()
+a.collections
+a.collections = []
+draw()
+levs, colls = contour(X,Y,Z,levels=7)
+setp(colls, linewidth=3)
+setp(colls, linestyle='--')
+setp(colls, linestyle='dashed')
+jet
+jet??
+bg?
+color?
+ax = plot(rand(100), rand(100))
+ax = subplot(111)
+line, = plot(rand(100), rand(100), 'go')
+clf
+markers, = plot(rand(100), rand(100), 'go')
+clf
+markers, = plot(rand(100)-.5, rand(100)-.5, 'go')
+line, = plot([0,0], [0,1], animated=True)
+axis([-.5,.5,-.5,.5])
+ax.set_autoscale_on(False)
+canvas = ax.figure.canvas
+for i in range(100):
+    theta = i/100.*2*pi
+    x = cos(theta)
+    y = sin(theta)
+    canvas.restore_region(bg)
+    line.set_data([0,x].[0,y])
+for i in range(100):
+    theta = i/100.*2*pi
+    x = cos(theta)
+    y = sin(theta)
+    canvas.restore_region(bg)
+    line.set_data([0,x], [0,y])
+    ax.draw_artist(line)
+    canvas.blit(bbox)
+    
+bc = canvas.copy_from_bbox(ax.bbox)
+bg = canvas.copy_from_bbox(ax.bbox)
+bg
+for i in range(100):
+    theta = i/100.*2*pi
+    x, y = cos(theta), sin(theta)
+    canvas.blit(bbox)
+    canvas.restore_region(bg)
+    line.set_data([0,x], [0,y])
+    ax.draw_artist(line)
+    canvas.blit(bbox)
+    
+for i in range(100):
+    x, y = cos(theta), sin(theta)
+    canvas.restore_region(bg)
+    line.set_data([0,x], [0,y])
+    ax.draw_artist(line)
+    canvas.blit(ax.bbox)
+    
+canvas.restore_region(bg)
+canvas.blit(ax.bbox)
+for i in range(100):
+    theta = i/100.*2*pi
+    x, y = cos(theta), sin(theta)
+    canvas.restore_region(bg)
+    line.set_data([0,x], [0,y])
+    ax.draw_artist(line)
+    canvas.blit(ax.bbox)
+    
+logging
+cd python/projects/matplotlib/examples/ 
+cd /Users/jdhunter/talk/examples/ 
+run rotate.py
+run rotate_gui.py
+run wireframe.p
+run wireframe.py
+run surface.py
+run scatter3.py
+def move(event): if event.inaxes: print event.xdata, event.ydata
+def move(event):
+    if event.inaxes is not None: priint event.x, event.xdata
+def move(event):
+    if event.inaxes is not None: print event.x, event.xdata
+    
+plot(rand(100))
+cid = connect('motion_notify_event', move)
+disconnect(cid)
+close
+run poly_editor.py 
+ls
+run check_buttons.py 
+ls
+run cursor.py 
+ls
+run radio_buttons.py 
+run sliders.py 
+lw
+run span_selector.py 
+ls
+run rectangle_selector.py 
+ls
+rm *~
+ls
+run buttons.py 
+polar?
+theta = arange(0, 2*pi, 0.01)
+r = arange(len(theta))+0.
+polar(theta, r)
+close
+polar(theta, r)
+ax = subplot(111, polar=True)
+polar(theta, r)
+close
+polar(theta, r)
+cd /Users/jdhunter/python/projects/matplotlib/examples/ 
+run polar_demo.py 
+help(ax)
+clf
+ax = subplot(111)
+help(ax)
+help(Axes)
+help(XAxis)
+help(Axis)
+ax.xaxis?
+ax.xaxis??
+from matplotlib.axis import XAxis
+help(XAxis)
+la
+ax.xaxis.get_major_ticks()
+help(XTick)
+help(matplotlib.axis.XTick)
+help(matplotlib.lines.Line2D)
+ls
+rm *~
+ls
+ax1 = subplot(111)
+close
+ax1 = subplot(211)
+ax2 = subplot(212)
+clf
+ax1 = subplot(211)
+ax2 = subplot(212, sharex=ax1)
+t = arange(0,2,0.01)
+s1 = sin(2*pi*t); s2 = sin(4*pi*t)
+ax1.plot(t,s1)
+ax2.plot(t,s2)
+draw()
+pwd
+from IPython.demo import Demo
+d = Demo('rotate.py')
+d
+help(canvas.copy_from_bbox)
+help(canvas)
+d = Demo('rotate.py')
+from IPython.demo import Demo
+d = Demo('rotate.py')
+d
+d.again 
+d
+d.again
+d = Demo('rotate.py')
+d
+close
+d = Demo('rotate.py')
+d
+from IPython.demo import Demo
+d = Demo('rotate.py')
+d
+1/2
+from IPython.demo import Demo
+d = Demo('rotate.py')
+d
+close
+d = Demo('rotate.py')
+d
+d.again
+close
+ls
+run animate_circles.py 
+ls
+rm *~
+ls
+run simple.py
+plot([1,2,3])
+close
+run simple.py
+from IPython.demo import Demo
+d = Demo('shared_axis_demo.py')
+d
+d = Demo('shared_axis_demo.py')
+d
+d = Demo('shared_axis_demo.py')
+d(1)
+d
+close
+d.again
+close
+d = Demo('shared_axis_demo.py')
+d
+xticks((-1,1))
+close
+ls
+cd ..
+ls
+cd e
+cd ev
+cd events/ 
+ls
+pwd
+hist(randn(10000), 100)
+title('Hi mom')
+title(r'$\mu=20; \gamma=30$')
+imshow(rand(30,40))
+CLF
+clf
+imshow(rand(30,40), interpolation='nearest', cmap=cm.hot)
+colorbar
+spring
+t = arange(0,3,0.01)
+line, = plot(t, sin(2*pi*t), 'g-')
+setp(line)
+getp(line)
+setp(line, color='r', lw=4)
+import numarray
+numarray.array((1, 's', 0.0), typecode='O')
+numarray.array((1, 's', 0.0), typecode=numarray.Object)
+numarray.array((1, 's', 0.0), typecode=numarray.ObjectType)
+numarray.array((1, 's', 0.0), typecode=numarray.Object)
+contour?
+ls
+cd /Users/jdhunter/talk/examples/ 
+ls
+cd /Users/jdhunter/python/projects/matplotlib/examples/ 
+run image_demo.py 
+Z
+contour(x,y,Z)
+hoy
+hot
+clabel?
+clabel(inline=True)
+clabel?
+clabel(Z, inline=True)
+close
+levs, colls = contour(X,Y,Z,levels=7)
+close
+run image_demo.py 
+cat image_demo.py 
+ls
+levs, colls = contour(X,Y,Z,levels=7)
+clabel(colls, inline=True)
+jet
+min(Z.flat)
+max(Z.flat)
+ax = gca()
+ax.collections = []
+ax.texts = []
+draw()
+ax.collections = []; ax.artists = []; draw()
+levs, colls = contour(X,Y,Z,levels=(-.1, 0, .4, .6, 1))
+levs, colls = contour(X,Y,Z,levels=(-.1, 0, .4, .6, 1), colors='r')
+ax.collections = []; ax.artists = []; draw()
+levs, colls = contour(X,Y,Z,levels=(-.1, 0, .4, .6, 1), colors='r')
+levs, colls = contour(X,Y,Z,levels=7)
+clabel(colls, inline=True)
+ax.collections = []; ax.artists = []; draw()
+levs, colls = contour(X,Y,Z,levels=7)
+clabel(colls[::2], inline=True)
+close
+run contour_demo.py
+run contourf_demo.py
+run contour_image.py 
+rm -f *.png
+ls
+%pycat image_demo.py 
+%pycat image_demo
+%pycat image_demo.py
+pycat image_demo
+%pycat image_demo.py
+plot([1,2,3])
+savefig('test', dpi=100)
+savefig('test', dpi=600)
+savefig('test', dpi=100)
+savefig('test2', dpi=600)
+1000./6.45
+1000./17.47
+run hist
+run histd
+run histtest.py 
+import rexec
+help(rexec)
+import logging
+logging.basicConfig 
+import logging
+b = logging.basicConfig()
+b.format
+b.filemode = 'w'
+help logging.basicConfig 
+logging.Formatter ?
+formatter = logging.Formatter ()
+formatter
+help logging.Formatter 
+f = logging.Formatter ()
+f
+help load
+plot([1,2,3])
+grid()
+title('hi mom')
+plot([1,2,3])
+grid()
+plot([1,2,3])
+grid()
+plot([1,2,3])
+grid()
+fig = figure()
+fig.canvas.__file__
+plot([1,2,3])
+grid()
+plot([1,2,3])
+grid()
+plot([1,2,3])
+grid()
+plot([1,2,3])
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+fname
+grid()
+plot([1,2,3])
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+from matplotlib._pylab_helpers import Gcf()
+from matplotlib._pylab_helpers import Gcf
+Gcf.figs
+plot([1,2,3])
+from matplotlib._pylab_helpers import Gcf
+Gcf.figs
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+Gcf.figs
+plot([1,2,3])
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+from matplotlib._pylab_helpers import Gcf
+Gcf.figs
+plot([1,2,3])
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+plot([1,2,3])
+from tkFileDialog import asksaveasfilename as ask
+fname = ask(title='hi mom')
+hist(rand(10000), 100)
+hist(randn(10000), 100);
+close()
+clf()
+pwd
+ls
+plot(*rand(2,100), 'o')
+plot(*rand(2,100), markerstyle='o')
+plot(*rand(2,100))
+close
+run -i stock_scatter.py
+run -t stock_scatter.py
+run -p stock_scatter.py
+rls
+ls
+run stock_scatter.py
+run -i stock_scatter.py
+p = points[0]
+p.dailyreturn.shape
+nx.mlab.corrcoef(p.dailyreturn[1:], p.dailyreturn[:-1])
+p.dailyreturn[:-1].shape
+p.dailyreturn[1:].shape
+nx.mlab.corrcoef(p.dailyreturn[1:].copy(), p.dailyreturn[:-1].copy())
+s1 = p.dailyreturn[:-1]
+s2 = p.dailyreturn[1:]
+nx.cov(s1,s2)
+nx.mlab.cov(s1, s2)
+s1[:0]
+s1[:1]
+s1[:10]
+nx.mlab.corrcoef(s1,s2)
+c = nx.mlab.cov(s1,s2)
+c
+d = doag(c)
+d = diag(c)
+s1 = p.dailyreturn[:-1]
+s2 = p.dailyreturn[1:]
+s1 *s2
+s1 = p.dailyreturn[:-1].copy()
+s2 = p.dailyreturn[1:].copy()
+nx.mlab.cov(s1, s2)
+x = nx.mlab.rand(10)
+y = nx.mlab.rand(10)
+nx.mlab.cov(x,y)
+run stock_scatter.py
+p = points[0]
+fig = figure()
+p.plotraw(fig)
+run stock_scatter.py
+p = points[0]
+p.date[:10]
+p.dailydata.date[:10]
+p.dailydata.close[:10]
+p.dailydata.ticker
+run stock_scatter.py
+p = points[0]
+fig = figure()
+p.plotraw(fig)
+draw()
+p.plotraw(fig); draw()
+run -i stock_scatter.py
+close('all')
+p = points[0]
+p.plotraw(fig); draw()
+draw()
+close('all')
+fig = figure()
+p.plotraw(fig); draw()
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter.py
+d = datetime.datetime.now().date()
+d.strftime('%Y')
+d.strftime('%b %Y')
+close('all')
+d.strftime('%b %Y')
+run -i stock_scatter.py
+run stock_scatter.py
+pwd
+cd scripts/ 
+run stock_scatter.py 
+run -i stock_scatter.py 
+close('all')
+run stock_scatter.py 
+run stock_scatter.py
+close('all')
+run stock_scatter.py
+close('all')
+run stock_scatter.py
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter.py
+cl;2A
+close('all')
+xy = nx.array([1,2])
+y = nx.array(2,10)
+y = nx.mlab.rand(2,10)
+xy-y
+xy
+y
+y = nx.mlab.rand(10,2)
+xy-y
+y
+xy-y
+y-xy
+run -i stock_scatter2.py
+close('all')
+run -i stock_scatter.py
+close('all')
+run -i stock_scatter2.py
+run -i stock_scatter.py
+from numpy.fft import fft
+from numpy import rand
+from numpy.lib.mlab import rand
+import matplotlib.numerix as nx
+nx.fft
+nx.fft.fft
+import numarray
+numarray.rand
+numarray.mlab.rand
+numarray.linear_algebra.mlab.rand
+pwd
+cd mpl/examples/ 
+ls
+pycat image_demo.py
+x = y = arange(-3,3,0.05)
+X, Y = meshgrid(X, Y)
+X, Y = meshgrid(x, y)
+Z1 = bivariate_normal(X, Y, 1, 1, 0, 0)
+help bivariate_normal 
+Z1@ = bivariate_normal(X, Y, 1.5, 0.5, 1, 1)
+Z2 = bivariate_normal(X, Y, 1.5, 0.5, 1, 1)
+Z = Z2-Z1
+imshow(Z)
+clf()
+imshow(Z, cmap=cm.gray, extent=(-3,3,-3,3))
+CS = contour(X, Y, Z, cmap=cm.hot)
+clf()
+imshow(Z, cmap=cm.gray, extent=(-3,3,-3,3), origin='lower')
+CS = contour(X, Y, Z, cmap=cm.hot, origin='lower')
+clabel(CS)
+colorbar()
+cd mpl/examples/ 
+ls
+pwd
+cd scripts/ 
+run stock_scatter.py
+pwd
+run stock_scatter.py
+run -i stock_scatter2.py

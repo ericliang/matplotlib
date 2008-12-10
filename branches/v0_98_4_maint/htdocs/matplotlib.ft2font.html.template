@@ -1,0 +1,61 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.ft2font</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/ft2font.so">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/ft2font.so</a></font></td></tr></table>
+    <p><tt>The&nbsp;ft2font&nbsp;module</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-FT2Font"><strong>FT2Font</strong></a>(...)</dt><dd><tt>FT2Font</tt></dd></dl>
+ <dl><dt><a name="-FT2Image"><strong>FT2Image</strong></a>(...)</dt><dd><tt>FT2Image</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>BOLD</strong> = 2<br>
+<strong>EXTERNAL_STREAM</strong> = 1024<br>
+<strong>FAST_GLYPHS</strong> = 128<br>
+<strong>FIXED_SIZES</strong> = 2<br>
+<strong>FIXED_WIDTH</strong> = 4<br>
+<strong>GLYPH_NAMES</strong> = 512<br>
+<strong>HORIZONTAL</strong> = 16<br>
+<strong>ITALIC</strong> = 1<br>
+<strong>KERNING</strong> = 64<br>
+<strong>KERNING_DEFAULT</strong> = 0<br>
+<strong>KERNING_UNFITTED</strong> = 1<br>
+<strong>KERNING_UNSCALED</strong> = 2<br>
+<strong>LOAD_CROP_BITMAP</strong> = 64L<br>
+<strong>LOAD_DEFAULT</strong> = 0L<br>
+<strong>LOAD_FORCE_AUTOHINT</strong> = 32L<br>
+<strong>LOAD_IGNORE_GLOBAL_ADVANCE_WIDTH</strong> = 512L<br>
+<strong>LOAD_IGNORE_TRANSFORM</strong> = 2048L<br>
+<strong>LOAD_LINEAR_DESIGN</strong> = 8192L<br>
+<strong>LOAD_MONOCHROME</strong> = 4096L<br>
+<strong>LOAD_NO_AUTOHINT</strong> = 32768L<br>
+<strong>LOAD_NO_BITMAP</strong> = 8L<br>
+<strong>LOAD_NO_HINTING</strong> = 2L<br>
+<strong>LOAD_NO_RECURSE</strong> = 1024L<br>
+<strong>LOAD_NO_SCALE</strong> = 1L<br>
+<strong>LOAD_PEDANTIC</strong> = 128L<br>
+<strong>LOAD_RENDER</strong> = 4L<br>
+<strong>LOAD_TARGET_LCD</strong> = 196608L<br>
+<strong>LOAD_TARGET_LCD_V</strong> = 262144L<br>
+<strong>LOAD_TARGET_LIGHT</strong> = 65536L<br>
+<strong>LOAD_TARGET_MONO</strong> = 131072L<br>
+<strong>LOAD_TARGET_NORMAL</strong> = 0L<br>
+<strong>LOAD_VERTICAL_LAYOUT</strong> = 16L<br>
+<strong>MULTIPLE_MASTERS</strong> = 256<br>
+<strong>SCALABLE</strong> = 1<br>
+<strong>SFNT</strong> = 8<br>
+<strong>VERTICAL</strong> = 1</td></tr></table>
+@footer@

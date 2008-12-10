@@ -1,0 +1,987 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.figure</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/figure.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/figure.py</a></font></td></tr></table>
+    <p><tt>The&nbsp;figure&nbsp;module&nbsp;provides&nbsp;the&nbsp;top-level<br>
+:class:`~matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>`,&nbsp;the&nbsp;:class:`<a href="#Figure">Figure</a>`,&nbsp;which<br>
+contains&nbsp;all&nbsp;the&nbsp;plot&nbsp;elements.&nbsp;&nbsp;The&nbsp;following&nbsp;classes&nbsp;are&nbsp;defined<br>
+&nbsp;<br>
+:class:`<a href="#SubplotParams">SubplotParams</a>`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;control&nbsp;the&nbsp;default&nbsp;spacing&nbsp;of&nbsp;the&nbsp;subplots<br>
+&nbsp;<br>
+:class:`<a href="#Figure">Figure</a>`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;top&nbsp;level&nbsp;container&nbsp;for&nbsp;all&nbsp;plot&nbsp;elements</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib._image.html">matplotlib._image</a><br>
+<a href="matplotlib.artist.html">matplotlib.artist</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.colorbar.html">matplotlib.colorbar</a><br>
+<a href="matplotlib.cbook.html">matplotlib.cbook</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="time.html">time</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.figure.html#Figure">Figure</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.figure.html#SubplotParams">SubplotParams</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Figure">class <strong>Figure</strong></a>(<a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;<a href="#Figure">Figure</a>&nbsp;instance&nbsp;supports&nbsp;callbacks&nbsp;through&nbsp;a&nbsp;*callbacks*<br>
+attribute&nbsp;which&nbsp;is&nbsp;a&nbsp;:class:`matplotlib.cbook.CallbackRegistry`<br>
+instance.&nbsp;&nbsp;The&nbsp;events&nbsp;you&nbsp;can&nbsp;connect&nbsp;to&nbsp;are&nbsp;'dpi_changed',&nbsp;and<br>
+the&nbsp;callback&nbsp;will&nbsp;be&nbsp;called&nbsp;with&nbsp;``func(fig)``&nbsp;where&nbsp;fig&nbsp;is&nbsp;the<br>
+:class:`<a href="#Figure">Figure</a>`&nbsp;instance.<br>
+&nbsp;<br>
+The&nbsp;figure&nbsp;patch&nbsp;is&nbsp;drawn&nbsp;by&nbsp;a&nbsp;the&nbsp;attribute<br>
+&nbsp;<br>
+*patch*<br>
+&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.patches.Rectangle`&nbsp;instance<br>
+&nbsp;<br>
+*suppressComposite*<br>
+&nbsp;&nbsp;&nbsp;for&nbsp;multiple&nbsp;figure&nbsp;images,&nbsp;the&nbsp;figure&nbsp;will&nbsp;make&nbsp;composite<br>
+&nbsp;&nbsp;&nbsp;images&nbsp;depending&nbsp;on&nbsp;the&nbsp;renderer&nbsp;option_image_nocomposite<br>
+&nbsp;&nbsp;&nbsp;function.&nbsp;&nbsp;If&nbsp;suppressComposite&nbsp;is&nbsp;True|False,&nbsp;this&nbsp;will<br>
+&nbsp;&nbsp;&nbsp;override&nbsp;the&nbsp;renderer<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.figure.html#Figure">Figure</a></dd>
+<dd><a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Figure-__init__"><strong>__init__</strong></a>(self, figsize<font color="#909090">=None</font>, dpi<font color="#909090">=None</font>, facecolor<font color="#909090">=None</font>, edgecolor<font color="#909090">=None</font>, linewidth<font color="#909090">=1.0</font>, frameon<font color="#909090">=True</font>, subplotpars<font color="#909090">=None</font>)</dt><dd><tt>*figsize*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;w,h&nbsp;tuple&nbsp;in&nbsp;inches<br>
+*dpi*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;dots&nbsp;per&nbsp;inch<br>
+*facecolor*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;figure&nbsp;patch&nbsp;facecolor;&nbsp;defaults&nbsp;to&nbsp;rc&nbsp;``figure.facecolor``<br>
+*edgecolor*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;figure&nbsp;patch&nbsp;edge&nbsp;color;&nbsp;defaults&nbsp;to&nbsp;rc&nbsp;``figure.edgecolor``<br>
+*linewidth*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;figure&nbsp;patch&nbsp;edge&nbsp;linewidth;&nbsp;the&nbsp;default&nbsp;linewidth&nbsp;of&nbsp;the&nbsp;frame<br>
+*frameon*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;False,&nbsp;suppress&nbsp;drawing&nbsp;the&nbsp;figure&nbsp;frame<br>
+*subplotpars*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`<a href="#SubplotParams">SubplotParams</a>`&nbsp;instance,&nbsp;defaults&nbsp;to&nbsp;rc</tt></dd></dl>
+
+<dl><dt><a name="Figure-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-add_axes"><strong>add_axes</strong></a>(self, *args, **kwargs)</dt><dd><tt>Add&nbsp;an&nbsp;a&nbsp;axes&nbsp;with&nbsp;axes&nbsp;rect&nbsp;[*left*,&nbsp;*bottom*,&nbsp;*width*,<br>
+*height*]&nbsp;where&nbsp;all&nbsp;quantities&nbsp;are&nbsp;in&nbsp;fractions&nbsp;of&nbsp;figure<br>
+width&nbsp;and&nbsp;height.&nbsp;&nbsp;kwargs&nbsp;are&nbsp;legal<br>
+:class:`~matplotlib.axes.Axes`&nbsp;kwargs&nbsp;plus&nbsp;*projection*&nbsp;which<br>
+sets&nbsp;the&nbsp;projection&nbsp;type&nbsp;of&nbsp;the&nbsp;axes.&nbsp;&nbsp;(For&nbsp;backward<br>
+compatibility,&nbsp;``polar=True``&nbsp;may&nbsp;also&nbsp;be&nbsp;provided,&nbsp;which&nbsp;is<br>
+equivalent&nbsp;to&nbsp;``projection='polar'``).&nbsp;&nbsp;Valid&nbsp;values&nbsp;for<br>
+*projection*&nbsp;are:&nbsp;aitoff,&nbsp;hammer,&nbsp;lambert,&nbsp;polar,&nbsp;rectilinear.&nbsp;&nbsp;Some&nbsp;of&nbsp;these&nbsp;projections&nbsp;support<br>
+additional&nbsp;kwargs,&nbsp;which&nbsp;may&nbsp;be&nbsp;provided&nbsp;to&nbsp;:meth:`add_axes`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rect&nbsp;=&nbsp;l,b,w,h<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect,&nbsp;frameon=False,&nbsp;axisbg='g')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect,&nbsp;polar=True)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect,&nbsp;projection='polar')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(ax)&nbsp;&nbsp;&nbsp;#&nbsp;add&nbsp;an&nbsp;Axes&nbsp;instance<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;figure&nbsp;already&nbsp;has&nbsp;an&nbsp;axes&nbsp;with&nbsp;the&nbsp;same&nbsp;parameters,<br>
+then&nbsp;it&nbsp;will&nbsp;simply&nbsp;make&nbsp;that&nbsp;axes&nbsp;current&nbsp;and&nbsp;return&nbsp;it.&nbsp;&nbsp;If<br>
+you&nbsp;do&nbsp;not&nbsp;want&nbsp;this&nbsp;behavior,&nbsp;eg.&nbsp;you&nbsp;want&nbsp;to&nbsp;force&nbsp;the<br>
+creation&nbsp;of&nbsp;a&nbsp;new&nbsp;axes,&nbsp;you&nbsp;must&nbsp;use&nbsp;a&nbsp;unique&nbsp;set&nbsp;of&nbsp;args&nbsp;and<br>
+kwargs.&nbsp;&nbsp;The&nbsp;axes&nbsp;:attr:`~matplotlib.axes.Axes.label`<br>
+attribute&nbsp;has&nbsp;been&nbsp;exposed&nbsp;for&nbsp;this&nbsp;purpose.&nbsp;&nbsp;Eg.,&nbsp;if&nbsp;you&nbsp;want<br>
+two&nbsp;axes&nbsp;that&nbsp;are&nbsp;otherwise&nbsp;identical&nbsp;to&nbsp;be&nbsp;added&nbsp;to&nbsp;the<br>
+figure,&nbsp;make&nbsp;sure&nbsp;you&nbsp;give&nbsp;them&nbsp;unique&nbsp;labels::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect,&nbsp;label='axes1')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-add_axes">add_axes</a>(rect,&nbsp;label='axes2')<br>
+&nbsp;<br>
+The&nbsp;:class:`~matplotlib.axes.Axes`&nbsp;instance&nbsp;will&nbsp;be&nbsp;returned.<br>
+&nbsp;<br>
+The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;supported:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================<br>
+&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================<br>
+&nbsp;&nbsp;adjustable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'box'&nbsp;|&nbsp;'datalim'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;anchor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;animated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;aspect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;autoscale_on&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;axes&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_bgcolor&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axisbelow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;*True*&nbsp;|&nbsp;*False*&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+&nbsp;&nbsp;color_cycle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;contains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;cursor_props&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;(*float*,&nbsp;*color*)&nbsp;tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;frame_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;*True*&nbsp;|&nbsp;*False*&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;navigate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;True&nbsp;|&nbsp;False&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;navigate_mode&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;picker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[None|float|boolean|callable]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;visible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xbound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xlabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xlim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(2)&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xscale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['linear'&nbsp;|&nbsp;'log'&nbsp;|&nbsp;'symlog']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xticklabels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xticks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ybound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ylabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ylim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(2)&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yscale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['linear'&nbsp;|&nbsp;'log'&nbsp;|&nbsp;'symlog']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yticklabels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yticks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;zorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================</tt></dd></dl>
+
+<dl><dt><a name="Figure-add_axobserver"><strong>add_axobserver</strong></a>(self, func)</dt><dd><tt>whenever&nbsp;the&nbsp;axes&nbsp;state&nbsp;change,&nbsp;func(self)&nbsp;will&nbsp;be&nbsp;called</tt></dd></dl>
+
+<dl><dt><a name="Figure-add_subplot"><strong>add_subplot</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Figure-autofmt_xdate"><strong>autofmt_xdate</strong></a>(self, bottom<font color="#909090">=0.20000000000000001</font>, rotation<font color="#909090">=30</font>, ha<font color="#909090">='right'</font>)</dt><dd><tt>Date&nbsp;ticklabels&nbsp;often&nbsp;overlap,&nbsp;so&nbsp;it&nbsp;is&nbsp;useful&nbsp;to&nbsp;rotate&nbsp;them<br>
+and&nbsp;right&nbsp;align&nbsp;them.&nbsp;&nbsp;Also,&nbsp;a&nbsp;common&nbsp;use&nbsp;case&nbsp;is&nbsp;a&nbsp;number&nbsp;of<br>
+subplots&nbsp;with&nbsp;shared&nbsp;xaxes&nbsp;where&nbsp;the&nbsp;x-axis&nbsp;is&nbsp;date&nbsp;data.&nbsp;&nbsp;The<br>
+ticklabels&nbsp;are&nbsp;often&nbsp;long,&nbsp;and&nbsp;it&nbsp;helps&nbsp;to&nbsp;rotate&nbsp;them&nbsp;on&nbsp;the<br>
+bottom&nbsp;subplot&nbsp;and&nbsp;turn&nbsp;them&nbsp;off&nbsp;on&nbsp;other&nbsp;subplots,&nbsp;as&nbsp;well&nbsp;as<br>
+turn&nbsp;off&nbsp;xlabels.<br>
+&nbsp;<br>
+*bottom*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;subplots&nbsp;for&nbsp;:meth:`subplots_adjust`<br>
+*rotation*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;rotation&nbsp;of&nbsp;the&nbsp;xtick&nbsp;labels<br>
+*ha*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;horizontal&nbsp;alignment&nbsp;of&nbsp;the&nbsp;xticklabels</tt></dd></dl>
+
+<dl><dt><a name="Figure-clear"><strong>clear</strong></a>(self)</dt><dd><tt>Clear&nbsp;the&nbsp;figure</tt></dd></dl>
+
+<dl><dt><a name="Figure-clf"><strong>clf</strong></a>(self)</dt><dd><tt>Clear&nbsp;the&nbsp;figure</tt></dd></dl>
+
+<dl><dt><a name="Figure-colorbar"><strong>colorbar</strong></a>(self, mappable, cax<font color="#909090">=None</font>, ax<font color="#909090">=None</font>, **kw)</dt><dd><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Create&nbsp;a&nbsp;colorbar&nbsp;for&nbsp;a&nbsp;ScalarMappable&nbsp;instance.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Documentation&nbsp;for&nbsp;the&nbsp;pylab&nbsp;thin&nbsp;wrapper:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+Add&nbsp;a&nbsp;colorbar&nbsp;to&nbsp;a&nbsp;plot.<br>
+&nbsp;<br>
+Function&nbsp;signatures&nbsp;for&nbsp;the&nbsp;:mod:`~matplotlib.pyplot`&nbsp;interface;&nbsp;all<br>
+but&nbsp;the&nbsp;first&nbsp;are&nbsp;also&nbsp;method&nbsp;signatures&nbsp;for&nbsp;the<br>
+:meth:`matplotlib.<a href="#Figure">Figure</a>.colorbar`&nbsp;method::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-colorbar">colorbar</a>(**kwargs)<br>
+&nbsp;&nbsp;<a href="#Figure-colorbar">colorbar</a>(mappable,&nbsp;**kwargs)<br>
+&nbsp;&nbsp;<a href="#Figure-colorbar">colorbar</a>(mappable,&nbsp;cax=cax,&nbsp;**kwargs)<br>
+&nbsp;&nbsp;<a href="#Figure-colorbar">colorbar</a>(mappable,&nbsp;ax=ax,&nbsp;**kwargs)<br>
+&nbsp;<br>
+arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*mappable*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;image,&nbsp;:class:`~matplotlib.contours.ContourSet`,&nbsp;etc.&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;which&nbsp;the&nbsp;colorbar&nbsp;applies;&nbsp;this&nbsp;argument&nbsp;is&nbsp;mandatory&nbsp;for&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:meth:`matplotlib.<a href="#Figure">Figure</a>.colorbar`&nbsp;method&nbsp;but&nbsp;optional&nbsp;for&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;:func:`matplotlib.pyplot.colorbar`&nbsp;function,&nbsp;which&nbsp;sets&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;to&nbsp;the&nbsp;current&nbsp;image.<br>
+&nbsp;<br>
+keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*cax*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;|&nbsp;axes&nbsp;object&nbsp;into&nbsp;which&nbsp;the&nbsp;colorbar&nbsp;will&nbsp;be&nbsp;drawn<br>
+&nbsp;&nbsp;*ax*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;|&nbsp;parent&nbsp;axes&nbsp;object&nbsp;from&nbsp;which&nbsp;space&nbsp;for&nbsp;a&nbsp;new<br>
+&nbsp;&nbsp;&nbsp;&nbsp;colorbar&nbsp;axes&nbsp;will&nbsp;be&nbsp;stolen<br>
+&nbsp;<br>
+&nbsp;<br>
+Additional&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;of&nbsp;two&nbsp;kinds:<br>
+&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;properties:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;==========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+&nbsp;&nbsp;&nbsp;&nbsp;==========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*fraction*&nbsp;&nbsp;&nbsp;0.15;&nbsp;fraction&nbsp;of&nbsp;original&nbsp;axes&nbsp;to&nbsp;use&nbsp;for&nbsp;colorbar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*pad*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0.05&nbsp;if&nbsp;vertical,&nbsp;0.15&nbsp;if&nbsp;horizontal;&nbsp;fraction<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;original&nbsp;axes&nbsp;between&nbsp;colorbar&nbsp;and&nbsp;new&nbsp;image&nbsp;axes<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*shrink*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1.0;&nbsp;fraction&nbsp;by&nbsp;which&nbsp;to&nbsp;shrink&nbsp;the&nbsp;colorbar<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*aspect*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20;&nbsp;ratio&nbsp;of&nbsp;long&nbsp;to&nbsp;short&nbsp;dimensions<br>
+&nbsp;&nbsp;&nbsp;&nbsp;==========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;colorbar&nbsp;properties:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*extend*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'neither'&nbsp;|&nbsp;'both'&nbsp;|&nbsp;'min'&nbsp;|&nbsp;'max'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;not&nbsp;'neither',&nbsp;make&nbsp;pointed&nbsp;end(s)&nbsp;for&nbsp;out-of-<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;range&nbsp;values.&nbsp;&nbsp;These&nbsp;are&nbsp;set&nbsp;for&nbsp;a&nbsp;given&nbsp;colormap<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;using&nbsp;the&nbsp;colormap&nbsp;set_under&nbsp;and&nbsp;set_over&nbsp;methods.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*spacing*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'uniform'&nbsp;|&nbsp;'proportional'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Uniform&nbsp;spacing&nbsp;gives&nbsp;each&nbsp;discrete&nbsp;color&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;space;&nbsp;proportional&nbsp;makes&nbsp;the&nbsp;space&nbsp;proportional&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;data&nbsp;interval.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*ticks*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;None&nbsp;|&nbsp;list&nbsp;of&nbsp;ticks&nbsp;|&nbsp;Locator&nbsp;object&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;None,&nbsp;ticks&nbsp;are&nbsp;determined&nbsp;automatically&nbsp;from&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*format*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;None&nbsp;|&nbsp;format&nbsp;string&nbsp;|&nbsp;Formatter&nbsp;object&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;None,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:class:`~matplotlib.ticker.ScalarFormatter`&nbsp;is&nbsp;used.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;a&nbsp;format&nbsp;string&nbsp;is&nbsp;given,&nbsp;e.g.&nbsp;'%.3f',&nbsp;that&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used.&nbsp;An&nbsp;alternative<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:class:`~matplotlib.ticker.Formatter`&nbsp;object&nbsp;may&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given&nbsp;instead.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*drawedges*&nbsp;&nbsp;&nbsp;[&nbsp;False&nbsp;|&nbsp;True&nbsp;]&nbsp;If&nbsp;true,&nbsp;draw&nbsp;lines&nbsp;at&nbsp;color<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;boundaries.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===========&nbsp;&nbsp;&nbsp;====================================================<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;following&nbsp;will&nbsp;probably&nbsp;be&nbsp;useful&nbsp;only&nbsp;in&nbsp;the&nbsp;context&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;indexed&nbsp;colors&nbsp;(that&nbsp;is,&nbsp;when&nbsp;the&nbsp;mappable&nbsp;has&nbsp;norm=NoNorm()),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;other&nbsp;unusual&nbsp;circumstances.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;===================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+&nbsp;&nbsp;&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;===================================================<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*boundaries*&nbsp;&nbsp;&nbsp;None&nbsp;or&nbsp;a&nbsp;sequence<br>
+&nbsp;&nbsp;&nbsp;&nbsp;*values*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None&nbsp;or&nbsp;a&nbsp;sequence&nbsp;which&nbsp;must&nbsp;be&nbsp;of&nbsp;length&nbsp;1&nbsp;less<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;than&nbsp;the&nbsp;sequence&nbsp;of&nbsp;*boundaries*.&nbsp;For&nbsp;each&nbsp;region<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;delimited&nbsp;by&nbsp;adjacent&nbsp;entries&nbsp;in&nbsp;*boundaries*,&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color&nbsp;mapped&nbsp;to&nbsp;the&nbsp;corresponding&nbsp;value&nbsp;in&nbsp;values<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;will&nbsp;be&nbsp;used.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;============&nbsp;&nbsp;&nbsp;===================================================<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+If&nbsp;mappable&nbsp;is&nbsp;a&nbsp;:class:`~matplotlib.contours.ContourSet`,&nbsp;its&nbsp;*extend*<br>
+kwarg&nbsp;is&nbsp;included&nbsp;automatically.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;the&nbsp;*shrink*&nbsp;kwarg&nbsp;provides&nbsp;a&nbsp;simple&nbsp;way&nbsp;to&nbsp;keep&nbsp;a&nbsp;vertical<br>
+colorbar,&nbsp;for&nbsp;example,&nbsp;from&nbsp;being&nbsp;taller&nbsp;than&nbsp;the&nbsp;axes&nbsp;of&nbsp;the&nbsp;mappable<br>
+to&nbsp;which&nbsp;the&nbsp;colorbar&nbsp;is&nbsp;attached;&nbsp;but&nbsp;it&nbsp;is&nbsp;a&nbsp;manual&nbsp;method&nbsp;requiring<br>
+some&nbsp;trial&nbsp;and&nbsp;error.&nbsp;If&nbsp;the&nbsp;colorbar&nbsp;is&nbsp;too&nbsp;tall&nbsp;(or&nbsp;a&nbsp;horizontal<br>
+colorbar&nbsp;is&nbsp;too&nbsp;wide)&nbsp;use&nbsp;a&nbsp;smaller&nbsp;value&nbsp;of&nbsp;*shrink*.<br>
+&nbsp;<br>
+For&nbsp;more&nbsp;precise&nbsp;control,&nbsp;you&nbsp;can&nbsp;manually&nbsp;specify&nbsp;the&nbsp;positions&nbsp;of<br>
+the&nbsp;axes&nbsp;objects&nbsp;in&nbsp;which&nbsp;the&nbsp;mappable&nbsp;and&nbsp;the&nbsp;colorbar&nbsp;are&nbsp;drawn.&nbsp;&nbsp;In<br>
+this&nbsp;case,&nbsp;do&nbsp;not&nbsp;use&nbsp;any&nbsp;of&nbsp;the&nbsp;axes&nbsp;properties&nbsp;kwargs.</tt></dd></dl>
+
+<dl><dt><a name="Figure-contains"><strong>contains</strong></a>(self, mouseevent)</dt><dd><tt>Test&nbsp;whether&nbsp;the&nbsp;mouse&nbsp;event&nbsp;occurred&nbsp;on&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+Returns&nbsp;True,{}</tt></dd></dl>
+
+<dl><dt><a name="Figure-delaxes"><strong>delaxes</strong></a>(self, a)</dt><dd><tt>remove&nbsp;a&nbsp;from&nbsp;the&nbsp;figure&nbsp;and&nbsp;update&nbsp;the&nbsp;current&nbsp;axes</tt></dd></dl>
+
+<dl><dt><a name="Figure-draw"><strong>draw</strong></a>(self, renderer)</dt><dd><tt>Render&nbsp;the&nbsp;figure&nbsp;using&nbsp;:class:`matplotlib.backend_bases.RendererBase`&nbsp;instance&nbsp;renderer</tt></dd></dl>
+
+<dl><dt><a name="Figure-draw_artist"><strong>draw_artist</strong></a>(self, a)</dt><dd><tt>draw&nbsp;:class:`matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>`&nbsp;instance&nbsp;*a*&nbsp;only&nbsp;--<br>
+this&nbsp;is&nbsp;available&nbsp;only&nbsp;after&nbsp;the&nbsp;figure&nbsp;is&nbsp;drawn</tt></dd></dl>
+
+<dl><dt><a name="Figure-figimage"><strong>figimage</strong></a>(self, X, xo<font color="#909090">=0</font>, yo<font color="#909090">=0</font>, alpha<font color="#909090">=1.0</font>, norm<font color="#909090">=None</font>, cmap<font color="#909090">=None</font>, vmin<font color="#909090">=None</font>, vmax<font color="#909090">=None</font>, origin<font color="#909090">=None</font>)</dt><dd><tt>call&nbsp;signatures::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-figimage">figimage</a>(X,&nbsp;**kwargs)<br>
+&nbsp;<br>
+adds&nbsp;a&nbsp;non-resampled&nbsp;array&nbsp;*X*&nbsp;to&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-figimage">figimage</a>(X,&nbsp;xo,&nbsp;yo)<br>
+&nbsp;<br>
+with&nbsp;pixel&nbsp;offsets&nbsp;*xo*,&nbsp;*yo*,<br>
+&nbsp;<br>
+*X*&nbsp;must&nbsp;be&nbsp;a&nbsp;float&nbsp;array:<br>
+&nbsp;<br>
+*&nbsp;If&nbsp;*X*&nbsp;is&nbsp;MxN,&nbsp;assume&nbsp;luminance&nbsp;(grayscale)<br>
+*&nbsp;If&nbsp;*X*&nbsp;is&nbsp;MxNx3,&nbsp;assume&nbsp;RGB<br>
+*&nbsp;If&nbsp;*X*&nbsp;is&nbsp;MxNx4,&nbsp;assume&nbsp;RGBA<br>
+&nbsp;<br>
+Optional&nbsp;keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;=========&nbsp;&nbsp;&nbsp;==========================================================<br>
+&nbsp;&nbsp;Keyword&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description<br>
+&nbsp;&nbsp;=========&nbsp;&nbsp;&nbsp;==========================================================<br>
+&nbsp;&nbsp;xo&nbsp;or&nbsp;yo&nbsp;&nbsp;&nbsp;&nbsp;An&nbsp;integer,&nbsp;the&nbsp;*x*&nbsp;and&nbsp;*y*&nbsp;image&nbsp;offset&nbsp;in&nbsp;pixels<br>
+&nbsp;&nbsp;cmap&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.cm.ColorMap`&nbsp;instance,&nbsp;eg&nbsp;cm.jet.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;None,&nbsp;default&nbsp;to&nbsp;the&nbsp;rc&nbsp;``image.cmap``&nbsp;value<br>
+&nbsp;&nbsp;norm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.colors.Normalize`&nbsp;instance.&nbsp;The<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;is&nbsp;normalization().&nbsp;&nbsp;This&nbsp;scales&nbsp;luminance&nbsp;-&gt;&nbsp;0-1<br>
+&nbsp;&nbsp;vmin|vmax&nbsp;&nbsp;&nbsp;are&nbsp;used&nbsp;to&nbsp;scale&nbsp;a&nbsp;luminance&nbsp;image&nbsp;to&nbsp;0-1.&nbsp;&nbsp;If&nbsp;either&nbsp;is<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;None,&nbsp;the&nbsp;min&nbsp;and&nbsp;max&nbsp;of&nbsp;the&nbsp;luminance&nbsp;values&nbsp;will&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;used.&nbsp;&nbsp;Note&nbsp;if&nbsp;you&nbsp;pass&nbsp;a&nbsp;norm&nbsp;instance,&nbsp;the&nbsp;settings&nbsp;for<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*vmin*&nbsp;and&nbsp;*vmax*&nbsp;will&nbsp;be&nbsp;ignored.<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;alpha&nbsp;blending&nbsp;value,&nbsp;default&nbsp;is&nbsp;1.0<br>
+&nbsp;&nbsp;origin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'upper'&nbsp;|&nbsp;'lower'&nbsp;]&nbsp;Indicates&nbsp;where&nbsp;the&nbsp;[0,0]&nbsp;index&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;array&nbsp;is&nbsp;in&nbsp;the&nbsp;upper&nbsp;left&nbsp;or&nbsp;lower&nbsp;left&nbsp;corner&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;axes.&nbsp;Defaults&nbsp;to&nbsp;the&nbsp;rc&nbsp;image.origin&nbsp;value<br>
+&nbsp;&nbsp;=========&nbsp;&nbsp;&nbsp;==========================================================<br>
+&nbsp;<br>
+figimage&nbsp;complements&nbsp;the&nbsp;axes&nbsp;image<br>
+(:meth:`~matplotlib.axes.Axes.imshow`)&nbsp;which&nbsp;will&nbsp;be&nbsp;resampled<br>
+to&nbsp;fit&nbsp;the&nbsp;current&nbsp;axes.&nbsp;&nbsp;If&nbsp;you&nbsp;want&nbsp;a&nbsp;resampled&nbsp;image&nbsp;to<br>
+fill&nbsp;the&nbsp;entire&nbsp;figure,&nbsp;you&nbsp;can&nbsp;define&nbsp;an<br>
+:class:`~matplotlib.axes.Axes`&nbsp;with&nbsp;size&nbsp;[0,1,0,1].<br>
+&nbsp;<br>
+An&nbsp;:class:`matplotlib.image.FigureImage`&nbsp;instance&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/figimage_demo.py</tt></dd></dl>
+
+<dl><dt><a name="Figure-gca"><strong>gca</strong></a>(self, **kwargs)</dt><dd><tt>Return&nbsp;the&nbsp;current&nbsp;axes,&nbsp;creating&nbsp;one&nbsp;if&nbsp;necessary<br>
+&nbsp;<br>
+The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;supported<br>
+&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================<br>
+&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================<br>
+&nbsp;&nbsp;adjustable&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'box'&nbsp;|&nbsp;'datalim'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;anchor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;animated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;aspect&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;autoscale_on&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;axes&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_bgcolor&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_off&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axis_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axisbelow&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;*True*&nbsp;|&nbsp;*False*&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+&nbsp;&nbsp;color_cycle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;contains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;cursor_props&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;(*float*,&nbsp;*color*)&nbsp;tuple&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;frame_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;*True*&nbsp;|&nbsp;*False*&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;navigate&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;True&nbsp;|&nbsp;False&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;navigate_mode&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;picker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[None|float|boolean|callable]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;visible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xbound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xlabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xlim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(2)&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xscale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['linear'&nbsp;|&nbsp;'log'&nbsp;|&nbsp;'symlog']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xticklabels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;xticks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ybound&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ylabel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;ylim&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;len(2)&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yscale&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['linear'&nbsp;|&nbsp;'log'&nbsp;|&nbsp;'symlog']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yticklabels&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;yticks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sequence&nbsp;of&nbsp;floats&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;zorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=============&nbsp;&nbsp;&nbsp;===============================================</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_axes"><strong>get_axes</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-get_children"><strong>get_children</strong></a>(self)</dt><dd><tt>get&nbsp;a&nbsp;list&nbsp;of&nbsp;artists&nbsp;contained&nbsp;in&nbsp;the&nbsp;figure</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_dpi"><strong>get_dpi</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;dpi&nbsp;as&nbsp;a&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_edgecolor"><strong>get_edgecolor</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;edge&nbsp;color&nbsp;of&nbsp;the&nbsp;<a href="#Figure">Figure</a>&nbsp;rectangle</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_facecolor"><strong>get_facecolor</strong></a>(self)</dt><dd><tt>Get&nbsp;the&nbsp;face&nbsp;color&nbsp;of&nbsp;the&nbsp;<a href="#Figure">Figure</a>&nbsp;rectangle</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_figheight"><strong>get_figheight</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;figheight&nbsp;as&nbsp;a&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_figwidth"><strong>get_figwidth</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;figwidth&nbsp;as&nbsp;a&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_frameon"><strong>get_frameon</strong></a>(self)</dt><dd><tt>get&nbsp;the&nbsp;boolean&nbsp;indicating&nbsp;frameon</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_size_inches"><strong>get_size_inches</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-get_window_extent"><strong>get_window_extent</strong></a>(self, *args, **kwargs)</dt><dd><tt>get&nbsp;the&nbsp;figure&nbsp;bounding&nbsp;box&nbsp;in&nbsp;display&nbsp;space;&nbsp;kwargs&nbsp;are&nbsp;void</tt></dd></dl>
+
+<dl><dt><a name="Figure-ginput"><strong>ginput</strong></a>(self, n<font color="#909090">=1</font>, timeout<font color="#909090">=30</font>, show_clicks<font color="#909090">=True</font>)</dt><dd><tt>call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-ginput">ginput</a>(self,&nbsp;n=1,&nbsp;timeout=30,&nbsp;show_clicks=True)<br>
+&nbsp;<br>
+Blocking&nbsp;call&nbsp;to&nbsp;interact&nbsp;with&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;wait&nbsp;for&nbsp;*n*&nbsp;clicks&nbsp;from&nbsp;the&nbsp;user&nbsp;and&nbsp;return&nbsp;a&nbsp;list&nbsp;of&nbsp;the<br>
+coordinates&nbsp;of&nbsp;each&nbsp;click.<br>
+&nbsp;<br>
+If&nbsp;*timeout*&nbsp;is&nbsp;negative,&nbsp;does&nbsp;not&nbsp;timeout.<br>
+&nbsp;<br>
+If&nbsp;*n*&nbsp;is&nbsp;negative,&nbsp;accumulate&nbsp;clicks&nbsp;until&nbsp;a&nbsp;middle&nbsp;click<br>
+terminates&nbsp;the&nbsp;input.<br>
+&nbsp;<br>
+Right&nbsp;clicking&nbsp;cancels&nbsp;last&nbsp;input.</tt></dd></dl>
+
+<dl><dt><a name="Figure-hold"><strong>hold</strong></a>(self, b<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;hold&nbsp;state.&nbsp;&nbsp;If&nbsp;hold&nbsp;is&nbsp;None&nbsp;(default),&nbsp;toggle&nbsp;the<br>
+hold&nbsp;state.&nbsp;&nbsp;Else&nbsp;set&nbsp;the&nbsp;hold&nbsp;state&nbsp;to&nbsp;boolean&nbsp;value&nbsp;b.<br>
+&nbsp;<br>
+Eg::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-hold">hold</a>()&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;toggle&nbsp;hold<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-hold">hold</a>(True)&nbsp;&nbsp;#&nbsp;hold&nbsp;is&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#Figure-hold">hold</a>(False)&nbsp;#&nbsp;hold&nbsp;is&nbsp;off</tt></dd></dl>
+
+<dl><dt><a name="Figure-legend"><strong>legend</strong></a>(self, handles, labels, *args, **kwargs)</dt><dd><tt>Place&nbsp;a&nbsp;legend&nbsp;in&nbsp;the&nbsp;figure.&nbsp;&nbsp;Labels&nbsp;are&nbsp;a&nbsp;sequence&nbsp;of<br>
+strings,&nbsp;handles&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of<br>
+:class:`~matplotlib.lines.Line2D`&nbsp;or<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instances,&nbsp;and&nbsp;loc&nbsp;can&nbsp;be&nbsp;a<br>
+string&nbsp;or&nbsp;an&nbsp;integer&nbsp;specifying&nbsp;the&nbsp;legend&nbsp;location<br>
+&nbsp;<br>
+USAGE::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-legend">legend</a>(&nbsp;(line1,&nbsp;line2,&nbsp;line3),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;('label1',&nbsp;'label2',&nbsp;'label3'),<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'upper&nbsp;right')<br>
+&nbsp;<br>
+The&nbsp;*loc*&nbsp;location&nbsp;codes&nbsp;are::<br>
+&nbsp;<br>
+&nbsp;&nbsp;'best'&nbsp;:&nbsp;0,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(currently&nbsp;not&nbsp;supported&nbsp;for&nbsp;figure&nbsp;legends)<br>
+&nbsp;&nbsp;'upper&nbsp;right'&nbsp;&nbsp;:&nbsp;1,<br>
+&nbsp;&nbsp;'upper&nbsp;left'&nbsp;&nbsp;&nbsp;:&nbsp;2,<br>
+&nbsp;&nbsp;'lower&nbsp;left'&nbsp;&nbsp;&nbsp;:&nbsp;3,<br>
+&nbsp;&nbsp;'lower&nbsp;right'&nbsp;&nbsp;:&nbsp;4,<br>
+&nbsp;&nbsp;'right'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;5,<br>
+&nbsp;&nbsp;'center&nbsp;left'&nbsp;&nbsp;:&nbsp;6,<br>
+&nbsp;&nbsp;'center&nbsp;right'&nbsp;:&nbsp;7,<br>
+&nbsp;&nbsp;'lower&nbsp;center'&nbsp;:&nbsp;8,<br>
+&nbsp;&nbsp;'upper&nbsp;center'&nbsp;:&nbsp;9,<br>
+&nbsp;&nbsp;'center'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;10,<br>
+&nbsp;<br>
+*loc*&nbsp;can&nbsp;also&nbsp;be&nbsp;an&nbsp;(x,y)&nbsp;tuple&nbsp;in&nbsp;figure&nbsp;coords,&nbsp;which<br>
+specifies&nbsp;the&nbsp;lower&nbsp;left&nbsp;of&nbsp;the&nbsp;legend&nbsp;box.&nbsp;&nbsp;figure&nbsp;coords&nbsp;are<br>
+(0,0)&nbsp;is&nbsp;the&nbsp;left,&nbsp;bottom&nbsp;of&nbsp;the&nbsp;figure&nbsp;and&nbsp;1,1&nbsp;is&nbsp;the&nbsp;right,<br>
+top.<br>
+&nbsp;<br>
+The&nbsp;legend&nbsp;instance&nbsp;is&nbsp;returned.&nbsp;&nbsp;The&nbsp;following&nbsp;kwargs&nbsp;are&nbsp;supported<br>
+&nbsp;<br>
+*loc*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;location&nbsp;of&nbsp;the&nbsp;legend<br>
+*numpoints*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;number&nbsp;of&nbsp;points&nbsp;in&nbsp;the&nbsp;legend&nbsp;line<br>
+*prop*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.font_manager.FontProperties`&nbsp;instance<br>
+*pad*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;fractional&nbsp;whitespace&nbsp;inside&nbsp;the&nbsp;legend&nbsp;border<br>
+*markerscale*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;relative&nbsp;size&nbsp;of&nbsp;legend&nbsp;markers&nbsp;vs.&nbsp;original<br>
+*shadow*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;True,&nbsp;draw&nbsp;a&nbsp;shadow&nbsp;behind&nbsp;legend<br>
+*labelsep*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;vertical&nbsp;space&nbsp;between&nbsp;the&nbsp;legend&nbsp;entries<br>
+*handlelen*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;length&nbsp;of&nbsp;the&nbsp;legend&nbsp;lines<br>
+*handletextsep*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;space&nbsp;between&nbsp;the&nbsp;legend&nbsp;line&nbsp;and&nbsp;legend&nbsp;text<br>
+*axespad*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;border&nbsp;between&nbsp;the&nbsp;axes&nbsp;and&nbsp;legend&nbsp;edge<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/figlegend_demo.py</tt></dd></dl>
+
+<dl><dt><a name="Figure-savefig"><strong>savefig</strong></a>(self, *args, **kwargs)</dt><dd><tt>call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-savefig">savefig</a>(fname,&nbsp;dpi=None,&nbsp;facecolor='w',&nbsp;edgecolor='w',<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;orientation='portrait',&nbsp;papertype=None,&nbsp;format=None,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transparent=False):<br>
+&nbsp;<br>
+Save&nbsp;the&nbsp;current&nbsp;figure.<br>
+&nbsp;<br>
+The&nbsp;output&nbsp;formats&nbsp;available&nbsp;depend&nbsp;on&nbsp;the&nbsp;backend&nbsp;being&nbsp;used.<br>
+&nbsp;<br>
+Arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*fname*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;containing&nbsp;a&nbsp;path&nbsp;to&nbsp;a&nbsp;filename,&nbsp;or&nbsp;a&nbsp;Python&nbsp;file-like&nbsp;object.<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;*format*&nbsp;is&nbsp;*None*&nbsp;and&nbsp;*fname*&nbsp;is&nbsp;a&nbsp;string,&nbsp;the&nbsp;output<br>
+&nbsp;&nbsp;&nbsp;&nbsp;format&nbsp;is&nbsp;deduced&nbsp;from&nbsp;the&nbsp;extension&nbsp;of&nbsp;the&nbsp;filename.<br>
+&nbsp;<br>
+Keyword&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*dpi*:&nbsp;[&nbsp;None&nbsp;|&nbsp;scalar&nbsp;&gt;&nbsp;0&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;resolution&nbsp;in&nbsp;dots&nbsp;per&nbsp;inch.&nbsp;&nbsp;If&nbsp;*None*&nbsp;it&nbsp;will&nbsp;default&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;value&nbsp;``savefig.dpi``&nbsp;in&nbsp;the&nbsp;matplotlibrc&nbsp;file.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*facecolor*,&nbsp;*edgecolor*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;colors&nbsp;of&nbsp;the&nbsp;figure&nbsp;rectangle<br>
+&nbsp;<br>
+&nbsp;&nbsp;*orientation*:&nbsp;[&nbsp;'landscape'&nbsp;|&nbsp;'portrait'&nbsp;]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;not&nbsp;supported&nbsp;on&nbsp;all&nbsp;backends;&nbsp;currently&nbsp;only&nbsp;on&nbsp;postscript&nbsp;output<br>
+&nbsp;<br>
+&nbsp;&nbsp;*papertype*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;One&nbsp;of&nbsp;'letter',&nbsp;'legal',&nbsp;'executive',&nbsp;'ledger',&nbsp;'a0'&nbsp;through<br>
+&nbsp;&nbsp;&nbsp;&nbsp;'a10',&nbsp;'b0'&nbsp;through&nbsp;'b10'.&nbsp;Only&nbsp;supported&nbsp;for&nbsp;postscript<br>
+&nbsp;&nbsp;&nbsp;&nbsp;output.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*format*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;One&nbsp;of&nbsp;the&nbsp;file&nbsp;extensions&nbsp;supported&nbsp;by&nbsp;the&nbsp;active<br>
+&nbsp;&nbsp;&nbsp;&nbsp;backend.&nbsp;&nbsp;Most&nbsp;backends&nbsp;support&nbsp;png,&nbsp;pdf,&nbsp;ps,&nbsp;eps&nbsp;and&nbsp;svg.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*transparent*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;*True*,&nbsp;the&nbsp;figure&nbsp;patch&nbsp;and&nbsp;axes&nbsp;patches&nbsp;will&nbsp;all&nbsp;be<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transparent.&nbsp;&nbsp;This&nbsp;is&nbsp;useful,&nbsp;for&nbsp;example,&nbsp;for&nbsp;displaying<br>
+&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;plot&nbsp;on&nbsp;top&nbsp;of&nbsp;a&nbsp;colored&nbsp;background&nbsp;on&nbsp;a&nbsp;web&nbsp;page.&nbsp;&nbsp;The<br>
+&nbsp;&nbsp;&nbsp;&nbsp;transparency&nbsp;of&nbsp;these&nbsp;patches&nbsp;will&nbsp;be&nbsp;restored&nbsp;to&nbsp;their<br>
+&nbsp;&nbsp;&nbsp;&nbsp;original&nbsp;values&nbsp;upon&nbsp;exit&nbsp;of&nbsp;this&nbsp;function.</tt></dd></dl>
+
+<dl><dt><a name="Figure-sca"><strong>sca</strong></a>(self, a)</dt><dd><tt>Set&nbsp;the&nbsp;current&nbsp;axes&nbsp;to&nbsp;be&nbsp;a&nbsp;and&nbsp;return&nbsp;a</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_canvas"><strong>set_canvas</strong></a>(self, canvas)</dt><dd><tt>Set&nbsp;the&nbsp;canvas&nbsp;the&nbsp;contains&nbsp;the&nbsp;figure<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;FigureCanvas&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_dpi"><strong>set_dpi</strong></a>(self, val)</dt><dd><tt>Set&nbsp;the&nbsp;dots-per-inch&nbsp;of&nbsp;the&nbsp;figure<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_edgecolor"><strong>set_edgecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;edge&nbsp;color&nbsp;of&nbsp;the&nbsp;<a href="#Figure">Figure</a>&nbsp;rectangle<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_facecolor"><strong>set_facecolor</strong></a>(self, color)</dt><dd><tt>Set&nbsp;the&nbsp;face&nbsp;color&nbsp;of&nbsp;the&nbsp;<a href="#Figure">Figure</a>&nbsp;rectangle<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;-&nbsp;see&nbsp;help(colors)</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_figheight"><strong>set_figheight</strong></a>(self, val)</dt><dd><tt>Set&nbsp;the&nbsp;height&nbsp;of&nbsp;the&nbsp;figure&nbsp;in&nbsp;inches<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_figsize_inches"><strong>set_figsize_inches</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Figure-set_figwidth"><strong>set_figwidth</strong></a>(self, val)</dt><dd><tt>Set&nbsp;the&nbsp;width&nbsp;of&nbsp;the&nbsp;figure&nbsp;in&nbsp;inches<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_frameon"><strong>set_frameon</strong></a>(self, b)</dt><dd><tt>Set&nbsp;whether&nbsp;the&nbsp;figure&nbsp;frame&nbsp;(background)&nbsp;is&nbsp;displayed&nbsp;or&nbsp;invisible<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;boolean</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_size_inches"><strong>set_size_inches</strong></a>(self, *args, **kwargs)</dt><dd><tt><a href="#Figure-set_size_inches">set_size_inches</a>(w,h,&nbsp;forward=False)<br>
+&nbsp;<br>
+Set&nbsp;the&nbsp;figure&nbsp;size&nbsp;in&nbsp;inches<br>
+&nbsp;<br>
+Usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-set_size_inches">set_size_inches</a>(w,h)&nbsp;&nbsp;#&nbsp;OR<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fig.<a href="#Figure-set_size_inches">set_size_inches</a>((w,h)&nbsp;)<br>
+&nbsp;<br>
+optional&nbsp;kwarg&nbsp;*forward=True*&nbsp;will&nbsp;cause&nbsp;the&nbsp;canvas&nbsp;size&nbsp;to&nbsp;be<br>
+automatically&nbsp;updated;&nbsp;eg&nbsp;you&nbsp;can&nbsp;resize&nbsp;the&nbsp;figure&nbsp;window<br>
+from&nbsp;the&nbsp;shell<br>
+&nbsp;<br>
+WARNING:&nbsp;forward=True&nbsp;is&nbsp;broken&nbsp;on&nbsp;all&nbsp;backends&nbsp;except&nbsp;GTK*<br>
+and&nbsp;WX*<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;w,h&nbsp;tuple&nbsp;with&nbsp;w,h&nbsp;in&nbsp;inches</tt></dd></dl>
+
+<dl><dt><a name="Figure-subplots_adjust"><strong>subplots_adjust</strong></a>(self, *args, **kwargs)</dt><dd><tt>fig.<a href="#Figure-subplots_adjust">subplots_adjust</a>(left=None,&nbsp;bottom=None,&nbsp;right=None,&nbsp;wspace=None,&nbsp;hspace=None)<br>
+&nbsp;<br>
+Update&nbsp;the&nbsp;:class:`<a href="#SubplotParams">SubplotParams</a>`&nbsp;with&nbsp;*kwargs*&nbsp;(defaulting&nbsp;to&nbsp;rc&nbsp;where<br>
+None)&nbsp;and&nbsp;update&nbsp;the&nbsp;subplot&nbsp;locations</tt></dd></dl>
+
+<dl><dt><a name="Figure-suptitle"><strong>suptitle</strong></a>(self, t, **kwargs)</dt><dd><tt>Add&nbsp;a&nbsp;centered&nbsp;title&nbsp;to&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+kwargs&nbsp;are&nbsp;:class:`matplotlib.text.Text`&nbsp;properties.&nbsp;&nbsp;Using&nbsp;figure<br>
+coordinates,&nbsp;the&nbsp;defaults&nbsp;are::<br>
+&nbsp;<br>
+&nbsp;&nbsp;*x*&nbsp;=&nbsp;0.5<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;x&nbsp;location&nbsp;of&nbsp;text&nbsp;in&nbsp;figure&nbsp;coords<br>
+&nbsp;&nbsp;*y*&nbsp;=&nbsp;0.98<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;y&nbsp;location&nbsp;of&nbsp;the&nbsp;text&nbsp;in&nbsp;figure&nbsp;coords<br>
+&nbsp;&nbsp;*horizontalalignment*&nbsp;=&nbsp;'center'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;horizontal&nbsp;alignment&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;&nbsp;*verticalalignment*&nbsp;=&nbsp;'top'<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;vertical&nbsp;alignment&nbsp;of&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+A&nbsp;:class:`matplotlib.text.Text`&nbsp;instance&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+Example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;fig.subtitle('this&nbsp;is&nbsp;the&nbsp;figure&nbsp;title',&nbsp;fontsize=12)</tt></dd></dl>
+
+<dl><dt><a name="Figure-text"><strong>text</strong></a>(self, x, y, s, *args, **kwargs)</dt><dd><tt>Call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;figtext(x,&nbsp;y,&nbsp;s,&nbsp;fontdict=None,&nbsp;**kwargs)<br>
+&nbsp;<br>
+Add&nbsp;text&nbsp;to&nbsp;figure&nbsp;at&nbsp;location&nbsp;*x*,&nbsp;*y*&nbsp;(relative&nbsp;0-1<br>
+coords).&nbsp;See&nbsp;:func:`~matplotlib.pyplot.text`&nbsp;for&nbsp;the&nbsp;meaning<br>
+of&nbsp;the&nbsp;other&nbsp;arguments.<br>
+&nbsp;<br>
+kwargs&nbsp;control&nbsp;the&nbsp;:class:`~matplotlib.text.Text`&nbsp;properties:<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;=========================&nbsp;&nbsp;&nbsp;=====================================================================<br>
+&nbsp;&nbsp;Property&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=========================&nbsp;&nbsp;&nbsp;=====================================================================<br>
+&nbsp;&nbsp;alpha&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;animated&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;axes&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;axes&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;backgroundcolor&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;bbox&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rectangle&nbsp;prop&nbsp;dict&nbsp;plus&nbsp;key&nbsp;'pad'&nbsp;which&nbsp;is&nbsp;a&nbsp;pad&nbsp;in&nbsp;points&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_box&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_on&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;clip_path&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;matplotlib&nbsp;color&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;contains&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;family&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'serif'&nbsp;|&nbsp;'sans-serif'&nbsp;|&nbsp;'cursive'&nbsp;|&nbsp;'fantasy'&nbsp;|&nbsp;'monospace'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;figure&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;:class:`matplotlib.figure.<a href="#Figure">Figure</a>`&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;fontproperties&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;a&nbsp;matplotlib.font_manager.FontProperties&nbsp;instance&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;horizontalalignment&nbsp;or&nbsp;ha&nbsp;&nbsp;&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'left'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;label&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;string&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;linespacing&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;lod&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;multialignment&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;['left'&nbsp;|&nbsp;'right'&nbsp;|&nbsp;'center'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;name&nbsp;or&nbsp;fontname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;eg,&nbsp;['Sans'&nbsp;|&nbsp;'Courier'&nbsp;|&nbsp;'Helvetica'&nbsp;...]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;picker&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[None|float|boolean|callable]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;position&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(x,y)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;rotation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;angle&nbsp;in&nbsp;degrees&nbsp;'vertical'&nbsp;|&nbsp;'horizontal'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;size&nbsp;or&nbsp;fontsize&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;size&nbsp;in&nbsp;points&nbsp;|&nbsp;relative&nbsp;size&nbsp;eg&nbsp;'smaller',&nbsp;'x-large'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;style&nbsp;or&nbsp;fontstyle&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'italic'&nbsp;|&nbsp;'oblique']&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;text&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;string&nbsp;or&nbsp;anything&nbsp;printable&nbsp;with&nbsp;'%s'&nbsp;conversion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;transform&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unknown&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;variant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'small-caps'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;verticalalignment&nbsp;or&nbsp;va&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'center'&nbsp;|&nbsp;'top'&nbsp;|&nbsp;'bottom'&nbsp;|&nbsp;'baseline'&nbsp;]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;visible&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[True&nbsp;|&nbsp;False]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;weight&nbsp;or&nbsp;fontweight&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;'normal'&nbsp;|&nbsp;'bold'&nbsp;|&nbsp;'heavy'&nbsp;|&nbsp;'light'&nbsp;|&nbsp;'ultrabold'&nbsp;|&nbsp;'ultralight']<br>
+&nbsp;&nbsp;x&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;y&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;float&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;zorder&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;any&nbsp;number&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+&nbsp;&nbsp;=========================&nbsp;&nbsp;&nbsp;=====================================================================</tt></dd></dl>
+
+<dl><dt><a name="Figure-waitforbuttonpress"><strong>waitforbuttonpress</strong></a>(self, timeout<font color="#909090">=-1</font>)</dt><dd><tt>call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-waitforbuttonpress">waitforbuttonpress</a>(self,&nbsp;timeout=-1)<br>
+&nbsp;<br>
+Blocking&nbsp;call&nbsp;to&nbsp;interact&nbsp;with&nbsp;the&nbsp;figure.<br>
+&nbsp;<br>
+This&nbsp;will&nbsp;return&nbsp;True&nbsp;is&nbsp;a&nbsp;key&nbsp;was&nbsp;pressed,&nbsp;False&nbsp;if&nbsp;a&nbsp;mouse<br>
+button&nbsp;was&nbsp;pressed&nbsp;and&nbsp;None&nbsp;if&nbsp;*timeout*&nbsp;was&nbsp;reached&nbsp;without<br>
+either&nbsp;being&nbsp;pressed.<br>
+&nbsp;<br>
+If&nbsp;*timeout*&nbsp;is&nbsp;negative,&nbsp;does&nbsp;not&nbsp;timeout.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>dpi</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><a name="Figure-add_callback"><strong>add_callback</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Figure-convert_xunits"><strong>convert_xunits</strong></a>(self, x)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;xaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;*x*&nbsp;using&nbsp;xaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Figure-convert_yunits"><strong>convert_yunits</strong></a>(self, y)</dt><dd><tt>for&nbsp;artists&nbsp;in&nbsp;an&nbsp;axes,&nbsp;if&nbsp;the&nbsp;yaxis&nbsp;as&nbsp;units&nbsp;support,<br>
+convert&nbsp;*y*&nbsp;using&nbsp;yaxis&nbsp;unit&nbsp;type</tt></dd></dl>
+
+<dl><dt><a name="Figure-findobj"><strong>findobj</strong></a>(self, match<font color="#909090">=None</font>)</dt><dd><tt>pyplot&nbsp;signature:<br>
+&nbsp;&nbsp;<a href="#Figure-findobj">findobj</a>(o=gcf(),&nbsp;match=None)&nbsp;<br>
+&nbsp;<br>
+recursively&nbsp;find&nbsp;all&nbsp;:class:matplotlib.artist.<a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;instances<br>
+contained&nbsp;in&nbsp;self<br>
+&nbsp;<br>
+*match*&nbsp;can&nbsp;be<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;None:&nbsp;return&nbsp;all&nbsp;objects&nbsp;contained&nbsp;in&nbsp;artist&nbsp;(including&nbsp;artist)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;function&nbsp;with&nbsp;signature&nbsp;``boolean&nbsp;=&nbsp;match(artist)``&nbsp;used&nbsp;to&nbsp;filter&nbsp;matches<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;class&nbsp;instance:&nbsp;eg&nbsp;Line2D.&nbsp;&nbsp;Only&nbsp;return&nbsp;artists&nbsp;of&nbsp;class&nbsp;type<br>
+&nbsp;<br>
+..&nbsp;plot::&nbsp;../mpl_examples/pylab_examples/findobj_demo.py</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_alpha"><strong>get_alpha</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on&nbsp;all<br>
+backends</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_animated"><strong>get_animated</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;animated&nbsp;state</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_clip_box"><strong>get_clip_box</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clipbox</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_clip_on"><strong>get_clip_on</strong></a>(self)</dt><dd><tt>Return&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_clip_path"><strong>get_clip_path</strong></a>(self)</dt><dd><tt>Return&nbsp;artist&nbsp;clip&nbsp;path</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_contains"><strong>get_contains</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;_contains&nbsp;test&nbsp;used&nbsp;by&nbsp;the&nbsp;artist,&nbsp;or&nbsp;*None*&nbsp;for&nbsp;default.</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_figure"><strong>get_figure</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.figure.<a href="#Figure">Figure</a>`&nbsp;instance&nbsp;the<br>
+artist&nbsp;belongs&nbsp;to.</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_label"><strong>get_label</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-get_picker"><strong>get_picker</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;Pickeration&nbsp;instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_transform"><strong>get_transform</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+instance&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_transformed_clip_path_and_affine"><strong>get_transformed_clip_path_and_affine</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;clip&nbsp;path&nbsp;with&nbsp;the&nbsp;non-affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation&nbsp;applied,&nbsp;and&nbsp;the&nbsp;remaining&nbsp;affine&nbsp;part&nbsp;of&nbsp;its<br>
+transformation.</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_visible"><strong>get_visible</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;artist's&nbsp;visiblity</tt></dd></dl>
+
+<dl><dt><a name="Figure-get_zorder"><strong>get_zorder</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-have_units"><strong>have_units</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;units&nbsp;are&nbsp;set&nbsp;on&nbsp;the&nbsp;x&nbsp;or&nbsp;y&nbsp;axes</tt></dd></dl>
+
+<dl><dt><a name="Figure-hitlist"><strong>hitlist</strong></a>(self, event)</dt><dd><tt>List&nbsp;the&nbsp;children&nbsp;of&nbsp;the&nbsp;artist&nbsp;which&nbsp;contain&nbsp;the&nbsp;mouse&nbsp;event</tt></dd></dl>
+
+<dl><dt><a name="Figure-is_figure_set"><strong>is_figure_set</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Figure-is_transform_set"><strong>is_transform_set</strong></a>(self)</dt><dd><tt><a href="matplotlib.artist.html#Artist">Artist</a>&nbsp;has&nbsp;transform&nbsp;explicity&nbsp;let</tt></dd></dl>
+
+<dl><dt><a name="Figure-pchanged"><strong>pchanged</strong></a>(self)</dt><dd><tt>fire&nbsp;event&nbsp;when&nbsp;property&nbsp;changed</tt></dd></dl>
+
+<dl><dt><a name="Figure-pick"><strong>pick</strong></a>(self, mouseevent)</dt><dd><tt>call&nbsp;signature::<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Figure-pick">pick</a>(mouseevent)<br>
+&nbsp;<br>
+each&nbsp;child&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;*mouseevent*&nbsp;is&nbsp;over<br>
+the&nbsp;artist&nbsp;and&nbsp;the&nbsp;artist&nbsp;has&nbsp;picker&nbsp;set</tt></dd></dl>
+
+<dl><dt><a name="Figure-pickable"><strong>pickable</strong></a>(self)</dt><dd><tt>return&nbsp;*True*&nbsp;if&nbsp;self&nbsp;is&nbsp;pickable</tt></dd></dl>
+
+<dl><dt><a name="Figure-remove"><strong>remove</strong></a>(self)</dt><dd><tt>Remove&nbsp;the&nbsp;artist&nbsp;from&nbsp;the&nbsp;figure&nbsp;if&nbsp;possible.&nbsp;&nbsp;The&nbsp;effect<br>
+will&nbsp;not&nbsp;be&nbsp;visible&nbsp;until&nbsp;the&nbsp;figure&nbsp;is&nbsp;redrawn,&nbsp;e.g.,&nbsp;with<br>
+:meth:`matplotlib.axes.Axes.draw_idle`.&nbsp;&nbsp;Call<br>
+:meth:`matplotlib.axes.Axes.relim`&nbsp;to&nbsp;update&nbsp;the&nbsp;axes&nbsp;limits<br>
+if&nbsp;desired.<br>
+&nbsp;<br>
+Note:&nbsp;:meth:`~matplotlib.axes.Axes.relim`&nbsp;will&nbsp;not&nbsp;see<br>
+collections&nbsp;even&nbsp;if&nbsp;the&nbsp;collection&nbsp;was&nbsp;added&nbsp;to&nbsp;axes&nbsp;with<br>
+*autolim*&nbsp;=&nbsp;True.<br>
+&nbsp;<br>
+Note:&nbsp;there&nbsp;is&nbsp;no&nbsp;support&nbsp;for&nbsp;removing&nbsp;the&nbsp;artist's&nbsp;legend&nbsp;entry.</tt></dd></dl>
+
+<dl><dt><a name="Figure-remove_callback"><strong>remove_callback</strong></a>(self, oid)</dt></dl>
+
+<dl><dt><a name="Figure-set"><strong>set</strong></a>(self, **kwargs)</dt><dd><tt>A&nbsp;tkstyle&nbsp;set&nbsp;command,&nbsp;pass&nbsp;*kwargs*&nbsp;to&nbsp;set&nbsp;properties</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_alpha"><strong>set_alpha</strong></a>(self, alpha)</dt><dd><tt>Set&nbsp;the&nbsp;alpha&nbsp;value&nbsp;used&nbsp;for&nbsp;blending&nbsp;-&nbsp;not&nbsp;supported&nbsp;on<br>
+all&nbsp;backends<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;float</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_animated"><strong>set_animated</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;animation&nbsp;state<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_axes"><strong>set_axes</strong></a>(self, axes)</dt><dd><tt>set&nbsp;the&nbsp;axes&nbsp;instance&nbsp;in&nbsp;which&nbsp;the&nbsp;artist&nbsp;resides,&nbsp;if&nbsp;any<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;an&nbsp;axes&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_clip_box"><strong>set_clip_box</strong></a>(self, clipbox)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;Bbox<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.transform.Bbox`&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_clip_on"><strong>set_clip_on</strong></a>(self, b)</dt><dd><tt>Set&nbsp;&nbsp;whether&nbsp;artist&nbsp;uses&nbsp;clipping<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_clip_path"><strong>set_clip_path</strong></a>(self, path, transform<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;the&nbsp;artist's&nbsp;clip&nbsp;path,&nbsp;which&nbsp;may&nbsp;be:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.patches.Patch`&nbsp;(or&nbsp;subclass)&nbsp;instance<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance,&nbsp;in&nbsp;which&nbsp;case<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;an&nbsp;optional&nbsp;:class:`~matplotlib.transforms.Transform`<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;may&nbsp;be&nbsp;provided,&nbsp;which&nbsp;will&nbsp;be&nbsp;applied&nbsp;to&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;path&nbsp;before&nbsp;using&nbsp;it&nbsp;for&nbsp;clipping.<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;*None*,&nbsp;to&nbsp;remove&nbsp;the&nbsp;clipping&nbsp;path<br>
+&nbsp;<br>
+For&nbsp;efficiency,&nbsp;if&nbsp;the&nbsp;path&nbsp;happens&nbsp;to&nbsp;be&nbsp;an&nbsp;axis-aligned<br>
+rectangle,&nbsp;this&nbsp;method&nbsp;will&nbsp;set&nbsp;the&nbsp;clipping&nbsp;box&nbsp;to&nbsp;the<br>
+corresponding&nbsp;rectangle&nbsp;and&nbsp;set&nbsp;the&nbsp;clipping&nbsp;path&nbsp;to&nbsp;*None*.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`~matplotlib.path.Path`&nbsp;instance&nbsp;and&nbsp;a<br>
+:class:`~matplotlib.transforms.Transform`&nbsp;instance,&nbsp;a<br>
+:class:`~matplotlib.patches.Patch`&nbsp;instance,&nbsp;or&nbsp;*None*.</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_contains"><strong>set_contains</strong></a>(self, picker)</dt><dd><tt>Replace&nbsp;the&nbsp;contains&nbsp;test&nbsp;used&nbsp;by&nbsp;this&nbsp;artist.&nbsp;The&nbsp;new&nbsp;picker&nbsp;should<br>
+be&nbsp;a&nbsp;callable&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+mouse&nbsp;event::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+If&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;*props*<br>
+is&nbsp;a&nbsp;dictionary&nbsp;of&nbsp;properties&nbsp;you&nbsp;want&nbsp;returned&nbsp;with&nbsp;the&nbsp;contains&nbsp;test.</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_figure"><strong>set_figure</strong></a>(self, fig)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.figure.<a href="#Figure">Figure</a>`&nbsp;instance&nbsp;the&nbsp;artist<br>
+belongs&nbsp;to.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;a&nbsp;:class:`matplotlib.figure.<a href="#Figure">Figure</a>`&nbsp;instance</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_label"><strong>set_label</strong></a>(self, s)</dt><dd><tt>Set&nbsp;the&nbsp;line&nbsp;label&nbsp;to&nbsp;*s*&nbsp;for&nbsp;auto&nbsp;legend<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;string</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_lod"><strong>set_lod</strong></a>(self, on)</dt><dd><tt>Set&nbsp;Level&nbsp;of&nbsp;Detail&nbsp;on&nbsp;or&nbsp;off.&nbsp;&nbsp;If&nbsp;on,&nbsp;the&nbsp;artists&nbsp;may&nbsp;examine<br>
+things&nbsp;like&nbsp;the&nbsp;pixel&nbsp;width&nbsp;of&nbsp;the&nbsp;axes&nbsp;and&nbsp;draw&nbsp;a&nbsp;subset&nbsp;of<br>
+their&nbsp;contents&nbsp;accordingly<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_picker"><strong>set_picker</strong></a>(self, picker)</dt><dd><tt>set&nbsp;the&nbsp;epsilon&nbsp;for&nbsp;picking&nbsp;used&nbsp;by&nbsp;this&nbsp;artist<br>
+&nbsp;<br>
+*picker*&nbsp;can&nbsp;be&nbsp;one&nbsp;of&nbsp;the&nbsp;following:<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;*None*:&nbsp;picking&nbsp;is&nbsp;disabled&nbsp;for&nbsp;this&nbsp;artist&nbsp;(default)<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;boolean:&nbsp;if&nbsp;*True*&nbsp;then&nbsp;picking&nbsp;will&nbsp;be&nbsp;enabled&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist&nbsp;will&nbsp;fire&nbsp;a&nbsp;pick&nbsp;event&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;float:&nbsp;if&nbsp;picker&nbsp;is&nbsp;a&nbsp;number&nbsp;it&nbsp;is&nbsp;interpreted&nbsp;as&nbsp;an<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;tolerance&nbsp;in&nbsp;points&nbsp;and&nbsp;the&nbsp;artist&nbsp;will&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;off&nbsp;an&nbsp;event&nbsp;if&nbsp;it's&nbsp;data&nbsp;is&nbsp;within&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;mouse<br>
+&nbsp;&nbsp;&nbsp;&nbsp;event.&nbsp;&nbsp;For&nbsp;some&nbsp;artists&nbsp;like&nbsp;lines&nbsp;and&nbsp;patch&nbsp;collections,<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;artist&nbsp;may&nbsp;provide&nbsp;additional&nbsp;data&nbsp;to&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;&nbsp;&nbsp;&nbsp;that&nbsp;is&nbsp;generated,&nbsp;e.g.&nbsp;the&nbsp;indices&nbsp;of&nbsp;the&nbsp;data&nbsp;within<br>
+&nbsp;&nbsp;&nbsp;&nbsp;epsilon&nbsp;of&nbsp;the&nbsp;pick&nbsp;event<br>
+&nbsp;<br>
+&nbsp;&nbsp;*&nbsp;A&nbsp;function:&nbsp;if&nbsp;picker&nbsp;is&nbsp;callable,&nbsp;it&nbsp;is&nbsp;a&nbsp;user&nbsp;supplied<br>
+&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;which&nbsp;determines&nbsp;whether&nbsp;the&nbsp;artist&nbsp;is&nbsp;hit&nbsp;by&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;mouse&nbsp;event::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;hit,&nbsp;props&nbsp;=&nbsp;picker(artist,&nbsp;mouseevent)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;to&nbsp;determine&nbsp;the&nbsp;hit&nbsp;test.&nbsp;&nbsp;if&nbsp;the&nbsp;mouse&nbsp;event&nbsp;is&nbsp;over&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;artist,&nbsp;return&nbsp;*hit=True*&nbsp;and&nbsp;props&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;properties&nbsp;you&nbsp;want&nbsp;added&nbsp;to&nbsp;the&nbsp;PickEvent&nbsp;attributes.<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[None|float|boolean|callable]</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_transform"><strong>set_transform</strong></a>(self, t)</dt><dd><tt>Set&nbsp;the&nbsp;:class:`~matplotlib.transforms.Transform`&nbsp;instance<br>
+used&nbsp;by&nbsp;this&nbsp;artist.</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_visible"><strong>set_visible</strong></a>(self, b)</dt><dd><tt>set&nbsp;the&nbsp;artist's&nbsp;visiblity<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;[True&nbsp;|&nbsp;False]</tt></dd></dl>
+
+<dl><dt><a name="Figure-set_zorder"><strong>set_zorder</strong></a>(self, level)</dt><dd><tt>Set&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;artist<br>
+&nbsp;<br>
+ACCEPTS:&nbsp;any&nbsp;number</tt></dd></dl>
+
+<dl><dt><a name="Figure-update"><strong>update</strong></a>(self, props)</dt></dl>
+
+<dl><dt><a name="Figure-update_from"><strong>update_from</strong></a>(self, other)</dt><dd><tt>Copy&nbsp;properties&nbsp;from&nbsp;*other*&nbsp;to&nbsp;*self*.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="matplotlib.artist.html#Artist">matplotlib.artist.Artist</a>:<br>
+<dl><dt><strong>aname</strong> = 'Artist'</dl>
+
+<dl><dt><strong>zorder</strong> = 0</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SubplotParams">class <strong>SubplotParams</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;to&nbsp;hold&nbsp;the&nbsp;parameters&nbsp;for&nbsp;a&nbsp;subplot<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="SubplotParams-__init__"><strong>__init__</strong></a>(self, left<font color="#909090">=None</font>, bottom<font color="#909090">=None</font>, right<font color="#909090">=None</font>, top<font color="#909090">=None</font>, wspace<font color="#909090">=None</font>, hspace<font color="#909090">=None</font>)</dt><dd><tt>All&nbsp;dimensions&nbsp;are&nbsp;fraction&nbsp;of&nbsp;the&nbsp;figure&nbsp;width&nbsp;or&nbsp;height.<br>
+All&nbsp;values&nbsp;default&nbsp;to&nbsp;their&nbsp;rc&nbsp;params<br>
+&nbsp;<br>
+The&nbsp;following&nbsp;attributes&nbsp;are&nbsp;available<br>
+&nbsp;<br>
+*left*&nbsp;&nbsp;=&nbsp;0.125<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;left&nbsp;side&nbsp;of&nbsp;the&nbsp;subplots&nbsp;of&nbsp;the&nbsp;figure<br>
+*right*&nbsp;=&nbsp;0.9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;right&nbsp;side&nbsp;of&nbsp;the&nbsp;subplots&nbsp;of&nbsp;the&nbsp;figure<br>
+*bottom*&nbsp;=&nbsp;0.1<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;subplots&nbsp;of&nbsp;the&nbsp;figure<br>
+*top*&nbsp;=&nbsp;0.9<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;subplots&nbsp;of&nbsp;the&nbsp;figure<br>
+*wspace*&nbsp;=&nbsp;0.2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;amount&nbsp;of&nbsp;width&nbsp;reserved&nbsp;for&nbsp;blank&nbsp;space&nbsp;between&nbsp;subplots<br>
+*hspace*&nbsp;=&nbsp;0.2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;the&nbsp;amount&nbsp;of&nbsp;height&nbsp;reserved&nbsp;for&nbsp;white&nbsp;space&nbsp;between&nbsp;subplots<br>
+*validate*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;make&nbsp;sure&nbsp;the&nbsp;params&nbsp;are&nbsp;in&nbsp;a&nbsp;legal&nbsp;state&nbsp;(*left*&lt;*right*,&nbsp;etc)</tt></dd></dl>
+
+<dl><dt><a name="SubplotParams-update"><strong>update</strong></a>(self, left<font color="#909090">=None</font>, bottom<font color="#909090">=None</font>, right<font color="#909090">=None</font>, top<font color="#909090">=None</font>, wspace<font color="#909090">=None</font>, hspace<font color="#909090">=None</font>)</dt><dd><tt>Update&nbsp;the&nbsp;current&nbsp;values.&nbsp;&nbsp;If&nbsp;any&nbsp;kwarg&nbsp;is&nbsp;None,&nbsp;default&nbsp;to<br>
+the&nbsp;current&nbsp;value,&nbsp;if&nbsp;set,&nbsp;otherwise&nbsp;to&nbsp;rc</tt></dd></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-figaspect"><strong>figaspect</strong></a>(arg)</dt><dd><tt>Create&nbsp;a&nbsp;figure&nbsp;with&nbsp;specified&nbsp;aspect&nbsp;ratio.&nbsp;&nbsp;If&nbsp;*arg*&nbsp;is&nbsp;a&nbsp;number,<br>
+use&nbsp;that&nbsp;aspect&nbsp;ratio.&nbsp;&nbsp;If&nbsp;*arg*&nbsp;is&nbsp;an&nbsp;array,&nbsp;figaspect&nbsp;will<br>
+determine&nbsp;the&nbsp;width&nbsp;and&nbsp;height&nbsp;for&nbsp;a&nbsp;figure&nbsp;that&nbsp;would&nbsp;fit&nbsp;array<br>
+preserving&nbsp;aspect&nbsp;ratio.&nbsp;&nbsp;The&nbsp;figure&nbsp;width,&nbsp;height&nbsp;in&nbsp;inches&nbsp;are<br>
+returned.&nbsp;&nbsp;Be&nbsp;sure&nbsp;to&nbsp;create&nbsp;an&nbsp;axes&nbsp;with&nbsp;equal&nbsp;with&nbsp;and&nbsp;height,<br>
+eg<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;make&nbsp;a&nbsp;figure&nbsp;twice&nbsp;as&nbsp;tall&nbsp;as&nbsp;it&nbsp;is&nbsp;wide<br>
+&nbsp;&nbsp;w,&nbsp;h&nbsp;=&nbsp;<a href="#-figaspect">figaspect</a>(2.)<br>
+&nbsp;&nbsp;fig&nbsp;=&nbsp;<a href="#Figure">Figure</a>(figsize=(w,h))<br>
+&nbsp;&nbsp;ax&nbsp;=&nbsp;fig.add_axes([0.1,&nbsp;0.1,&nbsp;0.8,&nbsp;0.8])<br>
+&nbsp;&nbsp;ax.imshow(A,&nbsp;**kwargs)<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;make&nbsp;a&nbsp;figure&nbsp;with&nbsp;the&nbsp;proper&nbsp;aspect&nbsp;for&nbsp;an&nbsp;array<br>
+&nbsp;&nbsp;A&nbsp;=&nbsp;rand(5,3)<br>
+&nbsp;&nbsp;w,&nbsp;h&nbsp;=&nbsp;<a href="#-figaspect">figaspect</a>(A)<br>
+&nbsp;&nbsp;fig&nbsp;=&nbsp;<a href="#Figure">Figure</a>(figsize=(w,h))<br>
+&nbsp;&nbsp;ax&nbsp;=&nbsp;fig.add_axes([0.1,&nbsp;0.1,&nbsp;0.8,&nbsp;0.8])<br>
+&nbsp;&nbsp;ax.imshow(A,&nbsp;**kwargs)<br>
+&nbsp;<br>
+Thanks&nbsp;to&nbsp;Fernando&nbsp;Perez&nbsp;for&nbsp;this&nbsp;function</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}</td></tr></table>
+@footer@

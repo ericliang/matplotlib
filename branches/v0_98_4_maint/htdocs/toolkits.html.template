@@ -1,0 +1,32 @@
+modfiles = (
+    ('basemap', 'Plots data on map projections (with continental and political boundaries)','http://matplotlib.sf.net/basemap/doc/html/'), 
+    ('gtktools', 'some gtk utilities', 'mpl_toolkits.gtktools.html'), 
+    ('exceltools', 'some Excel utilities', 'mpl_toolkits.exceltools.html'), 
+    ('natgrid', 'interface to natgrid C library for gridding irregularly spaced data', 'mpl_toolkits.natgrid.html'), 
+    )
+
+@header@
+
+<h2>The matplotlib toolkits</h2>
+
+Toolkits are collections of application-specific functions that extend matplotlib.<br>
+
+        <br>
+<table @default_table@>
+    <caption>
+        <h4>The following toolkits are available for matplotlib </h4>
+    </caption>
+    <tr><th>toolkit</th><th>Description</th></tr>
+    + for toolkit,desc,url in modfiles:
+        <tr>
+            <th align=left>
+            <a href=@url@>mpl_toolkits.@toolkit@</a>
+            </th>
+            <td>
+            @desc@
+            </td>
+        </tr>
+    -
+</table>
+
+@footer@

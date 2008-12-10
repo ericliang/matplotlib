@@ -1,0 +1,2895 @@
+<html>
+  <head>
+    <title>Matplotlib / pylab - matlab style python plotting (plots, graphs,
+  charts) </title>
+   </head>
+   <body bgcolor=#ffffff>
+
+<table >
+    <tr>
+       <td  colspan=3 valign=top align=left><img align=left
+             src=logo2.png></td>
+    </tr>
+    <tr>
+    <td valign=top width=20%>
+        <table border=0 >
+            <tr ><td valign=top>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor="#9DBCDA" align="left">
+        <font class="tableheading">
+                <b>New release</b>
+        </font>
+    </td></tr>
+    <tr><td valign="top" bgcolor=#EFEFEF>
+<font color="black">matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=278194&release_id=617552>0.98.3</a> is a major release which requires python2.4 or 2.5 and numpy 1.1.  It contains significant improvements and may require some advanced users to update their code; see <a href=MIGRATION.txt>migration</a> and <a href=API_CHANGES>API_CHANGES</a>.  We are supporting a maintenance branch of the older code available at  matplotlib <a
+href=http://sourceforge.net/project/showfiles.php?group_id=80706&package_id=82474&release_id=608756>0.91.4</a>.  <b>Basemap</b> users see <a href=basemap_readme.txt>basemap-readme</a> for upgrade instructions</a></font></td></tr>
+</table>
+
+                    <br>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor="#9DBCDA" align="left">
+        <font class="tableheading">
+                <b>Donate</b>
+        </font>
+    </td></tr>
+    <tr><td valign="top" bgcolor=#EFEFEF>
+<font color="black">Help support matplotlib development by <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>donating</a> to fund developer sprints and other matplotlib development costs.</font></td></tr>
+</table>
+
+                    <br>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor=#9DBCDA align="left">
+        <font class="tableheading">
+                <b>Matplotlib</b>
+        </font>
+    </td></tr>
+      <tr><td valign="top" bgcolor=#EFEFEF>
+    <a href=http://matplotlib.sourceforge.net>Home</a><br>
+    <a href=whats_new.html>What's&nbsp;New</a><br>
+    <a href=http://sourceforge.net/projects/matplotlib>Download</a><br>
+    <a href=installing.html>Installing</a><br>
+    <a href=screenshots.html>Screenshots</a><br>
+    <a href=matplotlib_examples_0.98.3.zip>Examples&nbsp;(zip)</a><br>
+    <a href=http://sourceforge.net/mail/?group_id=80706>Mailing lists</a><br>
+    <a href=http://sourceforge.net/project/project_donations.php?group_id=80706>Donate</a><br>
+</td></tr>
+</table>
+
+                    <br>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor=#9DBCDA align="left">
+        <font class="tableheading">
+                <b>Documentation</b>
+        </font>
+    </td></tr>
+      <tr><td valign="top" bgcolor=#EFEFEF>
+    <a href=tutorial.html>Tutorial</a><br>
+    <a href=users_guide_0.98.3.pdf>User's&nbsp;Guide&nbsp</a><br>
+    <a href=pycon/artist_api_tut.pdf>API&nbsp;tutorial</a><br>
+    <a href=pycon/event_handling_tut.pdf>Event&nbsp;handling</a><br>
+    <a href=api.pdf>API&nbsp;Reference</a><br>
+    <a href=faq.html>FAQ</a><br>
+    <a href=http://www.scipy.org/wikis/topical_software/MatplotlibCookbook>Cookbook&nbsp;/&nbsp;wiki</a><br>
+    <a href=pylab_commands.html>pylab&nbsp;interface</a><br>
+    <a href=classdocs.html>Class&nbsp;library</a><br>
+    <a href=backends.html>Backends</a><br>
+    <a href=toolkits.html>Toolkits</a><br>
+    <a href=fonts.html>Fonts</a><br>
+    <a href=interactive.html>Interactive</a><br>
+    <a href=goals.html>Goals</a><br>
+</td></tr>
+</table>
+
+                    <br>
+                    <table width=100% border=1 cellpadding=1 cellspacing=1>
+
+    <tr><td  bgcolor=#9DBCDA align="left">
+        <font class="tableheading">
+                <b>Other</b>
+        </font>
+    </td></tr>
+      <tr><td valign="top" bgcolor=#EFEFEF>
+    <a href=credits.html>Credits</a><br>
+    <a href=license.html>License</a><br>
+</td></tr>
+</table>
+
+                    <br>
+                </td>
+            </tr>
+        </table>    
+    </td>
+    <td valign=top>&nbsp;&nbsp;</td>
+    <td valign=top>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.mathtext</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mathtext.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mathtext.py</a></font></td></tr></table>
+    <p><tt>OVERVIEW<br>
+&nbsp;<br>
+&nbsp;&nbsp;mathtext&nbsp;is&nbsp;a&nbsp;module&nbsp;for&nbsp;parsing&nbsp;TeX&nbsp;expressions&nbsp;and&nbsp;drawing&nbsp;them<br>
+&nbsp;&nbsp;into&nbsp;a&nbsp;matplotlib.ft2font&nbsp;image&nbsp;buffer.&nbsp;&nbsp;You&nbsp;can&nbsp;draw&nbsp;from&nbsp;this<br>
+&nbsp;&nbsp;buffer&nbsp;into&nbsp;your&nbsp;backend.<br>
+&nbsp;<br>
+&nbsp;&nbsp;A&nbsp;large&nbsp;set&nbsp;of&nbsp;the&nbsp;TeX&nbsp;symbols&nbsp;are&nbsp;provided&nbsp;(see&nbsp;below).<br>
+&nbsp;&nbsp;Subscripting&nbsp;and&nbsp;superscripting&nbsp;are&nbsp;supported,&nbsp;as&nbsp;well&nbsp;as&nbsp;the<br>
+&nbsp;&nbsp;over/under&nbsp;style&nbsp;of&nbsp;subscripting&nbsp;with&nbsp;\sum,&nbsp;\int,&nbsp;etc.<br>
+&nbsp;<br>
+&nbsp;&nbsp;The&nbsp;module&nbsp;uses&nbsp;pyparsing&nbsp;to&nbsp;parse&nbsp;the&nbsp;TeX&nbsp;expression,&nbsp;an&nbsp;so&nbsp;can<br>
+&nbsp;&nbsp;handle&nbsp;fairly&nbsp;complex&nbsp;TeX&nbsp;expressions&nbsp;Eg,&nbsp;the&nbsp;following&nbsp;renders<br>
+&nbsp;&nbsp;correctly<br>
+&nbsp;<br>
+&nbsp;&nbsp;s&nbsp;=&nbsp;r'$\mathcal{R}\prod_{i=\alpha\mathcal{B}}^\infty&nbsp;a_i\sin(2&nbsp;\pi&nbsp;f&nbsp;x_i)$'<br>
+&nbsp;<br>
+&nbsp;&nbsp;Different&nbsp;fonts&nbsp;may&nbsp;be&nbsp;selected:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathcal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Calligraphic&nbsp;fonts<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathrm&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Roman&nbsp;(upright)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Italic&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathtt&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Typewriter&nbsp;(monospaced)&nbsp;font,&nbsp;similar&nbsp;to&nbsp;Courier<br>
+&nbsp;<br>
+&nbsp;&nbsp;Additionally,&nbsp;if&nbsp;using&nbsp;the&nbsp;STIX&nbsp;fonts:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathbb&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Blackboard&nbsp;(double-struck)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathcircled&nbsp;&nbsp;Circled&nbsp;characters<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathfrak&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Fraktur&nbsp;(Gothic-style)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathscr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Script&nbsp;(cursive)&nbsp;font<br>
+&nbsp;&nbsp;&nbsp;&nbsp;\mathsf&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sans-serif&nbsp;font<br>
+&nbsp;<br>
+&nbsp;&nbsp;The&nbsp;following&nbsp;accents&nbsp;are&nbsp;provided:&nbsp;\hat,&nbsp;\breve,&nbsp;\grave,&nbsp;\bar,<br>
+&nbsp;&nbsp;\acute,&nbsp;\tilde,&nbsp;\vec,&nbsp;\dot,&nbsp;\ddot.&nbsp;&nbsp;All&nbsp;of&nbsp;them&nbsp;have&nbsp;the&nbsp;same<br>
+&nbsp;&nbsp;syntax,&nbsp;eg&nbsp;to&nbsp;make&nbsp;an&nbsp;overbar&nbsp;you&nbsp;do&nbsp;\bar{o}&nbsp;or&nbsp;to&nbsp;make&nbsp;an&nbsp;o&nbsp;umlaut<br>
+&nbsp;&nbsp;you&nbsp;do&nbsp;\ddot{o}.&nbsp;&nbsp;The&nbsp;shortcuts&nbsp;are&nbsp;also&nbsp;provided,&nbsp;eg:&nbsp;\"o&nbsp;\'e&nbsp;\`e<br>
+&nbsp;&nbsp;\~n&nbsp;\.x&nbsp;\^y<br>
+&nbsp;<br>
+&nbsp;&nbsp;The&nbsp;spacing&nbsp;elements&nbsp;\&nbsp;,&nbsp;\/&nbsp;and&nbsp;\hspace{num}&nbsp;are&nbsp;provided.&nbsp;&nbsp;\/<br>
+&nbsp;&nbsp;inserts&nbsp;a&nbsp;small&nbsp;space,&nbsp;and&nbsp;\hspace{num}&nbsp;inserts&nbsp;a&nbsp;fraction&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;current&nbsp;fontsize.&nbsp;&nbsp;Eg,&nbsp;if&nbsp;num=0.5&nbsp;and&nbsp;the&nbsp;fontsize&nbsp;is&nbsp;12.0,<br>
+&nbsp;&nbsp;hspace{0.5}&nbsp;inserts&nbsp;6&nbsp;points&nbsp;of&nbsp;space<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;If&nbsp;you&nbsp;find&nbsp;TeX&nbsp;expressions&nbsp;that&nbsp;don't&nbsp;parse&nbsp;or&nbsp;render&nbsp;properly,<br>
+&nbsp;&nbsp;please&nbsp;email&nbsp;me,&nbsp;but&nbsp;please&nbsp;check&nbsp;KNOWN&nbsp;ISSUES&nbsp;below&nbsp;first.<br>
+&nbsp;<br>
+REQUIREMENTS<br>
+&nbsp;<br>
+&nbsp;&nbsp;mathtext&nbsp;requires&nbsp;matplotlib.ft2font.&nbsp;&nbsp;Set&nbsp;BUILD_FT2FONT=True&nbsp;in<br>
+&nbsp;&nbsp;setup.py.&nbsp;&nbsp;See&nbsp;BACKENDS&nbsp;below&nbsp;for&nbsp;a&nbsp;summary&nbsp;of&nbsp;availability&nbsp;by<br>
+&nbsp;&nbsp;backend.<br>
+&nbsp;<br>
+LICENSING:<br>
+&nbsp;<br>
+&nbsp;&nbsp;The&nbsp;computer&nbsp;modern&nbsp;fonts&nbsp;this&nbsp;package&nbsp;uses&nbsp;are&nbsp;part&nbsp;of&nbsp;the&nbsp;BaKoMa<br>
+&nbsp;&nbsp;fonts,&nbsp;which&nbsp;are&nbsp;(now)&nbsp;free&nbsp;for&nbsp;commercial&nbsp;and&nbsp;noncommercial&nbsp;use&nbsp;and<br>
+&nbsp;&nbsp;redistribution;&nbsp;see&nbsp;license/LICENSE_BAKOMA&nbsp;in&nbsp;the&nbsp;matplotlib&nbsp;src<br>
+&nbsp;&nbsp;distribution&nbsp;for&nbsp;redistribution&nbsp;requirements.<br>
+&nbsp;<br>
+USAGE:<br>
+&nbsp;<br>
+&nbsp;&nbsp;See&nbsp;<a href="http://matplotlib.sourceforge.net/tutorial.html#mathtext">http://matplotlib.sourceforge.net/tutorial.html#mathtext</a>&nbsp;for&nbsp;a<br>
+&nbsp;&nbsp;tutorial&nbsp;introduction.<br>
+&nbsp;<br>
+&nbsp;&nbsp;Any&nbsp;text&nbsp;element&nbsp;(xlabel,&nbsp;ylabel,&nbsp;title,&nbsp;text,&nbsp;etc)&nbsp;can&nbsp;use&nbsp;TeX<br>
+&nbsp;&nbsp;markup,&nbsp;as&nbsp;in<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;xlabel(r'$\Delta_i$')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;use&nbsp;raw&nbsp;strings<br>
+&nbsp;<br>
+&nbsp;&nbsp;Math&nbsp;and&nbsp;non-math&nbsp;can&nbsp;be&nbsp;interpresed&nbsp;in&nbsp;the&nbsp;same&nbsp;string.&nbsp;&nbsp;E.g.,<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;r'My&nbsp;label&nbsp;$x_i$'.<br>
+&nbsp;<br>
+&nbsp;&nbsp;A&nbsp;large&nbsp;set&nbsp;of&nbsp;the&nbsp;TeX&nbsp;symbols&nbsp;are&nbsp;provided.&nbsp;&nbsp;Subscripting&nbsp;and<br>
+&nbsp;&nbsp;superscripting&nbsp;are&nbsp;supported,&nbsp;as&nbsp;well&nbsp;as&nbsp;the&nbsp;over/under&nbsp;style&nbsp;of<br>
+&nbsp;&nbsp;subscripting&nbsp;with&nbsp;\sum,&nbsp;\int,&nbsp;etc.<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;Allowed&nbsp;TeX&nbsp;symbols:<br>
+&nbsp;<br>
+&nbsp;&nbsp;$&nbsp;\%&nbsp;\AA&nbsp;\AE&nbsp;\BbbC&nbsp;\BbbN&nbsp;\BbbP&nbsp;\BbbQ&nbsp;\BbbR&nbsp;\BbbZ&nbsp;\Bumpeq&nbsp;\Cap&nbsp;\Colon<br>
+&nbsp;&nbsp;\Cup&nbsp;\Delta&nbsp;\Doteq&nbsp;\Downarrow&nbsp;\Equiv&nbsp;\Finv&nbsp;\Gamma&nbsp;\H&nbsp;\Im&nbsp;\L&nbsp;\Lambda<br>
+&nbsp;&nbsp;\Ldsh&nbsp;\Leftarrow&nbsp;\Leftrightarrow&nbsp;\Lleftarrow&nbsp;\Lsh&nbsp;\Nearrow&nbsp;\Nwarrow<br>
+&nbsp;&nbsp;\O&nbsp;\OE&nbsp;\Omega&nbsp;\P&nbsp;\Phi&nbsp;\Pi&nbsp;\Psi&nbsp;\Rdsh&nbsp;\Re&nbsp;\Rightarrow&nbsp;\Rrightarrow<br>
+&nbsp;&nbsp;\Rsh&nbsp;\S&nbsp;\Searrow&nbsp;\Sigma&nbsp;\Subset&nbsp;\Supset&nbsp;\Swarrow&nbsp;\Theta&nbsp;\Uparrow<br>
+&nbsp;&nbsp;\Updownarrow&nbsp;\Upsilon&nbsp;\Vdash&nbsp;\Vert&nbsp;\Vvdash&nbsp;\Xi&nbsp;\_&nbsp;\__sqrt__&nbsp;\ac<br>
+&nbsp;&nbsp;\acute&nbsp;\acwopencirclearrow&nbsp;\adots&nbsp;\ae&nbsp;\aleph&nbsp;\alpha&nbsp;\angle&nbsp;\approx<br>
+&nbsp;&nbsp;\approxeq&nbsp;\approxident&nbsp;\arceq&nbsp;\ast&nbsp;\asymp&nbsp;\backcong&nbsp;\backprime<br>
+&nbsp;&nbsp;\backsim&nbsp;\backsimeq&nbsp;\backslash&nbsp;\bar&nbsp;\barleftarrow&nbsp;\barwedge&nbsp;\because<br>
+&nbsp;&nbsp;\beta&nbsp;\beth&nbsp;\between&nbsp;\bigcap&nbsp;\bigcirc&nbsp;\bigcup&nbsp;\bigodot&nbsp;\bigoplus<br>
+&nbsp;&nbsp;\bigotimes&nbsp;\bigstar&nbsp;\bigtriangledown&nbsp;\bigtriangleup&nbsp;\biguplus<br>
+&nbsp;&nbsp;\bigvee&nbsp;\bigwedge&nbsp;\blacksquare&nbsp;\blacktriangle&nbsp;\blacktriangledown<br>
+&nbsp;&nbsp;\blacktriangleleft&nbsp;\blacktriangleright&nbsp;\bot&nbsp;\bowtie&nbsp;\boxbar&nbsp;\boxdot<br>
+&nbsp;&nbsp;\boxminus&nbsp;\boxplus&nbsp;\boxtimes&nbsp;\breve&nbsp;\bullet&nbsp;\bumpeq&nbsp;\c&nbsp;\candra&nbsp;\cap<br>
+&nbsp;&nbsp;\carriagereturn&nbsp;\cdot&nbsp;\cdotp&nbsp;\cdots&nbsp;\check&nbsp;\checkmark&nbsp;\chi&nbsp;\circ<br>
+&nbsp;&nbsp;\circeq&nbsp;\circledR&nbsp;\circledS&nbsp;\circledast&nbsp;\circledcirc&nbsp;\circleddash<br>
+&nbsp;&nbsp;\circumflexaccent&nbsp;\clubsuit&nbsp;\clubsuitopen&nbsp;\colon&nbsp;\coloneq<br>
+&nbsp;&nbsp;\combiningacuteaccent&nbsp;\combiningbreve&nbsp;\combiningdiaeresis<br>
+&nbsp;&nbsp;\combiningdotabove&nbsp;\combininggraveaccent&nbsp;\combiningoverline<br>
+&nbsp;&nbsp;\combiningrightarrowabove&nbsp;\combiningtilde&nbsp;\complement&nbsp;\cong&nbsp;\coprod<br>
+&nbsp;&nbsp;\copyright&nbsp;\cup&nbsp;\cupdot&nbsp;\curlyeqprec&nbsp;\curlyeqsucc&nbsp;\curlyvee<br>
+&nbsp;&nbsp;\curlywedge&nbsp;\curvearrowleft&nbsp;\curvearrowright&nbsp;\cwopencirclearrow&nbsp;\d<br>
+&nbsp;&nbsp;\dag&nbsp;\daleth&nbsp;\danger&nbsp;\dashv&nbsp;\ddag&nbsp;\ddddot&nbsp;\dddot&nbsp;\ddot&nbsp;\ddots<br>
+&nbsp;&nbsp;\degree&nbsp;\delta&nbsp;\diamond&nbsp;\diamondsuit&nbsp;\digamma&nbsp;\div&nbsp;\divideontimes<br>
+&nbsp;&nbsp;\dot&nbsp;\doteq&nbsp;\dotminus&nbsp;\dotplus&nbsp;\dots&nbsp;\doublebarwedge&nbsp;?&nbsp;\downarrow<br>
+&nbsp;&nbsp;\downdownarrows&nbsp;\downharpoonleft&nbsp;\downharpoonright&nbsp;\downzigzagarrow<br>
+&nbsp;&nbsp;\ell&nbsp;\emdash&nbsp;\emptyset&nbsp;\endash&nbsp;\enspace&nbsp;\epsilon&nbsp;\eqcirc&nbsp;\eqcolon<br>
+&nbsp;&nbsp;\eqdef&nbsp;\eqgtr&nbsp;\eqless&nbsp;\eqsim&nbsp;\equiv&nbsp;\eta&nbsp;\eth&nbsp;\exists&nbsp;\fallingdotseq<br>
+&nbsp;&nbsp;\flat&nbsp;\forall&nbsp;\frakC&nbsp;\frakZ&nbsp;\frown&nbsp;\gamma&nbsp;\geq&nbsp;\geqq&nbsp;\gg&nbsp;\ggg&nbsp;\gimel<br>
+&nbsp;&nbsp;\gneqq&nbsp;\gnsim&nbsp;\grave&nbsp;\greater&nbsp;\gtrdot&nbsp;\gtreqless&nbsp;\gtrless&nbsp;\gtrsim<br>
+&nbsp;&nbsp;\hat&nbsp;\heartsuit&nbsp;\hookleftarrow&nbsp;\hookrightarrow&nbsp;\i&nbsp;\iiint&nbsp;\iint<br>
+&nbsp;&nbsp;\imageof&nbsp;\imath&nbsp;\in&nbsp;\infty&nbsp;\int&nbsp;\intercal&nbsp;\invnot&nbsp;\iota&nbsp;\jmath&nbsp;\k<br>
+&nbsp;&nbsp;\kappa&nbsp;\kernelcontraction&nbsp;\l&nbsp;\lambda&nbsp;\lambdabar&nbsp;\lasp&nbsp;\lbrace<br>
+&nbsp;&nbsp;\lbrack&nbsp;\lceil&nbsp;\leftangle&nbsp;\leftarrow&nbsp;\leftarrowtail&nbsp;\leftbrace<br>
+&nbsp;&nbsp;\leftharpoonaccent&nbsp;\leftharpoondown&nbsp;\leftharpoonup&nbsp;\leftleftarrows<br>
+&nbsp;&nbsp;\leftparen&nbsp;\leftrightarrow&nbsp;\leftrightarrows&nbsp;\leftrightharpoons<br>
+&nbsp;&nbsp;\leftthreetimes&nbsp;\leq&nbsp;\leqq&nbsp;\less&nbsp;\lessdot&nbsp;\lesseqgtr&nbsp;\lessgtr<br>
+&nbsp;&nbsp;\lesssim&nbsp;\lfloor&nbsp;\ll&nbsp;\llcorner&nbsp;\lll&nbsp;\lneqq&nbsp;\lnsim&nbsp;\looparrowleft<br>
+&nbsp;&nbsp;\looparrowright&nbsp;\lq&nbsp;\lrcorner&nbsp;\ltimes&nbsp;\maltese&nbsp;\mapsdown&nbsp;\mapsfrom<br>
+&nbsp;&nbsp;\mapsto&nbsp;\mapsup&nbsp;\measeq&nbsp;\measuredangle&nbsp;\mho&nbsp;\mid&nbsp;\minus&nbsp;\models&nbsp;\mp<br>
+&nbsp;&nbsp;\mu&nbsp;\multimap&nbsp;\nLeftarrow&nbsp;\nLeftrightarrow&nbsp;\nRightarrow&nbsp;\nVDash<br>
+&nbsp;&nbsp;\nVdash&nbsp;\nabla&nbsp;\napprox&nbsp;\natural&nbsp;\ncong&nbsp;\ne&nbsp;\nearrow&nbsp;\neg&nbsp;\nequiv<br>
+&nbsp;&nbsp;\nexists&nbsp;\ngeq&nbsp;\ngtr&nbsp;\ni&nbsp;\nleftarrow&nbsp;\nleftrightarrow&nbsp;\nleq&nbsp;\nless<br>
+&nbsp;&nbsp;\nmid&nbsp;\not&nbsp;\notin&nbsp;\nparallel&nbsp;\nprec&nbsp;\nrightarrow&nbsp;\nsim&nbsp;\nsime<br>
+&nbsp;&nbsp;\nsubset&nbsp;\nsubseteq&nbsp;\nsucc&nbsp;\nsupset&nbsp;\nsupseteq&nbsp;\ntriangleleft<br>
+&nbsp;&nbsp;\ntrianglelefteq&nbsp;\ntriangleright&nbsp;\ntrianglerighteq&nbsp;\nu&nbsp;\nvDash<br>
+&nbsp;&nbsp;\nvdash&nbsp;\nwarrow&nbsp;\o&nbsp;\obar&nbsp;\ocirc&nbsp;\odot&nbsp;\oe&nbsp;\oiiint&nbsp;\oiint&nbsp;\oint<br>
+&nbsp;&nbsp;\omega&nbsp;\ominus&nbsp;\oplus&nbsp;\origof&nbsp;\oslash&nbsp;\otimes&nbsp;\overarc<br>
+&nbsp;&nbsp;\overleftarrow&nbsp;\overleftrightarrow&nbsp;\parallel&nbsp;\partial&nbsp;\phi&nbsp;\pi<br>
+&nbsp;&nbsp;\pitchfork&nbsp;\pm&nbsp;\prec&nbsp;\preccurlyeq&nbsp;\preceq&nbsp;\precnsim&nbsp;\precsim&nbsp;\prime<br>
+&nbsp;&nbsp;\prod&nbsp;\propto&nbsp;\prurel&nbsp;\psi&nbsp;\quad&nbsp;\questeq&nbsp;\rasp&nbsp;\rbrace&nbsp;\rbrack<br>
+&nbsp;&nbsp;\rceil&nbsp;\rfloor&nbsp;\rho&nbsp;\rightangle&nbsp;\rightarrow&nbsp;\rightarrowbar<br>
+&nbsp;&nbsp;\rightarrowtail&nbsp;\rightbrace&nbsp;\rightharpoonaccent&nbsp;\rightharpoondown<br>
+&nbsp;&nbsp;\rightharpoonup&nbsp;\rightleftarrows&nbsp;\rightleftharpoons&nbsp;\rightparen<br>
+&nbsp;&nbsp;\rightrightarrows&nbsp;\rightthreetimes&nbsp;\rightzigzagarrow&nbsp;\risingdotseq<br>
+&nbsp;&nbsp;\rq&nbsp;\rtimes&nbsp;\scrB&nbsp;\scrE&nbsp;\scrF&nbsp;\scrH&nbsp;\scrI&nbsp;\scrL&nbsp;\scrM&nbsp;\scrR&nbsp;\scre<br>
+&nbsp;&nbsp;\scrg&nbsp;\scro&nbsp;\scurel&nbsp;\searrow&nbsp;\sharp&nbsp;\sigma&nbsp;\sim&nbsp;\simeq&nbsp;\slash<br>
+&nbsp;&nbsp;\smallsetminus&nbsp;\smile&nbsp;\solbar&nbsp;\spadesuit&nbsp;\spadesuitopen<br>
+&nbsp;&nbsp;\sphericalangle&nbsp;\sqcap&nbsp;\sqcup&nbsp;\sqsubset&nbsp;\sqsubseteq&nbsp;\sqsupset<br>
+&nbsp;&nbsp;\sqsupseteq&nbsp;\ss&nbsp;\star&nbsp;\stareq&nbsp;\sterling&nbsp;\subset&nbsp;\subseteq&nbsp;\subsetneq<br>
+&nbsp;&nbsp;\succ&nbsp;\succcurlyeq&nbsp;\succeq&nbsp;\succnsim&nbsp;\succsim&nbsp;\sum&nbsp;\supset&nbsp;\supseteq<br>
+&nbsp;&nbsp;\supsetneq&nbsp;\swarrow&nbsp;\t&nbsp;\tau&nbsp;\textasciiacute&nbsp;\textasciicircum<br>
+&nbsp;&nbsp;\textasciigrave&nbsp;\textasciitilde&nbsp;\textexclamdown&nbsp;\textquestiondown<br>
+&nbsp;&nbsp;\textquotedblleft&nbsp;\textquotedblright&nbsp;\therefore&nbsp;\theta&nbsp;\thickspace<br>
+&nbsp;&nbsp;\thinspace&nbsp;\tilde&nbsp;\times&nbsp;\to&nbsp;\top&nbsp;\triangledown&nbsp;\triangleleft<br>
+&nbsp;&nbsp;\trianglelefteq&nbsp;\triangleq&nbsp;\triangleright&nbsp;\trianglerighteq<br>
+&nbsp;&nbsp;\turnednot&nbsp;\twoheaddownarrow&nbsp;\twoheadleftarrow&nbsp;\twoheadrightarrow<br>
+&nbsp;&nbsp;\twoheaduparrow&nbsp;\ulcorner&nbsp;\underbar&nbsp;\uparrow&nbsp;\updownarrow<br>
+&nbsp;&nbsp;\updownarrowbar&nbsp;\updownarrows&nbsp;\upharpoonleft&nbsp;\upharpoonright&nbsp;\uplus<br>
+&nbsp;&nbsp;\upsilon&nbsp;\upuparrows&nbsp;\urcorner&nbsp;\vDash&nbsp;\varepsilon&nbsp;\varkappa<br>
+&nbsp;&nbsp;\varnothing&nbsp;\varphi&nbsp;\varpi&nbsp;\varrho&nbsp;\varsigma&nbsp;\vartheta&nbsp;\vartriangle<br>
+&nbsp;&nbsp;\vartriangleleft&nbsp;\vartriangleright&nbsp;\vdash&nbsp;\vdots&nbsp;\vec&nbsp;\vee&nbsp;\veebar<br>
+&nbsp;&nbsp;\veeeq&nbsp;\vert&nbsp;\wedge&nbsp;\wedgeq&nbsp;\widehat&nbsp;\widetilde&nbsp;\wp&nbsp;\wr&nbsp;\xi&nbsp;\yen<br>
+&nbsp;&nbsp;\zeta&nbsp;\{&nbsp;\|&nbsp;\}<br>
+&nbsp;<br>
+BACKENDS<br>
+&nbsp;<br>
+&nbsp;&nbsp;mathtext&nbsp;currently&nbsp;works&nbsp;with&nbsp;all&nbsp;backends.<br>
+&nbsp;<br>
+KNOWN&nbsp;ISSUES:<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;Certainly&nbsp;there&nbsp;are&nbsp;some...<br>
+&nbsp;<br>
+Author&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;John&nbsp;Hunter&nbsp;&lt;jdhunter@ace.bsd.uchicago.edu&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Michael&nbsp;Droettboom&nbsp;&lt;mdroe@stsci.edu&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(rewrite&nbsp;based&nbsp;on&nbsp;TeX&nbsp;box&nbsp;layout&nbsp;algorithms)<br>
+Copyright&nbsp;:&nbsp;John&nbsp;Hunter&nbsp;(2004,2005)<br>
+License&nbsp;&nbsp;&nbsp;:&nbsp;matplotlib&nbsp;license&nbsp;(PSF&nbsp;compatible)</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="matplotlib._png.html">matplotlib._png</a><br>
+<a href="matplotlib.colors.html">matplotlib.colors</a><br>
+</td><td width="25%" valign=top><a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="unicodedata.html">unicodedata</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Fonts">Fonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#StandardPsFonts">StandardPsFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#BakomaFonts">BakomaFonts</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#StixFonts">StixFonts</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#StixSansFonts">StixSansFonts</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#GlueSpec">GlueSpec</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathTextParser">MathTextParser</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendAggRender">MathtextBackendAggRender</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendBitmapRender">MathtextBackendBitmapRender</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendBbox">MathtextBackendBbox</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendCairo">MathtextBackendCairo</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendPdf">MathtextBackendPdf</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendPs">MathtextBackendPs</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathtextBackendSvg">MathtextBackendSvg</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Node">Node</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Box">Box</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Hbox">Hbox</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#List">List</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Hlist">Hlist</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#AutoHeightChar">AutoHeightChar</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#AutoWidthChar">AutoWidthChar</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#HCentered">HCentered</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#SubSuperCluster">SubSuperCluster</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#VCentered">VCentered</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Vlist">Vlist</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Rule">Rule</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Hrule">Hrule</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Vrule">Vrule</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Vbox">Vbox</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Char">Char</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Accent">Accent</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Glue">Glue</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Fil">Fil</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Fill">Fill</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Filll">Filll</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#NegFil">NegFil</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#NegFill">NegFill</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#NegFilll">NegFilll</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#SsGlue">SsGlue</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Kern">Kern</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Parser">Parser</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#Ship">Ship</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="exceptions.html#Warning">exceptions.Warning</a>(<a href="exceptions.html#Exception">exceptions.Exception</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.mathtext.html#MathTextWarning">MathTextWarning</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Accent">class <strong>Accent</strong></a>(<a href="matplotlib.mathtext.html#Char">Char</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>The&nbsp;font&nbsp;metrics&nbsp;need&nbsp;to&nbsp;be&nbsp;dealt&nbsp;with&nbsp;differently&nbsp;for&nbsp;accents,<br>
+since&nbsp;they&nbsp;are&nbsp;already&nbsp;offset&nbsp;correctly&nbsp;from&nbsp;the&nbsp;baseline&nbsp;in<br>
+TrueType&nbsp;fonts.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Accent">Accent</a></dd>
+<dd><a href="matplotlib.mathtext.html#Char">Char</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Accent-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Accent-render"><strong>render</strong></a>(self, x, y)</dt><dd><tt>Render&nbsp;the&nbsp;character&nbsp;to&nbsp;the&nbsp;canvas</tt></dd></dl>
+
+<dl><dt><a name="Accent-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Char">Char</a>:<br>
+<dl><dt><a name="Accent-__init__"><strong>__init__</strong></a>(self, c, state)</dt></dl>
+
+<dl><dt><a name="Accent-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Accent-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt><dd><tt>Return&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;between&nbsp;this&nbsp;and&nbsp;the&nbsp;given<br>
+character.&nbsp;&nbsp;Called&nbsp;when&nbsp;characters&nbsp;are&nbsp;strung&nbsp;together&nbsp;into<br>
+Hlists&nbsp;to&nbsp;create&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes.</tt></dd></dl>
+
+<dl><dt><a name="Accent-is_slanted"><strong>is_slanted</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Accent-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AutoHeightChar">class <strong>AutoHeightChar</strong></a>(<a href="matplotlib.mathtext.html#Hlist">Hlist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;that&nbsp;will&nbsp;create&nbsp;a&nbsp;character&nbsp;as&nbsp;close&nbsp;to&nbsp;the&nbsp;given&nbsp;height<br>
+and&nbsp;depth&nbsp;as&nbsp;possible.&nbsp;&nbsp;When&nbsp;using&nbsp;a&nbsp;font&nbsp;with&nbsp;multiple&nbsp;height&nbsp;versions<br>
+of&nbsp;some&nbsp;characters&nbsp;(such&nbsp;as&nbsp;the&nbsp;BaKoMa&nbsp;fonts),&nbsp;the&nbsp;correct&nbsp;glyph&nbsp;will<br>
+be&nbsp;selected,&nbsp;otherwise&nbsp;this&nbsp;will&nbsp;always&nbsp;just&nbsp;return&nbsp;a&nbsp;scaled&nbsp;version<br>
+of&nbsp;the&nbsp;glyph.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#AutoHeightChar">AutoHeightChar</a></dd>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="AutoHeightChar-__init__"><strong>__init__</strong></a>(self, c, height, depth, state, always<font color="#909090">=False</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Hlist">Hlist</a>:<br>
+<dl><dt><a name="AutoHeightChar-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#AutoHeightChar-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="AutoHeightChar-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="AutoHeightChar-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoHeightChar-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoHeightChar-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="AutoHeightChar-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="AutoHeightChar-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoHeightChar-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="AutoWidthChar">class <strong>AutoWidthChar</strong></a>(<a href="matplotlib.mathtext.html#Hlist">Hlist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;class&nbsp;that&nbsp;will&nbsp;create&nbsp;a&nbsp;character&nbsp;as&nbsp;close&nbsp;to&nbsp;the&nbsp;given&nbsp;width<br>
+as&nbsp;possible.&nbsp;&nbsp;When&nbsp;using&nbsp;a&nbsp;font&nbsp;with&nbsp;multiple&nbsp;width&nbsp;versions<br>
+of&nbsp;some&nbsp;characters&nbsp;(such&nbsp;as&nbsp;the&nbsp;BaKoMa&nbsp;fonts),&nbsp;the&nbsp;correct&nbsp;glyph&nbsp;will<br>
+be&nbsp;selected,&nbsp;otherwise&nbsp;this&nbsp;will&nbsp;always&nbsp;just&nbsp;return&nbsp;a&nbsp;scaled&nbsp;version<br>
+of&nbsp;the&nbsp;glyph.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#AutoWidthChar">AutoWidthChar</a></dd>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="AutoWidthChar-__init__"><strong>__init__</strong></a>(self, c, width, state, always<font color="#909090">=False</font>, char_class<font color="#909090">=&lt;class 'matplotlib.mathtext.Char'&gt;</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Hlist">Hlist</a>:<br>
+<dl><dt><a name="AutoWidthChar-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#AutoWidthChar-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="AutoWidthChar-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="AutoWidthChar-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoWidthChar-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoWidthChar-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="AutoWidthChar-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="AutoWidthChar-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="AutoWidthChar-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="BakomaFonts">class <strong>BakomaFonts</strong></a>(<a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Use&nbsp;the&nbsp;Bakoma&nbsp;true&nbsp;type&nbsp;fonts&nbsp;for&nbsp;rendering<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#BakomaFonts">BakomaFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="BakomaFonts-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>alias</strong> = '<font color="#c040c0">\r</font>ightbracket'</dl>
+
+<dl><dt><strong>fontmap</strong> = {}</dl>
+
+<dl><dt><strong>target</strong> = ']'</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><a name="BakomaFonts-destroy"><strong>destroy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x1a61230&gt;</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="BakomaFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="BakomaFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="BakomaFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Box">class <strong>Box</strong></a>(<a href="matplotlib.mathtext.html#Node">Node</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Represents&nbsp;any&nbsp;node&nbsp;with&nbsp;a&nbsp;physical&nbsp;location.<br>
+node135<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Box-__init__"><strong>__init__</strong></a>(self, width, height, depth)</dt></dl>
+
+<dl><dt><a name="Box-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Box-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="Box-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Box-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Box-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Box-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Char">class <strong>Char</strong></a>(<a href="matplotlib.mathtext.html#Node">Node</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Represents&nbsp;a&nbsp;single&nbsp;character.&nbsp;&nbsp;Unlike&nbsp;TeX,&nbsp;the&nbsp;font<br>
+information&nbsp;and&nbsp;metrics&nbsp;are&nbsp;stored&nbsp;with&nbsp;each&nbsp;<a href="#Char">Char</a>&nbsp;to&nbsp;make&nbsp;it<br>
+easier&nbsp;to&nbsp;lookup&nbsp;the&nbsp;font&nbsp;metrics&nbsp;when&nbsp;needed.&nbsp;&nbsp;Note&nbsp;that&nbsp;TeX<br>
+boxes&nbsp;have&nbsp;a&nbsp;width,&nbsp;height,&nbsp;and&nbsp;depth,&nbsp;unlike&nbsp;Type1&nbsp;and&nbsp;Truetype<br>
+which&nbsp;use&nbsp;a&nbsp;full&nbsp;bounding&nbsp;box&nbsp;and&nbsp;an&nbsp;advance&nbsp;in&nbsp;the&nbsp;x-direction.<br>
+The&nbsp;metrics&nbsp;must&nbsp;be&nbsp;converted&nbsp;to&nbsp;the&nbsp;TeX&nbsp;way,&nbsp;and&nbsp;the&nbsp;advance&nbsp;(if<br>
+different&nbsp;from&nbsp;width)&nbsp;must&nbsp;be&nbsp;converted&nbsp;into&nbsp;a&nbsp;<a href="#Kern">Kern</a>&nbsp;node&nbsp;when&nbsp;the<br>
+<a href="#Char">Char</a>&nbsp;is&nbsp;added&nbsp;to&nbsp;its&nbsp;parent&nbsp;<a href="#Hlist">Hlist</a>.<br>
+node134<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Char">Char</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Char-__init__"><strong>__init__</strong></a>(self, c, state)</dt></dl>
+
+<dl><dt><a name="Char-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Char-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt><dd><tt>Return&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;between&nbsp;this&nbsp;and&nbsp;the&nbsp;given<br>
+character.&nbsp;&nbsp;Called&nbsp;when&nbsp;characters&nbsp;are&nbsp;strung&nbsp;together&nbsp;into<br>
+Hlists&nbsp;to&nbsp;create&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes.</tt></dd></dl>
+
+<dl><dt><a name="Char-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Char-is_slanted"><strong>is_slanted</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Char-render"><strong>render</strong></a>(self, x, y)</dt><dd><tt>Render&nbsp;the&nbsp;character&nbsp;to&nbsp;the&nbsp;canvas</tt></dd></dl>
+
+<dl><dt><a name="Char-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Char-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Fil">class <strong>Fil</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Fil">Fil</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Fil-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="Fil-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fil-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Fil-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fil-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fil-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Fil-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Fill">class <strong>Fill</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Fill">Fill</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Fill-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="Fill-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fill-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Fill-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fill-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fill-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Fill-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Filll">class <strong>Filll</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Filll">Filll</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Filll-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="Filll-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Filll-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Filll-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Filll-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Filll-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Filll-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Fonts">class <strong>Fonts</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;fonts&nbsp;that&nbsp;want&nbsp;to&nbsp;render&nbsp;mathtext<br>
+&nbsp;<br>
+The&nbsp;class&nbsp;must&nbsp;be&nbsp;able&nbsp;to&nbsp;take&nbsp;symbol&nbsp;keys&nbsp;and&nbsp;font&nbsp;file&nbsp;names&nbsp;and<br>
+return&nbsp;the&nbsp;character&nbsp;metrics.&nbsp;&nbsp;It&nbsp;also&nbsp;delegates&nbsp;to&nbsp;a&nbsp;backend&nbsp;class<br>
+to&nbsp;do&nbsp;the&nbsp;actual&nbsp;drawing.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Fonts-__init__"><strong>__init__</strong></a>(self, default_font_prop, mathtext_backend)</dt><dd><tt>default_font_prop:&nbsp;A&nbsp;FontProperties&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;use&nbsp;for&nbsp;the<br>
+default&nbsp;non-math&nbsp;font,&nbsp;or&nbsp;the&nbsp;base&nbsp;font&nbsp;for&nbsp;Unicode&nbsp;font<br>
+rendering.<br>
+mathtext_backend:&nbsp;A&nbsp;subclass&nbsp;of&nbsp;MathTextBackend&nbsp;used&nbsp;to<br>
+delegate&nbsp;the&nbsp;actual&nbsp;rendering.</tt></dd></dl>
+
+<dl><dt><a name="Fonts-destroy"><strong>destroy</strong></a>(self)</dt><dd><tt>Fix&nbsp;any&nbsp;cyclical&nbsp;references&nbsp;before&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;about<br>
+to&nbsp;be&nbsp;destroyed.</tt></dd></dl>
+
+<dl><dt><a name="Fonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt><dd><tt>Get&nbsp;the&nbsp;kerning&nbsp;distance&nbsp;for&nbsp;font&nbsp;between&nbsp;sym1&nbsp;and&nbsp;sym2.<br>
+&nbsp;<br>
+fontX:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+symX:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsizeX:&nbsp;the&nbsp;fontsize&nbsp;in&nbsp;points<br>
+dpi:&nbsp;the&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+sym&nbsp;is&nbsp;a&nbsp;single&nbsp;symbol(alphanum,&nbsp;punct)&nbsp;or&nbsp;a&nbsp;special&nbsp;symbol<br>
+like&nbsp;\sigma.</tt></dd></dl>
+
+<dl><dt><a name="Fonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="Fonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="Fonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt><dd><tt>Override&nbsp;if&nbsp;your&nbsp;font&nbsp;provides&nbsp;multiple&nbsp;sizes&nbsp;of&nbsp;the&nbsp;same<br>
+symbol.</tt></dd></dl>
+
+<dl><dt><a name="Fonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="Fonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Fonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="Fonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="Fonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="Fonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Glue">class <strong>Glue</strong></a>(<a href="matplotlib.mathtext.html#Node">Node</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Most&nbsp;of&nbsp;the&nbsp;information&nbsp;in&nbsp;this&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;stored&nbsp;in&nbsp;the&nbsp;underlying<br>
+<a href="#GlueSpec">GlueSpec</a>&nbsp;class,&nbsp;which&nbsp;is&nbsp;shared&nbsp;between&nbsp;multiple&nbsp;glue&nbsp;objects.&nbsp;&nbsp;(This<br>
+is&nbsp;a&nbsp;memory&nbsp;optimization&nbsp;which&nbsp;probably&nbsp;doesn't&nbsp;matter&nbsp;anymore,&nbsp;but&nbsp;it's<br>
+easier&nbsp;to&nbsp;stick&nbsp;to&nbsp;what&nbsp;TeX&nbsp;does.)<br>
+node149,&nbsp;node152<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Glue-__init__"><strong>__init__</strong></a>(self, glue_type, copy<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="Glue-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Glue-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Glue-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Glue-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Glue-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Glue-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GlueSpec">class <strong>GlueSpec</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>node150,&nbsp;node151<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GlueSpec-__init__"><strong>__init__</strong></a>(self, width<font color="#909090">=0.0</font>, stretch<font color="#909090">=0.0</font>, stretch_order<font color="#909090">=0</font>, shrink<font color="#909090">=0.0</font>, shrink_order<font color="#909090">=0</font>)</dt></dl>
+
+<dl><dt><a name="GlueSpec-copy"><strong>copy</strong></a>(self)</dt></dl>
+
+<hr>
+Class methods defined here:<br>
+<dl><dt><a name="GlueSpec-factory"><strong>factory</strong></a>(cls, glue_type)<font color="#909090"><font face="helvetica, arial"> from <a href="__builtin__.html#type">__builtin__.type</a></font></font></dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="HCentered">class <strong>HCentered</strong></a>(<a href="matplotlib.mathtext.html#Hlist">Hlist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;convenience&nbsp;class&nbsp;to&nbsp;create&nbsp;an&nbsp;<a href="#Hlist">Hlist</a>&nbsp;whose&nbsp;contents&nbsp;are&nbsp;centered<br>
+within&nbsp;its&nbsp;enclosing&nbsp;box.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#HCentered">HCentered</a></dd>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="HCentered-__init__"><strong>__init__</strong></a>(self, elements)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Hlist">Hlist</a>:<br>
+<dl><dt><a name="HCentered-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#HCentered-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="HCentered-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="HCentered-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HCentered-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HCentered-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="HCentered-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="HCentered-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="HCentered-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Hbox">class <strong>Hbox</strong></a>(<a href="matplotlib.mathtext.html#Box">Box</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;box&nbsp;with&nbsp;only&nbsp;width&nbsp;(zero&nbsp;height&nbsp;and&nbsp;depth).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Hbox">Hbox</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Hbox-__init__"><strong>__init__</strong></a>(self, width)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Hbox-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hbox-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="Hbox-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Hbox-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hbox-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hbox-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Hlist">class <strong>Hlist</strong></a>(<a href="matplotlib.mathtext.html#List">List</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;horizontal&nbsp;list&nbsp;of&nbsp;boxes.<br>
+node135<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Hlist-__init__"><strong>__init__</strong></a>(self, elements, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>, do_kern<font color="#909090">=True</font>)</dt></dl>
+
+<dl><dt><a name="Hlist-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#Hlist-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="Hlist-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="Hlist-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hlist-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hlist-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Hlist-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Hlist-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hlist-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Hrule">class <strong>Hrule</strong></a>(<a href="matplotlib.mathtext.html#Rule">Rule</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Convenience&nbsp;class&nbsp;to&nbsp;create&nbsp;a&nbsp;horizontal&nbsp;rule.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Hrule">Hrule</a></dd>
+<dd><a href="matplotlib.mathtext.html#Rule">Rule</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Hrule-__init__"><strong>__init__</strong></a>(self, state)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Rule">Rule</a>:<br>
+<dl><dt><a name="Hrule-render"><strong>render</strong></a>(self, x, y, w, h)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Hrule-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hrule-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Hrule-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hrule-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Hrule-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Kern">class <strong>Kern</strong></a>(<a href="matplotlib.mathtext.html#Node">Node</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;<a href="#Kern">Kern</a>&nbsp;node&nbsp;has&nbsp;a&nbsp;width&nbsp;field&nbsp;to&nbsp;specify&nbsp;a&nbsp;(normally&nbsp;negative)<br>
+amount&nbsp;of&nbsp;spacing.&nbsp;This&nbsp;spacing&nbsp;correction&nbsp;appears&nbsp;in&nbsp;horizontal&nbsp;lists<br>
+between&nbsp;letters&nbsp;like&nbsp;A&nbsp;and&nbsp;V&nbsp;when&nbsp;the&nbsp;font&nbsp;designer&nbsp;said&nbsp;that&nbsp;it&nbsp;looks<br>
+better&nbsp;to&nbsp;move&nbsp;them&nbsp;closer&nbsp;together&nbsp;or&nbsp;further&nbsp;apart.&nbsp;A&nbsp;kern&nbsp;node&nbsp;can<br>
+also&nbsp;appear&nbsp;in&nbsp;a&nbsp;vertical&nbsp;list,&nbsp;when&nbsp;its&nbsp;'width'&nbsp;denotes&nbsp;additional<br>
+spacing&nbsp;in&nbsp;the&nbsp;vertical&nbsp;direction.<br>
+node155<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Kern">Kern</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Kern-__init__"><strong>__init__</strong></a>(self, width)</dt></dl>
+
+<dl><dt><a name="Kern-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Kern-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Kern-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Kern-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Kern-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Kern-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="List">class <strong>List</strong></a>(<a href="matplotlib.mathtext.html#Box">Box</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;list&nbsp;of&nbsp;nodes&nbsp;(either&nbsp;horizontal&nbsp;or&nbsp;vertical).<br>
+node135<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="List-__init__"><strong>__init__</strong></a>(self, elements)</dt></dl>
+
+<dl><dt><a name="List-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="List-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="List-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="List-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="List-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="List-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathTextParser">class <strong>MathTextParser</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Parse&nbsp;the&nbsp;math&nbsp;expression&nbsp;s,&nbsp;return&nbsp;the&nbsp;(bbox,&nbsp;fonts)&nbsp;tuple&nbsp;needed<br>
+to&nbsp;render&nbsp;it.<br>
+&nbsp;<br>
+fontsize&nbsp;must&nbsp;be&nbsp;in&nbsp;points<br>
+&nbsp;<br>
+return&nbsp;is&nbsp;width,&nbsp;height,&nbsp;fonts<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MathTextParser-__init__"><strong>__init__</strong></a>(self, output)</dt></dl>
+
+<dl><dt><a name="MathTextParser-get_depth"><strong>get_depth</strong></a>(self, texstr, dpi<font color="#909090">=120</font>, fontsize<font color="#909090">=14</font>)</dt><dd><tt>Returns&nbsp;the&nbsp;offset&nbsp;of&nbsp;the&nbsp;baseline&nbsp;from&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the<br>
+image&nbsp;in&nbsp;pixels.<br>
+&nbsp;<br>
+''texstr''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;mathtext&nbsp;string,&nbsp;eg&nbsp;r'IQ:&nbsp;$\sigma_i=15$'<br>
+&nbsp;<br>
+''dpi''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;dots-per-inch&nbsp;to&nbsp;render&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+''fontsize''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;font&nbsp;size&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="MathTextParser-parse"><strong>parse</strong></a>(self, s, dpi<font color="#909090">=72</font>, prop<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MathTextParser-to_mask"><strong>to_mask</strong></a>(self, texstr, dpi<font color="#909090">=120</font>, fontsize<font color="#909090">=14</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;tuple&nbsp;(*array*,&nbsp;*depth*)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;*array*&nbsp;is&nbsp;an&nbsp;NxM&nbsp;uint8&nbsp;alpha&nbsp;ubyte&nbsp;mask&nbsp;array&nbsp;of<br>
+&nbsp;&nbsp;&nbsp;&nbsp;rasterized&nbsp;tex.<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;depth&nbsp;is&nbsp;the&nbsp;offset&nbsp;of&nbsp;the&nbsp;baseline&nbsp;from&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;in&nbsp;pixels.<br>
+&nbsp;<br>
+''texstr''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;mathtext&nbsp;string,&nbsp;eg&nbsp;r'IQ:&nbsp;$\sigma_i=15$'<br>
+&nbsp;<br>
+''dpi''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;dots-per-inch&nbsp;to&nbsp;render&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+''fontsize''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;font&nbsp;size&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="MathTextParser-to_png"><strong>to_png</strong></a>(self, filename, texstr, color<font color="#909090">='black'</font>, dpi<font color="#909090">=120</font>, fontsize<font color="#909090">=14</font>)</dt><dd><tt>Writes&nbsp;a&nbsp;tex&nbsp;expression&nbsp;to&nbsp;a&nbsp;PNG&nbsp;file.<br>
+&nbsp;<br>
+Returns&nbsp;the&nbsp;offset&nbsp;of&nbsp;the&nbsp;baseline&nbsp;from&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the<br>
+image&nbsp;in&nbsp;pixels.<br>
+&nbsp;<br>
+''filename''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;writable&nbsp;filename&nbsp;or&nbsp;fileobject<br>
+&nbsp;<br>
+''texstr''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;mathtext&nbsp;string,&nbsp;eg&nbsp;r'IQ:&nbsp;$\sigma_i=15$'<br>
+&nbsp;<br>
+''color''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;matplotlib&nbsp;color&nbsp;argument<br>
+&nbsp;<br>
+''dpi''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;dots-per-inch&nbsp;to&nbsp;render&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+''fontsize''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;font&nbsp;size&nbsp;in&nbsp;points</tt></dd></dl>
+
+<dl><dt><a name="MathTextParser-to_rgba"><strong>to_rgba</strong></a>(self, texstr, color<font color="#909090">='black'</font>, dpi<font color="#909090">=120</font>, fontsize<font color="#909090">=14</font>)</dt><dd><tt>Returns&nbsp;a&nbsp;tuple&nbsp;(*array*,&nbsp;*depth*)<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;*array*&nbsp;is&nbsp;an&nbsp;NxMx4&nbsp;RGBA&nbsp;array&nbsp;of&nbsp;ubyte&nbsp;rasterized&nbsp;tex.<br>
+&nbsp;<br>
+&nbsp;&nbsp;-&nbsp;depth&nbsp;is&nbsp;the&nbsp;offset&nbsp;of&nbsp;the&nbsp;baseline&nbsp;from&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the<br>
+&nbsp;&nbsp;&nbsp;&nbsp;image&nbsp;in&nbsp;pixels.<br>
+&nbsp;<br>
+Returns&nbsp;a&nbsp;tuple&nbsp;(array,&nbsp;depth),&nbsp;where&nbsp;depth&nbsp;is&nbsp;the&nbsp;offset&nbsp;of<br>
+the&nbsp;baseline&nbsp;from&nbsp;the&nbsp;bottom&nbsp;of&nbsp;the&nbsp;image.<br>
+&nbsp;<br>
+''texstr''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;mathtext&nbsp;string,&nbsp;eg&nbsp;r'IQ:&nbsp;$\sigma_i=15$'<br>
+&nbsp;<br>
+''color''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;valid&nbsp;matplotlib&nbsp;color&nbsp;argument<br>
+&nbsp;<br>
+''dpi''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;dots-per-inch&nbsp;to&nbsp;render&nbsp;the&nbsp;text<br>
+&nbsp;<br>
+''fontsize''<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;font&nbsp;size&nbsp;in&nbsp;points</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathTextWarning">class <strong>MathTextWarning</strong></a>(<a href="exceptions.html#Warning">exceptions.Warning</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathTextWarning">MathTextWarning</a></dd>
+<dd><a href="exceptions.html#Warning">exceptions.Warning</a></dd>
+<dd><a href="exceptions.html#Exception">exceptions.Exception</a></dd>
+<dd><a href="exceptions.html#BaseException">exceptions.BaseException</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="exceptions.html#Warning">exceptions.Warning</a>:<br>
+<dl><dt><a name="MathTextWarning-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="exceptions.html#Warning">exceptions.Warning</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x3f8ab35640&gt;<dd><tt>T.<a href="#MathTextWarning-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<hr>
+Methods inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><a name="MathTextWarning-__delattr__"><strong>__delattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__delattr__">__delattr__</a>('name')&nbsp;&lt;==&gt;&nbsp;del&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__reduce__"><strong>__reduce__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="MathTextWarning-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__setattr__"><strong>__setattr__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__setattr__">__setattr__</a>('name',&nbsp;value)&nbsp;&lt;==&gt;&nbsp;x.name&nbsp;=&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="MathTextWarning-__setstate__"><strong>__setstate__</strong></a>(...)</dt></dl>
+
+<dl><dt><a name="MathTextWarning-__str__"><strong>__str__</strong></a>(...)</dt><dd><tt>x.<a href="#MathTextWarning-__str__">__str__</a>()&nbsp;&lt;==&gt;&nbsp;str(x)</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="exceptions.html#BaseException">exceptions.BaseException</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+</dl>
+<dl><dt><strong>args</strong></dt>
+</dl>
+<dl><dt><strong>message</strong></dt>
+<dd><tt>exception&nbsp;message</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackend">class <strong>MathtextBackend</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MathtextBackend-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackend-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackend-get_results"><strong>get_results</strong></a>(self, box)</dt><dd><tt>Return&nbsp;a&nbsp;backend&nbsp;specific&nbsp;tuple&nbsp;of&nbsp;things&nbsp;to&nbsp;return&nbsp;to&nbsp;the<br>
+backend&nbsp;after&nbsp;all&nbsp;processing&nbsp;is&nbsp;done.</tt></dd></dl>
+
+<dl><dt><a name="MathtextBackend-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackend-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackend-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendAggRender">class <strong>MathtextBackendAggRender</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendAggRender">MathtextBackendAggRender</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendAggRender-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendAggRender-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendAggRender-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendAggRender-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendAggRender-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendAggRender-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendAggRender-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendBbox">class <strong>MathtextBackendBbox</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;backend&nbsp;whose&nbsp;only&nbsp;purpose&nbsp;is&nbsp;to&nbsp;get&nbsp;a&nbsp;precise&nbsp;bounding&nbsp;box.<br>
+Only&nbsp;required&nbsp;for&nbsp;the&nbsp;Agg&nbsp;backend.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendBbox">MathtextBackendBbox</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendBbox-__init__"><strong>__init__</strong></a>(self, real_backend)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBbox-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBbox-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBbox-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBbox-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendBbox-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBbox-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendBitmapRender">class <strong>MathtextBackendBitmapRender</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackendAggRender">MathtextBackendAggRender</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendBitmapRender">MathtextBackendBitmapRender</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendAggRender">MathtextBackendAggRender</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendBitmapRender-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackendAggRender">MathtextBackendAggRender</a>:<br>
+<dl><dt><a name="MathtextBackendBitmapRender-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBitmapRender-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBitmapRender-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBitmapRender-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendBitmapRender-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendBitmapRender-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendCairo">class <strong>MathtextBackendCairo</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendCairo">MathtextBackendCairo</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendCairo-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendCairo-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendCairo-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendCairo-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendCairo-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendCairo-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendCairo-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendPdf">class <strong>MathtextBackendPdf</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendPdf">MathtextBackendPdf</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendPdf-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPdf-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPdf-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPdf-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendPdf-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPdf-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPdf-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendPs">class <strong>MathtextBackendPs</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendPs">MathtextBackendPs</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendPs-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPs-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPs-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPs-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendPs-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPs-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendPs-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MathtextBackendSvg">class <strong>MathtextBackendSvg</strong></a>(<a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#MathtextBackendSvg">MathtextBackendSvg</a></dd>
+<dd><a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="MathtextBackendSvg-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendSvg-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="MathtextBackendSvg-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, info)</dt></dl>
+
+<dl><dt><a name="MathtextBackendSvg-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><a name="MathtextBackendSvg-get_hinting_type"><strong>get_hinting_type</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MathtextBackendSvg-render_filled_rect"><strong>render_filled_rect</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="MathtextBackendSvg-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#MathtextBackend">MathtextBackend</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NegFil">class <strong>NegFil</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#NegFil">NegFil</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="NegFil-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="NegFil-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFil-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="NegFil-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFil-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFil-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="NegFil-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NegFill">class <strong>NegFill</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#NegFill">NegFill</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="NegFill-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="NegFill-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFill-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="NegFill-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFill-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFill-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="NegFill-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="NegFilll">class <strong>NegFilll</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#NegFilll">NegFilll</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="NegFilll-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="NegFilll-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFilll-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="NegFilll-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFilll-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="NegFilll-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="NegFilll-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Node">class <strong>Node</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;node&nbsp;in&nbsp;the&nbsp;TeX&nbsp;box&nbsp;model<br>
+node133<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Node-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Node-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Node-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Node-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="Node-grow"><strong>grow</strong></a>(self)</dt><dd><tt>Grows&nbsp;one&nbsp;level&nbsp;larger.&nbsp;&nbsp;There&nbsp;is&nbsp;no&nbsp;limit&nbsp;to&nbsp;how&nbsp;big&nbsp;something<br>
+can&nbsp;get.</tt></dd></dl>
+
+<dl><dt><a name="Node-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<dl><dt><a name="Node-shrink"><strong>shrink</strong></a>(self)</dt><dd><tt>Shrinks&nbsp;one&nbsp;level&nbsp;smaller.&nbsp;&nbsp;There&nbsp;are&nbsp;only&nbsp;three&nbsp;levels&nbsp;of&nbsp;sizes,<br>
+after&nbsp;which&nbsp;things&nbsp;will&nbsp;no&nbsp;longer&nbsp;get&nbsp;smaller.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Parser">class <strong>Parser</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Parser-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Parser-accent"><strong>accent</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-auto_sized_delimiter"><strong>auto_sized_delimiter</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-char_over_chars"><strong>char_over_chars</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-clear"><strong>clear</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Parser-customspace"><strong>customspace</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-end_group"><strong>end_group</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-finish"><strong>finish</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-font"><strong>font</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-frac"><strong>frac</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-function"><strong>function</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-get_state"><strong>get_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Parser-group"><strong>group</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-is_dropsub"><strong>is_dropsub</strong></a>(self, nucleus)</dt></dl>
+
+<dl><dt><a name="Parser-is_overunder"><strong>is_overunder</strong></a>(self, nucleus)</dt></dl>
+
+<dl><dt><a name="Parser-is_slanted"><strong>is_slanted</strong></a>(self, nucleus)</dt></dl>
+
+<dl><dt><a name="Parser-math"><strong>math</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-non_math"><strong>non_math</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-parse"><strong>parse</strong></a>(self, s, fonts_object, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="Parser-pop_state"><strong>pop_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Parser-push_state"><strong>push_state</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Parser-space"><strong>space</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-sqrt"><strong>sqrt</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-start_group"><strong>start_group</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-subsuperscript"><strong>subsuperscript</strong></a>(self, s, loc, toks)</dt></dl>
+
+<dl><dt><a name="Parser-symbol"><strong>symbol</strong></a>(self, s, loc, toks)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>State</strong> = &lt;class 'matplotlib.mathtext.State'&gt;</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Rule">class <strong>Rule</strong></a>(<a href="matplotlib.mathtext.html#Box">Box</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;<a href="#Rule">Rule</a>&nbsp;node&nbsp;stands&nbsp;for&nbsp;a&nbsp;solid&nbsp;black&nbsp;rectangle;&nbsp;it&nbsp;has&nbsp;width,<br>
+depth,&nbsp;and&nbsp;height&nbsp;fields&nbsp;just&nbsp;as&nbsp;in&nbsp;an&nbsp;<a href="#Hlist">Hlist</a>.&nbsp;However,&nbsp;if&nbsp;any&nbsp;of&nbsp;these<br>
+dimensions&nbsp;is&nbsp;inf,&nbsp;the&nbsp;actual&nbsp;value&nbsp;will&nbsp;be&nbsp;determined&nbsp;by&nbsp;running&nbsp;the<br>
+rule&nbsp;up&nbsp;to&nbsp;the&nbsp;boundary&nbsp;of&nbsp;the&nbsp;innermost&nbsp;enclosing&nbsp;box.&nbsp;This&nbsp;is&nbsp;called<br>
+a&nbsp;"running&nbsp;dimension."&nbsp;The&nbsp;width&nbsp;is&nbsp;never&nbsp;running&nbsp;in&nbsp;an&nbsp;<a href="#Hlist">Hlist</a>;&nbsp;the<br>
+height&nbsp;and&nbsp;depth&nbsp;are&nbsp;never&nbsp;running&nbsp;in&nbsp;a&nbsp;<a href="#Vlist">Vlist</a>.<br>
+node138<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Rule">Rule</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Rule-__init__"><strong>__init__</strong></a>(self, width, height, depth, state)</dt></dl>
+
+<dl><dt><a name="Rule-render"><strong>render</strong></a>(self, x, y, w, h)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Rule-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Rule-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Rule-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Rule-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Rule-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Ship">class <strong>Ship</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Once&nbsp;the&nbsp;boxes&nbsp;have&nbsp;been&nbsp;set&nbsp;up,&nbsp;this&nbsp;sends&nbsp;them&nbsp;to&nbsp;output.<br>
+Since&nbsp;boxes&nbsp;can&nbsp;be&nbsp;inside&nbsp;of&nbsp;boxes&nbsp;inside&nbsp;of&nbsp;boxes,&nbsp;the&nbsp;main<br>
+work&nbsp;of&nbsp;<a href="#Ship">Ship</a>&nbsp;is&nbsp;done&nbsp;by&nbsp;two&nbsp;mutually&nbsp;recursive&nbsp;routines,&nbsp;hlist_out<br>
+and&nbsp;vlist_out&nbsp;,&nbsp;which&nbsp;traverse&nbsp;the&nbsp;Hlists&nbsp;and&nbsp;Vlists&nbsp;inside&nbsp;of<br>
+horizontal&nbsp;and&nbsp;vertical&nbsp;boxes.&nbsp;&nbsp;The&nbsp;global&nbsp;variables&nbsp;used&nbsp;in&nbsp;TeX&nbsp;to<br>
+store&nbsp;state&nbsp;as&nbsp;it&nbsp;processes&nbsp;have&nbsp;become&nbsp;member&nbsp;variables&nbsp;here.<br>
+node592.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Ship-__call__"><strong>__call__</strong></a>(self, ox, oy, box)</dt></dl>
+
+<dl><dt><a name="Ship-hlist_out"><strong>hlist_out</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="Ship-vlist_out"><strong>vlist_out</strong></a>(self, box)</dt></dl>
+
+<hr>
+Static methods defined here:<br>
+<dl><dt><a name="Ship-clamp"><strong>clamp</strong></a>(value)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SsGlue">class <strong>SsGlue</strong></a>(<a href="matplotlib.mathtext.html#Glue">Glue</a>)</font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#SsGlue">SsGlue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Glue">Glue</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SsGlue-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Glue">Glue</a>:<br>
+<dl><dt><a name="SsGlue-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SsGlue-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="SsGlue-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SsGlue-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SsGlue-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<dl><dt><a name="SsGlue-render"><strong>render</strong></a>(self, x, y)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StandardPsFonts">class <strong>StandardPsFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Use&nbsp;the&nbsp;standard&nbsp;postscript&nbsp;fonts&nbsp;for&nbsp;rendering&nbsp;to&nbsp;backend_ps<br>
+&nbsp;<br>
+Unlike&nbsp;the&nbsp;other&nbsp;font&nbsp;classes,&nbsp;BakomaFont&nbsp;and&nbsp;UnicodeFont,&nbsp;this<br>
+one&nbsp;requires&nbsp;the&nbsp;Ps&nbsp;backend.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#StandardPsFonts">StandardPsFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StandardPsFonts-__init__"><strong>__init__</strong></a>(self, default_font_prop)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>basepath</strong> = '/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/mpl-data/fonts/afm'</dl>
+
+<dl><dt><strong>fontmap</strong> = {None: 'psyr', 'bf': 'pncb8a', 'cal': 'pzcmi8a', 'it': 'pncri8a', 'rm': 'pncr8a', 'sf': 'phvr8a', 'tt': 'pcrr8a'}</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="StandardPsFonts-destroy"><strong>destroy</strong></a>(self)</dt><dd><tt>Fix&nbsp;any&nbsp;cyclical&nbsp;references&nbsp;before&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;is&nbsp;about<br>
+to&nbsp;be&nbsp;destroyed.</tt></dd></dl>
+
+<dl><dt><a name="StandardPsFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="StandardPsFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt><dd><tt>Override&nbsp;if&nbsp;your&nbsp;font&nbsp;provides&nbsp;multiple&nbsp;sizes&nbsp;of&nbsp;the&nbsp;same<br>
+symbol.</tt></dd></dl>
+
+<dl><dt><a name="StandardPsFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="StandardPsFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StixFonts">class <strong>StixFonts</strong></a>(<a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;font&nbsp;handling&nbsp;class&nbsp;for&nbsp;the&nbsp;STIX&nbsp;fonts<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#StixFonts">StixFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="StixFonts-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="StixFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>cm_fallback</strong> = False</dl>
+
+<dl><dt><strong>fontmap</strong> = {}</dl>
+
+<dl><dt><strong>use_cmex</strong> = False</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><a name="StixFonts-destroy"><strong>destroy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StixFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="StixFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StixFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x1a61230&gt;</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="StixFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="StixFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="StixFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StixFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StixFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="StixFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="StixSansFonts">class <strong>StixSansFonts</strong></a>(<a href="matplotlib.mathtext.html#StixFonts">StixFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;font&nbsp;handling&nbsp;class&nbsp;for&nbsp;the&nbsp;STIX&nbsp;fonts&nbsp;(using&nbsp;sans-serif<br>
+characters&nbsp;by&nbsp;default).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#StixSansFonts">StixSansFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#StixFonts">StixFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#StixFonts">StixFonts</a>:<br>
+<dl><dt><a name="StixSansFonts-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#StixFonts">StixFonts</a>:<br>
+<dl><dt><strong>cm_fallback</strong> = False</dl>
+
+<dl><dt><strong>fontmap</strong> = {}</dl>
+
+<dl><dt><strong>use_cmex</strong> = False</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><a name="StixSansFonts-destroy"><strong>destroy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x1a61230&gt;</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="StixSansFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="StixSansFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="StixSansFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="SubSuperCluster">class <strong>SubSuperCluster</strong></a>(<a href="matplotlib.mathtext.html#Hlist">Hlist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;is&nbsp;a&nbsp;sort&nbsp;of&nbsp;hack&nbsp;to&nbsp;get&nbsp;around&nbsp;that&nbsp;fact&nbsp;that&nbsp;this<br>
+code&nbsp;doesn't&nbsp;parse&nbsp;to&nbsp;an&nbsp;mlist&nbsp;and&nbsp;then&nbsp;an&nbsp;hlist,&nbsp;but&nbsp;goes&nbsp;directly<br>
+to&nbsp;hlists.&nbsp;&nbsp;This&nbsp;lets&nbsp;us&nbsp;store&nbsp;enough&nbsp;information&nbsp;in&nbsp;the&nbsp;hlist&nbsp;itself,<br>
+namely&nbsp;the&nbsp;nucleas,&nbsp;sub-&nbsp;and&nbsp;super-script,&nbsp;such&nbsp;that&nbsp;if&nbsp;another&nbsp;script<br>
+follows&nbsp;that&nbsp;needs&nbsp;to&nbsp;be&nbsp;attached,&nbsp;it&nbsp;can&nbsp;be&nbsp;reconfigured&nbsp;on&nbsp;the&nbsp;fly.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#SubSuperCluster">SubSuperCluster</a></dd>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="SubSuperCluster-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Hlist">Hlist</a>:<br>
+<dl><dt><a name="SubSuperCluster-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#SubSuperCluster-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="SubSuperCluster-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="SubSuperCluster-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SubSuperCluster-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SubSuperCluster-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="SubSuperCluster-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="SubSuperCluster-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="SubSuperCluster-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="TruetypeFonts">class <strong>TruetypeFonts</strong></a>(<a href="matplotlib.mathtext.html#Fonts">Fonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;generic&nbsp;base&nbsp;class&nbsp;for&nbsp;all&nbsp;font&nbsp;setups&nbsp;that&nbsp;use&nbsp;Truetype&nbsp;fonts<br>
+(through&nbsp;ft2font)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="TruetypeFonts-__init__"><strong>__init__</strong></a>(self, default_font_prop, mathtext_backend)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-destroy"><strong>destroy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x1a61230&gt;</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="TruetypeFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="TruetypeFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt><dd><tt>Override&nbsp;if&nbsp;your&nbsp;font&nbsp;provides&nbsp;multiple&nbsp;sizes&nbsp;of&nbsp;the&nbsp;same<br>
+symbol.</tt></dd></dl>
+
+<dl><dt><a name="TruetypeFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="TruetypeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="UnicodeFonts">class <strong>UnicodeFonts</strong></a>(<a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>An&nbsp;abstract&nbsp;base&nbsp;class&nbsp;for&nbsp;handling&nbsp;Unicode&nbsp;fonts.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#UnicodeFonts">UnicodeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a></dd>
+<dd><a href="matplotlib.mathtext.html#Fonts">Fonts</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="UnicodeFonts-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-get_sized_alternatives_for_symbol"><strong>get_sized_alternatives_for_symbol</strong></a>(self, fontname, sym)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>fontmap</strong> = {}</dl>
+
+<dl><dt><strong>use_cmex</strong> = True</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><a name="UnicodeFonts-destroy"><strong>destroy</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-get_kern"><strong>get_kern</strong></a>(self, font1, fontclass1, sym1, fontsize1, font2, fontclass2, sym2, fontsize2, dpi)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-get_underline_thickness"><strong>get_underline_thickness</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-get_xheight"><strong>get_xheight</strong></a>(self, font, fontsize, dpi)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.mathtext.html#TruetypeFonts">TruetypeFonts</a>:<br>
+<dl><dt><strong>CachedFont</strong> = &lt;class matplotlib.mathtext.CachedFont at 0x1a61230&gt;</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><a name="UnicodeFonts-get_metrics"><strong>get_metrics</strong></a>(self, font, font_class, sym, fontsize, dpi)</dt><dd><tt>font:&nbsp;one&nbsp;of&nbsp;the&nbsp;TeX&nbsp;font&nbsp;names,&nbsp;tt,&nbsp;it,&nbsp;rm,&nbsp;cal,&nbsp;sf,&nbsp;bf&nbsp;or<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default&nbsp;(non-math)<br>
+sym:&nbsp;&nbsp;a&nbsp;symbol&nbsp;in&nbsp;raw&nbsp;TeX&nbsp;form.&nbsp;e.g.&nbsp;'1',&nbsp;'x'&nbsp;or&nbsp;'\sigma'<br>
+fontsize:&nbsp;font&nbsp;size&nbsp;in&nbsp;points<br>
+dpi:&nbsp;current&nbsp;dots-per-inch<br>
+&nbsp;<br>
+&nbsp;&nbsp;advance<br>
+&nbsp;&nbsp;height<br>
+&nbsp;&nbsp;width<br>
+&nbsp;&nbsp;xmin,&nbsp;xmax,&nbsp;ymin,&nbsp;ymax&nbsp;&nbsp;-&nbsp;the&nbsp;ink&nbsp;rectangle&nbsp;of&nbsp;the&nbsp;glyph<br>
+&nbsp;&nbsp;iceberg&nbsp;-&nbsp;the&nbsp;distance&nbsp;from&nbsp;the&nbsp;baseline&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;glyph.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;horiBearingY&nbsp;in&nbsp;Truetype&nbsp;parlance,&nbsp;height&nbsp;in&nbsp;TeX&nbsp;parlance</tt></dd></dl>
+
+<dl><dt><a name="UnicodeFonts-get_results"><strong>get_results</strong></a>(self, box)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-get_used_characters"><strong>get_used_characters</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-render_glyph"><strong>render_glyph</strong></a>(self, ox, oy, facename, font_class, sym, fontsize, dpi)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-render_rect_filled"><strong>render_rect_filled</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="UnicodeFonts-set_canvas_size"><strong>set_canvas_size</strong></a>(self, w, h, d)</dt><dd><tt>Dimension&nbsp;the&nbsp;drawing&nbsp;canvas;&nbsp;may&nbsp;be&nbsp;a&nbsp;noop</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Fonts">Fonts</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="VCentered">class <strong>VCentered</strong></a>(<a href="matplotlib.mathtext.html#Hlist">Hlist</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;convenience&nbsp;class&nbsp;to&nbsp;create&nbsp;an&nbsp;<a href="#Vlist">Vlist</a>&nbsp;whose&nbsp;contents&nbsp;are&nbsp;centered<br>
+within&nbsp;its&nbsp;enclosing&nbsp;box.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#VCentered">VCentered</a></dd>
+<dd><a href="matplotlib.mathtext.html#Hlist">Hlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="VCentered-__init__"><strong>__init__</strong></a>(self, elements)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Hlist">Hlist</a>:<br>
+<dl><dt><a name="VCentered-hpack"><strong>hpack</strong></a>(self, w<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;hpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.&nbsp;The&nbsp;computed&nbsp;sizes&nbsp;normally&nbsp;enclose&nbsp;all&nbsp;of&nbsp;the&nbsp;material<br>
+inside&nbsp;the&nbsp;new&nbsp;box;&nbsp;but&nbsp;some&nbsp;items&nbsp;may&nbsp;stick&nbsp;out&nbsp;if&nbsp;negative&nbsp;glue&nbsp;is<br>
+used,&nbsp;if&nbsp;the&nbsp;box&nbsp;is&nbsp;overfull,&nbsp;or&nbsp;if&nbsp;a&nbsp;box&nbsp;includes&nbsp;other&nbsp;boxes&nbsp;that<br>
+have&nbsp;been&nbsp;shifted&nbsp;left.<br>
+&nbsp;<br>
+w:&nbsp;specifies&nbsp;a&nbsp;width<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#VCentered-hpack">hpack</a>(w,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+hpack&nbsp;(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node649</tt></dd></dl>
+
+<dl><dt><a name="VCentered-kern"><strong>kern</strong></a>(self)</dt><dd><tt>Insert&nbsp;<a href="#Kern">Kern</a>&nbsp;nodes&nbsp;between&nbsp;Chars&nbsp;to&nbsp;set&nbsp;kerning.&nbsp;&nbsp;The<br>
+Chars&nbsp;themselves&nbsp;determine&nbsp;the&nbsp;amount&nbsp;of&nbsp;kerning&nbsp;they&nbsp;need<br>
+(in&nbsp;get_kerning),&nbsp;and&nbsp;this&nbsp;function&nbsp;just&nbsp;creates&nbsp;the&nbsp;linked<br>
+list&nbsp;in&nbsp;the&nbsp;correct&nbsp;way.</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="VCentered-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="VCentered-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="VCentered-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="VCentered-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="VCentered-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="VCentered-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Vbox">class <strong>Vbox</strong></a>(<a href="matplotlib.mathtext.html#Box">Box</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;box&nbsp;with&nbsp;only&nbsp;height&nbsp;(zero&nbsp;width).<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Vbox">Vbox</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Vbox-__init__"><strong>__init__</strong></a>(self, height, depth)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Vbox-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vbox-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<dl><dt><a name="Vbox-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Vbox-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vbox-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vbox-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Vlist">class <strong>Vlist</strong></a>(<a href="matplotlib.mathtext.html#List">List</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;vertical&nbsp;list&nbsp;of&nbsp;boxes.<br>
+node137<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Vlist">Vlist</a></dd>
+<dd><a href="matplotlib.mathtext.html#List">List</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Vlist-__init__"><strong>__init__</strong></a>(self, elements, h<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>)</dt></dl>
+
+<dl><dt><a name="Vlist-vpack"><strong>vpack</strong></a>(self, h<font color="#909090">=0.0</font>, m<font color="#909090">='additional'</font>, l<font color="#909090">=inf</font>)</dt><dd><tt>The&nbsp;main&nbsp;duty&nbsp;of&nbsp;vpack&nbsp;is&nbsp;to&nbsp;compute&nbsp;the&nbsp;dimensions&nbsp;of&nbsp;the<br>
+resulting&nbsp;boxes,&nbsp;and&nbsp;to&nbsp;adjust&nbsp;the&nbsp;glue&nbsp;if&nbsp;one&nbsp;of&nbsp;those&nbsp;dimensions&nbsp;is<br>
+pre-specified.<br>
+&nbsp;<br>
+h:&nbsp;specifies&nbsp;a&nbsp;height<br>
+m:&nbsp;is&nbsp;either&nbsp;'exactly'&nbsp;or&nbsp;'additional'.<br>
+l:&nbsp;a&nbsp;maximum&nbsp;height<br>
+&nbsp;<br>
+Thus,&nbsp;<a href="#Vlist-vpack">vpack</a>(h,&nbsp;'exactly')&nbsp;produces&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;exactly&nbsp;w,&nbsp;while<br>
+<a href="#Vlist-vpack">vpack</a>(w,&nbsp;'additional')&nbsp;yields&nbsp;a&nbsp;box&nbsp;whose&nbsp;width&nbsp;is&nbsp;the&nbsp;natural&nbsp;width<br>
+plus&nbsp;w.&nbsp;&nbsp;The&nbsp;default&nbsp;values&nbsp;produce&nbsp;a&nbsp;box&nbsp;with&nbsp;the&nbsp;natural&nbsp;width.<br>
+node644,&nbsp;node668</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#List">List</a>:<br>
+<dl><dt><a name="Vlist-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vlist-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vlist-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Vlist-render"><strong>render</strong></a>(self, x1, y1, x2, y2)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Vlist-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vlist-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Vrule">class <strong>Vrule</strong></a>(<a href="matplotlib.mathtext.html#Rule">Rule</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Convenience&nbsp;class&nbsp;to&nbsp;create&nbsp;a&nbsp;vertical&nbsp;rule.<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.mathtext.html#Vrule">Vrule</a></dd>
+<dd><a href="matplotlib.mathtext.html#Rule">Rule</a></dd>
+<dd><a href="matplotlib.mathtext.html#Box">Box</a></dd>
+<dd><a href="matplotlib.mathtext.html#Node">Node</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Vrule-__init__"><strong>__init__</strong></a>(self, state)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Rule">Rule</a>:<br>
+<dl><dt><a name="Vrule-render"><strong>render</strong></a>(self, x, y, w, h)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Box">Box</a>:<br>
+<dl><dt><a name="Vrule-grow"><strong>grow</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vrule-shrink"><strong>shrink</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><a name="Vrule-__internal_repr__"><strong>__internal_repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vrule-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Vrule-get_kerning"><strong>get_kerning</strong></a>(self, next)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="matplotlib.mathtext.html#Node">Node</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-Error"><strong>Error</strong></a>(msg)</dt></dl>
+ <dl><dt><a name="-FT2Font"><strong>FT2Font</strong></a>(...)</dt><dd><tt>FT2Font</tt></dd></dl>
+ <dl><dt><a name="-FT2Image"><strong>FT2Image</strong></a>(...)</dt><dd><tt>FT2Image</tt></dd></dl>
+ <dl><dt><a name="-MathtextBackendAgg"><strong>MathtextBackendAgg</strong></a>()</dt></dl>
+ <dl><dt><a name="-MathtextBackendBitmap"><strong>MathtextBackendBitmap</strong></a>()</dt></dl>
+ <dl><dt><a name="-StringIO"><strong>StringIO</strong></a>(...)</dt><dd><tt><a href="#-StringIO">StringIO</a>([s])&nbsp;--&nbsp;Return&nbsp;a&nbsp;StringIO-like&nbsp;stream&nbsp;for&nbsp;reading&nbsp;or&nbsp;writing</tt></dd></dl>
+ <dl><dt><a name="-ceil"><strong>ceil</strong></a>(...)</dt><dd><tt><a href="#-ceil">ceil</a>(x)<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;ceiling&nbsp;of&nbsp;x&nbsp;as&nbsp;a&nbsp;float.<br>
+This&nbsp;is&nbsp;the&nbsp;smallest&nbsp;integral&nbsp;value&nbsp;&gt;=&nbsp;x.</tt></dd></dl>
+ <dl><dt><a name="-get_unicode_index"><strong>get_unicode_index</strong></a>(symbol)</dt><dd><tt><a href="#-get_unicode_index">get_unicode_index</a>(symbol)&nbsp;-&gt;&nbsp;integer<br>
+&nbsp;<br>
+Return&nbsp;the&nbsp;integer&nbsp;index&nbsp;(from&nbsp;the&nbsp;Unicode&nbsp;table)&nbsp;of&nbsp;symbol.<br>
+symbol&nbsp;can&nbsp;be&nbsp;a&nbsp;single&nbsp;unicode&nbsp;character,&nbsp;a&nbsp;TeX&nbsp;command&nbsp;(i.e.&nbsp;r'\pi'),<br>
+or&nbsp;a&nbsp;Type1&nbsp;symbol&nbsp;name&nbsp;(i.e.&nbsp;'phi').</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DELTA</strong> = 0.17999999999999999<br>
+<strong>GROW_FACTOR</strong> = 1.4285714285714286<br>
+<strong>KERNING_DEFAULT</strong> = 0<br>
+<strong>LOAD_FORCE_AUTOHINT</strong> = 32L<br>
+<strong>LOAD_NO_HINTING</strong> = 2L<br>
+<strong>NUM_SIZE_LEVELS</strong> = 4<br>
+<strong>SCRIPT_SPACE</strong> = 0.20000000000000001<br>
+<strong>SHRINK_FACTOR</strong> = 0.69999999999999996<br>
+<strong>SUB1</strong> = 0.0<br>
+<strong>SUBDROP</strong> = 0.29999999999999999<br>
+<strong>SUP1</strong> = 0.5<br>
+<strong>division</strong> = _Feature((2, 2, 0, 'alpha', 2), (3, 0, 0, 'alpha', 0), 8192)<br>
+<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x1925098&gt;<br>
+<strong>inf</strong> = inf<br>
+<strong>isinf</strong> = &lt;ufunc 'isinf'&gt;<br>
+<strong>latex_to_bakoma</strong> = {'%': ('cmr10', 48), "'": ('cmsy10', 73), '(': ('cmr10', 119), ')': ('cmr10', 68), '*': ('cmsy10', 9), '+': ('cmr10', 76), ',': ('cmmi10', 44), '-': ('cmsy10', 17), '.': ('cmmi10', 51), '/': ('cmmi10', 98), ...}<br>
+<strong>latex_to_cmex</strong> = {r'\__sqrt__': 112, r'\bigcap': 92, r'\bigcup': 91, r'\bigodot': 75, r'\bigoplus': 77, r'\bigotimes': 79, r'\biguplus': 93, r'\bigvee': 95, r'\bigwedge': 94, r'\coprod': 97, ...}<br>
+<strong>latex_to_standard</strong> = {r'\$': ('pncr8a', 36), r'\%': ('pncr8a', 37), r'\Delta': ('psyr', 68), r'\Diamond': ('psyr', 224), r'\Downarrow': ('psyr', 223), r'\Gamma': ('psyr', 89), r'\Im': ('psyr', 193), r'\Lamda': ('psyr', 76), r'\Leftarrow': ('psyr', 220), r'\Leftrightarrow': ('psyr', 219), ...}<br>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
+<strong>ship</strong> = &lt;matplotlib.mathtext.Ship object at 0x1a75450&gt;<br>
+<strong>stix_virtual_fonts</strong> = {'bb': {'bf': [(48, 57, 'rm', 120792), (65, 90, 'bf', 58250), (97, 122, 'bf', 58269), (915, 915, 'bf', 8510), (928, 928, 'bf', 8511), (931, 931, 'bf', 8512), (947, 947, 'bf', 8509), (960, 960, 'bf', 8508)], 'it': [(48, 57, 'rm', 120792), (65, 65, 'it', 57684), (67, 67, 'it', 8450), (68, 68, 'it', 8517), (69, 71, 'it', 57686), (72, 72, 'it', 8461), (73, 77, 'it', 57689), (78, 78, 'it', 8469), (79, 79, 'it', 57694), (80, 81, 'it', 8473), (82, 82, 'it', 8477), (83, 89, 'it', 57695), (90, 90, 'it', 8484), (97, 99, 'it', 57702), (100, 101, 'it', 8518), (102, 104, 'it', 57705), (105, 106, 'it', 8520), (107, 122, 'it', 57708), (915, 915, 'it', 8510), (928, 928, 'it', 8511), ...], 'rm': [(48, 57, 'rm', 120792), (65, 66, 'rm', 120120), (67, 67, 'rm', 8450), (68, 71, 'rm', 120123), (72, 72, 'rm', 8461), (73, 77, 'rm', 120128), (78, 78, 'rm', 8469), (79, 79, 'rm', 120134), (80, 81, 'rm', 8473), (82, 82, 'rm', 8477), (83, 89, 'rm', 120138), (90, 90, 'rm', 8484), (97, 122, 'rm', 120146), (915, 915, 'rm', 8510), (928, 928, 'rm', 8511), (931, 931, 'rm', 8512), (947, 947, 'rm', 8509), (960, 960, 'rm', 8508)]}, 'cal': [(65, 90, 'it', 57901)], 'circled': {'bf': [(48, 48, 'bf', 9450), (49, 57, 'bf', 9312), (65, 90, 'bf', 9398), (97, 122, 'bf', 9424)], 'it': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'it', 9398), (97, 122, 'it', 9424)], 'rm': [(48, 48, 'rm', 9450), (49, 57, 'rm', 9312), (65, 90, 'rm', 9398), (97, 122, 'rm', 9424)]}, 'frak': {'bf': [(65, 90, 'bf', 120172), (97, 122, 'bf', 120198)], 'it': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)], 'rm': [(65, 66, 'rm', 120068), (67, 67, 'rm', 8493), (68, 71, 'rm', 120071), (72, 72, 'rm', 8460), (73, 73, 'rm', 8465), (74, 81, 'rm', 120077), (82, 82, 'rm', 8476), (83, 89, 'rm', 120086), (90, 90, 'rm', 8488), (97, 122, 'rm', 120094)]}, 'scr': [(65, 65, 'it', 119964), (66, 66, 'it', 8492), (67, 68, 'it', 119966), (69, 70, 'it', 8496), (71, 71, 'it', 119970), (72, 72, 'it', 8459), (73, 73, 'it', 8464), (74, 75, 'it', 119973), (76, 76, 'it', 8466), (77, 61, 'it', 8467), (78, 81, 'it', 119977), (82, 82, 'it', 8475), (83, 90, 'it', 119982), (97, 100, 'it', 119990), (101, 101, 'it', 8495), (102, 102, 'it', 119995), (103, 103, 'it', 8458), (104, 110, 'it', 119997), (111, 111, 'it', 8500), (112, 122, 'it', 120005)], 'sf': {'bf': [(48, 57, 'bf', 120812), (65, 90, 'bf', 120276), (97, 122, 'bf', 120302), (913, 937, 'bf', 120662), (945, 969, 'bf', 120688), (977, 977, 'bf', 120715), (981, 981, 'bf', 120717), (982, 982, 'bf', 120719), (1008, 1008, 'bf', 120716), (1009, 1009, 'bf', 120718), (1013, 1013, 'bf', 120714), (8706, 8706, 'bf', 120713), (8711, 8711, 'bf', 120687)], 'it': [(48, 57, 'rm', 120802), (65, 90, 'it', 120328), (97, 122, 'it', 120354), (913, 937, 'rm', 57725), (945, 969, 'it', 57816), (977, 977, 'it', 57842), (981, 981, 'it', 57843), (982, 982, 'it', 57845), (1009, 1009, 'it', 57844), (1013, 1013, 'it', 57841)], 'rm': [(48, 57, 'rm', 120802), (65, 90, 'rm', 120224), (97, 122, 'rm', 120250), (913, 937, 'rm', 57725), (945, 969, 'rm', 57750), (977, 977, 'rm', 57776), (981, 981, 'rm', 57777), (982, 982, 'rm', 57779), (1009, 1009, 'rm', 57778), (1013, 1013, 'rm', 57775), (8706, 8706, 'rm', 57724)]}, 'tt': [(48, 57, 'rm', 120822), (65, 90, 'rm', 120432), (97, 122, 'rm', 120458)]}<br>
+<strong>tex2uni</strong> = {'$': 36, '%': 37, 'AA': 8491, 'AE': 198, 'BbbC': 8450, 'BbbN': 8469, 'BbbP': 8473, 'BbbQ': 8474, 'BbbR': 8477, 'BbbZ': 8484, ...}</td></tr></table>
+    </td>
+    </tr>
+</table>
+<br>
+
+<table bgcolor=#eeefff align=right>
+   <tr><th align=center>Powered by</th></tr>
+   <tr><td align=center><a href=http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52305>YAPTU!</a></td></tr> 
+</table>
+
+Matlab&reg is a registered trademark of The MathWorks
+</body>
+</html>
+
+

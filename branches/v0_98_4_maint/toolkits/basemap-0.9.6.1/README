@@ -1,0 +1,89 @@
+**Descripton**
+
+basemap.py - plot on map projections (with coastlines and political boundaries)
+using matplotlib.
+
+**Requirements**
+
+matplotlib 0.90 (or higher)
+numpy 1.0 (or higher)
+
+**Copyright**
+
+source code from proj.4 (http://proj.maptools.org) is included in the
+'src' directory (under the terms given in LICENSE_proj4).
+
+pyshapelib by Bernhard Herzog is included in the 'pyshapelib' directory
+under the terms given in LICENSE_pyshapelib.
+
+the coastline, lake, river and political boundary data are extracted
+from datasets provided with the Generic Mapping Tools
+(http://gmt.soest.hawaii.edu)
+and are included under the terms given in LICENSE_data.
+
+a public domain 5-minute land/sea/lake mask dataset from
+http://www.ngdc.noaa.gov/seg/cdroms/graham/graham/graham.htm
+is included.
+
+Everything else (include src/pyproj.pyx and src/pyproj.c):
+
+copyright (c) 2004 by Jeffrey Whitaker.
+
+Permission to use, copy, modify, and distribute this software and its
+documentation for any purpose and without fee is hereby granted,
+provided that the above copyright notices appear in all copies and that
+both the copyright notices and this permission notice appear in
+supporting documentation.
+THE AUTHOR DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS. IN NO
+EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF
+USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+
+**Documentation** 
+
+see basemap.py docstrings.
+
+see scripts in 'examples' directory for example usage.
+
+read the FAQ and/or email the matplotlib-users mailing list if 
+you have problems or questions.
+
+**Install**
+
+To install from source, download basemap-X.Y.Z.tar.gz from
+the sourceforge download site, unpack,
+cd to basemap-X.Y.Z and run 'python setup.py install'.
+
+Binary, double-clickable installers are also provided for MacOS X and
+Windows.  The Mac installers have a .dmg file extension, the Windows
+installers have a .exe extension. Windows users will probably prefer
+s option, since it is non-trivial to build C extensions for python on Windows.
+
+The crude ('c'), low ('l') and intermediate ('i') resolution
+boundary data files, plus the 5-minute land/sea mask, are installed
+by default. If you need the high ('h') resolution boundary dataset
+you can download the files from the sourceforge download site
+(basemap-data-hires-X.Y.Z.tar.gz) and manually install them.
+To see where basemap expects them to be installed, run
+python -c "from matplotlib.toolkits.basemap import basemap_datadir; print basemap_datadir".
+
+**Contact**
+
+Jeff Whitaker <jeffrey.s.whitaker@noaa.gov>
+
+
+**Thanks**
+
+to
+
+John Hunter
+Andrew Straw
+Eric Firing
+Rob Hetland
+Scott Sinclair
+Ivan Lima
+
+for valuable contributions.

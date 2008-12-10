@@ -1,0 +1,1158 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.cbook</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/cbook.py">/home/jdhunter/dev/lib64/python2.5/site-packages/matplotlib/cbook.py</a></font></td></tr></table>
+    <p><tt>A&nbsp;collection&nbsp;of&nbsp;utility&nbsp;functions&nbsp;and&nbsp;classes.&nbsp;&nbsp;Many&nbsp;(but&nbsp;not&nbsp;all)<br>
+from&nbsp;the&nbsp;Python&nbsp;Cookbook&nbsp;--&nbsp;hence&nbsp;the&nbsp;name&nbsp;cbook</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="StringIO.html">StringIO</a><br>
+<a href="datetime.html">datetime</a><br>
+<a href="errno.html">errno</a><br>
+<a href="locale.html">locale</a><br>
+</td><td width="25%" valign=top><a href="numpy.ma.html">numpy.ma</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="sys.html">sys</a><br>
+<a href="threading.html">threading</a><br>
+<a href="time.html">time</a><br>
+<a href="traceback.html">traceback</a><br>
+</td><td width="25%" valign=top><a href="types.html">types</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#dict">__builtin__.dict</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Xlator">Xlator</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#maxdict">maxdict</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#list">__builtin__.list</a>(<a href="__builtin__.html#object">__builtin__.object</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#silent_list">silent_list</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Grouper">Grouper</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Bunch">Bunch</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#CallbackRegistry">CallbackRegistry</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#GetRealpathAndStat">GetRealpathAndStat</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#MemoryMonitor">MemoryMonitor</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Null">Null</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#RingBuffer">RingBuffer</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Sorter">Sorter</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Stack">Stack</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#converter">converter</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#todate">todate</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#todatetime">todatetime</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#tofloat">tofloat</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#toint">toint</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#tostr">tostr</a>
+</font></dt></dl>
+</dd>
+<dt><font face="helvetica, arial"><a href="threading.html#Thread">threading.Thread</a>(<a href="threading.html#_Verbose">threading._Verbose</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Scheduler">Scheduler</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Idle">Idle</a>
+</font></dt><dt><font face="helvetica, arial"><a href="matplotlib.cbook.html#Timeout">Timeout</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Bunch">class <strong>Bunch</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Often&nbsp;we&nbsp;want&nbsp;to&nbsp;just&nbsp;collect&nbsp;a&nbsp;bunch&nbsp;of&nbsp;stuff&nbsp;together,&nbsp;naming&nbsp;each<br>
+item&nbsp;of&nbsp;the&nbsp;bunch;&nbsp;a&nbsp;dictionary's&nbsp;OK&nbsp;for&nbsp;that,&nbsp;but&nbsp;a&nbsp;small&nbsp;do-&nbsp;nothing<br>
+class&nbsp;is&nbsp;even&nbsp;handier,&nbsp;and&nbsp;prettier&nbsp;to&nbsp;use.&nbsp;&nbsp;Whenever&nbsp;you&nbsp;want&nbsp;to<br>
+group&nbsp;a&nbsp;few&nbsp;variables:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;point&nbsp;=&nbsp;<a href="#Bunch">Bunch</a>(datum=2,&nbsp;squared=4,&nbsp;coord=12)<br>
+&nbsp;&nbsp;&gt;&gt;&gt;&nbsp;point.datum<br>
+&nbsp;<br>
+&nbsp;&nbsp;By:&nbsp;Alex&nbsp;Martelli<br>
+&nbsp;&nbsp;From:&nbsp;<a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52308">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/52308</a><br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Bunch-__init__"><strong>__init__</strong></a>(self, **kwds)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="CallbackRegistry">class <strong>CallbackRegistry</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Handle&nbsp;registering&nbsp;and&nbsp;disconnecting&nbsp;for&nbsp;a&nbsp;set&nbsp;of&nbsp;signals&nbsp;and<br>
+callbacks::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;signals&nbsp;=&nbsp;'eat',&nbsp;'drink',&nbsp;'be&nbsp;merry'<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;def&nbsp;oneat(x):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'eat',&nbsp;x<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;def&nbsp;ondrink(x):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;'drink',&nbsp;x<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;callbacks&nbsp;=&nbsp;<a href="#CallbackRegistry">CallbackRegistry</a>(signals)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;ideat&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('eat',&nbsp;oneat)<br>
+&nbsp;&nbsp;&nbsp;iddrink&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('drink',&nbsp;ondrink)<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;#tmp&nbsp;=&nbsp;callbacks.<a href="#CallbackRegistry-connect">connect</a>('drunk',&nbsp;ondrink)&nbsp;#&nbsp;this&nbsp;will&nbsp;raise&nbsp;a&nbsp;ValueError<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('drink',&nbsp;123)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;will&nbsp;call&nbsp;oneat<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('eat',&nbsp;456)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;will&nbsp;call&nbsp;ondrink<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('be&nbsp;merry',&nbsp;456)&nbsp;#&nbsp;nothing&nbsp;will&nbsp;be&nbsp;called<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-disconnect">disconnect</a>(ideat)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;disconnect&nbsp;oneat<br>
+&nbsp;&nbsp;&nbsp;callbacks.<a href="#CallbackRegistry-process">process</a>('eat',&nbsp;456)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;nothing&nbsp;will&nbsp;be&nbsp;called<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="CallbackRegistry-__init__"><strong>__init__</strong></a>(self, signals)</dt><dd><tt>*signals*&nbsp;is&nbsp;a&nbsp;sequence&nbsp;of&nbsp;valid&nbsp;signals</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-connect"><strong>connect</strong></a>(self, s, func)</dt><dd><tt>register&nbsp;*func*&nbsp;to&nbsp;be&nbsp;called&nbsp;when&nbsp;a&nbsp;signal&nbsp;*s*&nbsp;is&nbsp;generated<br>
+func&nbsp;will&nbsp;be&nbsp;called</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-disconnect"><strong>disconnect</strong></a>(self, cid)</dt><dd><tt>disconnect&nbsp;the&nbsp;callback&nbsp;registered&nbsp;with&nbsp;callback&nbsp;id&nbsp;*cid*</tt></dd></dl>
+
+<dl><dt><a name="CallbackRegistry-process"><strong>process</strong></a>(self, s, *args, **kwargs)</dt><dd><tt>process&nbsp;signal&nbsp;*s*.&nbsp;&nbsp;All&nbsp;of&nbsp;the&nbsp;functions&nbsp;registered&nbsp;to&nbsp;receive<br>
+callbacks&nbsp;on&nbsp;*s*&nbsp;will&nbsp;be&nbsp;called&nbsp;with&nbsp;*\*args*&nbsp;and&nbsp;*\*\*kwargs*</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="GetRealpathAndStat">class <strong>GetRealpathAndStat</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="GetRealpathAndStat-__call__"><strong>__call__</strong></a>(self, path)</dt></dl>
+
+<dl><dt><a name="GetRealpathAndStat-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Grouper">class <strong>Grouper</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>This&nbsp;class&nbsp;provides&nbsp;a&nbsp;lightweight&nbsp;way&nbsp;to&nbsp;group&nbsp;arbitrary&nbsp;objects<br>
+together&nbsp;into&nbsp;disjoint&nbsp;sets&nbsp;when&nbsp;a&nbsp;full-blown&nbsp;graph&nbsp;data&nbsp;structure<br>
+would&nbsp;be&nbsp;overkill.<br>
+&nbsp;<br>
+Objects&nbsp;can&nbsp;be&nbsp;joined&nbsp;using&nbsp;:meth:`join`,&nbsp;tested&nbsp;for&nbsp;connectedness<br>
+using&nbsp;:meth:`joined`,&nbsp;and&nbsp;all&nbsp;disjoint&nbsp;sets&nbsp;can&nbsp;be&nbsp;retreived&nbsp;by<br>
+using&nbsp;the&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;as&nbsp;an&nbsp;iterator.<br>
+&nbsp;<br>
+The&nbsp;objects&nbsp;being&nbsp;joined&nbsp;must&nbsp;be&nbsp;hashable.<br>
+&nbsp;<br>
+For&nbsp;example:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;g&nbsp;=&nbsp;grouper.<a href="#Grouper">Grouper</a>()<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-join">join</a>('a',&nbsp;'b')<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-join">join</a>('b',&nbsp;'c')<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-join">join</a>('d',&nbsp;'e')<br>
+&gt;&gt;&gt;&nbsp;<a href="__builtin__.html#list">list</a>(g)<br>
+[['a',&nbsp;'b',&nbsp;'c'],&nbsp;['d',&nbsp;'e']]<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-joined">joined</a>('a',&nbsp;'b')<br>
+True<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-joined">joined</a>('a',&nbsp;'c')<br>
+True<br>
+&gt;&gt;&gt;&nbsp;g.<a href="#Grouper-joined">joined</a>('a',&nbsp;'d')<br>
+False<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Grouper-__contains__"><strong>__contains__</strong></a>(self, item)</dt></dl>
+
+<dl><dt><a name="Grouper-__init__"><strong>__init__</strong></a>(self, init<font color="#909090">=[]</font>)</dt></dl>
+
+<dl><dt><a name="Grouper-__iter__"><strong>__iter__</strong></a>(self)</dt><dd><tt>Iterate&nbsp;over&nbsp;each&nbsp;of&nbsp;the&nbsp;disjoint&nbsp;sets&nbsp;as&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>.<br>
+&nbsp;<br>
+The&nbsp;iterator&nbsp;is&nbsp;invalid&nbsp;if&nbsp;interleaved&nbsp;with&nbsp;calls&nbsp;to&nbsp;<a href="#Grouper-join">join</a>().</tt></dd></dl>
+
+<dl><dt><a name="Grouper-clean"><strong>clean</strong></a>(self)</dt><dd><tt>Clean&nbsp;dead&nbsp;weak&nbsp;references&nbsp;from&nbsp;the&nbsp;dictionary</tt></dd></dl>
+
+<dl><dt><a name="Grouper-get_siblings"><strong>get_siblings</strong></a>(self, a)</dt><dd><tt>Returns&nbsp;all&nbsp;of&nbsp;the&nbsp;items&nbsp;joined&nbsp;with&nbsp;*a*,&nbsp;including&nbsp;itself.</tt></dd></dl>
+
+<dl><dt><a name="Grouper-join"><strong>join</strong></a>(self, a, *args)</dt><dd><tt>Join&nbsp;given&nbsp;arguments&nbsp;into&nbsp;the&nbsp;same&nbsp;set.&nbsp;&nbsp;Accepts&nbsp;one&nbsp;or&nbsp;more<br>
+arguments.</tt></dd></dl>
+
+<dl><dt><a name="Grouper-joined"><strong>joined</strong></a>(self, a, b)</dt><dd><tt>Returns&nbsp;True&nbsp;if&nbsp;*a*&nbsp;and&nbsp;*b*&nbsp;are&nbsp;members&nbsp;of&nbsp;the&nbsp;same&nbsp;set.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Idle">class <strong>Idle</strong></a>(<a href="matplotlib.cbook.html#Scheduler">Scheduler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Schedule&nbsp;callbacks&nbsp;when&nbsp;scheduler&nbsp;is&nbsp;idle<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#Idle">Idle</a></dd>
+<dd><a href="matplotlib.cbook.html#Scheduler">Scheduler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Idle-__init__"><strong>__init__</strong></a>(self, func)</dt></dl>
+
+<dl><dt><a name="Idle-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>waittime</strong> = 0.050000000000000003</dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#Scheduler">Scheduler</a>:<br>
+<dl><dt><a name="Idle-stop"><strong>stop</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.cbook.html#Scheduler">Scheduler</a>:<br>
+<dl><dt><strong>id</strong> = 0</dl>
+
+<dl><dt><strong>idlelock</strong> = &lt;thread.lock object at 0x10e9168&gt;</dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="Idle-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Idle-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Idle-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Idle-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Idle-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Idle-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="Idle-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Idle-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MemoryMonitor">class <strong>MemoryMonitor</strong></a></font></td></tr>
+    
+<tr><td bgcolor="#ffc8d8"><tt>&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="MemoryMonitor-__call__"><strong>__call__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-__init__"><strong>__init__</strong></a>(self, nmax<font color="#909090">=20000</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-clear"><strong>clear</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-plot"><strong>plot</strong></a>(self, i0<font color="#909090">=0</font>, isub<font color="#909090">=1</font>, fig<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-report"><strong>report</strong></a>(self, segments<font color="#909090">=4</font>)</dt></dl>
+
+<dl><dt><a name="MemoryMonitor-xy"><strong>xy</strong></a>(self, i0<font color="#909090">=0</font>, isub<font color="#909090">=1</font>)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Null">class <strong>Null</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Null">Null</a>&nbsp;objects&nbsp;always&nbsp;and&nbsp;reliably&nbsp;"do&nbsp;nothing."<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Null-__call__"><strong>__call__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Null-__delattr__"><strong>__delattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Null-__getattr__"><strong>__getattr__</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Null-__init__"><strong>__init__</strong></a>(self, *args, **kwargs)</dt></dl>
+
+<dl><dt><a name="Null-__nonzero__"><strong>__nonzero__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Null-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Null-__setattr__"><strong>__setattr__</strong></a>(self, name, value)</dt></dl>
+
+<dl><dt><a name="Null-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="RingBuffer">class <strong>RingBuffer</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>class&nbsp;that&nbsp;implements&nbsp;a&nbsp;not-yet-full&nbsp;buffer<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="RingBuffer-__get_item__"><strong>__get_item__</strong></a>(self, i)</dt></dl>
+
+<dl><dt><a name="RingBuffer-__init__"><strong>__init__</strong></a>(self, size_max)</dt></dl>
+
+<dl><dt><a name="RingBuffer-append"><strong>append</strong></a>(self, x)</dt><dd><tt>append&nbsp;an&nbsp;element&nbsp;at&nbsp;the&nbsp;end&nbsp;of&nbsp;the&nbsp;buffer</tt></dd></dl>
+
+<dl><dt><a name="RingBuffer-get"><strong>get</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;elements&nbsp;from&nbsp;the&nbsp;oldest&nbsp;to&nbsp;the&nbsp;newest.</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Scheduler">class <strong>Scheduler</strong></a>(<a href="threading.html#Thread">threading.Thread</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;timeout&nbsp;and&nbsp;idle&nbsp;scheduling<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#Scheduler">Scheduler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Scheduler-__init__"><strong>__init__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-stop"><strong>stop</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>id</strong> = 0</dl>
+
+<dl><dt><strong>idlelock</strong> = &lt;thread.lock object at 0x10e9168&gt;</dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="Scheduler-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Scheduler-run"><strong>run</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Scheduler-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="Scheduler-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Scheduler-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Sorter">class <strong>Sorter</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Sort&nbsp;by&nbsp;attribute&nbsp;or&nbsp;item<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;sort&nbsp;=&nbsp;<a href="#Sorter">Sorter</a>()<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;=&nbsp;[(1,&nbsp;2),&nbsp;(4,&nbsp;8),&nbsp;(0,&nbsp;3)]<br>
+&nbsp;&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;=&nbsp;[{'a':&nbsp;3,&nbsp;'b':&nbsp;4},&nbsp;{'a':&nbsp;5,&nbsp;'b':&nbsp;2},&nbsp;{'a':&nbsp;0,&nbsp;'b':&nbsp;0},<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{'a':&nbsp;9,&nbsp;'b':&nbsp;9}]<br>
+&nbsp;<br>
+&nbsp;<br>
+&nbsp;&nbsp;<a href="#Sorter-sort">sort</a>(<a href="__builtin__.html#list">list</a>)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;default&nbsp;sort<br>
+&nbsp;&nbsp;<a href="#Sorter-sort">sort</a>(<a href="__builtin__.html#list">list</a>,&nbsp;1)&nbsp;&nbsp;&nbsp;&nbsp;#&nbsp;sort&nbsp;by&nbsp;index&nbsp;1<br>
+&nbsp;&nbsp;<a href="#Sorter-sort">sort</a>(<a href="__builtin__.html#dict">dict</a>,&nbsp;'a')&nbsp;&nbsp;#&nbsp;sort&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;dicts&nbsp;by&nbsp;key&nbsp;'a'<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Sorter-__call__"><strong>__call__</strong></a> = <a href="#Sorter-byItem">byItem</a>(self, data, itemindex<font color="#909090">=None</font>, inplace<font color="#909090">=1</font>)</dt></dl>
+
+<dl><dt><a name="Sorter-byAttribute"><strong>byAttribute</strong></a>(self, data, attributename, inplace<font color="#909090">=1</font>)</dt></dl>
+
+<dl><dt><a name="Sorter-byItem"><strong>byItem</strong></a>(self, data, itemindex<font color="#909090">=None</font>, inplace<font color="#909090">=1</font>)</dt></dl>
+
+<dl><dt><a name="Sorter-sort"><strong>sort</strong></a> = <a href="#Sorter-byItem">byItem</a>(self, data, itemindex<font color="#909090">=None</font>, inplace<font color="#909090">=1</font>)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Stack">class <strong>Stack</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Implement&nbsp;a&nbsp;stack&nbsp;where&nbsp;elements&nbsp;can&nbsp;be&nbsp;pushed&nbsp;on&nbsp;and&nbsp;you&nbsp;can&nbsp;move<br>
+back&nbsp;and&nbsp;forth.&nbsp;&nbsp;But&nbsp;no&nbsp;pop.&nbsp;&nbsp;Should&nbsp;mimic&nbsp;home&nbsp;/&nbsp;back&nbsp;/&nbsp;forward<br>
+in&nbsp;a&nbsp;browser<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Stack-__call__"><strong>__call__</strong></a>(self)</dt><dd><tt>return&nbsp;the&nbsp;current&nbsp;element,&nbsp;or&nbsp;None</tt></dd></dl>
+
+<dl><dt><a name="Stack-__init__"><strong>__init__</strong></a>(self, default<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Stack-back"><strong>back</strong></a>(self)</dt><dd><tt>move&nbsp;the&nbsp;position&nbsp;back&nbsp;and&nbsp;return&nbsp;the&nbsp;current&nbsp;element</tt></dd></dl>
+
+<dl><dt><a name="Stack-bubble"><strong>bubble</strong></a>(self, o)</dt><dd><tt>raise&nbsp;*o*&nbsp;to&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;stack&nbsp;and&nbsp;return&nbsp;*o*.&nbsp;&nbsp;*o*&nbsp;must&nbsp;be<br>
+in&nbsp;the&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="Stack-clear"><strong>clear</strong></a>(self)</dt><dd><tt>empty&nbsp;the&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="Stack-empty"><strong>empty</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Stack-forward"><strong>forward</strong></a>(self)</dt><dd><tt>move&nbsp;the&nbsp;position&nbsp;forward&nbsp;and&nbsp;return&nbsp;the&nbsp;current&nbsp;element</tt></dd></dl>
+
+<dl><dt><a name="Stack-home"><strong>home</strong></a>(self)</dt><dd><tt>push&nbsp;the&nbsp;first&nbsp;element&nbsp;onto&nbsp;the&nbsp;top&nbsp;of&nbsp;the&nbsp;stack</tt></dd></dl>
+
+<dl><dt><a name="Stack-push"><strong>push</strong></a>(self, o)</dt><dd><tt>push&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;onto&nbsp;stack&nbsp;at&nbsp;current&nbsp;position&nbsp;-&nbsp;all&nbsp;elements<br>
+occurring&nbsp;later&nbsp;than&nbsp;the&nbsp;current&nbsp;position&nbsp;are&nbsp;discarded</tt></dd></dl>
+
+<dl><dt><a name="Stack-remove"><strong>remove</strong></a>(self, o)</dt><dd><tt>remove&nbsp;element&nbsp;*o*&nbsp;from&nbsp;the&nbsp;stack</tt></dd></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Timeout">class <strong>Timeout</strong></a>(<a href="matplotlib.cbook.html#Scheduler">Scheduler</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Schedule&nbsp;recurring&nbsp;events&nbsp;with&nbsp;a&nbsp;wait&nbsp;time&nbsp;in&nbsp;seconds<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#Timeout">Timeout</a></dd>
+<dd><a href="matplotlib.cbook.html#Scheduler">Scheduler</a></dd>
+<dd><a href="threading.html#Thread">threading.Thread</a></dd>
+<dd><a href="threading.html#_Verbose">threading._Verbose</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Timeout-__init__"><strong>__init__</strong></a>(self, wait, func)</dt></dl>
+
+<dl><dt><a name="Timeout-run"><strong>run</strong></a>(self)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#Scheduler">Scheduler</a>:<br>
+<dl><dt><a name="Timeout-stop"><strong>stop</strong></a>(self)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="matplotlib.cbook.html#Scheduler">Scheduler</a>:<br>
+<dl><dt><strong>id</strong> = 0</dl>
+
+<dl><dt><strong>idlelock</strong> = &lt;thread.lock object at 0x10e9168&gt;</dl>
+
+<hr>
+Methods inherited from <a href="threading.html#Thread">threading.Thread</a>:<br>
+<dl><dt><a name="Timeout-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Timeout-getName"><strong>getName</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Timeout-isAlive"><strong>isAlive</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Timeout-isDaemon"><strong>isDaemon</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Timeout-join"><strong>join</strong></a>(self, timeout<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="Timeout-setDaemon"><strong>setDaemon</strong></a>(self, daemonic)</dt></dl>
+
+<dl><dt><a name="Timeout-setName"><strong>setName</strong></a>(self, name)</dt></dl>
+
+<dl><dt><a name="Timeout-start"><strong>start</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="threading.html#_Verbose">threading._Verbose</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Xlator">class <strong>Xlator</strong></a>(<a href="__builtin__.html#dict">__builtin__.dict</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>All-in-one&nbsp;multiple-string-substitution&nbsp;class<br>
+&nbsp;<br>
+Example&nbsp;usage::<br>
+&nbsp;<br>
+&nbsp;&nbsp;text&nbsp;=&nbsp;"Larry&nbsp;Wall&nbsp;is&nbsp;the&nbsp;creator&nbsp;of&nbsp;Perl"<br>
+&nbsp;&nbsp;adict&nbsp;=&nbsp;{<br>
+&nbsp;&nbsp;"Larry&nbsp;Wall"&nbsp;:&nbsp;"Guido&nbsp;van&nbsp;Rossum",<br>
+&nbsp;&nbsp;"creator"&nbsp;:&nbsp;"Benevolent&nbsp;Dictator&nbsp;for&nbsp;Life",<br>
+&nbsp;&nbsp;"Perl"&nbsp;:&nbsp;"Python",<br>
+&nbsp;&nbsp;}<br>
+&nbsp;<br>
+&nbsp;&nbsp;print&nbsp;multiple_replace(adict,&nbsp;text)<br>
+&nbsp;<br>
+&nbsp;&nbsp;xlat&nbsp;=&nbsp;<a href="#Xlator">Xlator</a>(adict)<br>
+&nbsp;&nbsp;print&nbsp;xlat.<a href="#Xlator-xlat">xlat</a>(text)<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#Xlator">Xlator</a></dd>
+<dd><a href="__builtin__.html#dict">__builtin__.dict</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="Xlator-__call__"><strong>__call__</strong></a>(self, match)</dt><dd><tt>Handler&nbsp;invoked&nbsp;for&nbsp;each&nbsp;regex&nbsp;*match*</tt></dd></dl>
+
+<dl><dt><a name="Xlator-xlat"><strong>xlat</strong></a>(self, text)</dt><dd><tt>Translate&nbsp;*text*,&nbsp;returns&nbsp;the&nbsp;modified&nbsp;text.</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><a name="Xlator-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-__contains__">__contains__</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__delitem__"><strong>__delitem__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__delitem__">__delitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__init__"><strong>__init__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__init__">__init__</a>(...)&nbsp;initializes&nbsp;x;&nbsp;see&nbsp;x.__class__.__doc__&nbsp;for&nbsp;signature</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="Xlator-__setitem__"><strong>__setitem__</strong></a>(...)</dt><dd><tt>x.<a href="#Xlator-__setitem__">__setitem__</a>(i,&nbsp;y)&nbsp;&lt;==&gt;&nbsp;x[i]=y</tt></dd></dl>
+
+<dl><dt><a name="Xlator-clear"><strong>clear</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-clear">clear</a>()&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Remove&nbsp;all&nbsp;items&nbsp;from&nbsp;D.</tt></dd></dl>
+
+<dl><dt><a name="Xlator-copy"><strong>copy</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-copy">copy</a>()&nbsp;-&gt;&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="Xlator-get"><strong>get</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-get">get</a>(k[,d])&nbsp;-&gt;&nbsp;D[k]&nbsp;if&nbsp;k&nbsp;in&nbsp;D,&nbsp;else&nbsp;d.&nbsp;&nbsp;d&nbsp;defaults&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="Xlator-has_key"><strong>has_key</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-has_key">has_key</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="Xlator-items"><strong>items</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-items">items</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;(key,&nbsp;value)&nbsp;pairs,&nbsp;as&nbsp;2-tuples</tt></dd></dl>
+
+<dl><dt><a name="Xlator-iteritems"><strong>iteritems</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-iteritems">iteritems</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;(key,&nbsp;value)&nbsp;items&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="Xlator-iterkeys"><strong>iterkeys</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-iterkeys">iterkeys</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;keys&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="Xlator-itervalues"><strong>itervalues</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-itervalues">itervalues</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;values&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="Xlator-keys"><strong>keys</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-keys">keys</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;keys</tt></dd></dl>
+
+<dl><dt><a name="Xlator-pop"><strong>pop</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-pop">pop</a>(k[,d])&nbsp;-&gt;&nbsp;v,&nbsp;remove&nbsp;specified&nbsp;key&nbsp;and&nbsp;return&nbsp;the&nbsp;corresponding&nbsp;value<br>
+If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nbsp;given,&nbsp;otherwise&nbsp;KeyError&nbsp;is&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="Xlator-popitem"><strong>popitem</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-popitem">popitem</a>()&nbsp;-&gt;&nbsp;(k,&nbsp;v),&nbsp;remove&nbsp;and&nbsp;return&nbsp;some&nbsp;(key,&nbsp;value)&nbsp;pair&nbsp;as&nbsp;a<br>
+2-tuple;&nbsp;but&nbsp;raise&nbsp;KeyError&nbsp;if&nbsp;D&nbsp;is&nbsp;empty</tt></dd></dl>
+
+<dl><dt><a name="Xlator-setdefault"><strong>setdefault</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-setdefault">setdefault</a>(k[,d])&nbsp;-&gt;&nbsp;D.<a href="#Xlator-get">get</a>(k,d),&nbsp;also&nbsp;set&nbsp;D[k]=d&nbsp;if&nbsp;k&nbsp;not&nbsp;in&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="Xlator-update"><strong>update</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-update">update</a>(E,&nbsp;**F)&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Update&nbsp;D&nbsp;from&nbsp;E&nbsp;and&nbsp;F:&nbsp;for&nbsp;k&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;E[k]<br>
+(if&nbsp;E&nbsp;has&nbsp;keys&nbsp;else:&nbsp;for&nbsp;(k,&nbsp;v)&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;v)&nbsp;then:&nbsp;for&nbsp;k&nbsp;in&nbsp;F:&nbsp;D[k]&nbsp;=&nbsp;F[k]</tt></dd></dl>
+
+<dl><dt><a name="Xlator-values"><strong>values</strong></a>(...)</dt><dd><tt>D.<a href="#Xlator-values">values</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;values</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x3f8ab3c120&gt;<dd><tt>T.<a href="#Xlator-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x1850a30&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#Xlator-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="converter">class <strong>converter</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Base&nbsp;class&nbsp;for&nbsp;handling&nbsp;string&nbsp;-&gt;&nbsp;python&nbsp;type&nbsp;with&nbsp;support&nbsp;for<br>
+missing&nbsp;values<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="converter-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="converter-__init__"><strong>__init__</strong></a>(self, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="converter-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="maxdict">class <strong>maxdict</strong></a>(<a href="__builtin__.html#dict">__builtin__.dict</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>A&nbsp;dictionary&nbsp;with&nbsp;a&nbsp;maximum&nbsp;size;&nbsp;this&nbsp;doesn't&nbsp;override&nbsp;all&nbsp;the<br>
+relevant&nbsp;methods&nbsp;to&nbsp;contrain&nbsp;size,&nbsp;just&nbsp;setitem,&nbsp;so&nbsp;use&nbsp;with<br>
+caution<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#maxdict">maxdict</a></dd>
+<dd><a href="__builtin__.html#dict">__builtin__.dict</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="maxdict-__init__"><strong>__init__</strong></a>(self, maxsize)</dt></dl>
+
+<dl><dt><a name="maxdict-__setitem__"><strong>__setitem__</strong></a>(self, k, v)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><a name="maxdict-__cmp__"><strong>__cmp__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__cmp__">__cmp__</a>(y)&nbsp;&lt;==&gt;&nbsp;cmp(x,y)</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-__contains__">__contains__</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__delitem__"><strong>__delitem__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__delitem__">__delitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="maxdict-__repr__"><strong>__repr__</strong></a>(...)</dt><dd><tt>x.<a href="#maxdict-__repr__">__repr__</a>()&nbsp;&lt;==&gt;&nbsp;repr(x)</tt></dd></dl>
+
+<dl><dt><a name="maxdict-clear"><strong>clear</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-clear">clear</a>()&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Remove&nbsp;all&nbsp;items&nbsp;from&nbsp;D.</tt></dd></dl>
+
+<dl><dt><a name="maxdict-copy"><strong>copy</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-copy">copy</a>()&nbsp;-&gt;&nbsp;a&nbsp;shallow&nbsp;copy&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="maxdict-get"><strong>get</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-get">get</a>(k[,d])&nbsp;-&gt;&nbsp;D[k]&nbsp;if&nbsp;k&nbsp;in&nbsp;D,&nbsp;else&nbsp;d.&nbsp;&nbsp;d&nbsp;defaults&nbsp;to&nbsp;None.</tt></dd></dl>
+
+<dl><dt><a name="maxdict-has_key"><strong>has_key</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-has_key">has_key</a>(k)&nbsp;-&gt;&nbsp;True&nbsp;if&nbsp;D&nbsp;has&nbsp;a&nbsp;key&nbsp;k,&nbsp;else&nbsp;False</tt></dd></dl>
+
+<dl><dt><a name="maxdict-items"><strong>items</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-items">items</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;(key,&nbsp;value)&nbsp;pairs,&nbsp;as&nbsp;2-tuples</tt></dd></dl>
+
+<dl><dt><a name="maxdict-iteritems"><strong>iteritems</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-iteritems">iteritems</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;(key,&nbsp;value)&nbsp;items&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="maxdict-iterkeys"><strong>iterkeys</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-iterkeys">iterkeys</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;keys&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="maxdict-itervalues"><strong>itervalues</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-itervalues">itervalues</a>()&nbsp;-&gt;&nbsp;an&nbsp;iterator&nbsp;over&nbsp;the&nbsp;values&nbsp;of&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="maxdict-keys"><strong>keys</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-keys">keys</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;keys</tt></dd></dl>
+
+<dl><dt><a name="maxdict-pop"><strong>pop</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-pop">pop</a>(k[,d])&nbsp;-&gt;&nbsp;v,&nbsp;remove&nbsp;specified&nbsp;key&nbsp;and&nbsp;return&nbsp;the&nbsp;corresponding&nbsp;value<br>
+If&nbsp;key&nbsp;is&nbsp;not&nbsp;found,&nbsp;d&nbsp;is&nbsp;returned&nbsp;if&nbsp;given,&nbsp;otherwise&nbsp;KeyError&nbsp;is&nbsp;raised</tt></dd></dl>
+
+<dl><dt><a name="maxdict-popitem"><strong>popitem</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-popitem">popitem</a>()&nbsp;-&gt;&nbsp;(k,&nbsp;v),&nbsp;remove&nbsp;and&nbsp;return&nbsp;some&nbsp;(key,&nbsp;value)&nbsp;pair&nbsp;as&nbsp;a<br>
+2-tuple;&nbsp;but&nbsp;raise&nbsp;KeyError&nbsp;if&nbsp;D&nbsp;is&nbsp;empty</tt></dd></dl>
+
+<dl><dt><a name="maxdict-setdefault"><strong>setdefault</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-setdefault">setdefault</a>(k[,d])&nbsp;-&gt;&nbsp;D.<a href="#maxdict-get">get</a>(k,d),&nbsp;also&nbsp;set&nbsp;D[k]=d&nbsp;if&nbsp;k&nbsp;not&nbsp;in&nbsp;D</tt></dd></dl>
+
+<dl><dt><a name="maxdict-update"><strong>update</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-update">update</a>(E,&nbsp;**F)&nbsp;-&gt;&nbsp;None.&nbsp;&nbsp;Update&nbsp;D&nbsp;from&nbsp;E&nbsp;and&nbsp;F:&nbsp;for&nbsp;k&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;E[k]<br>
+(if&nbsp;E&nbsp;has&nbsp;keys&nbsp;else:&nbsp;for&nbsp;(k,&nbsp;v)&nbsp;in&nbsp;E:&nbsp;D[k]&nbsp;=&nbsp;v)&nbsp;then:&nbsp;for&nbsp;k&nbsp;in&nbsp;F:&nbsp;D[k]&nbsp;=&nbsp;F[k]</tt></dd></dl>
+
+<dl><dt><a name="maxdict-values"><strong>values</strong></a>(...)</dt><dd><tt>D.<a href="#maxdict-values">values</a>()&nbsp;-&gt;&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;D's&nbsp;values</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="__builtin__.html#dict">__builtin__.dict</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x3f8ab3c120&gt;<dd><tt>T.<a href="#maxdict-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+<dl><dt><strong>fromkeys</strong> = &lt;built-in method fromkeys of type object at 0x1854110&gt;<dd><tt><a href="__builtin__.html#dict">dict</a>.<a href="#maxdict-fromkeys">fromkeys</a>(S[,v])&nbsp;-&gt;&nbsp;New&nbsp;<a href="__builtin__.html#dict">dict</a>&nbsp;with&nbsp;keys&nbsp;from&nbsp;S&nbsp;and&nbsp;values&nbsp;equal&nbsp;to&nbsp;v.<br>
+v&nbsp;defaults&nbsp;to&nbsp;None.</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="silent_list">class <strong>silent_list</strong></a>(<a href="__builtin__.html#list">__builtin__.list</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>override&nbsp;repr&nbsp;when&nbsp;returning&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;matplotlib&nbsp;artists&nbsp;to<br>
+prevent&nbsp;long,&nbsp;meaningless&nbsp;output.&nbsp;&nbsp;This&nbsp;is&nbsp;meant&nbsp;to&nbsp;be&nbsp;used&nbsp;for&nbsp;a<br>
+homogeneous&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;a&nbsp;give&nbsp;type<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="matplotlib.cbook.html#silent_list">silent_list</a></dd>
+<dd><a href="__builtin__.html#list">__builtin__.list</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="silent_list-__init__"><strong>__init__</strong></a>(self, type, seq<font color="#909090">=None</font>)</dt></dl>
+
+<dl><dt><a name="silent_list-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="silent_list-__str__"><strong>__str__</strong></a>(self)</dt></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Methods inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
+<dl><dt><a name="silent_list-__add__"><strong>__add__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__add__">__add__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__contains__"><strong>__contains__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__contains__">__contains__</a>(y)&nbsp;&lt;==&gt;&nbsp;y&nbsp;in&nbsp;x</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__delitem__"><strong>__delitem__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__delitem__">__delitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__delslice__"><strong>__delslice__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__delslice__">__delslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;del&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__eq__"><strong>__eq__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__eq__">__eq__</a>(y)&nbsp;&lt;==&gt;&nbsp;x==y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__ge__"><strong>__ge__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__ge__">__ge__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__getattribute__"><strong>__getattribute__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__getattribute__">__getattribute__</a>('name')&nbsp;&lt;==&gt;&nbsp;x.name</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__getitem__"><strong>__getitem__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__getitem__">__getitem__</a>(y)&nbsp;&lt;==&gt;&nbsp;x[y]</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__getslice__"><strong>__getslice__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__getslice__">__getslice__</a>(i,&nbsp;j)&nbsp;&lt;==&gt;&nbsp;x[i:j]<br>
+&nbsp;<br>
+Use&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__gt__"><strong>__gt__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__gt__">__gt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&gt;y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__hash__"><strong>__hash__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__hash__">__hash__</a>()&nbsp;&lt;==&gt;&nbsp;hash(x)</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__iadd__"><strong>__iadd__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__iadd__">__iadd__</a>(y)&nbsp;&lt;==&gt;&nbsp;x+=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__imul__"><strong>__imul__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__imul__">__imul__</a>(y)&nbsp;&lt;==&gt;&nbsp;x*=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__iter__"><strong>__iter__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__iter__">__iter__</a>()&nbsp;&lt;==&gt;&nbsp;iter(x)</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__le__"><strong>__le__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__le__">__le__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__len__"><strong>__len__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__len__">__len__</a>()&nbsp;&lt;==&gt;&nbsp;len(x)</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__lt__"><strong>__lt__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__lt__">__lt__</a>(y)&nbsp;&lt;==&gt;&nbsp;x&lt;y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__mul__"><strong>__mul__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__mul__">__mul__</a>(n)&nbsp;&lt;==&gt;&nbsp;x*n</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__ne__"><strong>__ne__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__ne__">__ne__</a>(y)&nbsp;&lt;==&gt;&nbsp;x!=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__reversed__"><strong>__reversed__</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-__reversed__">__reversed__</a>()&nbsp;--&nbsp;return&nbsp;a&nbsp;reverse&nbsp;iterator&nbsp;over&nbsp;the&nbsp;<a href="__builtin__.html#list">list</a></tt></dd></dl>
+
+<dl><dt><a name="silent_list-__rmul__"><strong>__rmul__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__rmul__">__rmul__</a>(n)&nbsp;&lt;==&gt;&nbsp;n*x</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__setitem__"><strong>__setitem__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__setitem__">__setitem__</a>(i,&nbsp;y)&nbsp;&lt;==&gt;&nbsp;x[i]=y</tt></dd></dl>
+
+<dl><dt><a name="silent_list-__setslice__"><strong>__setslice__</strong></a>(...)</dt><dd><tt>x.<a href="#silent_list-__setslice__">__setslice__</a>(i,&nbsp;j,&nbsp;y)&nbsp;&lt;==&gt;&nbsp;x[i:j]=y<br>
+&nbsp;<br>
+Use&nbsp;&nbsp;of&nbsp;negative&nbsp;indices&nbsp;is&nbsp;not&nbsp;supported.</tt></dd></dl>
+
+<dl><dt><a name="silent_list-append"><strong>append</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-append">append</a>(<a href="__builtin__.html#object">object</a>)&nbsp;--&nbsp;append&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;to&nbsp;end</tt></dd></dl>
+
+<dl><dt><a name="silent_list-count"><strong>count</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-count">count</a>(value)&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;number&nbsp;of&nbsp;occurrences&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="silent_list-extend"><strong>extend</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-extend">extend</a>(iterable)&nbsp;--&nbsp;extend&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;by&nbsp;appending&nbsp;elements&nbsp;from&nbsp;the&nbsp;iterable</tt></dd></dl>
+
+<dl><dt><a name="silent_list-index"><strong>index</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-index">index</a>(value,&nbsp;[start,&nbsp;[stop]])&nbsp;-&gt;&nbsp;integer&nbsp;--&nbsp;return&nbsp;first&nbsp;index&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="silent_list-insert"><strong>insert</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-insert">insert</a>(index,&nbsp;<a href="__builtin__.html#object">object</a>)&nbsp;--&nbsp;insert&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;before&nbsp;index</tt></dd></dl>
+
+<dl><dt><a name="silent_list-pop"><strong>pop</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-pop">pop</a>([index])&nbsp;-&gt;&nbsp;item&nbsp;--&nbsp;remove&nbsp;and&nbsp;return&nbsp;item&nbsp;at&nbsp;index&nbsp;(default&nbsp;last)</tt></dd></dl>
+
+<dl><dt><a name="silent_list-remove"><strong>remove</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-remove">remove</a>(value)&nbsp;--&nbsp;remove&nbsp;first&nbsp;occurrence&nbsp;of&nbsp;value</tt></dd></dl>
+
+<dl><dt><a name="silent_list-reverse"><strong>reverse</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-reverse">reverse</a>()&nbsp;--&nbsp;reverse&nbsp;*IN&nbsp;PLACE*</tt></dd></dl>
+
+<dl><dt><a name="silent_list-sort"><strong>sort</strong></a>(...)</dt><dd><tt>L.<a href="#silent_list-sort">sort</a>(cmp=None,&nbsp;key=None,&nbsp;reverse=False)&nbsp;--&nbsp;stable&nbsp;sort&nbsp;*IN&nbsp;PLACE*;<br>
+cmp(x,&nbsp;y)&nbsp;-&gt;&nbsp;-1,&nbsp;0,&nbsp;1</tt></dd></dl>
+
+<hr>
+Data and other attributes inherited from <a href="__builtin__.html#list">__builtin__.list</a>:<br>
+<dl><dt><strong>__new__</strong> = &lt;built-in method __new__ of type object at 0x3f8ab3a760&gt;<dd><tt>T.<a href="#silent_list-__new__">__new__</a>(S,&nbsp;...)&nbsp;-&gt;&nbsp;a&nbsp;new&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;type&nbsp;S,&nbsp;a&nbsp;subtype&nbsp;of&nbsp;T</tt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="todate">class <strong>todate</strong></a>(<a href="matplotlib.cbook.html#converter">converter</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>convert&nbsp;to&nbsp;a&nbsp;date&nbsp;or&nbsp;None<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="todate-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="todate-__init__"><strong>__init__</strong></a>(self, fmt<font color="#909090">='%Y-%m-%d'</font>, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=None</font>)</dt><dd><tt>use&nbsp;a&nbsp;:func:`time.strptime`&nbsp;format&nbsp;string&nbsp;for&nbsp;conversion</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#converter">converter</a>:<br>
+<dl><dt><a name="todate-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="todatetime">class <strong>todatetime</strong></a>(<a href="matplotlib.cbook.html#converter">converter</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>convert&nbsp;to&nbsp;a&nbsp;datetime&nbsp;or&nbsp;None<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="todatetime-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="todatetime-__init__"><strong>__init__</strong></a>(self, fmt<font color="#909090">='%Y-%m-%d'</font>, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=None</font>)</dt><dd><tt>use&nbsp;a&nbsp;:func:`time.strptime`&nbsp;format&nbsp;string&nbsp;for&nbsp;conversion</tt></dd></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#converter">converter</a>:<br>
+<dl><dt><a name="todatetime-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="tofloat">class <strong>tofloat</strong></a>(<a href="matplotlib.cbook.html#converter">converter</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>convert&nbsp;to&nbsp;a&nbsp;float&nbsp;or&nbsp;None<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="tofloat-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="tofloat-__init__"><strong>__init__</strong></a>(self, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#converter">converter</a>:<br>
+<dl><dt><a name="tofloat-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="toint">class <strong>toint</strong></a>(<a href="matplotlib.cbook.html#converter">converter</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>convert&nbsp;to&nbsp;an&nbsp;int&nbsp;or&nbsp;None<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="toint-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="toint-__init__"><strong>__init__</strong></a>(self, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=None</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#converter">converter</a>:<br>
+<dl><dt><a name="toint-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="tostr">class <strong>tostr</strong></a>(<a href="matplotlib.cbook.html#converter">converter</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>convert&nbsp;to&nbsp;string&nbsp;or&nbsp;None<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="tostr-__init__"><strong>__init__</strong></a>(self, missing<font color="#909090">='Null'</font>, missingval<font color="#909090">=''</font>)</dt></dl>
+
+<hr>
+Methods inherited from <a href="matplotlib.cbook.html#converter">converter</a>:<br>
+<dl><dt><a name="tostr-__call__"><strong>__call__</strong></a>(self, s)</dt></dl>
+
+<dl><dt><a name="tostr-is_missing"><strong>is_missing</strong></a>(self, s)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-allequal"><strong>allequal</strong></a>(seq)</dt><dd><tt>Return&nbsp;*True*&nbsp;if&nbsp;all&nbsp;elements&nbsp;of&nbsp;*seq*&nbsp;compare&nbsp;equal.&nbsp;&nbsp;If&nbsp;*seq*&nbsp;is<br>
+0&nbsp;or&nbsp;1&nbsp;length,&nbsp;return&nbsp;*True*</tt></dd></dl>
+ <dl><dt><a name="-allpairs"><strong>allpairs</strong></a>(x)</dt><dd><tt>return&nbsp;all&nbsp;possible&nbsp;pairs&nbsp;in&nbsp;sequence&nbsp;*x*<br>
+&nbsp;<br>
+Condensed&nbsp;by&nbsp;Alex&nbsp;Martelli&nbsp;from&nbsp;this&nbsp;thread_&nbsp;on&nbsp;c.l.python<br>
+&nbsp;<br>
+..&nbsp;_thread:&nbsp;<a href="http://groups.google.com/groups?q=all+pairs+group:*python*&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;selm=mailman.4028.1096403649.5135.python-list%40python.org&amp;rnum=1">http://groups.google.com/groups?q=all+pairs+group:*python*&amp;hl=en&amp;lr=&amp;ie=UTF-8&amp;selm=mailman.4028.1096403649.5135.python-list%40python.org&amp;rnum=1</a></tt></dd></dl>
+ <dl><dt><a name="-alltrue"><strong>alltrue</strong></a>(seq)</dt><dd><tt>Return&nbsp;*True*&nbsp;if&nbsp;all&nbsp;elements&nbsp;of&nbsp;*seq*&nbsp;evaluate&nbsp;to&nbsp;*True*.&nbsp;&nbsp;If<br>
+*seq*&nbsp;is&nbsp;empty,&nbsp;return&nbsp;*False*.</tt></dd></dl>
+ <dl><dt><a name="-dedent"><strong>dedent</strong></a>(s)</dt><dd><tt>Remove&nbsp;excess&nbsp;indentation&nbsp;from&nbsp;docstring&nbsp;*s*.<br>
+&nbsp;<br>
+Discards&nbsp;any&nbsp;leading&nbsp;blank&nbsp;lines,&nbsp;then&nbsp;removes&nbsp;up&nbsp;to&nbsp;n&nbsp;whitespace<br>
+characters&nbsp;from&nbsp;each&nbsp;line,&nbsp;where&nbsp;n&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;leading<br>
+whitespace&nbsp;characters&nbsp;in&nbsp;the&nbsp;first&nbsp;line.&nbsp;It&nbsp;differs&nbsp;from<br>
+textwrap.dedent&nbsp;in&nbsp;its&nbsp;deletion&nbsp;of&nbsp;leading&nbsp;blank&nbsp;lines&nbsp;and&nbsp;its&nbsp;use<br>
+of&nbsp;the&nbsp;first&nbsp;non-blank&nbsp;line&nbsp;to&nbsp;determine&nbsp;the&nbsp;indentation.<br>
+&nbsp;<br>
+It&nbsp;is&nbsp;also&nbsp;faster&nbsp;in&nbsp;most&nbsp;cases.</tt></dd></dl>
+ <dl><dt><a name="-delete_masked_points"><strong>delete_masked_points</strong></a>(*args)</dt><dd><tt>Find&nbsp;all&nbsp;masked&nbsp;and/or&nbsp;non-finite&nbsp;points&nbsp;in&nbsp;a&nbsp;set&nbsp;of&nbsp;arguments,<br>
+and&nbsp;return&nbsp;the&nbsp;arguments&nbsp;with&nbsp;only&nbsp;the&nbsp;unmasked&nbsp;points&nbsp;remaining.<br>
+&nbsp;<br>
+Arguments&nbsp;can&nbsp;be&nbsp;in&nbsp;any&nbsp;of&nbsp;5&nbsp;categories:<br>
+&nbsp;<br>
+1)&nbsp;1-D&nbsp;masked&nbsp;arrays<br>
+2)&nbsp;1-D&nbsp;ndarrays<br>
+3)&nbsp;ndarrays&nbsp;with&nbsp;more&nbsp;than&nbsp;one&nbsp;dimension<br>
+4)&nbsp;other&nbsp;non-string&nbsp;iterables<br>
+5)&nbsp;anything&nbsp;else<br>
+&nbsp;<br>
+The&nbsp;first&nbsp;argument&nbsp;must&nbsp;be&nbsp;in&nbsp;one&nbsp;of&nbsp;the&nbsp;first&nbsp;four&nbsp;categories;<br>
+any&nbsp;argument&nbsp;with&nbsp;a&nbsp;length&nbsp;differing&nbsp;from&nbsp;that&nbsp;of&nbsp;the&nbsp;first<br>
+argument&nbsp;(and&nbsp;hence&nbsp;anything&nbsp;in&nbsp;category&nbsp;5)&nbsp;then&nbsp;will&nbsp;be<br>
+passed&nbsp;through&nbsp;unchanged.<br>
+&nbsp;<br>
+Masks&nbsp;are&nbsp;obtained&nbsp;from&nbsp;all&nbsp;arguments&nbsp;of&nbsp;the&nbsp;correct&nbsp;length<br>
+in&nbsp;categories&nbsp;1,&nbsp;2,&nbsp;and&nbsp;4;&nbsp;a&nbsp;point&nbsp;is&nbsp;bad&nbsp;if&nbsp;masked&nbsp;in&nbsp;a&nbsp;masked<br>
+array&nbsp;or&nbsp;if&nbsp;it&nbsp;is&nbsp;a&nbsp;nan&nbsp;or&nbsp;inf.&nbsp;&nbsp;No&nbsp;attempt&nbsp;is&nbsp;made&nbsp;to<br>
+extract&nbsp;a&nbsp;mask&nbsp;from&nbsp;categories&nbsp;2,&nbsp;3,&nbsp;and&nbsp;4&nbsp;if&nbsp;:meth:`np.isfinite`<br>
+does&nbsp;not&nbsp;yield&nbsp;a&nbsp;Boolean&nbsp;array.<br>
+&nbsp;<br>
+All&nbsp;input&nbsp;arguments&nbsp;that&nbsp;are&nbsp;not&nbsp;passed&nbsp;unchanged&nbsp;are&nbsp;returned<br>
+as&nbsp;ndarrays&nbsp;after&nbsp;removing&nbsp;the&nbsp;points&nbsp;or&nbsp;rows&nbsp;corresponding&nbsp;to<br>
+masks&nbsp;in&nbsp;any&nbsp;of&nbsp;the&nbsp;arguments.<br>
+&nbsp;<br>
+A&nbsp;vastly&nbsp;simpler&nbsp;version&nbsp;of&nbsp;this&nbsp;function&nbsp;was&nbsp;originally<br>
+written&nbsp;as&nbsp;a&nbsp;helper&nbsp;for&nbsp;Axes.scatter().</tt></dd></dl>
+ <dl><dt><a name="-dict_delall"><strong>dict_delall</strong></a>(d, keys)</dt><dd><tt>delete&nbsp;all&nbsp;of&nbsp;the&nbsp;*keys*&nbsp;from&nbsp;the&nbsp;:class:`<a href="__builtin__.html#dict">dict</a>`&nbsp;*d*</tt></dd></dl>
+ <dl><dt><a name="-distances_along_curve"><strong>distances_along_curve</strong></a>(X)</dt><dd><tt>Computes&nbsp;the&nbsp;distance&nbsp;between&nbsp;a&nbsp;set&nbsp;of&nbsp;successive&nbsp;points&nbsp;in&nbsp;N&nbsp;dimensions.<br>
+&nbsp;<br>
+where&nbsp;X&nbsp;is&nbsp;an&nbsp;MxN&nbsp;array&nbsp;or&nbsp;matrix.&nbsp;&nbsp;The&nbsp;distances&nbsp;between&nbsp;successive&nbsp;rows<br>
+is&nbsp;computed.&nbsp;&nbsp;Distance&nbsp;is&nbsp;the&nbsp;standard&nbsp;Euclidean&nbsp;distance.</tt></dd></dl>
+ <dl><dt><a name="-exception_to_str"><strong>exception_to_str</strong></a>(s<font color="#909090">=None</font>)</dt></dl>
+ <dl><dt><a name="-finddir"><strong>finddir</strong></a>(o, match, case<font color="#909090">=False</font>)</dt><dd><tt>return&nbsp;all&nbsp;attributes&nbsp;of&nbsp;*o*&nbsp;which&nbsp;match&nbsp;string&nbsp;in&nbsp;match.&nbsp;&nbsp;if&nbsp;case<br>
+is&nbsp;True&nbsp;require&nbsp;an&nbsp;exact&nbsp;case&nbsp;match.</tt></dd></dl>
+ <dl><dt><a name="-flatten"><strong>flatten</strong></a>(seq, scalarp<font color="#909090">=&lt;function is_scalar at 0x1822578&gt;</font>)</dt><dd><tt>this&nbsp;generator&nbsp;flattens&nbsp;nested&nbsp;containers&nbsp;such&nbsp;as<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;l=(&nbsp;('John',&nbsp;'Hunter'),&nbsp;(1,23),&nbsp;[[[[42,(5,23)]]]])<br>
+&nbsp;<br>
+so&nbsp;that<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;for&nbsp;i&nbsp;in&nbsp;<a href="#-flatten">flatten</a>(l):&nbsp;print&nbsp;i,<br>
+John&nbsp;Hunter&nbsp;1&nbsp;23&nbsp;42&nbsp;5&nbsp;23<br>
+&nbsp;<br>
+By:&nbsp;Composite&nbsp;of&nbsp;Holger&nbsp;Krekel&nbsp;and&nbsp;Luther&nbsp;Blissett<br>
+From:&nbsp;<a href="http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/121294">http://aspn.activestate.com/ASPN/Cookbook/Python/Recipe/121294</a><br>
+and&nbsp;Recipe&nbsp;1.12&nbsp;in&nbsp;cookbook</tt></dd></dl>
+ <dl><dt><a name="-get_recursive_filelist"><strong>get_recursive_filelist</strong></a>(args)</dt><dd><tt>Recurs&nbsp;all&nbsp;the&nbsp;files&nbsp;and&nbsp;dirs&nbsp;in&nbsp;*args*&nbsp;ignoring&nbsp;symbolic&nbsp;links<br>
+and&nbsp;return&nbsp;the&nbsp;files&nbsp;as&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;strings</tt></dd></dl>
+ <dl><dt><a name="-get_split_ind"><strong>get_split_ind</strong></a>(seq, N)</dt><dd><tt>*seq*&nbsp;is&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;words.&nbsp;&nbsp;Return&nbsp;the&nbsp;index&nbsp;into&nbsp;seq&nbsp;such&nbsp;that::<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;len('&nbsp;'.join(seq[:ind])&lt;=N</tt></dd></dl>
+ <dl><dt><a name="-is_closed_polygon"><strong>is_closed_polygon</strong></a>(X)</dt><dd><tt>Tests&nbsp;whether&nbsp;first&nbsp;and&nbsp;last&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;in&nbsp;a&nbsp;sequence&nbsp;are&nbsp;the&nbsp;same.&nbsp;&nbsp;These&nbsp;are<br>
+presumably&nbsp;coordinates&nbsp;on&nbsp;a&nbsp;polygonal&nbsp;curve,&nbsp;in&nbsp;which&nbsp;case&nbsp;this&nbsp;function<br>
+tests&nbsp;if&nbsp;that&nbsp;curve&nbsp;is&nbsp;closed.</tt></dd></dl>
+ <dl><dt><a name="-is_numlike"><strong>is_numlike</strong></a>(obj)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;looks&nbsp;like&nbsp;a&nbsp;number</tt></dd></dl>
+ <dl><dt><a name="-is_scalar"><strong>is_scalar</strong></a>(obj)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;is&nbsp;not&nbsp;string&nbsp;like&nbsp;and&nbsp;is&nbsp;not&nbsp;iterable</tt></dd></dl>
+ <dl><dt><a name="-is_sequence_of_strings"><strong>is_sequence_of_strings</strong></a>(obj)</dt><dd><tt>Returns&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;is&nbsp;iterable&nbsp;and&nbsp;contains&nbsp;strings</tt></dd></dl>
+ <dl><dt><a name="-is_string_like"><strong>is_string_like</strong></a>(obj)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;looks&nbsp;like&nbsp;a&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-is_writable_file_like"><strong>is_writable_file_like</strong></a>(obj)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;looks&nbsp;like&nbsp;a&nbsp;file&nbsp;<a href="__builtin__.html#object">object</a>&nbsp;with&nbsp;a&nbsp;*write*&nbsp;method</tt></dd></dl>
+ <dl><dt><a name="-issubclass_safe"><strong>issubclass_safe</strong></a>(x, klass)</dt><dd><tt>return&nbsp;issubclass(x,&nbsp;klass)&nbsp;and&nbsp;return&nbsp;False&nbsp;on&nbsp;a&nbsp;TypeError</tt></dd></dl>
+ <dl><dt><a name="-isvector"><strong>isvector</strong></a>(X)</dt><dd><tt>Like&nbsp;the&nbsp;Matlab&nbsp;(TM)&nbsp;function&nbsp;with&nbsp;the&nbsp;same&nbsp;name,&nbsp;returns&nbsp;true&nbsp;if<br>
+the&nbsp;supplied&nbsp;numpy&nbsp;array&nbsp;or&nbsp;matrix&nbsp;looks&nbsp;like&nbsp;a&nbsp;vector,&nbsp;meaning&nbsp;it<br>
+has&nbsp;a&nbsp;one&nbsp;non-singleton&nbsp;axis&nbsp;(i.e.,&nbsp;it&nbsp;can&nbsp;have&nbsp;multiple&nbsp;axes,&nbsp;but<br>
+all&nbsp;must&nbsp;have&nbsp;length&nbsp;1,&nbsp;except&nbsp;for&nbsp;one&nbsp;of&nbsp;them).<br>
+&nbsp;<br>
+If&nbsp;you&nbsp;just&nbsp;want&nbsp;to&nbsp;see&nbsp;if&nbsp;the&nbsp;array&nbsp;has&nbsp;1&nbsp;axis,&nbsp;use&nbsp;X.ndim==1</tt></dd></dl>
+ <dl><dt><a name="-iterable"><strong>iterable</strong></a>(obj)</dt><dd><tt>return&nbsp;true&nbsp;if&nbsp;*obj*&nbsp;is&nbsp;iterable</tt></dd></dl>
+ <dl><dt><a name="-less_simple_linear_interpolation"><strong>less_simple_linear_interpolation</strong></a>(x, y, xi, extrap<font color="#909090">=False</font>)</dt><dd><tt>This&nbsp;function&nbsp;provides&nbsp;simple&nbsp;(but&nbsp;somewhat&nbsp;less&nbsp;so&nbsp;than<br>
+simple_linear_interpolation)&nbsp;linear&nbsp;interpolation.<br>
+simple_linear_interpolation&nbsp;will&nbsp;give&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;point&nbsp;between&nbsp;a<br>
+start&nbsp;and&nbsp;an&nbsp;end,&nbsp;while&nbsp;this&nbsp;does&nbsp;true&nbsp;linear&nbsp;interpolation&nbsp;at&nbsp;an<br>
+arbitrary&nbsp;set&nbsp;of&nbsp;points.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;very&nbsp;inefficient&nbsp;linear&nbsp;interpolation&nbsp;meant&nbsp;to&nbsp;be&nbsp;used<br>
+only&nbsp;for&nbsp;a&nbsp;small&nbsp;number&nbsp;of&nbsp;points&nbsp;in&nbsp;relatively&nbsp;non-intensive&nbsp;use<br>
+cases.</tt></dd></dl>
+ <dl><dt><a name="-listFiles"><strong>listFiles</strong></a>(root, patterns<font color="#909090">='*'</font>, recurse<font color="#909090">=1</font>, return_folders<font color="#909090">=0</font>)</dt><dd><tt>Recursively&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;files<br>
+&nbsp;<br>
+from&nbsp;Parmar&nbsp;and&nbsp;Martelli&nbsp;in&nbsp;the&nbsp;Python&nbsp;Cookbook</tt></dd></dl>
+ <dl><dt><a name="-mkdirs"><strong>mkdirs</strong></a>(newdir, mode<font color="#909090">=511</font>)</dt></dl>
+ <dl><dt><a name="-onetrue"><strong>onetrue</strong></a>(seq)</dt><dd><tt>Return&nbsp;*True*&nbsp;if&nbsp;one&nbsp;element&nbsp;of&nbsp;*seq*&nbsp;is&nbsp;*True*.&nbsp;&nbsp;It&nbsp;*seq*&nbsp;is<br>
+empty,&nbsp;return&nbsp;*False*.</tt></dd></dl>
+ <dl><dt><a name="-path_length"><strong>path_length</strong></a>(X)</dt><dd><tt>Computes&nbsp;the&nbsp;distance&nbsp;travelled&nbsp;along&nbsp;a&nbsp;polygonal&nbsp;curve&nbsp;in&nbsp;N&nbsp;dimensions.<br>
+&nbsp;<br>
+&nbsp;<br>
+where&nbsp;X&nbsp;is&nbsp;an&nbsp;MxN&nbsp;array&nbsp;or&nbsp;matrix.&nbsp;&nbsp;Returns&nbsp;an&nbsp;array&nbsp;of&nbsp;length&nbsp;M&nbsp;consisting<br>
+of&nbsp;the&nbsp;distance&nbsp;along&nbsp;the&nbsp;curve&nbsp;at&nbsp;each&nbsp;point&nbsp;(i.e.,&nbsp;the&nbsp;rows&nbsp;of&nbsp;X).</tt></dd></dl>
+ <dl><dt><a name="-pieces"><strong>pieces</strong></a>(seq, num<font color="#909090">=2</font>)</dt><dd><tt>Break&nbsp;up&nbsp;the&nbsp;*seq*&nbsp;into&nbsp;*num*&nbsp;tuples</tt></dd></dl>
+ <dl><dt><a name="-popall"><strong>popall</strong></a>(seq)</dt><dd><tt>empty&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a></tt></dd></dl>
+ <dl><dt><a name="-popd"><strong>popd</strong></a>(d, *args)</dt><dd><tt>Should&nbsp;behave&nbsp;like&nbsp;python2.3&nbsp;:meth:`<a href="__builtin__.html#dict">dict</a>.pop`&nbsp;method;&nbsp;*d*&nbsp;is&nbsp;a<br>
+:class:`<a href="__builtin__.html#dict">dict</a>`::<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;value&nbsp;for&nbsp;key&nbsp;and&nbsp;deletes&nbsp;item;&nbsp;raises&nbsp;a&nbsp;KeyError&nbsp;if&nbsp;key<br>
+&nbsp;&nbsp;#&nbsp;is&nbsp;not&nbsp;in&nbsp;<a href="__builtin__.html#dict">dict</a><br>
+&nbsp;&nbsp;val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key)<br>
+&nbsp;<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;value&nbsp;for&nbsp;key&nbsp;if&nbsp;key&nbsp;exists,&nbsp;else&nbsp;default.&nbsp;&nbsp;Delete&nbsp;key,<br>
+&nbsp;&nbsp;#&nbsp;val&nbsp;item&nbsp;if&nbsp;it&nbsp;exists.&nbsp;&nbsp;Will&nbsp;not&nbsp;raise&nbsp;a&nbsp;KeyError<br>
+&nbsp;&nbsp;val&nbsp;=&nbsp;<a href="#-popd">popd</a>(d,&nbsp;key,&nbsp;default)</tt></dd></dl>
+ <dl><dt><a name="-print_cycles"><strong>print_cycles</strong></a>(objects, outstream<font color="#909090">=&lt;open file '&lt;stdout&gt;', mode 'w' at 0x7fb560aa6198&gt;</font>, show_progress<font color="#909090">=False</font>)</dt><dd><tt>*objects*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;A&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;objects&nbsp;to&nbsp;find&nbsp;cycles&nbsp;in.&nbsp;&nbsp;It&nbsp;is&nbsp;often&nbsp;useful&nbsp;to<br>
+&nbsp;&nbsp;&nbsp;&nbsp;pass&nbsp;in&nbsp;gc.garbage&nbsp;to&nbsp;find&nbsp;the&nbsp;cycles&nbsp;that&nbsp;are&nbsp;preventing&nbsp;some<br>
+&nbsp;&nbsp;&nbsp;&nbsp;objects&nbsp;from&nbsp;being&nbsp;garbage&nbsp;collected.<br>
+&nbsp;<br>
+*outstream*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;The&nbsp;stream&nbsp;for&nbsp;output.<br>
+&nbsp;<br>
+*show_progress*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;If&nbsp;True,&nbsp;print&nbsp;the&nbsp;number&nbsp;of&nbsp;objects&nbsp;reached&nbsp;as&nbsp;they&nbsp;are&nbsp;found.</tt></dd></dl>
+ <dl><dt><a name="-recursive_remove"><strong>recursive_remove</strong></a>(path)</dt></dl>
+ <dl><dt><a name="-report_memory"><strong>report_memory</strong></a>(i<font color="#909090">=0</font>)</dt><dd><tt>return&nbsp;the&nbsp;memory&nbsp;consumed&nbsp;by&nbsp;process</tt></dd></dl>
+ <dl><dt><a name="-reverse_dict"><strong>reverse_dict</strong></a>(d)</dt><dd><tt>reverse&nbsp;the&nbsp;dictionary&nbsp;--&nbsp;may&nbsp;lose&nbsp;data&nbsp;if&nbsp;values&nbsp;are&nbsp;not&nbsp;unique!</tt></dd></dl>
+ <dl><dt><a name="-safezip"><strong>safezip</strong></a>(*args)</dt><dd><tt>make&nbsp;sure&nbsp;*args*&nbsp;are&nbsp;equal&nbsp;len&nbsp;before&nbsp;zipping</tt></dd></dl>
+ <dl><dt><a name="-simple_linear_interpolation"><strong>simple_linear_interpolation</strong></a>(a, steps)</dt></dl>
+ <dl><dt><a name="-soundex"><strong>soundex</strong></a>(name, len<font color="#909090">=4</font>)</dt><dd><tt>soundex&nbsp;module&nbsp;conforming&nbsp;to&nbsp;Odell-Russell&nbsp;algorithm</tt></dd></dl>
+ <dl><dt><a name="-strip_math"><strong>strip_math</strong></a>(s)</dt><dd><tt>remove&nbsp;latex&nbsp;formatting&nbsp;from&nbsp;mathtext</tt></dd></dl>
+ <dl><dt><a name="-to_filehandle"><strong>to_filehandle</strong></a>(fname, flag<font color="#909090">='r'</font>, return_opened<font color="#909090">=False</font>)</dt><dd><tt>*fname*&nbsp;can&nbsp;be&nbsp;a&nbsp;filename&nbsp;or&nbsp;a&nbsp;file&nbsp;handle.&nbsp;&nbsp;Support&nbsp;for&nbsp;gzipped<br>
+files&nbsp;is&nbsp;automatic,&nbsp;if&nbsp;the&nbsp;filename&nbsp;ends&nbsp;in&nbsp;.gz.&nbsp;&nbsp;*flag*&nbsp;is&nbsp;a<br>
+read/write&nbsp;flag&nbsp;for&nbsp;:func:`file`</tt></dd></dl>
+ <dl><dt><a name="-unicode_safe"><strong>unicode_safe</strong></a>(s)</dt></dl>
+ <dl><dt><a name="-unique"><strong>unique</strong></a>(x)</dt><dd><tt>Return&nbsp;a&nbsp;<a href="__builtin__.html#list">list</a>&nbsp;of&nbsp;unique&nbsp;elements&nbsp;of&nbsp;*x*</tt></dd></dl>
+ <dl><dt><a name="-unmasked_index_ranges"><strong>unmasked_index_ranges</strong></a>(mask, compressed<font color="#909090">=True</font>)</dt><dd><tt>Find&nbsp;index&nbsp;ranges&nbsp;where&nbsp;*mask*&nbsp;is&nbsp;*False*.<br>
+&nbsp;<br>
+*mask*&nbsp;will&nbsp;be&nbsp;flattened&nbsp;if&nbsp;it&nbsp;is&nbsp;not&nbsp;already&nbsp;1-D.<br>
+&nbsp;<br>
+Returns&nbsp;Nx2&nbsp;:class:`numpy.ndarray`&nbsp;with&nbsp;each&nbsp;row&nbsp;the&nbsp;start&nbsp;and&nbsp;stop<br>
+indices&nbsp;for&nbsp;slices&nbsp;of&nbsp;the&nbsp;compressed&nbsp;:class:`numpy.ndarray`<br>
+corresponding&nbsp;to&nbsp;each&nbsp;of&nbsp;*N*&nbsp;uninterrupted&nbsp;runs&nbsp;of&nbsp;unmasked<br>
+values.&nbsp;&nbsp;If&nbsp;optional&nbsp;argument&nbsp;*compressed*&nbsp;is&nbsp;*False*,&nbsp;it&nbsp;returns<br>
+the&nbsp;start&nbsp;and&nbsp;stop&nbsp;indices&nbsp;into&nbsp;the&nbsp;original&nbsp;:class:`numpy.ndarray`,<br>
+not&nbsp;the&nbsp;compressed&nbsp;:class:`numpy.ndarray`.&nbsp;&nbsp;Returns&nbsp;*None*&nbsp;if&nbsp;there<br>
+are&nbsp;no&nbsp;unmasked&nbsp;values.<br>
+&nbsp;<br>
+Example::<br>
+&nbsp;<br>
+&nbsp;&nbsp;y&nbsp;=&nbsp;ma.array(np.arange(5),&nbsp;mask&nbsp;=&nbsp;[0,0,1,0,0])<br>
+&nbsp;&nbsp;ii&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(ma.getmaskarray(y))<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[[0,2,]&nbsp;[2,4,]]<br>
+&nbsp;<br>
+&nbsp;&nbsp;y.compressed()[ii[1,0]:ii[1,1]]<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[3,4,]<br>
+&nbsp;<br>
+&nbsp;&nbsp;ii&nbsp;=&nbsp;<a href="#-unmasked_index_ranges">unmasked_index_ranges</a>(ma.getmaskarray(y),&nbsp;compressed=False)<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[[0,&nbsp;2],&nbsp;[3,&nbsp;5]]<br>
+&nbsp;<br>
+&nbsp;&nbsp;y.filled()[ii[1,0]:ii[1,1]]<br>
+&nbsp;&nbsp;#&nbsp;returns&nbsp;array&nbsp;[3,4,]<br>
+&nbsp;<br>
+Prior&nbsp;to&nbsp;the&nbsp;transforms&nbsp;refactoring,&nbsp;this&nbsp;was&nbsp;used&nbsp;to&nbsp;support<br>
+masked&nbsp;arrays&nbsp;in&nbsp;Line2D.</tt></dd></dl>
+ <dl><dt><a name="-vector_lengths"><strong>vector_lengths</strong></a>(X, P<font color="#909090">=2.0</font>, axis<font color="#909090">=None</font>)</dt><dd><tt>Finds&nbsp;the&nbsp;length&nbsp;of&nbsp;a&nbsp;set&nbsp;of&nbsp;vectors&nbsp;in&nbsp;n&nbsp;dimensions.&nbsp;&nbsp;This&nbsp;is<br>
+like&nbsp;the&nbsp;numpy&nbsp;norm&nbsp;function&nbsp;for&nbsp;vectors,&nbsp;but&nbsp;has&nbsp;the&nbsp;ability&nbsp;to<br>
+work&nbsp;over&nbsp;a&nbsp;particular&nbsp;axis&nbsp;of&nbsp;the&nbsp;supplied&nbsp;array&nbsp;or&nbsp;matrix.<br>
+&nbsp;<br>
+Computes&nbsp;(sum((x_i)^P))^(1/P)&nbsp;for&nbsp;each&nbsp;{x_i}&nbsp;being&nbsp;the&nbsp;elements&nbsp;of&nbsp;X&nbsp;along<br>
+the&nbsp;given&nbsp;axis.&nbsp;&nbsp;If&nbsp;*axis*&nbsp;is&nbsp;*None*,&nbsp;compute&nbsp;over&nbsp;all&nbsp;elements&nbsp;of&nbsp;X.</tt></dd></dl>
+ <dl><dt><a name="-wrap"><strong>wrap</strong></a>(prefix, text, cols)</dt><dd><tt>wrap&nbsp;*text*&nbsp;with&nbsp;*prefix*&nbsp;at&nbsp;length&nbsp;*cols*</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>generators</strong> = _Feature((2, 2, 0, 'alpha', 1), (2, 3, 0, 'final', 0), 0)<br>
+<strong>get_realpath_and_stat</strong> = &lt;matplotlib.cbook.GetRealpathAndStat instance at 0x1824098&gt;<br>
+<strong>ls</strong> = (':', 'dotted')<br>
+<strong>ls_mapper</strong> = {'-': 'solid', '--': 'dashed', '-.': 'dashdot', ':': 'dotted', 'dashdot': '-.', 'dashed': '--', 'dotted': ':', 'solid': '-'}<br>
+<strong>major</strong> = 2<br>
+<strong>minor1</strong> = 5<br>
+<strong>minor2</strong> = 1<br>
+<strong>preferredencoding</strong> = 'UTF-8'<br>
+<strong>s</strong> = 'final'<br>
+<strong>tmp</strong> = 0</td></tr></table>
+@footer@

@@ -1,0 +1,702 @@
+@header@
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="matplotlib.html"><font color="#ffffff">matplotlib</font></a>.<a href="matplotlib.toolkits.html"><font color="#ffffff">toolkits</font></a>.<a href="matplotlib.toolkits.basemap.html"><font color="#ffffff">basemap</font></a>.basemap</strong></big></big> (version 0.9.8)</font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/basemap.py">/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/basemap.py</a></font></td></tr></table>
+    <p><tt>Module&nbsp;for&nbsp;plotting&nbsp;data&nbsp;on&nbsp;maps&nbsp;with&nbsp;matplotlib.<br>
+&nbsp;<br>
+Contains&nbsp;the&nbsp;<a href="#Basemap">Basemap</a>&nbsp;class&nbsp;(which&nbsp;does&nbsp;most&nbsp;of&nbsp;the&nbsp;<br>
+heavy&nbsp;lifting),&nbsp;and&nbsp;the&nbsp;following&nbsp;functions:<br>
+&nbsp;<br>
+NetCDFFile:&nbsp;Read&nbsp;local&nbsp;and&nbsp;remote&nbsp;NetCDF&nbsp;datasets.<br>
+&nbsp;<br>
+interp:&nbsp;&nbsp;bilinear&nbsp;interpolation&nbsp;between&nbsp;rectilinear&nbsp;grids.<br>
+&nbsp;<br>
+shiftgrid:&nbsp;&nbsp;shifts&nbsp;global&nbsp;lat/lon&nbsp;grids&nbsp;east&nbsp;or&nbsp;west.<br>
+&nbsp;<br>
+addcyclic:&nbsp;Add&nbsp;cyclic&nbsp;(wraparound)&nbsp;point&nbsp;in&nbsp;longitude.</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#fffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="_geos.html">_geos</a><br>
+<a href="dbflib.html">dbflib</a><br>
+<a href="numpy.core.ma.html">numpy.core.ma</a><br>
+</td><td width="25%" valign=top><a href="math.html">math</a><br>
+<a href="numpy.html">numpy</a><br>
+<a href="os.html">os</a><br>
+</td><td width="25%" valign=top><a href="matplotlib.toolkits.basemap.pupynere.html">matplotlib.toolkits.basemap.pupynere</a><br>
+<a href="matplotlib.toolkits.basemap.pyproj.html">matplotlib.toolkits.basemap.pyproj</a><br>
+<a href="sys.html">sys</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="__builtin__.html#object">__builtin__.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="matplotlib.toolkits.basemap.basemap.html#Basemap">Basemap</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Basemap">class <strong>Basemap</strong></a>(<a href="__builtin__.html#object">__builtin__.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Class&nbsp;for&nbsp;plotting&nbsp;data&nbsp;on&nbsp;map&nbsp;projections&nbsp;with&nbsp;matplotlib.<br>
+See&nbsp;__init__&nbsp;docstring&nbsp;for&nbsp;details&nbsp;on&nbsp;how&nbsp;to&nbsp;create&nbsp;a&nbsp;class<br>
+instance&nbsp;for&nbsp;a&nbsp;given&nbsp;map&nbsp;projection.<br>
+&nbsp;<br>
+Useful&nbsp;instance&nbsp;variables:<br>
+&nbsp;<br>
+projection&nbsp;-&nbsp;map&nbsp;projection.&nbsp;Print&nbsp;the&nbsp;module&nbsp;variable<br>
+"supported_projections"&nbsp;to&nbsp;see&nbsp;a&nbsp;list.<br>
+aspect&nbsp;-&nbsp;map&nbsp;aspect&nbsp;ratio&nbsp;(size&nbsp;of&nbsp;y&nbsp;dimension&nbsp;/&nbsp;size&nbsp;of&nbsp;x&nbsp;dimension).<br>
+llcrnrlon&nbsp;-&nbsp;longitude&nbsp;of&nbsp;lower&nbsp;left&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain.<br>
+llcrnrlon&nbsp;-&nbsp;latitude&nbsp;of&nbsp;lower&nbsp;left&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain.<br>
+urcrnrlon&nbsp;-&nbsp;longitude&nbsp;of&nbsp;upper&nbsp;right&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain.<br>
+urcrnrlon&nbsp;-&nbsp;latitude&nbsp;of&nbsp;upper&nbsp;right&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain.<br>
+llcrnrx,llcrnry,urcrnrx,urcrnry&nbsp;-&nbsp;corners&nbsp;of&nbsp;map&nbsp;domain&nbsp;in&nbsp;projection&nbsp;coordinates.<br>
+rmajor,rminor&nbsp;-&nbsp;equatorial&nbsp;and&nbsp;polar&nbsp;radii&nbsp;of&nbsp;ellipsoid&nbsp;used&nbsp;(in&nbsp;meters).<br>
+resolution&nbsp;-&nbsp;resolution&nbsp;of&nbsp;boundary&nbsp;dataset&nbsp;being&nbsp;used&nbsp;('c'&nbsp;for&nbsp;crude,<br>
+&nbsp;&nbsp;'l'&nbsp;for&nbsp;low,&nbsp;etc.).&nbsp;If&nbsp;None,&nbsp;no&nbsp;boundary&nbsp;dataset&nbsp;is&nbsp;associated&nbsp;with&nbsp;the<br>
+&nbsp;&nbsp;<a href="#Basemap">Basemap</a>&nbsp;instance.<br>
+srs&nbsp;-&nbsp;a&nbsp;string&nbsp;representing&nbsp;the&nbsp;'spatial&nbsp;reference&nbsp;system'&nbsp;for&nbsp;the&nbsp;map<br>
+&nbsp;&nbsp;projection&nbsp;as&nbsp;defined&nbsp;by&nbsp;PROJ.4.<br>
+&nbsp;<br>
+Example&nbsp;Usage:<br>
+&nbsp;<br>
+&gt;&gt;&gt;&nbsp;from&nbsp;matplotlib.toolkits.basemap&nbsp;import&nbsp;<a href="#Basemap">Basemap</a><br>
+&gt;&gt;&gt;&nbsp;from&nbsp;pylab&nbsp;import&nbsp;load,&nbsp;meshgrid,&nbsp;title,&nbsp;arange,&nbsp;show<br>
+&gt;&gt;&gt;&nbsp;#&nbsp;read&nbsp;in&nbsp;topo&nbsp;data&nbsp;(on&nbsp;a&nbsp;regular&nbsp;lat/lon&nbsp;grid)<br>
+&gt;&gt;&gt;&nbsp;etopo&nbsp;=&nbsp;load('etopo20data.gz')<br>
+&gt;&gt;&gt;&nbsp;lons&nbsp;&nbsp;=&nbsp;load('etopo20lons.gz')<br>
+&gt;&gt;&gt;&nbsp;lats&nbsp;&nbsp;=&nbsp;load('etopo20lats.gz')<br>
+&gt;&gt;&gt;&nbsp;#&nbsp;create&nbsp;<a href="#Basemap">Basemap</a>&nbsp;instance&nbsp;for&nbsp;Robinson&nbsp;projection.<br>
+&gt;&gt;&gt;&nbsp;m&nbsp;=&nbsp;<a href="#Basemap">Basemap</a>(projection='robin',lon_0=0.5*(lons[0]+lons[-1]))<br>
+&gt;&gt;&gt;&nbsp;#&nbsp;compute&nbsp;native&nbsp;map&nbsp;projection&nbsp;coordinates&nbsp;for&nbsp;lat/lon&nbsp;grid.<br>
+&gt;&gt;&gt;&nbsp;x,&nbsp;y&nbsp;=&nbsp;m(*meshgrid(lons,lats))<br>
+&gt;&gt;&gt;&nbsp;#&nbsp;make&nbsp;filled&nbsp;contour&nbsp;plot.<br>
+&gt;&gt;&gt;&nbsp;cs&nbsp;=&nbsp;m.<a href="#Basemap-contourf">contourf</a>(x,y,etopo,30,cmap=cm.jet)<br>
+&gt;&gt;&gt;&nbsp;m.<a href="#Basemap-drawcoastlines">drawcoastlines</a>()&nbsp;#&nbsp;draw&nbsp;coastlines<br>
+&gt;&gt;&gt;&nbsp;m.<a href="#Basemap-drawmapboundary">drawmapboundary</a>()&nbsp;#&nbsp;draw&nbsp;a&nbsp;line&nbsp;around&nbsp;the&nbsp;map&nbsp;region<br>
+&gt;&gt;&gt;&nbsp;m.<a href="#Basemap-drawparallels">drawparallels</a>(arange(-90.,120.,30.),labels=[1,0,0,0])&nbsp;#&nbsp;draw&nbsp;parallels<br>
+&gt;&gt;&gt;&nbsp;m.<a href="#Basemap-drawmeridians">drawmeridians</a>(arange(0.,420.,60.),labels=[0,0,0,1])&nbsp;#&nbsp;draw&nbsp;meridians<br>
+&gt;&gt;&gt;&nbsp;title('Robinson&nbsp;Projection')&nbsp;#&nbsp;add&nbsp;a&nbsp;title<br>
+&gt;&gt;&gt;&nbsp;show()<br>
+&nbsp;<br>
+[this&nbsp;example&nbsp;(simpletest.py)&nbsp;plus&nbsp;many&nbsp;others&nbsp;can&nbsp;be&nbsp;found&nbsp;in&nbsp;the<br>
+&nbsp;examples&nbsp;directory&nbsp;of&nbsp;source&nbsp;distribution.&nbsp;&nbsp;The&nbsp;"OO"&nbsp;version&nbsp;of&nbsp;this<br>
+&nbsp;example&nbsp;(which&nbsp;does&nbsp;not&nbsp;use&nbsp;pylab)&nbsp;is&nbsp;called&nbsp;"simpletest_oo.py".]<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Basemap-__call__"><strong>__call__</strong></a>(self, x, y, inverse<font color="#909090">=False</font>)</dt><dd><tt>Calling&nbsp;a&nbsp;<a href="#Basemap">Basemap</a>&nbsp;class&nbsp;instance&nbsp;with&nbsp;the&nbsp;arguments&nbsp;lon,&nbsp;lat&nbsp;will<br>
+convert&nbsp;lon/lat&nbsp;(in&nbsp;degrees)&nbsp;to&nbsp;x/y&nbsp;native&nbsp;map&nbsp;projection<br>
+coordinates&nbsp;(in&nbsp;meters).&nbsp;&nbsp;If&nbsp;optional&nbsp;keyword&nbsp;'inverse'&nbsp;is<br>
+True&nbsp;(default&nbsp;is&nbsp;False),&nbsp;the&nbsp;inverse&nbsp;transformation&nbsp;from&nbsp;x/y<br>
+to&nbsp;lon/lat&nbsp;is&nbsp;performed.<br>
+&nbsp;<br>
+For&nbsp;cylindrical&nbsp;equidistant&nbsp;projection&nbsp;('cyl'),&nbsp;this<br>
+does&nbsp;nothing&nbsp;(i.e.&nbsp;x,y&nbsp;==&nbsp;lon,lat).<br>
+&nbsp;<br>
+For&nbsp;non-cylindrical&nbsp;projections,&nbsp;the&nbsp;inverse&nbsp;transformation<br>
+always&nbsp;returns&nbsp;longitudes&nbsp;between&nbsp;-180&nbsp;and&nbsp;180&nbsp;degrees.&nbsp;For<br>
+cylindrical&nbsp;projections&nbsp;(self.<strong>projection</strong>&nbsp;==&nbsp;'cyl','mill'&nbsp;or&nbsp;'merc')<br>
+the&nbsp;inverse&nbsp;transformation&nbsp;will&nbsp;return&nbsp;longitudes&nbsp;between<br>
+self.<strong>llcrnrlon</strong>&nbsp;and&nbsp;self.<strong>llcrnrlat</strong>.<br>
+&nbsp;<br>
+input&nbsp;arguments&nbsp;lon,&nbsp;lat&nbsp;can&nbsp;be&nbsp;either&nbsp;scalar&nbsp;floats&nbsp;or&nbsp;N&nbsp;arrays.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-__init__"><strong>__init__</strong></a>(self, llcrnrlon<font color="#909090">=None</font>, llcrnrlat<font color="#909090">=None</font>, urcrnrlon<font color="#909090">=None</font>, urcrnrlat<font color="#909090">=None</font>, width<font color="#909090">=None</font>, height<font color="#909090">=None</font>, projection<font color="#909090">='cyl'</font>, resolution<font color="#909090">='c'</font>, area_thresh<font color="#909090">=None</font>, rsphere<font color="#909090">=6370997.0</font>, lat_ts<font color="#909090">=None</font>, lat_1<font color="#909090">=None</font>, lat_2<font color="#909090">=None</font>, lat_0<font color="#909090">=None</font>, lon_0<font color="#909090">=None</font>, lon_1<font color="#909090">=None</font>, lon_2<font color="#909090">=None</font>, suppress_ticks<font color="#909090">=True</font>, satellite_height<font color="#909090">=None</font>, boundinglat<font color="#909090">=None</font>, anchor<font color="#909090">='C'</font>, ax<font color="#909090">=None</font>)</dt><dd><tt>&nbsp;create&nbsp;a&nbsp;<a href="#Basemap">Basemap</a>&nbsp;instance.<br>
+&nbsp;<br>
+&nbsp;This&nbsp;sets&nbsp;up&nbsp;a&nbsp;basemap&nbsp;with&nbsp;specified&nbsp;map&nbsp;projection.<br>
+&nbsp;and&nbsp;creates&nbsp;the&nbsp;coastline&nbsp;data&nbsp;structures&nbsp;in&nbsp;native&nbsp;map&nbsp;projection<br>
+&nbsp;coordinates.<br>
+&nbsp;<br>
+&nbsp;arguments:<br>
+&nbsp;<br>
+&nbsp;projection&nbsp;-&nbsp;map&nbsp;projection.&nbsp;Supported&nbsp;projections&nbsp;are:<br>
+'aeqd'&nbsp;=&nbsp;Azimuthal&nbsp;Equidistant<br>
+'poly'&nbsp;=&nbsp;Polyconic<br>
+'gnom'&nbsp;=&nbsp;Gnomonic<br>
+'moll'&nbsp;=&nbsp;Mollweide<br>
+'tmerc'&nbsp;=&nbsp;Transverse&nbsp;Mercator<br>
+'nplaea'&nbsp;=&nbsp;North-Polar&nbsp;Lambert&nbsp;Azimuthal<br>
+'mill'&nbsp;=&nbsp;Miller&nbsp;Cylindrical<br>
+'merc'&nbsp;=&nbsp;Mercator<br>
+'stere'&nbsp;=&nbsp;Stereographic<br>
+'npstere'&nbsp;=&nbsp;North-Polar&nbsp;Stereographic<br>
+'geos'&nbsp;=&nbsp;Geostationary<br>
+'laea'&nbsp;=&nbsp;Lambert&nbsp;Azimuthal&nbsp;Equal&nbsp;Area<br>
+'sinu'&nbsp;=&nbsp;Sinusoidal<br>
+'spstere'&nbsp;=&nbsp;South-Polar&nbsp;Stereographic<br>
+'lcc'&nbsp;=&nbsp;Lambert&nbsp;Conformal<br>
+'npaeqd'&nbsp;=&nbsp;North-Polar&nbsp;Azimuthal&nbsp;Equidistant<br>
+'eqdc'&nbsp;=&nbsp;Equidistant&nbsp;Conic<br>
+'cyl'&nbsp;=&nbsp;Cylindrical&nbsp;Equidistant<br>
+'omerc'&nbsp;=&nbsp;Oblique&nbsp;Mercator<br>
+'aea'&nbsp;=&nbsp;Albers&nbsp;Equal&nbsp;Area<br>
+'spaeqd'&nbsp;=&nbsp;South-Polar&nbsp;Azimuthal&nbsp;Equidistant<br>
+'ortho'&nbsp;=&nbsp;Orthographic<br>
+'cass'&nbsp;=&nbsp;Cassini-Soldner<br>
+'splaea'&nbsp;=&nbsp;South-Polar&nbsp;Lambert&nbsp;Azimuthal<br>
+'robin'&nbsp;=&nbsp;Robinson<br>
+&nbsp;<br>
+&nbsp;&nbsp;Default&nbsp;is&nbsp;'cyl'.<br>
+&nbsp;<br>
+&nbsp;For&nbsp;most&nbsp;map&nbsp;projections,&nbsp;the&nbsp;map&nbsp;projection&nbsp;region&nbsp;can&nbsp;either&nbsp;be<br>
+&nbsp;specified&nbsp;by&nbsp;setting&nbsp;these&nbsp;keywords:<br>
+&nbsp;<br>
+&nbsp;llcrnrlon&nbsp;-&nbsp;longitude&nbsp;of&nbsp;lower&nbsp;left&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(degrees).<br>
+&nbsp;llcrnrlat&nbsp;-&nbsp;latitude&nbsp;of&nbsp;lower&nbsp;left&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(degrees).<br>
+&nbsp;urcrnrlon&nbsp;-&nbsp;longitude&nbsp;of&nbsp;upper&nbsp;right&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(degrees).<br>
+&nbsp;urcrnrlat&nbsp;-&nbsp;latitude&nbsp;of&nbsp;upper&nbsp;right&nbsp;hand&nbsp;corner&nbsp;of&nbsp;the&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(degrees).<br>
+&nbsp;<br>
+&nbsp;or&nbsp;these&nbsp;keywords:<br>
+&nbsp;<br>
+&nbsp;width&nbsp;&nbsp;-&nbsp;width&nbsp;of&nbsp;desired&nbsp;map&nbsp;domain&nbsp;in&nbsp;projection&nbsp;coordinates&nbsp;(meters).<br>
+&nbsp;height&nbsp;-&nbsp;height&nbsp;of&nbsp;desired&nbsp;map&nbsp;domain&nbsp;in&nbsp;projection&nbsp;coordinates&nbsp;(meters).<br>
+&nbsp;lon_0&nbsp;&nbsp;-&nbsp;center&nbsp;of&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(in&nbsp;degrees).<br>
+&nbsp;lat_0&nbsp;&nbsp;-&nbsp;center&nbsp;of&nbsp;desired&nbsp;map&nbsp;domain&nbsp;(in&nbsp;degrees).<br>
+&nbsp;<br>
+&nbsp;For&nbsp;'sinu',&nbsp;'moll',&nbsp;'npstere',&nbsp;'spstere',&nbsp;'nplaea',&nbsp;'splaea',&nbsp;'nplaea',<br>
+&nbsp;'splaea',&nbsp;'npaeqd',&nbsp;'spaeqd'&nbsp;or&nbsp;'robin',&nbsp;the&nbsp;values&nbsp;of<br>
+&nbsp;llcrnrlon,llcrnrlat,urcrnrlon,urcrnrlat,width&nbsp;and&nbsp;height&nbsp;are&nbsp;ignored<br>
+&nbsp;(because&nbsp;either&nbsp;they&nbsp;are&nbsp;computed&nbsp;internally,&nbsp;or&nbsp;entire&nbsp;globe&nbsp;is<br>
+&nbsp;always&nbsp;plotted).&nbsp;For&nbsp;the&nbsp;cylindrical&nbsp;projections<br>
+&nbsp;('cyl','merc'&nbsp;and&nbsp;'mill'),&nbsp;the&nbsp;default&nbsp;is&nbsp;to&nbsp;use<br>
+&nbsp;llcrnrlon=-180,llcrnrlat=-90,&nbsp;urcrnrlon=180&nbsp;and&nbsp;urcrnrlat=90).&nbsp;For&nbsp;all&nbsp;other<br>
+&nbsp;projections&nbsp;except&nbsp;'ortho'&nbsp;and&nbsp;'geos',&nbsp;either&nbsp;the&nbsp;lat/lon&nbsp;values&nbsp;of&nbsp;the<br>
+&nbsp;corners&nbsp;or&nbsp;width&nbsp;and&nbsp;height&nbsp;must&nbsp;be&nbsp;specified&nbsp;by&nbsp;the&nbsp;user.<br>
+&nbsp;For&nbsp;'ortho'&nbsp;and&nbsp;'geos',&nbsp;the&nbsp;lat/lon&nbsp;values&nbsp;of&nbsp;the&nbsp;corners&nbsp;may&nbsp;be&nbsp;specified,<br>
+&nbsp;but&nbsp;if&nbsp;they&nbsp;are&nbsp;not,&nbsp;the&nbsp;entire&nbsp;globe&nbsp;is&nbsp;plotted.<br>
+&nbsp;<br>
+&nbsp;resolution&nbsp;-&nbsp;resolution&nbsp;of&nbsp;boundary&nbsp;database&nbsp;to&nbsp;use.&nbsp;Can&nbsp;be&nbsp;'c'&nbsp;(crude),<br>
+&nbsp;&nbsp;'l'&nbsp;(low),&nbsp;'i'&nbsp;(intermediate),&nbsp;'h'&nbsp;(high),&nbsp;'f'&nbsp;(full)&nbsp;or&nbsp;None.<br>
+&nbsp;&nbsp;If&nbsp;None,&nbsp;no&nbsp;boundary&nbsp;data&nbsp;will&nbsp;be&nbsp;read&nbsp;in&nbsp;(and&nbsp;class&nbsp;methods<br>
+&nbsp;&nbsp;such&nbsp;as&nbsp;drawcoastlines&nbsp;will&nbsp;raise&nbsp;an&nbsp;exception&nbsp;if&nbsp;invoked).<br>
+&nbsp;&nbsp;Resolution&nbsp;drops&nbsp;off&nbsp;by&nbsp;roughly&nbsp;80%<br>
+&nbsp;&nbsp;between&nbsp;datasets.&nbsp;&nbsp;Higher&nbsp;res&nbsp;datasets&nbsp;are&nbsp;much&nbsp;slower&nbsp;to&nbsp;draw.<br>
+&nbsp;&nbsp;Default&nbsp;'c'.&nbsp;Coastline&nbsp;data&nbsp;is&nbsp;from&nbsp;the&nbsp;GSHHS<br>
+&nbsp;&nbsp;(<a href="http://www.soest.hawaii.edu/wessel/gshhs/gshhs.html">http://www.soest.hawaii.edu/wessel/gshhs/gshhs.html</a>).<br>
+&nbsp;&nbsp;State,&nbsp;country&nbsp;and&nbsp;river&nbsp;datasets&nbsp;from&nbsp;the&nbsp;Generic&nbsp;Mapping<br>
+&nbsp;&nbsp;Tools&nbsp;(<a href="http://gmt.soest.hawaii.edu">http://gmt.soest.hawaii.edu</a>).<br>
+&nbsp;<br>
+&nbsp;area_thresh&nbsp;-&nbsp;coastline&nbsp;or&nbsp;lake&nbsp;with&nbsp;an&nbsp;area&nbsp;smaller&nbsp;than&nbsp;area_thresh<br>
+&nbsp;&nbsp;in&nbsp;km^2&nbsp;will&nbsp;not&nbsp;be&nbsp;plotted.&nbsp;&nbsp;Default&nbsp;10000,1000,100,10,1&nbsp;for&nbsp;resolution<br>
+&nbsp;&nbsp;'c','l','i','h','f'.<br>
+&nbsp;<br>
+&nbsp;rsphere&nbsp;-&nbsp;radius&nbsp;of&nbsp;the&nbsp;sphere&nbsp;used&nbsp;to&nbsp;define&nbsp;map&nbsp;projection&nbsp;(default<br>
+&nbsp;&nbsp;6370997&nbsp;meters,&nbsp;close&nbsp;to&nbsp;the&nbsp;arithmetic&nbsp;mean&nbsp;radius&nbsp;of&nbsp;the&nbsp;earth).&nbsp;If<br>
+&nbsp;&nbsp;given&nbsp;as&nbsp;a&nbsp;sequence,&nbsp;the&nbsp;first&nbsp;two&nbsp;elements&nbsp;are&nbsp;interpreted&nbsp;as<br>
+&nbsp;&nbsp;the&nbsp;the&nbsp;radii&nbsp;of&nbsp;the&nbsp;major&nbsp;and&nbsp;minor&nbsp;axes&nbsp;of&nbsp;an&nbsp;ellipsoid.&nbsp;Note:&nbsp;sometimes<br>
+&nbsp;&nbsp;an&nbsp;ellipsoid&nbsp;is&nbsp;specified&nbsp;by&nbsp;the&nbsp;major&nbsp;axis&nbsp;and&nbsp;an&nbsp;'inverse&nbsp;flattening<br>
+&nbsp;&nbsp;parameter'&nbsp;(if).&nbsp;&nbsp;The&nbsp;minor&nbsp;axis&nbsp;(b)&nbsp;can&nbsp;be&nbsp;computed&nbsp;from&nbsp;the&nbsp;major&nbsp;axis&nbsp;(a)<br>
+&nbsp;&nbsp;and&nbsp;the&nbsp;inverse&nbsp;flattening&nbsp;parameter&nbsp;using&nbsp;the&nbsp;formula&nbsp;if&nbsp;=&nbsp;a/(a-b).<br>
+&nbsp;<br>
+&nbsp;suppress_ticks&nbsp;-&nbsp;suppress&nbsp;automatic&nbsp;drawing&nbsp;of&nbsp;axis&nbsp;ticks&nbsp;and&nbsp;labels<br>
+&nbsp;in&nbsp;map&nbsp;projection&nbsp;coordinates.&nbsp;&nbsp;Default&nbsp;False,&nbsp;so&nbsp;parallels&nbsp;and&nbsp;meridians<br>
+&nbsp;can&nbsp;be&nbsp;labelled&nbsp;instead.&nbsp;If&nbsp;parallel&nbsp;or&nbsp;meridian&nbsp;labelling&nbsp;is&nbsp;requested<br>
+&nbsp;(using&nbsp;drawparallels&nbsp;and&nbsp;drawmeridians&nbsp;methods),&nbsp;automatic&nbsp;tick&nbsp;labelling<br>
+&nbsp;will&nbsp;be&nbsp;supressed&nbsp;even&nbsp;is&nbsp;suppress_ticks=False.&nbsp;&nbsp;suppress_ticks=False<br>
+&nbsp;is&nbsp;useful&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;use&nbsp;your&nbsp;own&nbsp;custom&nbsp;tick&nbsp;formatter,&nbsp;or<br>
+&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;let&nbsp;matplotlib&nbsp;label&nbsp;the&nbsp;axes&nbsp;in&nbsp;meters<br>
+&nbsp;using&nbsp;native&nbsp;map&nbsp;projection&nbsp;coordinates<br>
+&nbsp;<br>
+&nbsp;anchor&nbsp;-&nbsp;determines&nbsp;how&nbsp;map&nbsp;is&nbsp;placed&nbsp;in&nbsp;axes&nbsp;rectangle&nbsp;(passed&nbsp;to<br>
+&nbsp;axes.set_aspect).&nbsp;Default&nbsp;is&nbsp;'C',&nbsp;which&nbsp;means&nbsp;map&nbsp;is&nbsp;centered.<br>
+&nbsp;Allowed&nbsp;values&nbsp;are&nbsp;['C',&nbsp;'SW',&nbsp;'S',&nbsp;'SE',&nbsp;'E',&nbsp;'NE',&nbsp;'N',&nbsp;'NW',&nbsp;'W'].<br>
+&nbsp;<br>
+&nbsp;ax&nbsp;-&nbsp;set&nbsp;default&nbsp;axes&nbsp;instance&nbsp;(default&nbsp;None&nbsp;-&nbsp;pylab.gca()&nbsp;may&nbsp;be&nbsp;used<br>
+&nbsp;to&nbsp;get&nbsp;the&nbsp;current&nbsp;axes&nbsp;instance).&nbsp;&nbsp;If&nbsp;you&nbsp;don't&nbsp;want&nbsp;pylab&nbsp;to&nbsp;be&nbsp;imported,<br>
+&nbsp;you&nbsp;can&nbsp;either&nbsp;set&nbsp;this&nbsp;to&nbsp;a&nbsp;pre-defined&nbsp;axes&nbsp;instance,&nbsp;or&nbsp;use&nbsp;the&nbsp;'ax'<br>
+&nbsp;keyword&nbsp;in&nbsp;each&nbsp;<a href="#Basemap">Basemap</a>&nbsp;method&nbsp;call&nbsp;that&nbsp;does&nbsp;drawing.&nbsp;In&nbsp;the&nbsp;first&nbsp;case,<br>
+&nbsp;all&nbsp;<a href="#Basemap">Basemap</a>&nbsp;method&nbsp;calls&nbsp;will&nbsp;draw&nbsp;to&nbsp;the&nbsp;same&nbsp;axes&nbsp;instance.&nbsp;&nbsp;In&nbsp;the<br>
+&nbsp;second&nbsp;case,&nbsp;you&nbsp;can&nbsp;draw&nbsp;to&nbsp;different&nbsp;axes&nbsp;with&nbsp;the&nbsp;same&nbsp;<a href="#Basemap">Basemap</a>&nbsp;instance.<br>
+&nbsp;You&nbsp;can&nbsp;also&nbsp;use&nbsp;the&nbsp;'ax'&nbsp;keyword&nbsp;in&nbsp;individual&nbsp;method&nbsp;calls&nbsp;to<br>
+&nbsp;selectively&nbsp;override&nbsp;the&nbsp;default&nbsp;axes&nbsp;instance.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;following&nbsp;parameters&nbsp;are&nbsp;map&nbsp;projection&nbsp;parameters&nbsp;which&nbsp;all&nbsp;default&nbsp;to<br>
+&nbsp;None.&nbsp;&nbsp;Not&nbsp;all&nbsp;parameters&nbsp;are&nbsp;used&nbsp;by&nbsp;all&nbsp;projections,&nbsp;some&nbsp;are&nbsp;ignored.<br>
+&nbsp;The&nbsp;module&nbsp;variable&nbsp;'projection_params'&nbsp;is&nbsp;a&nbsp;dictionary&nbsp;which<br>
+&nbsp;lists&nbsp;which&nbsp;parameters&nbsp;apply&nbsp;to&nbsp;which&nbsp;projections.<br>
+&nbsp;<br>
+&nbsp;lat_ts&nbsp;-&nbsp;latitude&nbsp;of&nbsp;true&nbsp;scale&nbsp;for&nbsp;mercator&nbsp;projection,&nbsp;optional<br>
+&nbsp;&nbsp;for&nbsp;stereographic&nbsp;projection.<br>
+&nbsp;lat_1&nbsp;-&nbsp;first&nbsp;standard&nbsp;parallel&nbsp;for&nbsp;lambert&nbsp;conformal,&nbsp;albers<br>
+&nbsp;&nbsp;equal&nbsp;area&nbsp;projection&nbsp;and&nbsp;equidistant&nbsp;conic&nbsp;projections.&nbsp;Latitude&nbsp;of&nbsp;one<br>
+&nbsp;&nbsp;of&nbsp;the&nbsp;two&nbsp;points&nbsp;on&nbsp;the&nbsp;projection&nbsp;centerline&nbsp;for&nbsp;oblique&nbsp;mercator.<br>
+&nbsp;&nbsp;If&nbsp;lat_1&nbsp;is&nbsp;not&nbsp;given,&nbsp;but&nbsp;lat_0&nbsp;is,&nbsp;lat_1&nbsp;is&nbsp;set&nbsp;to&nbsp;lat_0&nbsp;for<br>
+&nbsp;&nbsp;lambert&nbsp;conformal,&nbsp;albers&nbsp;equal&nbsp;area&nbsp;and&nbsp;equidistant&nbsp;conic.<br>
+&nbsp;lat_2&nbsp;-&nbsp;second&nbsp;standard&nbsp;parallel&nbsp;for&nbsp;lambert&nbsp;conformal,&nbsp;albers<br>
+&nbsp;&nbsp;equal&nbsp;area&nbsp;projection&nbsp;and&nbsp;equidistant&nbsp;conic&nbsp;projections.&nbsp;Latitude&nbsp;of&nbsp;one<br>
+&nbsp;&nbsp;of&nbsp;the&nbsp;two&nbsp;points&nbsp;on&nbsp;the&nbsp;projection&nbsp;centerline&nbsp;for&nbsp;oblique&nbsp;mercator.<br>
+&nbsp;&nbsp;If&nbsp;lat_2&nbsp;is&nbsp;not&nbsp;given,&nbsp;it&nbsp;is&nbsp;set&nbsp;to&nbsp;lat_1&nbsp;for<br>
+&nbsp;&nbsp;lambert&nbsp;conformal,&nbsp;albers&nbsp;equal&nbsp;area&nbsp;and&nbsp;equidistant&nbsp;conic.<br>
+&nbsp;lon_1&nbsp;-&nbsp;longitude&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;two&nbsp;points&nbsp;on&nbsp;the&nbsp;projection&nbsp;centerline<br>
+&nbsp;&nbsp;for&nbsp;oblique&nbsp;mercator.<br>
+&nbsp;lon_2&nbsp;-&nbsp;longitude&nbsp;of&nbsp;one&nbsp;of&nbsp;the&nbsp;two&nbsp;points&nbsp;on&nbsp;the&nbsp;projection&nbsp;centerline<br>
+&nbsp;&nbsp;for&nbsp;oblique&nbsp;mercator.<br>
+&nbsp;lat_0&nbsp;-&nbsp;central&nbsp;latitude&nbsp;(y-axis&nbsp;origin)&nbsp;-&nbsp;used&nbsp;by&nbsp;all&nbsp;projections,<br>
+&nbsp;&nbsp;Must&nbsp;be&nbsp;equator&nbsp;for&nbsp;mercator&nbsp;projection.<br>
+&nbsp;lon_0&nbsp;-&nbsp;central&nbsp;meridian&nbsp;(x-axis&nbsp;origin)&nbsp;-&nbsp;used&nbsp;by&nbsp;all&nbsp;projections,<br>
+&nbsp;boundinglat&nbsp;-&nbsp;bounding&nbsp;latitude&nbsp;for&nbsp;pole-centered&nbsp;projections&nbsp;(npstere,spstere,<br>
+&nbsp;&nbsp;nplaea,splaea,npaeqd,spaeqd).&nbsp;&nbsp;These&nbsp;projections&nbsp;are&nbsp;square&nbsp;regions&nbsp;centered<br>
+&nbsp;&nbsp;on&nbsp;the&nbsp;north&nbsp;or&nbsp;south&nbsp;pole.&nbsp;&nbsp;The&nbsp;longitude&nbsp;lon_0&nbsp;is&nbsp;at&nbsp;6-o'clock,&nbsp;and&nbsp;the<br>
+&nbsp;&nbsp;latitude&nbsp;circle&nbsp;boundinglat&nbsp;is&nbsp;tangent&nbsp;to&nbsp;the&nbsp;edge&nbsp;of&nbsp;the&nbsp;map&nbsp;at&nbsp;lon_0.<br>
+&nbsp;satellite_height&nbsp;-&nbsp;height&nbsp;of&nbsp;satellite&nbsp;(in&nbsp;m)&nbsp;above&nbsp;equator&nbsp;-<br>
+&nbsp;&nbsp;only&nbsp;relevant&nbsp;for&nbsp;geostationary&nbsp;projections&nbsp;('geos').<br>
+&nbsp;<br>
+&nbsp;Here&nbsp;are&nbsp;the&nbsp;most&nbsp;commonly&nbsp;used&nbsp;class&nbsp;methods&nbsp;(see&nbsp;the&nbsp;docstring<br>
+&nbsp;for&nbsp;each&nbsp;for&nbsp;more&nbsp;details):<br>
+&nbsp;<br>
+&nbsp;To&nbsp;draw&nbsp;a&nbsp;graticule&nbsp;grid&nbsp;(labelled&nbsp;latitude&nbsp;and&nbsp;longitude&nbsp;lines)<br>
+&nbsp;use&nbsp;the&nbsp;drawparallels&nbsp;and&nbsp;drawmeridians&nbsp;methods.<br>
+&nbsp;<br>
+&nbsp;To&nbsp;draw&nbsp;coastline,&nbsp;rivers&nbsp;and&nbsp;political&nbsp;boundaries,&nbsp;use&nbsp;the<br>
+&nbsp;the&nbsp;drawcontinents,&nbsp;drawrivers,&nbsp;drawcountries&nbsp;and&nbsp;drawstates&nbsp;methods.<br>
+&nbsp;<br>
+&nbsp;To&nbsp;fill&nbsp;the&nbsp;continents&nbsp;and&nbsp;inland&nbsp;lakes,&nbsp;use&nbsp;the&nbsp;fillcontinents&nbsp;method.<br>
+&nbsp;<br>
+&nbsp;To&nbsp;draw&nbsp;the&nbsp;boundary&nbsp;of&nbsp;the&nbsp;map&nbsp;projection&nbsp;region,&nbsp;and&nbsp;fill&nbsp;the&nbsp;<br>
+&nbsp;interior&nbsp;a&nbsp;certain&nbsp;color,&nbsp;use&nbsp;the&nbsp;drawmapboundary&nbsp;method.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;contour,&nbsp;contourf,&nbsp;pcolor,&nbsp;pcolormesh,&nbsp;plot,&nbsp;scatter<br>
+&nbsp;quiver&nbsp;and&nbsp;imshow&nbsp;methods&nbsp;use&nbsp;the&nbsp;corresponding&nbsp;matplotlib&nbsp;axes<br>
+&nbsp;methods&nbsp;to&nbsp;draw&nbsp;on&nbsp;the&nbsp;map.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;transform_scalar&nbsp;method&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;interpolate&nbsp;regular<br>
+&nbsp;lat/lon&nbsp;grids&nbsp;of&nbsp;scalar&nbsp;data&nbsp;to&nbsp;native&nbsp;map&nbsp;projection&nbsp;grids.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;transform_vector&nbsp;method&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;interpolate&nbsp;and&nbsp;rotate<br>
+&nbsp;regular&nbsp;lat/lon&nbsp;grids&nbsp;of&nbsp;vector&nbsp;data&nbsp;to&nbsp;native&nbsp;map&nbsp;projection&nbsp;grids.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;rotate_vector&nbsp;method&nbsp;rotates&nbsp;a&nbsp;vector&nbsp;field&nbsp;from&nbsp;lat/lon<br>
+&nbsp;coordinates&nbsp;into&nbsp;map&nbsp;projections&nbsp;coordinates,&nbsp;without&nbsp;doing&nbsp;any&nbsp;<br>
+&nbsp;interpolation.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;readshapefile&nbsp;method&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;read&nbsp;in&nbsp;data&nbsp;from&nbsp;ESRI<br>
+&nbsp;shapefiles.<br>
+&nbsp;<br>
+&nbsp;The&nbsp;drawgreatcircle&nbsp;method&nbsp;draws&nbsp;great&nbsp;circles&nbsp;on&nbsp;the&nbsp;map.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-contour"><strong>contour</strong></a>(self, x, y, data, *args, **kwargs)</dt><dd><tt>Make&nbsp;a&nbsp;contour&nbsp;plot&nbsp;over&nbsp;the&nbsp;map&nbsp;(see&nbsp;pylab.contour&nbsp;documentation).<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-contourf"><strong>contourf</strong></a>(self, x, y, data, *args, **kwargs)</dt><dd><tt>Make&nbsp;a&nbsp;filled&nbsp;contour&nbsp;plot&nbsp;over&nbsp;the&nbsp;map&nbsp;(see&nbsp;pylab.contourf&nbsp;documentation).<br>
+If&nbsp;x&nbsp;or&nbsp;y&nbsp;are&nbsp;outside&nbsp;projection&nbsp;limb&nbsp;(i.e.&nbsp;they&nbsp;have&nbsp;values&nbsp;&gt;&nbsp;1.e20),<br>
+the&nbsp;corresponing&nbsp;data&nbsp;elements&nbsp;will&nbsp;be&nbsp;masked.<br>
+Extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawcoastlines"><strong>drawcoastlines</strong></a>(self, linewidth<font color="#909090">=1.0</font>, color<font color="#909090">='k'</font>, antialiased<font color="#909090">=1</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>)</dt><dd><tt>Draw&nbsp;coastlines.<br>
+&nbsp;<br>
+linewidth&nbsp;-&nbsp;coastline&nbsp;width&nbsp;(default&nbsp;1.)<br>
+color&nbsp;-&nbsp;coastline&nbsp;color&nbsp;(default&nbsp;black)<br>
+antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;coastlines&nbsp;(default&nbsp;True).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;coastlines&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;LineCollections).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawcountries"><strong>drawcountries</strong></a>(self, linewidth<font color="#909090">=0.5</font>, color<font color="#909090">='k'</font>, antialiased<font color="#909090">=1</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>)</dt><dd><tt>Draw&nbsp;country&nbsp;boundaries.<br>
+&nbsp;<br>
+linewidth&nbsp;-&nbsp;country&nbsp;boundary&nbsp;line&nbsp;width&nbsp;(default&nbsp;0.5)<br>
+color&nbsp;-&nbsp;country&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;black)<br>
+antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;country&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;country&nbsp;boundaries&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;LineCollections).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawgreatcircle"><strong>drawgreatcircle</strong></a>(self, lon1, lat1, lon2, lat2, del_s<font color="#909090">=100.0</font>, **kwargs)</dt><dd><tt>draw&nbsp;a&nbsp;great&nbsp;circle&nbsp;on&nbsp;the&nbsp;map.<br>
+&nbsp;<br>
+lon1,lat1&nbsp;-&nbsp;longitude,latitude&nbsp;of&nbsp;one&nbsp;endpoint&nbsp;of&nbsp;the&nbsp;great&nbsp;circle.<br>
+lon2,lat2&nbsp;-&nbsp;longitude,latitude&nbsp;of&nbsp;the&nbsp;other&nbsp;endpoint&nbsp;of&nbsp;the&nbsp;great&nbsp;circle.<br>
+del_s&nbsp;-&nbsp;points&nbsp;on&nbsp;great&nbsp;circle&nbsp;computed&nbsp;every&nbsp;delta&nbsp;kilometers&nbsp;(default&nbsp;100).<br>
+&nbsp;<br>
+Other&nbsp;keyword&nbsp;arguments&nbsp;(**kwargs)&nbsp;control&nbsp;plotting&nbsp;of&nbsp;great&nbsp;circle&nbsp;line,<br>
+see&nbsp;pylab.plot&nbsp;documentation&nbsp;for&nbsp;details.<br>
+&nbsp;<br>
+Note:&nbsp;&nbsp;cannot&nbsp;handle&nbsp;situations&nbsp;in&nbsp;which&nbsp;the&nbsp;great&nbsp;circle&nbsp;intersects<br>
+the&nbsp;edge&nbsp;of&nbsp;the&nbsp;map&nbsp;projection&nbsp;domain,&nbsp;and&nbsp;then&nbsp;re-enters&nbsp;the&nbsp;domain.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawlsmask"><strong>drawlsmask</strong></a>(self, rgba_land, rgba_ocean, lsmask<font color="#909090">=None</font>, lsmask_lons<font color="#909090">=None</font>, lsmask_lats<font color="#909090">=None</font>, lakes<font color="#909090">=False</font>, **kwargs)</dt><dd><tt>draw&nbsp;land-sea&nbsp;mask&nbsp;image.<br>
+&nbsp;<br>
+*Note*&nbsp;&nbsp;the&nbsp;land-sea&nbsp;mask&nbsp;image&nbsp;cannot&nbsp;be&nbsp;overlaid&nbsp;on&nbsp;top<br>
+of&nbsp;other&nbsp;images,&nbsp;due&nbsp;to&nbsp;limitations&nbsp;in&nbsp;matplotlib&nbsp;image&nbsp;handling.<br>
+&nbsp;<br>
+land&nbsp;is&nbsp;colored&nbsp;with&nbsp;rgba&nbsp;integer&nbsp;tuple&nbsp;rgba_land.<br>
+ocean&nbsp;is&nbsp;colored&nbsp;with&nbsp;rgba&nbsp;integer&nbsp;tuple&nbsp;rgba_ocean.<br>
+&nbsp;<br>
+For&nbsp;example,&nbsp;to&nbsp;color&nbsp;oceans&nbsp;blue&nbsp;and&nbsp;land&nbsp;green,&nbsp;use<br>
+rgba_ocean&nbsp;=&nbsp;(0,0,255,255)&nbsp;and&nbsp;rgba_land&nbsp;&nbsp;=&nbsp;(0,255,0,255).<br>
+To&nbsp;make&nbsp;oceans&nbsp;transparent&nbsp;(useful&nbsp;if&nbsp;you&nbsp;just&nbsp;want&nbsp;to&nbsp;mask&nbsp;land<br>
+regions&nbsp;over&nbsp;another&nbsp;image),&nbsp;use&nbsp;rgba_ocean&nbsp;=&nbsp;(0,0,255,0).<br>
+&nbsp;<br>
+If&nbsp;lakes=True,&nbsp;inland&nbsp;lakes&nbsp;are&nbsp;also&nbsp;colored&nbsp;with<br>
+rgba_ocean&nbsp;(default&nbsp;is&nbsp;lakes=False).<br>
+&nbsp;<br>
+Default&nbsp;land-sea&nbsp;mask&nbsp;is&nbsp;from<br>
+<a href="http://www.ngdc.noaa.gov/seg/cdroms/graham/graham/graham.htm">http://www.ngdc.noaa.gov/seg/cdroms/graham/graham/graham.htm</a><br>
+and&nbsp;has&nbsp;5-minute&nbsp;resolution.<br>
+&nbsp;<br>
+To&nbsp;specify&nbsp;your&nbsp;own&nbsp;global&nbsp;land-sea&nbsp;mask,&nbsp;set&nbsp;the<br>
+lsmask&nbsp;keyword&nbsp;to&nbsp;a&nbsp;(nlats,&nbsp;nlons)&nbsp;array<br>
+with&nbsp;0's&nbsp;for&nbsp;ocean&nbsp;pixels,&nbsp;1's&nbsp;for&nbsp;land&nbsp;pixels&nbsp;and<br>
+optionally&nbsp;2's&nbsp;for&nbsp;inland&nbsp;lake&nbsp;pixels.<br>
+The&nbsp;lsmask_lons&nbsp;keyword&nbsp;should&nbsp;be&nbsp;a&nbsp;1-d&nbsp;array<br>
+with&nbsp;the&nbsp;longitudes&nbsp;of&nbsp;the&nbsp;mask,&nbsp;lsmask_lats&nbsp;should&nbsp;be<br>
+a&nbsp;1-d&nbsp;array&nbsp;with&nbsp;the&nbsp;latitudes.&nbsp;&nbsp;Longitudes&nbsp;should&nbsp;be&nbsp;ordered<br>
+from&nbsp;-180&nbsp;W&nbsp;eastward,&nbsp;latitudes&nbsp;from&nbsp;-90&nbsp;S&nbsp;northward.<br>
+If&nbsp;any&nbsp;of&nbsp;the&nbsp;lsmask,&nbsp;lsmask_lons&nbsp;or&nbsp;lsmask_lats&nbsp;keywords&nbsp;are&nbsp;not<br>
+set,&nbsp;the&nbsp;default&nbsp;land-sea&nbsp;mask&nbsp;is&nbsp;used.<br>
+&nbsp;<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawmapboundary"><strong>drawmapboundary</strong></a>(self, color<font color="#909090">='k'</font>, linewidth<font color="#909090">=1.0</font>, fill_color<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>, ax<font color="#909090">=None</font>)</dt><dd><tt>draw&nbsp;boundary&nbsp;around&nbsp;map&nbsp;projection&nbsp;region,&nbsp;optionally<br>
+filling&nbsp;interior&nbsp;of&nbsp;region.<br>
+&nbsp;<br>
+linewidth&nbsp;-&nbsp;line&nbsp;width&nbsp;for&nbsp;boundary&nbsp;(default&nbsp;1.)<br>
+color&nbsp;-&nbsp;color&nbsp;of&nbsp;boundary&nbsp;line&nbsp;(default&nbsp;black)<br>
+fill_color&nbsp;-&nbsp;fill&nbsp;the&nbsp;map&nbsp;region&nbsp;background&nbsp;with&nbsp;this<br>
+&nbsp;color&nbsp;(default&nbsp;is&nbsp;no&nbsp;fill&nbsp;or&nbsp;fill&nbsp;with&nbsp;axis&nbsp;background&nbsp;color).<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;filling&nbsp;map&nbsp;background<br>
+&nbsp;(default&nbsp;0).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;to&nbsp;use&nbsp;(default&nbsp;None,&nbsp;use&nbsp;default&nbsp;axes&nbsp;<br>
+&nbsp;instance).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawmeridians"><strong>drawmeridians</strong></a>(self, meridians, color<font color="#909090">='k'</font>, linewidth<font color="#909090">=1.0</font>, zorder<font color="#909090">=None</font>, dashes<font color="#909090">=[1, 1]</font>, labels<font color="#909090">=[0, 0, 0, 0]</font>, labelstyle<font color="#909090">=None</font>, fmt<font color="#909090">='%g'</font>, xoffset<font color="#909090">=None</font>, yoffset<font color="#909090">=None</font>, ax<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>draw&nbsp;meridians&nbsp;(longitude&nbsp;lines).<br>
+&nbsp;<br>
+meridians&nbsp;-&nbsp;list&nbsp;containing&nbsp;longitude&nbsp;values&nbsp;to&nbsp;draw&nbsp;(in&nbsp;degrees).<br>
+color&nbsp;-&nbsp;color&nbsp;to&nbsp;draw&nbsp;meridians&nbsp;(default&nbsp;black).<br>
+linewidth&nbsp;-&nbsp;line&nbsp;width&nbsp;for&nbsp;meridians&nbsp;(default&nbsp;1.)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;meridians&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;Line2D&nbsp;class).<br>
+dashes&nbsp;-&nbsp;dash&nbsp;pattern&nbsp;for&nbsp;meridians&nbsp;(default&nbsp;[1,1],&nbsp;i.e.&nbsp;1&nbsp;pixel&nbsp;on,<br>
+&nbsp;1&nbsp;pixel&nbsp;off).<br>
+labels&nbsp;-&nbsp;list&nbsp;of&nbsp;4&nbsp;values&nbsp;(default&nbsp;[0,0,0,0])&nbsp;that&nbsp;control&nbsp;whether<br>
+&nbsp;meridians&nbsp;are&nbsp;labelled&nbsp;where&nbsp;they&nbsp;intersect&nbsp;the&nbsp;left,&nbsp;right,&nbsp;top&nbsp;or<br>
+&nbsp;bottom&nbsp;of&nbsp;the&nbsp;plot.&nbsp;For&nbsp;example&nbsp;labels=[1,0,0,1]&nbsp;will&nbsp;cause&nbsp;meridians<br>
+&nbsp;to&nbsp;be&nbsp;labelled&nbsp;where&nbsp;they&nbsp;intersect&nbsp;the&nbsp;left&nbsp;and&nbsp;bottom&nbsp;of&nbsp;the&nbsp;plot,<br>
+&nbsp;but&nbsp;not&nbsp;the&nbsp;right&nbsp;and&nbsp;top.<br>
+labelstyle&nbsp;-&nbsp;if&nbsp;set&nbsp;to&nbsp;"+/-",&nbsp;east&nbsp;and&nbsp;west&nbsp;longitudes&nbsp;are&nbsp;labelled<br>
+&nbsp;with&nbsp;"+"&nbsp;and&nbsp;"-",&nbsp;otherwise&nbsp;they&nbsp;are&nbsp;labelled&nbsp;with&nbsp;"E"&nbsp;and&nbsp;"W".<br>
+fmt&nbsp;can&nbsp;be&nbsp;is&nbsp;a&nbsp;format&nbsp;string&nbsp;to&nbsp;format&nbsp;the&nbsp;meridian&nbsp;labels<br>
+&nbsp;(default&nbsp;'%g')&nbsp;or&nbsp;a&nbsp;function&nbsp;that&nbsp;takes&nbsp;a&nbsp;longitude&nbsp;value<br>
+&nbsp;in&nbsp;degrees&nbsp;as&nbsp;it's&nbsp;only&nbsp;argument&nbsp;and&nbsp;returns&nbsp;a&nbsp;formatted&nbsp;string.<br>
+xoffset&nbsp;-&nbsp;label&nbsp;offset&nbsp;from&nbsp;edge&nbsp;of&nbsp;map&nbsp;in&nbsp;x-direction<br>
+&nbsp;(default&nbsp;is&nbsp;0.01&nbsp;times&nbsp;width&nbsp;of&nbsp;map&nbsp;in&nbsp;map&nbsp;projection&nbsp;coordinates).<br>
+yoffset&nbsp;-&nbsp;label&nbsp;offset&nbsp;from&nbsp;edge&nbsp;of&nbsp;map&nbsp;in&nbsp;y-direction<br>
+&nbsp;(default&nbsp;is&nbsp;0.01&nbsp;times&nbsp;height&nbsp;of&nbsp;map&nbsp;in&nbsp;map&nbsp;projection&nbsp;coordinates).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+&nbsp;<br>
+additional&nbsp;keyword&nbsp;arguments&nbsp;control&nbsp;text&nbsp;properties&nbsp;for&nbsp;labels&nbsp;(see<br>
+&nbsp;pylab.text&nbsp;documentation)</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawparallels"><strong>drawparallels</strong></a>(self, circles, color<font color="#909090">='k'</font>, linewidth<font color="#909090">=1.0</font>, zorder<font color="#909090">=None</font>, dashes<font color="#909090">=[1, 1]</font>, labels<font color="#909090">=[0, 0, 0, 0]</font>, labelstyle<font color="#909090">=None</font>, fmt<font color="#909090">='%g'</font>, xoffset<font color="#909090">=None</font>, yoffset<font color="#909090">=None</font>, ax<font color="#909090">=None</font>, **kwargs)</dt><dd><tt>draw&nbsp;parallels&nbsp;(latitude&nbsp;lines).<br>
+&nbsp;<br>
+circles&nbsp;-&nbsp;list&nbsp;containing&nbsp;latitude&nbsp;values&nbsp;to&nbsp;draw&nbsp;(in&nbsp;degrees).<br>
+color&nbsp;-&nbsp;color&nbsp;to&nbsp;draw&nbsp;parallels&nbsp;(default&nbsp;black).<br>
+linewidth&nbsp;-&nbsp;line&nbsp;width&nbsp;for&nbsp;parallels&nbsp;(default&nbsp;1.)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;parallels&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;Line2D&nbsp;class).<br>
+dashes&nbsp;-&nbsp;dash&nbsp;pattern&nbsp;for&nbsp;parallels&nbsp;(default&nbsp;[1,1],&nbsp;i.e.&nbsp;1&nbsp;pixel&nbsp;on,<br>
+&nbsp;1&nbsp;pixel&nbsp;off).<br>
+labels&nbsp;-&nbsp;list&nbsp;of&nbsp;4&nbsp;values&nbsp;(default&nbsp;[0,0,0,0])&nbsp;that&nbsp;control&nbsp;whether<br>
+&nbsp;parallels&nbsp;are&nbsp;labelled&nbsp;where&nbsp;they&nbsp;intersect&nbsp;the&nbsp;left,&nbsp;right,&nbsp;top&nbsp;or<br>
+&nbsp;bottom&nbsp;of&nbsp;the&nbsp;plot.&nbsp;For&nbsp;example&nbsp;labels=[1,0,0,1]&nbsp;will&nbsp;cause&nbsp;parallels<br>
+&nbsp;to&nbsp;be&nbsp;labelled&nbsp;where&nbsp;they&nbsp;intersect&nbsp;the&nbsp;left&nbsp;and&nbsp;bottom&nbsp;of&nbsp;the&nbsp;plot,<br>
+&nbsp;but&nbsp;not&nbsp;the&nbsp;right&nbsp;and&nbsp;top.<br>
+labelstyle&nbsp;-&nbsp;if&nbsp;set&nbsp;to&nbsp;"+/-",&nbsp;north&nbsp;and&nbsp;south&nbsp;latitudes&nbsp;are&nbsp;labelled<br>
+&nbsp;with&nbsp;"+"&nbsp;and&nbsp;"-",&nbsp;otherwise&nbsp;they&nbsp;are&nbsp;labelled&nbsp;with&nbsp;"N"&nbsp;and&nbsp;"S".<br>
+fmt&nbsp;can&nbsp;be&nbsp;is&nbsp;a&nbsp;format&nbsp;string&nbsp;to&nbsp;format&nbsp;the&nbsp;parallel&nbsp;labels<br>
+&nbsp;(default&nbsp;'%g')&nbsp;or&nbsp;a&nbsp;function&nbsp;that&nbsp;takes&nbsp;a&nbsp;latitude&nbsp;value&nbsp;<br>
+&nbsp;in&nbsp;degrees&nbsp;as&nbsp;it's&nbsp;only&nbsp;argument&nbsp;and&nbsp;returns&nbsp;a&nbsp;formatted&nbsp;string.<br>
+xoffset&nbsp;-&nbsp;label&nbsp;offset&nbsp;from&nbsp;edge&nbsp;of&nbsp;map&nbsp;in&nbsp;x-direction<br>
+&nbsp;(default&nbsp;is&nbsp;0.01&nbsp;times&nbsp;width&nbsp;of&nbsp;map&nbsp;in&nbsp;map&nbsp;projection&nbsp;coordinates).<br>
+yoffset&nbsp;-&nbsp;label&nbsp;offset&nbsp;from&nbsp;edge&nbsp;of&nbsp;map&nbsp;in&nbsp;y-direction<br>
+&nbsp;(default&nbsp;is&nbsp;0.01&nbsp;times&nbsp;height&nbsp;of&nbsp;map&nbsp;in&nbsp;map&nbsp;projection&nbsp;coordinates).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+&nbsp;<br>
+additional&nbsp;keyword&nbsp;arguments&nbsp;control&nbsp;text&nbsp;properties&nbsp;for&nbsp;labels&nbsp;(see<br>
+&nbsp;pylab.text&nbsp;documentation)</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawrivers"><strong>drawrivers</strong></a>(self, linewidth<font color="#909090">=0.5</font>, color<font color="#909090">='k'</font>, antialiased<font color="#909090">=1</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>)</dt><dd><tt>Draw&nbsp;major&nbsp;rivers.<br>
+&nbsp;<br>
+linewidth&nbsp;-&nbsp;river&nbsp;boundary&nbsp;line&nbsp;width&nbsp;(default&nbsp;0.5)<br>
+color&nbsp;-&nbsp;river&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;black)<br>
+antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;river&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;rivers&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;LineCollections).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-drawstates"><strong>drawstates</strong></a>(self, linewidth<font color="#909090">=0.5</font>, color<font color="#909090">='k'</font>, antialiased<font color="#909090">=1</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>)</dt><dd><tt>Draw&nbsp;state&nbsp;boundaries&nbsp;in&nbsp;Americas.<br>
+&nbsp;<br>
+linewidth&nbsp;-&nbsp;state&nbsp;boundary&nbsp;line&nbsp;width&nbsp;(default&nbsp;0.5)<br>
+color&nbsp;-&nbsp;state&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;black)<br>
+antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;state&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;state&nbsp;boundaries&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;LineCollections).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-fillcontinents"><strong>fillcontinents</strong></a>(self, color<font color="#909090">='0.8'</font>, lake_color<font color="#909090">=None</font>, ax<font color="#909090">=None</font>, zorder<font color="#909090">=None</font>)</dt><dd><tt>Fill&nbsp;continents.<br>
+&nbsp;<br>
+color&nbsp;-&nbsp;color&nbsp;to&nbsp;fill&nbsp;continents&nbsp;(default&nbsp;gray).<br>
+lake_color&nbsp;-&nbsp;color&nbsp;to&nbsp;fill&nbsp;inland&nbsp;lakes&nbsp;(default&nbsp;axes&nbsp;background).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance).<br>
+zorder&nbsp;-&nbsp;sets&nbsp;the&nbsp;zorder&nbsp;for&nbsp;the&nbsp;continent&nbsp;polygons&nbsp;(if&nbsp;not&nbsp;specified,<br>
+uses&nbsp;default&nbsp;zorder&nbsp;for&nbsp;a&nbsp;Polygon&nbsp;patch).&nbsp;Set&nbsp;to&nbsp;zero&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;paint<br>
+over&nbsp;the&nbsp;filled&nbsp;continents).<br>
+&nbsp;<br>
+After&nbsp;filling&nbsp;continents,&nbsp;lakes&nbsp;are&nbsp;re-filled&nbsp;with&nbsp;axis&nbsp;background&nbsp;color.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-gcpoints"><strong>gcpoints</strong></a>(self, lon1, lat1, lon2, lat2, npoints)</dt><dd><tt>compute&nbsp;npoints&nbsp;points&nbsp;along&nbsp;a&nbsp;great&nbsp;circle&nbsp;with&nbsp;endpoints<br>
+(lon1,lat1)&nbsp;and&nbsp;(lon2,lat2).&nbsp;&nbsp;Returns&nbsp;arrays&nbsp;x,y<br>
+with&nbsp;map&nbsp;projection&nbsp;coordinates.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-imshow"><strong>imshow</strong></a>(self, *args, **kwargs)</dt><dd><tt>Display&nbsp;an&nbsp;image&nbsp;over&nbsp;the&nbsp;map&nbsp;(see&nbsp;pylab.imshow&nbsp;documentation).<br>
+extent&nbsp;and&nbsp;origin&nbsp;keywords&nbsp;set&nbsp;automatically&nbsp;so&nbsp;image&nbsp;will&nbsp;be&nbsp;drawn<br>
+over&nbsp;map&nbsp;region.<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-makegrid"><strong>makegrid</strong></a>(self, nx, ny, returnxy<font color="#909090">=False</font>)</dt><dd><tt>return&nbsp;arrays&nbsp;of&nbsp;shape&nbsp;(ny,nx)&nbsp;containing&nbsp;lon,lat&nbsp;coordinates&nbsp;of<br>
+an&nbsp;equally&nbsp;spaced&nbsp;native&nbsp;projection&nbsp;grid.<br>
+if&nbsp;returnxy&nbsp;=&nbsp;True,&nbsp;the&nbsp;x,y&nbsp;values&nbsp;of&nbsp;the&nbsp;grid&nbsp;are&nbsp;returned&nbsp;also.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-pcolor"><strong>pcolor</strong></a>(self, x, y, data, **kwargs)</dt><dd><tt>Make&nbsp;a&nbsp;pseudo-color&nbsp;plot&nbsp;over&nbsp;the&nbsp;map.<br>
+see&nbsp;pylab.pcolor&nbsp;documentation&nbsp;for&nbsp;definition&nbsp;of&nbsp;**kwargs<br>
+If&nbsp;x&nbsp;or&nbsp;y&nbsp;are&nbsp;outside&nbsp;projection&nbsp;limb&nbsp;(i.e.&nbsp;they&nbsp;have&nbsp;values&nbsp;&gt;&nbsp;1.e20)<br>
+they&nbsp;will&nbsp;be&nbsp;convert&nbsp;to&nbsp;masked&nbsp;arrays&nbsp;with&nbsp;those&nbsp;values&nbsp;masked.<br>
+As&nbsp;a&nbsp;result,&nbsp;those&nbsp;values&nbsp;will&nbsp;not&nbsp;be&nbsp;plotted.<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-pcolormesh"><strong>pcolormesh</strong></a>(self, x, y, data, **kwargs)</dt><dd><tt>Make&nbsp;a&nbsp;pseudo-color&nbsp;plot&nbsp;over&nbsp;the&nbsp;map.<br>
+see&nbsp;pylab.pcolormesh&nbsp;documentation&nbsp;for&nbsp;definition&nbsp;of&nbsp;**kwargs<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-plot"><strong>plot</strong></a>(self, *args, **kwargs)</dt><dd><tt>Draw&nbsp;lines&nbsp;and/or&nbsp;markers&nbsp;on&nbsp;the&nbsp;map&nbsp;(see&nbsp;pylab.plot&nbsp;documentation).<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-quiver"><strong>quiver</strong></a>(self, x, y, u, v, *args, **kwargs)</dt><dd><tt>Make&nbsp;a&nbsp;vector&nbsp;plot&nbsp;(u,&nbsp;v)&nbsp;with&nbsp;arrows&nbsp;on&nbsp;the&nbsp;map.<br>
+&nbsp;<br>
+Extra&nbsp;arguments&nbsp;(*args&nbsp;and&nbsp;**kwargs)&nbsp;passed&nbsp;to&nbsp;quiver&nbsp;Axes&nbsp;method&nbsp;(see<br>
+pylab.quiver&nbsp;documentation&nbsp;for&nbsp;details).<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axis&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-readshapefile"><strong>readshapefile</strong></a>(self, shapefile, name, drawbounds<font color="#909090">=True</font>, zorder<font color="#909090">=None</font>, linewidth<font color="#909090">=0.5</font>, color<font color="#909090">='k'</font>, antialiased<font color="#909090">=1</font>, ax<font color="#909090">=None</font>)</dt><dd><tt>read&nbsp;in&nbsp;shape&nbsp;file,&nbsp;draw&nbsp;boundaries&nbsp;on&nbsp;map.<br>
+&nbsp;<br>
+Restrictions:<br>
+&nbsp;-&nbsp;Assumes&nbsp;shapes&nbsp;are&nbsp;2D<br>
+&nbsp;-&nbsp;vertices&nbsp;must&nbsp;be&nbsp;in&nbsp;geographic&nbsp;(lat/lon)&nbsp;coordinates.<br>
+&nbsp;<br>
+shapefile&nbsp;-&nbsp;path&nbsp;to&nbsp;shapefile&nbsp;components.&nbsp;&nbsp;Example:<br>
+&nbsp;shapefile='/home/jeff/esri/world_borders'&nbsp;assumes&nbsp;that<br>
+&nbsp;world_borders.shp,&nbsp;world_borders.shx&nbsp;and&nbsp;world_borders.dbf<br>
+&nbsp;live&nbsp;in&nbsp;/home/jeff/esri.<br>
+name&nbsp;-&nbsp;name&nbsp;for&nbsp;<a href="#Basemap">Basemap</a>&nbsp;attribute&nbsp;to&nbsp;hold&nbsp;the&nbsp;shapefile<br>
+&nbsp;vertices&nbsp;in&nbsp;native&nbsp;map&nbsp;projection&nbsp;coordinates.<br>
+&nbsp;Class&nbsp;attribute&nbsp;name+'_info'&nbsp;is&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries,&nbsp;one<br>
+&nbsp;for&nbsp;each&nbsp;shape,&nbsp;containing&nbsp;attributes&nbsp;of&nbsp;each&nbsp;shape&nbsp;from&nbsp;dbf&nbsp;file.<br>
+&nbsp;For&nbsp;example,&nbsp;if&nbsp;name='counties',&nbsp;self.<strong>counties</strong><br>
+&nbsp;will&nbsp;be&nbsp;a&nbsp;list&nbsp;of&nbsp;vertices&nbsp;for&nbsp;each&nbsp;shape&nbsp;in&nbsp;map&nbsp;projection<br>
+&nbsp;coordinates&nbsp;and&nbsp;self.<strong>counties_info</strong>&nbsp;will&nbsp;be&nbsp;a&nbsp;list&nbsp;of&nbsp;dictionaries<br>
+&nbsp;with&nbsp;shape&nbsp;attributes.&nbsp;Rings&nbsp;in&nbsp;individual&nbsp;shapes&nbsp;are&nbsp;split&nbsp;out<br>
+&nbsp;into&nbsp;separate&nbsp;polygons.&nbsp;&nbsp;Additional&nbsp;keys<br>
+&nbsp;'RINGNUM'&nbsp;and&nbsp;'SHAPENUM'&nbsp;are&nbsp;added&nbsp;to&nbsp;shape&nbsp;attribute&nbsp;dictionary.<br>
+drawbounds&nbsp;-&nbsp;draw&nbsp;boundaries&nbsp;of&nbsp;shapes&nbsp;(default&nbsp;True)<br>
+zorder&nbsp;=&nbsp;shape&nbsp;boundary&nbsp;zorder&nbsp;(if&nbsp;not&nbsp;specified,&nbsp;default&nbsp;for&nbsp;LineCollection<br>
+is&nbsp;used).<br>
+linewidth&nbsp;-&nbsp;shape&nbsp;boundary&nbsp;line&nbsp;width&nbsp;(default&nbsp;0.5)<br>
+color&nbsp;-&nbsp;shape&nbsp;boundary&nbsp;line&nbsp;color&nbsp;(default&nbsp;black)<br>
+antialiased&nbsp;-&nbsp;antialiasing&nbsp;switch&nbsp;for&nbsp;shape&nbsp;boundaries&nbsp;(default&nbsp;True).<br>
+ax&nbsp;-&nbsp;axes&nbsp;instance&nbsp;(overrides&nbsp;default&nbsp;axes&nbsp;instance)<br>
+&nbsp;<br>
+returns&nbsp;a&nbsp;tuple&nbsp;(num_shapes,&nbsp;type,&nbsp;min,&nbsp;max)&nbsp;containing&nbsp;shape&nbsp;file&nbsp;info.<br>
+num_shapes&nbsp;is&nbsp;the&nbsp;number&nbsp;of&nbsp;shapes,&nbsp;type&nbsp;is&nbsp;the&nbsp;type&nbsp;code&nbsp;(one&nbsp;of<br>
+the&nbsp;SHPT*&nbsp;constants&nbsp;defined&nbsp;in&nbsp;the&nbsp;shapelib&nbsp;module,&nbsp;see<br>
+<a href="http://shapelib.maptools.org/shp_api.html">http://shapelib.maptools.org/shp_api.html</a>)&nbsp;and&nbsp;min&nbsp;and<br>
+max&nbsp;are&nbsp;4-element&nbsp;lists&nbsp;with&nbsp;the&nbsp;minimum&nbsp;and&nbsp;maximum&nbsp;values&nbsp;of&nbsp;the<br>
+vertices.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-rotate_vector"><strong>rotate_vector</strong></a>(self, uin, vin, lons, lats, returnxy<font color="#909090">=False</font>)</dt><dd><tt>rotate&nbsp;a&nbsp;vector&nbsp;field&nbsp;(uin,vin)&nbsp;on&nbsp;a&nbsp;rectilinear&nbsp;lat/lon&nbsp;grid<br>
+with&nbsp;longitudes&nbsp;=&nbsp;lons&nbsp;and&nbsp;latitudes&nbsp;=&nbsp;lats&nbsp;from&nbsp;geographical&nbsp;into&nbsp;map<br>
+projection&nbsp;coordinates.<br>
+&nbsp;<br>
+Differs&nbsp;from&nbsp;transform_vector&nbsp;in&nbsp;that&nbsp;no&nbsp;interpolation&nbsp;is&nbsp;done,<br>
+the&nbsp;vector&nbsp;is&nbsp;returned&nbsp;on&nbsp;the&nbsp;same&nbsp;lat/lon&nbsp;grid,&nbsp;but&nbsp;rotated&nbsp;into<br>
+x,y&nbsp;coordinates.<br>
+&nbsp;<br>
+lons,&nbsp;lats&nbsp;must&nbsp;be&nbsp;rank-2&nbsp;arrays&nbsp;containing&nbsp;longitudes&nbsp;and&nbsp;latitudes<br>
+(in&nbsp;degrees)&nbsp;of&nbsp;grid.<br>
+&nbsp;<br>
+if&nbsp;returnxy=True,&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;values&nbsp;of&nbsp;the&nbsp;lat/lon&nbsp;grid<br>
+are&nbsp;also&nbsp;returned&nbsp;(default&nbsp;False).<br>
+&nbsp;<br>
+The&nbsp;input&nbsp;vector&nbsp;field&nbsp;is&nbsp;defined&nbsp;in&nbsp;spherical&nbsp;coordinates&nbsp;(it<br>
+has&nbsp;eastward&nbsp;and&nbsp;northward&nbsp;components)&nbsp;while&nbsp;the&nbsp;output<br>
+vector&nbsp;field&nbsp;is&nbsp;rotated&nbsp;to&nbsp;map&nbsp;projection&nbsp;coordinates&nbsp;(relative<br>
+to&nbsp;x&nbsp;and&nbsp;y).&nbsp;The&nbsp;magnitude&nbsp;of&nbsp;the&nbsp;vector&nbsp;is&nbsp;preserved.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-scatter"><strong>scatter</strong></a>(self, *args, **kwargs)</dt><dd><tt>Plot&nbsp;points&nbsp;with&nbsp;markers&nbsp;on&nbsp;the&nbsp;map&nbsp;(see&nbsp;pylab.scatter&nbsp;documentation).<br>
+extra&nbsp;keyword&nbsp;'ax'&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;override&nbsp;the&nbsp;default&nbsp;axes&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-set_axes_limits"><strong>set_axes_limits</strong></a>(self, ax<font color="#909090">=None</font>)</dt><dd><tt>Set&nbsp;axis&nbsp;limits,&nbsp;fix&nbsp;aspect&nbsp;ratio&nbsp;for&nbsp;map&nbsp;domain&nbsp;using&nbsp;current<br>
+or&nbsp;specified&nbsp;axes&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="Basemap-transform_scalar"><strong>transform_scalar</strong></a>(self, datin, lons, lats, nx, ny, returnxy<font color="#909090">=False</font>, checkbounds<font color="#909090">=False</font>, order<font color="#909090">=1</font>, masked<font color="#909090">=False</font>)</dt><dd><tt>interpolate&nbsp;a&nbsp;scalar&nbsp;field&nbsp;(datin)&nbsp;from&nbsp;a&nbsp;lat/lon&nbsp;grid&nbsp;with&nbsp;longitudes&nbsp;=<br>
+lons&nbsp;and&nbsp;latitudes&nbsp;=&nbsp;lats&nbsp;to&nbsp;a&nbsp;(ny,nx)&nbsp;native&nbsp;map&nbsp;projection&nbsp;grid.<br>
+Typically&nbsp;used&nbsp;to&nbsp;transform&nbsp;data&nbsp;to&nbsp;map&nbsp;projection&nbsp;coordinates<br>
+so&nbsp;it&nbsp;can&nbsp;be&nbsp;plotted&nbsp;on&nbsp;the&nbsp;map&nbsp;with&nbsp;imshow.<br>
+&nbsp;<br>
+lons,&nbsp;lats&nbsp;must&nbsp;be&nbsp;rank-1&nbsp;arrays&nbsp;containing&nbsp;longitudes&nbsp;and&nbsp;latitudes<br>
+(in&nbsp;degrees)&nbsp;of&nbsp;datin&nbsp;grid&nbsp;in&nbsp;increasing&nbsp;order<br>
+(i.e.&nbsp;from&nbsp;dateline&nbsp;eastward,&nbsp;and&nbsp;South&nbsp;Pole&nbsp;northward).<br>
+For&nbsp;non-cylindrical&nbsp;projections&nbsp;(those&nbsp;other&nbsp;than<br>
+cylindrical&nbsp;equidistant,&nbsp;mercator&nbsp;and&nbsp;miller)<br>
+lons&nbsp;must&nbsp;fit&nbsp;within&nbsp;range&nbsp;-180&nbsp;to&nbsp;180.<br>
+&nbsp;<br>
+if&nbsp;returnxy=True,&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;values&nbsp;of&nbsp;the&nbsp;native&nbsp;map&nbsp;projection&nbsp;grid<br>
+are&nbsp;also&nbsp;returned.<br>
+&nbsp;<br>
+If&nbsp;checkbounds=True,&nbsp;values&nbsp;of&nbsp;lons&nbsp;and&nbsp;lats&nbsp;are&nbsp;checked&nbsp;to&nbsp;see&nbsp;that<br>
+they&nbsp;lie&nbsp;within&nbsp;the&nbsp;map&nbsp;projection&nbsp;region.&nbsp;&nbsp;Default&nbsp;is&nbsp;False.<br>
+If&nbsp;checkbounds=False,&nbsp;points&nbsp;outside&nbsp;map&nbsp;projection&nbsp;region&nbsp;will<br>
+be&nbsp;clipped&nbsp;to&nbsp;values&nbsp;on&nbsp;the&nbsp;boundary&nbsp;if&nbsp;masked=False.&nbsp;If&nbsp;masked=True,<br>
+the&nbsp;return&nbsp;value&nbsp;will&nbsp;be&nbsp;a&nbsp;masked&nbsp;array&nbsp;with&nbsp;those&nbsp;points&nbsp;masked.<br>
+&nbsp;<br>
+The&nbsp;order&nbsp;keyword&nbsp;can&nbsp;be&nbsp;0&nbsp;for&nbsp;nearest-neighbor&nbsp;interpolation,<br>
+or&nbsp;1&nbsp;for&nbsp;bilinear&nbsp;interpolation&nbsp;(default&nbsp;1).</tt></dd></dl>
+
+<dl><dt><a name="Basemap-transform_vector"><strong>transform_vector</strong></a>(self, uin, vin, lons, lats, nx, ny, returnxy<font color="#909090">=False</font>, checkbounds<font color="#909090">=False</font>, order<font color="#909090">=1</font>, masked<font color="#909090">=False</font>)</dt><dd><tt>rotate&nbsp;and&nbsp;interpolate&nbsp;a&nbsp;vector&nbsp;field&nbsp;(uin,vin)&nbsp;from&nbsp;a&nbsp;lat/lon&nbsp;grid<br>
+with&nbsp;longitudes&nbsp;=&nbsp;lons&nbsp;and&nbsp;latitudes&nbsp;=&nbsp;lats&nbsp;to&nbsp;a<br>
+(ny,nx)&nbsp;native&nbsp;map&nbsp;projection&nbsp;grid.<br>
+&nbsp;<br>
+lons,&nbsp;lats&nbsp;must&nbsp;be&nbsp;rank-1&nbsp;arrays&nbsp;containing&nbsp;longitudes&nbsp;and&nbsp;latitudes<br>
+(in&nbsp;degrees)&nbsp;of&nbsp;datin&nbsp;grid&nbsp;in&nbsp;increasing&nbsp;order<br>
+(i.e.&nbsp;from&nbsp;dateline&nbsp;eastward,&nbsp;and&nbsp;South&nbsp;Pole&nbsp;northward).<br>
+For&nbsp;non-cylindrical&nbsp;projections&nbsp;(those&nbsp;other&nbsp;than<br>
+cylindrical&nbsp;equidistant,&nbsp;mercator&nbsp;and&nbsp;miller)<br>
+lons&nbsp;must&nbsp;fit&nbsp;within&nbsp;range&nbsp;-180&nbsp;to&nbsp;180.<br>
+&nbsp;<br>
+The&nbsp;input&nbsp;vector&nbsp;field&nbsp;is&nbsp;defined&nbsp;in&nbsp;spherical&nbsp;coordinates&nbsp;(it<br>
+has&nbsp;eastward&nbsp;and&nbsp;northward&nbsp;components)&nbsp;while&nbsp;the&nbsp;output<br>
+vector&nbsp;field&nbsp;is&nbsp;rotated&nbsp;to&nbsp;map&nbsp;projection&nbsp;coordinates&nbsp;(relative<br>
+to&nbsp;x&nbsp;and&nbsp;y).&nbsp;The&nbsp;magnitude&nbsp;of&nbsp;the&nbsp;vector&nbsp;is&nbsp;preserved.<br>
+&nbsp;<br>
+if&nbsp;returnxy=True,&nbsp;the&nbsp;x&nbsp;and&nbsp;y&nbsp;values&nbsp;of&nbsp;the&nbsp;native&nbsp;map&nbsp;projection&nbsp;grid<br>
+are&nbsp;also&nbsp;returned&nbsp;(default&nbsp;False).<br>
+&nbsp;<br>
+If&nbsp;checkbounds=True,&nbsp;values&nbsp;of&nbsp;lons&nbsp;and&nbsp;lats&nbsp;are&nbsp;checked&nbsp;to&nbsp;see&nbsp;that<br>
+they&nbsp;lie&nbsp;within&nbsp;the&nbsp;map&nbsp;projection&nbsp;region.&nbsp;&nbsp;Default&nbsp;is&nbsp;False.<br>
+If&nbsp;checkbounds=False,&nbsp;points&nbsp;outside&nbsp;map&nbsp;projection&nbsp;region&nbsp;will<br>
+be&nbsp;clipped&nbsp;to&nbsp;values&nbsp;on&nbsp;the&nbsp;boundary&nbsp;if&nbsp;masked=False.&nbsp;If&nbsp;masked=True,<br>
+the&nbsp;return&nbsp;value&nbsp;will&nbsp;be&nbsp;a&nbsp;masked&nbsp;array&nbsp;with&nbsp;those&nbsp;points&nbsp;masked.<br>
+&nbsp;<br>
+The&nbsp;order&nbsp;keyword&nbsp;can&nbsp;be&nbsp;0&nbsp;for&nbsp;nearest-neighbor&nbsp;interpolation,<br>
+or&nbsp;1&nbsp;for&nbsp;bilinear&nbsp;interpolation&nbsp;(default&nbsp;1).</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-NetCDFFile"><strong>NetCDFFile</strong></a>(file, maskandscale<font color="#909090">=True</font>)</dt><dd><tt>NetCDF&nbsp;File&nbsp;reader.&nbsp;&nbsp;API&nbsp;is&nbsp;the&nbsp;same&nbsp;as&nbsp;Scientific.IO.NetCDF.<br>
+If&nbsp;'file'&nbsp;is&nbsp;a&nbsp;URL&nbsp;that&nbsp;starts&nbsp;with&nbsp;'http',&nbsp;it&nbsp;is&nbsp;assumed<br>
+to&nbsp;be&nbsp;a&nbsp;remote&nbsp;OPenDAP&nbsp;dataset,&nbsp;and&nbsp;the&nbsp;python&nbsp;dap&nbsp;client&nbsp;is&nbsp;used<br>
+to&nbsp;retrieve&nbsp;the&nbsp;data.&nbsp;Only&nbsp;the&nbsp;OPenDAP&nbsp;Array&nbsp;and&nbsp;Grid&nbsp;data<br>
+types&nbsp;are&nbsp;recognized.&nbsp;&nbsp;If&nbsp;file&nbsp;does&nbsp;not&nbsp;start&nbsp;with&nbsp;'http',&nbsp;it<br>
+is&nbsp;assumed&nbsp;to&nbsp;be&nbsp;a&nbsp;local&nbsp;file.&nbsp;&nbsp;If&nbsp;possible,&nbsp;the&nbsp;file&nbsp;will&nbsp;be&nbsp;read&nbsp;<br>
+with&nbsp;a&nbsp;pure&nbsp;python&nbsp;NetCDF&nbsp;reader,&nbsp;otherwise&nbsp;PyNIO&nbsp;<br>
+(<a href="http://www.pyngl.ucar.edu/Nio.shtml">http://www.pyngl.ucar.edu/Nio.shtml</a>)&nbsp;will&nbsp;be&nbsp;used&nbsp;(if&nbsp;it&nbsp;is&nbsp;installed).<br>
+PyNIO&nbsp;supports&nbsp;NetCDF&nbsp;version&nbsp;4,&nbsp;GRIB1,&nbsp;GRIB2,&nbsp;HDF4&nbsp;and&nbsp;HDFEOS2&nbsp;files.<br>
+Data&nbsp;read&nbsp;from&nbsp;OPenDAP&nbsp;and&nbsp;NetCDF&nbsp;version&nbsp;3&nbsp;datasets&nbsp;will&nbsp;<br>
+automatically&nbsp;be&nbsp;converted&nbsp;to&nbsp;masked&nbsp;arrays&nbsp;if&nbsp;the&nbsp;variable&nbsp;has&nbsp;either<br>
+a&nbsp;'missing_value'&nbsp;or&nbsp;'_FillValue'&nbsp;attribute,&nbsp;and&nbsp;some&nbsp;data&nbsp;points<br>
+are&nbsp;equal&nbsp;to&nbsp;the&nbsp;value&nbsp;specified&nbsp;by&nbsp;that&nbsp;attribute.&nbsp;&nbsp;In&nbsp;addition,<br>
+variables&nbsp;stored&nbsp;as&nbsp;integers&nbsp;that&nbsp;have&nbsp;the&nbsp;'scale_factor'&nbsp;and<br>
+'add_offset'&nbsp;attribute&nbsp;will&nbsp;automatically&nbsp;be&nbsp;rescaled&nbsp;to&nbsp;floats&nbsp;when<br>
+read.&nbsp;If&nbsp;PyNIO&nbsp;is&nbsp;used,&nbsp;neither&nbsp;of&nbsp;the&nbsp;automatic&nbsp;conversions&nbsp;will<br>
+be&nbsp;performed.&nbsp;&nbsp;To&nbsp;suppress&nbsp;these&nbsp;automatic&nbsp;conversions,&nbsp;set&nbsp;the<br>
+maskandscale&nbsp;keyword&nbsp;to&nbsp;False.</tt></dd></dl>
+ <dl><dt><a name="-addcyclic"><strong>addcyclic</strong></a>(arrin, lonsin)</dt><dd><tt>arrout,&nbsp;lonsout&nbsp;=&nbsp;<a href="#-addcyclic">addcyclic</a>(arrin,&nbsp;lonsin)<br>
+&nbsp;<br>
+Add&nbsp;cyclic&nbsp;(wraparound)&nbsp;point&nbsp;in&nbsp;longitude.</tt></dd></dl>
+ <dl><dt><a name="-interp"><strong>interp</strong></a>(datain, xin, yin, xout, yout, checkbounds<font color="#909090">=False</font>, masked<font color="#909090">=False</font>, order<font color="#909090">=1</font>)</dt><dd><tt>dataout&nbsp;=&nbsp;<a href="#-interp">interp</a>(datain,xin,yin,xout,yout,order=1)<br>
+&nbsp;<br>
+interpolate&nbsp;data&nbsp;(datain)&nbsp;on&nbsp;a&nbsp;rectilinear&nbsp;grid&nbsp;(with&nbsp;x=xin<br>
+y=yin)&nbsp;to&nbsp;a&nbsp;grid&nbsp;with&nbsp;x=xout,&nbsp;y=yout.<br>
+&nbsp;<br>
+datain&nbsp;is&nbsp;a&nbsp;rank-2&nbsp;array&nbsp;with&nbsp;1st&nbsp;dimension&nbsp;corresponding&nbsp;to&nbsp;y,<br>
+2nd&nbsp;dimension&nbsp;x.<br>
+&nbsp;<br>
+xin,&nbsp;yin&nbsp;are&nbsp;rank-1&nbsp;arrays&nbsp;containing&nbsp;x&nbsp;and&nbsp;y&nbsp;of<br>
+datain&nbsp;grid&nbsp;in&nbsp;increasing&nbsp;order.<br>
+&nbsp;<br>
+xout,&nbsp;yout&nbsp;are&nbsp;rank-2&nbsp;arrays&nbsp;containing&nbsp;x&nbsp;and&nbsp;y&nbsp;of&nbsp;desired&nbsp;output&nbsp;grid.<br>
+&nbsp;<br>
+If&nbsp;checkbounds=True,&nbsp;values&nbsp;of&nbsp;xout&nbsp;and&nbsp;yout&nbsp;are&nbsp;checked&nbsp;to&nbsp;see&nbsp;that<br>
+they&nbsp;lie&nbsp;within&nbsp;the&nbsp;range&nbsp;specified&nbsp;by&nbsp;xin&nbsp;and&nbsp;xin.&nbsp;&nbsp;Default&nbsp;is&nbsp;False.<br>
+If&nbsp;checkbounds=False,&nbsp;and&nbsp;xout,yout&nbsp;are&nbsp;outside&nbsp;xin,yin,&nbsp;interpolated<br>
+values&nbsp;will&nbsp;be&nbsp;clipped&nbsp;to&nbsp;values&nbsp;on&nbsp;boundary&nbsp;of&nbsp;input&nbsp;grid&nbsp;(xin,yin)<br>
+if&nbsp;masked=False.&nbsp;If&nbsp;masked=True,&nbsp;the&nbsp;return&nbsp;value&nbsp;will&nbsp;be&nbsp;a&nbsp;masked<br>
+array&nbsp;with&nbsp;those&nbsp;points&nbsp;masked.&nbsp;If&nbsp;masked&nbsp;is&nbsp;set&nbsp;to&nbsp;a&nbsp;number,&nbsp;then<br>
+points&nbsp;outside&nbsp;the&nbsp;range&nbsp;of&nbsp;xin&nbsp;and&nbsp;yin&nbsp;will&nbsp;be&nbsp;set&nbsp;to&nbsp;that&nbsp;number.<br>
+&nbsp;<br>
+The&nbsp;order&nbsp;keyword&nbsp;can&nbsp;be&nbsp;0&nbsp;for&nbsp;nearest-neighbor&nbsp;interpolation,<br>
+or&nbsp;1&nbsp;for&nbsp;bilinear&nbsp;interpolation&nbsp;(default&nbsp;1).<br>
+&nbsp;<br>
+If&nbsp;datain&nbsp;is&nbsp;a&nbsp;masked&nbsp;array&nbsp;and&nbsp;order=1&nbsp;(bilinear&nbsp;interpolation)&nbsp;is<br>
+used,&nbsp;elements&nbsp;of&nbsp;dataout&nbsp;will&nbsp;be&nbsp;masked&nbsp;if&nbsp;any&nbsp;of&nbsp;the&nbsp;four&nbsp;surrounding<br>
+points&nbsp;in&nbsp;datain&nbsp;are&nbsp;masked.&nbsp;&nbsp;To&nbsp;avoid&nbsp;this,&nbsp;do&nbsp;the&nbsp;interpolation&nbsp;in&nbsp;two<br>
+passes,&nbsp;first&nbsp;with&nbsp;order=1&nbsp;(producing&nbsp;dataout1),&nbsp;then&nbsp;with&nbsp;order=0<br>
+(producing&nbsp;dataout2).&nbsp;&nbsp;Then&nbsp;replace&nbsp;all&nbsp;the&nbsp;masked&nbsp;values&nbsp;in&nbsp;dataout1<br>
+with&nbsp;the&nbsp;corresponding&nbsp;elements&nbsp;in&nbsp;dataout2&nbsp;(using&nbsp;numerix.where).<br>
+This&nbsp;effectively&nbsp;uses&nbsp;nearest&nbsp;neighbor&nbsp;interpolation&nbsp;if&nbsp;any&nbsp;of&nbsp;the<br>
+four&nbsp;surrounding&nbsp;points&nbsp;in&nbsp;datain&nbsp;are&nbsp;masked,&nbsp;and&nbsp;bilinear&nbsp;interpolation<br>
+otherwise.</tt></dd></dl>
+ <dl><dt><a name="-shiftgrid"><strong>shiftgrid</strong></a>(lon0, datain, lonsin, start<font color="#909090">=True</font>)</dt><dd><tt>shift&nbsp;global&nbsp;lat/lon&nbsp;grid&nbsp;east&nbsp;or&nbsp;west.<br>
+assumes&nbsp;wraparound&nbsp;(or&nbsp;cyclic&nbsp;point)&nbsp;is&nbsp;included.<br>
+&nbsp;<br>
+lon0:&nbsp;&nbsp;starting&nbsp;longitude&nbsp;for&nbsp;shifted&nbsp;grid<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(ending&nbsp;longitude&nbsp;if&nbsp;start=False).&nbsp;lon0&nbsp;must&nbsp;be&nbsp;on<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;input&nbsp;grid&nbsp;(within&nbsp;the&nbsp;range&nbsp;of&nbsp;lonsin).<br>
+datain:&nbsp;&nbsp;original&nbsp;data.<br>
+lonsin:&nbsp;&nbsp;original&nbsp;longitudes.<br>
+start[True]:&nbsp;if&nbsp;True,&nbsp;lon0&nbsp;represents&nbsp;the&nbsp;starting&nbsp;longitude<br>
+of&nbsp;the&nbsp;new&nbsp;grid.&nbsp;if&nbsp;False,&nbsp;lon0&nbsp;is&nbsp;the&nbsp;ending&nbsp;longitude.<br>
+&nbsp;<br>
+returns&nbsp;dataout,lonsout&nbsp;(data&nbsp;and&nbsp;longitudes&nbsp;on&nbsp;shifted&nbsp;grid).</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>__version__</strong> = '0.9.8'<br>
+<strong>basemap_datadir</strong> = '/home/jdhunter/dev/lib/python2.5/site-packages/matplotlib/toolkits/basemap/data'<br>
+<strong>has_pynio</strong> = False<br>
+<strong>projection_params</strong> = {'aea': 'lon_0,lat_0,lat_1', 'aeqd': 'lon_0,lat_0', 'cass': 'lon_0,lat_0', 'cyl': 'corners only (no width/height)', 'eqdc': 'lon_0,lat_0,lat_1,lat_2', 'geos': 'lon_0,lat_0,satellite_height', 'gnom': 'lon_0,lat_0', 'laea': 'lon_0,lat_0', 'lcc': 'lon_0,lat_0,lat_1,lat_2', 'merc': 'corners plus lat_ts (no width/height)', ...}<br>
+<strong>rcParams</strong> = {'figure.subplot.right': 0.90000000000000002, 'm...persize': 'letter', 'svg.embed_char_paths': True}<br>
+<strong>supported_projections</strong> = "'aeqd' = Azimuthal Equidistant<font color="#c040c0">\n</font>'poly' = Polyconi...South-Polar Lambert Azimuthal<font color="#c040c0">\n</font>'robin' = Robinson<font color="#c040c0">\n</font>"</td></tr></table>
+@footer@

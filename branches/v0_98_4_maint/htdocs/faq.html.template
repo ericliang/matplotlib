@@ -1,0 +1,1060 @@
+
+FAQs = (
+
+
+    ('BUGREPORT',
+     'How do I report a problem?',
+"""\
+OK, this is not a FAQ, but I wish it were <wink>.<p>
+
+If you are having a problem <i>compiling</i> matplotlib, provide your
+operating system and matplotlib version, any changes you may have made
+to <tt>setup.py</tt> or <tt>setupext.py</tt>, and the output of
+
+<pre>
+  > rm -rf build
+  > python setup.py build
+</pre>
+
+
+If matplotlib compiled fine, but <i>no scripts run</i>, see <a
+href=faq.html#FAILURE>failure</a>.<p>
+
+If the matplotlib example scripts are running fine, and you have a
+script that doesn't work that <i>you think may be a bug</i>, please
+provide as much information as possible in your bug report, in
+particular which matplotlib version and backend you are using,
+operating system, and any nonstandard <a href=matplotlibrc>rc</a>
+options.  Some of this information is provided simply by running your
+script with <tt>python myscript.py --verbose-helpful</tt> and posting
+the output along with your problem description.  Ideally, you should
+provide a standalone script that runs on our system and exposes the
+bug -- if you do this there is a very good chance the problem will be
+fixed.  If we can't replicate the bug, it is much harder to fix.
+Sometimes you cannot do this because the code or data is proprietary
+-- in this case it is often helpful to post an image along with your
+description that shows the problem.<p>
+
+You can post problems either to the <a
+href=http://lists.sourceforge.net/mailman/listinfo/matplotlib-users>matplotlib-users</a>
+mailing list, or the sourceforge <a
+href=http://sourceforge.net/tracker/?group_id=80706&atid=560720>bugs</a>
+page.  I prefer the mailing list, because it gets read by more people,
+and if it is a real and pesky bug I'll ask you to post it to the
+sourceforge site.  But some people don't want the extra email traffic
+of the mailing list, which is understandable, so it is fine to just
+post to the sourceforge site.<p>
+"""),
+
+
+    ('FAILURE',
+    "matplotlib compiled fine, but I can't get anything to plot" , """\
+The first thing to try is to remove <tt>site-packages/matplotlib</tt>
+and reinstall.  If you are running the windows installer or using some
+other package, that is all you need to do.  If you are compiling
+matplotlib yourself, you also need to remove the <tt>build</tt>
+subdirectory of the matplotlib src tree you are compiling from.  It is
+not enough to do <tt>python setup.py clean</tt>.  Try rebuilding and
+reinstalling matplotlib after removing these two directories and see
+if that helps.  If not, read on.<p>
+
+The best way to test your install is by running a script, not working
+interactively from a python shell or an integrated development
+environment such as IDLE.  Each of those brings additional
+complexities, as described at <a href=interactive.html>interactive
+matplotlib</a> and this <a href=faq.html#FREEZE>faq</a>.  So open up a
+UNIX shell (or a DOS command prompt) and cd into a directory
+containing a minimal example in a file.  Something like <a
+href=examples/pylab_examples/simple_plot.py>simple_plot.py</a> or just this
+
+<pre>
+from pylab import *
+plot([1,2,3])
+show()
+</pre>
+
+and run it with (the verbose flag below is for matplotlib-0.64 or later)
+
+<pre>
+  > python simple_plot.py --verbose-helpful
+</pre>
+
+This will give you additional information about which backends
+matplotlib is loading, version information, and more.  At this point
+you might want to make sure you understand matplotlib's configuration
+process, governed by the configuration file <a
+href=matplotlibrc>matplotlibrc</a> which contains instructions within
+and the concept of the matplotlib <a
+href=backends.html>backend</a>.<p>
+
+If you are still having trouble, please post a question and the output
+of <tt>--verbose-helpful</tt> to the <a
+href=http://sourceforge.net/mail/?group_id=80706>mailing list.</a>
+
+"""),
+
+    ('PYGTK24',
+    "I can't compile matplotlib with pygtk 2.4." , """\
+This is a <a
+href="http://bugzilla.gnome.org/show_bug.cgi?id=155304">pygtk
+bug</a>.  The patch is in pygtk CVS.  You basically need to add the
+    G_BEGIN_DECLS/G_END_DECLS macros, and rename typename parameter to
+    typename_
+
+<pre>
+-			  const char *typename,
++			  const char *typename_,
+</pre>
+"""),
+
+
+
+    ('CLICKMAPS', "Can I use matplotlib to make clickable images?" ,
+    """
+Yes.  Andrew Dalke of <a href=http://www.dalkescientific.com>Dalke
+Scientific</a> has written a nice <a
+href=http://www.dalkescientific.com/writings/diary/archive/2005/04/24/interactive_html.html>article</a>
+on how to make html click maps with matplotlib agg PNGs.  We would
+also like to add this functionality to SVG and add a SWF backend to
+support these kind of images.  If you are interested in contributing
+to these efforts that would be great.  If you need them but aren't up
+to making the contribution yourself, please contact us on the <a href=http://sourceforge.net/mail/?group_id=80706>mailing
+list</a> and fill out a <a href=http://sourceforge.net/tracker/?group_id=80706&atid=560721>support request</a>.
+
+"""),
+
+    ('ZORDER',
+    "How can I control the order that my plot elements appear" , """\
+Within an axes, the order that the various lines, markers, text,
+collections, etc appear is determined by the <tt>zorder</tt> property
+(matplotlib-0.65 or later).  The default order is patches, lines,
+text, with collections of lines and collections of patches appearing
+at the same level as regular lines and patches, respectively.  See <a
+href=examples/pylab_examples/zorder_demo.py>zorder_demo.py</a>.
+"""),
+
+    ('TOOLBAR2',
+    'Nothing happens when I click the new toolbar buttons', """\
+The Home, Forward and back buttons on the new toolbar are used to
+navigate between previously defined views.  If you haven't navigated
+anywhere, these buttons will have no effect.  The Pan/Zoom, and zoom
+to rect buttons activate a navigation mode, but by themselves do
+nothing.  After clicking one of them, you need to put your mouse over
+and axes and click/drag.  Then the navigation tools take effect - see
+the <a href=tutorial.html#toolbar2>toolbar2 tutorial</a>.
+"""),
+
+    ('LOG',
+     "I'm getting a log of zero error even though I know all of my data are positive",
+     """\
+This was a problem that occurs in versions of matplotlib < 0.72.
+The log zero error is occurring when the transformation is made on the
+<i>axes limits</i> and not on the data.  The autoscaler picks the best
+min/max for the data coordinates, and will round down or up to
+facilitate nice integer ticking.  When you plot with linear coords,
+the autoscaler makes its pick according to linear scaling, and if when
+you change scales the old scaling is in effect and the log transform
+fails when converting the viewport.<p>
+
+Solution: The best solution is to upgrade your matplotlib to >= 0.72.
+If this is not a good option, rescale the axes after changing coords,
+either manually
+
+<pre>
+  ax.set_yscale("log")
+  ax.set_xscale("log")
+  axis([minx, maxx, miny, maxy])
+</pre>
+
+or use the autoscaler
+
+<pre>
+  ax.set_yscale("log")
+  ax.set_xscale("log")
+  ax.autoscale_view()
+</pre>
+
+or set your log coords *before* calling a plot command
+
+<pre>
+  ax = gca()
+  ax.set_yscale("log")
+  ax.set_xscale("log")
+  errorbar(x,y,err,fmt='o')
+</pre>
+
+and then the errorbar command will pick a "locator" to handle ticking
+and viewport scaling appropriately from the outset.  This is the
+approach taken in <a href=examples/pylab_examples/log_bar.py>log_bar.py</a>.
+"""),
+
+    ('EQUAL',
+     'How do I make my figure square / axes sides equal?',
+     """\
+There are three considerations: the width/height of the figure, of the
+axes, and the view limits
+
+<pre>
+figure(figsize=(8,8))       # figure sides equal
+axes([0.1, 0.1, 0.8, 0.8])  # axes width, height equal
+plot(something)
+axis([-5, 5, -5, 5])        # view limits equal
+</pre>
+
+Note that your display device may not have the same dpi, in which case
+your image will still not look square on your display.  I should
+probably add dpix and dpiy to correct for this.  ZBut your postscript
+and other hardcopy will be correct.<p>
+
+If you really want square on a display with different horizontal and
+vertical resolutions, you can do a little hack on the figure width and
+height to correct for the display differences.
+"""),
+
+    ('FREEZE',
+    'My matplotlib window is freezing',
+
+""" Often times this is caused by running matplotlib with a backend
+that is not compatible with your shell or IDE.<p>
+
+There are known incompatiblities with some of the backends with some
+of the IDEs, because they use different GUI event handlers. If you
+want to use matplotlib from an IDE, please consult the backends
+documentation for compatibility information. You will have the
+greatest likelihood of success if you run the examples from the
+command shell or by double clicking on them, rather than from an
+IDE.<p>
+
+If you are trying to generate plots interactively from the shell, you
+need a shell that is compatible with your backend.  Currently, your
+best bet is TkAgg from the standard python shell or ipython.  There
+are a couple of custom GTK shells you can use, described <a
+href=http://matplotlib.sourceforge.net/interactive.html>here</a>.<p>
+
+To find out which IDEs are compatible with your backend, see <a
+href=http://matplotlib.sourceforge.net/backends.html>backend</a>.<p>
+
+To test whether you are experiencing a problem inherent in matplotlib,
+you should open up a command shell and try to run one of the examples
+from the matplotlib src distribution (the *.zip file for windows
+users); Eg,
+
+<pre>
+  c:\matplotlib\examples> python simple_plot.py
+</pre>
+
+If this works fine, then you likely have an IDE/shell problem and not
+a matplotlib specific problem.  Unfortunately, this problem tends to
+crop up a lot.  See for example <a
+href=http://sourceforge.net/mailarchive/message.php?msg_id=8610351>this
+thread</a> and the responses to that post for more information.
+
+"""),
+
+    ('MOVIE', 'How do I make a movie with matplotlib?', """If you
+want to take an animated plot and turn it into a movie, the best
+approach is to save a series of image files (eg PNG) and use an
+external tool to convert them to a movie.  There is a matplotlib
+tutorial on this subject <a
+href=http://web.media.mit.edu/~lifton/code/GraphMovies>here</a>.  You
+can use <a
+href=http://www.mplayerhq.hu/DOCS/HTML/en/mencoder.html>mencoder</a>,
+which is part of the <a href=http://www.mplayerhq.hu>mplayer</a> suite
+for this
+
+<pre>
+#fps (frames per second) controls the play speed
+mencoder 'mf://*.png' -mf type=png:fps=10 -ovc \\
+   lavc -lavcopts vcodec=wmv2 -oac copy -o animation.avi
+</pre>
+
+The swiss army knife of image tools, ImageMagick's <a
+href=http://imagemagick.sourceforge.net/www/convert.html>convert</a>,
+works for this as well.<p>
+
+Here is a simple example script that saves some PNGs, makes them into
+a movie, and then cleans up.
+
+<pre>
+import os, sys
+from pylab import *
+
+files = []
+figure(figsize=(5,5))
+ax = subplot(111)
+for i in range(50):  # 50 frames
+    cla()
+    imshow(rand(5,5), interpolation='nearest')
+    fname = '_tmp%03d.png'%i
+    print 'Saving frame', fname
+    savefig(fname)
+    files.append(fname)
+
+print 'Making movie animation.mpg - this make take a while'
+os.system("mencoder 'mf://_tmp*.png' -mf type=png:fps=10 \\
+  -ovc lavc -lavcopts vcodec=wmv2 -oac copy -o animation.mpg")
+
+# cleanup
+for fname in files: os.remove(fname)
+
+</pre>
+"""),
+
+    ('FONTMISSING', "When I start matplotlib, I am getting warnings about not being able to find fonts?",
+"""
+matplotlib uses a cache file to store information about your system fonts, and occasionally we reorganize our directory schemes or your system may have changed.  When you get warnings about missing fonts, try removing your font cache directory "fontManager.cache" which is located in your ".matplotlib" configuration directory.  Where this is depends on your operating system but see the prolog of <a href=matplotlibrc>matplotlibrc</a> for information on where this is stored.  You can also run a test pylab script with <tt>--verbose-helpful</tt> or <tt>--verbose-debug</tt>, eg
+
+<pre>
+> python test.py --verbose-helpful
+</pre>
+
+to get additionaly diagnostic information about which <tt>matplotlibrc</tt> file is loaded, which font cache directory is used, which fonts are being used, etc...
+"""),
+
+    ('WRONGDIR',
+    "When I try to import pylab, I get an error about no _transform.so or ft2font.so",
+
+"""
+If you are trying to run matplotlib from the matplotlib build dir, you
+will fail.  This is because the matplotlib python src dir is in your
+module path, but it does not include the compiled extension modules
+which are in site-packages/matplotlib.  Change into another directory
+and try again.<p>
+
+If the problem persists, see if the required object files are in
+site-packages/matplotlib.  If not, something is wrong with your
+install.  You may want to try rebuilding with
+<pre>
+   > rm -rf build
+   > python setup.py build > build.out
+</pre>
+
+and post the results to the matplotlib-devel or matplotlib-users
+<a href=http://sourceforge.net/mail/?group_id=80706>mailing lists</a>.
+"""),
+
+
+    ('EXAMPLES',
+    'Where can I find information about what matplotlib can do?',
+"""\
+There are a lot of features under the hood in matplotlib.  This
+tutorial is a good place to start.  When you are finished with it, the
+next step (other than getting to work on your own figures, of course)
+is to download the source distribution and take a look at the <a
+href=http://matplotlib.sf.net/examples>examples</a> subdirectory.  If
+you are working with date plots you'll find several date demos with
+obvious filenames like <a
+href=examples/pylab_examples/date_demo1.py>date_demo1.py</a>.  Likewise,
+you'll find examples for images (<a
+href=examples/pylab_examples/image_demo.py>image_demo.py</a>), contouring
+(<a href=examples/pylab_examples/contour_demo.py>contour_demo.py</a>, using
+matplotlib with a graphical user interface (<a
+href=examples/pylab_examples/embedding_in_wx.py>examples/user_interfaces/embedding_in_wx.py</a> and
+many more.  At last count, there were 116 examples.  Because these are
+not included with the standard windows installer, they are often
+overlooked, which is why I emphasize them here.<p>
+
+The next place to turn to find the hidden gems is the <a
+href=whats_new.html>what's new</a> page.  Every feature ever
+introduced into matplotlib is listed on that page with the version it
+was introduced, usually with links to examples and functions.
+Scrolling through that page is one of the best ways to find out what
+capabilities and customizations are supported.<p>
+"""),
+
+
+    ('LARGEPS',
+    "My PS/EPS files are huge; what's wrong?",
+"""
+As of matplotlib-0.91.0, only the glyphs that are needed for the plot
+are saved in the Postscript file.  This significantly reduces file
+sizes.  To revert to the old behavior, where entire font files are
+saved in the Postscript file, you can set the parameter 'ps.fonttype'
+to 42.
+
+Starting with matplotlib-0.87, it is also possible to reduce
+Postscript file sizes by using the standard Postscript fonts, rather
+than embedding Truetype files.  Just set the parameter 'ps.useafm' to
+True.
+"""),
+
+   ('PROMPT',
+    "After my matplotlib script runs, I get a python shell prompt. What's going on?",
+"""
+Tkinter, used by the default windows backend TkAgg does not have a mainloop
+like GTK or WX.  We needed a way to keep the figure open, and decided
+the best way was to switch into interactive mode in python.  This has
+the additional benefit that you can issue additional python commands
+to customize your figure interactively, if you want.
+"""),
+
+   ('USE',
+    "matplotlib seems to be ignoring the <tt>use</tt> command",
+"""
+You must use the use command before importing pylab, as
+described on <a href=backends.html>backends</a>
+
+<pre>
+  >>> import matplotlib
+  >>> matplotlib.use('Agg')
+  >>> from pylab import *
+</pre>
+
+Note that if you are using an IDE like pycrust, pythonwin, or IDLE,
+pylab may have already been loaded, and subsequent calls
+to <tt>use</tt> or <tt>from pylab import *</tt> will have
+no effect unless you explicitly force a module reload.  """),
+
+    ('VERSIONS',
+    'What do the version numbers mean?',
+
+    """
+The system has been evolving a bit, but here is what I am currently
+using
+
+<ul>
+
+<li>0.50, 0.60, etc.: major releases to wider community.  Should be
+thoroughly bug tested and vetted</li>
+
+<li>0.51, 0.52, etc.: new features released to matplotlib-users for
+bug-vetting</li>
+
+<li>0.51.1, 0.51.2, etc.: bug fix releases.</li>
+
+</ul>
+"""),
+
+
+    ('SLOW', 'matplotlib seems painfully slow, am I doing something wrong?',
+
+     """\
+Hopefully, yes.  A lot of work has gone into making matplotlib
+reasonably fast plotting largish arrays and image data.  If things
+seem exceptionally pokey, it may indicate a problem in your setup.
+
+Also, if you are running a python script, make sure your interactive
+setting in your <a href=matplotlibrc>matplotlibrc</a> is <tt>False</tt>;
+otherwise the figure will be redrawn with every plotting command when
+what you want is for the figure to be drawn only once at the end of
+the script.  See <a href=interactive.html>interactive</a> and <a
+href=faq.html#SHOW>what's up with show?</a> for more information.<p>
+
+Another possibility to speed things up is to use <a
+href=matplotlib.collections.html>collections</a>, which were designed
+to efficiently plot large numbers of objects with some shared
+properties.  If you find youself issuing many spearate plot commands,
+or instantiating many Line2D or Patch objects, you may benefit from
+recoding with collections.  See the matplotlib.axes.Axes
+implementatation of scatter and pcolor, and the matplotlib.finance
+module, for examples.<p>
+
+If you are experiencing problems with performance, please post an
+example to the mailing list.  It would be helpful to provide as much
+information as possible, such as what OS you are on, what backend you
+are using, the size of the data arrays you are plotting, and the
+output of <tt>python yourscript.py --verbose-helpful</tt>.
+"""),
+
+    ('MATPLOTLIBRC',
+     'How do I customize the default behavior of matplotib?',
+"""
+Recent versions of matplotlib (0.51 or later) use a configuration file
+to set everything from the default font, to the figure size, to the
+default line width.  See <a href=matplotlibrc>matplotlibrc</a> for a
+sample config file and information on how to use it.  """),
+
+    ('OO',
+     'Is there any guide to using matplotlib with pythonic / OO /API rather than the pylab interface?',
+
+"""
+
+There is no official documentation yet, but there are a few resources
+
+<ul>
+
+  <li>The class documentation at <a href=classdocs.html>classdocs</a>.
+      </li>
+
+  <li>Andrew Dalke has a nice tutorial style <a
+  href=http://www.dalkescientific.com/writings/diary/archive/2005/04/23/matplotlib_without_gui.html>article</a>
+  on the API on the <a href=http://www.dalkescientific.com>Dalke
+  Scientific</a> website.
+
+  <li>Many examples in the <a href=examples>examples</a> directory in
+      the matplotlib src distribution illustrate the use of the API.
+      Eg,
+
+     <pre>
+
+      > grep -l FigureCanvas *.py
+
+      agg_oo.py dynamic_demo_wx.py dynamic_image_wxagg.py
+      embedding_in_gtk2.py embedding_in_gtk.py embedding_in_qt.py
+      embedding_in_tk2.py embedding_in_tk.py embedding_in_wx2.py
+      embedding_in_wx3.py embedding_in_wx4.py embedding_in_wx.py
+      gtk_spreadsheet.py histogram_demo_canvasagg.py mpl_with_glade.py
+      object_picker.py printing_in_wx.py to_numeric.py webapp_demo.py
+      wxcursor_demo.py
+
+     </pre>
+ </li>
+
+  <li><a
+      href=examples/pylab_examples/pythonic_matplotlib.py>pythonic_matplotlib.py</a>
+      describes the translation from the matlab style interface to the
+      pythonic, OO interface.</li>
+
+  <li> <tt>matplotlib/pylab.py </tt> in <tt>site-packages</tt> or the
+      matplotlib src directory <tt>lib</tt> is a useful resource.  The
+      pylab interface is just a thin wrapper around the API, so you
+      can look and see how it is done there, translating all the gcf()
+      calls to your figure instance, all the gca() calls to your axes
+      instance, and so on.</li>
+
+  <li>You can always post questions to <a
+      href=http://sourceforge.net/mailarchive/forum.php?forum_id=33405>matplotlib-users</a></li>
+
+</ul>
+
+
+I'm working on some additional documentation but it is not ready yet.
+
+"""),
+
+    ('PY2EXE', 'Can I freeze matplotlib with py2exe', """\
+
+Yes.  I have successfully frozen example scripts using the TkAgg,
+GTKAgg and WxAgg backends.  One trick is to make sure that py2exe can
+find all the matplotlib data files.  Recent versions of matplotlib
+(0.54.3 and later) support py2exe by looking in the py2exe dist dir
+for a <tt>matplotlibdata</tt> subdir.  Thus if your <tt>setup.py</tt>
+script looks like
+
+<pre>
+from distutils.core import setup
+import glob
+import py2exe
+
+data = glob.glob(r'C:\Python23\share\matplotlib\*')
+data.append(r'C:\Python23\share\matplotlib\matplotlibrc')
+
+setup( console    = ["simple_plot.py"],
+       data_files = [("matplotlibdata", data)],
+      )
+
+</pre>
+
+You don't need anything special in your plotting script.  Eg, the
+following works fine with recent versions of py2exe
+
+<pre>
+from pylab import *
+plot([1,2,3])
+show()
+</pre>
+
+matplotlib should be able to find your matplotlib data directory.  You
+can still configure the defaults in
+<tt>dist/matplotlibdata/matplotlibrc</tt> after the application has
+been frozen.<p>
+
+Note you may get warnings like "The following modules appear to be
+missing" but in general I have found these to be harmless for freezing
+matplotlib.<p>
+
+To freeze GTK or GTKAgg, you need to do a couple of extra things,
+including creating a <tt>setup.cfg</tt> file and copying the
+<tt>lib</tt> and <tt>etc</tt> subdirectories of yout GTK install tree
+to your py2exe dist subdir.  See the <tt>simple_plot_gtk</tt>
+subdirectory in the <a href=py2exe_examples.zip>py2exe examples</a>
+zip file.<p>
+
+If you want to reduce the size of your application by excluding
+certain backends, see the <a
+href=http://starship.python.net/crew/theller/moin.cgi/MatPlotLib>matplotlib
+py2exe wiki entry</a>.
+
+"""),
+
+    ('CUSTOM',
+    'How do I dynamically change the rc defaults?',
+    r"""
+If you want to customize a session of matplotlib, eg, the default font,
+linewidth, fontsize, etc, use the <a
+href=matplotlib.pyplot.html#-rc>rc</a> command.  This changes the
+default for the rest of the session, or until you issue another rc
+command.  See <a examples/pylab_examples/customize_rc.py>customize_rc.py</a> for
+example usage."""),
+
+
+    ('GTKPATH',
+    'I cannot import gtk / gdk / gobject',
+    """
+
+Basically, there are 3 things that I've seen cause failure (relative
+likelihood in parentheses):
+
+ <ul>
+
+ <li> You didn't set the path properly (95% of the time).
+ <it>Solution:</it> Add the lib and bin subdirs of your GTK install
+ directory to your PATH.  See the <a
+ href=http://www.async.com.br/faq/pygtk/index.py?req=show&file=faq21.002.htp>pygtk
+ FAQ entry</a> for one way to do this.</li>
+
+ <li> You previously installed some other GTK app and one of libiconv
+   / libgtk /libgdk is in your windows system dir and causing a
+   problem (4% of the time).  <it>Solution:</it> Remove these old libs.</li>
+
+ <li> You accidentally installed GTK-Development lib and not
+   GTK-Runtime (1% of the time).  <it>Solution:</it> install the
+   runtime from <a href=http://prdownloads.sourceforge.net/gtk-win>
+   dropline</a>.</ul>
+
+There is a long thread on the pygtk mailing list where Cousing Stanley
+got his gtk corrupted; read <a
+href=http://www.mail-archive.com/pygtk@daa.com.au/msg07324.html>this
+thread</a>, which is filled with good troubleshooting advice.
+
+""" ),
+
+
+    ('WHICHBACKEND',
+     'Which backend should I use?',
+     """
+Each of the backends offers different strengths.  See the
+     <a href="backends.html#comparison">comparison of backends for a
+       discussion of the issues.</p>
+"""),
+
+    ('DATES',
+     'Can I plot dates?',
+     r"""
+See the <a href=tutorial.html#dates>dates tutorial</a>.
+
+"""),
+
+    ('TWOSCALES',
+     'Can I plot data with two y axes scales?',
+     r"""
+As of matplotlib-0.53, there is support for this.  See <a
+href=examples/pylab_examples/two_scales.py>two_scales.py</a>.
+"""),
+
+    ('MATHTEXT',
+     'Can I include math expressions in my figures?',
+     r"""As of matplotlib-0.51, you can use TeX markup in any text element.
+Just use raw strings and enclose the strings with dollar signs, as in
+<tt>title(r'$\alpha > \beta_i$')</tt>.  See <a
+href=screenshots.html#mathtext_demo>screenshot</a> and the <a
+href=matplotlib.mathtext.html>mathtext</a> documentation for usage,
+requirements and backend information.
+"""),
+
+    ('BATCHMODE',
+     'Can I just generate images without having a window popup?',
+     """
+The easiest way to do this is use an image backend, either <a
+href=backends.html#Agg>Agg</a>, or <a href=backends.html#Cairo>Cairo</a>,
+if you want to generate PNG images, e.g., for use in a web page, or
+     PS, PDF or SVG
+if you want publication quality, scalable images.  All of these
+backends run on all of the major platforms.  One additional option on
+an X windows platform is to run the GTK backend under an Xvfb, which
+works nicely and is not too hard to setup.  Contact
+jdhunter@ace.bsd.uchicago.edu for more information if you are
+interested setting this up."""),
+
+    ('APPSERVER',
+     'Can I use matplotlib in a web application server?',
+     """
+
+Yes.  matplotlb can be used with any web application server that can
+call python.  It has been used with mod_python, xml_rpc, and other
+frameworks.  You'll want to use one of the image backends; <a
+href=faq.html#BATCHMODE>see image backends</a>.  You can
+work around the problem of small raster sizes by making your fonts
+appear larger for a given by decreasing the figure size and increasing
+the dpi. See <a href=fonts.html#TTFFONTS>ttf fonts</a> for more
+information.
+
+matplotlib keeps a cache of the font information it finds on your
+system, so it needs a writable directory.  It first tries
+<tt>HOME</tt> and if it is not found falls back on it's data path,
+which can be set with the <tt>MATPLOTLIBDATA</tt> environment
+variable.  <tt>MATPLOTLIBDATA</tt> is the directory in which all of
+matplotlib's fonts, etc, live, and is not writable on a typical
+install, so the best approach is to set <tt>HOME</tt> to a writable
+directory.
+
+Also, I advise you not to use the pylab interface in a web application
+server (though you can).  pylab does a fair amount of work under the
+hood, managing the current figure and so on, and in an application
+server you might rather have full control of the whole process.  pylab
+is simply a thin wrapper to the object oriented matplotlib API; see
+the <a href=faq.html#OO>API FAQ</a>.
+
+
+"""
+
+     ),
+
+    ('SHOW',
+     "What's up with 'show'?  Do I have to use it?",
+     """
+
+
+You do not need this function with the image backends (Agg, Cairo, PS,
+PDF, SVG) but you do need it with the GUI (GTK, WX, TkAgg, GTKAgg,
+GTKCairo) backends, unless you are running matplotlib
+in <a href=interactive.html>interactive mode</a>.  <p>
+
+Because it is expensive to draw, I want to avoid redrawing the figure
+many times in a batch script such as the following<p>
+
+<pre>
+  plot([1,2,3])            # draw here ?
+  xlabel('time')           # and here ?
+  ylabel('volts')          # and here ?
+  title('a simple plot')   # and here ?
+  show()
+</pre>
+
+It is possible to force matplotlib to draw after every command, which
+is what you want in <a href=interactive.html>interactive mode</a>, but
+in a script you want to defer all drawing until the script has
+executed.  This is especially important for complex figures that take
+some time to draw.  'show' is designed to tell matplotlib that you're
+all done issuing commands and you want to draw the figure now.  In the
+TkAgg backend, which can be used from an arbitrary python shell
+interactively, it also sets interactive mode.  So you can launch your
+script with <tt>python -i myscript.py -dTkAgg</tt> and then change it
+interactively from the shell.
+
+<b>IMPORTANT: show should be called at most once per script and it should
+be the last line of your script.  At that point, the GUI takes control
+of the interpreter.  If you want to force a figure draw, use <a
+href=matplotlib.pyplot.html#-draw>draw</a> instead.</b> """),
+
+    ('PSGUI',
+     'Can I save PS/EPS/PDF/SVG etc. from a GUI backend?',
+     """
+
+Yep.  Just choose a filename that contains the desired extension and
+matplotlib will try and do the right thing.  That is, if it's an eps
+file, it will include a bounding box, if it's a ps file it will output
+plain postscript.  It is recommended you use matplotlib-0.91 or later
+for this feature to work properly, since far fewer options are
+available for all GUI backends prior to that.
+"""),
+
+  ('TEXTOVERLAP',
+   'My title or ticklabel or whatever is overlapping some other figure element, what should I do?',
+   """
+The default subplots take up a lot of room.  If you need extra space
+for particularly large labels and titles, consider using custom <a
+href=matplotlib.pyplot.html#-axes>axes</a>, eg, <tt>axes([0.3, 0.3, 0.6,
+0.6])</tt> gives you more room to the left and at the bottom than the
+standard axes.</p>
+
+Other things to consider.  With multiple subplots, eg, multiple rows,
+turn off the xticklabels for all but the lowest subplot if they are
+the same in all subplots <tt>xticks([])</tt>.  You
+can make the fontsizes smaller, as in <tt>xlabel('time (s)',
+fontsize=8)</tt> or, for the tick labels
+
+<pre>
+locs, labels = xticks()
+set(labels, fontsize=8)
+</pre>
+
+You can also set the default ticklabel size in your <a
+href=faq.html#MATPLOTLIBRC>matplotlibrc</a> file or override it for a
+single plot using <a
+href=faq.html#CUSTOM>rcParams</a>."""),
+
+
+    ('DYNAMIC',
+     'Can matplotlib do dynamic plots, like digital oscilloscopes or animations?',
+    """
+Absolutely.  See for example, <a href=examples/animation/anim.py>anim.py</a> and <a
+href=examples/animation/system_monitor.py>system_monitor.py</a>"""),
+
+    ('AXES',
+     'Can I change the size of the subplots',
+     """
+
+subplot is just a helper function to generate regularly spaced axes.
+For more fine-grained control, you can position axes anywhere you want
+in any size using the axes command.  See
+the <a href=matplotlib.pyplot.html#-axes>axes command</a> and the example
+<a href=examples/pylab_examples/axes_demo.py>axes_demo.py<a/>.<p>
+
+"""),
+
+    ('IMAGES',
+    'Can matplotlib handle image data?',
+     """
+Yes - you can now plot images from numpy arrays with <a
+href=matplotlib.pyplot.html#-imshow>imshow</a>.  You can load png
+files into arrays <a href=matplotlib.pyplot.html#-imread>imread</a>;
+other image loaders coming soon."""),
+
+    ('ROTATETICKS',
+     'How do I make vertical xticklabels?',
+     """
+You can set the rotation of any text instance to vertical
+
+<pre>
+    from pylab import *
+    plot([1,2,3,4], [1,4,9,16])
+    set(gca(), 'xticks', [1,2,3,4])
+    labels = set(gca(), 'xticklabels',
+          ['Frogs', 'Hogs', 'Bogs', 'Slogs'])
+    set(labels, 'rotation', 'vertical')
+    show()
+</pre>
+"""),
+
+     ('WINFONTS',
+      "On windows with GTK, I'm getting lots of messages about not finding the  Times font",
+    r"""
+
+Apparently GTK changed the default pango font file, because this is a
+new problem.  You can set font aliases in
+C:\GTK\etc\pango\pango.aliases.  Add a line like
+
+<pre>
+times = "times new roman,angsana new,mingliu,simsun,\\
+         gulimche,ms gothic,latha,mangal,code2000"
+</pre>
+
+Another alternative is suggested by Gary Ruben <gazzar@email.com>
+
+<pre>
+I just installed Gimp 2 for windows along with the latest GTK+ runtime
+and noticed that it exhibited the same font problem I've been
+experiencing for ages with matplotlib. I was getting WARNING **:
+
+  Couldn't load font "MS Sans Serif 8" falling back to "Sans 8"
+  errors.
+
+It's addressed in their FAQ,
+http://www2.arnes.si/~sopjsimo/gimp/faq.html>, reproduced here:
+
+  # I installed Gimp 2.0 on Windows 9x/ME or NT 4, and I'm getting a
+  lot of messages saying ** (gimp-2.0.exe:4294830849): WARNING **:
+  Couldn't load font "MS Sans Serif 8" falling back to "Sans 8". What
+  should I do?
+
+  # You have two options:
+
+  * Go to Control Panel->Display properties->Apperance tab, and set
+  all fonts to Tahoma (or any other TrueType font).
+
+  * Uninstall GTK+ 2.2.4, then re-install it without the GTK-Wimp
+  component.
+
+I took option B and now all is well with both Gimp and Matplotlib.
+I'm running Win98 and the Gimp FAQ entry hints that it may be a
+problem in Win98,ME and NT installations.
+</pre>
+
+
+"""
+
+),
+
+
+     ('FREETYPE2',
+      "Why are my fonts not being rendered properly?",
+    """
+This is probably due to an outdated freetype2 library.
+See <a href=matplotlib.font_manager.html>font manager
+docs</a> for details.
+""" ),
+
+ ('SVG-BAKOMA-FONTS-MATHTEXT',
+      """My SVG viewer doesn't properly display special (TeX) characters
+      ('\sum', '\infty',etc.) generated by mathtext.  Is this a bug?""",
+    """
+As of matplotlib-0.91.0, the glyph outlines for the font are embedded
+directly in the SVG file, so this should not occur.
+
+For matplotlib-0.90.0 and earlier,
+you need to install the BaKoMa fonts (TrueType version of the Computer
+Modern fonts) on your system. The BaKoMa fonts come packaged with
+matplotlib.  They are located in the
+"site-packages/matplotlib/mpl-data/fonts/ttf" dir (the cm*.ttf files).
+Installation of the fonts varies from OS to OS.
+""" ),
+
+      ('LEAKS',
+       'matplotlib appears to be leaking memory, what should I do?',
+"""\
+First, determine if it is a true memory leak.  Python allocates memory
+in pools, rather than one object at a time, which can make memory leaks
+difficult to diagnose.  Memory usage may appear to increase rapidly
+with each iteration, but should eventually reach a steady state if no
+true memory leaks exist.  (For more fine-grained memory usage
+reporting, you can build a custom Python with
+the <tt>--without-pymalloc</tt> flag, which disables pool allocation.)
+If after sufficient iterations, you still see that memory usage is
+increasing, it is a likely a bonafide memory leak that should be
+reported.<p>
+
+The unit directory of the source tree contains an example scripts
+useful for diagnosing and reporting memory leaks.  For
+example, <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_hawaii3.py?view=markup"><tt>memleak_hawaii.py</tt></a>
+  is useful for finding plotting-related memory leaks,
+  and <a href="http://matplotlib.svn.sourceforge.net/viewvc/matplotlib/trunk/matplotlib/unit/memleak_gui.py?view=markup"><tt>memleak_gui.py</tt></a>
+    helps find memory leaks in the GUI-backend.  Please use
+something like these when reporting leaks so we get an idea of the
+magnitude of the problem (i.e. bytes per figure).  Also please provide
+your platform, matplotlib version, backend and as much information
+about the versions of the libraries you are using: e.g. freetype, png and
+zlib.  It would also help if you posted code so I could look for any
+obvious coding errors vis-a-vis matplotlib.<p>
+
+There are some known memory leaks in matplotlib-0.90.1 when used in
+conjunction with the Tk, Gtk, Wx, Qt and Qt4 GUI backends.  Many of
+these leaks have resolutions in the current SVN version of matplotlib.
+However, the following library versions are known to have leaks that
+matplotlib triggers.  If you have one of these versions and are
+experiencing memory leaks, you should upgrade your library.  This is
+not an exhaustive list.<p>
+
+<ul>
+<li><b>Wx backend:</b>wxPython-2.8.2 or earlier in the 2.8 series
+<li><b>Gtk backend:</b>pygobject-2.12.x, pygtk-2.4.0
+</ul>
+"""),
+
+      ('LEAKS2',
+       """I'd like to help diagnose a memory leak, rather than just
+       report it.  How do you recommend I do that?""",
+"""\
+I thought you'd never ask!  Python memory leaks tend to fall into one
+       of the following categories:
+
+<ul>
+  <li><b>Uncollectable garbage:</b> The Python garbage collector is
+  not infallible.  It can not collect objects that the Python that
+  have <tt>__del__</tt> methods or <tt>weakref</tt>s and contain cycles.  If
+  curious, you can read about this problem in
+  <a href="http://svn.python.org/view/python/trunk/Modules/gc_weakref.txt?view=markup">horrific
+  detail</a>.  You can obtain a list of all uncollectable objects as
+  follows:
+<pre>
+                import gc
+                print gc.garbage
+</pre>
+  To see what cycles these objects participate in, there is a useful
+  function in <tt>matplotlib.cbook</tt>:
+<pre>
+                from matplotlib import cbook
+		cbook.print_cycles(gc.garbage)
+</pre>
+  This will print out all of the reference cycles that are preventing
+  the uncollectable objects from being freed.  The code should then be
+  modified to prevent these cycles, or break the cycles during
+  destruction.<p>
+
+  <li><b>Real references:</b> Sometimes objects are legitimately being
+    held onto by other Python objects.  When this happens, you would
+    see the total number of Python objects in the interpreter increase
+    with each iteration of your test, even when you didn't intend any
+    data to "stick around".  You can print out the total number of
+    objects in the interpreter:
+<pre>
+                import gc
+		print len(gc.get_objects())
+</pre>
+    By comparing the objects before and after your test, you can
+    determine which of them remain between iterations:
+<pre>
+                original_objects = [id(x) for x in gc.get_objects()]
+		# ... do something that leaks objects
+		new_objects = [x for x in gc.get_objects()
+		               if id(x) not in original_objects]
+</pre>
+    You can then determine what is referencing those objects and
+    causing them to stick around:
+<pre>
+                print gc.get_referents(x)
+</pre>
+    The code should be modified to prevent these unwanted references.<p>
+
+   <li><b>C/C++ leaks in extension objects:</b> These is the classic
+   problem of objects that are "malloc'd/new'd" and never
+   "freed/deleted" in C or C++ parlance.  There are many memory
+   debuggers available such as Purify or Valgrind to help find these
+   errors.  I recommend reading the <a href="http://svn.python.org/view/python/trunk/Misc/README.valgrind?view=markup">documentation about using these
+   tools in conjunction with Python</a> to avoid a lot of false positives.
+</ul>
+<p>
+
+"""),
+
+
+     ('GUIWIDGETS',
+      "How do I control the properties of my figure window, eg title, size, etc...?",
+    """
+The only way currently to control the window size from the matlab
+interface is to set the figure size with the figsize option, eg
+figure(figsize=(10,12)).  However, you can set window properties in a
+backend dependent manner with the figure manager instance.
+<pre>
+  manager = get_current_fig_manager()
+</pre>
+<ul>
+<li>backend_gtk*    : manager.window is a gtk.Window instance</li>
+<li>backend_wx*     : manager.frame is a wxFrame instance</li>
+<li>backend_tkagg   : manager.window is a Tk.Tk() instance</li>
+<li>backend_fltkagg : manager.window is a Fltk.Fl_Double_Window</li>
+</ul>
+
+Thus to set the title in a gtk* backend, you could do
+<pre>
+manager = get_current_fig_manager()
+manager.window.set_title('hi mom')
+</pre>
+Of course, now your scripts won't work with other matplotlib
+backends.<p>
+
+In theory, we could abstract the essential window calls and expose
+them in a GUI neutral manner.  We are trying to resist the urge to
+become a GUI wrapping library so we can focus on being a plotting
+library.<p>
+
+If you need a lot of control over GUI properties, you may want to skip
+the pylab interface and use the matplotlib API directly, eg build a
+GTK app which embeds matplotlib.  See examples/user_interfaces/embedding_in*.py in the
+matplotlib src distribution or at <a
+href=http://matplotlib.sf.net/examples>examples</a> explaining how to
+embed matplotlib in your GUI of choice.
+"""),
+
+     )
+
+@header@
+<h2> matplotlib FAQ </h2>
+
+<h2> Questions </h2>
+ <ul>
+ + for name,q,a, in FAQs:
+   <li><a href=faq.html#@name@>@q@</a></li>
+ -
+ </ul>
+
+<h2> Answers </h2>
+ + for name,q,a, in FAQs:
+   <h3><a name=@name@><font color="#0000EE">@q@</font></a></h3>
+     @a@
+   <p>
+ -
+
+
+@footer@
+

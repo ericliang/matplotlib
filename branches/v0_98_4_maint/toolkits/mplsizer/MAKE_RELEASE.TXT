@@ -1,0 +1,2 @@
+To make a release, remove the [egg_info] section of the setup.cfg file
+(or simply remove the entire file if those are the entire contents).
