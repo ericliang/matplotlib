@@ -1,4 +1,8 @@
-=================================================================                                                                      2008-12-09 Released 0.98.4 at svn r6536
+2008-12-10 Fix problem specifying more than one concrete font family
+name - MGD
+
+=================================================================
+2008-12-09 Released 0.98.4 at svn r6536
 
 2008-12-08 Added mdehoon's native macosx backend from sf patch 2179017 - JDH
 
