@@ -1,1 +1,0 @@
-../../examples/skel/basemap4_skel.py

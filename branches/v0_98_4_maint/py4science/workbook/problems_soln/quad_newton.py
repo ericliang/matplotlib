@@ -1,1 +1,0 @@
-../../examples/soln/quad_newton_soln.py

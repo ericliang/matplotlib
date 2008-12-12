@@ -1,1 +1,0 @@
-../../examples/soln/convolution_demo_soln.py

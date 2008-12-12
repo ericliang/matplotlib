@@ -1,1 +1,0 @@
-../../examples/skel/bessel_skel.py

@@ -1,5 +1,0 @@
-include MANIFEST.in
-include Copyright.txt
-include setupegg.py
-include test.py
-include src/*.h
