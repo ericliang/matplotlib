@@ -31,12 +31,14 @@ from matplotlib.cbook import is_string_like, maxdict
 from matplotlib.figure import Figure
 from matplotlib.font_manager import findfont
 from matplotlib.ft2font import FT2Font, LOAD_FORCE_AUTOHINT
-from matplotlib.mathtext import MathTextParser
 from matplotlib.path import Path
 from matplotlib.transforms import Bbox, BboxBase
 
 from _backend_agg import RendererAgg as _RendererAgg
 from matplotlib import _png
+
+from mathtex.mathtex_main import Mathtex
+from mathtex.backends.backend_image import MathtexBackendImage
 
 backend_version = 'v2.2'
 
@@ -66,7 +68,6 @@ class RendererAgg(RendererBase):
         self.draw_image = self._renderer.draw_image
         self.copy_from_bbox = self._renderer.copy_from_bbox
         self.tostring_rgba_minimized = self._renderer.tostring_rgba_minimized
-        self.mathtext_parser = MathTextParser('Agg')
 
         self.bbox = Bbox.from_bounds(0, 0, self.width, self.height)
         if __debug__: verbose.report('RendererAgg.__init__ done',
@@ -99,16 +100,16 @@ class RendererAgg(RendererBase):
 
     def draw_mathtext(self, gc, x, y, s, prop, angle):
         """
-        Draw the math text using matplotlib.mathtext
+        Draw the math text using mathtex.mathtex_main
         """
         if __debug__: verbose.report('RendererAgg.draw_mathtext',
                                      'debug-annoying')
-        ox, oy, width, height, descent, font_image, used_characters = \
-            self.mathtext_parser.parse(s, self.dpi, prop)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+        b = MathtexBackendImage()
 
-        x = int(x) + ox
-        y = int(y) - oy
-        self._renderer.draw_text_image(font_image, x, y + 1, angle, gc)
+        m.render_to_backend(b)
+
+        self._renderer.draw_text_image(b.image, int(x), int(y) + 1, angle, gc)
 
     def draw_text(self, gc, x, y, s, prop, angle, ismath):
         """
@@ -152,9 +153,8 @@ class RendererAgg(RendererBase):
             return w, h, d
 
         if ismath:
-            ox, oy, width, height, descent, fonts, used_characters = \
-                self.mathtext_parser.parse(s, self.dpi, prop)
-            return width, height, descent
+            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+            return m.width, m.height, m.depth
         font = self._get_agg_font(prop)
         font.set_text(s, 0.0, flags=LOAD_FORCE_AUTOHINT)  # the width and height of unrotated string
         w, h = font.get_width_height()
