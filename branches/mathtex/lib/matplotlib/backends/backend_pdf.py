@@ -38,10 +38,11 @@ import matplotlib.type1font as type1font
 import matplotlib.dviread as dviread
 from matplotlib.ft2font import FT2Font, FIXED_WIDTH, ITALIC, LOAD_NO_SCALE, \
     LOAD_NO_HINTING, KERNING_UNFITTED
-from matplotlib.mathtext import MathTextParser
 from matplotlib.transforms import Affine2D, Bbox, BboxBase, TransformedPath
 from matplotlib.path import Path
 from matplotlib import ttconv
+
+from mathtex.mathtex_main import Mathtex
 
 # Overview
 #
@@ -1242,7 +1243,6 @@ class RendererPdf(RendererBase):
         RendererBase.__init__(self)
         self.file = file
         self.gc = self.new_gc()
-        self.mathtext_parser = MathTextParser("Pdf")
         self.image_dpi = image_dpi
         self.tex_font_map = None
 
@@ -1344,9 +1344,22 @@ class RendererPdf(RendererBase):
 
     def draw_mathtext(self, gc, x, y, s, prop, angle):
         # TODO: fix positioning and encoding
-        width, height, descent, glyphs, rects, used_characters = \
-            self.mathtext_parser.parse(s, 72, prop)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+
+        # Generate the dict of used characters
+        used_characters = {}
+        for ox, oy, info in m.glyphs:
+            realpath, stat_key = get_realpath_and_stat(info.font.fname)
+            used_font = used_characters.setdefault(stat_key, (realpath, set()))
+            used_font[1].add(info.num)
+
         self.merge_used_characters(used_characters)
+
+        # Extract the glyphs and rects to render
+        glyphs = [(ox, m.height - oy + info.offset, info.font.fname,
+                   info.fontsize, info.num, info.symbol_name)
+                  for ox, oy, info in m.glyphs]
+        rects = [(x1, m.height - y2, x2 - x1, y2 - y1) for x1, y1, x2, y2 in m.rects]
 
         # When using Type 3 fonts, we can't use character codes higher
         # than 255, so we use the "Do" command to render those
@@ -1641,8 +1654,9 @@ class RendererPdf(RendererBase):
             return w, h, d
 
         if ismath:
-            w, h, d, glyphs, rects, used_characters = \
-                self.mathtext_parser.parse(s, 72, prop)
+            m = Mathtex(s, rcParams['mathtext.fontset'],
+                        prop.get_size_in_points(), 72.0)
+            w, h, d = m.width, m.height, m.depth
 
         elif rcParams['pdf.use14corefonts']:
             font = self._get_font_afm(prop)
