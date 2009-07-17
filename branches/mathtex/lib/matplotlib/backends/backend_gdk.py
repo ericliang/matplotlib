@@ -24,10 +24,11 @@ from matplotlib.backend_bases import RendererBase, GraphicsContextBase, \
      FigureManagerBase, FigureCanvasBase
 from matplotlib.cbook import is_string_like
 from matplotlib.figure import Figure
-from matplotlib.mathtext import MathTextParser
 from matplotlib.transforms import Affine2D
 from matplotlib.backends._backend_gdk import pixbuf_get_pixels_array
 
+from mathtex.mathtex_main import Mathtex
+from mathtex.backends.backend_image import MathtexBackendImage
 
 backend_version = "%d.%d.%d" % gtk.pygtk_version
 _debug = False
@@ -71,7 +72,6 @@ class RendererGDK(RendererBase):
         self.gtkDA = gtkDA
         self.dpi   = dpi
         self._cmap = gtkDA.get_colormap()
-        self.mathtext_parser = MathTextParser("Agg")
 
     def set_pixmap (self, pixmap):
         self.gdkDrawable = pixmap
@@ -159,8 +159,13 @@ class RendererGDK(RendererBase):
 
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
-        ox, oy, width, height, descent, font_image, used_characters = \
-            self.mathtext_parser.parse(s, self.dpi, prop)
+        m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
+                    prop.get_size_in_points(), self.dpi)
+        b = MathtexBackendImage()
+        m.render_to_backend(b)
+
+        width, height = m.width, m.height + m.depth
+        font_image = b.image
 
         if angle==90:
             width, height = height, width
@@ -300,9 +305,9 @@ class RendererGDK(RendererBase):
 
     def get_text_width_height_descent(self, s, prop, ismath):
         if ismath:
-            ox, oy, width, height, descent, font_image, used_characters = \
-                self.mathtext_parser.parse(s, self.dpi, prop)
-            return width, height, descent
+            m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
+                        prop.get_size_in_points(), self.dpi)
+            return m.width, m.height, m.depth
 
         layout, inkRect, logicalRect = self._get_pango_layout(s, prop)
         l, b, w, h = inkRect
