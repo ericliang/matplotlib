@@ -42,11 +42,13 @@ from matplotlib.backend_bases import RendererBase, GraphicsContextBase,\
      FigureManagerBase, FigureCanvasBase
 from matplotlib.cbook        import is_string_like
 from matplotlib.figure       import Figure
-from matplotlib.mathtext     import MathTextParser
 from matplotlib.path         import Path
 from matplotlib.transforms   import Bbox, Affine2D
 from matplotlib.font_manager import ttfFontProperty
 from matplotlib import rcParams
+
+from mathtex.mathtex_main import Mathtex
+from mathtex.backends.backend_cairo import MathtexBackendCairo
 
 _debug = False
 #_debug = True
@@ -94,7 +96,6 @@ class RendererCairo(RendererBase):
         self.gc = GraphicsContextCairo (renderer=self)
         self.text_ctx = cairo.Context (
            cairo.ImageSurface (cairo.FORMAT_ARGB32,1,1))
-        self.mathtext_parser = MathTextParser('Cairo')
 
     def set_ctx_from_surface (self, surface):
         self.gc.ctx = cairo.Context (surface)
@@ -203,34 +204,17 @@ class RendererCairo(RendererBase):
         if _debug: print '%s.%s()' % (self.__class__.__name__, _fn_name())
 
         ctx = gc.ctx
-        width, height, descent, glyphs, rects = self.mathtext_parser.parse(
-            s, self.dpi, prop)
+
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+        b = MathtexBackendCairo()
+        m.render_to_backend(b)
 
         ctx.save()
-        ctx.translate(x, y)
+        ctx.translate(x, y - m.height - m.depth)
         if angle:
            ctx.rotate (-angle * npy.pi / 180)
 
-        for font, fontsize, s, ox, oy in glyphs:
-           ctx.new_path()
-           ctx.move_to(ox, oy)
-
-           fontProp = ttfFontProperty(font)
-           ctx.save()
-           ctx.select_font_face (fontProp.name,
-                                 self.fontangles [fontProp.style],
-                                 self.fontweights[fontProp.weight])
-
-           size = fontsize * self.dpi / 72.0
-           ctx.set_font_size(size)
-           ctx.show_text(s.encode("utf-8"))
-           ctx.restore()
-
-        for ox, oy, w, h in rects:
-           ctx.new_path()
-           ctx.rectangle (ox, oy, w, h)
-           ctx.set_source_rgb (0, 0, 0)
-           ctx.fill_preserve()
+        b.render_to_context(ctx)
 
         ctx.restore()
 
@@ -250,9 +234,8 @@ class RendererCairo(RendererBase):
     def get_text_width_height_descent(self, s, prop, ismath):
         if _debug: print '%s.%s()' % (self.__class__.__name__, _fn_name())
         if ismath:
-            width, height, descent, fonts, used_characters = self.mathtext_parser.parse(
-               s, self.dpi, prop)
-            return width, height, descent
+            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+            return m.width, m.height, m.depth
 
         ctx = self.text_ctx
         ctx.save()
