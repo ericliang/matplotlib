@@ -16,10 +16,11 @@ from matplotlib.colors import rgb2hex
 from matplotlib.figure import Figure
 from matplotlib.font_manager import findfont, FontProperties
 from matplotlib.ft2font import FT2Font, KERNING_DEFAULT, LOAD_NO_HINTING
-from matplotlib.mathtext import MathTextParser
 from matplotlib.path import Path
 from matplotlib.transforms import Affine2D
 from matplotlib import _png
+
+from mathtex.mathtex_main import Mathtex
 
 from xml.sax.saxutils import escape as escape_xml_text
 
@@ -54,7 +55,6 @@ class RendererSVG(RendererBase):
         self._path_collection_id = 0
         self._imaged = {}
         self._hatchd = {}
-        self.mathtext_parser = MathTextParser('SVG')
         svgwriter.write(svgProlog%(width,height,width,height))
 
     def _draw_svg_element(self, element, details, gc, rgbFace):
@@ -485,12 +485,17 @@ class RendererSVG(RendererBase):
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
         """
-        Draw math text using matplotlib.mathtext
+        Draw math text using mathtex
         """
-        width, height, descent, svg_elements, used_characters = \
-            self.mathtext_parser.parse(s, 72, prop)
-        svg_glyphs = svg_elements.svg_glyphs
-        svg_rects = svg_elements.svg_rects
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+
+        # Extract the glyphs and rects to render
+        svg_glyphs = [(info.font, info.fontsize, unichr(info.num),
+                       ox, m.height - oy + info.offset, info.metrics)
+                      for ox, oy, info in m.glyphs]
+        svg_rects = [(x1, m.height - y1 + 1, x2 - x1, y2 - y1)
+                     for x1, y1, x2, y2 in m.rects]
+
         color = rgb2hex(gc.get_rgb()[:3])
         write = self._svgwriter.write
 
@@ -587,9 +592,9 @@ class RendererSVG(RendererBase):
 
     def get_text_width_height_descent(self, s, prop, ismath):
         if ismath:
-            width, height, descent, trash, used_characters = \
-                self.mathtext_parser.parse(s, 72, prop)
-            return width, height, descent
+            m = Mathtex(s, rcParams['mathtext.fontset'],
+                        prop.get_size_in_points(), 72.0)
+            return m.width, m.height, m.depth
         font = self._get_font(prop)
         font.set_text(s, 0.0, flags=LOAD_NO_HINTING)
         w, h = font.get_width_height()
@@ -639,7 +644,7 @@ class FigureCanvasSVG(FigureCanvasBase):
             # the problem. I hope someone who knows the svg backends
             # take a look at this problem. Meanwhile, the dpi
             # parameter is ignored and image_dpi is fixed at 72. - JJL
-            
+
             #image_dpi = kwargs.pop("dpi", 72)
             image_dpi = 72
             _bbox_inches_restore = kwargs.pop("bbox_inches_restore", None)
