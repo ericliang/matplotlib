@@ -27,7 +27,6 @@ from matplotlib.figure import Figure
 from matplotlib.font_manager import findfont, is_opentype_cff_font
 from matplotlib.ft2font import FT2Font, KERNING_DEFAULT, LOAD_NO_HINTING
 from matplotlib.ttconv import convert_ttf_to_ps
-from matplotlib.mathtext import MathTextParser
 from matplotlib._mathtext_data import uni2type1
 from matplotlib.text import Text
 from matplotlib.path import Path
@@ -35,6 +34,7 @@ from matplotlib.transforms import Affine2D
 
 from matplotlib.backends.backend_mixed import MixedModeRenderer
 
+from mathtex.mathtex_main import Mathtex
 
 import numpy as npy
 import binascii
@@ -168,7 +168,6 @@ class RendererPS(RendererBase):
         self._path_collection_id = 0
 
         self.used_characters = {}
-        self.mathtext_parser = MathTextParser("PS")
 
     def track_characters(self, font, s):
         """Keeps track of which characters are required from
@@ -278,9 +277,8 @@ class RendererPS(RendererBase):
             return w, h, d
 
         if ismath:
-            width, height, descent, pswriter, used_characters = \
-                self.mathtext_parser.parse(s, 72, prop)
-            return width, height, descent
+            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+            return m.width, m.height, m.depth
 
         if rcParams['ps.useafm']:
             if ismath: s = s[1:-1]
@@ -741,11 +739,47 @@ grestore
         if debugPS:
             self._pswriter.write("% mathtext\n")
 
-        width, height, descent, pswriter, used_characters = \
-            self.mathtext_parser.parse(s, 72, prop)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+
+        # Generate the dict of used characters
+        used_characters = {}
+        for ox, oy, info in m.glyphs:
+            realpath, stat_key = get_realpath_and_stat(info.font.fname)
+            used_font = used_characters.setdefault(stat_key, (realpath, set()))
+            used_font[1].add(info.num)
+
         self.merge_used_characters(used_characters)
+
+        textwriter = StringIO()
+        lastfont = None
+
+        # Glyphs
+        for ox, oy, info in m.glyphs:
+            oy = m.height - oy + info.offset
+            postscript_name = info.postscript_name
+            fontsize        = info.fontsize
+            symbol_name     = info.symbol_name
+
+            if (postscript_name, fontsize) != lastfont:
+                ps = """/%(postscript_name)s findfont
+%(fontsize)s scalefont
+setfont
+""" % locals()
+                lastfont = postscript_name, fontsize
+                textwriter.write(ps)
+
+            ps = """%(ox)f %(oy)f moveto
+/%(symbol_name)s glyphshow\n
+""" % locals()
+            textwriter.write(ps)
+
+        # Rects
+        for x1, y1, x2, y2 in m.rects:
+            ps = "%f %f %f %f rectfill\n" % (x1, m.height - y2, x2 - x1, y2 - y1)
+            textwriter.write(ps)
+
         self.set_color(*gc.get_rgb())
-        thetext = pswriter.getvalue()
+        thetext = textwriter.getvalue()
         ps = """gsave
 %(x)f %(y)f translate
 %(angle)f rotate
@@ -964,7 +998,7 @@ class FigureCanvasPS(FigureCanvasBase):
             class NullWriter(object):
                 def write(self, *kl, **kwargs):
                     pass
-                
+
             self._pswriter = NullWriter()
         else:
             self._pswriter = StringIO()
@@ -1096,7 +1130,7 @@ class FigureCanvasPS(FigureCanvasBase):
             class NullWriter(object):
                 def write(self, *kl, **kwargs):
                     pass
-                
+
             self._pswriter = NullWriter()
         else:
             self._pswriter = StringIO()
