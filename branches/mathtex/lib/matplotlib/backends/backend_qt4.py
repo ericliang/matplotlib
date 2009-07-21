@@ -10,7 +10,6 @@ from matplotlib.backend_bases import RendererBase, GraphicsContextBase, \
      FigureManagerBase, FigureCanvasBase, NavigationToolbar2, IdleEvent, cursors
 from matplotlib._pylab_helpers import Gcf
 from matplotlib.figure import Figure
-from matplotlib.mathtext import MathTextParser
 from matplotlib.widgets import SubplotTool
 
 try:
