@@ -2,11 +2,11 @@ import numpy as np
 import matplotlib
 import matplotlib.colors as colors
 import matplotlib.patches as patches
-import matplotlib.mathtext as mathtext
 import matplotlib.pyplot as plt
 import matplotlib.artist as artist
 import matplotlib.image as image
 
+from mathtex.mathtex_main import Mathtex
 
 class ItemProperties:
     def __init__(self, fontsize=14, labelcolor='black', bgcolor='yellow', alpha=1.0):
@@ -19,7 +19,6 @@ class ItemProperties:
         self.bgcolor_rgb = colors.colorConverter.to_rgb(bgcolor)
 
 class MenuItem(artist.Artist):
-    parser = mathtext.MathTextParser("Bitmap")
     padx = 5
     pady =5
     def __init__(self, fig, labelstr, props=None, hoverprops=None, on_select=None):
@@ -40,8 +39,8 @@ class MenuItem(artist.Artist):
 
         self.on_select = on_select
 
-        x, self.depth = self.parser.to_mask(
-            labelstr, fontsize=props.fontsize, dpi=fig.dpi)
+        m = Mathtex(labelstr, fontsize=props.fontsize, dpi=fig.dpi)
+        x, self.depth = m.as_mask(), m.depth
 
         if props.fontsize!=hoverprops.fontsize:
             raise NotImplementedError('support for different font sizes not implemented')
