@@ -755,7 +755,7 @@ grestore
 
         # Glyphs
         for ox, oy, info in m.glyphs:
-            oy = m.height - m.depth - oy + info.offset
+            oy = (m.height + m.depth) - oy + info.offset
             postscript_name = info.postscript_name
             fontsize        = info.fontsize
             symbol_name     = info.symbol_name
@@ -775,7 +775,7 @@ setfont
 
         # Rects
         for x1, y1, x2, y2 in m.rects:
-            ps = "%f %f %f %f rectfill\n" % (x1, m.height - m.depth - y2, x2 - x1, y2 - y1)
+            ps = "%f %f %f %f rectfill\n" % (x1, (m.height + m.depth) - y2, x2 - x1, y2 - y1)
             textwriter.write(ps)
 
         self.set_color(*gc.get_rgb())
