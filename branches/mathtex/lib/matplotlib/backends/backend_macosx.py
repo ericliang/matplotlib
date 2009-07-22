@@ -9,10 +9,10 @@ from matplotlib.backend_bases import RendererBase, GraphicsContextBase,\
 from matplotlib.cbook import maxdict
 from matplotlib.figure import Figure
 from matplotlib.path import Path
-from matplotlib.mathtext import MathTextParser
 from matplotlib.colors import colorConverter
 
-
+from mathtex.mathtex_main import Mathtex
+from mathtex.backends.backend_image import MathtexBackendImage
 
 from matplotlib.widgets import SubplotTool
 
@@ -77,7 +77,7 @@ class RendererMac(RendererBase):
         nrows, ncols, data = im.as_rgba_str()
         self.gc.draw_image(x, y, nrows, ncols, data, bbox, clippath, clippath_trans)
         im.flipud_out()
-    
+
     def draw_tex(self, gc, x, y, s, prop, angle):
         # todo, handle props, angle, origins
         size = prop.get_size_in_points()
@@ -91,9 +91,11 @@ class RendererMac(RendererBase):
         gc.draw_mathtext(x, y, angle, Z)
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
-        ox, oy, width, height, descent, image, used_characters = \
-            self.mathtext_parser.parse(s, self.dpi, prop)
-        gc.draw_mathtext(x, y, angle, 255 - image.as_array())
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+        b = MathtexBackendImage()
+        m.render_to_backend(b)
+
+        gc.draw_mathtext(x, y, angle, 255 - b.image.as_array())
 
     def draw_text(self, gc, x, y, s, prop, angle, ismath=False):
         if ismath:
@@ -115,9 +117,9 @@ class RendererMac(RendererBase):
                                                                renderer=self)
             return w, h, d
         if ismath:
-            ox, oy, width, height, descent, fonts, used_characters = \
-                self.mathtext_parser.parse(s, self.dpi, prop)
-            return width, height, descent
+            m = Mathtex(s, rcParams['mathtext.fontset'],
+                        prop.get_size_in_points(), self.dpi)
+            return m.width, m.height, m.depth
         family =  prop.get_family()
         weight = prop.get_weight()
         style = prop.get_style()
@@ -128,7 +130,7 @@ class RendererMac(RendererBase):
 
     def flipy(self):
         return False
-    
+
     def points_to_pixels(self, points):
         return points/72.0 * self.dpi
 
@@ -168,7 +170,7 @@ class GraphicsContextMac(_macosx.GraphicsContext, GraphicsContextBase):
         _macosx.GraphicsContext.set_clip_path(self, path)
 
 ########################################################################
-#    
+#
 # The following functions and classes are for pylab and implement
 # window/figure managers, etc...
 #
@@ -281,7 +283,7 @@ class FigureManagerMac(_macosx.FigureManager, FigureManagerBase):
             self.toolbar = NavigationToolbar2Mac(canvas)
         else:
             self.toolbar = None
-        if self.toolbar is not None: 
+        if self.toolbar is not None:
             self.toolbar.update()
 
         def notify_axes_change(fig):
@@ -300,7 +302,7 @@ class FigureManagerMac(_macosx.FigureManager, FigureManagerBase):
         Gcf.destroy(self.num)
 
 class NavigationToolbarMac(_macosx.NavigationToolbar):
- 
+
     def __init__(self, canvas):
         self.canvas = canvas
         basedir = os.path.join(matplotlib.rcParams['datapath'], "images")
@@ -331,7 +333,7 @@ class NavigationToolbarMac(_macosx.NavigationToolbar):
         assert magic=="P6"
         assert len(imagedata)==width*height*3 # 3 colors in RGB
         return (width, height, imagedata)
-        
+
     def panx(self, direction):
         axes = self.canvas.figure.axes
         selected = self.get_active()
@@ -401,9 +403,9 @@ class NavigationToolbar2Mac(_macosx.NavigationToolbar2, NavigationToolbar2):
         _macosx.NavigationToolbar2.set_message(self, message.encode('utf-8'))
 
 ########################################################################
-#    
+#
 # Now just provide the standard names that backend.__init__ is expecting
-# 
+#
 ########################################################################
 
 
