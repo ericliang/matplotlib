@@ -27,7 +27,7 @@ from matplotlib.figure import Figure
 from matplotlib.font_manager import findfont, is_opentype_cff_font
 from matplotlib.ft2font import FT2Font, KERNING_DEFAULT, LOAD_NO_HINTING
 from matplotlib.ttconv import convert_ttf_to_ps
-from matplotlib._mathtext_data import uni2type1
+from matplotlib._font_data import uni2type1
 from matplotlib.text import Text
 from matplotlib.path import Path
 from matplotlib.transforms import Affine2D
