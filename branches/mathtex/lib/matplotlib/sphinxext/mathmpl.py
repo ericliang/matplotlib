@@ -9,10 +9,7 @@ from docutils import nodes
 from docutils.parsers.rst import directives
 import warnings
 
-from matplotlib import rcParams
-from matplotlib.mathtext import MathTextParser
-rcParams['mathtext.fontset'] = 'cm'
-mathtext_parser = MathTextParser("Bitmap")
+from mathtex.mathtex_main import Mathtex
 
 # Define LaTeX math node:
 class latex_math(nodes.General, nodes.Element):
@@ -44,21 +41,18 @@ def math_directive(name, arguments, options, content, lineno,
 # This uses mathtext to render the expression
 def latex2png(latex, filename, fontset='cm'):
     latex = "$%s$" % latex
-    orig_fontset = rcParams['mathtext.fontset']
-    rcParams['mathtext.fontset'] = fontset
-    if os.path.exists(filename):
-        depth = mathtext_parser.get_depth(latex, dpi=100)
-    else:
+
+    m = Mathtex(latex, 'bakoma')
+
+    if not os.path.exists(filename):
         try:
-            depth = mathtext_parser.to_png(filename, latex, dpi=100)
+	    m.save(filename)
         except:
             warnings.warn("Could not render math expression %s" % latex,
                           Warning)
-            depth = 0
-    rcParams['mathtext.fontset'] = orig_fontset
     sys.stdout.write("#")
     sys.stdout.flush()
-    return depth
+    return m.depth
 
 # LaTeX to HTML translation stuff:
 def latex2html(node, source):
