@@ -11,8 +11,12 @@ from matplotlib.figure import Figure
 from matplotlib.path import Path
 from matplotlib.colors import colorConverter
 
-from mathtex.mathtex_main import Mathtex
-from mathtex.backends.backend_image import MathtexBackendImage
+try:
+    from mathtex.mathtex_main import Mathtex
+    from mathtex.backends.backend_image import MathtexBackendImage
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 from matplotlib.widgets import SubplotTool
 
@@ -90,6 +94,9 @@ class RendererMac(RendererBase):
         gc.draw_mathtext(x, y, angle, Z)
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
+        if not HAVE_MATHTEX:
+            return
+
         m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
         b = MathtexBackendImage()
         m.render_to_backend(b)
@@ -116,9 +123,14 @@ class RendererMac(RendererBase):
                                                                renderer=self)
             return w, h, d
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'],
-                        prop.get_size_in_points(), self.dpi)
-            return m.width, m.height, m.depth
+            if HAVE_MATHTEX:
+                m = Mathtex(s, rcParams['mathtext.fontset'],
+                            prop.get_size_in_points(), self.dpi)
+                return m.width, m.height, m.depth
+            else:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
         family =  prop.get_family()
         weight = prop.get_weight()
         style = prop.get_style()

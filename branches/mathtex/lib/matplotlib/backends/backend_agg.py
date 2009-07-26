@@ -21,6 +21,7 @@ TODO:
   * integrate screen dpi w/ ppi and text
 """
 from __future__ import division
+import warnings
 
 import numpy as npy
 
@@ -37,8 +38,12 @@ from matplotlib.transforms import Bbox, BboxBase
 from _backend_agg import RendererAgg as _RendererAgg
 from matplotlib import _png
 
-from mathtex.mathtex_main import Mathtex
-from mathtex.backends.backend_image import MathtexBackendImage
+try:
+    from mathtex.mathtex_main import Mathtex
+    from mathtex.backends.backend_image import MathtexBackendImage
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 backend_version = 'v2.2'
 
@@ -104,12 +109,13 @@ class RendererAgg(RendererBase):
         """
         if __debug__: verbose.report('RendererAgg.draw_mathtext',
                                      'debug-annoying')
-        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
-        b = MathtexBackendImage()
+        if HAVE_MATHTEX:
+            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+            b = MathtexBackendImage()
 
-        m.render_to_backend(b)
+            m.render_to_backend(b)
 
-        self._renderer.draw_text_image(b.image, int(x), int(y) + 1, angle, gc)
+            self._renderer.draw_text_image(b.image, int(x), int(y) + 1, angle, gc)
 
     def draw_text(self, gc, x, y, s, prop, angle, ismath):
         """
@@ -153,8 +159,13 @@ class RendererAgg(RendererBase):
             return w, h, d
 
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
-            return m.width, m.height, m.depth
+            if not HAVE_MATHTEX:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
+            else:
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+                return m.width, m.height, m.depth
         font = self._get_agg_font(prop)
         font.set_text(s, 0.0, flags=LOAD_FORCE_AUTOHINT)  # the width and height of unrotated string
         w, h = font.get_width_height()
@@ -250,7 +261,7 @@ class RendererAgg(RendererBase):
         >>> x1, y1, x2, y2 = region.get_extents()
         >>> renderer.restore_region(region, bbox=(x1+dx, y1, x2, y2),
                                     xy=(x1-dx, y1))
-        
+
         """
         if bbox is not None or xy is not None:
             if bbox is None:

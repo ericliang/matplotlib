@@ -1,6 +1,6 @@
 from __future__ import division
 
-import os, codecs, base64, tempfile, urllib, gzip, cStringIO
+import os, codecs, base64, tempfile, urllib, gzip, cStringIO, warnings
 
 try:
     from hashlib import md5
@@ -20,7 +20,11 @@ from matplotlib.path import Path
 from matplotlib.transforms import Affine2D
 from matplotlib import _png
 
-from mathtex.mathtex_main import Mathtex
+try:
+    from mathtex.mathtex_main import Mathtex
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 from xml.sax.saxutils import escape as escape_xml_text
 
@@ -487,6 +491,9 @@ class RendererSVG(RendererBase):
         """
         Draw math text using mathtex
         """
+        if not HAVE_MATHTEX:
+            return
+
         m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
 
         # Extract the glyphs and rects to render
@@ -592,9 +599,14 @@ class RendererSVG(RendererBase):
 
     def get_text_width_height_descent(self, s, prop, ismath):
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'],
-                        prop.get_size_in_points(), 72.0)
-            return m.width, m.height, m.depth
+            if HAVE_MATHTEX:
+                m = Mathtex(s, rcParams['mathtext.fontset'],
+                            prop.get_size_in_points(), 72.0)
+                return m.width, m.height, m.depth
+            else:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
         font = self._get_font(prop)
         font.set_text(s, 0.0, flags=LOAD_NO_HINTING)
         w, h = font.get_width_height()

@@ -27,8 +27,12 @@ from matplotlib.figure import Figure
 from matplotlib.transforms import Affine2D
 from matplotlib.backends._backend_gdk import pixbuf_get_pixels_array
 
-from mathtex.mathtex_main import Mathtex
-from mathtex.backends.backend_image import MathtexBackendImage
+try:
+    from mathtex.mathtex_main import Mathtex
+    from mathtex.backends.backend_image import MathtexBackendImage
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 backend_version = "%d.%d.%d" % gtk.pygtk_version
 _debug = False
@@ -159,6 +163,9 @@ class RendererGDK(RendererBase):
 
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
+        if not HAVE_MATHTEX:
+            return
+
         m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
                     prop.get_size_in_points(), self.dpi)
         b = MathtexBackendImage()
@@ -305,9 +312,14 @@ class RendererGDK(RendererBase):
 
     def get_text_width_height_descent(self, s, prop, ismath):
         if ismath:
-            m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
-                        prop.get_size_in_points(), self.dpi)
-            return m.width, m.height, m.depth
+            if not HAVE_MATHTEX:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
+            else:
+                m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
+                            prop.get_size_in_points(), self.dpi)
+                return m.width, m.height, m.depth
 
         layout, inkRect, logicalRect = self._get_pango_layout(s, prop)
         l, b, w, h = inkRect

@@ -1,7 +1,7 @@
 # -*- coding: iso-8859-1 -*-
 """
 A PDF matplotlib backend (not yet complete)
-Author: Jouni K Seppänen <jks@iki.fi>
+Author: Jouni K Seppï¿½nen <jks@iki.fi>
 """
 from __future__ import division
 
@@ -42,7 +42,11 @@ from matplotlib.transforms import Affine2D, Bbox, BboxBase, TransformedPath
 from matplotlib.path import Path
 from matplotlib import ttconv
 
-from mathtex.mathtex_main import Mathtex
+try:
+    from mathtex.mathtex_main import Mathtex
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 # Overview
 #
@@ -1344,6 +1348,9 @@ class RendererPdf(RendererBase):
 
     def draw_mathtext(self, gc, x, y, s, prop, angle):
         # TODO: fix positioning and encoding
+        if not HAVE_MATHTEX:
+            return
+
         m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
 
         # Generate the dict of used characters
@@ -1654,9 +1661,15 @@ class RendererPdf(RendererBase):
             return w, h, d
 
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'],
-                        prop.get_size_in_points(), 72.0)
-            w, h, d = m.width, m.height, m.depth
+            # Ensure mathtex is available
+            if not HAVE_MATHTEX:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                w, h, d = 0.0, 0.0, 0.0
+            else:
+                m = Mathtex(s, rcParams['mathtext.fontset'],
+                            prop.get_size_in_points(), 72.0)
+                w, h, d = m.width, m.height, m.depth
 
         elif rcParams['pdf.use14corefonts']:
             font = self._get_font_afm(prop)

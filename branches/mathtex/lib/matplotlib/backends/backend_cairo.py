@@ -47,8 +47,12 @@ from matplotlib.transforms   import Bbox, Affine2D
 from matplotlib.font_manager import ttfFontProperty
 from matplotlib import rcParams
 
-from mathtex.mathtex_main import Mathtex
-from mathtex.backends.backend_cairo import MathtexBackendCairo
+try:
+    from mathtex.mathtex_main import Mathtex
+    from mathtex.backends.backend_cairo import MathtexBackendCairo
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 _debug = False
 #_debug = True
@@ -202,6 +206,7 @@ class RendererCairo(RendererBase):
 
     def _draw_mathtext(self, gc, x, y, s, prop, angle):
         if _debug: print '%s.%s()' % (self.__class__.__name__, _fn_name())
+        if not HAVE_MATHTEX: return
 
         ctx = gc.ctx
 
@@ -234,8 +239,13 @@ class RendererCairo(RendererBase):
     def get_text_width_height_descent(self, s, prop, ismath):
         if _debug: print '%s.%s()' % (self.__class__.__name__, _fn_name())
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
-            return m.width, m.height, m.depth
+            if HAVE_MATHTEX:
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+                return m.width, m.height, m.depth
+            else:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
 
         ctx = self.text_ctx
         ctx.save()

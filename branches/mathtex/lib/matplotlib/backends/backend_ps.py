@@ -3,7 +3,7 @@ A PostScript backend, which can produce both PostScript .ps and .eps
 """
 
 from __future__ import division
-import glob, math, os, shutil, sys, time
+import glob, math, os, shutil, sys, time, warnings
 def _fn_name(): return sys._getframe(1).f_code.co_name
 
 try:
@@ -34,7 +34,11 @@ from matplotlib.transforms import Affine2D
 
 from matplotlib.backends.backend_mixed import MixedModeRenderer
 
-from mathtex.mathtex_main import Mathtex
+try:
+    from mathtex.mathtex_main import Mathtex
+    HAVE_MATHTEX = True
+except ImportError:
+    HAVE_MATHTEX = False
 
 import numpy as npy
 import binascii
@@ -277,8 +281,13 @@ class RendererPS(RendererBase):
             return w, h, d
 
         if ismath:
-            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
-            return m.width, m.height, m.depth
+            if HAVE_MATHTEX:
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+                return m.width, m.height, m.depth
+            else:
+                warnings.warn('matplotlib was compiled without mathtex support. ' +
+                              'Math will not be rendered.')
+                return 0.0, 0.0, 0.0
 
         if rcParams['ps.useafm']:
             if ismath: s = s[1:-1]
@@ -738,6 +747,8 @@ grestore
         """
         if debugPS:
             self._pswriter.write("% mathtext\n")
+        if not HAVE_MATHTEX:
+            return
 
         m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
 
