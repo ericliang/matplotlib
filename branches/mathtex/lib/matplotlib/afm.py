@@ -35,7 +35,7 @@ AUTHOR:
 """
 
 import sys, os, re
-from _mathtext_data import uni2type1
+from _font_data import uni2type1
 
 #Convert string the a python type
 _to_int = int
