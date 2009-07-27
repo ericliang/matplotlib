@@ -110,7 +110,8 @@ class RendererAgg(RendererBase):
         if __debug__: verbose.report('RendererAgg.draw_mathtext',
                                      'debug-annoying')
         if HAVE_MATHTEX:
-            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+            m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                        self.dpi, rcParams['mathtext.default'])
             b = MathtexBackendImage()
 
             m.render_to_backend(b)
@@ -164,7 +165,8 @@ class RendererAgg(RendererBase):
                               'Math will not be rendered.')
                 return 0.0, 0.0, 0.0
             else:
-                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                            self.dpi, rcParams['mathtext.default'])
                 return m.width, m.height, m.depth
         font = self._get_agg_font(prop)
         font.set_text(s, 0.0, flags=LOAD_FORCE_AUTOHINT)  # the width and height of unrotated string

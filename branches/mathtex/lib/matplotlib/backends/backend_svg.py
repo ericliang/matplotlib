@@ -494,7 +494,8 @@ class RendererSVG(RendererBase):
         if not HAVE_MATHTEX:
             return
 
-        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                    72.0, rcParams['mathtext.default'])
 
         # Extract the glyphs and rects to render
         svg_glyphs = [(info.font, info.fontsize, unichr(info.num),
@@ -600,8 +601,8 @@ class RendererSVG(RendererBase):
     def get_text_width_height_descent(self, s, prop, ismath):
         if ismath:
             if HAVE_MATHTEX:
-                m = Mathtex(s, rcParams['mathtext.fontset'],
-                            prop.get_size_in_points(), 72.0)
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                            72.0, rcParams['mathtext.default'])
                 return m.width, m.height, m.depth
             else:
                 warnings.warn('matplotlib was compiled without mathtex support. ' +

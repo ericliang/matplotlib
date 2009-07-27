@@ -282,7 +282,8 @@ class RendererPS(RendererBase):
 
         if ismath:
             if HAVE_MATHTEX:
-                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                            72.0, rcParams['mathtext.default'])
                 return m.width, m.height, m.depth
             else:
                 warnings.warn('matplotlib was compiled without mathtex support. ' +
@@ -750,7 +751,8 @@ grestore
         if not HAVE_MATHTEX:
             return
 
-        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), 72.0)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                    72.0, rcParams['mathtext.default'])
 
         # Generate the dict of used characters
         used_characters = {}

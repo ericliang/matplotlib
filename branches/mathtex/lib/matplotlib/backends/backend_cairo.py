@@ -210,7 +210,8 @@ class RendererCairo(RendererBase):
 
         ctx = gc.ctx
 
-        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                    self.dpi, rcParams['mathtext.default'])
         b = MathtexBackendCairo()
         m.render_to_backend(b)
 
@@ -240,7 +241,8 @@ class RendererCairo(RendererBase):
         if _debug: print '%s.%s()' % (self.__class__.__name__, _fn_name())
         if ismath:
             if HAVE_MATHTEX:
-                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+                m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                            self.dpi, rcParams['mathtext.default'])
                 return m.width, m.height, m.depth
             else:
                 warnings.warn('matplotlib was compiled without mathtex support. ' +
