@@ -17,6 +17,11 @@ INTRODUCTION
   with agg support and use one of the GUI agg backends: GTKAgg, WXAgg,
   TkAgg or FLTKAgg.
 
+  In addition matplotlib can also optionally make use of mathtex, a
+  pure python TeX rendering library.  In previous versions of
+  matplotlib this was built in, however it will split off in mid-2009.
+  To ease installation mathtex is included in matplotlib in lib/mathtex.
+
 COMPILING
 
   You will need to have recent versions of freetype, libpng and zlib
@@ -45,12 +50,15 @@ COMPILING
   /some/path/include/somheader.h, put /some/path in the basedir list
   for your platform.
 
-
   Once you have everything above set to your liking, just do the usual
   thing
 
       python setup.py build
       python setup.py install
+
+  If mathtex is not already available on the system it can be installed
+  by following the instructions in lib/mathtex/INSTALL.  The
+  dependencies are a subset of those required by matplotlib.
 
 WINDOWS
 
