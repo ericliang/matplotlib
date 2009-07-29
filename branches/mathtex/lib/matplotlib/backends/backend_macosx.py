@@ -97,7 +97,8 @@ class RendererMac(RendererBase):
         if not HAVE_MATHTEX:
             return
 
-        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(), self.dpi)
+        m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
+                    self.dpi, rcParams['mathtext.default'])
         b = MathtexBackendImage()
         m.render_to_backend(b)
 
@@ -125,7 +126,7 @@ class RendererMac(RendererBase):
         if ismath:
             if HAVE_MATHTEX:
                 m = Mathtex(s, rcParams['mathtext.fontset'],
-                            prop.get_size_in_points(), self.dpi)
+                            prop.get_size_in_points(), self.dpi, rcParams['mathtext.default'])
                 return m.width, m.height, m.depth
             else:
                 warnings.warn('matplotlib was compiled without mathtex support. ' +
