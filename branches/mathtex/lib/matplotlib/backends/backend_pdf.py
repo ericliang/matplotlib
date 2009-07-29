@@ -1743,14 +1743,27 @@ class GraphicsContextPdf(GraphicsContextBase):
         return `d`
 
     def _strokep(self):
+        """
+        Predicate: does the path need to be stroked (its outline drawn)?
+        This tests for the various conditions that disable stroking
+        the path, in which case it would presumably be filled.
+        """
         return (self._linewidth > 0 and self._alpha > 0 and
                 (len(self._rgb) <= 3 or self._rgb[3] != 0.0))
 
     def _fillp(self):
-        return ((self._fillcolor is not None or self._hatch) and
-                (len(self._fillcolor) <= 3 or self._fillcolor[3] != 0.0))
+        """
+        Predicate: does the path need to be filled?
+        """
+        return self._hatch or \
+            (self._fillcolor is not None and
+             (len(self._fillcolor) <= 3 or self._fillcolor[3] != 0.0))
 
     def close_and_paint(self):
+        """
+        Return the appropriate pdf operator to close the path and
+        cause it to be stroked, filled, or both.
+        """
         if self._strokep():
             if self._fillp():
                 return Op.close_fill_stroke
@@ -1763,6 +1776,10 @@ class GraphicsContextPdf(GraphicsContextBase):
                 return Op.endpath
 
     def paint(self):
+        """
+        Return the appropriate pdf operator to cause the path to be
+        stroked, filled, or both.
+        """
         if self._strokep():
             if self._fillp():
                 return Op.fill_stroke
