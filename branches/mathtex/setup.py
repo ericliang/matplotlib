@@ -42,7 +42,8 @@ from setupext import build_agg, build_gtkagg, build_tkagg, build_wxagg,\
      check_for_qt, check_for_qt4, check_for_cairo, \
      check_provide_pytz, check_provide_dateutil,\
      check_for_dvipng, check_for_ghostscript, check_for_latex, \
-     check_for_pdftops, check_for_datetime, options, build_png
+     check_for_pdftops, check_for_datetime, options, build_png, \
+     check_provide_mathtex, build_mathtex
 #import distutils.sysconfig
 
 # jdh
@@ -127,6 +128,9 @@ if has_libpng and options['build_image']:
 
 if has_libpng and options['build_agg'] or options['build_image']:
     build_png(ext_modules, packages)
+
+if has_libpng and options['provide_mathtex'] and check_provide_mathtex():
+    build_mathtex(ext_modules, packages, package_data)
 
 if options['build_windowing'] and sys.platform=='win32':
    build_windowing(ext_modules, packages)
