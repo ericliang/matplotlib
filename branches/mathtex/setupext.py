@@ -98,7 +98,6 @@ options = {'display_status': True,
            'verbose': False,
            'provide_pytz': 'auto',
            'provide_dateutil': 'auto',
-           'provide_mathtex' : 'auto',
            'build_agg': True,
            'build_gtk': 'auto',
            'build_gtkagg': 'auto',
@@ -126,10 +125,6 @@ if os.path.exists("setup.cfg"):
     try: options['provide_dateutil'] = config.getboolean("provide_packages",
                                                          "dateutil")
     except: options['provide_dateutil'] = 'auto'
-
-    try: options['provide_mathtex'] = config.getboolean("provide_packages",
-                                                      "mathtex")
-    except: options['provide_mathtex'] = 'auto'
 
     try: options['build_gtk'] = config.getboolean("gui_support", "gtk")
     except: options['build_gtk'] = 'auto'
@@ -391,14 +386,6 @@ def check_for_datetime():
         print_status("datetime", "present, version unknown")
         return True
 
-def check_provide_mathtex():
-    try:
-        import mathtex
-    except ImportError:
-        print_status("mathtex", "matplotlib will provide")
-        return True
-    return False
-
 def check_provide_pytz(hasdatetime=True):
     if hasdatetime and (options['provide_pytz'] is True):
         print_status("pytz", "matplotlib will provide")
@@ -558,7 +545,7 @@ def add_ft2font_flags(module):
     else:
         add_base_flags(module)
         module.libraries.append('z')
-
+    
     # put this last for library link order
     module.libraries.extend(std_libs)
 
@@ -1104,11 +1091,6 @@ def build_ft2font(ext_modules, packages):
     add_ft2font_flags(module)
     ext_modules.append(module)
     BUILT_FT2FONT = True
-
-def build_mathtex(ext_modules, packages, package_data):
-    packages.append('mathtex/mathtex')
-    packages.append('mathtex/mathtex.backends')
-    package_data['mathtex'] = ['lib/mathtex/data/fonts/*.ttf']
 
 def build_ttconv(ext_modules, packages):
     global BUILT_TTCONV
