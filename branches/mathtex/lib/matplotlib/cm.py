@@ -1,25 +1,113 @@
 """
-This module contains the instantiations of color mapping classes
+This module provides a large set of colormaps, functions for
+registering new colormaps and for getting a colormap by name,
+and a mixin class for adding color mapping functionality.
+
 """
+
+import os
 
 import numpy as np
 from numpy import ma
 import matplotlib as mpl
 import matplotlib.colors as colors
 import matplotlib.cbook as cbook
-from matplotlib._cm import *
+from matplotlib._cm import datad
 
 
+cmap_d = dict()
+
+# reverse all the colormaps.
+# reversed colormaps have '_r' appended to the name.
+
+def revcmap(data):
+    data_r = {}
+    for key, val in data.iteritems():
+        valnew = [(1.0-a, b, c) for a, b, c in reversed(val)]
+        data_r[key] = valnew
+    return data_r
+
+LUTSIZE = mpl.rcParams['image.lut']
+
+_cmapnames = datad.keys()  # need this list because datad is changed in loop
+
+for cmapname in _cmapnames:
+    cmapname_r = cmapname+'_r'
+    cmapdat_r = revcmap(datad[cmapname])
+    datad[cmapname_r] = cmapdat_r
+    cmap_d[cmapname] = colors.LinearSegmentedColormap(
+                            cmapname, datad[cmapname], LUTSIZE)
+    cmap_d[cmapname_r] = colors.LinearSegmentedColormap(
+                            cmapname_r, cmapdat_r, LUTSIZE)
+
+locals().update(cmap_d)
+
+def register_cmap(name=None, cmap=None, data=None, lut=None):
+    """
+    Add a colormap to the set recognized by :func:`get_cmap`.
+
+    It can be used in two ways::
+
+        register_cmap(name='swirly', cmap=swirly_cmap)
+
+        register_cmap(name='choppy', data=choppydata, lut=128)
+
+    In the first case, *cmap* must be a :class:`colors.Colormap`
+    instance.  The *name* is optional; if absent, the name will
+    be the :attr:`name` attribute of the *cmap*.
+
+    In the second case, the three arguments are passed to
+    the :class:`colors.LinearSegmentedColormap` initializer,
+    and the resulting colormap is registered.
+
+    """
+    if name is None:
+        try:
+            name = cmap.name
+        except AttributeError:
+            raise ValueError("Arguments must include a name or a Colormap")
+
+    if not cbook.is_string_like(name):
+        raise ValueError("Colormap name must be a string")
+
+    if isinstance(cmap, colors.Colormap):
+        cmap_d[name] = cmap
+        return
+
+    # For the remainder, let exceptions propagate.
+    if lut is None:
+        lut = mpl.rcParams['image.lut']
+    cmap = colors.LinearSegmentedColormap(name, data, lut)
+    cmap_d[name] = cmap
 
 def get_cmap(name=None, lut=None):
     """
-    Get a colormap instance, defaulting to rc values if *name* is None
-    """
-    if name is None: name = mpl.rcParams['image.cmap']
-    if lut is None: lut = mpl.rcParams['image.lut']
+    Get a colormap instance, defaulting to rc values if *name* is None.
 
-    assert(name in datad.keys())
-    return colors.LinearSegmentedColormap(name,  datad[name], lut)
+    Colormaps added with :func:`register_cmap` take precedence over
+    builtin colormaps.
+
+    If *name* is a :class:`colors.Colormap` instance, it will be
+    returned.
+
+    If *lut* is not None it must be an integer giving the number of
+    entries desired in the lookup table, and *name* must be a
+    standard mpl colormap name with a corresponding data dictionary
+    in *datad*.
+    """
+    if name is None:
+        name = mpl.rcParams['image.cmap']
+
+    if isinstance(name, colors.Colormap):
+        return name
+
+    if name in cmap_d:
+        if lut is None:
+            return cmap_d[name]
+        elif name in datad:
+            return colors.LinearSegmentedColormap(name,  datad[name], lut)
+        else:
+            raise ValueError("Colormap %s is not recognized" % name)
 
 class ScalarMappable:
     """
@@ -42,7 +130,7 @@ class ScalarMappable:
 
         self._A = None
         self.norm = norm
-        self.cmap = cmap
+        self.cmap = get_cmap(cmap)
         self.colorbar = None
         self.update_dict = {'array':False}
 
@@ -116,9 +204,9 @@ class ScalarMappable:
         """
         set the colormap for luminance data
 
-        ACCEPTS: a colormap
+        ACCEPTS: a colormap or registered colormap name
         """
-        if cmap is None: cmap = get_cmap()
+        cmap = get_cmap(cmap)
         self.cmap = cmap
         self.changed()
 
