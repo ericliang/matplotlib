@@ -106,7 +106,8 @@ options = {'display_status': True,
            'build_macosx': 'auto',
            'build_image': True,
            'build_windowing': True,
-           'backend': None}
+           'backend': None,
+           'provide_mathtex': True}
 
 # Based on the contents of setup.cfg, determine the build options
 if os.path.exists("setup.cfg"):
@@ -144,6 +145,8 @@ if os.path.exists("setup.cfg"):
     try: options['backend'] = config.get("rc_options", "backend")
     except: pass
 
+    try: options['provide_mathtex'] = config.getboolean("provide_packages", "mathtex")
+    except: options['provide_mathtex'] = True
 
 if options['display_status']:
     def print_line(char='='):
@@ -545,7 +548,7 @@ def add_ft2font_flags(module):
     else:
         add_base_flags(module)
         module.libraries.append('z')
-    
+
     # put this last for library link order
     module.libraries.extend(std_libs)
 
@@ -1375,4 +1378,18 @@ def build_gdk(ext_modules, packages):
     ext_modules.append(module)
 
     BUILT_GDK = True
+
+def check_for_mathtex():
+    if options['provide_mathtex'] is True:
+        print_status("mathtex", "matplotlib will provide")
+        return False
+    try:
+        import mathtex
+    except ImportError:
+        print_status("mathtex", "no")
+        return False
+    else:
+        from mathtex import __version__
+        print_status("mathtex", "present, version %s" % __version__)
+        return True
 

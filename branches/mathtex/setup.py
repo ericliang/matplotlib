@@ -42,7 +42,8 @@ from setupext import build_agg, build_gtkagg, build_tkagg, build_wxagg,\
      check_for_qt, check_for_qt4, check_for_cairo, \
      check_provide_pytz, check_provide_dateutil,\
      check_for_dvipng, check_for_ghostscript, check_for_latex, \
-     check_for_pdftops, check_for_datetime, options, build_png
+     check_for_pdftops, check_for_datetime, options, build_png, \
+     check_for_mathtex
 #import distutils.sysconfig
 
 # jdh
@@ -64,6 +65,7 @@ packages = [
     'matplotlib.numerix.fft',
 
     ]
+package_dir = {'': 'lib'}
 
 py_modules = ['pylab']
 
@@ -214,6 +216,11 @@ if hasdatetime: # dates require python23 datetime
             print 'adding pytz'
         if provide_dateutil: add_dateutil()
 
+# Add installation of mathtex
+if not check_for_mathtex():
+    package_dir['mathtex'] = 'lib/mathtex/mathtex'
+    packages.append('mathtex')
+
 print_raw("")
 print_raw("OPTIONAL USETEX DEPENDENCIES")
 check_for_dvipng()
@@ -243,6 +250,7 @@ for mod in ext_modules:
     if options['verbose']:
         mod.extra_compile_args.append('-DVERBOSE')
 
+
 print 'pymods', py_modules
 print 'packages', packages
 distrib = setup(name="matplotlib",
@@ -262,7 +270,7 @@ distrib = setup(name="matplotlib",
       platforms='any',
       py_modules = py_modules,
       ext_modules = ext_modules,
-      package_dir = {'': 'lib'},
+      package_dir = package_dir,
       package_data = package_data,
       **additional_params
       )
