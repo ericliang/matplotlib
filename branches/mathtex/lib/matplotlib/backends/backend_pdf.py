@@ -1352,7 +1352,7 @@ class RendererPdf(RendererBase):
             return
 
         m = Mathtex(s, rcParams['mathtext.fontset'], prop.get_size_in_points(),
-                    72.0, rcParams['mathtext.default'])
+                    72.0, rcParams['mathtext.default'], cache=True)
 
         # Generate the dict of used characters
         used_characters = {}
@@ -1669,7 +1669,8 @@ class RendererPdf(RendererBase):
                 w, h, d = 0.0, 0.0, 0.0
             else:
                 m = Mathtex(s, rcParams['mathtext.fontset'],
-                            prop.get_size_in_points(), 72.0, rcParams['mathtext.default'])
+                            prop.get_size_in_points(), 72.0, rcParams['mathtext.default'],
+                            cache=True)
                 w, h, d = m.width, m.height, m.depth
 
         elif rcParams['pdf.use14corefonts']:

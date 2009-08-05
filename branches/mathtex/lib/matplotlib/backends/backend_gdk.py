@@ -167,7 +167,8 @@ class RendererGDK(RendererBase):
             return
 
         m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
-                    prop.get_size_in_points(), self.dpi, rcParams['mathtext.default'])
+                    prop.get_size_in_points(), self.dpi, rcParams['mathtext.default'],
+                    cache=True)
         b = MathtexBackendImage()
         m.render_to_backend(b)
 
@@ -318,7 +319,8 @@ class RendererGDK(RendererBase):
                 return 0.0, 0.0, 0.0
             else:
                 m = Mathtex(s, matplotlib.rcParams['mathtext.fontset'],
-                            prop.get_size_in_points(), self.dpi, rcParams['mathtext.default'])
+                            prop.get_size_in_points(), self.dpi, rcParams['mathtext.default'],
+                            cache=True)
                 return m.width, m.height, m.depth
 
         layout, inkRect, logicalRect = self._get_pango_layout(s, prop)
