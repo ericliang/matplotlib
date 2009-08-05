@@ -219,7 +219,7 @@ if hasdatetime: # dates require python23 datetime
 # Add installation of mathtex
 if not check_for_mathtex():
     package_dir['mathtex'] = 'lib/mathtex/mathtex'
-    packages.append('mathtex')
+    packages.extend(['mathtex', 'mathtex.backends'])
 
 print_raw("")
 print_raw("OPTIONAL USETEX DEPENDENCIES")
