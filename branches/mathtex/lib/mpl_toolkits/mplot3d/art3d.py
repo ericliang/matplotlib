@@ -92,6 +92,7 @@ class Line3D(lines.Line2D):
     def set_3d_properties(self, zs=0, zdir='z'):
         xs = self.get_xdata()
         ys = self.get_ydata()
+
         try:
             zs = float(zs)
             zs = [zs for x in xs]
@@ -116,7 +117,7 @@ def path_to_3d_segment(path, zs=0, zdir='z'):
     '''Convert a path to a 3D segment.'''
 
     if not iterable(zs):
-        zs = [zs] * len(path)
+        zs = np.ones(len(path)) * zs
 
     seg = []
     pathsegs = path.iter_segments(simplify=False, curves=False)
@@ -131,7 +132,7 @@ def paths_to_3d_segments(paths, zs=0, zdir='z'):
     '''
 
     if not iterable(zs):
-        zs = [zs] * len(paths)
+        zs = np.ones(len(paths)) * zs
 
     segments = []
     for path, pathz in zip(paths, zs):
@@ -192,7 +193,8 @@ class Patch3D(Patch):
 
     def set_3d_properties(self, verts, zs=0, zdir='z'):
         if not iterable(zs):
-            zs = [zs] * len(verts)
+            zs = np.ones(len(verts)) * zs
+
         self._segment3d = [juggle_axes(x, y, z, zdir) \
                 for ((x, y), z) in zip(verts, zs)]
         self._facecolor3d = Patch.get_facecolor(self)
@@ -215,9 +217,19 @@ class Patch3D(Patch):
     def draw(self, renderer):
         Patch.draw(self, renderer)
 
+def get_patch_verts(patch):
+    """Return a list of vertices for the path of a patch."""
+    trans = patch.get_patch_transform()
+    path =  patch.get_path()
+    polygons = path.to_polygons(trans)
+    if len(polygons):
+        return polygons[0]
+    else:
+        return []
+
 def patch_2d_to_3d(patch, z=0, zdir='z'):
     """Convert a Patch to a Patch3D object."""
-    verts = patch.get_verts()
+    verts = get_patch_verts(patch)
     patch.__class__ = Patch3D
     patch.set_3d_properties(verts, z, zdir)
 
@@ -331,7 +343,7 @@ class Poly3DCollection(PolyCollection):
         if self._zsort:
             z_segments_2d = [(np.average(zs), zip(xs, ys), fc, ec) for
                     (xs, ys, zs), fc, ec in zip(xyzlist, cface, cedge)]
-            z_segments_2d.sort(reverse=True)
+            z_segments_2d.sort(cmp=lambda x, y: cmp(y[0], x[0]))
         else:
             raise ValueError, "whoops"
 

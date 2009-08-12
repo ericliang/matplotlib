@@ -89,7 +89,7 @@ host of others.
 """
 from __future__ import generators
 
-__version__  = '0.99.0.rc1'
+__version__  = '1.0.svn'
 __revision__ = '$Revision$'
 __date__     = '$Date$'
 
@@ -487,19 +487,12 @@ get_data_path = verbose.wrap('matplotlib data path %s', _get_data_path_cached,
                              always=False)
 
 
+
 def get_example_data(fname):
     """
-    return a filehandle to one of the example files in mpl-data/example
-
-    *fname*
-        the name of one of the files in mpl-data/example
+    get_example_data is deprecated -- use matplotlib.cbook.get_sample_data instead
     """
-    datadir = os.path.join(get_data_path(), 'example')
-    fullpath = os.path.join(datadir, fname)
-    if not os.path.exists(fullpath):
-        raise IOError('could not find matplotlib example file "%s" in data directory "%s"'%(
-            fname, datadir))
-    return file(fullpath, 'rb')
+    raise NotImplementedError('get_example_data is deprecated -- use matplotlib.cbook.get_sample_data instead')
 
 
 def get_py2exe_datafiles():

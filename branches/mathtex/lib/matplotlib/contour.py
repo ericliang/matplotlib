@@ -8,7 +8,7 @@ import matplotlib as mpl
 import numpy as np
 from numpy import ma
 import matplotlib._cntr as _cntr
-import matplotlib.path as path
+import matplotlib.path as mpath
 import matplotlib.ticker as ticker
 import matplotlib.cm as cm
 import matplotlib.colors as colors
@@ -499,7 +499,7 @@ class ContourLabeler:
                     if inline:
                         for n in new:
                             # Add path if not empty or single point
-                            if len(n)>1: additions.append( path.Path(n) )
+                            if len(n)>1: additions.append( mpath.Path(n) )
                 else: # If not adding label, keep old path
                     additions.append(linepath)
 
@@ -571,12 +571,31 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
         if self.colors is not None and cmap is not None:
             raise ValueError('Either colors or cmap must be None')
         if self.origin == 'image': self.origin = mpl.rcParams['image.origin']
-        x, y, z = self._contour_args(*args)        # also sets self.levels,
-                                                   #  self.layers
+
+        if isinstance(args[0], ContourSet):
+            C = args[0].Cntr
+            if self.levels is None:
+                self.levels = args[0].levels
+        else:
+            x, y, z = self._contour_args(*args)
+
+            x0 = ma.minimum(x)
+            x1 = ma.maximum(x)
+            y0 = ma.minimum(y)
+            y1 = ma.maximum(y)
+            self.ax.update_datalim([(x0,y0), (x1,y1)])
+            self.ax.autoscale_view()
+            _mask = ma.getmask(z)
+            if _mask is ma.nomask:
+                _mask = None
+            C = _cntr.Cntr(x, y, z.filled(), _mask)
+        self.Cntr = C
+        self._process_levels()
+
         if self.colors is not None:
             cmap = colors.ListedColormap(self.colors, N=len(self.layers))
         if self.filled:
-            self.collections = cbook.silent_list('collections.PolyCollection')
+            self.collections = cbook.silent_list('collections.PathCollection')
         else:
             self.collections = cbook.silent_list('collections.LineCollection')
         # label lists must be initialized here
@@ -588,34 +607,35 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
             kw['norm'] = norm
         cm.ScalarMappable.__init__(self, **kw) # sets self.cmap;
         self._process_colors()
-        _mask = ma.getmask(z)
-        if _mask is ma.nomask:
-            _mask = None
-
         if self.filled:
             if self.linewidths is not None:
                 warnings.warn('linewidths is ignored by contourf')
-            C = _cntr.Cntr(x, y, z.filled(), _mask)
             lowers = self._levels[:-1]
             uppers = self._levels[1:]
             for level, level_upper in zip(lowers, uppers):
-                nlist = C.trace(level, level_upper, points = 0,
-                        nchunk = self.nchunk)
-                col = collections.PolyCollection(nlist,
+                nlist = C.trace(level, level_upper, nchunk = self.nchunk)
+                nseg = len(nlist)//2
+                segs = nlist[:nseg]
+                kinds = nlist[nseg:]
+
+                paths = self._make_paths(segs, kinds)
+
+                col = collections.PathCollection(paths,
                                      antialiaseds = (self.antialiased,),
                                      edgecolors= 'none',
                                      alpha=self.alpha)
                 self.ax.add_collection(col)
                 self.collections.append(col)
-
         else:
             tlinewidths = self._process_linewidths()
             self.tlinewidths = tlinewidths
             tlinestyles = self._process_linestyles()
-            C = _cntr.Cntr(x, y, z.filled(), _mask)
             for level, width, lstyle in zip(self.levels, tlinewidths, tlinestyles):
-                nlist = C.trace(level, points = 0)
-                col = collections.LineCollection(nlist,
+                nlist = C.trace(level)
+                nseg = len(nlist)//2
+                segs = nlist[:nseg]
+                #kinds = nlist[nseg:]
+                col = collections.LineCollection(segs,
                                      linewidths = width,
                                      linestyle = lstyle,
                                      alpha=self.alpha)
@@ -624,12 +644,14 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
                 self.ax.add_collection(col, False)
                 self.collections.append(col)
         self.changed() # set the colors
-        x0 = ma.minimum(x)
-        x1 = ma.maximum(x)
-        y0 = ma.minimum(y)
-        y1 = ma.maximum(y)
-        self.ax.update_datalim([(x0,y0), (x1,y1)])
-        self.ax.autoscale_view()
+
+    def _make_paths(self, segs, kinds):
+        paths = []
+        for seg, kind in zip(segs, kinds):
+            paths.append(mpath.Path(seg, codes=kind))
+        return paths
+
+
 
     def changed(self):
         tcolors = [ (tuple(rgba),) for rgba in
@@ -786,14 +808,10 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
                         "Last %s arg must give levels; see help(%s)" % (fn,fn))
             if self.filled and len(lev) < 2:
                 raise ValueError("Filled contours require at least 2 levels.")
-            # Workaround for cntr.c bug wrt masked interior regions:
-            #if filled:
-            #    z = ma.masked_array(z.filled(-1e38))
-            # It's not clear this is any better than the original bug.
             self.levels = lev
-        #if self._auto and self.extend in ('both', 'min', 'max'):
-        #    raise TypeError("Auto level selection is inconsistent "
-        #                             + "with use of 'extend' kwarg")
+        return (x, y, z)
+
+    def _process_levels(self):
         self._levels = list(self.levels)
         if self.extend in ('both', 'min'):
             self._levels.insert(0, min(self.levels[0],self.zmin) - 1)
@@ -814,7 +832,6 @@ class ContourSet(cm.ScalarMappable, ContourLabeler):
             if self.extend in ('both', 'max'):
                 self.layers[-1] = 0.5 * (self.vmax + self._levels[-2])
 
-        return (x, y, z)
 
     def _process_colors(self):
         """

@@ -58,7 +58,7 @@ class Axes3D(Axes):
                       xticks=[], yticks=[], *args, **kwargs)
 
         self.M = None
-        
+
         self._ready = 1
         self.mouse_init()
         self.create_axes()
@@ -184,7 +184,7 @@ class Axes3D(Axes):
     def autoscale_view(self, scalex=True, scaley=True, scalez=True):
         # This method looks at the rectanglular volume (see above)
         # of data and decides how to scale the view portal to fit it.
-        
+
         self.set_top_view()
         if not self._ready:
             return
@@ -200,14 +200,17 @@ class Axes3D(Axes):
 
     def get_w_lims(self):
         '''Get 3d world limits.'''
-        minpy, maxx = self.get_xlim3d()
+        minx, maxx = self.get_xlim3d()
         miny, maxy = self.get_ylim3d()
         minz, maxz = self.get_zlim3d()
-        return minpy, maxx, miny, maxy, minz, maxz
+        return minx, maxx, miny, maxy, minz, maxz
 
     def _determine_lims(self, xmin=None, xmax=None, *args, **kwargs):
         if xmax is None and cbook.iterable(xmin):
             xmin, xmax = xmin
+        if xmin == xmax:
+            xmin -= 0.5
+            xmax += 0.5
         return (xmin, xmax)
 
     def set_xlim3d(self, *args, **kwargs):
@@ -442,12 +445,12 @@ class Axes3D(Axes):
         elif self.button_pressed == 3:
             # zoom view
             # hmmm..this needs some help from clipping....
-            minpy, maxx, miny, maxy, minz, maxz = self.get_w_lims()
+            minx, maxx, miny, maxy, minz, maxz = self.get_w_lims()
             df = 1-((h - dy)/h)
-            dx = (maxx-minpy)*df
+            dx = (maxx-minx)*df
             dy = (maxy-miny)*df
             dz = (maxz-minz)*df
-            self.set_xlim3d(minpy - dx, maxx + dx)
+            self.set_xlim3d(minx - dx, maxx + dx)
             self.set_ylim3d(miny - dy, maxy + dy)
             self.set_zlim3d(minz - dz, maxz + dz)
             self.get_proj()
@@ -534,7 +537,7 @@ class Axes3D(Axes):
 
         # Match length
         if not cbook.iterable(zs):
-            zs = [zs] * len(xs)
+            zs = np.ones(len(xs)) * zs
 
         lines = Axes.plot(self, xs, ys, *args[argsi:], **kwargs)
         for line in lines:
@@ -552,7 +555,7 @@ class Axes3D(Axes):
         By default it will be colored in shades of a solid color,
         but it also supports color mapping by supplying the *cmap*
         argument.
-        
+
         ==========  ================================================
         Argument    Description
         ==========  ================================================
@@ -648,7 +651,7 @@ class Axes3D(Axes):
         shade = np.array(shade)
         mask = ~np.isnan(shade)
 
-    	if len(shade[mask]) > 0: 
+    	if len(shade[mask]) > 0:
            norm = Normalize(min(shade[mask]), max(shade[mask]))
            color = color.copy()
            color[3] = 1
@@ -679,7 +682,7 @@ class Axes3D(Axes):
 
         rstride = kwargs.pop("rstride", 1)
         cstride = kwargs.pop("cstride", 1)
-        
+
         had_data = self.has_data()
         rows, cols = Z.shape
 
@@ -708,7 +711,7 @@ class Axes3D(Axes):
 
     def _3d_extend_contour(self, cset, stride=5):
         '''
-        Extend a contour in 3D by creating 
+        Extend a contour in 3D by creating
         '''
 
         levels = cset.levels
@@ -742,7 +745,7 @@ class Axes3D(Axes):
                 v1 = np.array(topverts[0][i1]) - np.array(topverts[0][i2])
                 v2 = np.array(topverts[0][i1]) - np.array(botverts[0][i1])
                 normals.append(np.cross(v1, v2))
- 
+
             colors = self._shade_colors(color, normals)
             colors2 = self._shade_colors(color, normals)
             polycol = art3d.Poly3DCollection(polyverts, facecolors=colors,
@@ -811,13 +814,13 @@ class Axes3D(Axes):
 
         self.auto_scale_xyz(X, Y, Z, had_data)
         return cset
-    
+
     contourf3D = contourf
 
     def add_collection3d(self, col, zs=0, zdir='z'):
         '''
         Add a 3d collection object to the plot.
-        
+
         2D collection types are converted to a 3D version by
         modifying the object and adding z coordinate information.
 
@@ -865,7 +868,7 @@ class Axes3D(Axes):
         patches = Axes.scatter(self, xs, ys, *args, **kwargs)
         if not cbook.iterable(zs):
             is_2d = True
-            zs = [zs] * len(xs)
+            zs = np.ones(len(xs)) * zs
         else:
             is_2d = False
         art3d.patch_collection_2d_to_3d(patches, zs=zs, zdir=zdir)
@@ -903,12 +906,12 @@ class Axes3D(Axes):
         patches = Axes.bar(self, left, height, *args, **kwargs)
 
         if not cbook.iterable(zs):
-            zs = [zs] * len(left)
+            zs = np.ones(len(left)) * zs
 
         verts = []
         verts_zs = []
         for p, z in zip(patches, zs):
-            vs = p.get_verts()
+            vs = art3d.get_patch_verts(p)
             verts += vs.tolist()
             verts_zs += [z] * len(vs)
             art3d.patch_2d_to_3d(p, zs, zdir)
@@ -932,7 +935,6 @@ class Axes3D(Axes):
         had_data = self.has_data()
 
         if not cbook.iterable(x):
-            print 'not interable'
             x, y, z = [x], [y], [z]
         if not cbook.iterable(dx):
             dx, dy, dz = [dx], [dy], [dz]

@@ -1,4 +1,97 @@
-======================================================================
+2009-08-09 AnnotationBbox added. Similar to Annotation, but works with
+           OffsetBox instead of Text. See the example
+           demo_annotation_box.py. -JJL
+
+2009-08-07 BboxImage implemented. Two examples, demo_bboximage.py and
+           demo_ribbon_box.py added. - JJL
+
+2009-08-07 In an effort to simplify the backend API, all clipping rectangles
+           and paths are now passed in using GraphicsContext objects, even
+           on collections and images.  Therefore:
+
+             draw_path_collection(self, master_transform, cliprect, clippath,
+                                  clippath_trans, paths, all_transforms, offsets,
+                                  offsetTrans, facecolors, edgecolors, linewidths,
+                                  linestyles, antialiaseds, urls)
+
+                                             becomes:
+
+             draw_path_collection(self, gc, master_transform, paths, all_transforms,
+                                  offsets, offsetTrans, facecolors, edgecolors,
+                                  linewidths, linestyles, antialiaseds, urls)
+
+
+
+             draw_quad_mesh(self, master_transform, cliprect, clippath,
+                            clippath_trans, meshWidth, meshHeight, coordinates,
+                            offsets, offsetTrans, facecolors, antialiased,
+                            showedges)
+
+                                             becomes:
+
+             draw_quad_mesh(self, gc, master_transform, meshWidth, meshHeight,
+                            coordinates, offsets, offsetTrans, facecolors,
+                            antialiased, showedges)
+
+
+
+             draw_image(self, x, y, im, bbox, clippath=None, clippath_trans=None)
+
+                                             becomes:
+
+             draw_image(self, gc, x, y, im)
+
+           - MGD
+
+2009-08-06 Tagging the 0.99.0 release at svn r7397 - JDH
+
+	   * fixed an alpha colormapping bug posted on sf 2832575
+
+	   * fix typo in axes_divider.py. use nanmin, nanmax in angle_helper.py
+             (patch by Christoph Gohlke)
+
+	   * remove dup gui event in enter/leave events in gtk
+
+	   * lots of fixes for os x binaries (Thanks Russell Owen)
+
+	   * attach gtk events to mpl events -- fixes sf bug 2816580
+
+	   * applied sf patch 2815064 (middle button events for wx) and
+             patch  2818092 (resize events for wx)
+
+	   * fixed boilerplate.py so it doesn't break the ReST docs.
+
+	   * removed a couple of cases of mlab.load
+
+	   * fixed rec2csv win32 file handle bug from sf patch 2831018
+
+	   * added two examples from Josh Hemann: examples/pylab_examples/barchart_demo2.py
+             and examples/pylab_examples/boxplot_demo2.py
+
+	   * handled sf bugs 2831556 and 2830525; better bar error messages and
+             backend driver configs
+
+	   * added miktex win32 patch from sf patch 2820194
+
+	   * apply sf patches 2830233 and 2823885 for osx setup and 64 bit;  thanks Michiel
+
+2009-08-04 Made cbook.get_sample_data make use of the ETag and Last-Modified
+           headers of mod_dav_svn. - JKS
+
+2009-08-03 Add PathCollection; modify contourf to use complex
+           paths instead of simple paths with cuts. - EF
+
+
+2009-08-03 Fixed boilerplate.py so it doesn't break the ReST docs. - JKS
+
+2009-08-03 pylab no longer provides a load and save function.  These
+           are available in matplotlib.mlab, or you can use
+           numpy.loadtxt and numpy.savetxt for text files, or np.save
+           and np.load for binary numpy arrays. - JDH
+
+2009-07-31 Added cbook.get_sample_data for urllib enabled fetching and
+           cacheing of data needed for examples.  See
+           examples/misc/sample_data_demo.py - JDH
 
 2009-07-31 Tagging 0.99.0.rc1 at 7314 - MGD
 

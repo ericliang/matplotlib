@@ -1,8 +1,11 @@
 import numpy as np
 import matplotlib.mlab as mlab
+import matplotlib.cbook as cbook
 
+datafile = cbook.get_sample_data('aapl.csv', asfileobj=False)
+print 'loading', datafile
+r = mlab.csv2rec(datafile)
 
-r = mlab.csv2rec('../data/aapl.csv')
 r.sort()
 r1 = r[-10:]
 

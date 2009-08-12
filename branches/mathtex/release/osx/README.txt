@@ -7,9 +7,7 @@ Dir Contents
 -------------
 
 * :file:`bdist_mkpg` - the distutils.extension to build Installer.app
-  mpkg installers.  It is patched from the tarball with
-  file:`data/bdist.patch` because 0.4.3 is broken on OS X 10.5.
-  Instructions on how to patch and install are below
+  mpkg installers.
 
 * :file:`data` - some config files and patches needed for the build
 
@@ -20,6 +18,22 @@ Dir Contents
 
 How to build
 --------------
+
+* You need a python framework build, numpy and wxpython to build the
+  mpl installers (wx requires this and we need wx to build the wxagg
+  extension).  I recommend building python from src as a framework build::
+
+    ./configure --enable-universalsdk --enable-framework
+    sudo make install
+
+  and build numpy from src too since the 2.5 numpy installer doesn't work
+  with a python built from src::
+
+      sudo python setup.py install
+
+  you can use the pre-built installer for wx::
+
+      http://downloads.sourceforge.net/project/wxpython/wxPython/2.8.10.1/wxPython2.8-osx-unicode-2.8.10.1-universal-py2.6.dmg?use_mirror=voxel
 
 * You need to make sure to unset PKG_CONFIG_PATH to make sure the
   static linking below is respected.  Otherwise the mpl build script
@@ -34,16 +48,16 @@ How to build
 * First fetch all the dependencies and patch bdist_mpkg for OSX 10.5.
   You can do this automatically in one step with::
 
-      make fetch_deps
+      make fetch
 
-* install the patched bdist_mpkg, that the fetch_deps step just created::
+* install the patched bdist_mpkg, that the fetch step just created::
 
-      cd bdist_mpkg-0.4.3
+      cd bdist_mpkg-0.4.4
       sudo python setup.py install
 
 * build the dependencies::
 
-      make dependencies
+      make deps
 
 * copy over the latest mpl *.tar.gz tarball to this directory, update
   the MPLVERSION in the Makefile::
@@ -63,11 +77,11 @@ Build the dependencies::
 
     cd release/osx/
     unset PKG_CONFIG_PATH
-    make fetch_deps
-    cd bdist_mpkg-0.4.3
+    make fetch
+    cd bdist_mpkg-0.4.4
     sudo python setup.py install
     cd ..
-    make dependencies
+    make deps
 
 Build the mpl sdist::
 

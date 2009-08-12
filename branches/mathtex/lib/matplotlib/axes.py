@@ -1705,12 +1705,14 @@ class Axes(martist.Artist):
             l, b, w, h = self.bbox.bounds
             # composite images need special args so they will not
             # respect z-order for now
-            renderer.draw_image(
-                round(l), round(b), im, self.bbox,
-                self.patch.get_path(),
-                self.patch.get_transform())
 
+            gc = renderer.new_gc()
+            gc.set_clip_rectangle(self.bbox)
+            gc.set_clip_path(mtransforms.TransformedPath(
+                    self.patch.get_path(),
+                    self.patch.get_transform()))
 
+            renderer.draw_image(gc, round(l), round(b), im)
 
         if dsu_rasterized:
             for zorder, i, a in dsu_rasterized:
@@ -3819,6 +3821,8 @@ class Axes(martist.Artist):
                         if isinstance(c, mcoll.LineCollection)])
         handles.extend([c for c in self.collections
                         if isinstance(c, mcoll.RegularPolyCollection)])
+        handles.extend([c for c in self.collections
+                        if isinstance(c, mcoll.CircleCollection)])
         return handles
 
 
@@ -4229,20 +4233,20 @@ class Axes(martist.Artist):
 
         # FIXME: convert the following to proper input validation
         # raising ValueError; don't use assert for this.
-        assert len(left)==nbars, "argument 'left' must be %d or scalar" % nbars
-        assert len(height)==nbars, ("argument 'height' must be %d or scalar" %
+        assert len(left)==nbars, "incompatible sizes: argument 'left' must be length %d or scalar" % nbars
+        assert len(height)==nbars, ("incompatible sizes: argument 'height' must be length %d or scalar" %
                                     nbars)
-        assert len(width)==nbars, ("argument 'width' must be %d or scalar" %
+        assert len(width)==nbars, ("incompatible sizes: argument 'width' must be length %d or scalar" %
                                    nbars)
-        assert len(bottom)==nbars, ("argument 'bottom' must be %d or scalar" %
+        assert len(bottom)==nbars, ("incompatible sizes: argument 'bottom' must be length %d or scalar" %
                                     nbars)
 
         if yerr is not None and len(yerr)!=nbars:
             raise ValueError(
-                "bar() argument 'yerr' must be len(%s) or scalar" % nbars)
+                "incompatible sizes: bar() argument 'yerr' must be len(%s) or scalar" % nbars)
         if xerr is not None and len(xerr)!=nbars:
             raise ValueError(
-                "bar() argument 'xerr' must be len(%s) or scalar" % nbars)
+                "incompatible sizes: bar() argument 'xerr' must be len(%s) or scalar" % nbars)
 
         patches = []
 
@@ -6539,7 +6543,7 @@ class Axes(martist.Artist):
             and max of the color array *C* is used.  If you pass a
             *norm* instance, *vmin* and *vmax* will be ignored.
 
-          *shading*: [ 'flat' | 'faceted' ]
+          *shading*: [ 'flat' | 'faceted' | 'gouraud' ]
             If 'faceted', a black grid is drawn around each rectangle; if
             'flat', edges are not drawn. Default is 'flat', contrary to
             Matlab(TM).
@@ -6580,7 +6584,7 @@ class Axes(martist.Artist):
         cmap = kwargs.pop('cmap', None)
         vmin = kwargs.pop('vmin', None)
         vmax = kwargs.pop('vmax', None)
-        shading = kwargs.pop('shading', 'flat')
+        shading = kwargs.pop('shading', 'flat').lower()
         edgecolors = kwargs.pop('edgecolors', 'None')
         antialiased = kwargs.pop('antialiased', False)
 
@@ -6588,8 +6592,11 @@ class Axes(martist.Artist):
         Ny, Nx = X.shape
 
         # convert to one dimensional arrays
-        C = ma.ravel(C[0:Ny-1, 0:Nx-1]) # data point in each cell is value at
-                                        # lower left corner
+        if shading != 'gouraud':
+            C = ma.ravel(C[0:Ny-1, 0:Nx-1]) # data point in each cell is value at
+                                            # lower left corner
+        else:
+            C = C.ravel()
         X = X.ravel()
         Y = Y.ravel()
 
@@ -6604,7 +6611,7 @@ class Axes(martist.Artist):
 
         collection = mcoll.QuadMesh(
             Nx - 1, Ny - 1, coords, showedges,
-            antialiased=antialiased)  # kwargs are not used
+            antialiased=antialiased, shading=shading)  # kwargs are not used
         collection.set_alpha(alpha)
         collection.set_array(C)
         if norm is not None: assert(isinstance(norm, mcolors.Normalize))

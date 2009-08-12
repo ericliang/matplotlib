@@ -382,7 +382,7 @@ class RendererPS(RendererBase):
         """
         return self.image_magnification
 
-    def draw_image(self, x, y, im, bbox, clippath=None, clippath_trans=None):
+    def draw_image(self, gc, x, y, im):
         """
         Draw the Image instance into the current axes; x is the
         distance in pixels from the left hand side of the canvas and y
@@ -407,6 +407,9 @@ class RendererPS(RendererBase):
 
         figh = self.height*72
         #print 'values', origin, flipud, figh, h, y
+
+        bbox = gc.get_clip_rectangle()
+        clippath, clippath_trans = gc.get_clip_path()
 
         clip = []
         if bbox is not None:
@@ -512,10 +515,9 @@ grestore
         ps = '\n'.join(ps_cmd)
         self._draw_ps(ps, gc, rgbFace, fill=False, stroke=False)
 
-    def draw_path_collection(self, master_transform, cliprect, clippath,
-                             clippath_trans, paths, all_transforms, offsets,
-                             offsetTrans, facecolors, edgecolors, linewidths,
-                             linestyles, antialiaseds, urls):
+    def draw_path_collection(self, gc, master_transform, paths, all_transforms,
+                             offsets, offsetTrans, facecolors, edgecolors,
+                             linewidths, linestyles, antialiaseds, urls):
         write = self._pswriter.write
 
         path_codes = []
@@ -529,13 +531,11 @@ grestore
             write('\n'.join(ps_cmd))
             path_codes.append(name)
 
-        for xo, yo, path_id, gc, rgbFace in self._iter_collection(
-            path_codes, cliprect, clippath, clippath_trans,
-            offsets, offsetTrans, facecolors, edgecolors,
+        for xo, yo, path_id, gc0, rgbFace in self._iter_collection(
+            gc, path_codes, offsets, offsetTrans, facecolors, edgecolors,
             linewidths, linestyles, antialiaseds, urls):
-
             ps = "%g %g %s" % (xo, yo, path_id)
-            self._draw_ps(ps, gc, rgbFace)
+            self._draw_ps(ps, gc0, rgbFace)
 
         self._path_collection_id += 1
 

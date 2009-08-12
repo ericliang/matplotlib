@@ -62,12 +62,19 @@ class RendererMac(RendererBase):
         gc.draw_markers(marker_path, marker_trans, path, trans, rgbFace)
 
     def draw_path_collection(self, *args):
-        gc = self.gc
-        args = args[:13]
+        # TODO: We should change this in the C code eventually, but this
+        # re-ordering of arguments should work for now
+        gc = args[0]
+        args = tuple([gc, args[1], gc.get_clip_rectangle()] + \
+            list(gc.get_clip_path()) + list(args[2:]))
         gc.draw_path_collection(*args)
 
     def draw_quad_mesh(self, *args):
-        gc = self.gc
+        # TODO: We should change this in the C code eventually, but this
+        # re-ordering of arguments should work for now
+        gc = args[0]
+        args = [gc, args[1], gc.get_clip_rectangle()] + \
+            list(gc.get_clip_path()) + list(args[2:])
         gc.draw_quad_mesh(*args)
 
     def new_gc(self):
@@ -75,10 +82,13 @@ class RendererMac(RendererBase):
         self.gc.set_hatch(None)
         return self.gc
 
-    def draw_image(self, x, y, im, bbox, clippath=None, clippath_trans=None):
+    def draw_image(self, gc, x, y, im):
+        # TODO: We should change this in the C code eventually, but this
+        # re-ordering of arguments should work for now
         im.flipud_out()
         nrows, ncols, data = im.as_rgba_str()
-        self.gc.draw_image(x, y, nrows, ncols, data, bbox, clippath, clippath_trans)
+        gc.draw_image(x, y, nrows, ncols, data, gc.get_clip_rectangle(),
+                      *gc.get_clip_path())
         im.flipud_out()
 
     def draw_tex(self, gc, x, y, s, prop, angle):

@@ -266,10 +266,9 @@ class RendererSVG(RendererBase):
                 self._svgwriter.write ('<use style="%s" %s/>\n' % (style, details))
         write('</g>')
 
-    def draw_path_collection(self, master_transform, cliprect, clippath,
-                             clippath_trans, paths, all_transforms, offsets,
-                             offsetTrans, facecolors, edgecolors, linewidths,
-                             linestyles, antialiaseds, urls):
+    def draw_path_collection(self, gc, master_transform, paths, all_transforms,
+                             offsets, offsetTrans, facecolors, edgecolors,
+                             linewidths, linestyles, antialiaseds, urls):
         write = self._svgwriter.write
 
         path_codes = []
@@ -284,18 +283,17 @@ class RendererSVG(RendererBase):
             path_codes.append(name)
         write('</defs>\n')
 
-        for xo, yo, path_id, gc, rgbFace in self._iter_collection(
-            path_codes, cliprect, clippath, clippath_trans,
-            offsets, offsetTrans, facecolors, edgecolors,
+        for xo, yo, path_id, gc0, rgbFace in self._iter_collection(
+            gc, path_codes, offsets, offsetTrans, facecolors, edgecolors,
             linewidths, linestyles, antialiaseds, urls):
-            clipid = self._get_gc_clip_svg(gc)
-            url = gc.get_url()
+            clipid = self._get_gc_clip_svg(gc0)
+            url = gc0.get_url()
             if url is not None:
                 self._svgwriter.write('<a xlink:href="%s">' % url)
             if clipid is not None:
                 write('<g clip-path="url(#%s)">' % clipid)
             details = 'xlink:href="#%s" x="%f" y="%f"' % (path_id, xo, self.height - yo)
-            style = self._get_style(gc, rgbFace)
+            style = self._get_style(gc0, rgbFace)
             self._svgwriter.write ('<use style="%s" %s/>\n' % (style, details))
             if clipid is not None:
                 write('</g>')
@@ -304,7 +302,7 @@ class RendererSVG(RendererBase):
 
         self._path_collection_id += 1
 
-    def draw_image(self, x, y, im, bbox, clippath=None, clippath_trans=None):
+    def draw_image(self, gc, x, y, im):
         # MGDTODO: Support clippath here
         trans = [1,0,0,1,0,0]
         transstr = ''

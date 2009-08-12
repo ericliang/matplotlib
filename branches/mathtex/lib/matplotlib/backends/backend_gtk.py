@@ -197,7 +197,7 @@ class FigureCanvasGTK (gtk.DrawingArea, FigureCanvasBase):
             step = 1
         else:
             step = -1
-        FigureCanvasBase.scroll_event(self, x, y, step)
+        FigureCanvasBase.scroll_event(self, x, y, step, guiEvent=event)
         return False  # finish event propagation?
 
     def button_press_event(self, widget, event):
@@ -205,7 +205,7 @@ class FigureCanvasGTK (gtk.DrawingArea, FigureCanvasBase):
         x = event.x
         # flipy so y=0 is bottom of canvas
         y = self.allocation.height - event.y
-        FigureCanvasBase.button_press_event(self, x, y, event.button)
+        FigureCanvasBase.button_press_event(self, x, y, event.button, guiEvent=event)
         return False  # finish event propagation?
 
     def button_release_event(self, widget, event):
@@ -213,21 +213,21 @@ class FigureCanvasGTK (gtk.DrawingArea, FigureCanvasBase):
         x = event.x
         # flipy so y=0 is bottom of canvas
         y = self.allocation.height - event.y
-        FigureCanvasBase.button_release_event(self, x, y, event.button)
+        FigureCanvasBase.button_release_event(self, x, y, event.button, guiEvent=event)
         return False  # finish event propagation?
 
     def key_press_event(self, widget, event):
         if _debug: print 'FigureCanvasGTK.%s' % fn_name()
         key = self._get_key(event)
         if _debug: print "hit", key
-        FigureCanvasBase.key_press_event(self, key)
+        FigureCanvasBase.key_press_event(self, key, guiEvent=event)
         return False  # finish event propagation?
 
     def key_release_event(self, widget, event):
         if _debug: print 'FigureCanvasGTK.%s' % fn_name()
         key = self._get_key(event)
         if _debug: print "release", key
-        FigureCanvasBase.key_release_event(self, key)
+        FigureCanvasBase.key_release_event(self, key, guiEvent=event)
         return False  # finish event propagation?
 
     def motion_notify_event(self, widget, event):
@@ -239,7 +239,7 @@ class FigureCanvasGTK (gtk.DrawingArea, FigureCanvasBase):
 
         # flipy so y=0 is bottom of canvas
         y = self.allocation.height - y
-        FigureCanvasBase.motion_notify_event(self, x, y)
+        FigureCanvasBase.motion_notify_event(self, x, y, guiEvent=event)
         return False  # finish event propagation?
 
     def leave_notify_event(self, widget, event):
@@ -440,8 +440,15 @@ class FigureManagerGTK(FigureManagerBase):
         self.window = gtk.Window()
         self.window.set_title("Figure %d" % num)
         if (window_icon):
-            self.window.set_icon_from_file(window_icon)
-
+            try:
+                self.window.set_icon_from_file(window_icon)
+            except:
+                # some versions of gtk throw a glib.GError but not
+                # all, so I am not sure how to catch it.  I am unhappy
+                # diong a blanket catch here, but an not sure what a
+                # better way is - JDH
+                verbose.report('Could not load matplotlib icon: %s' % sys.exc_info()[1])
+                
         self.vbox = gtk.VBox()
         self.window.add(self.vbox)
         self.vbox.show()
@@ -666,7 +673,11 @@ class NavigationToolbar2GTK(NavigationToolbar2, gtk.Toolbar):
 
         window = gtk.Window()
         if (window_icon):
-            window.set_icon_from_file(window_icon)
+            try: window.set_icon_from_file(window_icon)
+            except:
+                # we presumably already logged a message on the
+                # failure of the main plot, don't keep reporting
+                pass
         window.set_title("Subplot Configuration Tool")
         window.set_default_size(w, h)
         vbox = gtk.VBox()

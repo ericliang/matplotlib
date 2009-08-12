@@ -5,7 +5,10 @@ try:
 except ImportError, exc:
     raise SystemExit("PIL must be installed to run this example")
 
-lena = Image.open('../data/lena.jpg')
+import matplotlib.cbook as cbook
+
+datafile = cbook.get_sample_data('lena.jpg')
+lena = Image.open(datafile)
 dpi = rcParams['figure.dpi']
 figsize = lena.size[0]/dpi, lena.size[1]/dpi
 

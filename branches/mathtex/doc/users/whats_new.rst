@@ -1,35 +1,78 @@
 .. _whats-new:
 
-***************************
+************************
 What's new in matplotlib
-***************************
+************************
 
-.. _whats-new-svn:
+This page just covers the highlights -- for the full story, see the
+`CHANGELOG <http://matplotlib.sourceforge.net/_static/CHANGELOG>`_
 
-What new in svn
-===============
+new in matplotlib-0.99
+======================
+
+.. _whats-new-mplot3d:
+
+mplot3d
+--------
+
+
+Reinier Heeres has ported John Porter's mplot3d over to the new
+matplotlib transformations framework, and it is now available as a
+toolkit mpl_toolkits.mplot3d (which now comes standard with all mpl
+installs).  See :ref:`mplot3d-examples-index` and
+:ref:`toolkit_mplot3d-tutorial`
+
+.. plot:: pyplots/whats_new_99_mplot3d.py
+
+.. _whats-new-axes-grid:
+
+axes grid toolkit
+-----------------
+
+Jae-Joon Lee has added a new toolkit to ease displaying multiple images in
+matplotlib, as well as some support for curvilinear grids to support
+the world coordinate system. The toolkit is included standard with all
+new mpl installs.  See :ref:`axes_grid-examples-index` and
+:ref:`axes_grid_users-guide-index`.
+
+.. plot:: pyplots/whats_new_99_axes_grid.py
+
+.. _whats-new-spine:
 
 Axis spine placement
 --------------------
 
 Andrew Straw has added the ability to place "axis spines" -- the lines
-that denote the data limits -- in various arbitrary locations. See
+that denote the data limits -- in various arbitrary locations.  No
+longer are your axis lines constrained to be a simple rectangle around
+the figure -- you can turn on or off left, bottom, right and top, as
+well as "detach" the spine to offset it away from the data.  See
+:ref:`pylab_examples-spine_placement_demo` and
 :class:`matplotlib.spines.Spine`.
+
+.. plot:: pyplots/whats_new_99_spines.py
+
+
+New documentation
+-----------------
+
+jae-Joon Lee has written two new guides :ref:`plotting-guide-legend`
+and :ref:`plotting-guide-annotation`.
 
 .. _whats-new-0-98-4:
 
-What new in 0.98.4
-==============================
+new in 0.98.4
+=============
 
 It's been four months since the last matplotlib release, and there are
-a lot of new features and bug-fixes.  
+a lot of new features and bug-fixes.
 
 Thanks to Charlie Moad for testing and preparing the source release,
 including binaries for OS X and Windows for python 2.4 and 2.5 (2.6
 and 3.0 will not be available until numpy is available on those
 releases).  Thanks to the many developers who contributed to this
 release, with contributions from Jae-Joon Lee, Michael Droettboom,
-Ryan May, Eric Firing, Manuel Metz, Jouni K. Seppaenen, Jeff Whitaker,
+Ryan May, Eric Firing, Manuel Metz, Jouni K. Seppänen, Jeff Whitaker,
 Darren Dale, David Kaplan, Michiel de Hoon and many others who
 submitted patches
 
