@@ -876,6 +876,52 @@ for s in sys.argv[1:]:
             pass
         # we don't want to assume all -d flags are backends, eg -debug
 
+default_test_modules = [
+    'matplotlib.tests.test_agg',
+    'matplotlib.tests.test_basic',
+    'matplotlib.tests.test_cbook',
+    'matplotlib.tests.test_transforms',
+    'matplotlib.tests.test_axes',
+    'matplotlib.tests.test_dates',
+    'matplotlib.tests.test_spines',
+    'matplotlib.tests.test_image',
+    ]
+
+def test(verbosity=0):
+    """run the matplotlib test suite"""
+    import nose
+    import nose.plugins.builtin
+    from testing.noseclasses import KnownFailure
+    from nose.plugins.manager import PluginManager
+
+    backend = rcParams['backend']
+
+    use('Agg') # use Agg backend for these tests
+
+    # store the old values before overriding
+    overrides = 'font.family', 'text.hinting'
+    stored = dict([(k, rcParams[k]) for k in overrides])
+
+    rcParams['font.family'] = 'Bitstream Vera Sans'
+    rcParams['text.hinting'] = False
+    plugins = []
+    plugins.append( KnownFailure() )
+    plugins.extend( [plugin() for plugin in nose.plugins.builtin.plugins] )
+
+    manager = PluginManager(plugins=plugins)
+    config = nose.config.Config(verbosity=verbosity, plugins=manager)
+
+    success = nose.run( defaultTest=default_test_modules,
+                        config=config,
+                        )
+    # restore the old rc values
+    rcParams.update(stored)
+
+    # restore the old backend
+    use(backend)
+    return success
+
+test.__test__ = False # nose: this function is not a test
 
 verbose.report('matplotlib version %s'%__version__)
 verbose.report('verbose.level %s'%verbose.level)

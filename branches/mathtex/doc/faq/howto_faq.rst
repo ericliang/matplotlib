@@ -68,6 +68,35 @@ on individual elements, eg::
    ax.set_xlabel('volts', alpha=0.5)
 
 
+.. _howto-multipage:
+
+Save multiple plots in one pdf file
+-----------------------------------
+
+Many image file formats can only have one image per file, but some
+formats support multi-page files. Currently only the pdf backend has
+support for this. To make a multi-page pdf file, first initialize the
+file::
+
+    from matplotlib.backends.backend_pdf import PdfPages
+    pp = PdfPages('multipage.pdf')
+
+You can give the :class:`~matplotlib.backends.backend_pdf.PdfPages`
+object to :func:`~matplotlib.pyplot.savefig`, but you have to specify
+the format::
+
+    savefig(pp, format='pdf')
+
+A simpler way is to call
+:meth:`PdfPages.savefig <matplotlib.backends.backend_pdf.PdfPages.savefig>`::
+
+    pp.savefig()
+
+Finally, the multipage pdf object has to be closed::
+
+    pp.close()
+
+
 .. _howto-subplots-adjust:
 
 Move the edge of an axes to make room for tick labels
@@ -516,7 +545,31 @@ list.
 
 If you have made lots of local changes and do not want to a diff
 against the entire tree, but rather against a single directory or
-file, that is fine, but we do prefer svn diffs against HEAD.
+file, that is fine, but we do prefer svn diffs against the top level
+(where setup.py lives) since it is nice to have a consistent way to
+apply them.
+
+If you are posting a patch to fix a code bug, please explain your
+patch in words -- what was broken before and how you fixed it.  Also,
+even if your patch is particularly simple, just a few lines or a
+single function replacement, we encourage people to submit svn diffs
+against HEAD or the branch they are patching.  It just makes life
+simpler for us, since we (fortunately) get a lot of contributions, and
+want to receive them in a standard format.  If possible, for any
+non-trivial change, please include a complete, free-standing example
+that the developers  can run unmodified which shows the undesired
+behavior pre-patch and the desired behavior post-patch, with a clear
+verbal description of what to look for.  The original developer may
+have written the function you are working on years ago, and may no
+longer be with the project, so it is quite possible you are the world
+expert on the code you are patching and we want to hear as much detail
+as you can offer.
+
+When emailing your patch and examples, feel free to paste any code
+into the text of the message, indeed we encourage it, but also attach
+the patches and examples since many email clients screw up the
+formatting of plain text, and we spend lots of needless time trying to
+reformat the code to make it usable.
 
 You should check out the guide to developing matplotlib to make sure
 your patch abides by our coding conventions

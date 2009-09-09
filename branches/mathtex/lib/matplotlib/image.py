@@ -134,12 +134,15 @@ class _AxesImageBase(martist.Artist, cm.ScalarMappable):
             self.axes.get_yscale() != 'linear'):
             warnings.warn("Images are not supported on non-linear axes.")
         im = self.make_image(renderer.get_image_magnification())
+        if im is None:
+            return
         im._url = self.get_url()
         l, b, widthDisplay, heightDisplay = self.axes.bbox.bounds
         gc = renderer.new_gc()
         gc.set_clip_rectangle(self.axes.bbox.frozen())
         gc.set_clip_path(self.get_clip_path())
-        renderer.draw_image(gc, round(l), round(b), im)
+        renderer.draw_image(gc, l, b, im)
+        gc.restore()
 
     def contains(self, mouseevent):
         """
@@ -167,6 +170,8 @@ class _AxesImageBase(martist.Artist, cm.ScalarMappable):
     def write_png(self, fname, noscale=False):
         """Write the image to png file with fname"""
         im = self.make_image()
+        if im is None:
+            return
         if noscale:
             numrows, numcols = im.get_size()
             im.reset_matrix()
@@ -406,7 +411,8 @@ class AxesImage(_AxesImageBase):
         # image input dimensions
         im.reset_matrix()
         numrows, numcols = im.get_size()
-
+        if numrows < 1 or numcols < 1:   # out of range
+            return None
         im.set_interpolation(self._interpd[self._interpolation])
 
         im.set_resample(self._resample)
@@ -416,10 +422,8 @@ class AxesImage(_AxesImageBase):
         ty = (ymin-self.axes.viewLim.y0)/dyintv * numrows
 
         l, b, r, t = self.axes.bbox.extents
-        widthDisplay = (round(r) + 0.5) - (round(l) - 0.5)
-        heightDisplay = (round(t) + 0.5) - (round(b) - 0.5)
-        widthDisplay *= magnification
-        heightDisplay *= magnification
+        widthDisplay = (round(r*magnification) + 0.5) - (round(l*magnification) - 0.5)
+        heightDisplay = (round(t*magnification) + 0.5) - (round(b*magnification) - 0.5)
         im.apply_translation(tx, ty)
 
         # resize viewport to display
@@ -634,6 +638,7 @@ class PcolorImage(martist.Artist, cm.ScalarMappable):
                             round(self.axes.bbox.xmin),
                             round(self.axes.bbox.ymin),
                             im)
+        gc.restore()
 
 
     def set_data(self, x, y, A):
@@ -787,6 +792,7 @@ class FigureImage(martist.Artist, cm.ScalarMappable):
         gc.set_clip_rectangle(self.figure.bbox)
         gc.set_clip_path(self.get_clip_path())
         renderer.draw_image(gc, round(self.ox), round(self.oy), im)
+        gc.restore()
 
     def write_png(self, fname):
         """Write the image to png file with fname"""
@@ -928,6 +934,7 @@ class BboxImage(_AxesImageBase):
         self._set_gc_clip(gc)
         #gc.set_clip_path(self.get_clip_path())
         renderer.draw_image(gc, round(l), round(b), im)
+        gc.restore()
 
 
 

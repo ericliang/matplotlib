@@ -145,6 +145,11 @@ def pdfRepr(obj):
         r = "%.10f" % obj
         return r.rstrip('0').rstrip('.')
 
+    # Booleans. Needs to be tested before integers since
+    # isinstance(True, int) is true.
+    elif isinstance(obj, bool):
+        return ['false', 'true'][obj]
+
     # Integers are written as such.
     elif isinstance(obj, (int, long)):
         return "%d" % obj
@@ -173,10 +178,6 @@ def pdfRepr(obj):
         r.extend([pdfRepr(val) for val in obj])
         r.append("]")
         return fill(r)
-
-    # Booleans.
-    elif isinstance(obj, bool):
-        return ['false', 'true'][obj]
 
     # The null keyword.
     elif obj is None:
@@ -273,7 +274,7 @@ _pdfops = dict(close_fill_stroke='b', fill_stroke='B', fill='f',
                gsave='q', grestore='Q',
                textpos='Td', selectfont='Tf', textmatrix='Tm',
                show='Tj', showkern='TJ',
-               setlinewidth='w', clip='W')
+               setlinewidth='w', clip='W', shading='sh')
 
 Op = Bunch(**dict([(name, Operator(value))
                    for name, value in _pdfops.items()]))
@@ -353,7 +354,7 @@ class Stream(object):
             self.compressobj = None
 
 class PdfFile(object):
-    """PDF file with one page."""
+    """PDF file object."""
 
     def __init__(self, filename):
         self.nextObject = 1     # next free object id
@@ -382,6 +383,7 @@ class PdfFile(object):
         self.fontObject = self.reserveObject('fonts')
         self.alphaStateObject = self.reserveObject('extended graphics states')
         self.hatchObject = self.reserveObject('tiling patterns')
+        self.gouraudObject = self.reserveObject('Gouraud triangles')
         self.XObjectObject = self.reserveObject('external objects')
         self.resourceObject = self.reserveObject('resources')
 
@@ -408,6 +410,7 @@ class PdfFile(object):
         self.nextAlphaState = 1
         self.hatchPatterns = {}
         self.nextHatch = 1
+        self.gouraudTriangles = []
 
         self.images = {}
         self.nextImage = 1
@@ -426,6 +429,7 @@ class PdfFile(object):
                       'XObject': self.XObjectObject,
                       'ExtGState': self.alphaStateObject,
                       'Pattern': self.hatchObject,
+                      'Shading': self.gouraudObject,
                       'ProcSet': procsets }
         self.writeObject(self.resourceObject, resources)
 
@@ -457,6 +461,7 @@ class PdfFile(object):
                          dict([(val[0], val[1])
                                for val in self.alphaStates.values()]))
         self.writeHatches()
+        self.writeGouraudTriangles()
         xobjects = dict(self.images.values())
         for tup in self.markers.values():
             xobjects[tup[0]] = tup[1]
@@ -1055,6 +1060,49 @@ end"""
             self.endStream()
         self.writeObject(self.hatchObject, hatchDict)
 
+    def addGouraudTriangles(self, points, colors):
+        name = Name('GT%d' % len(self.gouraudTriangles))
+        self.gouraudTriangles.append((name, points, colors))
+        return name
+
+    def writeGouraudTriangles(self):
+        gouraudDict = dict()
+        for name, points, colors in self.gouraudTriangles:
+            ob = self.reserveObject('Gouraud triangle')
+            gouraudDict[name] = ob
+            shape = points.shape
+            flat_points = points.reshape((shape[0] * shape[1], 2))
+            flat_colors = colors.reshape((shape[0] * shape[1], 4))
+            points_min = npy.min(flat_points, axis=0) - (1 << 8)
+            points_max = npy.max(flat_points, axis=0) + (1 << 8)
+            factor = float(0xffffffff) / (points_max - points_min)
+
+            self.beginStream(
+                ob.id, None,
+                { 'ShadingType': 4,
+                  'BitsPerCoordinate': 32,
+                  'BitsPerComponent': 8,
+                  'BitsPerFlag': 8,
+                  'ColorSpace': Name('DeviceRGB'),
+                  'AntiAlias': True,
+                  'Decode': [points_min[0], points_max[0],
+                             points_min[1], points_max[1],
+                             0, 1, 0, 1, 0, 1]
+                  })
+
+            streamarr = npy.empty(
+                (shape[0] * shape[1],),
+                dtype=[('flags', 'u1'),
+                       ('points', '>u4', (2,)),
+                       ('colors', 'u1', (3,))])
+            streamarr['flags'] = 0
+            streamarr['points'] = (flat_points - points_min) * factor
+            streamarr['colors'] = flat_colors[:, :3] * 255.0
+
+            self.write(streamarr.tostring())
+            self.endStream()
+        self.writeObject(self.gouraudObject, gouraudDict)
+
     def imageObject(self, image):
         """Return name of an image XObject representing the given image."""
 
@@ -1329,6 +1377,27 @@ class RendererPdf(RendererBase):
                        marker, Op.use_xobject)
                 lastx, lasty = x, y
         output(Op.grestore)
+
+    def draw_gouraud_triangle(self, gc, points, colors, trans):
+        self.draw_gouraud_triangles(gc, points.reshape((1, 3, 2)),
+                                    colors.reshape((1, 3, 4)), trans)
+
+    def draw_gouraud_triangles(self, gc, points, colors, trans):
+        assert len(points) == len(colors)
+        assert points.ndim == 3
+        assert points.shape[1] == 3
+        assert points.shape[2] == 2
+        assert colors.ndim == 3
+        assert colors.shape[1] == 3
+        assert colors.shape[2] == 4
+
+        shape = points.shape
+        points = points.reshape((shape[0] * shape[1], 2))
+        tpoints = trans.transform(points)
+        tpoints = tpoints.reshape(shape)
+        name = self.file.addGouraudTriangles(tpoints, colors)
+        self.check_gc(gc)
+        self.file.output(name, Op.shading)
 
     def _setup_textpos(self, x, y, descent, angle, oldx=0, oldy=0, olddescent=0, oldangle=0):
         if angle == oldangle == 0:
@@ -1952,18 +2021,18 @@ class PdfPages(object):
     """
     A multi-page PDF file.
 
-    Use like this:
+    Use like this::
 
-      # Initialize:
-      pdf_pages = PdfPages('foo.pdf')
+        # Initialize:
+        pp = PdfPages('foo.pdf')
 
-      # As many times as you like, create a figure fig, then either:
-      fig.savefig(pdf_pages, format='pdf') # note the format argument!
-      # or:
-      pdf_pages.savefig(fig)
+        # As many times as you like, create a figure fig, then either:
+        fig.savefig(pp, format='pdf') # note the format argument!
+        # or:
+        pp.savefig(fig)
 
-      # Once you are done, remember to close the object:
-      pdf_pages.close()
+        # Once you are done, remember to close the object:
+        pp.close()
 
     (In reality PdfPages is a thin wrapper around PdfFile, in order to
     avoid confusion when using savefig and forgetting the format

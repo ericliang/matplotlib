@@ -378,6 +378,28 @@ class AutoDateFormatter(ticker.Formatter):
     """
     This class attempts to figure out the best format to use.  This is
     most useful when used with the :class:`AutoDateLocator`.
+
+
+    The AutoDateFormatter has a scale dictionary that maps the scale
+    of the tick (the distance in days between one major tick) and a
+    format string.  The default looks like this::
+
+        self.scaled = {
+           365.0  : '%Y',
+           30.    : '%b %Y',
+           1.0    : '%b %d %Y',
+           1./24. : '%H:%M:%D',
+           }
+
+
+    The algorithm picks the key in the dictionary that is >= the
+    current scale and uses that format string.  You can customize this
+    dictionary by doing::
+
+
+      formatter = AutoDateFormatter()
+      formatter.scaled[1/(24.*60.)] = '%M:%S' # only show min and sec
+
     """
 
     # This can be improved by providing some user-level direction on
@@ -391,29 +413,33 @@ class AutoDateFormatter(ticker.Formatter):
     # Or more simply, perhaps just a format string for each
     # possibility...
 
-    def __init__(self, locator, tz=None):
+    def __init__(self, locator, tz=None, defaultfmt='%Y-%m-%d'):
+        """
+        Autofmt the date labels.  The default format is the one to use
+        if none of the times in scaled match
+        """
         self._locator = locator
-        self._formatter = DateFormatter("%b %d %Y %H:%M:%S %Z", tz)
         self._tz = tz
+        self.defaultfmt = defaultfmt
+        self._formatter = DateFormatter(self.defaultfmt, tz)
+        self.scaled = {
+           365.0  : '%Y',
+           30.    : '%b %Y',
+           1.0    : '%b %d %Y',
+           1./24. : '%H:%M:%S',
+           }
 
     def __call__(self, x, pos=0):
         scale = float( self._locator._get_unit() )
 
-        if ( scale == 365.0 ):
-            self._formatter = DateFormatter("%Y", self._tz)
-        elif ( scale == 30.0 ):
-            self._formatter = DateFormatter("%b %Y", self._tz)
-        elif ( (scale == 1.0) or (scale == 7.0) ):
-            self._formatter = DateFormatter("%b %d %Y", self._tz)
-        elif ( scale == (1.0/24.0) ):
-            self._formatter = DateFormatter("%H:%M:%S %Z", self._tz)
-        elif ( scale == (1.0/(24*60)) ):
-            self._formatter = DateFormatter("%H:%M:%S %Z", self._tz)
-        elif ( scale == (1.0/(24*3600)) ):
-            self._formatter = DateFormatter("%H:%M:%S %Z", self._tz)
-        else:
-            self._formatter = DateFormatter("%b %d %Y %H:%M:%S %Z", self._tz)
+        fmt = self.defaultfmt
 
+        for k in sorted(self.scaled):
+           if k>=scale:
+              fmt = self.scaled[k]
+              break
+
+        self._formatter = DateFormatter(fmt)
         return self._formatter(x, pos)
 
 
@@ -496,7 +522,7 @@ class RRuleLocator(DateLocator):
 
         self.rule.set(dtstart=start, until=stop)
         dates = self.rule.between(dmin, dmax, True)
-        return date2num(dates)
+        return self.raise_if_exceeds(date2num(dates))
 
     def _get_unit(self):
         """
@@ -1036,41 +1062,14 @@ class DateConverter(units.ConversionInterface):
     def axisinfo(unit, axis):
         'return the unit AxisInfo'
         # make sure that the axis does not start at 0
-        if axis:
-            ax = axis.axes
-
-            if axis is ax.get_xaxis():
-                xmin, xmax = ax.dataLim.intervalx
-                if xmin==0.:
-                    # no data has been added - let's set the default datalim.
-                    # We should probably use a better proxy for the datalim
-                    # have been updated than the ignore setting
-                    dmax = today = datetime.date.today()
-                    dmin = today-datetime.timedelta(days=10)
-
-                    ax._process_unit_info(xdata=(dmin, dmax))
-                    dmin, dmax = ax.convert_xunits([dmin, dmax])
-
-                    ax.viewLim.intervalx = dmin, dmax
-                    ax.dataLim.intervalx = dmin, dmax
-            elif axis is ax.get_yaxis():
-                ymin, ymax = ax.dataLim.intervaly
-                if ymin==0.:
-                    # no data has been added - let's set the default datalim.
-                    # We should probably use a better proxy for the datalim
-                    # have been updated than the ignore setting
-                    dmax = today = datetime.date.today()
-                    dmin = today-datetime.timedelta(days=10)
-
-                    ax._process_unit_info(ydata=(dmin, dmax))
-                    dmin, dmax = ax.convert_yunits([dmin, dmax])
-
-                    ax.viewLim.intervaly = dmin, dmax
-                    ax.dataLim.intervaly = dmin, dmax
 
         majloc = AutoDateLocator(tz=unit)
         majfmt = AutoDateFormatter(majloc, tz=unit)
-        return units.AxisInfo( majloc=majloc, majfmt=majfmt, label='' )
+        datemin = datetime.date(2000, 1, 1) 
+        datemax = datetime.date(2010, 1, 1)  
+
+        return units.AxisInfo( majloc=majloc, majfmt=majfmt, label='', 
+                               default_limits=(datemin, datemax))
 
     @staticmethod
     def convert(value, unit, axis):

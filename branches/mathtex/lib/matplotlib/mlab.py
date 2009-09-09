@@ -147,6 +147,7 @@ from matplotlib import verbose
 
 import matplotlib.nxutils as nxutils
 import matplotlib.cbook as cbook
+from matplotlib import docstring
 
 
 def logspace(xmin,xmax,N):
@@ -288,8 +289,7 @@ def _spectral_helper(x, y, NFFT=256, Fs=2, detrend=detrend_none,
     return Pxy, freqs, t
 
 #Split out these keyword docs so that they can be used elsewhere
-kwdocd = dict()
-kwdocd['PSD'] ="""
+docstring.interpd.update(PSD=cbook.dedent("""
     Keyword arguments:
 
       *NFFT*: integer
@@ -346,8 +346,9 @@ kwdocd['PSD'] ="""
           by the scaling frequency, which gives density in units of Hz^-1.
           This allows for integration over the returned frequency values.
           The default is True for MatLab compatibility.
-"""
+"""))
 
+@docstring.dedent_interpd
 def psd(x, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         noverlap=0, pad_to=None, sides='default', scale_by_freq=None):
     """
@@ -373,8 +374,7 @@ def psd(x, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         scale_by_freq)
     return Pxx.real,freqs
 
-psd.__doc__ = psd.__doc__ % kwdocd
-
+@docstring.dedent_interpd
 def csd(x, y, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         noverlap=0, pad_to=None, sides='default', scale_by_freq=None):
     """
@@ -405,8 +405,7 @@ def csd(x, y, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         Pxy = Pxy.mean(axis=1)
     return Pxy, freqs
 
-csd.__doc__ = csd.__doc__ % kwdocd
-
+@docstring.dedent_interpd
 def specgram(x, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         noverlap=128, pad_to=None, sides='default', scale_by_freq=None):
     """
@@ -445,11 +444,10 @@ def specgram(x, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
 
     return Pxx, freqs, t
 
-specgram.__doc__ = specgram.__doc__ % kwdocd
-
 _coh_error = """Coherence is calculated by averaging over *NFFT*
 length segments.  Your signal is too short for your choice of *NFFT*.
 """
+@docstring.dedent_interpd
 def cohere(x, y, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
         noverlap=0, pad_to=None, sides='default', scale_by_freq=None):
     """
@@ -488,8 +486,6 @@ def cohere(x, y, NFFT=256, Fs=2, detrend=detrend_none, window=window_hanning,
     Cxy.shape = (len(f),)
     return Cxy, f
 
-cohere.__doc__ = cohere.__doc__ % kwdocd
-
 
 def donothing_callback(*args):
     pass
@@ -501,35 +497,55 @@ def cohere_pairs( X, ij, NFFT=256, Fs=2, detrend=detrend_none,
                   returnPxx=False):
 
     u"""
-    Cxy, Phase, freqs = cohere_pairs(X, ij, ...)
+    Call signature::
 
-    Compute the coherence for all pairs in *ij*.  *X* is a
-    (*numSamples*, *numCols*) numpy array.  *ij* is a list of tuples
-    (*i*, *j*).  Each tuple is a pair of indexes into the columns of *X*
-    for which you want to compute coherence.  For example, if *X* has 64
-    columns, and you want to compute all nonredundant pairs, define *ij*
-    as::
+      Cxy, Phase, freqs = cohere_pairs( X, ij, ...)
+
+    Compute the coherence and phase for all pairs *ij*, in *X*.
+
+    *X* is a *numSamples* * *numCols* array
+
+    *ij* is a list of tuples.  Each tuple is a pair of indexes into
+    the columns of X for which you want to compute coherence.  For
+    example, if *X* has 64 columns, and you want to compute all
+    nonredundant pairs, define *ij* as::
 
       ij = []
       for i in range(64):
           for j in range(i+1,64):
-              ij.append( (i, j) )
+              ij.append( (i,j) )
 
-    The other function arguments, except for *preferSpeedOverMemory*
-    (see below), are explained in the help string of :func:`psd`.
+    *preferSpeedOverMemory* is an optional bool. Defaults to true. If
+    False, limits the caching by only making one, rather than two,
+    complex cache arrays. This is useful if memory becomes critical.
+    Even when *preferSpeedOverMemory* is False, :func:`cohere_pairs`
+    will still give significant performace gains over calling
+    :func:`cohere` for each pair, and will use subtantially less
+    memory than if *preferSpeedOverMemory* is True.  In my tests with
+    a 43000,64 array over all nonredundant pairs,
+    *preferSpeedOverMemory* = True delivered a 33% performance boost
+    on a 1.7GHZ Athlon with 512MB RAM compared with
+    *preferSpeedOverMemory* = False.  But both solutions were more
+    than 10x faster than naively crunching all possible pairs through
+    :func:`cohere`.
 
-    Return value is a tuple (*Cxy*, *Phase*, *freqs*).
+    Returns::
 
-      - *Cxy*: a dictionary of (*i*, *j*) tuples -> coherence vector for that
-        pair.  I.e., ``Cxy[(i,j)] = cohere(X[:,i], X[:,j])``.  Number of
-        dictionary keys is ``len(ij)``.
+       (Cxy, Phase, freqs)
 
-      - *Phase*: a dictionary of phases of the cross spectral density at
-        each frequency for each pair.  The keys are ``(i,j)``.
+    where:
 
-      - *freqs*: a vector of frequencies, equal in length to either
-        the coherence or phase vectors for any (*i*, *j*) key..  Eg,
-        to make a coherence Bode plot::
+      - *Cxy*: dictionary of (*i*, *j*) tuples -> coherence vector for
+        that pair.  I.e., ``Cxy[(i,j) = cohere(X[:,i], X[:,j])``.
+        Number of dictionary keys is ``len(ij)``.
+
+      - *Phase*: dictionary of phases of the cross spectral density at
+        each frequency for each pair.  Keys are (*i*, *j*).
+
+      - *freqs*: vector of frequencies, equal in length to either the
+         coherence or phase vectors for any (*i*, *j*) key.
+
+    Eg., to make a coherence Bode plot::
 
           subplot(211)
           plot( freqs, Cxy[(12,19)])
@@ -538,33 +554,22 @@ def cohere_pairs( X, ij, NFFT=256, Fs=2, detrend=detrend_none,
 
     For a large number of pairs, :func:`cohere_pairs` can be much more
     efficient than just calling :func:`cohere` for each pair, because
-    it caches most of the intensive computations.  If *N* is the
-    number of pairs, this function is O(N) for most of the heavy
-    lifting, whereas calling cohere for each pair is
-    O(N\N{SUPERSCRIPT TWO}).  However, because of the caching, it is
-    also more memory intensive, making 2 additional complex arrays
-    with approximately the same number of elements as *X*.
+    it caches most of the intensive computations.  If :math:`N` is the
+    number of pairs, this function is :math:`O(N)` for most of the
+    heavy lifting, whereas calling cohere for each pair is
+    :math:`O(N^2)`.  However, because of the caching, it is also more
+    memory intensive, making 2 additional complex arrays with
+    approximately the same number of elements as *X*.
 
-    The parameter *preferSpeedOverMemory*, if *False*, limits the
-    caching by only making one, rather than two, complex cache arrays.
-    This is useful if memory becomes critical.  Even when
-    *preferSpeedOverMemory* is *False*, :func:`cohere_pairs` will
-    still give significant performace gains over calling
-    :func:`cohere` for each pair, and will use subtantially less
-    memory than if *preferSpeedOverMemory* is *True*.  In my tests
-    with a (43000, 64) array over all non-redundant pairs,
-    *preferSpeedOverMemory* = *True* delivered a 33% performace boost
-    on a 1.7GHZ Athlon with 512MB RAM compared with
-    *preferSpeedOverMemory* = *False*.  But both solutions were more
-    than 10x faster than naievly crunching all possible pairs through
-    cohere.
+    See :file:`test/cohere_pairs_test.py` in the src tree for an
+    example script that shows that this :func:`cohere_pairs` and
+    :func:`cohere` give the same results for a given pair.
 
-    .. seealso::
+    .. sealso::
 
-        :file:`test/cohere_pairs_test.py` in the src tree
-            For an example script that shows that this
-            :func:`cohere_pairs` and :func:`cohere` give the same
-            results for a given pair.
+        :func:`psd`
+            For information about the methods used to compute
+            :math:`P_{xy}`, :math:`P_{xx}` and :math:`P_{yy}`.
     """
     numRows, numCols = X.shape
 
@@ -578,12 +583,10 @@ def cohere_pairs( X, ij, NFFT=256, Fs=2, detrend=detrend_none,
     numRows, numCols = X.shape
     # get all the columns of X that we are interested in by checking
     # the ij tuples
-    seen = {}
+    allColumns = set()
     for i,j in ij:
-        seen[i]=1; seen[j] = 1
-    allColumns = seen.keys()
+        allColumns.add(i); allColumns.add(j)
     Ncols = len(allColumns)
-    del seen
 
     # for real X, ignore the negative frequencies
     if np.iscomplexobj(X): numFreqs = NFFT
@@ -596,26 +599,26 @@ def cohere_pairs( X, ij, NFFT=256, Fs=2, detrend=detrend_none,
         assert(len(window) == NFFT)
         windowVals = window
     else:
-        windowVals = window(np.ones((NFFT,), typecode(X)))
+        windowVals = window(np.ones(NFFT, X.dtype))
     ind = range(0, numRows-NFFT+1, NFFT-noverlap)
     numSlices = len(ind)
     FFTSlices = {}
     FFTConjSlices = {}
     Pxx = {}
     slices = range(numSlices)
-    normVal = norm(windowVals)**2
+    normVal = np.linalg.norm(windowVals)**2
     for iCol in allColumns:
         progressCallback(i/Ncols, 'Cacheing FFTs')
         Slices = np.zeros( (numSlices,numFreqs), dtype=np.complex_)
         for iSlice in slices:
             thisSlice = X[ind[iSlice]:ind[iSlice]+NFFT, iCol]
             thisSlice = windowVals*detrend(thisSlice)
-            Slices[iSlice,:] = fft(thisSlice)[:numFreqs]
+            Slices[iSlice,:] = np.fft.fft(thisSlice)[:numFreqs]
 
         FFTSlices[iCol] = Slices
         if preferSpeedOverMemory:
-            FFTConjSlices[iCol] = conjugate(Slices)
-        Pxx[iCol] = np.divide(np.mean(absolute(Slices)**2), normVal)
+            FFTConjSlices[iCol] = np.conjugate(Slices)
+        Pxx[iCol] = np.divide(np.mean(abs(Slices)**2), normVal)
     del Slices, ind, windowVals
 
     # compute the coherences and phases for all pairs using the
@@ -634,17 +637,17 @@ def cohere_pairs( X, ij, NFFT=256, Fs=2, detrend=detrend_none,
         else:
             Pxy = FFTSlices[i] * np.conjugate(FFTSlices[j])
         if numSlices>1: Pxy = np.mean(Pxy)
-        Pxy = np.divide(Pxy, normVal)
-        Cxy[(i,j)] = np.divide(np.absolute(Pxy)**2, Pxx[i]*Pxx[j])
-        Phase[(i,j)] =  np.arctan2(Pxy.imag, Pxy.real)
+        #Pxy = np.divide(Pxy, normVal)
+        Pxy /= normVal
+        #Cxy[(i,j)] = np.divide(np.absolute(Pxy)**2, Pxx[i]*Pxx[j])
+        Cxy[i,j] = abs(Pxy)**2 / (Pxx[i]*Pxx[j])
+        Phase[i,j] =  np.arctan2(Pxy.imag, Pxy.real)
 
     freqs = Fs/NFFT*np.arange(numFreqs)
     if returnPxx:
         return Cxy, Phase, freqs, Pxx
     else:
         return Cxy, Phase, freqs
-
-
 
 def entropy(y, bins):
     r"""
@@ -1099,8 +1102,9 @@ class FIFOBuffer:
         Add scalar *x* and *y* to the queue.
         """
         if self.dataLim is not None:
-            xys = ((x,y),)
-            self.dataLim.update(xys, -1) #-1 means use the default ignore setting
+            xy = np.asarray([(x,y),])
+            self.dataLim.update_from_data_xy(xy, None)
+
         ind = self._ind % self._nmax
         #print 'adding to fifo:', ind, x, y
         self._xs[ind] = x
@@ -1144,6 +1148,8 @@ class FIFOBuffer:
         if self.dataLim is None:
             raise ValueError('You must first set the dataLim attr')
         x, y = self.asarrays()
+        self.dataLim.update_from_data(x, y, True)
+
         self.dataLim.update_numerix(x, y, True)
 
 def movavg(x,n):
@@ -1303,181 +1309,6 @@ def load(fname,comments='#',delimiter=None, converters=None,skiprows=0,
     if unpack: return X.transpose()
     else: return X
 
-
-def slopes(x,y):
-    """
-    SLOPES calculate the slope y'(x) Given data vectors X and Y SLOPES
-    calculates Y'(X), i.e the slope of a curve Y(X). The slope is
-    estimated using the slope obtained from that of a parabola through
-    any three consecutive points.
-
-    This method should be superior to that described in the appendix
-    of A CONSISTENTLY WELL BEHAVED METHOD OF INTERPOLATION by Russel
-    W. Stineman (Creative Computing July 1980) in at least one aspect:
-
-    Circles for interpolation demand a known aspect ratio between x-
-    and y-values.  For many functions, however, the abscissa are given
-    in different dimensions, so an aspect ratio is completely
-    arbitrary.
-
-    The parabola method gives very similar results to the circle
-    method for most regular cases but behaves much better in special
-    cases
-
-    Norbert Nemec, Institute of Theoretical Physics, University or
-    Regensburg, April 2006 Norbert.Nemec at physik.uni-regensburg.de
-
-    (inspired by a original implementation by Halldor Bjornsson,
-    Icelandic Meteorological Office, March 2006 halldor at vedur.is)
-    """
-    # Cast key variables as float.
-    x=np.asarray(x, np.float_)
-    y=np.asarray(y, np.float_)
-
-    yp=np.zeros(y.shape, np.float_)
-
-    dx=x[1:] - x[:-1]
-    dy=y[1:] - y[:-1]
-    dydx = dy/dx
-    yp[1:-1] = (dydx[:-1] * dx[1:] + dydx[1:] * dx[:-1])/(dx[1:] + dx[:-1])
-    yp[0] = 2.0 * dy[0]/dx[0] - yp[1]
-    yp[-1] = 2.0 * dy[-1]/dx[-1] - yp[-2]
-    return yp
-
-
-def stineman_interp(xi,x,y,yp=None):
-    """
-    STINEMAN_INTERP Well behaved data interpolation.  Given data
-    vectors X and Y, the slope vector YP and a new abscissa vector XI
-    the function stineman_interp(xi,x,y,yp) uses Stineman
-    interpolation to calculate a vector YI corresponding to XI.
-
-    Here's an example that generates a coarse sine curve, then
-    interpolates over a finer abscissa:
-
-      x = linspace(0,2*pi,20);  y = sin(x); yp = cos(x)
-      xi = linspace(0,2*pi,40);
-      yi = stineman_interp(xi,x,y,yp);
-      plot(x,y,'o',xi,yi)
-
-    The interpolation method is described in the article A
-    CONSISTENTLY WELL BEHAVED METHOD OF INTERPOLATION by Russell
-    W. Stineman. The article appeared in the July 1980 issue of
-    Creative Computing with a note from the editor stating that while
-    they were
-
-      not an academic journal but once in a while something serious
-      and original comes in adding that this was
-      "apparently a real solution" to a well known problem.
-
-    For yp=None, the routine automatically determines the slopes using
-    the "slopes" routine.
-
-    X is assumed to be sorted in increasing order
-
-    For values xi[j] < x[0] or xi[j] > x[-1], the routine tries a
-    extrapolation.  The relevance of the data obtained from this, of
-    course, questionable...
-
-    original implementation by Halldor Bjornsson, Icelandic
-    Meteorolocial Office, March 2006 halldor at vedur.is
-
-    completely reworked and optimized for Python by Norbert Nemec,
-    Institute of Theoretical Physics, University or Regensburg, April
-    2006 Norbert.Nemec at physik.uni-regensburg.de
-
-    """
-
-    # Cast key variables as float.
-    x=np.asarray(x, np.float_)
-    y=np.asarray(y, np.float_)
-    assert x.shape == y.shape
-    N=len(y)
-
-    if yp is None:
-        yp = slopes(x,y)
-    else:
-        yp=np.asarray(yp, np.float_)
-
-    xi=np.asarray(xi, np.float_)
-    yi=np.zeros(xi.shape, np.float_)
-
-    # calculate linear slopes
-    dx = x[1:] - x[:-1]
-    dy = y[1:] - y[:-1]
-    s = dy/dx  #note length of s is N-1 so last element is #N-2
-
-    # find the segment each xi is in
-    # this line actually is the key to the efficiency of this implementation
-    idx = np.searchsorted(x[1:-1], xi)
-
-    # now we have generally: x[idx[j]] <= xi[j] <= x[idx[j]+1]
-    # except at the boundaries, where it may be that xi[j] < x[0] or xi[j] > x[-1]
-
-    # the y-values that would come out from a linear interpolation:
-    sidx = s.take(idx)
-    xidx = x.take(idx)
-    yidx = y.take(idx)
-    xidxp1 = x.take(idx+1)
-    yo = yidx + sidx * (xi - xidx)
-
-    # the difference that comes when using the slopes given in yp
-    dy1 = (yp.take(idx)- sidx) * (xi - xidx)       # using the yp slope of the left point
-    dy2 = (yp.take(idx+1)-sidx) * (xi - xidxp1) # using the yp slope of the right point
-
-    dy1dy2 = dy1*dy2
-    # The following is optimized for Python. The solution actually
-    # does more calculations than necessary but exploiting the power
-    # of numpy, this is far more efficient than coding a loop by hand
-    # in Python
-    yi = yo + dy1dy2 * np.choose(np.array(np.sign(dy1dy2), np.int32)+1,
-                                 ((2*xi-xidx-xidxp1)/((dy1-dy2)*(xidxp1-xidx)),
-                                  0.0,
-                                  1/(dy1+dy2),))
-    return yi
-
-def inside_poly(points, verts):
-    """
-    points is a sequence of x,y points
-    verts is a sequence of x,y vertices of a poygon
-
-    return value is a sequence of indices into points for the points
-    that are inside the polygon
-    """
-    res, =  np.nonzero(nxutils.points_inside_poly(points, verts))
-    return res
-
-def poly_below(ymin, xs, ys):
-    """
-    given a arrays *xs* and *ys*, return the vertices of a polygon
-    that has a scalar lower bound *ymin* and an upper bound at the *ys*.
-
-    intended for use with Axes.fill, eg::
-
-      xv, yv = poly_below(0, x, y)
-      ax.fill(xv, yv)
-    """
-    return poly_between(xs, ys, xmin)
-
-
-def poly_between(x, ylower, yupper):
-    """
-    given a sequence of x, ylower and yupper, return the polygon that
-    fills the regions between them.  ylower or yupper can be scalar or
-    iterable.  If they are iterable, they must be equal in length to x
-
-    return value is x, y arrays for use with Axes.fill
-    """
-    Nx = len(x)
-    if not cbook.iterable(ylower):
-        ylower = ylower*np.ones(Nx)
-
-    if not cbook.iterable(yupper):
-        yupper = yupper*np.ones(Nx)
-
-    x = np.concatenate( (x, x[::-1]) )
-    y = np.concatenate( (yupper, ylower[::-1]) )
-    return x,y
 
 ### the following code was written and submitted by Fernando Perez
 ### from the ipython numutils package under a BSD license

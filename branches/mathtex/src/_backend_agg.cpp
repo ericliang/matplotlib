@@ -803,8 +803,8 @@ RendererAgg::draw_image(const Py::Tuple& args) {
   args.verify_length(4);
 
   GCAgg gc(args[0], dpi);
-  double x = Py::Float(args[1]);
-  double y = Py::Float(args[2]);
+  double x = mpl_round(Py::Float(args[1]));
+  double y = mpl_round(Py::Float(args[2]));
   Image *image = static_cast<Image*>(args[3].ptr());
   bool has_clippath = false;
 
@@ -1094,14 +1094,14 @@ RendererAgg::_draw_path_collection_generic
       throw Py::ValueError("Offsets array must be Nx2");
     }
 
-    PyArrayObject* facecolors = (PyArrayObject*)PyArray_FromObject
+    facecolors = (PyArrayObject*)PyArray_FromObject
       (facecolors_obj.ptr(), PyArray_DOUBLE, 1, 2);
     if (!facecolors ||
 	(PyArray_NDIM(facecolors) == 1 && PyArray_DIM(facecolors, 0) != 0) ||
 	(PyArray_NDIM(facecolors) == 2 && PyArray_DIM(facecolors, 1) != 4))
       throw Py::ValueError("Facecolors must be a Nx4 numpy array or empty");
 
-    PyArrayObject* edgecolors = (PyArrayObject*)PyArray_FromObject
+    edgecolors = (PyArrayObject*)PyArray_FromObject
       (edgecolors_obj.ptr(), PyArray_DOUBLE, 1, 2);
     if (!edgecolors ||
 	(PyArray_NDIM(edgecolors) == 1 && PyArray_DIM(edgecolors, 0) != 0) ||
@@ -1455,76 +1455,139 @@ RendererAgg::draw_quad_mesh(const Py::Tuple& args) {
   return Py::Object();
 }
 
+void
+RendererAgg::_draw_gouraud_triangle(const GCAgg& gc,
+  const double* points, const double* colors, agg::trans_affine trans) {
+
+  typedef agg::rgba8                                         color_t;
+  typedef agg::span_gouraud_rgba<color_t>                    span_gen_t;
+  typedef agg::span_allocator<color_t>                       span_alloc_t;
+
+  theRasterizer.reset_clipping();
+  rendererBase.reset_clipping(true);
+  set_clipbox(gc.cliprect, theRasterizer);
+  /* TODO: Support clip paths */
+
+  trans *= agg::trans_affine_scaling(1.0, -1.0);
+  trans *= agg::trans_affine_translation(0.0, (double)height);
+
+  double tpoints[6];
+
+  for (int i = 0; i < 6; i += 2) {
+    tpoints[i] = points[i];
+    tpoints[i+1] = points[i+1];
+    trans.transform(&tpoints[i], &tpoints[i+1]);
+  }
+
+  span_alloc_t span_alloc;
+  span_gen_t span_gen;
+
+  span_gen.colors(
+    agg::rgba(colors[0], colors[1], colors[2], colors[3]),
+    agg::rgba(colors[4], colors[5], colors[6], colors[7]),
+    agg::rgba(colors[8], colors[9], colors[10], colors[11]));
+  span_gen.triangle(
+    tpoints[0], tpoints[1],
+    tpoints[2], tpoints[3],
+    tpoints[4], tpoints[5],
+    0.5);
+
+  theRasterizer.add_path(span_gen);
+
+  agg::render_scanlines_aa(theRasterizer, slineP8, rendererBase, span_alloc, span_gen);
+}
+
 Py::Object
 RendererAgg::draw_gouraud_triangle(const Py::Tuple& args) {
-  _VERBOSE("RendererAgg::draw_quad_mesh");
+  _VERBOSE("RendererAgg::draw_gouraud_triangle");
+  args.verify_length(4);
+
+  GCAgg             gc(args[0], dpi);
+  Py::Object        points_obj = args[1];
+  Py::Object        colors_obj = args[2];
+  agg::trans_affine trans      = py_to_agg_transformation_matrix(args[3].ptr());
+
+  PyArrayObject* points = NULL;
+  PyArrayObject* colors = NULL;
+
+  try {
+    points = (PyArrayObject*)PyArray_ContiguousFromAny
+      (points_obj.ptr(), PyArray_DOUBLE, 2, 2);
+    if (!points ||
+        PyArray_DIM(points, 0) != 3 || PyArray_DIM(points, 1) != 2) {
+      throw Py::ValueError("points must be a 3x2 numpy array");
+    }
+
+    colors = (PyArrayObject*)PyArray_ContiguousFromAny
+      (colors_obj.ptr(), PyArray_DOUBLE, 2, 2);
+    if (!colors ||
+        PyArray_DIM(colors, 0) != 3 || PyArray_DIM(colors, 1) != 4) {
+      throw Py::ValueError("colors must be a 3x4 numpy array");
+    }
+
+    _draw_gouraud_triangle(
+      gc, (double*)PyArray_DATA(points), (double*)PyArray_DATA(colors), trans);
+  } catch (...) {
+    Py_XDECREF(points);
+    Py_XDECREF(colors);
+
+    throw;
+  }
+
+  Py_XDECREF(points);
+  Py_XDECREF(colors);
+
+  return Py::Object();
+}
+
+Py::Object
+RendererAgg::draw_gouraud_triangles(const Py::Tuple& args) {
+  _VERBOSE("RendererAgg::draw_gouraud_triangles");
   args.verify_length(4);
 
   typedef agg::rgba8                      color_t;
   typedef agg::span_gouraud_rgba<color_t> span_gen_t;
   typedef agg::span_allocator<color_t>    span_alloc_t;
 
-  //segments, trans, clipbox, colors, linewidths, antialiaseds
   GCAgg             gc(args[0], dpi);
   Py::Object        points_obj = args[1];
   Py::Object        colors_obj = args[2];
   agg::trans_affine trans      = py_to_agg_transformation_matrix(args[3].ptr());
 
-  theRasterizer.reset_clipping();
-  rendererBase.reset_clipping(true);
-  set_clipbox(gc.cliprect, theRasterizer);
-
-  trans *= agg::trans_affine_scaling(1.0, -1.0);
-  trans *= agg::trans_affine_translation(0.0, (double)height);
-
-  PyArrayObject* points = (PyArrayObject*)PyArray_ContiguousFromAny
-    (points_obj.ptr(), PyArray_DOUBLE, 2, 2);
-  if (!points ||
-      PyArray_DIM(points, 0) != 3 || PyArray_DIM(points, 1) != 2)
-    throw Py::ValueError("points must be a 3x2 numpy array");
-
-  PyArrayObject* colors = (PyArrayObject*)PyArray_ContiguousFromAny
-    (colors_obj.ptr(), PyArray_DOUBLE, 2, 2);
-  if (!colors ||
-      PyArray_DIM(colors, 0) != 3 || PyArray_DIM(colors, 1) != 4)
-    throw Py::ValueError("colors must be a 3x4 numpy array");
+  PyArrayObject* points = NULL;
+  PyArrayObject* colors = NULL;
 
   try {
-    double* opoints = (double*)PyArray_DATA(points);
-    double* c = (double*)PyArray_DATA(colors);
-    double tpoints[6];
-
-    for (int i = 0; i < 6; i += 2) {
-      tpoints[i] = opoints[i];
-      tpoints[i+1] = opoints[i+1];
-      trans.transform(&tpoints[i], &tpoints[i+1]);
+    points = (PyArrayObject*)PyArray_ContiguousFromAny
+      (points_obj.ptr(), PyArray_DOUBLE, 3, 3);
+    if (!points ||
+        PyArray_DIM(points, 1) != 3 || PyArray_DIM(points, 2) != 2) {
+      throw Py::ValueError("points must be a Nx3x2 numpy array");
     }
 
-    span_alloc_t span_alloc;
-    span_gen_t span_gen;
+    colors = (PyArrayObject*)PyArray_ContiguousFromAny
+      (colors_obj.ptr(), PyArray_DOUBLE, 3, 3);
+    if (!colors ||
+        PyArray_DIM(colors, 1) != 3 || PyArray_DIM(colors, 2) != 4) {
+      throw Py::ValueError("colors must be a Nx3x4 numpy array");
+    }
 
-    span_gen.colors(
-      agg::rgba(c[0], c[1], c[2], c[3]),
-      agg::rgba(c[4], c[5], c[6], c[7]),
-      agg::rgba(c[8], c[9], c[10], c[11]));
-    span_gen.triangle(
-      tpoints[0], tpoints[1],
-      tpoints[2], tpoints[3],
-      tpoints[4], tpoints[5],
-      0.5);
+    if (PyArray_DIM(points, 0) != PyArray_DIM(colors, 0)) {
+      throw Py::ValueError("points and colors arrays must be the same length");
+    }
 
-    theRasterizer.add_path(span_gen);
-    agg::render_scanlines_aa(
-      theRasterizer, slineP8, rendererBase, span_alloc, span_gen);
+    for (int i = 0; i < PyArray_DIM(points, 0); ++i) {
+      _draw_gouraud_triangle(gc, (double*)PyArray_GETPTR1(points, i), (double*)PyArray_GETPTR1(colors, i), trans);
+    }
   } catch (...) {
-    Py_DECREF(points);
-    Py_DECREF(colors);
+    Py_XDECREF(points);
+    Py_XDECREF(colors);
 
     throw;
   }
 
-  Py_DECREF(points);
-  Py_DECREF(colors);
+  Py_XDECREF(points);
+  Py_XDECREF(colors);
 
   return Py::Object();
 }
@@ -1870,6 +1933,8 @@ void RendererAgg::init_type()
 		     "draw_quad_mesh(gc, master_transform, meshWidth, meshHeight, coordinates, offsets, offsetTrans, facecolors, antialiaseds, showedges)\n");
   add_varargs_method("draw_gouraud_triangle", &RendererAgg::draw_gouraud_triangle,
 		     "draw_gouraud_triangle(gc, points, colors, master_transform)\n");
+  add_varargs_method("draw_gouraud_triangles", &RendererAgg::draw_gouraud_triangles,
+		     "draw_gouraud_triangles(gc, points, colors, master_transform)\n");
   add_varargs_method("draw_markers", &RendererAgg::draw_markers,
 		     "draw_markers(gc, marker_path, marker_trans, path, rgbFace)\n");
   add_varargs_method("draw_text_image", &RendererAgg::draw_text_image,

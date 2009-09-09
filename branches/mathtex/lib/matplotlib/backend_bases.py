@@ -170,9 +170,30 @@ class RendererBase:
         """
         Draw a Gouraud-shaded triangle.
 
-        EXPERIMENTAL
+        *points* is a 3x2 array of (x, y) points for the triangle.
+
+        *colors* is a 3x4 array of RGBA colors for each point of the
+        triangle.
+
+        *transform* is an affine transform to apply to the points.
         """
         raise NotImplementedError
+
+    def draw_gouraud_triangles(self, gc, triangles_array, colors_array,
+                               transform):
+        """
+        Draws a series of Gouraud triangles.
+
+        *points* is a Nx3x2 array of (x, y) points for the trianglex.
+
+        *colors* is a Nx3x4 array of RGBA colors for each point of the
+        triangles.
+
+        *transform* is an affine transform to apply to the points.
+        """
+        transform = transform.frozen()
+        for tri, col in zip(triangles_array, colors_array):
+            self.draw_gouraud_triangle(gc, tri, col, transform)
 
     def _iter_collection_raw_paths(self, master_transform, paths,
                                    all_transforms):
@@ -409,9 +430,33 @@ class RendererBase:
         return cbook.strip_math(s)
 
     def start_rasterizing(self):
+        """
+        Used in MixedModeRenderer. Switch to the raster renderer.
+        """
         pass
 
     def stop_rasterizing(self):
+        """
+        Used in MixedModeRenderer. Switch back to the vector renderer
+        and draw the contents of the raster renderer as an image on
+        the vector renderer.
+        """
+        pass
+
+    def start_filter(self):
+        """
+        Used in AggRenderer. Switch to a temporary renderer for image
+        filtering effects.
+        """
+        pass
+
+    def stop_filter(self, filter_func):
+        """
+        Used in AggRenderer. Switch back to the original renderer.
+        The contents of the temporary renderer is processed with the
+        *filter_func* and is drawn on the original renderer as an
+        image.
+        """
         pass
 
 

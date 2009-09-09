@@ -12,12 +12,11 @@ contains all the plot elements.  The following classes are defined
 
 """
 import numpy as np
-import time
 
 import artist
 from artist import Artist, allow_rasterization
 from axes import Axes, SubplotBase, subplot_class_factory
-from cbook import flatten, allequal, Stack, iterable, dedent
+from cbook import flatten, allequal, Stack, iterable
 import _image
 import colorbar as cbar
 from image import FigureImage
@@ -32,7 +31,9 @@ from projections import projection_factory, get_projection_names, \
 from matplotlib.blocking_input import BlockingMouseInput, BlockingKeyMouseInput
 
 import matplotlib.cbook as cbook
+from matplotlib import docstring
 
+docstring.interpd.update(projection_names = get_projection_names())
 
 class SubplotParams:
     """
@@ -555,6 +556,7 @@ class Figure(Artist):
         key = fixlist(args), fixitems(kwargs.items())
         return key
 
+    @docstring.dedent_interpd
     def add_axes(self, *args, **kwargs):
         """
         Add an a axes with axes rect [*left*, *bottom*, *width*,
@@ -564,7 +566,7 @@ class Figure(Artist):
         sets the projection type of the axes.  (For backward
         compatibility, ``polar=True`` may also be provided, which is
         equivalent to ``projection='polar'``).  Valid values for
-        *projection* are: %(list)s.  Some of these projections support
+        *projection* are: %(projection_names)s.  Some of these projections support
         additional kwargs, which may be provided to :meth:`add_axes`::
 
             rect = l,b,w,h
@@ -624,10 +626,7 @@ class Figure(Artist):
         self._seen[key] = a
         return a
 
-    add_axes.__doc__ = dedent(add_axes.__doc__) % \
-        {'list': (", ".join(get_projection_names())),
-         'Axes': artist.kwdocd['Axes']}
-
+    @docstring.dedent_interpd
     def add_subplot(self, *args, **kwargs):
         """
         Add a subplot.  Examples:
@@ -642,7 +641,7 @@ class Figure(Artist):
         *projection*, which chooses a projection type for the axes.
         (For backward compatibility, *polar=True* may also be
         provided, which is equivalent to *projection='polar'*). Valid
-        values for *projection* are: %(list)s.  Some of these projections
+        values for *projection* are: %(projection_names)s.  Some of these projections
         support additional *kwargs*, which may be provided to
         :meth:`add_axes`.
 
@@ -693,9 +692,6 @@ class Figure(Artist):
         self._axstack.push(a)
         self.sca(a)
         return a
-    add_subplot.__doc__ = dedent(add_subplot.__doc__) % {
-        'list': ", ".join(get_projection_names()),
-        'Axes': artist.kwdocd['Axes']}
 
     def clf(self):
         """
@@ -770,6 +766,7 @@ class Figure(Artist):
             gc.set_clip_rectangle(self.bbox)
             gc.set_clip_path(self.get_clip_path())
             renderer.draw_image(gc, l, b, im)
+            gc.restore()
 
         # render the axes
         for a in self.axes: a.draw(renderer)
@@ -891,6 +888,7 @@ class Figure(Artist):
         self.legends.append(l)
         return l
 
+    @docstring.dedent_interpd
     def text(self, x, y, s, *args, **kwargs):
         """
         Call signature::
@@ -915,13 +913,13 @@ class Figure(Artist):
         self._set_artist_props(t)
         self.texts.append(t)
         return t
-    text.__doc__ = dedent(text.__doc__) % artist.kwdocd
 
     def _set_artist_props(self, a):
         if a!= self:
             a.set_figure(self)
         a.set_transform(self.transFigure)
 
+    @docstring.dedent_interpd
     def gca(self, **kwargs):
         """
         Return the current axes, creating one if necessary
@@ -945,13 +943,23 @@ class Figure(Artist):
             if isinstance(ax, projection_class):
                 return ax
         return self.add_subplot(111, **kwargs)
-    gca.__doc__ = dedent(gca.__doc__) % artist.kwdocd
 
     def sca(self, a):
         'Set the current axes to be a and return a'
         self._axstack.bubble(a)
         for func in self._axobservers: func(self)
         return a
+
+    def _gci(self):
+        """
+        helper for :func:`~matplotlib.pyplot.gci`;
+        do not use elsewhere.
+        """
+        for ax in reversed(self._axstack):
+            im = ax._gci()
+            if im is not None:
+                return im
+        return None
 
     def add_axobserver(self, func):
         'whenever the axes state change, func(self) will be called'
@@ -973,10 +981,14 @@ class Figure(Artist):
         Arguments:
 
           *fname*:
-            A string containing a path to a filename, or a Python file-like object.
+            A string containing a path to a filename, or a Python file-like object,
+            or possibly some backend-dependent object such as
+            :class:`~matplotlib.backends.backend_pdf.PdfPages`.
 
             If *format* is *None* and *fname* is a string, the output
             format is deduced from the extension of the filename.
+            If *fname* is not a string, remember to specify *format* to
+            ensure that the correct backend is used.
 
         Keyword arguments:
 
@@ -1038,7 +1050,14 @@ class Figure(Artist):
             for ax, alpha in zip(self.axes, original_axes_alpha):
                 ax.patch.set_alpha(alpha)
 
+    @docstring.dedent_interpd
     def colorbar(self, mappable, cax=None, ax=None, **kw):
+        """
+        Create a colorbar for a ScalarMappable instance.
+
+        Documentation for the pylab thin wrapper:
+        %(colorbar_doc)s
+        """
         if ax is None:
             ax = self.gca()
         if cax is None:
@@ -1056,13 +1075,6 @@ class Figure(Artist):
         mappable.set_colorbar(cb, cax)
         self.sca(ax)
         return cb
-    colorbar.__doc__ =  '''
-        Create a colorbar for a ScalarMappable instance.
-
-        Documentation for the pylab thin wrapper:
-        %s
-
-        '''% cbar.colorbar_doc
 
     def subplots_adjust(self, *args, **kwargs):
         """
@@ -1087,11 +1099,12 @@ class Figure(Artist):
                 ax.update_params()
                 ax.set_position(ax.figbox)
 
-    def ginput(self, n=1, timeout=30, show_clicks=True):
+    def ginput(self, n=1, timeout=30, show_clicks=True, mouse_add=1, mouse_pop=3, mouse_stop=2):
         """
         call signature::
 
-          ginput(self, n=1, timeout=30, show_clicks=True)
+          ginput(self, n=1, timeout=30, show_clicks=True,
+                 mouse_add=1, mouse_pop=3, mouse_stop=2)
 
         Blocking call to interact with the figure.
 
@@ -1105,6 +1118,12 @@ class Figure(Artist):
 
         Right clicking cancels last input.
 
+        The buttons used for the various actions (adding points, removing
+        points, terminating the inputs) can be overriden via the
+        arguments *mouse_add*, *mouse_pop* and *mouse_stop*, that give
+        the associated mouse button: 1 for left, 2 for middle, 3 for
+        right.
+
         The keyboard can also be used to select points in case your mouse
         does not have one or more of the buttons.  The delete and backspace
         keys act like right clicking (i.e., remove last point), the enter key
@@ -1112,7 +1131,9 @@ class Figure(Artist):
         manager) selects a point.
         """
 
-        blocking_mouse_input = BlockingMouseInput(self)
+        blocking_mouse_input = BlockingMouseInput(self, mouse_add =mouse_add,
+                                                        mouse_pop =mouse_pop,
+                                                        mouse_stop=mouse_stop)
         return blocking_mouse_input(n=n, timeout=timeout,
                                     show_clicks=show_clicks)
 
@@ -1220,4 +1241,4 @@ def figaspect(arg):
     newsize = np.clip(newsize,figsize_min,figsize_max)
     return newsize
 
-artist.kwdocd['Figure'] = artist.kwdoc(Figure)
+docstring.interpd.update(Figure=artist.kwdoc(Figure))

@@ -63,7 +63,7 @@ import numpy as np
 
 
 import matplotlib.lines as mlines
-
+from axisline_style import AxislineStyle
 
 
 class BezierPath(mlines.Line2D):
@@ -183,6 +183,8 @@ class AxisArtistHelper(object):
              "curved"]
             """
             self.label_direction = label_direction
+
+            self.delta1, self.delta2 = 0.00001, 0.00001
 
         def update_lim(self, axes):
             pass
@@ -463,8 +465,8 @@ class AxisArtistHelperRectlinear:
 
                     # check if the tick point is inside axes
                     c2 = tr2ax.transform_point(c)
-                    delta=0.00001
-                    if 0. -delta<= c2[self.nth_coord] <= 1.+delta:
+                    #delta=0.00001
+                    if 0. -self.delta1<= c2[self.nth_coord] <= 1.+self.delta2:
                         yield c, angle, l
 
             return _f(majorLocs, majorLabels), _f(minorLocs, minorLabels)
@@ -551,7 +553,8 @@ class AxisArtistHelperRectlinear:
                     c[self.nth_coord] = x
                     c1, c2 = tr2ax.transform_point(c)
                     if 0. <= c1 <= 1. and 0. <= c2 <= 1.:
-                        yield c, angle, l
+                        if 0. - self.delta1 <= [c1, c2][self.nth_coord] <= 1. + self.delta2:
+                            yield c, angle, l
 
             return _f(majorLocs, majorLabels), _f(minorLocs, minorLabels)
 
@@ -645,6 +648,35 @@ class GridHelperRectlinear(GridHelperBase):
         return axisline
 
 
+    def get_gridlines(self):
+        """
+        return list of gridline coordinates in data coordinates.
+        """
+
+        gridlines = []
+
+        locs = []
+        y1, y2 = self.axes.get_ylim()
+        if self.axes.xaxis._gridOnMajor:
+            locs.extend(self.axes.xaxis.major.locator())
+        if self.axes.xaxis._gridOnMinor:
+            locs.extend(self.axes.xaxis.minor.locator())
+
+        for x in locs:
+            gridlines.append([[x, x], [y1, y2]])
+
+
+        x1, x2 = self.axes.get_xlim()
+        locs = []
+        if self.axes.yaxis._gridOnMajor:
+            locs.extend(self.axes.yaxis.major.locator())
+        if self.axes.yaxis._gridOnMinor:
+            locs.extend(self.axes.yaxis.minor.locator())
+
+        for y in locs:
+            gridlines.append([[x1, x2], [y, y]])
+            
+        return gridlines
 
 
 from matplotlib.lines import Line2D
@@ -964,6 +996,8 @@ class AxisArtist(martist.Artist):
         if minor_tick_pad is None:
             self.minor_tick_pad = rcParams['%s.minor.pad'%axis_name]
 
+        self._axisline_style = None
+
         self._init_line()
         self._init_ticks()
         self._init_offsetText(self._axis_artist_helper.label_direction)
@@ -972,6 +1006,7 @@ class AxisArtist(martist.Artist):
         self.set_zorder(self.ZORDER)
 
         self._rotate_label_along_line = False
+
 
     def set_rotate_label_along_line(self, b):
         self._rotate_label_along_line = b
@@ -986,16 +1021,61 @@ class AxisArtist(martist.Artist):
         return self._axis_artist_helper
 
 
+    def set_axisline_style(self, axisline_style=None, **kw):
+        """
+        Set the axisline style.
+
+        *axislin_style* can be a string with axisline style name with optional
+         comma-separated attributes. Alternatively, the attrs can
+         be provided as keywords.
+
+         set_arrowstyle("->,size=1.5")
+         set_arrowstyle("->", size=1.5)
+
+        Old attrs simply are forgotten.
+
+        Without argument (or with arrowstyle=None), return
+        available styles as a list of strings.
+        """
+
+        if axisline_style==None:
+            return AxislineStyle.pprint_styles()
+
+        if isinstance(axisline_style, AxislineStyle._Base):
+            self._axisline_style = axisline_style
+        else:
+            self._axisline_style = AxislineStyle(axisline_style, **kw)
+
+
+        self._init_line()
+
+
+    def get_axisline_style(self):
+        """
+        return the current axisline style.
+        """
+        return self._axisline_style
+        
     def _init_line(self):
+        """
+        Initialize the *line* artist that is responsible to draw the axis line.
+        """
         tran = self._axis_artist_helper.get_line_transform(self.axes) \
                + self.offset_transform
-        self.line = BezierPath(self._axis_artist_helper.get_line(self.axes),
-                               color=rcParams['axes.edgecolor'],
-                               linewidth=rcParams['axes.linewidth'],
-                               transform=tran)
+
+        axisline_style = self.get_axisline_style()
+        if axisline_style is None:
+            self.line = BezierPath(self._axis_artist_helper.get_line(self.axes),
+                                   color=rcParams['axes.edgecolor'],
+                                   linewidth=rcParams['axes.linewidth'],
+                                   transform=tran)
+        else:
+            self.line = axisline_style(self, transform=tran)
 
     def _draw_line(self, renderer):
         self.line.set_path(self._axis_artist_helper.get_line(self.axes))
+        if self.get_axisline_style() is not None:
+            self.line.set_line_mutation_scale(self.major_ticklabels.get_size())
         self.line.draw(renderer)
 
 
@@ -1262,12 +1342,12 @@ class Axes(maxes.Axes):
 
         helper = kw.pop("grid_helper", None)
 
+        self._axisline_on = True
+
         if helper:
             self._grid_helper = helper
         else:
             self._grid_helper = GridHelperRectlinear(self)
-
-        self._axisline_on = True
 
         super(Axes, self).__init__(*kl, **kw)
 
@@ -1320,15 +1400,24 @@ class Axes(maxes.Axes):
         if grid_helper is None:
             grid_helper = self.get_grid_helper()
         gridlines.set_grid_helper(grid_helper)
-        gridlines.set_clip_on(True)
+
+        self.axes._set_artist_props(gridlines)
+        # gridlines.set_clip_path(self.axes.patch)
+        # set_clip_path need to be defered after Axes.cla is completed.
+        # It is done inside the cla.
 
         self.gridlines = gridlines
 
     def cla(self):
         # gridlines need to b created before cla() since cla calls grid()
-        self._init_gridlines()
 
+        self._init_gridlines()
         super(Axes, self).cla()
+
+        # the clip_path should be set after Axes.cla() since that's
+        # when a patch is created.
+        self.gridlines.set_clip_path(self.axes.patch)
+
         self._init_axis_artists()
 
     def get_grid_helper(self):
@@ -1336,13 +1425,25 @@ class Axes(maxes.Axes):
 
 
     def grid(self, b=None, **kwargs):
+        """
+        Toggel the gridlines, and optionally set the properties of the lines.
+        """
+        # their are some discrepancy between the behavior of grid in
+        # axes_grid and the original mpl's grid, because axes_grid
+        # explicitly set the visibility of the gridlines.
+
+        super(Axes, self).grid(b, **kwargs)
         if not self._axisline_on:
-            super(Axes, self).grid(b, **kwargs)
             return
 
         if b is None:
-            b = not self.gridlines.get_visible()
 
+            if self.axes.xaxis._gridOnMinor or self.axes.xaxis._gridOnMajor or \
+                   self.axes.yaxis._gridOnMinor or self.axes.yaxis._gridOnMajor:
+                b=True
+            else:
+                b=False
+                
         self.gridlines.set_visible(b)
 
         if len(kwargs):

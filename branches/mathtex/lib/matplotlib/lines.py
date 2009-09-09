@@ -19,19 +19,11 @@ from transforms import Affine2D, Bbox, TransformedPath, IdentityTransform
 
 from matplotlib import rcParams
 from artist import allow_rasterization
+from matplotlib import docstring
 
 # special-purpose marker identifiers:
 (TICKLEFT, TICKRIGHT, TICKUP, TICKDOWN,
     CARETLEFT, CARETRIGHT, CARETUP, CARETDOWN) = range(8)
-
-
-# COVERAGE NOTE: Never called internally or from examples
-def unmasked_index_ranges(mask, compressed = True):
-    warnings.warn("Import this directly from matplotlib.cbook",
-                   DeprecationWarning)
-    # Warning added 2008/07/22
-    from matplotlib.cbook import unmasked_index_ranges as _unmasked_index_ranges
-    return _unmasked_index_ranges(mask, compressed=compressed)
 
 
 def segment_hits(cx, cy, x, y, radius):
@@ -107,6 +99,8 @@ class Line2D(Artist):
     drawStyles = {}
     drawStyles.update(_drawStyles_l)
     drawStyles.update(_drawStyles_s)
+    # Need a list ordered with long names first:
+    drawStyleKeys = _drawStyles_l.keys() + _drawStyles_s.keys()
 
     markers = _markers =  {  # hidden names deprecated
         '.'  : '_draw_point',
@@ -172,7 +166,7 @@ class Line2D(Artist):
                  markeredgewidth = None,
                  markeredgecolor = None,
                  markerfacecolor = None,
-		 fillstyle       = 'full',
+                 fillstyle       = 'full',
                  antialiased     = None,
                  dash_capstyle   = None,
                  solid_capstyle  = None,
@@ -459,7 +453,7 @@ class Line2D(Artist):
         self._y = self._xy[:, 1] # just a view
 
         self._subslice = False
-        if len(x) > 100 and self._is_sorted(x):
+        if self.axes and len(x) > 100 and self._is_sorted(x):
             self._subslice = True
         if hasattr(self, '_path'):
             interpolation_steps = self._path._interpolation_steps
@@ -496,7 +490,7 @@ class Line2D(Artist):
     def draw(self, renderer):
         if self._invalid:
             self.recache()
-        if self._subslice:
+        if self._subslice and self.axes:
             # Need to handle monotonically decreasing case also...
             x0, x1 = self.axes.get_xbound()
             i0, = self._x.searchsorted([x0], 'left')
@@ -720,15 +714,14 @@ class Line2D(Artist):
         any drawstyle in combination with a linestyle, e.g. 'steps--'.
         """
 
-        # handle long drawstyle names before short ones !
-        for ds in flatten([k.keys() for k in (self._drawStyles_l,
-                self._drawStyles_s)], is_string_like):
+        for ds in self.drawStyleKeys:  # long names are first in the list
             if linestyle.startswith(ds):
                 self.set_drawstyle(ds)
                 if len(linestyle) > len(ds):
                     linestyle = linestyle[len(ds):]
                 else:
                     linestyle = '-'
+                break
 
         if linestyle not in self._lineStyles:
             if linestyle in ls_mapper:
@@ -843,7 +836,6 @@ class Line2D(Artist):
 
         ACCEPTS: 1D array
         """
-        x = np.asarray(x)
         self.set_data(x, self._yorig)
 
     def set_ydata(self, y):
@@ -852,7 +844,6 @@ class Line2D(Artist):
 
         ACCEPTS: 1D array
         """
-        y = np.asarray(y)
         self.set_data(self._xorig, y)
 
     def set_dashes(self, seq):
@@ -1546,8 +1537,8 @@ lineStyles = Line2D._lineStyles
 lineMarkers = Line2D._markers
 drawStyles = Line2D.drawStyles
 
-artist.kwdocd['Line2D'] = artist.kwdoc(Line2D)
+docstring.interpd.update(Line2D = artist.kwdoc(Line2D))
 
 # You can not set the docstring of an instancemethod,
 # but you can on the underlying function.  Go figure.
-Line2D.__init__.im_func.__doc__ = dedent(Line2D.__init__.__doc__) % artist.kwdocd
+docstring.dedent_interpd(Line2D.__init__.im_func)

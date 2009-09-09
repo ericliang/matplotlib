@@ -11,6 +11,7 @@ from matplotlib import rcParams
 import matplotlib.artist as artist
 from matplotlib.artist import Artist
 from matplotlib.cbook import is_string_like, maxdict
+from matplotlib import docstring
 from matplotlib.font_manager import FontProperties
 from matplotlib.patches import bbox_artist, YAArrow, FancyBboxPatch, \
      FancyArrowPatch, Rectangle
@@ -18,7 +19,14 @@ import matplotlib.transforms as mtransforms
 from matplotlib.transforms import Affine2D, Bbox
 from matplotlib.lines import Line2D
 
+from matplotlib.artist import allow_rasterization
+
 import matplotlib.nxutils as nxutils
+
+from matplotlib.path import Path
+import matplotlib.font_manager as font_manager
+from matplotlib.ft2font import FT2Font
+
 
 def _process_text_args(override, fontdict=None, **kwargs):
     "Return an override dict.  See :func:`~pyplot.text' docstring for info"
@@ -47,7 +55,7 @@ def get_rotation(rotation):
 # these are not available for the object inspector until after the
 # class is build so we define an initial set here for the init
 # function and they will be overridden after object defn
-artist.kwdocd['Text'] =  """
+docstring.interpd.update(Text =  """
     ========================== =========================================================================
     Property                   Value
     ========================== =========================================================================
@@ -82,7 +90,7 @@ artist.kwdocd['Text'] =  """
     y                          float
     zorder                     any number
     ========================== =========================================================================
-    """
+    """)
 
 
 
@@ -501,6 +509,7 @@ class Text(Artist):
         self._bbox_patch.draw(renderer)
 
 
+    @allow_rasterization
     def draw(self, renderer):
         """
         Draws the :class:`Text` object to the given *renderer*.
@@ -975,8 +984,8 @@ class Text(Artist):
         'alias for set_fontproperties'
         self.set_fontproperties(fp)
 
-artist.kwdocd['Text'] = artist.kwdoc(Text)
-Text.__init__.im_func.__doc__ = cbook.dedent(Text.__init__.__doc__) % artist.kwdocd
+docstring.interpd.update(Text = artist.kwdoc(Text))
+docstring.dedent_interpd(Text.__init__.im_func)
 
 
 class TextWithDash(Text):
@@ -1338,7 +1347,7 @@ class TextWithDash(Text):
         Text.set_figure(self, fig)
         self.dashline.set_figure(fig)
 
-artist.kwdocd['TextWithDash'] = artist.kwdoc(TextWithDash)
+docstring.interpd.update(TextWithDash=artist.kwdoc(TextWithDash))
 
 class _AnnotationBase(object):
     def __init__(self,
@@ -1500,6 +1509,7 @@ class Annotation(Text, _AnnotationBase):
     """
     def __str__(self):
         return "Annotation(%g,%g,%s)"%(self.xy[0],self.xy[1],repr(self._text))
+    @docstring.dedent_interpd
     def __init__(self, s, xy,
                  xytext=None,
                  xycoords='data',
@@ -1615,8 +1625,6 @@ class Annotation(Text, _AnnotationBase):
         else:
             self.arrow_patch = None
 
-    __init__.__doc__ = cbook.dedent(__init__.__doc__) % artist.kwdocd
-
     def contains(self,event):
         t,tinfo = Text.contains(self,event)
         if self.arrow is not None:
@@ -1727,6 +1735,7 @@ class Annotation(Text, _AnnotationBase):
                 self.arrow.set_clip_box(self.get_clip_box())
 
 
+    @allow_rasterization
     def draw(self, renderer):
         """
         Draw the :class:`Annotation` object to the given *renderer*.
@@ -1758,5 +1767,7 @@ class Annotation(Text, _AnnotationBase):
         Text.draw(self, renderer)
 
 
-artist.kwdocd['Annotation'] = Annotation.__init__.__doc__
+docstring.interpd.update(Annotation=Annotation.__init__.__doc__)
 
+
+from matplotlib.textpath import TextPath

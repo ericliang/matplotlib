@@ -2,6 +2,7 @@ from __future__ import division
 import re, warnings
 import matplotlib
 import matplotlib.cbook as cbook
+from matplotlib import docstring
 from transforms import Bbox, IdentityTransform, TransformedBbox, TransformedPath
 from path import Path
 
@@ -36,7 +37,15 @@ def allow_rasterization(draw):
         if artist.get_rasterized():
             renderer.start_rasterizing()
 
+        if artist.get_agg_filter() is not None:
+            renderer.start_filter()
+
+
     def after(artist, renderer):
+
+        if artist.get_agg_filter() is not None:
+            renderer.stop_filter(artist.get_agg_filter())
+
         if artist.get_rasterized():
             renderer.stop_rasterizing()
 
@@ -78,7 +87,8 @@ class Artist(object):
         self._picker = None
         self._contains = None
         self._rasterized = None
-
+        self._agg_filter = None
+        
         self.eventson = False  # fire events only if eventson
         self._oid = 0  # an observer id
         self._propobservers = {} # a dict from oids to funcs
@@ -548,6 +558,7 @@ class Artist(object):
             gc.set_clip_path(None)
 
     def get_rasterized(self):
+        "return True if the artist is to be rasterized"
         return self._rasterized
 
     def set_rasterized(self, rasterized):
@@ -562,6 +573,17 @@ class Artist(object):
             warnings.warn("Rasterization of '%s' will be ignored" % self)
 
         self._rasterized = rasterized
+
+    def get_agg_filter(self):
+        "return filter function to be used for agg filter"
+        return self._agg_filter
+
+    def set_agg_filter(self, filter_func):
+        """
+        set agg_filter fuction.
+        
+        """
+        self._agg_filter = filter_func
 
     def draw(self, renderer, *args, **kwargs):
         'Derived classes drawing method'
@@ -1172,5 +1194,4 @@ def kwdoc(a):
     else:
         return '\n'.join(ArtistInspector(a).pprint_setters(leadingspace=2))
 
-kwdocd = dict()
-kwdocd['Artist'] = kwdoc(Artist)
+docstring.interpd.update(Artist=kwdoc(Artist))
