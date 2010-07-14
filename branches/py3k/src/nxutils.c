@@ -24,8 +24,8 @@ int pnpoly_api(int npol, double *xp, double *yp, double x, double y)
   int i, j, c = 0;
   for (i = 0, j = npol-1; i < npol; j = i++) {
     if ((((yp[i]<=y) && (y<yp[j])) ||
-	 ((yp[j]<=y) && (y<yp[i]))) &&
-	(x < (xp[j] - xp[i]) * (y - yp[i]) / (yp[j] - yp[i]) + xp[i]))
+         ((yp[j]<=y) && (y<yp[i]))) &&
+        (x < (xp[j] - xp[i]) * (y - yp[i]) / (yp[j] - yp[i]) + xp[i]))
 
       c = !c;
   }
@@ -50,7 +50,7 @@ pnpoly(PyObject *self, PyObject *args)
   if (verts == NULL)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Arguments verts must be a Nx2 array.");
+                      "Arguments verts must be a Nx2 array.");
       Py_XDECREF(verts);
       return NULL;
 
@@ -61,7 +61,7 @@ pnpoly(PyObject *self, PyObject *args)
   if (verts->dimensions[1]!=2)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Arguments verts must be a Nx2 array.");
+                      "Arguments verts must be a Nx2 array.");
       Py_XDECREF(verts);
       return NULL;
 
@@ -118,7 +118,7 @@ points_inside_poly(PyObject *self, PyObject *args)
   if (verts == NULL)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Argument verts must be a Nx2 array.");
+                      "Argument verts must be a Nx2 array.");
       Py_XDECREF(verts);
       return NULL;
 
@@ -129,7 +129,7 @@ points_inside_poly(PyObject *self, PyObject *args)
   if (verts->dimensions[1]!=2)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Arguments verts must be a Nx2 array.");
+                      "Arguments verts must be a Nx2 array.");
       Py_XDECREF(verts);
       return NULL;
 
@@ -163,7 +163,7 @@ points_inside_poly(PyObject *self, PyObject *args)
   if (xypoints == NULL)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Arguments xypoints must an Nx2 array.");
+                      "Arguments xypoints must an Nx2 array.");
       Py_XDECREF(verts);
       Py_XDECREF(xypoints);
       PyMem_Free(xv);
@@ -175,7 +175,7 @@ points_inside_poly(PyObject *self, PyObject *args)
   if (xypoints->dimensions[1]!=2)
     {
       PyErr_SetString(PyExc_ValueError,
-		      "Arguments xypoints must be a Nx2 array.");
+                      "Arguments xypoints must be a Nx2 array.");
 
       Py_XDECREF(verts);
       Py_XDECREF(xypoints);
@@ -236,7 +236,7 @@ static PyMethodDef module_methods[] = {
 };
 
 PyMODINIT_FUNC
-     initnxutils(void)
+initnxutils(void)
 {
   PyObject* m;
 
