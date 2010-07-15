@@ -785,7 +785,7 @@ def prepca(P, frac=0):
       - *fracVar* : the fraction of the variance accounted for by each
          component returned
 
-    A similar function of the same name was in the MATLAB 
+    A similar function of the same name was in the MATLAB
     R13 Neural Network Toolbox but is not found in later versions;
     its successor seems to be called "processpcs".
     """
@@ -1337,7 +1337,7 @@ def save(fname, X, fmt='%.18e',delimiter=' '):
             import gzip
             fh = gzip.open(fname,'wb')
         else:
-            fh = file(fname,'w')
+            fh = open(fname,'w')
     elif hasattr(fname, 'seek'):
         fh = fname
     else:
