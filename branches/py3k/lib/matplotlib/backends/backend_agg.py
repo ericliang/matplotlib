@@ -35,7 +35,7 @@ from matplotlib.mathtext import MathTextParser
 from matplotlib.path import Path
 from matplotlib.transforms import Bbox, BboxBase
 
-from _backend_agg import RendererAgg as _RendererAgg
+from matplotlib.backends._backend_agg import RendererAgg as _RendererAgg
 from matplotlib import _png
 
 backend_version = 'v2.2'
@@ -429,7 +429,7 @@ class FigureCanvasAgg(FigureCanvasBase):
         original_dpi = renderer.dpi
         renderer.dpi = self.figure.dpi
         if is_string_like(filename_or_obj):
-            filename_or_obj = file(filename_or_obj, 'wb')
+            filename_or_obj = open(filename_or_obj, 'wb')
         renderer._renderer.write_rgba(filename_or_obj)
         renderer.dpi = original_dpi
     print_rgba = print_raw
@@ -440,7 +440,7 @@ class FigureCanvasAgg(FigureCanvasBase):
         original_dpi = renderer.dpi
         renderer.dpi = self.figure.dpi
         if is_string_like(filename_or_obj):
-            filename_or_obj = file(filename_or_obj, 'wb')
+            filename_or_obj = open(filename_or_obj, 'wb')
         _png.write_png(renderer._renderer.buffer_rgba(0, 0),
                        renderer.width, renderer.height,
                        filename_or_obj, self.figure.dpi)
